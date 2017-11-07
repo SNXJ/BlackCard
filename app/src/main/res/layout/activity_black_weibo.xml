@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bj">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_marginLeft="15.45dp"
+            android:layout_width="11dp"
+            android:layout_height="18.6dp"
+            android:src="@mipmap/back"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#929292"
+            android:textSize="17sp"
+            android:text="黑微博"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/blog_image_1"
+            android:layout_marginLeft="15dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记时间的钟"
+                android:textColor="#929292"
+                android:textSize="14sp"
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="昨天16:36"
+                android:textSize="11sp"
+                android:textColor="#929292"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="17.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#929292"
+        android:text="#跑车世界# 一枚宽体战神GTR"/>
+
+    <GridView
+        android:id="@+id/black_item_gv"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="207.5dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:horizontalSpacing="7.5dp"
+        android:verticalSpacing="7.5dp"
+        ></GridView>
+    <LinearLayout
+        android:layout_marginTop="12.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_marginLeft="40dp"
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/blog_icon_1"/>
+        <TextView
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18"
+            android:textColor="#929292"
+            android:textSize="18sp"/>
+        <ImageView
+            android:layout_marginLeft="78dp"
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/blog_icon_2"/>
+        <TextView
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="56"
+            android:textColor="#929292"
+            android:textSize="18sp"/>
+        <ImageView
+            android:layout_marginLeft="77dp"
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/blog_icon_3"/>
+        <TextView
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="56"
+            android:textColor="#929292"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+</LinearLayout>

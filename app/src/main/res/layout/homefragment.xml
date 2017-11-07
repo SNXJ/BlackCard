@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scr_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+        <RadioButton
+            android:layout_marginLeft="15dp"
+            android:button="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="三亚"
+            android:drawablePadding="4dp"
+            android:drawableRight="@mipmap/home_nav_more"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textColor="#929292" />
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:background="@drawable/buttonshape"
+            >
+
+            <ImageView
+                android:layout_marginLeft="16dp"
+                android:id="@+id/iv_search_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/home_nav_search"
+                />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@null"
+                android:singleLine="true"
+                android:layout_marginLeft="7.65dp"
+                android:hint="搜索"
+                android:textSize="14sp"
+                android:textColorHint="#8E8E93"
+                />
+        </LinearLayout>
+
+        <ImageView
+                android:layout_marginRight="15.05dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/home_head_right"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <!-- 表格1-伸展 -->
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+        android:orientation="vertical">
+
+    <TableRow
+        android:layout_marginTop="20.5dp">
+        <ImageView
+            android:src="@mipmap/home_food"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@mipmap/home_hotel"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@mipmap/home_appraisal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@mipmap/home_plane"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+        <TableRow
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/ckmiddle_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="美食"
+                android:textSize="14sp"
+                android:textColor="#929292"
+                />
+            <TextView
+                android:id="@+id/flmiddle_tv"
+                android:textColor="#929292"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="酒店"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="品鉴"
+                android:textSize="14sp"
+                android:textColor="#929292"
+                />
+            <TextView
+                android:textSize="14sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="机票"
+                android:textColor="#929292"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="27dp">
+
+            <ImageView
+                android:src="@mipmap/home_horse"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/home_equestrain_img" />
+
+            <ImageView
+                android:id="@+id/home_cruiseship_img"
+                android:src="@mipmap/home_ship"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/home_car_img"
+                android:src="@mipmap/home_car"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@mipmap/home_more"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="16dp">
+            <TextView
+                android:id="@+id/home_equestrain_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="马术"
+                android:textColor="#929292"
+                />
+            <TextView
+                android:id="@+id/home_cruiseship_tv"
+                android:textColor="#929292"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="游艇"
+                />
+            <TextView
+                android:id="@+id/home_car_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="豪车"
+                android:textSize="14sp"
+                android:textColor="#929292"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="更多"
+                android:textColor="#929292"
+                />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/home_first"/>
+        <TextSwitcher
+            android:id="@+id/tv_notice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+    <GridView
+        android:id="@+id/homeheadnews_gv"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_marginTop="18.85dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:horizontalSpacing="10dp"></GridView>
+    </LinearLayout>
+
+    </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="13.5dp"
+            android:layout_marginLeft="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="荣耀服务"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="#929292"/>
+
+    <GridView
+        android:id="@+id/homeserve_gv"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:horizontalSpacing="10dp"
+        ></GridView>
+
+    <TextView
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="汇聚玩趴"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="#929292"/>
+
+    <ImageView
+        android:layout_marginTop="18dp"
+        android:layout_width="345dp"
+        android:layout_height="95dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/home_image_8"/>
+    <TextView
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="荣耀杂志"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="#929292"/>
+
+
+    <RelativeLayout
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="113.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="37dp">
+
+    <GridView
+        android:id="@+id/homejournal_gv"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:horizontalSpacing="10dp"
+        ></GridView>
+
+    </RelativeLayout>
+
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zsh.blackcard">
+
+    <uses-permission android:name="android.permission.MANAGE_USERS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <application
+        android:name="com.zsh.blackcard.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan|stateHidden"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.BlackWeiboActivity" />
+        <activity android:name=".ui.ShoppingCarActivity" />
+        <activity android:name=".ui.TakeAddressActivity" />
+        <activity android:name=".ui.TakeAdressDetailsActivity" />
+        <activity android:name=".ui.zgactivity.ZgMyActivity" />
+        <activity android:name=".ui.zgactivity.ZgMyIndentActivity" />
+        <activity android:name=".ui.SbActivity" />
+        <activity android:name=".ui.SbMyActivity" />
+        <activity android:name=".ui.OrderDetailsActivity" />
+        <activity android:name=".ui.IntegralActivity" />
+        <activity android:name=".ui.CommodityActivity" />
+        <activity android:name=".ui.CustomMadeActivity" />
+        <activity android:name=".ui.ConfirmOrderActivity" />
+        <activity android:name=".ui.LogisticsDetailsActivity" />
+        <activity android:name=".ui.IntegralbillsActivity" />
+        <activity android:name=".ui.DiscountCouponActivity" />
+        <activity android:name=".ui.ShoppingDetailsActivity" />
+        <activity android:name=".ui.DiscountExchangeActivity" />
+        <activity android:name=".ui.CommonlyActivity" />
+        <activity android:name=".ui.EatDrinkActivity" />
+        <activity android:name=".ui.EatDrinkSetActivity" />
+        <activity android:name=".ui.DetailsRequireActivity" />
+        <activity android:name=".ui.GolfActivity" />
+        <activity android:name=".ui.CruiseShipActivity" />
+        <activity android:name=".ui.PlaneActivity" />
+        <activity android:name=".ui.CarActivity" />
+        <activity android:name=".ui.EquestrianActivity" />
+        <activity android:name=".ui.BlackcoffeecurrencyActivity" />
+        <activity android:name=".ui.SbSetActivity" />
+        <activity android:name=".ui.zgactivity.ZgHomeActivity" />
+        <activity android:name=".ui.HomeHotelActivity"></activity>
+    </application>
+
+</manifest>

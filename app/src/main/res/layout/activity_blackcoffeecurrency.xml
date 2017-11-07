@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bj">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_marginLeft="15.45dp"
+            android:layout_width="11dp"
+            android:layout_height="18.6dp"
+            android:src="@mipmap/back"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#929292"
+            android:textSize="17sp"
+            android:text="黑咖币"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="39.5dp"
+        android:layout_width="76dp"
+        android:layout_height="15dp"
+        android:layout_gravity="center_horizontal"
+        android:text="黑咖币余额"
+        android:textSize="15sp"
+        android:textColor="#929292">
+    </TextView>
+    <TextView
+        android:layout_marginTop="10.5dp"
+        android:id="@+id/blackmoney_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_gravity="center_horizontal"
+        android:text="500.00"
+        android:textSize="24sp"
+        android:textColor="#A0A0A0">
+    </TextView>
+
+    <TextView
+        android:layout_marginTop="10.5dp"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="充值"
+        android:textSize="17sp"
+        android:background="@drawable/buttonshapebancircle"
+        android:textColor="#929292" />
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_marginLeft="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/wallet_icon_3"/>
+        <TextView
+            android:layout_marginLeft="10.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="直播收益"
+            android:textColor="#929292"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginRight="27.75dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/more"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_marginLeft="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/wallet_icon_4"/>
+        <TextView
+            android:layout_marginLeft="10.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="充值记录"
+            android:textColor="#929292"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginRight="27.75dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/more"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

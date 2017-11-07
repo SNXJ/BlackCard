@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bj">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_marginLeft="15.45dp"
+            android:layout_width="11dp"
+            android:layout_height="18.6dp"
+            android:src="@mipmap/back"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#929292"
+            android:textSize="17sp"
+            android:text="吃喝玩乐"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="去发布"
+            android:textColor="#929292"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_marginLeft="15dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/blog_image_1"/>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RadioButton
+                android:layout_marginTop="14dp"
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完成全部任务"
+                android:textColor="#929292"
+                android:textSize="14sp"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/togetherselect"/>
+
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.7km 19岁摩羯座"
+                android:textColor="#929292"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="44dp"
+                android:layout_height="14dp"
+                android:background="@drawable/addfriendshape"
+                android:text="加好友"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:textColor="#929292"
+                android:textSize="10sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="麦乐迪KTV嗨起来"
+        android:textColor="#929292"
+        android:textSize="14sp"/>
+    <GridView
+        android:layout_marginTop="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="82.5dp"
+        ></GridView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始时间:2017年10月1日"
+            android:textColor="#929292"
+            android:textSize="11sp"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="结束时间:2017年10月8日"
+            android:textColor="#929292"
+            android:textSize="11sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="人数:一对一"
+            android:textColor="#929292"
+            android:textSize="11sp"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="方式:AA互动趴"
+            android:textColor="#929292"
+            android:textSize="11sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="64.75dp"/>
+
+    </RelativeLayout>
+</LinearLayout>
+
+</LinearLayout>
