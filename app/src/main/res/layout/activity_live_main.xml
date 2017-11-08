@@ -9,29 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/base150dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/bg_white"
-        android:gravity="center_horizontal"
-       >
+        android:background="@color/bg_white">
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/base50dp"
             android:layout_marginLeft="@dimen/base90dp"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="@dimen/base22dp"
                 android:layout_height="@dimen/base22dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:background="@mipmap/live_icon_1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/base2dp"
                 android:text="黑微博"
                 android:textColor="@color/live_buttom_text"
@@ -43,22 +42,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/base90dp"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_marginTop="@dimen/base50dp"
                 android:layout_width="@dimen/base22dp"
                 android:layout_height="@dimen/base22dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:background="@mipmap/live_icon_3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/base2dp"
                 android:text="小视频"
                 android:textColor="@color/live_buttom_text"
@@ -69,46 +67,36 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/base30dp"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base155dp"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="@dimen/base22dp"
                 android:layout_height="@dimen/base22dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:background="@mipmap/live_icon_2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/base2dp"
                 android:text="开播吧"
                 android:textColor="@color/live_buttom_text"
 
                 />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/base30dp"
+
+        <ImageView
+            android:layout_width="@dimen/base13dp"
+            android:layout_height="@dimen/base13dp"
             android:layout_alignParentBottom="true"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base170dp"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="@dimen/base13dp"
-                android:layout_height="@dimen/base13dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@mipmap/live_icon_4" />
-
-
-        </LinearLayout>
-
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/base30dp"
+            android:background="@mipmap/live_icon_4" />
 
     </RelativeLayout>
 </RelativeLayout>
