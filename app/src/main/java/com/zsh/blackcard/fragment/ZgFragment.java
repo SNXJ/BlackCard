@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
@@ -28,6 +29,8 @@ public class ZgFragment extends BaseFragment {
     public LinearLayout lldot;
     public View view;
     private ImageView zgmyimg;
+
+
     int src[] = {R.mipmap.but_banner_1, R.mipmap.toghter_image_1, R.mipmap.toghter_image_2};
 
     

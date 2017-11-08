@@ -21,6 +21,7 @@ import com.zsh.blackcard.adapter.HeadNewsAdapter;
 import com.zsh.blackcard.adapter.JournalAdapter;
 import com.zsh.blackcard.ui.CarActivity;
 import com.zsh.blackcard.ui.CruiseShipActivity;
+import com.zsh.blackcard.ui.EatDrinkActivity;
 import com.zsh.blackcard.ui.EquestrianActivity;
 
 
@@ -28,10 +29,11 @@ import com.zsh.blackcard.ui.EquestrianActivity;
  * Created by admin on 2017/10/11.
  */
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private GridView headnewsgv;
     private GridView homejournalgv;
     private GridView homeservegv;
+    private TextView ckmiddle_tv;
     private TextView homecar_tv;
     private TextView homeequestrain_tv;
     private TextView homecruiseship_tv;
@@ -45,21 +47,21 @@ public class HomeFragment extends BaseFragment {
     private final int HOME_AD_RESULT = 1;
     private int mSwitcherCount = 0;
 
-    private String[] titles=new String[]{
-            "2.4.6.8娱乐吧","逸林游艇","麦乐迪KTV"
+    private String[] titles = new String[]{
+            "2.4.6.8娱乐吧", "逸林游艇", "麦乐迪KTV"
     };
 
-    private Integer[] images={
+    private Integer[] images = {
             R.mipmap.home_image_1,
             R.mipmap.home_image_2,
             R.mipmap.home_image_3
     };
-    private Integer[] images1={
+    private Integer[] images1 = {
             R.mipmap.home_image_5,
             R.mipmap.home_image_6,
             R.mipmap.home_image_7
     };
-    private Integer[] images2={
+    private Integer[] images2 = {
             R.mipmap.home_image_9,
             R.mipmap.home_image_10,
             R.mipmap.home_image_11
@@ -82,7 +84,6 @@ public class HomeFragment extends BaseFragment {
     };
 
 
-
     @Override
     public void initDate(Bundle savedInstanceState) {
 
@@ -92,21 +93,23 @@ public class HomeFragment extends BaseFragment {
     public View initView(LayoutInflater inflater) {
         view = View.inflate(getActivity(), R.layout.homefragment, null);
         homefindID();
-        homeOnClick();
-        HeadNewsAdapter pictureAdapter=new HeadNewsAdapter(titles, images, getActivity());
-        GlorySeverAdapter pictureAdapter1=new GlorySeverAdapter(images1, getActivity());
-        JournalAdapter pictureAdapter2=new JournalAdapter(images2,getActivity());
+
+        HeadNewsAdapter pictureAdapter = new HeadNewsAdapter(titles, images, getActivity());
+        GlorySeverAdapter pictureAdapter1 = new GlorySeverAdapter(images1, getActivity());
+        JournalAdapter pictureAdapter2 = new JournalAdapter(images2, getActivity());
         headnewsgv.setAdapter(pictureAdapter);
         homeservegv.setAdapter(pictureAdapter1);
         homejournalgv.setAdapter(pictureAdapter2);
+        homeOnClick();
         return view;
     }
 
     private void homeOnClick() {
+
         homecar_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent homecarintent = new Intent(getActivity(),CarActivity.class);
+                Intent homecarintent = new Intent(getActivity(), CarActivity.class);
                 startActivity(homecarintent);
             }
         });
@@ -127,7 +130,7 @@ public class HomeFragment extends BaseFragment {
         homecar_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent homecarintent2 = new Intent(getActivity(),CarActivity.class);
+                Intent homecarintent2 = new Intent(getActivity(), CarActivity.class);
                 startActivity(homecarintent2);
             }
         });
@@ -154,12 +157,13 @@ public class HomeFragment extends BaseFragment {
         homejournalgv = (GridView) view.findViewById(R.id.homejournal_gv);
         homeservegv = (GridView) view.findViewById(R.id.homeserve_gv);
         homecar_tv = (TextView) view.findViewById(R.id.home_car_tv);
+        ckmiddle_tv = (TextView) view.findViewById(R.id.ckmiddle_tv);
         homeequestrain_tv = (TextView) view.findViewById(R.id.home_equestrain_tv);
         homecruiseship_tv = (TextView) view.findViewById(R.id.home_cruiseship_tv);
         homecar_img = (ImageView) view.findViewById(R.id.home_car_img);
         homecruiseship_img = (ImageView) view.findViewById(R.id.home_equestrain_img);
         homeequestrain_img = (ImageView) view.findViewById(R.id.home_cruiseship_img);
-
+        ckmiddle_tv.setOnClickListener(this);
         tv_notice.setFactory(new ViewSwitcher.ViewFactory() {
             // 这里用来创建内部的视图，这里创建TextView，用来显示文字
             public View makeView() {
@@ -180,4 +184,13 @@ public class HomeFragment extends BaseFragment {
         mHandler.sendEmptyMessage(HOME_AD_RESULT);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ckmiddle_tv:
+                Intent intent = new Intent(getActivity(), EatDrinkActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
 }

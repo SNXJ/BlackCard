@@ -11,16 +11,17 @@ import com.zsh.blackcard.R;
 
 
 /**
- * Created by admin on 2017/10/12.
+ * 尚播的附近
  */
 
 public class NearbyFragment extends Fragment {
 
     public View view;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = View.inflate(getActivity(), R.layout.sb_nearbyfragment,null);
+        view = View.inflate(getActivity(), R.layout.sb_nearbyfragment, null);
         return view;
     }
 

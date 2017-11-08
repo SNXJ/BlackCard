@@ -3,6 +3,9 @@ package com.zsh.blackcard.ui;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
+/**
+ * 游艇
+ */
 public class CruiseShipActivity extends BaseActivity {
 
     @Override

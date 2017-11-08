@@ -2,8 +2,6 @@ package com.zsh.blackcard.ui.zgactivity;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -13,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.ui.zgactivity.zgmyindentfragment.AfterSafeFragment;
 import com.zsh.blackcard.ui.zgactivity.zgmyindentfragment.AllMyIndentFragment;
@@ -21,7 +20,7 @@ import com.zsh.blackcard.ui.zgactivity.zgmyindentfragment.WaitPayFragment;
 import com.zsh.blackcard.ui.zgactivity.zgmyindentfragment.WaitTakeFragment;
 
 
-public class ZgMyIndentActivity extends FragmentActivity implements View.OnClickListener {
+public class ZgMyIndentActivity extends BaseActivity implements View.OnClickListener {
     private ImageView dingdanback;
     private ViewPager myindentvp;
     private RadioButton all_btn;
@@ -36,9 +35,9 @@ public class ZgMyIndentActivity extends FragmentActivity implements View.OnClick
     public EvaluateFragment fg_evaluate;
     public AfterSafeFragment fg_after;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initUI() {
         setContentView(R.layout.activity_zg_my_indent);
         mydfindID();
         dingdanOnclick();
@@ -52,6 +51,7 @@ public class ZgMyIndentActivity extends FragmentActivity implements View.OnClick
         evaluate_btn.setOnClickListener(this);
         aftersafe_btn.setOnClickListener(this);
     }
+
     private void initData() {
         flzmihome = getSupportFragmentManager();
         FragmentTransaction transaction = flzmihome.beginTransaction();
@@ -126,6 +126,7 @@ public class ZgMyIndentActivity extends FragmentActivity implements View.OnClick
         }
 
     }
+
     private void dingdanOnclick() {
         dingdanback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,33 +144,35 @@ public class ZgMyIndentActivity extends FragmentActivity implements View.OnClick
         evaluate_btn = (RadioButton) findViewById(R.id.myindent_evaluate_btn);
         aftersafe_btn = (RadioButton) findViewById(R.id.myindent_aftersafe_btn);
     }
+
     private void Httpclient() {
         //获取链接管理器
-        ConnectivityManager cm=(ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         //获取当前网络信息对象
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
 
         //ActiveNetworkInfo不为空
-        if (netInfo!=null) {
+        if (netInfo != null) {
             //网络是否已经链接
             boolean available = netInfo.isAvailable();
             //网络是否链接好并可以传递数据
             boolean connected = netInfo.isConnected();
-            if (available&&connected) {
+            if (available && connected) {
                 int type = netInfo.getType();
-                if (type==ConnectivityManager.TYPE_WIFI) {
+                if (type == ConnectivityManager.TYPE_WIFI) {
                     Toast.makeText(this, "wifi网路可用", Toast.LENGTH_SHORT).show();
-                }else if(type==ConnectivityManager.TYPE_MOBILE) {
+                } else if (type == ConnectivityManager.TYPE_MOBILE) {
                     Toast.makeText(this, "手机流量可用网路可用", Toast.LENGTH_SHORT).show();
                 }
                 // Toast.makeText(this, "网路可用", 0).show();
-            }else {
+            } else {
                 Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
             }
-        }else {
+        } else {
             Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
         }
     }
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK

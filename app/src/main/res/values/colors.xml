@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="divider">#929292</color>
+    <color name="main_black">#0C0C0C</color>
+    <color name="bg_white">#ffffffff</color>
+    <color name="live_buttom_text">#929292</color>
 
 </resources>

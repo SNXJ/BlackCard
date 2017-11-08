@@ -9,7 +9,7 @@ import com.zsh.blackcard.R;
 
 
 /**
- * Created by admin on 2017/10/11.
+ * 汇聚页面
  */
 
 public class HjFragment extends BaseFragment {

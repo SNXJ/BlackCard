@@ -6,5 +6,28 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+    <!-- 标题 RelativeLayout    背景自设设置 -->
+    <style name="rl_title">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!-- 标题 返回图标 -->
+    <style name="iv_title_back">
+        <item name="android:layout_width">@dimen/base44dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:padding">@dimen/base10dp</item>
+        <item name="android:src">@mipmap/back</item>
+    </style>
+    <!-- 标题 title -->
+    <style name="tv_title">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>
