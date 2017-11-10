@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="divider">#929292</color>
+    <color name="divider">#5e5e5e</color>
     <color name="main_black">#0C0C0C</color><!--主色調-->
     <color name="bg_black">#FFD8D8D8</color><!--主色調-->
     <color name="title_text">#929292</color><!--title 字体-->
