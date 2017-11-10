@@ -75,6 +75,8 @@
         <activity android:name=".view.selectcity.SelectCityActivity"></activity>
         <activity android:name=".ui.home.HomeFoodActivityDetail"></activity>
         <activity android:name=".ui.home.HomeHotelActivityDetail"></activity>
+        <activity android:name=".ui.MyFriendActivity"></activity>
+
     </application>
 
 </manifest>

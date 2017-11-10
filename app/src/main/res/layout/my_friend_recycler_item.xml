@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:layout_marginTop="0.5dp"
+    android:layout_marginBottom="0.5dp"
+    android:layout_height="59dp">
+
+    <ImageView
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/my_headimg"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+    
+    <TextView
+        android:text="会唱歌的鱼"
+        android:layout_marginLeft="10dp"
+        android:textColor="#FF929292"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

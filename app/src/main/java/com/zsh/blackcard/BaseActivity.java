@@ -23,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public BaseApplication baseApplication;
     //  public User user;
     public Bundle savedInstanceState;
+    private boolean okAppBarLayout;
 
     public static Activity getForegroundActivity() {
         return mForegroundActivity;
@@ -32,7 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.savedInstanceState = savedInstanceState;
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //修改了style主题，NoActionBar
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 //        if (Build.VERSION.SDK_INT >= 21) {
 //            View decorView = getWindow().getDecorView();
@@ -55,6 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE;
         window.setAttributes(params);
         StatusBarColorUntil.setStatusBarColor(this);
+
         initUI();
 
     }
