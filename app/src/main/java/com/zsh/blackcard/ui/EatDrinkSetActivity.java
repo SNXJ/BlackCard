@@ -12,5 +12,6 @@ public class EatDrinkSetActivity extends BaseActivity {
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_eat_drink_set);
+
     }
 }

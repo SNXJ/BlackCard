@@ -11,6 +11,6 @@ public class PlaneActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-        setContentView(R.layout.activity_plane);
+        setContentView(R.layout.activity_plane_home);
     }
 }

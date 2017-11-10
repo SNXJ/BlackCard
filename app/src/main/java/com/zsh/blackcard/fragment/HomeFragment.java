@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
@@ -21,8 +22,13 @@ import com.zsh.blackcard.adapter.HeadNewsAdapter;
 import com.zsh.blackcard.adapter.JournalAdapter;
 import com.zsh.blackcard.ui.CarActivity;
 import com.zsh.blackcard.ui.CruiseShipActivity;
-import com.zsh.blackcard.ui.EatDrinkActivity;
 import com.zsh.blackcard.ui.EquestrianActivity;
+import com.zsh.blackcard.ui.PlaneActivity;
+import com.zsh.blackcard.ui.TrianActivity;
+import com.zsh.blackcard.ui.home.HomeFoodActivity;
+import com.zsh.blackcard.ui.home.HomeHotelActivity;
+import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 
 /**
@@ -35,7 +41,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private GridView homeservegv;
     private TextView ckmiddle_tv;
     private TextView homecar_tv;
-    private TextView homeequestrain_tv;
+    private TextView homeequestrain_tv;//马术
     private TextView homecruiseship_tv;
     private ImageView homecar_img;
     private ImageView homeequestrain_img;
@@ -105,28 +111,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void homeOnClick() {
-
-        homecar_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homecarintent = new Intent(getActivity(), CarActivity.class);
-                startActivity(homecarintent);
-            }
-        });
-        homeequestrain_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeequestrainintent = new Intent(getActivity(), EquestrianActivity.class);
-                startActivity(homeequestrainintent);
-            }
-        });
-        homecruiseship_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homecruiseshipintent = new Intent(getActivity(), CruiseShipActivity.class);
-                startActivity(homecruiseshipintent);
-            }
-        });
         homecar_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,20 +134,65 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         });
     }
 
+    private TextView flmiddle_tv;//酒店
+    private TextView tv_home_trian;//
+    private TextView tv_home_plane;//
+    private TextView home_more_tv;//
+
+    private ImageView im_home_food;//
+    private ImageView im_home_hotel;//
+    private ImageView im__home_trian;//
+    private ImageView im_home_more;//
+    private ImageView im_home_plane;//
+    private RadioButton rb_city_home;//
 
     private void homefindID() {
+        rb_city_home = (RadioButton) view.findViewById(R.id.rb_city_home);
+
         tv_notice = (TextSwitcher) view.findViewById(R.id.tv_notice);
         headnewsgv = (GridView) view.findViewById(R.id.homeheadnews_gv);
         homejournalgv = (GridView) view.findViewById(R.id.homejournal_gv);
         homeservegv = (GridView) view.findViewById(R.id.homeserve_gv);
+
         homecar_tv = (TextView) view.findViewById(R.id.home_car_tv);
+        flmiddle_tv = (TextView) view.findViewById(R.id.flmiddle_tv);
+        tv_home_trian = (TextView) view.findViewById(R.id.tv_home_trian);
+        tv_home_plane = (TextView) view.findViewById(R.id.tv_home_plane);
+        home_more_tv = (TextView) view.findViewById(R.id.tv_home_more);
         ckmiddle_tv = (TextView) view.findViewById(R.id.ckmiddle_tv);
         homeequestrain_tv = (TextView) view.findViewById(R.id.home_equestrain_tv);
         homecruiseship_tv = (TextView) view.findViewById(R.id.home_cruiseship_tv);
+
         homecar_img = (ImageView) view.findViewById(R.id.home_car_img);
         homecruiseship_img = (ImageView) view.findViewById(R.id.home_equestrain_img);
         homeequestrain_img = (ImageView) view.findViewById(R.id.home_cruiseship_img);
+        im_home_food = (ImageView) view.findViewById(R.id.im_home_food);
+        im_home_hotel = (ImageView) view.findViewById(R.id.im_home_hotel);
+        im__home_trian = (ImageView) view.findViewById(R.id.im__home_trian);
+        im_home_more = (ImageView) view.findViewById(R.id.im_home_more);
+        im_home_plane = (ImageView) view.findViewById(R.id.im_home_plane);
+
+
+        homecar_img.setOnClickListener(this);
+        homecruiseship_img.setOnClickListener(this);
+        homeequestrain_img.setOnClickListener(this);
+        im_home_food.setOnClickListener(this);
+        im_home_hotel.setOnClickListener(this);
+        im__home_trian.setOnClickListener(this);
+        im_home_more.setOnClickListener(this);
+        im_home_plane.setOnClickListener(this);
+
         ckmiddle_tv.setOnClickListener(this);
+        flmiddle_tv.setOnClickListener(this);
+        tv_home_trian.setOnClickListener(this);
+        homecar_tv.setOnClickListener(this);
+        tv_home_plane.setOnClickListener(this);
+        homeequestrain_tv.setOnClickListener(this);
+        homecruiseship_tv.setOnClickListener(this);
+        home_more_tv.setOnClickListener(this);
+        rb_city_home.setOnClickListener(this);
+
+
         tv_notice.setFactory(new ViewSwitcher.ViewFactory() {
             // 这里用来创建内部的视图，这里创建TextView，用来显示文字
             public View makeView() {
@@ -187,9 +216,45 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ckmiddle_tv:
-                Intent intent = new Intent(getActivity(), EatDrinkActivity.class);
+            case R.id.ckmiddle_tv://吃喝
+            case R.id.im_home_food:
+                //  Intent intent = new Intent(getActivity(), EatDrinkActivity.class);
+                Intent intent = new Intent(getActivity(), HomeFoodActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.flmiddle_tv://酒店
+            case R.id.im_home_hotel:
+                startActivity(new Intent(getActivity(), HomeHotelActivity.class));
+                break;
+            case R.id.tv_home_trian:
+            case R.id.im__home_trian:
+                startActivity(new Intent(getActivity(), TrianActivity.class));
+                break;
+            case R.id.tv_home_plane://机票
+            case R.id.im_home_plane:
+                startActivity(new Intent(getActivity(), PlaneActivity.class));
+                break;
+            case R.id.home_equestrain_tv://马术
+            case R.id.home_equestrain_img:
+                startActivity(new Intent(getActivity(), EquestrianActivity.class));
+                break;
+            case R.id.home_cruiseship_tv://游艇
+            case R.id.home_cruiseship_img://游艇
+                startActivity(new Intent(getActivity(), CruiseShipActivity.class));
+                break;
+            case R.id.home_car_tv://豪车
+            case R.id.home_car_img://豪车
+                Intent homecarintent = new Intent(getActivity(), CarActivity.class);
+                startActivity(homecarintent);
+                break;
+            case R.id.tv_home_more://更多
+            case R.id.im_home_more://更多
+                UIUtils.showToast("敬请期待");
+//                Intent homecarintent = new Intent(getActivity(), CarActivity.class);
+//                startActivity(homecarintent);
+                break;
+            case R.id.rb_city_home://更多
+                startActivity(new Intent(getActivity(), SelectCityActivity.class));
                 break;
         }
     }

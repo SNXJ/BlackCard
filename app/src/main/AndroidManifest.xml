@@ -67,9 +67,14 @@
         <activity android:name=".ui.BlackcoffeecurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
-        <activity android:name=".ui.HomeHotelActivity"></activity>
+        <activity android:name=".ui.home.HomeHotelActivity"></activity>
         <activity android:name=".ui.LoginActivity"></activity>
         <activity android:name=".ui.live.LiveActivity"></activity>
+        <activity android:name=".ui.TrianActivity"></activity>
+        <activity android:name=".ui.home.HomeFoodActivity"></activity>
+        <activity android:name=".view.selectcity.SelectCityActivity"></activity>
+        <activity android:name=".ui.home.HomeFoodActivityDetail"></activity>
+        <activity android:name=".ui.home.HomeHotelActivityDetail"></activity>
     </application>
 
 </manifest>
