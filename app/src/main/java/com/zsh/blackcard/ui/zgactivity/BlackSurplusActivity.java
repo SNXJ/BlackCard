@@ -1,4 +1,4 @@
-package com.zsh.blackcard.ui;
+package com.zsh.blackcard.ui.zgactivity;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -6,16 +6,24 @@ import android.widget.ImageView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
+/**
+ * Created by kkkkk on 2017/11/10.
+ */
 
-public class BlackcoffeecurrencyActivity extends BaseActivity implements View.OnClickListener {
+public class BlackSurplusActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView back_img;
 
     @Override
     protected void initUI() {
-        setContentView(R.layout.activity_blackcoffeecurrency);
+        setContentView(R.layout.activity_black_surplus);
         initFindId();
         initOnClick();
+        initDate();
+    }
+
+    private void initDate() {
+
     }
 
     private void initOnClick() {
