@@ -15,7 +15,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.fragment.sbfragment.NearbyFragment;
 import com.zsh.blackcard.fragment.sbfragment.RdFragment;
 import com.zsh.blackcard.fragment.sbfragment.TypeFragment;
-import com.zsh.blackcard.ui.live.LiveActivity;
+import com.zsh.blackcard.ui.live.LiveRoomActivity;
 
 /**
  * 尚播Activity
@@ -117,7 +117,13 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
         rb_nearby = (RadioButton) findViewById(R.id.sb_nearby_tv);
         rb_type = (RadioButton) findViewById(R.id.sb_type_tv);
         sbvp = (ViewPager) findViewById(R.id.sb_vp);
-
+        rb_sb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent sbmyintent = new Intent(SbActivity.this, LiveRankActivity.class);
+//                startActivity(sbmyintent);
+            }
+        });
         rb_sbmy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +136,8 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 // UIUtils.showToast("Live");
-                startActivity(new Intent(SbActivity.this, LiveActivity.class));
+                // startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
+                startActivity(new Intent(SbActivity.this, LiveRoomActivity.class));
             }
         });
     }
