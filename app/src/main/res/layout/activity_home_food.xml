@@ -98,7 +98,8 @@
             android:textSize="15sp" />
     </RelativeLayout>
 
-    <include layout="@layout/hotel_sort_fragment"></include>
+    <include
+        layout="@layout/food_sort_fragment"></include>
 
     <RelativeLayout
         android:layout_width="match_parent"

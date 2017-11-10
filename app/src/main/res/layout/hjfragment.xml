@@ -59,6 +59,7 @@
             </LinearLayout>
         </RelativeLayout>
         <LinearLayout
+            android:id="@+id/hj_eat_drink"
             android:layout_width="match_parent"
             android:layout_height="165dp"
             android:background="@mipmap/toghter_image_1"
