@@ -17,6 +17,7 @@ import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.custom.CustomDrawerLayout;
 import com.zsh.blackcard.fragment.ZgFragment;
+import com.zsh.blackcard.listener.ZGSlidingListener;
 import com.zsh.blackcard.ui.LoginActivity;
 import com.zsh.blackcard.untils.UIUtils;
 
@@ -58,12 +59,20 @@ public class SlidingFragment extends BaseFragment implements View.OnClickListene
         drawerLayout = (CustomDrawerLayout) view.findViewById(R.id.drawer_layout);
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.drawerlayout_frame, new ZgFragment());
+        ZgFragment zgFragment = new ZgFragment();
+        zgFragment.sendStatus(zglistener);
+        fragmentTransaction.replace(R.id.drawerlayout_frame, zgFragment);
         fragmentTransaction.commit();
         im_zg_head.setOnClickListener(this);
         tv_zg_head.setOnClickListener(this);
     }
 
+    ZGSlidingListener zglistener = new ZGSlidingListener() {
+        @Override
+        public void onMeauClick() {
+            showDrawerLayout();
+        }
+    };
     private List<String> list;
 
     private void initDate() {

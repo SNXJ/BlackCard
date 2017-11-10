@@ -8,6 +8,47 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
+    <!-- 总title-->
+    <style name="title_rl">
+        <item name="android:background">@color/main_black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- 总title back-->
+    <style name="title_im_back">
+        <item name="android:src">@mipmap/back</item>
+        <item name="android:layout_width">@dimen/base11dp</item>
+        <item name="android:layout_height">@dimen/base19dp</item>
+        <item name="android:layout_marginLeft">@dimen/base15dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <!-- 总title tv-->
+    <style name="title_tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/title_text</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="plane_check_box" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/checkbox_bg_select</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
     <!-- 标题 RelativeLayout    背景自设设置 -->
     <style name="rl_title">
         <item name="android:background">@color/transparent</item>
