@@ -7,28 +7,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.ui.CusCenterActivity;
 import com.zsh.blackcard.ui.MyFriendActivity;
 
 /**
  * Created by kkkkk on 2017/11/10.
  */
 
-public class MyFriendAdapter extends RecyclerView.Adapter<MyFriendAdapter.MyViewHolder>{
+public class MyCusCenterAdapter extends RecyclerView.Adapter<MyCusCenterAdapter.MyViewHolder>{
 
     private Context context;
 
-    public MyFriendAdapter(MyFriendActivity myFriendActivity) {
-        this.context = myFriendActivity;
+    public MyCusCenterAdapter(CusCenterActivity cusCenterActivity) {
+        this.context = cusCenterActivity;
     }
 
     @Override
-    public MyFriendAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.my_friend_recycler_item,parent,false));
+    public MyCusCenterAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.my_cus_center_recycler_item,parent,false));
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MyFriendAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyCusCenterAdapter.MyViewHolder holder, int position) {
 
     }
 

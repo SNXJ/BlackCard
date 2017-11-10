@@ -76,7 +76,10 @@
         <activity android:name=".ui.home.HomeFoodActivityDetail"></activity>
         <activity android:name=".ui.home.HomeHotelActivityDetail"></activity>
         <activity android:name=".ui.MyFriendActivity"></activity>
-
+        <activity android:name=".ui.VipCenterActivity"></activity>
+        <activity android:name=".ui.CusCenterActivity"></activity>
+        <activity android:name=".ui.WalletCenterActivity"></activity>
+        <activity android:name=".ui.zgactivity.BlackSurplusActivity"></activity>
     </application>
 
 </manifest>

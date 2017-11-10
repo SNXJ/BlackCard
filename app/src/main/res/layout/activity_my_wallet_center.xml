@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="11dp"
+            android:layout_height="18.6dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.45dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="钱包中心"
+            android:textColor="#929292"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <com.zsh.blackcard.view.WalletTextView
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="￥0.00"
+        android:textColor="#FF929292"
+        android:textSize="36sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginTop="40dp">
+
+        <ImageView
+            android:id="@+id/my_wallet_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.45dp"
+            android:src="@mipmap/wallet_icon_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/my_wallet_cash"
+            android:text="提现"
+            android:textColor="#FF929292"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/my_wallet_cash_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.45dp"
+            android:src="@mipmap/more" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp">
+
+        <ImageView
+            android:id="@+id/my_wallet_surplus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.45dp"
+            android:src="@mipmap/wallet_icon_2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/my_wallet_surplus"
+            android:text="黑卡剩余额度"
+            android:textColor="#FF929292"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/my_wallet_surplus_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.45dp"
+            android:src="@mipmap/more" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+</LinearLayout>

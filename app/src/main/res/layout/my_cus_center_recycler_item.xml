@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="59dp"
+    android:layout_marginBottom="0.5dp"
+    android:layout_marginTop="0.5dp">
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/my_cus_center_recycler_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/my_headimg" />
+
+    <TextView
+        android:layout_toRightOf="@+id/my_cus_center_recycler_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="客服中心"
+        android:layout_marginLeft="10dp"
+        android:textColor="#FF929292"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:src="@mipmap/more"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp" />
+
+</RelativeLayout>

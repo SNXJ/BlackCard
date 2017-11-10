@@ -7,34 +7,34 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.ui.MyFriendActivity;
+import com.zsh.blackcard.ui.VipCenterActivity;
 
 /**
  * Created by kkkkk on 2017/11/10.
  */
 
-public class MyFriendAdapter extends RecyclerView.Adapter<MyFriendAdapter.MyViewHolder>{
+public class VipCenterAdapter extends RecyclerView.Adapter<VipCenterAdapter.MyViewHolder> {
 
     private Context context;
 
-    public MyFriendAdapter(MyFriendActivity myFriendActivity) {
-        this.context = myFriendActivity;
+    public VipCenterAdapter(VipCenterActivity vipCenterActivity) {
+        this.context = vipCenterActivity;
     }
 
     @Override
-    public MyFriendAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.my_friend_recycler_item,parent,false));
+    public VipCenterAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.vip_center_recycler_item,parent,false));
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MyFriendAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(VipCenterAdapter.MyViewHolder holder, int position) {
 
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 5;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

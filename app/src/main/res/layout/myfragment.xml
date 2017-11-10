@@ -276,6 +276,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/my_cus_center_img"
                 android:src="@mipmap/more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -306,6 +307,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/my_wallet_center_img"
                 android:src="@mipmap/more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
