@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/room_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp">
+
+        <ImageView
+            android:id="@+id/im_live_head"
+            android:layout_width="@dimen/base35dp"
+            android:layout_height="@dimen/base35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base21dp"
+            android:src="@mipmap/room_image_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base62dp"
+            android:layout_marginTop="@dimen/base12dp"
+            android:text="B-Bro"
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base62dp"
+            android:layout_marginTop="@dimen/base30dp"
+            android:text="283075"
+            android:textColor="@color/bg_white"
+            android:textSize="8sp" />
+
+        <ImageView
+            android:layout_width="@dimen/base35dp"
+            android:layout_height="@dimen/base35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base142dp"
+            android:src="@mipmap/room_image_3" />
+
+        <ImageView
+
+            android:layout_width="@dimen/base35dp"
+            android:layout_height="@dimen/base35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base95dp"
+            android:src="@mipmap/room_image_4" />
+
+        <ImageView
+            android:layout_width="@dimen/base35dp"
+            android:layout_height="@dimen/base35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base48dp"
+            android:src="@mipmap/room_image_5" />
+
+        <ImageView
+            android:layout_width="@dimen/base14dp"
+            android:layout_height="@dimen/base14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@mipmap/room_icon_1" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_buttom"
+        android:layout_marginBottom="@dimen/base15dp"
+        android:orientation="vertical"
+        android:padding="@dimen/base18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base8dp"
+            android:text="李志：三月的艳遇飘摇的南方"
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base8dp"
+            android:text="玮玮：你一手拿着苹果 一手拿着命运 "
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="逼哥：三月的艳遇飘摇的南方"
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_buttom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/ff0c_bg">
+
+        <ImageView
+            android:layout_width="@dimen/base35dp"
+            android:layout_height="@dimen/base35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base21dp"
+            android:src="@mipmap/room_icon_2" />
+
+        <ImageView
+
+            android:layout_width="@dimen/base35dp"
+            android:layout_height="@dimen/base35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base95dp"
+            android:src="@mipmap/room_icon_3" />
+
+        <ImageView
+            android:layout_width="@dimen/base35dp"
+            android:layout_height="@dimen/base35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base48dp"
+            android:src="@mipmap/room_icon_4" />
+
+        <ImageView
+            android:layout_width="@dimen/base35dp"
+            android:layout_height="@dimen/base35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@mipmap/room_icon_5" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
