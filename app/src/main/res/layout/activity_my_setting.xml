@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="11dp"
+            android:layout_height="18.6dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.45dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/my_settng_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="设置"
+            android:textColor="#929292"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    
+    <FrameLayout
+        android:id="@+id/my_setting_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+</LinearLayout>

@@ -85,6 +85,10 @@
         <activity android:name=".ui.live.LiveRankActivity"></activity>
         <activity android:name=".ui.live.LiveRoomActivity"></activity>
         <activity android:name=".ui.live.LiveAnchorDetails"></activity>
+        <activity android:name=".ui.zgactivity.GameCenterActivity"></activity>
+        <activity android:name=".ui.MySettingActivity"></activity>
+        <activity android:name=".ui.HuoDongActivity"></activity>
+        <activity android:name=".ui.OrderCenterActivity"></activity>
     </application>
 
 </manifest>
