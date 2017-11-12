@@ -14,6 +14,8 @@
     <color name="ff0c_bg">#FF0C0C0C</color>
     <color name="ff2a_text">#FF2A1745</color>
     <color name="ff00_text">#FF000000</color>
+    <color name="line">#1D1D1D</color>
+
     <color name="bg_white">#ffffffff</color>
     <color name="live_buttom_text">#929292</color>
 

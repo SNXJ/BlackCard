@@ -53,7 +53,9 @@
         <activity android:name=".ui.LogisticsDetailsActivity" />
         <activity android:name=".ui.IntegralbillsActivity" />
         <activity android:name=".ui.DiscountCouponActivity" />
-        <activity android:name=".ui.ShoppingDetailsActivity" />
+        <activity
+            android:name=".ui.ShoppingDetailsActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan|stateHidden" />
         <activity android:name=".ui.DiscountExchangeActivity" />
         <activity android:name=".ui.CommonlyActivity" />
         <activity android:name=".ui.EatDrinkActivity" />
@@ -89,6 +91,10 @@
         <activity android:name=".ui.MySettingActivity"></activity>
         <activity android:name=".ui.HuoDongActivity"></activity>
         <activity android:name=".ui.OrderCenterActivity"></activity>
+        <activity android:name=".ui.zgactivity.GoodsCategoryActivity"></activity>
+        <activity android:name=".ui.zgactivity.DiscoverActivity"></activity>
+        <activity android:name=".ui.zgactivity.PersonalActivity"></activity>
+
     </application>
 
 </manifest>
