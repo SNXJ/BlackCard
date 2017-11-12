@@ -11,10 +11,13 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.ChangeAddressPopwindow;
 import com.zsh.blackcard.R;
 
-
+/**
+ * 收货地址管理
+ */
 public class TakeAddressActivity extends BaseActivity {
     private TextView takemoretv;
     private ImageView takeback;
+
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_take_address);
@@ -53,6 +56,7 @@ public class TakeAddressActivity extends BaseActivity {
         takemoretv = (TextView) findViewById(R.id.take_more_tv);
         takeback = (ImageView) findViewById(R.id.take_back);
     }
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK

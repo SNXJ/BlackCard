@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.zsh.blackcard.untils.StatusBarColorUntil;
 
+import butterknife.ButterKnife;
+
 
 /**
  * @author sxj

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_black"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_black"
+        android:orientation="vertical">
+
+        <RelativeLayout style="@style/title_rl">
+
+            <ImageView
+                android:id="@+id/title_back"
+                style="@style/title_im_back" />
+
+            <TextView
+                android:id="@+id/title_tv"
+                style="@style/title_tv"
+                android:text="火车票预定" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base25dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base55dp"
+                android:gravity="center"
+                android:text="北京"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/base17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base55dp"
+                android:gravity="center"
+                android:text="上海"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/base17dp" />
+
+            <ImageView
+                android:layout_width="@dimen/base25dp"
+                android:layout_height="@dimen/base25dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/book_icon_1" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base60dp">
+
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base55dp"
+                android:gravity="center"
+                android:text="出发日期"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/base15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base22dp"
+                android:layout_toRightOf="@+id/tv_data"
+                android:gravity="center"
+                android:text="2017-11-9"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/base17dp" />
+
+            <ImageView
+                android:layout_width="@dimen/base8dp"
+                android:layout_height="@dimen/base14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base38dp"
+                android:src="@mipmap/next" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base60dp">
+
+            <TextView
+                android:id="@+id/tv_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base55dp"
+                android:gravity="center"
+                android:text="学生票"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/base13dp" />
+
+            <CheckBox
+                android:id="@+id/button1"
+                style="@style/plane_check_box"
+                android:layout_width="@dimen/base15dp"
+                android:layout_height="@dimen/base15dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base5dp"
+                android:layout_toRightOf="@+id/tv_student"
+                android:button="@null"
+                android:drawablePadding="@dimen/base5dp"
+                android:gravity="center"
+                android:text="" />
+            <!---->
+            <TextView
+                android:id="@+id/tv_gaotie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base5dp"
+                android:layout_toLeftOf="@+id/ck_gaitie"
+                android:gravity="center"
+                android:text="只看高铁动/车票"
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/base13dp" />
+
+            <CheckBox
+                android:id="@+id/ck_gaitie"
+                style="@style/plane_check_box"
+                android:layout_width="@dimen/base15dp"
+                android:layout_height="@dimen/base15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base55dp"
+                android:button="@null"
+                android:text="" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_button"
+        android:gravity="center"
+        android:text="开始搜索"
+        android:textColor="@color/title_text"
+        android:textSize="@dimen/base17dp" />
+</RelativeLayout>
+

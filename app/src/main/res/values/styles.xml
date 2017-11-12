@@ -6,5 +6,75 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- 给列表添加分割线 -->
+        <item name="android:listDivider">@drawable/divider</item>
+
+    </style>
+    <!-- 总title-->
+    <style name="title_rl">
+        <item name="android:background">@color/main_black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- 总title back-->
+    <style name="title_im_back">
+        <item name="android:src">@mipmap/back</item>
+        <item name="android:layout_width">@dimen/base11dp</item>
+        <item name="android:layout_height">@dimen/base19dp</item>
+        <item name="android:layout_marginLeft">@dimen/base15dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:listDivider">@drawable/divider</item>
+    </style>
+    <!-- 总title tv-->
+    <style name="title_tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/title_text</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="plane_check_box" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/checkbox_bg_select</item>
+    </style>
+
+
+    <!-- 自定义loading dialog -->
+    <style name="pub_loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <!-- 标题 RelativeLayout    背景自设设置 -->
+    <style name="rl_title">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!-- 标题 返回图标 -->
+    <style name="iv_title_back">
+        <item name="android:layout_width">@dimen/base44dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:padding">@dimen/base10dp</item>
+        <item name="android:src">@mipmap/back</item>
+    </style>
+    <!-- 标题 title -->
+    <style name="tv_title">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>

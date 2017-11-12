@@ -11,7 +11,7 @@ import com.zsh.blackcard.R;
 
 
 /**
- * Created by admin on 2017/10/26.
+ * 商品页面  activity_commodity
  */
 
 public class Goods4Fragment extends Fragment {

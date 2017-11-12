@@ -9,6 +9,9 @@ import android.widget.TextView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
+/**
+ * 收获地址管理详情
+ */
 
 public class TakeAdressDetailsActivity extends BaseActivity {
     private TextView newaddress_tv;

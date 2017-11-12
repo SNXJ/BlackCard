@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:orientation="vertical"
+    >
+
+        <RelativeLayout style="@style/title_rl">
+
+            <ImageView
+                android:id="@+id/title_back"
+                style="@style/title_im_back" />
+
+            <TextView
+                android:id="@+id/title_tv"
+                style="@style/title_tv"
+                android:text="充值记录" />
+        </RelativeLayout>
+        
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base60dp">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:layout_marginTop="@dimen/base16dp"
+                android:layout_marginBottom="@dimen/base14dp"
+                android:layout_width="@dimen/base32dp"
+                android:layout_height="@dimen/base32dp"
+                android:src="@mipmap/alipay_1"
+                />
+            <TextView
+                android:layout_marginLeft="@dimen/base57dp"
+                android:layout_marginTop="@dimen/base14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付宝支付"
+                android:textColor="@color/recharge_text"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_marginLeft="@dimen/base57dp"
+                android:layout_marginTop="@dimen/base34dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017年9月9日"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp"
+                />
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-999元"
+                android:textColor="@color/recharge_text"
+                android:textSize="15sp"
+                />
+        </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base16dp"
+            android:layout_marginBottom="@dimen/base14dp"
+            android:layout_width="@dimen/base32dp"
+            android:layout_height="@dimen/base32dp"
+            android:src="@mipmap/wechat_1"
+            />
+        <TextView
+            android:layout_marginLeft="@dimen/base57dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="微信支付"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:layout_marginLeft="@dimen/base57dp"
+            android:layout_marginTop="@dimen/base34dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017年9月9日"
+            android:textColor="@color/recharge_text"
+            android:textSize="11sp"
+            />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-999元"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp"
+            />
+    </RelativeLayout>
+
+    </LinearLayout>
+

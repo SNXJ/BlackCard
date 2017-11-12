@@ -1,16 +1,13 @@
 package com.zsh.blackcard.ui.zgactivity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
+import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
 
-public class ZgHomeActivity extends AppCompatActivity {
+public class ZgHomeActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initUI() {
         setContentView(R.layout.activity_zg_home);
     }
 }

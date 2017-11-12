@@ -43,14 +43,19 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
+    //compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
     //compile 'com.github.thekhaeng:sliding-menu:1.0.0'
     compile 'com.github.e-rikov:wheelview:1.0.0'
     compile 'com.alanapi.switchbutton:alanapi-switchbutton:0.0.3'
-   //
+    //
+    implementation 'com.android.support:recyclerview-v7:25.3.1'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.google.code.gson:gson-parent:2.8.2'
     implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     implementation 'com.github.nicccccccccce.zxing:ZxingLib:1.0.5'
     implementation 'com.alibaba:fastjson:1.2.40'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    implementation 'com.belerweb:pinyin4j:2.5.1'
+    //implementation 'com.jakewharton:butterknife-compiler:8.8.1'
 }

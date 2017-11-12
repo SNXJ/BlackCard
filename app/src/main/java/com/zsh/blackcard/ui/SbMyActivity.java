@@ -13,8 +13,9 @@ public class SbMyActivity extends BaseActivity {
 
     @Override
     protected void initUI() {
-        setContentView(R.layout.activity_sb_my);
-        sbmyfindID();
+        //setContentView(R.layout.activity_sb_my);
+        setContentView(R.layout.activity_zg_my);
+        //sbmyfindID();
     }
 
     private void sbmyfindID() {

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textColor="#FF929292"
+        android:id="@+id/my_setting_login_now"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:text="当前帐号"
+        android:layout_width="match_parent"
+        android:layout_height="43dp" />
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_below="@+id/my_setting_login_now"
+        android:background="@color/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:textColor="#FF929292"
+        android:layout_below="@+id/view_1"
+        android:id="@+id/my_setting_login_id"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:text="身份证号"
+        android:layout_width="match_parent"
+        android:layout_height="43dp" />
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_below="@+id/my_setting_login_id"
+        android:background="@color/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:textColor="#FF929292"
+        android:layout_below="@+id/view_2"
+        android:id="@+id/my_setting_login_phone"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:text="手机号"
+        android:layout_width="match_parent"
+        android:layout_height="43dp" />
+
+    <View
+        android:id="@+id/view_3"
+        android:layout_below="@+id/my_setting_login_phone"
+        android:background="@color/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:textColor="#FF929292"
+        android:layout_below="@+id/view_3"
+        android:id="@+id/my_setting_login_verification"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:text="验证码"
+        android:layout_width="match_parent"
+        android:layout_height="43dp" />
+
+    <Button
+        android:textColor="#FF929292"
+        android:background="#FF0B0B0B"
+        android:layout_alignParentBottom="true"
+        android:text="下一步"
+        android:layout_width="match_parent"
+        android:layout_height="49dp" />
+
+</RelativeLayout>

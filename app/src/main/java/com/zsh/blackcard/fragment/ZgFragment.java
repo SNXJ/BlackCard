@@ -1,7 +1,6 @@
 package com.zsh.blackcard.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,7 +12,7 @@ import android.widget.LinearLayout;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.ui.zgactivity.ZgMyActivity;
+import com.zsh.blackcard.listener.ZGSlidingListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +27,14 @@ public class ZgFragment extends BaseFragment {
     public LinearLayout lldot;
     public View view;
     private ImageView zgmyimg;
+    private ZGSlidingListener zGSlidingListener;
+
     int src[] = {R.mipmap.but_banner_1, R.mipmap.toghter_image_1, R.mipmap.toghter_image_2};
 
-    
+    public void sendStatus(ZGSlidingListener zglistener) {
+        this.zGSlidingListener = zglistener;
+    }
+
     @Override
     public void initDate(Bundle savedInstanceState) {
 
@@ -78,8 +82,10 @@ public class ZgFragment extends BaseFragment {
         zgmyimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent zgmyintent = new Intent(getActivity(), ZgMyActivity.class);
-                startActivity(zgmyintent);
+//                Intent zgmyintent = new Intent(getActivity(), ZgMyActivity.class);
+//                startActivity(zgmyintent);
+                zGSlidingListener.onMeauClick();
+
             }
         });
 

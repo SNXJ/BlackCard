@@ -1,101 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#000000"
+    android:orientation="vertical">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="44dp">
-            <RadioButton
-                android:layout_marginLeft="15dp"
-                android:button="@null"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:button="@null"
+            android:drawablePadding="4dp"
+            android:drawableRight="@mipmap/home_nav_more"
+            android:gravity="center"
+            android:text="三亚"
+            android:textColor="#929292"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="28dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/buttonshape"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_search_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="三亚"
-                android:drawablePadding="4dp"
-                android:drawableRight="@mipmap/home_nav_more"
-                android:layout_centerVertical="true"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:textColor="#929292" />
-            <LinearLayout
-                android:layout_width="230dp"
-                android:layout_height="28dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:orientation="horizontal"
-                android:background="@drawable/buttonshape"
-                >
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:src="@mipmap/home_nav_search" />
 
-                <ImageView
-                    android:layout_marginLeft="16dp"
-                    android:id="@+id/iv_search_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:src="@mipmap/home_nav_search"
-                    />
-
-                <EditText
-                    android:id="@+id/et_search"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:singleLine="true"
-                    android:layout_marginLeft="7.65dp"
-                    android:hint="搜索"
-                    android:textSize="14sp"
-                    android:textColorHint="#8E8E93"
-                    />
-            </LinearLayout>
-        </RelativeLayout>
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="7.65dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="搜索"
+                android:singleLine="true"
+                android:textColorHint="#8E8E93"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="35dp">
 
         <RadioButton
-            android:drawablePadding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="25dp"
             android:button="@null"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="排序"
-            android:gravity="center"
-            android:drawableRight="@mipmap/hotel_btn_1"
-            android:textColor="#929292"
-            android:textSize="15sp"/>
-        <RadioButton
             android:drawablePadding="5dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:button="@null"
             android:drawableRight="@mipmap/hotel_btn_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="品牌"
+            android:gravity="center"
+            android:text="排序"
             android:textColor="#929292"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <RadioButton
-            android:drawablePadding="5dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="25.25dp"
-            android:button="@null"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="筛选"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:button="@null"
+            android:drawablePadding="5dp"
             android:drawableRight="@mipmap/hotel_btn_1"
+            android:text="品牌"
             android:textColor="#929292"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25.25dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="5dp"
+            android:drawableRight="@mipmap/hotel_btn_1"
+            android:text="筛选"
+            android:textColor="#929292"
+            android:textSize="15sp" />
     </RelativeLayout>
+
+    <include layout="@layout/hotel_sort_fragment"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base110dp"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/base15dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/im_left"
+            android:layout_width="@dimen/base80dp"
+            android:layout_height="@dimen/base80dp"
+            android:src="@mipmap/together_image_2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base80dp"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_toRightOf="@+id/im_left">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:gravity="top"
+                android:text="如家—北京霍营地铁站"
+                android:textColor="@color/title_text"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/base30dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="昌平区回龙观镇科星西路47号"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="23公里"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center_vertical">
+
+                <!--<RatingBar-->
+                    <!--android:id="@+id/rb_org_star"-->
+                    <!--style="?android:attr/ratingBarStyleSmall"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                <!--android:progressDrawable="@drawable/myratingbar"-->
+                <!--android:isIndicator="true"-->
+                <!--android:numStars="5"-->
+                <!--android:rating="0"-->
+                <!--/>-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="（120条评价）"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="￥499"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

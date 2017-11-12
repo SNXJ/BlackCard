@@ -15,16 +15,22 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.fragment.sbfragment.NearbyFragment;
 import com.zsh.blackcard.fragment.sbfragment.RdFragment;
 import com.zsh.blackcard.fragment.sbfragment.TypeFragment;
+import com.zsh.blackcard.ui.live.LiveRoomActivity;
 
+/**
+ * 尚播Activity
+ */
 
 public class SbActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton rb_sbhome;
     private RadioButton rb_sb2;
+    private RadioButton live_btn;
     private RadioButton rb_sbmy;
     private RadioButton rb_recommend;
     private RadioButton rb_nearby;
     private RadioButton rb_type;
     private ViewPager sbvp;
+
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_sb);
@@ -40,13 +46,19 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
                 switch (position) {
                     case 0:
                         rb_recommend.setChecked(true);
+                        rb_nearby.setChecked(false);
+                        rb_type.setChecked(false);
                         break;
 
                     case 1:
+                        rb_recommend.setChecked(false);
+                        rb_type.setChecked(false);
                         rb_nearby.setChecked(true);
                         break;
 
                     case 2:
+                        rb_recommend.setChecked(false);
+                        rb_nearby.setChecked(false);
                         rb_type.setChecked(true);
                         break;
                 }
@@ -66,9 +78,6 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
         rb_nearby.setOnClickListener(this);
         rb_type.setOnClickListener(this);
     }
-
-
-
 
 
     private void addAdapter() {
@@ -102,20 +111,37 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
 
     private void sbfindId() {
         rb_sb2 = (RadioButton) findViewById(R.id.radio_btn_sb2);
+        live_btn = (RadioButton) findViewById(R.id.live_btn);
         rb_sbmy = (RadioButton) findViewById(R.id.radio_btn_sbmy);
         rb_recommend = (RadioButton) findViewById(R.id.sb_recommend_tv);
         rb_nearby = (RadioButton) findViewById(R.id.sb_nearby_tv);
         rb_type = (RadioButton) findViewById(R.id.sb_type_tv);
         sbvp = (ViewPager) findViewById(R.id.sb_vp);
-
+        rb_sb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent sbmyintent = new Intent(SbActivity.this, LiveRankActivity.class);
+//                startActivity(sbmyintent);
+            }
+        });
         rb_sbmy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sbmyintent = new Intent(SbActivity.this,SbMyActivity.class);
+                Intent sbmyintent = new Intent(SbActivity.this, SbMyActivity.class);
                 startActivity(sbmyintent);
+
+            }
+        });
+        live_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // UIUtils.showToast("Live");
+                // startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
+                startActivity(new Intent(SbActivity.this, LiveRoomActivity.class));
             }
         });
     }
+
     private void Httpclient() {
         //获取链接管理器
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
@@ -123,23 +149,23 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
 
         //ActiveNetworkInfo不为空
-        if (netInfo!=null) {
+        if (netInfo != null) {
             //网络是否已经链接
             boolean available = netInfo.isAvailable();
             //网络是否链接好并可以传递数据
             boolean connected = netInfo.isConnected();
-            if (available&&connected) {
+            if (available && connected) {
                 int type = netInfo.getType();
-                if (type==ConnectivityManager.TYPE_WIFI) {
+                if (type == ConnectivityManager.TYPE_WIFI) {
                     Toast.makeText(this, "wifi网路可用", Toast.LENGTH_SHORT).show();
-                }else if(type==ConnectivityManager.TYPE_MOBILE) {
+                } else if (type == ConnectivityManager.TYPE_MOBILE) {
                     Toast.makeText(this, "手机流量可用网路可用", Toast.LENGTH_SHORT).show();
                 }
                 // Toast.makeText(this, "网路可用", 0).show();
-            }else {
+            } else {
                 Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
             }
-        }else {
+        } else {
             Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
         }
     }

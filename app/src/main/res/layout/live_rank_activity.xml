@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="我的等级" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base35dp">
+
+        <RadioButton
+            android:id="@+id/rb_live_user"
+            android:layout_width="@dimen/base60dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/base75dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="用户等级"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+
+        <RadioButton
+            android:id="@+id/rb_live_zhubo"
+            android:layout_width="@dimen/base60dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base75dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:gravity="center"
+            android:text="主播等级"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/rank_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></android.support.v4.view.ViewPager>
+
+</LinearLayout>

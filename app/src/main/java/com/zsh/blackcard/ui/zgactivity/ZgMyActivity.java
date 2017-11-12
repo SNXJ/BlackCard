@@ -1,34 +1,32 @@
 package com.zsh.blackcard.ui.zgactivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.ui.DiscountCouponActivity;
 import com.zsh.blackcard.ui.IntegralActivity;
 import com.zsh.blackcard.ui.TakeAdressDetailsActivity;
 
 
-public class ZgMyActivity extends Activity {
+public class ZgMyActivity extends BaseActivity {
     private TextView mydingdantv;
     private RadioButton myaddress_btn;
     private RadioButton rbt_discount;
     private RadioButton rbt_integral;
     private ImageView zmback;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initUI() {
         setContentView(R.layout.activity_zg_my);
         zgmyfindID();
         zgmyOnClick();
-
     }
 
     private void zgmyOnClick() {
