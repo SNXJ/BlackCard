@@ -27,7 +27,7 @@ public class JournalAdapter extends BaseAdapter {
 
 
         for (int i = 0; i < images2.length; i++) {
-            JournalAdapter.Picture picture = new JournalAdapter.Picture(images2[i]);
+            Picture picture = new Picture(images2[i]);
             pictures.add(picture);
         }
 
@@ -58,11 +58,11 @@ public class JournalAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        JournalAdapter.ViewHolder viewHolder = null;
+        ViewHolder viewHolder = null;
 
         if (convertView == null) {
 
-            viewHolder = new JournalAdapter.ViewHolder();
+            viewHolder = new ViewHolder();
             // 获得容器
             convertView = LayoutInflater.from(this.context).inflate(R.layout.home_journalgv_item, null);
 
@@ -73,11 +73,11 @@ public class JournalAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         } else {
             // 取得converHolder附加的对象
-            viewHolder = (JournalAdapter.ViewHolder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         // 给组件设置资源
-        JournalAdapter.Picture picture = pictures.get(position);
+        Picture picture = pictures.get(position);
         viewHolder.image.setImageResource(picture.getImageId());
 
         return convertView;

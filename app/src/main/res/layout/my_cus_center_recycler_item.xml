@@ -24,6 +24,7 @@
         android:textSize="14sp" />
 
     <ImageView
+        android:id="@+id/my_cus_center_chat_img"
         android:layout_centerVertical="true"
         android:src="@mipmap/more"
         android:layout_alignParentRight="true"

@@ -7,24 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.ui.HuoDongActivity;
+import com.zsh.blackcard.ui.ExChangeActivity;
 import com.zsh.blackcard.ui.VipCenterActivity;
 
 /**
  * Created by kkkkk on 2017/11/10.
  */
 
-public class MyHuoDongAdapter extends RecyclerView.Adapter<MyHuoDongAdapter.MyViewHolder> {
+public class ExChangeAdapter extends RecyclerView.Adapter<ExChangeAdapter.MyViewHolder> {
 
     private Context context;
 
-    public MyHuoDongAdapter(HuoDongActivity huoDongActivity) {
-        this.context = huoDongActivity;
+    public ExChangeAdapter(ExChangeActivity exChangeActivity) {
+        this.context = exChangeActivity;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.my_huodong_recycler_item,parent,false));
+        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.my_exchange_recycler_item,parent,false));
         return myViewHolder;
     }
 

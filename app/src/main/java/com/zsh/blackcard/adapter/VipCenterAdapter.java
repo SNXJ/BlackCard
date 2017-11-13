@@ -22,13 +22,13 @@ public class VipCenterAdapter extends RecyclerView.Adapter<VipCenterAdapter.MyVi
     }
 
     @Override
-    public VipCenterAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.vip_center_recycler_item,parent,false));
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(VipCenterAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
 
     }
 

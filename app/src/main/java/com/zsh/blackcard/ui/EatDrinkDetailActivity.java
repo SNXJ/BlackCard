@@ -7,17 +7,23 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
 /**
- * 吃喝玩乐
+ * Created by kkkkk on 2017/11/13.
  */
-public class EatDrinkSetActivity extends BaseActivity implements View.OnClickListener {
+
+public class EatDrinkDetailActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView back_img;
 
     @Override
     protected void initUI() {
-        setContentView(R.layout.activity_eat_drink_set);
+        setContentView(R.layout.activity_eat_drink_detail);
         initView();
         initOnClick();
+        initDate();
+    }
+
+    private void initDate() {
+
     }
 
     private void initOnClick() {

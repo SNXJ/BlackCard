@@ -48,8 +48,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //compile 'com.github.thekhaeng:sliding-menu:1.0.0'
     compile 'com.github.e-rikov:wheelview:1.0.0'
-    compile 'com.alanapi.switchbutton:alanapi-switchbutton:0.0.3'
-    //
+    //仿IOS的卡关按钮
+    implementation 'com.kyleduo.switchbutton:library:2.0.0'
     implementation 'com.android.support:recyclerview-v7:25.3.1'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.google.code.gson:gson-parent:2.8.2'

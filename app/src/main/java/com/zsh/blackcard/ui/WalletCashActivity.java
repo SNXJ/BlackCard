@@ -7,22 +7,29 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
 /**
- * 吃喝玩乐
+ * Created by kkkkk on 2017/11/13.
  */
-public class EatDrinkSetActivity extends BaseActivity implements View.OnClickListener {
+
+public class WalletCashActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView back_img;
 
     @Override
     protected void initUI() {
-        setContentView(R.layout.activity_eat_drink_set);
+        setContentView(R.layout.activity_my_wallet_cash);
         initView();
         initOnClick();
+        initDate();
+    }
+
+    private void initDate() {
+
     }
 
     private void initOnClick() {
         back_img.setOnClickListener(this);
     }
+
 
     private void initView() {
         back_img = (ImageView) findViewById(R.id.blackwb_back);
@@ -30,10 +37,6 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.blackwb_back:
-                finish();
-                break;
-        }
+        finish();
     }
 }

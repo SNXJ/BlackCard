@@ -27,7 +27,7 @@ public class GlorySeverAdapter extends BaseAdapter {
 
 
         for (int i = 0; i < images1.length; i++) {
-            GlorySeverAdapter.Picture picture = new GlorySeverAdapter.Picture(images1[i]);
+            Picture picture = new Picture(images1[i]);
             pictures.add(picture);
         }
 
@@ -58,11 +58,11 @@ public class GlorySeverAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        GlorySeverAdapter.ViewHolder viewHolder = null;
+        ViewHolder viewHolder = null;
 
         if (convertView == null) {
 
-            viewHolder = new GlorySeverAdapter.ViewHolder();
+            viewHolder = new ViewHolder();
             // 获得容器
             convertView = LayoutInflater.from(this.context).inflate(R.layout.home_glorysevergv_item, null);
 
@@ -73,11 +73,11 @@ public class GlorySeverAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         } else {
             // 取得converHolder附加的对象
-            viewHolder = (GlorySeverAdapter.ViewHolder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         // 给组件设置资源
-        GlorySeverAdapter.Picture picture = pictures.get(position);
+        Picture picture = pictures.get(position);
         viewHolder.image.setImageResource(picture.getImageId());
 
         return convertView;
