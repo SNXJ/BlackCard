@@ -89,6 +89,7 @@
         <activity android:name=".ui.MySettingActivity"></activity>
         <activity android:name=".ui.HuoDongActivity"></activity>
         <activity android:name=".ui.OrderCenterActivity"></activity>
+
         <activity android:name=".ui.CircleCenterActivity"></activity>
         <activity android:name=".ui.HouseCenterActivity"></activity>
         <activity android:name=".ui.WalletCashActivity"></activity>
@@ -96,6 +97,14 @@
         <activity android:name=".ui.MyPowerActivity"></activity>
         <activity android:name=".ui.ExChangeActivity"></activity>
         <activity android:name=".ui.EatDrinkDetailActivity"></activity>
+
+        <activity android:name=".ui.zgactivity.GoodsCategoryActivity"></activity>
+        <activity android:name=".ui.zgactivity.DiscoverActivity"></activity>
+        <activity android:name=".ui.zgactivity.PersonalActivity"></activity>
+        <activity android:name=".ui.live.AbMyFollowActivity"></activity>
+        <activity android:name=".ui.live.AbMyContributionActivity"></activity>
+        <activity android:name=".ui.live.AbMyTaskActivity"></activity>
+        <activity android:name=".ui.live.AbMySignActivity"></activity>
 
     </application>
 

@@ -17,5 +17,13 @@
     <color name="bg_white">#ffffffff</color>
     <color name="live_buttom_text">#929292</color>
     <color name="switch_btn_msg">#02f906</color>
+    <color name="line">#FF929292</color>
 
+    <!--date-->
+    <color name="fffd_text">#FFFD5739</color>
+    <color name="font_white_one">#FFFFFF</color>
+
+    <color name="gray_normal">#666667</color>
+
+    <color name="blue">#0383EE</color>
 </resources>

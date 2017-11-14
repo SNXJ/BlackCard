@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/main_black"
+    android:layout_height="match_parent">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="贡献榜" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base35dp">
+
+        <RadioButton
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/base32dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="日榜"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+        <RadioButton
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/base124dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:gravity="center"
+            android:text="周榜"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+        <RadioButton
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base124dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:gravity="center"
+            android:text="月榜"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+        <RadioButton
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base32dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:gravity="center"
+            android:text="总榜"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

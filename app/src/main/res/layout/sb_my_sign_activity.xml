@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="签到" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base190dp">
+
+        <TextView
+            android:id="@+id/tv_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="签到"
+            android:textColor="@color/ff92_text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_sign_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_sign"
+            android:layout_centerHorizontal="true"
+            android:text="已签20天"
+            android:textColor="@color/ff92_text"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+
+    <com.zsh.blackcard.view.datepickter.DatePicker
+        android:id="@+id/my_datepicker"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base540dp"
+        android:background="@color/main_black" />
+
+</LinearLayout>
