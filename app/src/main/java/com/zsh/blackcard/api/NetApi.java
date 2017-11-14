@@ -19,7 +19,7 @@ public class NetApi {
     /**
      * 发版
      */
-    public static final String SERVER_URL = "https://app.qiandaowei.com/qdw/";
+    public static final String SERVER_URL = "https://";
 
     /**
      * HTTPS POST
