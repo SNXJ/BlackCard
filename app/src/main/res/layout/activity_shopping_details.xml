@@ -170,11 +170,10 @@
             android:text="数量"
             android:textColor="#929292"
             android:textSize="15sp"/>
-        <com.zsh.blackcard.view.AmountView
-            android:gravity="center"
+        <com.zsh.blackcard.utils.AmountView
             android:id="@+id/amount_view2"
-            android:layout_width="@dimen/base50dp"
-            android:layout_height="@dimen/base20dp"
+            android:layout_width="50dp"
+            android:layout_height="15dp"
             app:btnTextSize="12sp"
             app:tvTextSize="5dp"
             app:btnWidth="15dp"

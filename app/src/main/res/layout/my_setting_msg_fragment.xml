@@ -18,8 +18,12 @@
             android:textColor="#FF929292"
             android:textSize="14sp" />
 
-        <com.alanapi.switchbutton.SwitchButton
-            android:shadowColor="#12AB34"
+        <com.kyleduo.switchbutton.SwitchButton
+            app:kswThumbHeight="19.5dp"
+            app:kswThumbWidth="19.5dp"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswAnimationDuration="300"
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -48,7 +52,12 @@
             android:textColor="#FF929292"
             android:textSize="14sp" />
 
-        <com.alanapi.switchbutton.SwitchButton
+        <com.kyleduo.switchbutton.SwitchButton
+            app:kswThumbHeight="19.5dp"
+            app:kswThumbWidth="19.5dp"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswAnimationDuration="300"
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -77,7 +86,12 @@
             android:textColor="#FF929292"
             android:textSize="14sp" />
 
-        <com.alanapi.switchbutton.SwitchButton
+        <com.kyleduo.switchbutton.SwitchButton
+            app:kswThumbHeight="19.5dp"
+            app:kswThumbWidth="19.5dp"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswAnimationDuration="300"
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"

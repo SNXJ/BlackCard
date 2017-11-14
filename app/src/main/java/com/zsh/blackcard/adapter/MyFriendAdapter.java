@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.ui.CusCenterChatActivity;
 import com.zsh.blackcard.ui.MyFriendActivity;
+import com.zsh.blackcard.untils.ActivityUtils;
 
 /**
  * Created by kkkkk on 2017/11/10.
@@ -22,14 +24,19 @@ public class MyFriendAdapter extends RecyclerView.Adapter<MyFriendAdapter.MyView
     }
 
     @Override
-    public MyFriendAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.my_friend_recycler_item,parent,false));
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MyFriendAdapter.MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startActivity((MyFriendActivity)context, CusCenterChatActivity.class);
+            }
+        });
     }
 
     @Override
@@ -39,8 +46,11 @@ public class MyFriendAdapter extends RecyclerView.Adapter<MyFriendAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+        private View view;
+
         public MyViewHolder(View itemView) {
             super(itemView);
+            view = itemView;
         }
     }
 }

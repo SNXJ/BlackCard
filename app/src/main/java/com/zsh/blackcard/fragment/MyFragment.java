@@ -1,6 +1,7 @@
 package com.zsh.blackcard.fragment;
 
 import android.os.Bundle;
+import android.test.ActivityTestCase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,9 +10,12 @@ import android.widget.TextView;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.ui.BlackcoffeecurrencyActivity;
+import com.zsh.blackcard.ui.CircleCenterActivity;
 import com.zsh.blackcard.ui.CusCenterActivity;
+import com.zsh.blackcard.ui.HouseCenterActivity;
 import com.zsh.blackcard.ui.HuoDongActivity;
 import com.zsh.blackcard.ui.MyFriendActivity;
+import com.zsh.blackcard.ui.MyPowerActivity;
 import com.zsh.blackcard.ui.MySettingActivity;
 import com.zsh.blackcard.ui.OrderCenterActivity;
 import com.zsh.blackcard.ui.VipCenterActivity;
@@ -26,8 +30,8 @@ import com.zsh.blackcard.untils.ActivityUtils;
 
 public class MyFragment extends BaseFragment implements View.OnClickListener {
     private View view;
-    private TextView blackmoney_tv, myfriend_tv;
-    private ImageView my_vip_center_img, my_cus_center_img, my_wallet_center_img,my_game_center_img,my_setting_img,my_huodong_img,my_order_center_img;
+    private TextView blackmoney_tv, myfriend_tv,my_power_tv;
+    private ImageView my_vip_center_img, my_cus_center_img, my_wallet_center_img, my_game_center_img, my_setting_img, my_huodong_img, my_order_center_img, my_circle_center_img, my_house_center_img;
 
     @Override
     public void initDate(Bundle savedInstanceState) {
@@ -62,11 +66,18 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         my_huodong_img.setOnClickListener(this);
         //订单中心点击
         my_order_center_img.setOnClickListener(this);
+        //圈子中心点击
+        my_circle_center_img.setOnClickListener(this);
+        //管家中心点击
+        my_house_center_img.setOnClickListener(this);
+        //能量值点击
+        my_power_tv.setOnClickListener(this);
     }
 
     private void myfindID() {
         blackmoney_tv = (TextView) view.findViewById(R.id.my_blackmoney_tv);
         myfriend_tv = (TextView) view.findViewById(R.id.my_friend_tv);
+        my_power_tv = (TextView) view.findViewById(R.id.my_power_tv);
         my_vip_center_img = (ImageView) view.findViewById(R.id.my_vip_center_img);
         my_cus_center_img = (ImageView) view.findViewById(R.id.my_cus_center_img);
         my_wallet_center_img = (ImageView) view.findViewById(R.id.my_wallet_center_img);
@@ -74,6 +85,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         my_setting_img = (ImageView) view.findViewById(R.id.my_setting_img);
         my_huodong_img = (ImageView) view.findViewById(R.id.my_huodong_img);
         my_order_center_img = (ImageView) view.findViewById(R.id.my_order_center_img);
+        my_circle_center_img = (ImageView) view.findViewById(R.id.my_circle_center_img);
+        my_house_center_img = (ImageView) view.findViewById(R.id.my_house_center_img);
     }
 
     @Override
@@ -106,6 +119,16 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_order_center_img:
                 ActivityUtils.startActivity(getActivity(), OrderCenterActivity.class);
                 break;
+            case R.id.my_circle_center_img:
+                ActivityUtils.startActivity(getActivity(), CircleCenterActivity.class);
+                break;
+            case R.id.my_house_center_img:
+                ActivityUtils.startActivity(getActivity(), HouseCenterActivity.class);
+                break;
+            case R.id.my_power_tv:
+                ActivityUtils.startActivity(getActivity(), MyPowerActivity.class);
+                break;
+
         }
     }
 }

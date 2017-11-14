@@ -27,7 +27,7 @@ public class BlackwbAdapter extends BaseAdapter {
 
 
         for (int i = 0; i < blackwbgv.length; i++) {
-            BlackwbAdapter.Picture picture = new BlackwbAdapter.Picture(blackwbgv[i]);
+            Picture picture = new Picture(blackwbgv[i]);
             pictures.add(picture);
         }
 
@@ -56,11 +56,11 @@ public class BlackwbAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        BlackwbAdapter.ViewHolder viewHolder = null;
+        ViewHolder viewHolder = null;
 
         if (convertView == null) {
 
-            viewHolder = new BlackwbAdapter.ViewHolder();
+            viewHolder = new ViewHolder();
             // 获得容器
             convertView = LayoutInflater.from(this.context).inflate(R.layout.blacklv_gv_item, null);
 
@@ -71,11 +71,11 @@ public class BlackwbAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         } else {
             // 取得converHolder附加的对象
-            viewHolder = (BlackwbAdapter.ViewHolder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         // 给组件设置资源
-        BlackwbAdapter.Picture picture = pictures.get(position);
+        Picture picture = pictures.get(position);
         viewHolder.image.setImageResource(picture.getImageId());
 
         return convertView;

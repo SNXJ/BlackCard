@@ -33,6 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.savedInstanceState = savedInstanceState;
+        //设置Activity默认北京为null
+        getWindow().setBackgroundDrawable(null);
         //修改了style主题，NoActionBar
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
