@@ -25,8 +25,10 @@ import com.zsh.blackcard.ui.CruiseShipActivity;
 import com.zsh.blackcard.ui.EquestrianActivity;
 import com.zsh.blackcard.ui.PlaneActivity;
 import com.zsh.blackcard.ui.TrianActivity;
+import com.zsh.blackcard.ui.WelcomeActivity;
 import com.zsh.blackcard.ui.home.HomeFoodActivity;
 import com.zsh.blackcard.ui.home.HomeHotelActivity;
+import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
@@ -36,6 +38,8 @@ import com.zsh.blackcard.view.selectcity.SelectCityActivity;
  */
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
+
+    private ImageView go_welcome_login_img;
     private GridView headnewsgv;
     private GridView homejournalgv;
     private GridView homeservegv;
@@ -171,6 +175,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         im__home_trian = (ImageView) view.findViewById(R.id.im__home_trian);
         im_home_more = (ImageView) view.findViewById(R.id.im_home_more);
         im_home_plane = (ImageView) view.findViewById(R.id.im_home_plane);
+        go_welcome_login_img = (ImageView) view.findViewById(R.id.go_welcome_login_img);
 
 
         homecar_img.setOnClickListener(this);
@@ -181,6 +186,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         im__home_trian.setOnClickListener(this);
         im_home_more.setOnClickListener(this);
         im_home_plane.setOnClickListener(this);
+        go_welcome_login_img.setOnClickListener(this);
 
         ckmiddle_tv.setOnClickListener(this);
         flmiddle_tv.setOnClickListener(this);
@@ -255,6 +261,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.rb_city_home://更多
                 startActivity(new Intent(getActivity(), SelectCityActivity.class));
+                break;
+            case R.id.go_welcome_login_img:
+                ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
                 break;
         }
     }

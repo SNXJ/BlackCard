@@ -105,7 +105,8 @@
         <activity android:name=".ui.live.AbMyContributionActivity"></activity>
         <activity android:name=".ui.live.AbMyTaskActivity"></activity>
         <activity android:name=".ui.live.AbMySignActivity"></activity>
-
+        <activity android:name=".ui.WelcomeActivity"></activity>
+        <activity android:name=".ui.RegisterActivity"></activity>
     </application>
 
 </manifest>
