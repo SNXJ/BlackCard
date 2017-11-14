@@ -53,7 +53,42 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+    <!--时间选择-->
+    <style name="date_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+    <!-- 小星星 -->
+    <!--<style name="MyProRatingBar" parent="@android:style/Widget.RatingBar">-->
+    <!--<item name="android:progressDrawable">@drawable/myratingbar</item>-->
+    <!--<item name="android:minHeight">@dimen/base10dp</item>-->
+    <!--<item name="android:maxHeight">@dimen/base10dp</item>-->
+    <!--</style>-->
+    <!-- dialog从下往上出 -->
+    <style name="dailog_anim_enterorout_window_up">
+        <item name="android:windowEnterAnimation">@anim/p_trends_enter_window</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/p_trends_out_window</item>
+        <!-- 指定消失的动画xml -->
+    </style>
 
+    <style name="dialog_line">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/base1dp</item>
+        <item name="android:background">@color/dialog_line</item>
+    </style>
 
     <!-- 标题 RelativeLayout    背景自设设置 -->
     <style name="rl_title">

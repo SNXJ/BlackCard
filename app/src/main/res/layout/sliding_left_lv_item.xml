@@ -3,13 +3,7 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:minHeight="?android:attr/listPreferredItemHeightSmall"
-    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
-    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
-    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:textAppearance="?android:attr/textAppearanceListItemSmall"
-    android:textColor="@color/bg_white" />
+    android:layout_height="@dimen/base45dp"
+    android:layout_centerVertical="true"
+    android:textColor="@color/ff92_text"
+    android:textSize="15sp" /><!--android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"-->
