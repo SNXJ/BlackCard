@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -48,6 +49,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //compile 'com.github.thekhaeng:sliding-menu:1.0.0'
     compile 'com.github.e-rikov:wheelview:1.0.0'
+    //添加欢迎引导页的Banner轮播
+    implementation 'com.youth.banner:banner:1.4.10'
     //仿IOS的卡关按钮
     implementation 'com.kyleduo.switchbutton:library:2.0.0'
     implementation 'com.android.support:recyclerview-v7:25.3.1'
@@ -56,8 +59,14 @@ dependencies {
     implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     implementation 'com.github.nicccccccccce.zxing:ZxingLib:1.0.5'
     implementation 'com.alibaba:fastjson:1.2.40'
+    //    implementation 'com.jakewharton:butterknife:8.4.0'
+    //添加ButterKnife注解控件，3.0版本无法兼容已解决。
     implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     implementation 'com.belerweb:pinyin4j:2.5.1'
     //implementation 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.1.3'
+    //添加轮播
+    implementation 'com.github.crosswall:Android-Coverflow:release-v1.0.1'
+    implementation 'com.android.support:cardview-v7:27.0.0'
 }
