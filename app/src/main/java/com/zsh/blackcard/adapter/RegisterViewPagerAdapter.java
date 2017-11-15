@@ -26,16 +26,15 @@ public class RegisterViewPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View)object);
+        container.removeView((View) object);
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.cover_item, container,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.cover_item, container, false);
         ImageView imageView = (ImageView) view.findViewById(R.id.image_cover);
         imageView.setImageDrawable(context.getResources().getDrawable(R.mipmap.signup_image_1));
-//        imageView.setScaleType(ImageView.ScaleType.Fi);
         container.addView(view);
         return view;
     }
