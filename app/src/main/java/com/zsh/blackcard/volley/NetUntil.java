@@ -43,7 +43,7 @@ public class NetUntil {
     }
 
     /**
-     * POST https
+     * POST http
      *
      * @param <T>
      * @param url
@@ -52,14 +52,14 @@ public class NetUntil {
      * @param responseListener
      */
 
-    public <T> void doPostHttps(String url, Map<String, String> paramsMap,
+    public <T> void doPostHttp(String url, Map<String, String> paramsMap,
                                 final Class<T> clz, final ResponseListener<T> responseListener) {
         netMethod = DataRequester.Method.POST;
-        requestStrHTTPS(url, paramsMap, clz, responseListener);
+        requestStrHTTP(url, paramsMap, clz, responseListener);
     }
 
     /**
-     * GET https
+     * GET http
      *
      * @param <T>
      * @param url
@@ -67,10 +67,10 @@ public class NetUntil {
      * @param clz              实体类
      * @param responseListener
      */
-    public <T> void doGetHttps(String url, Map<String, String> paramsMap,
+    public <T> void doGetHttp(String url, Map<String, String> paramsMap,
                                final Class<T> clz, final ResponseListener<T> responseListener) {
         netMethod = DataRequester.Method.GET;
-        requestStrHTTPS(url, paramsMap, clz, responseListener);
+        requestStrHTTP(url, paramsMap, clz, responseListener);
     }
 
     /*********************************************

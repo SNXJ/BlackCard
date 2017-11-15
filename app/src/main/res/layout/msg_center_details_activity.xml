@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="回复／评论" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base59dp">
+
+        <ImageView
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/grade_image_4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/base15dp"
+
+            android:layout_marginLeft="@dimen/base65dp"
+            android:text="爱跳舞的小丑回复了你：不错"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base80dp"
+            android:text="10天前"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@mipmap/like_image_1" />
+        <View style="@style/line" />
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base59dp">
+
+        <ImageView
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/grade_image_4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base15dp"
+
+            android:layout_marginLeft="@dimen/base65dp"
+            android:text="爱跳舞的小丑回复了你：不错"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base80dp"
+            android:text="10天前"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@mipmap/like_image_1" />
+        <View style="@style/line" />
+    </RelativeLayout>
+
+</LinearLayout>

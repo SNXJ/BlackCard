@@ -125,7 +125,7 @@
             android:textColor="#929292"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"/>
-        <com.zsh.blackcard.utils.AmountView
+        <com.zsh.blackcard.view.AmountView
             android:id="@+id/amount_view"
             android:layout_width="50dp"
             android:layout_height="15dp"

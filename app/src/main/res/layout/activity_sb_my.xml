@@ -23,7 +23,7 @@
             android:textColor="#929292"
             android:textSize="17sp"
             android:textStyle="bold" />
-        =======
+
 
         <ImageView
             android:id="@+id/title_back"

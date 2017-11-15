@@ -33,19 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.savedInstanceState = savedInstanceState;
-        //设置Activity默认北京为null
+        //设置Activity默认背景为null
         getWindow().setBackgroundDrawable(null);
-        //修改了style主题，NoActionBar
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-//        if (Build.VERSION.SDK_INT >= 21) {
-//            View decorView = getWindow().getDecorView();
-//            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-//            decorView.setSystemUiVisibility(option);
-//            getWindow().setStatusBarColor(Color.TRANSPARENT);
-//        }
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -59,9 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE;
         window.setAttributes(params);
         StatusBarColorUntil.setStatusBarColor(this);
-
         initUI();
-
     }
 
 

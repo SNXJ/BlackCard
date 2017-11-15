@@ -107,6 +107,14 @@
         <activity android:name=".ui.live.AbMySignActivity"></activity>
         <activity android:name=".ui.WelcomeActivity"></activity>
         <activity android:name=".ui.RegisterActivity"></activity>
+        <activity android:name=".ui.home.HomeMoreActivity"></activity>
+        <activity android:name=".ui.home.CommentActivity"></activity>
+        <activity android:name=".ui.home.CommentEditActivity"></activity>
+        <activity android:name=".ui.home.HomeKTVActivity"></activity>
+        <activity android:name=".ui.MsgCenterActivity"></activity>
+        <activity android:name=".ui.MsgSysCenterActivity"></activity>
+        <activity android:name=".ui.MsgSysDetailsActivity"></activity>
+        <activity android:name=".ui.MsgCenterDetailsActivity"></activity>
     </application>
 
 </manifest>

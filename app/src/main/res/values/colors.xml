@@ -14,6 +14,7 @@
     <color name="ff0c_bg">#FF0C0C0C</color>
     <color name="ff2a_text">#FF2A1745</color>
     <color name="ff00_text">#FF000000</color>
+    <color name="ff14_bt">#FF141414</color>
     <color name="bg_white">#ffffffff</color>
     <color name="live_buttom_text">#929292</color>
     <color name="switch_btn_msg">#02f906</color>
@@ -22,6 +23,7 @@
     <color name="dialog_bg">#FFFFFF</color>
     <color name="dialog_text">#FF333333</color>
     <color name="et_hint">#8E8E93</color>
+    <color name="bg_org">#F29E19</color>
 
     <!--date-->
     <color name="fffd_text">#FFFD5739</color>
