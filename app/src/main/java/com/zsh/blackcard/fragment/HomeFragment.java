@@ -5,10 +5,11 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextSwitcher;
@@ -17,9 +18,9 @@ import android.widget.ViewSwitcher;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.adapter.GlorySeverAdapter;
-import com.zsh.blackcard.adapter.HeadNewsAdapter;
-import com.zsh.blackcard.adapter.JournalAdapter;
+import com.zsh.blackcard.adapter.HomeJournalAdapter;
+import com.zsh.blackcard.adapter.HomeNewAdapter;
+import com.zsh.blackcard.adapter.HomeSeverAdapter;
 import com.zsh.blackcard.ui.CarActivity;
 import com.zsh.blackcard.ui.CruiseShipActivity;
 import com.zsh.blackcard.ui.EquestrianActivity;
@@ -40,9 +41,11 @@ import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private ImageView go_welcome_login_img;
-    private GridView headnewsgv;
-    private GridView homejournalgv;
-    private GridView homeservegv;
+
+    private RecyclerView headnewsgv;
+    private RecyclerView homejournalgv;
+    private RecyclerView homeservegv;
+
     private TextView ckmiddle_tv;
     private TextView homecar_tv;
     private TextView homeequestrain_tv;//马术
@@ -58,13 +61,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private int mSwitcherCount = 0;
 
     private String[] titles = new String[]{
-            "2.4.6.8娱乐吧", "逸林游艇", "麦乐迪KTV"
+            "2.4.6.8娱乐吧", "逸林游艇", "麦乐迪KTV", "逸林游艇"
     };
 
     private Integer[] images = {
             R.mipmap.home_image_1,
             R.mipmap.home_image_2,
-            R.mipmap.home_image_3
+            R.mipmap.home_image_3,
+            R.mipmap.home_image_2
     };
     private Integer[] images1 = {
             R.mipmap.home_image_5,
@@ -74,7 +78,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private Integer[] images2 = {
             R.mipmap.home_image_9,
             R.mipmap.home_image_10,
-            R.mipmap.home_image_11
+            R.mipmap.home_image_11,
+            R.mipmap.home_image_12
     };
 
     private Handler mHandler = new Handler() {
@@ -103,15 +108,29 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public View initView(LayoutInflater inflater) {
         view = View.inflate(getActivity(), R.layout.homefragment, null);
         homefindID();
-
-        HeadNewsAdapter pictureAdapter = new HeadNewsAdapter(titles, images, getActivity());
-        GlorySeverAdapter pictureAdapter1 = new GlorySeverAdapter(images1, getActivity());
-        JournalAdapter pictureAdapter2 = new JournalAdapter(images2, getActivity());
-        headnewsgv.setAdapter(pictureAdapter);
-        homeservegv.setAdapter(pictureAdapter1);
-        homejournalgv.setAdapter(pictureAdapter2);
+        initRecyclerView();
         homeOnClick();
         return view;
+    }
+
+    private void initRecyclerView() {
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        HomeNewAdapter newAdapter = new HomeNewAdapter(titles, images, getActivity());
+        headnewsgv.setLayoutManager(layoutManager);
+        headnewsgv.setAdapter(newAdapter);
+
+        HomeSeverAdapter serverAdapter = new HomeSeverAdapter(images1, getActivity());
+
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        homeservegv.setLayoutManager(layoutManager2);
+        homeservegv.setAdapter(serverAdapter);
+
+        LinearLayoutManager layoutManager3 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        HomeJournalAdapter journalAdapter = new HomeJournalAdapter(images2, getActivity());
+        homejournalgv.setLayoutManager(layoutManager3);
+        homejournalgv.setAdapter(journalAdapter);
+
     }
 
     private void homeOnClick() {
@@ -154,9 +173,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         rb_city_home = (RadioButton) view.findViewById(R.id.rb_city_home);
 
         tv_notice = (TextSwitcher) view.findViewById(R.id.tv_notice);
-        headnewsgv = (GridView) view.findViewById(R.id.homeheadnews_gv);
-        homejournalgv = (GridView) view.findViewById(R.id.homejournal_gv);
-        homeservegv = (GridView) view.findViewById(R.id.homeserve_gv);
+        headnewsgv = (RecyclerView) view.findViewById(R.id.homeheadnews_gv);
+        homejournalgv = (RecyclerView) view.findViewById(R.id.homejournal_gv);
+        homeservegv = (RecyclerView) view.findViewById(R.id.homeserve_gv);
 
         homecar_tv = (TextView) view.findViewById(R.id.home_car_tv);
         flmiddle_tv = (TextView) view.findViewById(R.id.flmiddle_tv);

@@ -19,6 +19,10 @@ import com.zsh.blackcard.custom.CustomDrawerLayout;
 import com.zsh.blackcard.fragment.ZgFragment;
 import com.zsh.blackcard.listener.ZGSlidingListener;
 import com.zsh.blackcard.ui.LoginActivity;
+import com.zsh.blackcard.ui.ShoppingCarActivity;
+import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
+import com.zsh.blackcard.ui.zgactivity.GoodsCategoryActivity;
+import com.zsh.blackcard.ui.zgactivity.PersonalActivity;
 import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
@@ -77,7 +81,7 @@ public class SlidingFragment extends BaseFragment implements View.OnClickListene
 
     private void initDate() {
         list = new ArrayList<String>();
-        list.add("商品类别");
+        list.add("商品分类");
         list.add("发现");
         list.add("购物车");
         list.add("炫购");
@@ -107,12 +111,23 @@ public class SlidingFragment extends BaseFragment implements View.OnClickListene
 
     private void leftItemClick(int position) {
         switch (position) {
-//            case 0:
-//
-//                break;
+            case 0://商品分类
+                startActivity(new Intent(getActivity(), GoodsCategoryActivity.class));
+                break;
+            case 1://发现
+                startActivity(new Intent(getActivity(), DiscoverActivity.class));
+                break;
+            case 2://购物车
+                startActivity(new Intent(getActivity(), ShoppingCarActivity.class));
+                break;
+            case 3://炫购
+                startActivity(new Intent(getActivity(), GoodsCategoryActivity.class));
+                break;
+            case 4://私人定制
+                startActivity(new Intent(getActivity(), PersonalActivity.class));
+                break;
 
         }
-        UIUtils.showToast("条目=" + list.get(position));
 
     }
 
