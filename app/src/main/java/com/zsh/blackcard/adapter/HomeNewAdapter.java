@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.listener.RecyclerViewItemOnClick;
 import com.zsh.blackcard.model.HomeNewModel;
 
 import java.util.ArrayList;
@@ -38,6 +40,11 @@ public class HomeNewAdapter extends RecyclerView.Adapter<HomeNewAdapter.MyViewHo
 
     }
 
+    RecyclerViewItemOnClick listener;
+
+    public void setOnItemClick(RecyclerViewItemOnClick listener) {
+        this.listener = listener;
+    }
 
     @Override
     public HomeNewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,9 +53,17 @@ public class HomeNewAdapter extends RecyclerView.Adapter<HomeNewAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(HomeNewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(HomeNewAdapter.MyViewHolder holder, final int position) {
         holder.tv.setText(homeNewList.get(position).getTitle());
         holder.img.setImageResource(homeNewList.get(position).getImageId());
+        holder.ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null != listener) {
+                    listener.itemOnClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -59,12 +74,13 @@ public class HomeNewAdapter extends RecyclerView.Adapter<HomeNewAdapter.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv;
         ImageView img;
+        LinearLayout ll;
 
         public MyViewHolder(View view) {
             super(view);
             tv = (TextView) view.findViewById(R.id.headnews_tv);
             img = (ImageView) view.findViewById(R.id.headnews_img);
-
+            ll = (LinearLayout) view.findViewById(R.id.ll_item);
         }
     }
 

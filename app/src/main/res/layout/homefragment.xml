@@ -238,13 +238,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base200dp"
+            android:layout_height="@dimen/base180dp"
             android:layout_marginTop="@dimen/base18dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/base200dp"
+                android:layout_height="@dimen/base180dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -271,10 +271,11 @@
                     android:id="@+id/homeheadnews_gv"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/base130dp"
-                    android:layout_marginLeft="@dimen/base15dp"
-                    android:layout_marginTop="@dimen/base20dp">
+                    android:layout_marginTop="@dimen/base20dp"
+                    android:paddingLeft="@dimen/base15dp">
 
                 </android.support.v7.widget.RecyclerView>
+                <!--android:layout_marginLeft="@dimen/base15dp"-->
             </LinearLayout>
 
         </LinearLayout>
@@ -283,7 +284,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base13dp"
-            android:layout_marginTop="@dimen/base14dp"
+            android:layout_marginTop="@dimen/base8dp"
             android:text="荣耀服务"
             android:textColor="@color/ff92_text"
             android:textSize="15sp"
@@ -293,8 +294,8 @@
             android:id="@+id/homeserve_gv"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base80dp"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:layout_marginTop="@dimen/base20dp">
+            android:layout_marginTop="@dimen/base20dp"
+            android:paddingLeft="@dimen/base15dp">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -332,8 +333,8 @@
             android:layout_height="@dimen/base114dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/base37dp"
-            android:layout_marginLeft="@dimen/base5dp"
-            android:layout_marginTop="@dimen/base18dp">
+            android:layout_marginTop="@dimen/base18dp"
+            android:paddingLeft="@dimen/base15dp">
 
         </android.support.v7.widget.RecyclerView>
 

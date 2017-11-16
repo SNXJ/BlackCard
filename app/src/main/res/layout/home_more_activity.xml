@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="黑卡特权" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/gv_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/base30dp"
+        android:background="@color/main_black"
+        android:horizontalSpacing="@dimen/base10dp"
+        android:numColumns="4"
+        android:scrollbars="none"
+        android:verticalSpacing="@dimen/base18dp"></GridView>
+
+</LinearLayout>

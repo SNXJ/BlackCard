@@ -21,16 +21,20 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeJournalAdapter;
 import com.zsh.blackcard.adapter.HomeNewAdapter;
 import com.zsh.blackcard.adapter.HomeSeverAdapter;
+import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.HomeItemClickListener;
+import com.zsh.blackcard.listener.RecyclerViewItemOnClick;
 import com.zsh.blackcard.ui.CarActivity;
 import com.zsh.blackcard.ui.CruiseShipActivity;
 import com.zsh.blackcard.ui.EquestrianActivity;
+import com.zsh.blackcard.ui.MsgCenterActivity;
+import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.PlaneActivity;
 import com.zsh.blackcard.ui.TrianActivity;
-import com.zsh.blackcard.ui.WelcomeActivity;
 import com.zsh.blackcard.ui.home.HomeFoodActivity;
 import com.zsh.blackcard.ui.home.HomeHotelActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.ui.home.HomeKTVActivity;
+import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 
@@ -109,7 +113,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         view = View.inflate(getActivity(), R.layout.homefragment, null);
         homefindID();
         initRecyclerView();
-        homeOnClick();
+
         return view;
     }
 
@@ -118,6 +122,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         HomeNewAdapter newAdapter = new HomeNewAdapter(titles, images, getActivity());
         headnewsgv.setLayoutManager(layoutManager);
+        newAdapter.setOnItemClick(newslistener);
         headnewsgv.setAdapter(newAdapter);
 
         HomeSeverAdapter serverAdapter = new HomeSeverAdapter(images1, getActivity());
@@ -131,31 +136,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         homejournalgv.setLayoutManager(layoutManager3);
         homejournalgv.setAdapter(journalAdapter);
 
+
     }
 
-    private void homeOnClick() {
-        homecar_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homecarintent2 = new Intent(getActivity(), CarActivity.class);
-                startActivity(homecarintent2);
-            }
-        });
-        homeequestrain_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeequestrainintent2 = new Intent(getActivity(), EquestrianActivity.class);
-                startActivity(homeequestrainintent2);
-            }
-        });
-        homecruiseship_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homecruiseshipintent2 = new Intent(getActivity(), CruiseShipActivity.class);
-                startActivity(homecruiseshipintent2);
-            }
-        });
-    }
+    RecyclerViewItemOnClick newslistener = new RecyclerViewItemOnClick() {
+        @Override
+        public void itemOnClick(int position) {
+
+            startActivity(new Intent(getActivity(), HomeKTVActivity.class));
+        }
+    };
+
 
     private TextView flmiddle_tv;//酒店
     private TextView tv_home_trian;//
@@ -274,16 +265,39 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.tv_home_more://更多
             case R.id.im_home_more://更多
-                UIUtils.showToast("敬请期待");
-//                Intent homecarintent = new Intent(getActivity(), CarActivity.class);
-//                startActivity(homecarintent);
+                Intent homemoreintent = new Intent(getActivity(), HomeMoreActivity.class);
+                startActivity(homemoreintent);
                 break;
             case R.id.rb_city_home://更多
                 startActivity(new Intent(getActivity(), SelectCityActivity.class));
                 break;
             case R.id.go_welcome_login_img:
-                ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
+                // ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
+
+                PublicDialog.homePop(getActivity(), go_welcome_login_img, popListenter);
+
                 break;
         }
     }
+
+
+    HomeItemClickListener popListenter = new HomeItemClickListener() {
+        @Override
+        public void itemClick(int postion) {
+            switch (postion) {
+                case 0:
+                    startActivity(new Intent(getActivity(), MsgCenterActivity.class));
+                    break;
+                case 1:
+                    startActivity(new Intent(getActivity(), MsgCenterActivity.class));
+                    break;
+                case 2:
+                    startActivity(new Intent(getActivity(), MsgSysCenterActivity.class));
+                    break;
+                case 3:
+                    startActivity(new Intent(getActivity(), MsgCenterActivity.class));
+                    break;
+            }
+        }
+    };
 }

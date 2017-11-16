@@ -17,6 +17,13 @@
         <item name="android:layout_height">@dimen/base44dp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
+    <!-- 总title-->
+    <style name="text_">
+        <item name="android:textColor">@color/ff92_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 
     <!-- 总title back-->
     <style name="title_im_back">
@@ -89,6 +96,12 @@
         <item name="android:layout_height">@dimen/base1dp</item>
         <item name="android:background">@color/dialog_line</item>
     </style>
+    <style name="line">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/base1dp</item>
+        <item name="android:background">@color/line</item>
+    </style>
 
     <!-- 标题 RelativeLayout    背景自设设置 -->
     <style name="rl_title">
@@ -111,5 +124,10 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="home_pop_anim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_push_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_push_out</item>
     </style>
 </resources>

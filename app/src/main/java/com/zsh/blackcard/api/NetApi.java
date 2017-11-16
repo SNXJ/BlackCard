@@ -15,14 +15,14 @@ public class NetApi {
     /**
      * 测试
      */
-//	public static final String SERVER_URL = "https://www.zyskcn.com/qdw/";
+//	public static final String SERVER_URL = "https://";
     /**
      * 发版
      */
     public static final String SERVER_URL = "https://";
 
     /**
-     * HTTPS POST
+     * HTTP POST
      *
      * @param <T>
      * @param mContext
@@ -34,11 +34,11 @@ public class NetApi {
     public static <T> void doPost(Context mContext, String url,
                                   Map<String, String> paramsMap, final Class<T> clz,
                                   final ResponseListener<T> responseListener) {
-        NetUntil.newInstance(mContext).doPostHttps(SERVER_URL + url, paramsMap, clz, responseListener);
+        NetUntil.newInstance(mContext).doPostHttp(SERVER_URL + url, paramsMap, clz, responseListener);
     }
 
     /**
-     * HTTPS GET
+     * HTTP GET
      *
      * @param <T>
      * @param mContext
@@ -51,7 +51,7 @@ public class NetApi {
     private static <T> void doGet(Context mContext, String url,
                                   Map<String, String> paramsMap, final Class<T> clz,
                                   final ResponseListener<T> responseListener) {
-        NetUntil.newInstance(mContext).doGetHttps(SERVER_URL + url, paramsMap,
+        NetUntil.newInstance(mContext).doGetHttp(SERVER_URL + url, paramsMap,
                 clz, responseListener);
     }
 

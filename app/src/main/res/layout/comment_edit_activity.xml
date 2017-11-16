@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="发表评价" />
+
+        <TextView
+            android:id="@+id/tv_go_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="发布"
+            android:textColor="@color/ff92_text"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base80dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/base20dp"
+                android:layout_height="@dimen/base21dp"
+                android:layout_marginRight="@dimen/base5dp"
+                android:src="@mipmap/hotel_image_1" />
+
+            <ImageView
+                android:layout_width="@dimen/base20dp"
+                android:layout_height="@dimen/base21dp"
+                android:layout_marginRight="@dimen/base5dp"
+                android:src="@mipmap/hotel_image_1" />
+
+            <ImageView
+                android:layout_width="@dimen/base20dp"
+                android:layout_height="@dimen/base21dp"
+                android:layout_marginRight="@dimen/base5dp"
+                android:src="@mipmap/hotel_image_1" />
+
+            <ImageView
+                android:layout_width="@dimen/base20dp"
+                android:layout_height="@dimen/base21dp"
+                android:layout_marginRight="@dimen/base5dp"
+                android:src="@mipmap/hotel_image_1" />
+
+            <ImageView
+                android:layout_width="@dimen/base20dp"
+                android:layout_height="@dimen/base21dp"
+                android:layout_marginRight="@dimen/base5dp"
+                android:src="@mipmap/hotel_image_1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/base4dp"
+            android:text="给店家评分"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base178dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base38dp"
+        android:background="#FF181818"
+        android:gravity="top"
+        android:padding="@dimen/base10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF181818"
+            android:hint="请输入内容"
+            android:maxLength="100"
+            android:maxLines="5"
+            android:textColorHint="@color/ff92_text"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
