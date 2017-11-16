@@ -102,7 +102,7 @@ public class SbMyActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.tv_hkb:
             case R.id.tv_hkb_num:
-                startActivity(new Intent(SbMyActivity.this, BlackcoffeecurrencyActivity.class));
+                startActivity(new Intent(SbMyActivity.this, BlackCurrencyActivity.class));
                 break;
             case R.id.tv_fans_num:
             case R.id.tv_fans:

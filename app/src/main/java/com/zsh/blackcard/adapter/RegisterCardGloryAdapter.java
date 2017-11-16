@@ -26,14 +26,14 @@ public class RegisterCardGloryAdapter extends RecyclerView.Adapter<RegisterCardG
     private Context context;
     private List<Boolean> isCheck = new ArrayList<>();
 
-    private RegisterOnItemClick registerOnItemClick;
+    private RegisterGloryOnItemClick registerGloryOnItemClick;
 
-    public void setRegisterOnItemClick(RegisterOnItemClick registerOnItemClick) {
-        this.registerOnItemClick = registerOnItemClick;
+    public void setRegisterGloryOnItemClick(RegisterGloryOnItemClick registerGloryOnItemClick) {
+        this.registerGloryOnItemClick = registerGloryOnItemClick;
     }
 
-    public interface RegisterOnItemClick {
-        void onItemClick(int position);
+    public interface RegisterGloryOnItemClick {
+        void gloryOnItemClick(int position);
     }
 
     public RegisterCardGloryAdapter(RegisterActivity registerActivity) {
@@ -42,7 +42,12 @@ public class RegisterCardGloryAdapter extends RecyclerView.Adapter<RegisterCardG
         for (int i = 0; i < 8; i++) {
             isCheck.add(false);
         }
+    }
 
+    public void initSelect(){
+        for (int i = 0; i < 8; i++) {
+            isCheck.set(i,false);
+        }
     }
 
     @Override
@@ -77,8 +82,8 @@ public class RegisterCardGloryAdapter extends RecyclerView.Adapter<RegisterCardG
                 notifyDataSetChanged();
 
                 //设置监听回调
-                if (registerOnItemClick != null) {
-                    registerOnItemClick.onItemClick(position);
+                if (registerGloryOnItemClick != null) {
+                    registerGloryOnItemClick.gloryOnItemClick(position);
                 }
 
             }

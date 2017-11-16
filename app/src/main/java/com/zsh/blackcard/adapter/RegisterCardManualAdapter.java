@@ -26,14 +26,14 @@ public class RegisterCardManualAdapter extends RecyclerView.Adapter<RegisterCard
     private Context context;
     private List<Boolean> isCheck = new ArrayList<>();
 
-    private RegisterOnItemClick registerOnItemClick;
+    private RegisterManualOnItemClick registerManualOnItemClick;
 
-    public void setRegisterOnItemClick(RegisterOnItemClick registerOnItemClick) {
-        this.registerOnItemClick = registerOnItemClick;
+    public void setRegisterManualOnItemClick(RegisterManualOnItemClick registerManualOnItemClick) {
+        this.registerManualOnItemClick = registerManualOnItemClick;
     }
 
-    public interface RegisterOnItemClick {
-        void onItemClick(int position);
+    public interface RegisterManualOnItemClick {
+        void manualOnItemClick(int position);
     }
 
     public RegisterCardManualAdapter(RegisterActivity registerActivity) {
@@ -42,7 +42,12 @@ public class RegisterCardManualAdapter extends RecyclerView.Adapter<RegisterCard
         for (int i = 0; i < 8; i++) {
             isCheck.add(false);
         }
+    }
 
+    public void initSelect(){
+        for (int i = 0; i < 8; i++) {
+            isCheck.set(i,false);
+        }
     }
 
     @Override
@@ -77,8 +82,8 @@ public class RegisterCardManualAdapter extends RecyclerView.Adapter<RegisterCard
                 notifyDataSetChanged();
 
                 //设置监听回调
-                if (registerOnItemClick != null) {
-                    registerOnItemClick.onItemClick(position);
+                if (registerManualOnItemClick != null) {
+                    registerManualOnItemClick.manualOnItemClick(position);
                 }
 
             }

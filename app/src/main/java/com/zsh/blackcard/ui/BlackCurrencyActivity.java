@@ -7,7 +7,7 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
 
-public class BlackcoffeecurrencyActivity extends BaseActivity implements View.OnClickListener {
+public class BlackCurrencyActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView back_img;
 

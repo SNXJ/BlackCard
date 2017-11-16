@@ -2,99 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bj"
     android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/flall"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"></FrameLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="@dimen/base49dp"
         android:background="#0B0B0B"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/radio_btn_home"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:button="@null"
+            style="@style/main_radio_button"
             android:checked="true"
             android:drawableTop="@drawable/home_select"
-            android:gravity="center_horizontal"
-            android:text="尊尚汇"
-            android:textColor="@color/hometext"
-            android:textSize="10sp" />
+            android:text="尊尚汇" />
 
         <RadioButton
             android:id="@+id/radio_btn_zg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:button="@null"
-            android:drawablePadding="2dp"
+            style="@style/main_radio_button"
             android:drawableTop="@drawable/zg_select"
-            android:gravity="center"
-            android:text="尊购"
-            android:textColor="@color/hometext"
-            android:textSize="10sp" />
+            android:text="尊购" />
 
         <RadioButton
             android:id="@+id/radio_btn_sb"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:button="@null"
-            android:drawablePadding="2dp"
+            style="@style/main_radio_button"
             android:drawableTop="@drawable/sb_select"
-            android:gravity="center"
-            android:text="尚播"
-            android:textColor="@color/hometext"
-            android:textSize="10sp" />
+            android:text="尚播" />
 
         <RadioButton
             android:id="@+id/radio_btn_hj"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@null"
-            android:button="@null"
-            android:drawablePadding="2dp"
+            style="@style/main_radio_button"
             android:drawableTop="@drawable/hj_select"
-            android:gravity="center"
-            android:text="汇聚"
-            android:textColor="@color/hometext"
-            android:textSize="10sp" />
+            android:text="汇聚" />
 
         <RadioButton
             android:id="@+id/radio_btn_my"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:button="@null"
-            android:drawablePadding="2dp"
+            style="@style/main_radio_button"
             android:drawableTop="@drawable/my_select"
-            android:gravity="center"
-            android:text="我的"
-            android:textColor="@color/hometext"
-            android:textSize="10sp" />
+            android:text="我的" />
     </RadioGroup>
 </LinearLayout>
 

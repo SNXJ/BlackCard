@@ -26,14 +26,14 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
     private Context context;
     private List<Boolean> isCheck = new ArrayList<>();
 
-    private RegisterOnItemClick registerOnItemClick;
+    private RegisterVipOnItemClick registerVipOnItemClick;
 
-    public void setRegisterOnItemClick(RegisterOnItemClick registerOnItemClick) {
-        this.registerOnItemClick = registerOnItemClick;
+    public void setRegisterVipOnItemClick(RegisterVipOnItemClick registerVipOnItemClick) {
+        this.registerVipOnItemClick = registerVipOnItemClick;
     }
 
-    public interface RegisterOnItemClick {
-        void onItemClick(int position);
+    public interface RegisterVipOnItemClick {
+        void vipOnItemClick(int position);
     }
 
     public RegisterCardVipAdapter(RegisterActivity registerActivity) {
@@ -42,7 +42,12 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
         for (int i = 0; i < 8; i++) {
             isCheck.add(false);
         }
+    }
 
+    public void initSelect(){
+        for (int i = 0; i < 8; i++) {
+            isCheck.set(i,false);
+        }
     }
 
     @Override
@@ -77,8 +82,8 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
                 notifyDataSetChanged();
 
                 //设置监听回调
-                if (registerOnItemClick != null) {
-                    registerOnItemClick.onItemClick(position);
+                if (registerVipOnItemClick != null) {
+                    registerVipOnItemClick.vipOnItemClick(position);
                 }
 
             }
