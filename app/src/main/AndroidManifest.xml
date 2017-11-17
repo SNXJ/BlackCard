@@ -64,7 +64,7 @@
         <activity android:name=".ui.PlaneActivity" />
         <activity android:name=".ui.CarActivity" />
         <activity android:name=".ui.EquestrianActivity" />
-        <activity android:name=".ui.BlackcoffeecurrencyActivity" />
+        <activity android:name=".ui.BlackCurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
         <activity android:name=".ui.home.HomeHotelActivity"></activity>

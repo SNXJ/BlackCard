@@ -96,6 +96,7 @@
         <item name="android:layout_height">@dimen/base1dp</item>
         <item name="android:background">@color/dialog_line</item>
     </style>
+
     <style name="line">
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_width">fill_parent</item>
@@ -130,4 +131,78 @@
         <item name="android:windowEnterAnimation">@anim/pop_push_in</item>
         <item name="android:windowExitAnimation">@anim/pop_push_out</item>
     </style>
+
+    <!--我的页面中心条目 RelativeLayout-->
+    <style name="my_center_relative">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+    </style>
+
+    <!--我的页面中心条目左侧图标 ImageView-->
+    <style name="my_center_left_img">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginLeft">@dimen/base20dp</item>
+    </style>
+
+    <!--我的页面中心条目文字提示 TextView-->
+    <style name="my_center_tip_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/base55dp</item>
+        <item name="android:textColor">@color/recharge_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--我的页面中心条目右侧箭头图标 ImageView-->
+    <style name="my_center_right_img">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/base20dp</item>
+    </style>
+
+    <!--我的界面包裹好友和99的父容器，点击事件触发控件 LinearLayout-->
+    <style name="my_number_linear">
+        <item name="android:layout_width">@dimen/base50dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <!--我的界面显示好友，黑咖币，能量值数量的 TextView-->
+    <style name="my_number_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/recharge_text</item>
+    </style>
+
+    <!--我的界面中心条目的View横线 View-->
+    <style name="my_center_view">
+        <item name="android:layout_marginLeft">@dimen/base20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">#1D1D1D</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <!--MainActivity底部导航栏 RadioButton-->
+    <style name="main_radio_button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/hometext</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
 </resources>

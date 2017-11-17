@@ -26,14 +26,14 @@ public class RegisterCardWuXingAdapter extends RecyclerView.Adapter<RegisterCard
     private Context context;
     private List<Boolean> isCheck = new ArrayList<>();
 
-    private RegisterOnItemClick registerOnItemClick;
+    private RegisterWuXingOnItemClick registerWuXingOnItemClick;
 
-    public void setRegisterOnItemClick(RegisterOnItemClick registerOnItemClick) {
-        this.registerOnItemClick = registerOnItemClick;
+    public void setRegisterWuXingOnItemClick(RegisterWuXingOnItemClick registerWuXingOnItemClick) {
+        this.registerWuXingOnItemClick = registerWuXingOnItemClick;
     }
 
-    public interface RegisterOnItemClick{
-        void onItemClick(int position);
+    public interface RegisterWuXingOnItemClick {
+        void wuXingOnItemClick(int position);
     }
 
     public RegisterCardWuXingAdapter(RegisterActivity registerActivity) {
@@ -42,7 +42,12 @@ public class RegisterCardWuXingAdapter extends RecyclerView.Adapter<RegisterCard
         for (int i = 0; i < 5; i++) {
             isCheck.add(false);
         }
+    }
 
+    public void initSelect() {
+        for (int i = 0; i < 5; i++) {
+            isCheck.set(i, false);
+        }
     }
 
     @Override
@@ -53,7 +58,7 @@ public class RegisterCardWuXingAdapter extends RecyclerView.Adapter<RegisterCard
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 holder.register_card_tv.setText("金");
                 break;
@@ -88,13 +93,13 @@ public class RegisterCardWuXingAdapter extends RecyclerView.Adapter<RegisterCard
                     isCheck.set(i, false);
                 }
 
-                isCheck.set(position,true);
+                isCheck.set(position, true);
 
                 notifyDataSetChanged();
 
                 //设置监听回调
-                if(registerOnItemClick != null){
-                    registerOnItemClick.onItemClick(position);
+                if (registerWuXingOnItemClick != null) {
+                    registerWuXingOnItemClick.wuXingOnItemClick(position);
                 }
 
             }

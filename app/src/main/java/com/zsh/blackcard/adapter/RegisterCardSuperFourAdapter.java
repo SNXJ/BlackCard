@@ -6,13 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.ui.RegisterActivity;
-import com.zsh.blackcard.ui.VipCenterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,59 +21,44 @@ import butterknife.ButterKnife;
  * Created by kkkkk on 2017/11/10.
  */
 
-public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapter.MyViewHolder> {
+public class RegisterCardSuperFourAdapter extends RecyclerView.Adapter<RegisterCardSuperFourAdapter.MyViewHolder> {
 
     private Context context;
     private List<Boolean> isCheck = new ArrayList<>();
 
-    public void setRegisterCardOnItemClick(RegisterCardOnItemClick registerCardOnItemClick) {
-        this.registerCardOnItemClick = registerCardOnItemClick;
+    private RegisterSuperFourOnItemClick registerSuperFourOnItemClick;
+
+    public void setRegisterSuperFourOnItemClick(RegisterSuperFourOnItemClick registerSuperFourOnItemClick) {
+        this.registerSuperFourOnItemClick = registerSuperFourOnItemClick;
     }
 
-    private RegisterCardOnItemClick registerCardOnItemClick;
-
-
-    public interface RegisterCardOnItemClick {
-        void cardOnItemClick(int position);
+    public interface RegisterSuperFourOnItemClick {
+        void superFourOnItemClick(int position);
     }
 
-    public RegisterCardAdapter(RegisterActivity registerActivity) {
+    public RegisterCardSuperFourAdapter(RegisterActivity registerActivity) {
         this.context = registerActivity;
         //初始化默认所有item未被选择
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             isCheck.add(false);
         }
+    }
 
+    public void initSelect(){
+        for (int i = 0; i < 8; i++) {
+            isCheck.set(i,false);
+        }
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.register_card_recycler_item, parent, false));
+        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.register_card_manual_recycler_item, parent, false));
         return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        switch (position) {
-            case 0:
-                holder.register_card_tv.setText("至尊会籍卡");
-                break;
-            case 1:
-                holder.register_card_tv.setText("荣耀会籍卡");
-                break;
-            case 2:
-                holder.register_card_tv.setText("名人联名卡");
-                break;
-            case 3:
-                holder.register_card_tv.setText("经典会籍卡");
-                break;
-            case 4:
-                holder.register_card_tv.setText("12星座卡");
-                break;
-            case 5:
-                holder.register_card_tv.setText("周易五行卡");
-                break;
-        }
+        holder.register_card_tv.setText("1035686866 (5000元)");
 
         //根据状态给item设置背景色
         if (isCheck.get(position)) {
@@ -91,7 +73,7 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
             @Override
             public void onClick(View v) {
 
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 8; i++) {
                     isCheck.set(i, false);
                 }
 
@@ -100,17 +82,16 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
                 notifyDataSetChanged();
 
                 //设置监听回调
-                if (registerCardOnItemClick != null) {
-                    registerCardOnItemClick.cardOnItemClick(position);
+                if (registerSuperFourOnItemClick != null) {
+                    registerSuperFourOnItemClick.superFourOnItemClick(position);
                 }
-
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return 6;
+        return 8;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

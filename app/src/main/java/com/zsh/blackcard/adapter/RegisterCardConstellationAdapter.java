@@ -6,8 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zsh.blackcard.R;
@@ -21,30 +19,35 @@ import butterknife.ButterKnife;
 
 /**
  * Created by kkkkk on 2017/11/10.
+ * 星座卡适配器
  */
 
-public class RegisterCardTranslateAdapter extends RecyclerView.Adapter<RegisterCardTranslateAdapter.MyViewHolder> {
+public class RegisterCardConstellationAdapter extends RecyclerView.Adapter<RegisterCardConstellationAdapter.MyViewHolder> {
 
     private Context context;
     private List<Boolean> isCheck = new ArrayList<>();
 
-    private RegisterOnItemClick registerOnItemClick;
+    private RegisterConstellationOnItemClick registerConstellationOnItemClick;
 
-    public void setRegisterOnItemClick(RegisterOnItemClick registerOnItemClick) {
-        this.registerOnItemClick = registerOnItemClick;
-    }
-
-    public interface RegisterOnItemClick{
-        void onItemClick(int position);
-    }
-
-    public RegisterCardTranslateAdapter(RegisterActivity registerActivity) {
+    public RegisterCardConstellationAdapter(RegisterActivity registerActivity) {
         this.context = registerActivity;
-        //初始化默认所有item未被选择
         for (int i = 0; i < 12; i++) {
             isCheck.add(false);
         }
+    }
 
+    public void setRegisterConstellationOnItemClick(RegisterConstellationOnItemClick registerConstellationOnItemClick) {
+        this.registerConstellationOnItemClick = registerConstellationOnItemClick;
+    }
+
+    public interface RegisterConstellationOnItemClick {
+        void constellationOnItemClick(int position);
+    }
+
+    public void initSelect() {
+        for (int i = 0; i < 12; i++) {
+            isCheck.set(i, false);
+        }
     }
 
     @Override
@@ -55,7 +58,7 @@ public class RegisterCardTranslateAdapter extends RecyclerView.Adapter<RegisterC
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 holder.register_card_tv.setText("白羊座");
                 break;
@@ -111,13 +114,13 @@ public class RegisterCardTranslateAdapter extends RecyclerView.Adapter<RegisterC
                     isCheck.set(i, false);
                 }
 
-                isCheck.set(position,true);
+                isCheck.set(position, true);
 
                 notifyDataSetChanged();
 
                 //设置监听回调
-                if(registerOnItemClick != null){
-                    registerOnItemClick.onItemClick(position);
+                if (registerConstellationOnItemClick != null) {
+                    registerConstellationOnItemClick.constellationOnItemClick(position);
                 }
 
             }
