@@ -20,6 +20,7 @@ import com.zsh.blackcard.ChangeAddressPopwindow;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.HomeItemClickListener;
 import com.zsh.blackcard.listener.SelectDataListener;
+import com.zsh.blackcard.ui.CommonlyActivity;
 import com.zsh.blackcard.ui.live.LiveAnchorDetails;
 import com.zsh.blackcard.untils.DisplayUtil;
 import com.zsh.blackcard.wheelview.ChangeDateDialog;
@@ -35,6 +36,20 @@ import java.util.Calendar;
  * Description: 公共弹窗
  */
 public class PublicDialog {
+
+    public static void ticketInfoPop(final Activity mContext) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.ticket_pop_info, null);
+
+        final Dialog dialog = showDialogView(view, mContext);
+        view.findViewById(R.id.im_add_info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                mContext.startActivity(new Intent(mContext, CommonlyActivity.class));
+            }
+        });
+    }
     /**
      * 首页右上弹窗
      *
@@ -42,7 +57,7 @@ public class PublicDialog {
      * @param im
      * @param listener 点击监听
      */
-    public static void homePop(Context context, ImageView im, HomeItemClickListener listener) {
+    public static void homeTopPop(Context context, ImageView im, HomeItemClickListener listener) {
         final PopHome popWinShare = new PopHome(context, listener);
         //监听窗口的焦点事件，点击窗口外面则取消显示
         popWinShare.getContentView().setOnFocusChangeListener(new View.OnFocusChangeListener() {

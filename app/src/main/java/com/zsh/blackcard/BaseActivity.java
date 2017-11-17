@@ -13,6 +13,8 @@ import android.view.inputmethod.InputMethodManager;
 import com.zsh.blackcard.untils.MyActivityManager;
 import com.zsh.blackcard.untils.StatusBarColorUntil;
 
+import butterknife.ButterKnife;
+
 /**
  * @Author snxj .
  * @Date 2017/11/6
@@ -49,6 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         window.setAttributes(params);
         StatusBarColorUntil.setStatusBarColor(this);
         initUI();
+        ButterKnife.bind(this);
+
     }
 
 

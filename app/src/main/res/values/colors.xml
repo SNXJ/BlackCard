@@ -24,6 +24,7 @@
     <color name="dialog_text">#FF333333</color>
     <color name="et_hint">#8E8E93</color>
     <color name="bg_org">#F29E19</color>
+    <color name="select_hint">#FF454545</color>
 
     <!--date-->
     <color name="fffd_text">#FFFD5739</color>

@@ -5,28 +5,18 @@
     android:orientation="vertical"
     android:background="@mipmap/bj">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="43dp">
+    <RelativeLayout style="@style/title_rl">
 
         <ImageView
-            android:id="@+id/blackwb_back"
-            android:layout_marginLeft="15.45dp"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
-            android:src="@mipmap/back"
-            android:layout_centerVertical="true"/>
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#929292"
-            android:textSize="17sp"
-            android:text="常用乘客"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="常用乘客" />
         <TextView
+            android:id="@+id/tv_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#929292"
@@ -36,7 +26,101 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"/>
-
     </RelativeLayout>
-    
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base60dp">
+    <RadioButton
+        android:id="@+id/rb_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/paybtn_select"
+        android:button="@null" />
+    <ImageView
+        android:id="@+id/im_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:background="@mipmap/passenger_icon"
+        android:button="@null" />
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/text_"
+        android:textSize="14sp"
+        android:text="姜小白（成人票）"
+        android:layout_marginLeft="@dimen/base40dp"
+        android:layout_marginTop="@dimen/base13dp"
+        />
+<TextView
+    android:id="@+id/tv_id_num"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="@style/text_"
+    android:textSize="11sp"
+    android:text="130626198008107888"
+    android:layout_marginLeft="@dimen/base40dp"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="@dimen/base15dp"
+    />
+    <View
+        style="@style/line"/>
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/paybtn_select"
+            android:button="@null" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/passenger_icon"
+            android:button="@null" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_"
+            android:textSize="14sp"
+            android:text="姜小白（成人票）"
+            android:layout_marginLeft="@dimen/base40dp"
+            android:layout_marginTop="@dimen/base10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_"
+            android:textSize="11sp"
+            android:text="130626198008107888"
+            android:layout_marginLeft="@dimen/base40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base12dp"
+            />
+        <View
+            style="@style/line"/>
+    </RelativeLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+
+    android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btn_add"
+        style="@style/btn_buttom"
+        android:text="添加"
+        />
 </LinearLayout>

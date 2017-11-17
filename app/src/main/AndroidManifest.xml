@@ -115,6 +115,9 @@
         <activity android:name=".ui.MsgSysCenterActivity"></activity>
         <activity android:name=".ui.MsgSysDetailsActivity"></activity>
         <activity android:name=".ui.MsgCenterDetailsActivity"></activity>
+        <activity android:name=".ui.TicketSearchActivity"></activity>
+        <activity android:name=".ui.TicketSeatActivity"></activity>
+        <activity android:name=".ui.TicketAddActivity"></activity>
     </application>
 
 </manifest>
