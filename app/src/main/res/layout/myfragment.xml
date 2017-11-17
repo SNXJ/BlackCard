@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:background="#0C0C0C"
+            android:background="@color/main_black"
             android:gravity="center"
             android:text="我的"
             android:textColor="@color/recharge_text"

@@ -13,9 +13,14 @@ import android.widget.LinearLayout;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.ZGSlidingListener;
+import com.zsh.blackcard.ui.CommodityActivity;
+import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by admin on 2017/10/20.
@@ -40,15 +45,21 @@ public class ZgFragment extends BaseFragment {
 
     }
 
+    @OnClick(R.id.zg_watch_linear)
+    public void watchOnClick(){
+        ActivityUtils.startActivity(getActivity(), CommodityActivity.class);
+    }
+
     @Override
     public View initView(LayoutInflater inflater) {
         view = View.inflate(getActivity(), R.layout.zgfragment, null);
+        ButterKnife.bind(this,view);
         zgfindId();
         zgvp.setAdapter(new MyAdapter(getActivity(), src));
 
         //初始话
         initDot();
-        zgvp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        zgvp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             public void onPageSelected(int position) {
                 // TODO Auto-generated method stub
                 for (int i = 0; i < imageList.size(); i++) {

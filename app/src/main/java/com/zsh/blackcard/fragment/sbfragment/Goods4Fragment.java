@@ -19,7 +19,7 @@ public class Goods4Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.id.goodsjs_1, null);
+//        View view = View.inflate(getActivity(), R.id.goodsjs_1, null);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 }

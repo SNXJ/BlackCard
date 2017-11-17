@@ -118,6 +118,7 @@
         <activity android:name=".ui.TicketSearchActivity"></activity>
         <activity android:name=".ui.TicketSeatActivity"></activity>
         <activity android:name=".ui.TicketAddActivity"></activity>
+        <activity android:name=".ui.CommodityDetailBannerActivity"></activity>
     </application>
 
 </manifest>
