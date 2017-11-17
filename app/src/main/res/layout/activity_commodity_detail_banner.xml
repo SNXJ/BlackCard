@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/commodity_detail_banner_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp"
+        android:background="@color/main_black">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="@dimen/base11dp"
+            android:layout_height="@dimen/base18dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.45dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="商品详情"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base22dp"
+            android:src="@mipmap/cart" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/commodity_detail_banner_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FF929292">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/commodity_detail_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/base200dp"
+                    android:layout_gravity="center_horizontal">
+
+                </com.youth.banner.Banner>
+
+                <TextView
+                    android:id="@+id/btn_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/base600dp"
+                    android:layout_below="@+id/commodity_detail_banner"
+                    android:layout_marginTop="@dimen/base5dp"
+                    android:text="aaaa"
+                    android:textSize="50sp" />
+
+
+            </RelativeLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+        <RadioGroup
+            android:id="@+id/commodity_detail_banner_rg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base35dp"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/commodity_detail_banner_left_rb"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="商品"
+                android:textColor="@color/transparent" />
+
+            <RadioButton
+                android:id="@+id/commodity_detail_banner_center_rb"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="详情"
+                android:textColor="@color/transparent" />
+
+            <RadioButton
+                android:id="@+id/commodity_detail_banner_right_rb"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="评价"
+                android:textColor="@color/transparent" />
+
+
+        </RadioGroup>
+
+    </FrameLayout>
+
+</LinearLayout>

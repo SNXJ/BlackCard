@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:paddingLeft="@dimen/base3dp"
+    android:paddingRight="@dimen/base3dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:src="@mipmap/goods_image_6"
+        android:layout_width="@dimen/base185dp"
+        android:layout_height="@dimen/base180dp" />
+    
+    <TextView
+        android:textSize="12sp"
+        android:textColor="@color/recharge_text"
+        android:text="卡诗顿新品正品全自动机械男表皮带防水夜光商务"
+        android:layout_width="@dimen/base150dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="@dimen/base10dp"
+        android:textSize="12sp"
+        android:textColor="@color/recharge_text"
+        android:text="￥5688"
+        android:gravity="center"
+        android:layout_width="@dimen/base150dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

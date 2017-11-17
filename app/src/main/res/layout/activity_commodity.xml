@@ -2,75 +2,83 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#000000">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:background="#0C0C0C">
+        android:layout_height="@dimen/base43dp"
+        android:background="@color/main_black">
 
         <ImageView
             android:id="@+id/blackwb_back"
+            android:layout_width="@dimen/base11dp"
+            android:layout_height="@dimen/base18dp"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="15.45dp"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
-            android:src="@mipmap/back"
-            android:layout_centerVertical="true"/>
+            android:src="@mipmap/back" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="#929292"
-            android:textSize="17sp"
-            android:text="商品页面"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="手表专区"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="51dp">
+        android:layout_height="@dimen/base51dp"
+        android:background="@color/ff00_text"
+        android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/goodsjs_1"
-            android:layout_weight="1"
+        <RadioButton
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/goods_icon_1"/>
-
-        <ImageView
-            android:id="@+id/goodsjs_2"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/goods_icon_2"/>
+            android:background="@drawable/shape_register_super_center_false"
+            android:button="@null"
+            android:drawableTop="@mipmap/goods_icon_1"
+            android:gravity="center"
+            android:paddingTop="@dimen/base10dp" />
 
-        <ImageView
-            android:id="@+id/goodsjs_3"
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/goods_icon_32"/>
+            android:background="@drawable/shape_register_super_center_false"
+            android:button="@null"
+            android:drawableTop="@mipmap/goods_icon_2"
+            android:paddingTop="@dimen/base10dp" />
 
-        <ImageView
-            android:id="@+id/goodsjs_4"
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/goods_icon_42"/>
-    </LinearLayout>
+            android:background="@drawable/shape_register_super_center_false"
+            android:button="@null"
+            android:drawableTop="@mipmap/goods_icon_32"
+            android:paddingTop="@dimen/base10dp" />
 
-    <FrameLayout
-        android:id="@+id/commodityfl"
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_register_super_center_false"
+            android:button="@null"
+            android:drawableTop="@mipmap/goods_icon_42"
+            android:paddingTop="@dimen/base10dp" />
+
+    </RadioGroup>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/zg_commodity_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ></FrameLayout>
+        android:background="#101010">
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
