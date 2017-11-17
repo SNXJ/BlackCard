@@ -118,7 +118,10 @@
         <activity android:name=".ui.TicketSearchActivity"></activity>
         <activity android:name=".ui.TicketSeatActivity"></activity>
         <activity android:name=".ui.TicketAddActivity"></activity>
+
         <activity android:name=".ui.CommodityDetailBannerActivity"></activity>
+        <activity android:name=".ui.live.LiveOpenActivity"></activity>
+
     </application>
 
 </manifest>

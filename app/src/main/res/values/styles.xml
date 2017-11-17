@@ -12,7 +12,6 @@
     </style>
 
 
-
     <!-- 总title-->
     <style name="btn_buttom">
         <item name="android:background">@color/bg_button</item>
@@ -269,6 +268,5 @@
         <item name="android:textColor">@color/hometext</item>
         <item name="android:textSize">10sp</item>
     </style>
-
 
 </resources>

@@ -39,8 +39,9 @@ public class DatePicker extends LinearLayout {
 
     private OnDateSelectedListener onDateSelectedListener;// 日期多选后监听
 
-    int titleBgColor = getResources().getColor(R.color.main_black);
-    int tvWeekColor = getResources().getColor(R.color.ff92_text);
+    // int titleBgColor = getResources().getColor(R.color.main_black);
+    int titleBgColor = getResources().getColor(R.color.translucence);
+    int tvWeekColor = getResources().getColor(R.color.fffd_text);
     int tvTitleColor = getResources().getColor(R.color.ff92_text);
 
     /**
@@ -163,7 +164,7 @@ public class DatePicker extends LinearLayout {
 
         myTitle = new TextView(context);
         myTitle.setText("");
-        myTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        myTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         myTitle.setTextColor(tvTitleColor);
 
 
@@ -202,7 +203,7 @@ public class DatePicker extends LinearLayout {
             TextView tvWeek = new TextView(context);
             tvWeek.setText(mLManager.titleWeek()[i]);
             tvWeek.setGravity(Gravity.CENTER);
-            tvWeek.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+            tvWeek.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             // tvWeek.setTextColor(mTManager.colorTitle());
             tvWeek.setTextColor(tvWeekColor);
             llWeek.addView(tvWeek, lpWeek);

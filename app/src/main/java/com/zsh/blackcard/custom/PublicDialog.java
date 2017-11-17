@@ -23,6 +23,8 @@ import com.zsh.blackcard.listener.SelectDataListener;
 import com.zsh.blackcard.ui.CommonlyActivity;
 import com.zsh.blackcard.ui.live.LiveAnchorDetails;
 import com.zsh.blackcard.untils.DisplayUtil;
+import com.zsh.blackcard.view.datepickter.DPMode;
+import com.zsh.blackcard.view.datepickter.DatePicker2;
 import com.zsh.blackcard.wheelview.ChangeDateDialog;
 import com.zsh.blackcard.wheelview.SelsectOneDialog;
 import com.zsh.blackcard.wheelview.SelsectTwoDialog;
@@ -37,6 +39,22 @@ import java.util.Calendar;
  */
 public class PublicDialog {
 
+    public static void dataDialog(final Activity mContext) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.data_dialog, null);
+        final Dialog dialog = showDialogView(view, mContext);
+        DatePicker2 picker = (DatePicker2) view.findViewById(R.id.my_datepicker2);
+        picker.setDate(2015, 7);
+        picker.setMode(DPMode.SINGLE);
+
+    }
+
+
+    /**
+     * 乘客信息
+     *
+     * @param mContext
+     */
     public static void ticketInfoPop(final Activity mContext) {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.ticket_pop_info, null);
@@ -50,6 +68,7 @@ public class PublicDialog {
             }
         });
     }
+
     /**
      * 首页右上弹窗
      *
@@ -264,7 +283,7 @@ public class PublicDialog {
      * @param mContext
      * @return
      */
-    private static Dialog showDialogView(View view, final Activity mContext) {
+    public static Dialog showDialogView(View view, final Activity mContext) {
         final Dialog dialog = new Dialog(mContext, R.style.pub_loading_dialog);
         dialog.setContentView(view);
         setWinLP(dialog, mContext);
