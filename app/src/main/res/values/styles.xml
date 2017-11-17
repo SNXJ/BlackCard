@@ -10,6 +10,19 @@
         <item name="android:listDivider">@drawable/divider</item>
 
     </style>
+
+
+
+    <!-- 总title-->
+    <style name="btn_buttom">
+        <item name="android:background">@color/bg_button</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base50dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/title_text</item>
+        <item name="android:textSize">@dimen/base17dp</item>
+    </style>
     <!-- 总title-->
     <style name="title_rl">
         <item name="android:background">@color/main_black</item>
@@ -104,6 +117,59 @@
         <item name="android:background">@color/line</item>
     </style>
 
+    <style name="item_tv_left">
+        <item name="android:textColor">@color/ff92_text</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/base15dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="item_et">
+        <item name="android:textColor">@color/ff92_text</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginRight">@dimen/base15dp</item>
+        <item name="android:layout_marginLeft">@dimen/base19dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:hint">必填</item>
+        <item name="android:maxLength">15</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColorHint">@color/select_hint</item>
+    </style>
+    <!-- -->
+    <style name="item_tv_">
+        <item name="android:textColor">@color/select_hint</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">@dimen/base90dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <!-- -->
+
+    <style name="item_im_right">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:src">@mipmap/next</item>
+        <item name="android:layout_marginRight">@dimen/base15dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="item_rl">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+    </style>
+
+    <style name="item_ll">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
     <!-- 标题 RelativeLayout    背景自设设置 -->
     <style name="rl_title">
         <item name="android:background">@color/transparent</item>

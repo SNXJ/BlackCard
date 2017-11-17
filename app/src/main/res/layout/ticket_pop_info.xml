@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base268dp"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp">
+        <TextView
+            style="@style/item_tv_left"
+            android:text="乘车人" />
+
+        <TextView
+            style="@style/item_tv_"
+            android:layout_marginLeft="@dimen/base94dp"
+            android:text="姓名保持与有效证件一致"
+            android:textColor="@color/ff92_text" />
+
+        <ImageView
+            android:id="@+id/im_add_info"
+            style="@style/item_im_right"
+            android:src="@mipmap/im_add" />
+
+        <View style="@style/dialog_line" />
+    </RelativeLayout>
+
+    <LinearLayout style="@style/item_ll">
+
+        <TextView
+
+            style="@style/item_tv_left"
+            android:text="身份证" />
+
+        <EditText
+            style="@style/item_et"
+            android:layout_marginLeft="@dimen/base40dp"
+            android:background="@color/bg_white"
+            android:hint="请填写证件号码"
+            android:textColor="@color/ff92_text"
+            android:textColorHint="@color/ff92_text" />
+    </LinearLayout>
+
+    <View style="@style/dialog_line" />
+
+    <LinearLayout style="@style/item_ll">
+
+        <TextView
+            style="@style/item_tv_left"
+            android:text="手机号码" />
+
+        <EditText
+            style="@style/item_et"
+            android:layout_marginLeft="@dimen/base26dp"
+            android:background="@color/bg_white"
+            android:hint="请填写手机号码"
+            android:textColor="@color/ff92_text"
+            android:textColorHint="@color/ff92_text" />
+    </LinearLayout>
+
+    <View style="@style/dialog_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp">
+
+        <TextView
+            style="@style/item_tv_left"
+            android:text="意外保险" />
+
+        <TextView
+            style="@style/item_tv_"
+            android:layout_marginLeft="@dimen/base96dp"
+            android:text="¥20X1份"
+            android:textColor="@color/ff92_text" />
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/my_setting_msg_shock_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:checked="true"
+            android:layout_marginRight="15dp"
+            app:kswAnimationDuration="300"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswThumbHeight="19.5dp"
+            app:kswThumbWidth="19.5dp" />
+
+        <View style="@style/dialog_line" />
+    </RelativeLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base46dp">
+    <RadioGroup
+        android:layout_marginTop="@dimen/base15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base14dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:paddingBottom="@dimen/base2dp"
+            android:lineSpacingExtra="@dimen/base2dp"
+            android:paddingTop="@dimen/base5dp"
+            android:layout_width="@dimen/base70dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/org_half_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="最高保80万
+￥30"
+            android:textColor="@color/select_text"
+            android:textSize="10sp" />
+sF
+        <RadioButton
+            android:paddingBottom="@dimen/base2dp"
+            android:lineSpacingExtra="@dimen/base2dp"
+            android:paddingTop="@dimen/base5dp"
+            android:layout_width="@dimen/base70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:background="@drawable/org_half_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="最高保80万
+￥20"
+            android:textColor="@color/select_text"
+            android:textSize="10sp" />
+
+    </RadioGroup>
+
+
+</RelativeLayout>
+    <Button
+        style="@style/btn_buttom"
+        android:text="确认订单"
+        />
+</LinearLayout>

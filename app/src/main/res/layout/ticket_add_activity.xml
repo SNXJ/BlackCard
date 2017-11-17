@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="添加新乘客" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="保存"
+            android:textColor="#929292"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout style="@style/item_ll">
+
+        <TextView
+            style="@style/item_tv_left"
+            android:text="乘客姓名" />
+
+        <EditText style="@style/item_et" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/item_ll">
+
+        <TextView
+            style="@style/item_tv_left"
+            android:text="乘客类型" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base22dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="@dimen/base70dp"
+                android:layout_height="@dimen/base25dp"
+
+                android:background="@drawable/org_rb_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="成人票"
+                android:textColor="@color/select_text"
+                android:textSize="15sp" />
+
+            <RadioButton
+
+                android:layout_width="@dimen/base70dp"
+                android:layout_height="@dimen/base25dp"
+                android:layout_marginLeft="@dimen/base10dp"
+                android:background="@drawable/org_rb_selector"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="学生票"
+                android:textColor="@color/select_text"
+                android:textSize="15sp" />
+
+            <RadioButton
+
+                android:layout_width="@dimen/base70dp"
+                android:layout_height="@dimen/base25dp"
+                android:layout_marginLeft="@dimen/base10dp"
+                android:background="@drawable/org_rb_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="儿童票"
+                android:textColor="@color/select_text"
+                android:textSize="15sp" />
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+    <RelativeLayout style="@style/item_rl">
+
+        <TextView
+            style="@style/item_tv_left"
+            android:layout_centerVertical="true"
+            android:text="证件类型" />
+
+        <TextView
+            style="@style/item_tv_"
+            android:text="请选择" />
+
+        <ImageView style="@style/item_im_right" />
+
+        <View style="@style/line" />
+
+    </RelativeLayout>
+
+    <LinearLayout style="@style/item_ll">
+
+        <TextView
+            style="@style/item_tv_left"
+            android:text="证件号码" />
+
+        <EditText style="@style/item_et" />
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout style="@style/item_rl">
+
+            <TextView
+                style="@style/item_tv_left"
+                android:layout_centerVertical="true"
+                android:text="学校省份" />
+
+            <TextView
+                style="@style/item_tv_"
+                android:text="请选择" />
+
+            <ImageView style="@style/item_im_right" />
+
+            <View style="@style/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/item_rl">
+
+            <TextView
+                style="@style/item_tv_left"
+                android:layout_centerVertical="true"
+                android:text="学校名称" />
+
+            <TextView
+                style="@style/item_tv_"
+                android:text="请选择" />
+
+            <ImageView style="@style/item_im_right" />
+
+            <View style="@style/line" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout style="@style/item_ll">
+
+            <TextView
+                style="@style/item_tv_left"
+                android:text="学         号 " />
+
+            <EditText style="@style/item_et" />
+        </LinearLayout>
+        <View style="@style/line" />
+        <RelativeLayout style="@style/item_rl">
+
+            <TextView
+                style="@style/item_tv_left"
+                android:layout_centerVertical="true"
+                android:text="学        制 " />
+
+            <TextView
+                style="@style/item_tv_"
+                android:text="请选择" />
+
+            <ImageView style="@style/item_im_right" />
+
+            <View style="@style/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/item_rl">
+
+            <TextView
+                style="@style/item_tv_left"
+                android:layout_centerVertical="true"
+                android:text="入学年份" />
+
+            <TextView
+                style="@style/item_tv_"
+                android:text="请选择" />
+
+            <ImageView style="@style/item_im_right" />
+
+            <View style="@style/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/item_rl">
+
+            <TextView
+                style="@style/item_tv_left"
+                android:layout_centerVertical="true"
+                android:text="优惠区间" />
+
+            <TextView
+                style="@style/item_tv_"
+                android:text="请选择" />
+
+            <ImageView style="@style/item_im_right" />
+
+            <View style="@style/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/item_rl">
+
+            <TextView
+                style="@style/item_tv_left"
+                android:layout_centerVertical="true"
+                android:text="至" />
+
+            <TextView
+                style="@style/item_tv_"
+                android:text="请选择" />
+
+            <ImageView style="@style/item_im_right" />
+
+            <View style="@style/line" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
