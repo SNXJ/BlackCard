@@ -2,7 +2,6 @@ package com.zsh.blackcard.ui.live;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.untils.LogUtils;
 
 /**
  * Name: LiveActivity
@@ -13,7 +12,6 @@ import com.zsh.blackcard.untils.LogUtils;
 public class LiveActivity extends BaseActivity {
     @Override
     protected void initUI() {
-        LogUtils.i("++++++++++Live", "onCreate");
         setContentView(R.layout.activity_live_main);
     }
 }

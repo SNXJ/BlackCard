@@ -3,36 +3,25 @@ package com.zsh.blackcard.ui;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.view.AmountView;
+import com.zsh.blackcard.listener.SnappingStepperValueChangeListener;
+import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.view.SnappingStepper;
 
 
-public class ShoppingCarActivity extends BaseActivity {
-    public AmountView mAmountView;
-    public AmountView mAmountView2;
+public class ShoppingCarActivity extends BaseActivity implements SnappingStepperValueChangeListener {
+    public SnappingStepper stepper;
+    //  public AmountView mAmountView2;
     public ImageView shoppingback;
+
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_shopping_car);
         shopfindID();
         shopOnClick();
-        mAmountView.setGoods_storage(50);
-        mAmountView2.setGoods_storage(50);
-        mAmountView.setOnAmountChangeListener(new AmountView.OnAmountChangeListener() {
-            @Override
-            public void onAmountChange(View view, int amount) {
-                Toast.makeText(getApplicationContext(), "Amount=>  " + amount, Toast.LENGTH_SHORT).show();
-            }
-        });
-        mAmountView2.setOnAmountChangeListener(new AmountView.OnAmountChangeListener() {
-            @Override
-            public void onAmountChange(View view, int amount) {
-                Toast.makeText(getApplicationContext(), "Amount=>  " + amount, Toast.LENGTH_SHORT).show();
-            }
-        });
+        stepper.setOnValueChangeListener(this);
     }
 
     private void shopOnClick() {
@@ -45,10 +34,11 @@ public class ShoppingCarActivity extends BaseActivity {
     }
 
     private void shopfindID() {
-        mAmountView = (AmountView) findViewById(R.id.amount_view);
-        mAmountView2 = (AmountView) findViewById(R.id.amount_view2);
+        stepper = (SnappingStepper) findViewById(R.id.stepper);
+
         shoppingback = (ImageView) findViewById(R.id.shopping_back);
     }
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {
@@ -56,5 +46,14 @@ public class ShoppingCarActivity extends BaseActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onValueChange(View view, int value) {
+        switch (view.getId()) {
+            case R.id.stepper:
+                UIUtils.showToast("值=" + value);
+                break;
+        }
     }
 }

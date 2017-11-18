@@ -15,7 +15,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.fragment.sbfragment.NearbyFragment;
 import com.zsh.blackcard.fragment.sbfragment.RdFragment;
 import com.zsh.blackcard.fragment.sbfragment.TypeFragment;
-import com.zsh.blackcard.ui.live.LiveRoomActivity;
+import com.zsh.blackcard.ui.live.LiveOpenActivity;
 
 /**
  * 尚播Activity
@@ -137,7 +137,7 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
             public void onClick(View v) {
                 // UIUtils.showToast("Live");
                 // startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
-                startActivity(new Intent(SbActivity.this, LiveRoomActivity.class));
+                startActivity(new Intent(SbActivity.this, LiveOpenActivity.class));
             }
         });
     }

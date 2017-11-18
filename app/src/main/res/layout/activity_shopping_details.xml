@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:stepper="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -159,6 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24.5dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -168,28 +170,16 @@
                     android:text="数量"
                     android:textColor="#929292"
                     android:textSize="15sp" />
-                <!--<com.zsh.blackcard.view.AmountView-->
-                <!--android:id="@+id/amount_view2"-->
-                <!--android:layout_width="50dp"-->
-                <!--android:layout_height="15dp"-->
-                <!--app:btnTextSize="12sp"-->
-                <!--app:tvTextSize="5dp"-->
-                <!--app:btnWidth="15dp"-->
-                <!--app:tvWidth="15dp"-->
-                <!--android:layout_marginLeft="86.5dp"-->
-                <!--android:layout_gravity="center_vertical"-->
-                <!--/>-->
+
                 <com.zsh.blackcard.view.SnappingStepper
                     android:id="@+id/stepper"
-                    android:layout_width="80dp"
-                    android:layout_height="15dp"
+                    android:layout_width="@dimen/base56dp"
+                    android:layout_height="@dimen/base15dp"
                     android:layout_marginLeft="86.5dp"
-                    stepper:max="200"
+                    stepper:max="20"
                     stepper:min="0"
                     stepper:step="1"
-                    stepper:value="0"
-
-                    />
+                    stepper:value="0" />
             </LinearLayout>
 
             <View

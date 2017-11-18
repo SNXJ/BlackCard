@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.custom.PublicDialog;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -60,14 +61,15 @@ public class TrianActivity extends BaseActivity {
             case R.id.im_exchange:
                 break;
             case R.id.rl_date:
+                PublicDialog.dataDialog(TrianActivity.this);
                 break;
 //            case R.id.cb_student:
 //                break;
 //            case R.id.cb_gaotie:
 //                break;
             case R.id.btn_search:
-            //   startActivity(new Intent(TrianActivity.this,CommonlyActivity.class));
-               startActivity(new Intent(TrianActivity.this,TicketSearchActivity.class));
+                //   startActivity(new Intent(TrianActivity.this,CommonlyActivity.class));
+                startActivity(new Intent(TrianActivity.this, TicketSearchActivity.class));
                 break;
         }
     }

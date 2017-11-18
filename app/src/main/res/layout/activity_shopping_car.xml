@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stepper="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bj">
@@ -141,7 +142,7 @@
                     android:textColor="#929292"
                     android:textSize="12sp" />
 
-                <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="22dp">
@@ -163,18 +164,18 @@
                         android:textColor="#929292"
                         android:textSize="15sp" />
 
-                    <com.zsh.blackcard.view.AmountView
-                        android:id="@+id/amount_view"
-                        android:layout_width="@dimen/base70dp"
-                        android:layout_height="@dimen/base20dp"
+                    <com.zsh.blackcard.view.SnappingStepper
+                        android:id="@+id/stepper"
+                        android:layout_width="@dimen/base50dp"
+                        android:layout_height="@dimen/base15dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/base20dp"
-                        android:gravity="center_vertical"
-                        app:btnTextSize="15sp"
-                        app:btnWidth="@dimen/base20dp"
-                        app:tvTextSize="5sp"
-                        app:tvWidth="@dimen/base20dp" />
+                        stepper:max="20"
+                        stepper:min="0"
+                        stepper:step="1"
+                        stepper:value="0" />
+
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -221,18 +222,18 @@
                         android:textColor="#929292"
                         android:textSize="15sp" />
 
-                    <com.zsh.blackcard.view.AmountView
-                        android:id="@+id/amount_view2"
-                        android:layout_width="@dimen/base70dp"
-                        android:layout_height="@dimen/base20dp"
+                    <com.zsh.blackcard.view.SnappingStepper
+                        android:layout_width="@dimen/base50dp"
+                        android:layout_height="@dimen/base15dp"
+                        android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/base189dp"
-                        android:layout_marginRight="@dimen/base20dp"
-                        android:gravity="center_vertical"
-                        app:btnTextSize="15sp"
-                        app:btnWidth="@dimen/base20dp"
-                        app:tvTextSize="5sp"
-                        app:tvWidth="@dimen/base20dp" />
+                        android:layout_marginLeft="86.5dp"
+                        android:layout_marginRight="@dimen/base180dp"
+                        stepper:max="20"
+                        stepper:min="0"
+                        stepper:step="1"
+                        stepper:value="0" />
+
 
                 </RelativeLayout>
             </LinearLayout>

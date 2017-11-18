@@ -198,10 +198,10 @@ public class SnappingStepper extends RelativeLayout implements View.OnTouchListe
                 //是按钮则不能移动,恢复位置的动画中也不能移动
                 if (v == ivStepperMinus || v == ivStepperPlus || animationing) break;
                 //非按钮则进行移动
-                float moveX = event.getX() - startX;
-                float x = moveX + startStepperContentLeft;
-                moveStepperContent(x);
-                moveEffectStatus(moveX);
+//                float moveX = event.getX() - startX;
+//                float x = moveX + startStepperContentLeft;
+//                moveStepperContent(x);
+//                moveEffectStatus(moveX);
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
@@ -214,7 +214,7 @@ public class SnappingStepper extends RelativeLayout implements View.OnTouchListe
                     ivStepperPlus.setPressed(false);
                     break;
                 }
-                restoreStepperContent();
+               // restoreStepperContent();
                 break;
         }
         return true;

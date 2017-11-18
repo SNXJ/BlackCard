@@ -21,7 +21,7 @@ public class MyTheme extends DPTheme {
 
     @Override
     public int colorBG() {
-        return context.getResources().getColor(R.color.main_black);
+        return context.getResources().getColor(R.color.translucence);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class MyTheme extends DPTheme {
 
     @Override
     public int colorTitleBG() {
-        return context.getResources().getColor(R.color.main_black);
+        return context.getResources().getColor(R.color.translucence);
     }
 
     @Override

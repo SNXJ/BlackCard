@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_black"
+    android:background="@mipmap/bj"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <RelativeLayout style="@style/title_rl">
@@ -17,10 +18,19 @@
             android:text="签到" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base190dp">
 
+    <com.skyfishjy.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base160dp"
+        android:layout_centerInParent="true"
+        app:rb_color="@color/sign_bg"
+        app:rb_duration="5000"
+        app:rb_radius="40dp"
+        app:rb_rippleAmount="5"
+        app:rb_scale="2">
+        <!--android:background="@drawable/radiu_bg"-->
         <TextView
             android:id="@+id/tv_sign"
             android:layout_width="wrap_content"
@@ -39,14 +49,15 @@
             android:text="已签20天"
             android:textColor="@color/ff92_text"
             android:textSize="12sp" />
-
-    </RelativeLayout>
+    </com.skyfishjy.library.RippleBackground>
 
 
     <com.zsh.blackcard.view.datepickter.DatePicker
         android:id="@+id/my_datepicker"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base540dp"
-        android:background="@color/main_black" />
+        android:layout_height="@dimen/base350dp"
+        android:layout_marginTop="@dimen/base20dp"
+        android:paddingLeft="@dimen/base10dp"
+        android:paddingRight="@dimen/base10dp" />
 
 </LinearLayout>
