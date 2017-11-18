@@ -41,8 +41,6 @@
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.TakeAddressActivity" />
         <activity android:name=".ui.TakeAdressDetailsActivity" />
-        <activity android:name=".ui.zgactivity.ZgMyActivity" />
-        <activity android:name=".ui.zgactivity.ZgMyIndentActivity" />
         <activity android:name=".ui.SbActivity" />
         <activity android:name=".ui.SbMyActivity" />
         <activity android:name=".ui.OrderDetailsActivity" />
@@ -121,6 +119,8 @@
 
         <activity android:name=".ui.CommodityDetailBannerActivity"></activity>
         <activity android:name=".ui.live.LiveOpenActivity"></activity>
+        <activity android:name=".ui.MyOrderActivity"></activity>
+        <activity android:name=".ui.CollectionActivity"></activity>
 
     </application>
 

@@ -214,7 +214,7 @@ public class SnappingStepper extends RelativeLayout implements View.OnTouchListe
                     ivStepperPlus.setPressed(false);
                     break;
                 }
-               // restoreStepperContent();
+                // restoreStepperContent();
                 break;
         }
         return true;
