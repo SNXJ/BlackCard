@@ -6,15 +6,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.NestedScrollView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.TableLayout;
 
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -27,11 +23,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 /**
  * Created by kkkkk on 2017/11/17.
+ * 商品详情页面（手表）
  */
 
 public class CommodityDetailBannerActivity extends BaseActivity implements NestedScrollView.OnScrollChangeListener {
@@ -52,12 +48,18 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     RadioButton commodity_detail_banner_right_rb;
     @BindView(R.id.commodity_detail_banner)
     Banner commodity_detail_banner;
-    @BindView(R.id.btn_2)
-    TextView btn_2;
+    @BindView(R.id.commodity_detail_table)
+    TableLayout commodity_detail_table;
+    @BindView(R.id.commodity_detail_one_img)
+    ImageView commodity_detail_one_img;
+    @BindView(R.id.commodity_detail_comment_relative)
+    RelativeLayout commodity_detail_comment_relative;
+    @BindView(R.id.commodity_detail_three_img)
+    ImageView commodity_detail_three_img;
 
     int rgHeight;
     int commodity_detail_banner_height;
-    int top2;
+    int shop_height, detail_height, comment_height, detail_bottom_height;
 
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -67,7 +69,10 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                     commodity_detail_banner_scrollview.smoothScrollTo(0, 0);
                     break;
                 case 1:
-                    commodity_detail_banner_scrollview.smoothScrollTo(0, top2);
+                    commodity_detail_banner_scrollview.smoothScrollTo(0, detail_height);
+                    break;
+                case 2:
+                    commodity_detail_banner_scrollview.smoothScrollTo(0,comment_height);
                     break;
             }
             return false;
@@ -82,8 +87,13 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         rgHeight = commodity_detail_banner_rg.getHeight();
         //获取banner与title的差高度
         commodity_detail_banner_height = commodity_detail_banner.getHeight() - rgHeight;
-        //获取需要滑动到指定view的位置距离
-        top2 = btn_2.getTop() - rgHeight;
+        //获取整个商品区的底部距离顶端的距离
+        shop_height = commodity_detail_table.getBottom() - rgHeight;
+        //获取商品详情距离顶部的距离
+        detail_bottom_height = commodity_detail_three_img.getBottom()-rgHeight;
+        detail_height = commodity_detail_one_img.getTop() - rgHeight;
+        //获取商品评论距离顶部的距离
+        comment_height = commodity_detail_comment_relative.getTop() - rgHeight;
     }
 
     @Override
@@ -135,7 +145,12 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                 commodity_detail_banner_left_rb.setTextColor(Color.parseColor("#FF929292"));
                 commodity_detail_banner_center_rb.setTextColor(Color.parseColor("#FF929292"));
                 commodity_detail_banner_right_rb.setTextColor(Color.parseColor("#FFF29E19"));
+                handler.sendEmptyMessage(2);
                 break;
+            case R.id.blackwb_back:
+                finish();
+                break;
+
         }
     }
 
@@ -147,27 +162,33 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
             commodity_detail_banner_left_rb.setTextColor(Color.argb(0, 0, 0, 0));
             commodity_detail_banner_center_rb.setTextColor(Color.argb(0, 0, 0, 0));
             commodity_detail_banner_right_rb.setTextColor(Color.argb(0, 0, 0, 0));
-        } else if (scrollY > 0 && scrollY <= rgHeight) {
+        } else if (scrollY > 0 && scrollY <= commodity_detail_banner_height) {
             //此判断语句用来控制title的渐变
-            //根据commodity_detail_banner_rg高度和移动距离  结算占比
-            float scale = (float) scrollY / rgHeight;
+            //根据commodity_detail_banner_rg高度和移动距离  计算占比
+            float scale = (float) scrollY / commodity_detail_banner_height;
             float alpha = (255 * scale);
-            commodity_detail_banner_rg.setBackgroundColor(Color.argb((int) alpha, 20, 20, 1));
+            commodity_detail_banner_rg.setBackgroundColor(Color.argb((int) alpha, 12, 12, 12));
             commodity_detail_banner_left_rb.setTextColor(Color.argb((int) alpha, 242, 158, 25));
             commodity_detail_banner_center_rb.setTextColor(Color.argb((int) alpha, 146, 146, 146));
             commodity_detail_banner_right_rb.setTextColor(Color.argb((int) alpha, 146, 146, 146));
-        } else if (scrollY > rgHeight && scrollY <= commodity_detail_banner_height) {
-            //此判断用来控制当滑动区域在头部以下、轮播以上时，给radioButton赋值颜色
-            commodity_detail_banner_rg.setBackgroundColor(Color.argb(255, 20, 20, 1));
+            System.out.println("在头部");
+        } else if (scrollY > commodity_detail_banner_height && scrollY <= shop_height) {
+            commodity_detail_banner_rg.setBackgroundColor(Color.argb(255, 12, 12, 12));
             commodity_detail_banner_left_rb.setTextColor(Color.argb(255, 242, 158, 25));
             commodity_detail_banner_center_rb.setTextColor(Color.argb(255, 146, 146, 146));
             commodity_detail_banner_right_rb.setTextColor(Color.argb(255, 146, 146, 146));
-        } else if (scrollY > commodity_detail_banner_height) {
-            //此判断用来控制当滑动区域在评论的开始之处。
-            commodity_detail_banner_rg.setBackgroundColor(Color.argb(255, 20, 20, 1));
+            System.out.println("在商品区");
+        } else if (scrollY > shop_height && scrollY <= detail_bottom_height) {
+            commodity_detail_banner_rg.setBackgroundColor(Color.argb(255, 12, 12, 12));
             commodity_detail_banner_left_rb.setTextColor(Color.argb(255, 146, 146, 146));
             commodity_detail_banner_center_rb.setTextColor(Color.argb(255, 242, 158, 25));
             commodity_detail_banner_right_rb.setTextColor(Color.argb(255, 146, 146, 146));
+            System.out.println("详情区了");
+        } else {
+            commodity_detail_banner_rg.setBackgroundColor(Color.argb(255, 12, 12, 12));
+            commodity_detail_banner_left_rb.setTextColor(Color.argb(255, 146, 146, 146));
+            commodity_detail_banner_center_rb.setTextColor(Color.argb(255, 146, 146, 146));
+            commodity_detail_banner_right_rb.setTextColor(Color.argb(255, 242, 158, 25));
         }
     }
 }
