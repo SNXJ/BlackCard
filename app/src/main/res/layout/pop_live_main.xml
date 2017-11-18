@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base180dp"
+    android:background="@color/bg_white">
+
+    <LinearLayout
+        android:id="@+id/ll_black_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/base8dp"
+        android:background="@drawable/circle_live"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/base22dp"
+            android:layout_height="@dimen/base22dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/live_icon_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/base2dp"
+            android:text="黑微博"
+            android:textColor="@color/live_buttom_text"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_live_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/base8dp"
+        android:background="@drawable/circle_live"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/base22dp"
+            android:layout_height="@dimen/base22dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/live_icon_3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/base2dp"
+            android:text="小视频"
+            android:textColor="@color/live_buttom_text"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_open_live"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/base8dp"
+        android:background="@drawable/circle_live"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/base22dp"
+            android:layout_height="@dimen/base22dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/live_icon_2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/base2dp"
+            android:text="开播吧"
+            android:textColor="@color/live_buttom_text"
+
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ll_black_main"
+        android:layout_width="@dimen/base55dp"
+        android:layout_height="@dimen/base55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/base3dp"
+        android:background="@drawable/circle_live"
+        android:scaleType="centerInside"
+        android:src="@mipmap/live_icon_4" />
+
+
+</RelativeLayout>

@@ -7,7 +7,7 @@ import com.zsh.blackcard.R;
  * Name: LiveActivity
  * Author: SNXJ
  * Date: 2017-11-08
- * Description: 直播LiveActivity：
+ * Description: 直播LiveActivity：(废弃)
  */
 public class LiveActivity extends BaseActivity {
     @Override

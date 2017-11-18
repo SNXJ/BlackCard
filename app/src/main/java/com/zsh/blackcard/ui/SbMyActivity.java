@@ -9,10 +9,11 @@ import android.widget.TextView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.ui.live.AbMyContributionActivity;
+import com.zsh.blackcard.ui.live.AbMyFollowActivity;
+import com.zsh.blackcard.ui.live.AbMySettingActivity;
 import com.zsh.blackcard.ui.live.AbMySignActivity;
 import com.zsh.blackcard.ui.live.AbMyTaskActivity;
 import com.zsh.blackcard.ui.live.LiveRankActivity;
-import com.zsh.blackcard.ui.live.AbMyFollowActivity;
 
 
 /**
@@ -37,6 +38,7 @@ public class SbMyActivity extends BaseActivity implements View.OnClickListener {
     private RelativeLayout rl_sign;
     private RelativeLayout rl_rank;
     private RelativeLayout rl_center;
+    private RelativeLayout ll_sb_setting;
 
 
     private void bindViews() {
@@ -54,6 +56,7 @@ public class SbMyActivity extends BaseActivity implements View.OnClickListener {
         rl_sign = (RelativeLayout) findViewById(R.id.rl_sign);
         rl_rank = (RelativeLayout) findViewById(R.id.rl_rank);
         rl_center = (RelativeLayout) findViewById(R.id.rl_center);
+        ll_sb_setting = (RelativeLayout) findViewById(R.id.ll_sb_setting);
 
         title_back.setOnClickListener(this);
         im_head.setOnClickListener(this);
@@ -68,6 +71,7 @@ public class SbMyActivity extends BaseActivity implements View.OnClickListener {
         rl_sign.setOnClickListener(this);
         rl_rank.setOnClickListener(this);
         rl_center.setOnClickListener(this);
+        ll_sb_setting.setOnClickListener(this);
     }
 
 
@@ -110,7 +114,9 @@ public class SbMyActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.im_head:
                 break;
-
+            case R.id.ll_sb_setting:
+                startActivity(new Intent(SbMyActivity.this, AbMySettingActivity.class));
+                break;
             default:
                 break;
         }

@@ -22,7 +22,7 @@ import com.zsh.blackcard.adapter.HomeJournalAdapter;
 import com.zsh.blackcard.adapter.HomeNewAdapter;
 import com.zsh.blackcard.adapter.HomeSeverAdapter;
 import com.zsh.blackcard.custom.PublicDialog;
-import com.zsh.blackcard.listener.HomeItemClickListener;
+import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.RecyclerViewItemOnClick;
 import com.zsh.blackcard.ui.CarActivity;
 import com.zsh.blackcard.ui.CruiseShipActivity;
@@ -272,7 +272,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), SelectCityActivity.class));
                 break;
             case R.id.go_welcome_login_img:
-              //   ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
+                // ActivityUtils.startActivity(getActivity(), LiveAnchorDetails2.class);
+               // ActivityUtils.startActivity(getActivity(), VideoIngActivity.class);
                 PublicDialog.homeTopPop(getActivity(), go_welcome_login_img, popListenter);
 
                 break;
@@ -280,7 +281,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
 
-    HomeItemClickListener popListenter = new HomeItemClickListener() {
+    ItemClickListener popListenter = new ItemClickListener() {
         @Override
         public void itemClick(int postion) {
             switch (postion) {

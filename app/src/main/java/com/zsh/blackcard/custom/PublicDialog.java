@@ -18,10 +18,13 @@ import android.widget.TextView;
 
 import com.zsh.blackcard.ChangeAddressPopwindow;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.listener.HomeItemClickListener;
+import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.SelectDataListener;
+import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonlyActivity;
-import com.zsh.blackcard.ui.live.LiveAnchorDetails;
+import com.zsh.blackcard.ui.live.LiveAnchorDetails2;
+import com.zsh.blackcard.ui.live.LiveOpenActivity;
+import com.zsh.blackcard.ui.live.VideoDetailsActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
 import com.zsh.blackcard.view.datepickter.DPMode;
 import com.zsh.blackcard.view.datepickter.DatePicker2;
@@ -39,12 +42,51 @@ import java.util.Calendar;
  */
 public class PublicDialog {
 
+    /**
+     * 尚播动画弹窗
+     *
+     * @param mContext
+     */
+    public static void openLiveDialog(final Activity mContext) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.activity_live_main, null);
+        final Dialog dialog = showDialogView(view, mContext);
+        RadialViewLayout radialView = (RadialViewLayout) view.findViewById(R.id.ll_pop);
+        radialView.setOnListener(new ItemClickListener() {
+            @Override
+            public void itemClick(int postion) {
+                switch (postion) {
+                    case 0:
+                        dialog.dismiss();
+                        break;
+                    case 1://开
+                        break;
+                    case 2:
+                        mContext.startActivity(new Intent(mContext, BlackWeiboActivity.class));
+                        break;
+                    case 3:
+                        mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));
+                        break;
+                    case 4:
+                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));
+                        break;
+                }
+            }
+        });
+
+    }
+
+    /**
+     * 日历选择
+     *
+     * @param mContext
+     */
     public static void dataDialog(final Activity mContext) {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.data_dialog, null);
         final Dialog dialog = showDialogView(view, mContext);
         DatePicker2 picker = (DatePicker2) view.findViewById(R.id.my_datepicker2);
-        picker.setDate(2015, 7);
+        picker.setDate(2017, 12);
         picker.setMode(DPMode.SINGLE);
 
     }
@@ -76,7 +118,7 @@ public class PublicDialog {
      * @param im
      * @param listener 点击监听
      */
-    public static void homeTopPop(Context context, ImageView im, HomeItemClickListener listener) {
+    public static void homeTopPop(Context context, ImageView im, ItemClickListener listener) {
         final PopHome popWinShare = new PopHome(context, listener);
         //监听窗口的焦点事件，点击窗口外面则取消显示
         popWinShare.getContentView().setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -127,7 +169,7 @@ public class PublicDialog {
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, LiveAnchorDetails.class);
+                Intent intent = new Intent(mContext, LiveAnchorDetails2.class);
                 mContext.startActivity(intent);
             }
         });

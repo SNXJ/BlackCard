@@ -26,11 +26,12 @@
     <color name="et_hint">#8E8E93</color>
     <color name="bg_org">#F29E19</color>
     <color name="select_hint">#FF454545</color>
+    <color name="select_tab_text">#cccccc</color>
 
     <!--date-->
     <color name="fffd_text">#FFFD5739</color>
     <color name="font_white_one">#FFFFFF</color>
-
+    <color name="data_title">#F7F7F7</color>
     <color name="gray_normal">#666667</color>
 
     <color name="blue">#0383EE</color>
