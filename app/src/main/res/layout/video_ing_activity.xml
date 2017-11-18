@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp">
+
+        <ImageView
+            android:id="@+id/im_close"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/room_icon_1" />
+
+
+        <ImageView
+            android:id="@+id/im_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@mipmap/record_icon_18" />
+
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/base20dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="2dp"
+            android:drawableTop="@drawable/mengyan_select"
+            android:gravity="center"
+            android:text="萌颜"
+            android:textColor="@color/hometext"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="2dp"
+            android:drawableTop="@drawable/music_select"
+            android:gravity="center"
+            android:paddingRight="@dimen/base10dp"
+            android:text="音乐"
+            android:textColor="@color/hometext"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/live_btn"
+            android:layout_width="@dimen/base50dp"
+            android:layout_height="@dimen/base50dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/live_btn"
+            android:button="@null" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="2dp"
+            android:drawableTop="@drawable/meiyan_select"
+            android:gravity="center"
+            android:paddingLeft="@dimen/base10dp"
+            android:text="美颜"
+            android:textColor="@color/hometext"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawablePadding="2dp"
+            android:drawableTop="@drawable/pic_select"
+            android:gravity="center"
+            android:text="图片"
+            android:textColor="@color/hometext"
+            android:textSize="10sp" />
+    </RadioGroup>
+
+</RelativeLayout>

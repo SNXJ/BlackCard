@@ -12,10 +12,10 @@ import android.widget.Toast;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.fragment.sbfragment.NearbyFragment;
 import com.zsh.blackcard.fragment.sbfragment.RdFragment;
 import com.zsh.blackcard.fragment.sbfragment.TypeFragment;
-import com.zsh.blackcard.ui.live.LiveOpenActivity;
 
 /**
  * 尚播Activity
@@ -135,9 +135,9 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
         live_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // UIUtils.showToast("Live");
-                // startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
-                startActivity(new Intent(SbActivity.this, LiveOpenActivity.class));
+                PublicDialog.openLiveDialog(SbActivity.this);
+               //  startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
+               // startActivity(new Intent(SbActivity.this, LiveOpenActivity.class));
             }
         });
     }

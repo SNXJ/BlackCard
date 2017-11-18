@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zsh.blackcard.custom.GaussPager xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@id/id_stickynavlayout_topview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base190dp"
+        android:background="@mipmap/personal_bg">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base100dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="姜小白"
+            android:textColor="@color/bg_white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base70dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="你还没填写个人说明"
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base50dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="粉丝 6.3万 | 粉丝 6.3万"
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/base70dp"
+            android:background="@color/bg_white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:text="直播中"
+                android:textColor="@color/ff00_text"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.zsh.blackcard.custom.ViewPagerIndicator
+        android:id="@id/id_stickynavlayout_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base35dp">
+
+    </com.zsh.blackcard.custom.ViewPagerIndicator>
+    <!--<RelativeLayout-->
+    <!--android:id="@id/id_stickynavlayout_indicator"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/base35dp">-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/live_detail_weibo"-->
+    <!--android:layout_width="@dimen/base46dp"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:background="@drawable/button_underlin"-->
+    <!--android:button="@null"-->
+    <!--android:checked="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="黑微博"-->
+    <!--android:layout_marginLeft="@dimen/base34dp"-->
+    <!--android:textColor="@color/sbtext"-->
+    <!--android:textSize="15sp"/>-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/live_detail_video"-->
+    <!--android:layout_width="@dimen/base46dp"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:background="@drawable/button_underlin"-->
+    <!--android:button="@null"-->
+    <!--android:gravity="center"-->
+    <!--android:text="小视频"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:textColor="@color/sbtext"-->
+    <!--android:textSize="15sp"/>-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/live_detail_data"-->
+    <!--android:layout_width="@dimen/base30dp"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:background="@drawable/button_underlin"-->
+    <!--android:button="@null"-->
+    <!--android:gravity="center"-->
+    <!--android:text="资料"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="40.4dp"-->
+    <!--android:textColor="@color/sbtext"-->
+    <!--android:textSize="15sp"/>-->
+    <!--</RelativeLayout>-->
+
+    <android.support.v4.view.ViewPager
+        android:id="@id/id_stickynavlayout_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+</com.zsh.blackcard.custom.GaussPager>

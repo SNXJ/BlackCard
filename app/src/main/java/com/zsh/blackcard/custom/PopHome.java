@@ -8,7 +8,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.listener.HomeItemClickListener;
+import com.zsh.blackcard.listener.ItemClickListener;
 
 /**
  * Name: PopHome
@@ -20,7 +20,7 @@ public class PopHome extends PopupWindow {
     private View mainView;
     private RelativeLayout rl_sao, rl_msg, rl_sys_msg, rl_vip;
 
-    public PopHome(Context paramActivity, final HomeItemClickListener listener) {
+    public PopHome(Context paramActivity, final ItemClickListener listener) {
         super(paramActivity);
         //窗口布局
         mainView = LayoutInflater.from(paramActivity).inflate(R.layout.home_pop, null);

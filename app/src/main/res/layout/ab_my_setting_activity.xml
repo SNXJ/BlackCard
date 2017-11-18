@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="设置" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="礼物特效"
+            android:textSize="14sp" />
+
+        <com.kyleduo.switchbutton.SwitchButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            app:kswAnimationDuration="300"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswThumbHeight="19.5dp"
+            app:kswThumbWidth="19.5dp" />
+
+        <View style="@style/line" />
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="开播提醒"
+            android:textSize="14sp" />
+
+        <com.kyleduo.switchbutton.SwitchButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:checked="true"
+            app:kswAnimationDuration="300"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswThumbHeight="19.5dp"
+            app:kswThumbWidth="19.5dp" />
+
+        <View style="@style/line" />
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="非wifi环境下观看直播提醒"
+            android:textSize="14sp" />
+
+        <com.kyleduo.switchbutton.SwitchButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            app:kswAnimationDuration="300"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswThumbHeight="19.5dp"
+            app:kswThumbWidth="19.5dp" />
+
+        <View style="@style/line" />
+
+    </RelativeLayout>
+</LinearLayout>

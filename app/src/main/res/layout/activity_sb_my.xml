@@ -8,24 +8,6 @@
     <RelativeLayout style="@style/title_rl">
 
         <ImageView
-            android:id="@+id/blackwb_back"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
-            android:src="@mipmap/back" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="我的"
-            android:textColor="#929292"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-
-        <ImageView
             android:id="@+id/title_back"
             style="@style/title_im_back" />
 
@@ -301,6 +283,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/ll_sb_setting"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base43dp">
 
