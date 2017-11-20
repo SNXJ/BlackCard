@@ -4,10 +4,10 @@ import android.view.View;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.manager.DataManager;
 import com.zsh.blackcard.model.LoginModel;
-import com.zsh.blackcard.untils.Md5Untils;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -37,9 +37,9 @@ public class LoginActivity extends BaseActivity {
             //登录
             case R.id.login_btn:
                 // new DataManager(this).MyTest();
-
                 Map<String, String> map = new TreeMap<>();
-                map.put("FKEY", Md5Untils.md5("REGISTER20171120,fh,"));
+                // map.put("FKEY", DataManager.getMd5Str("COMMEND"));
+                map.put("FKEY", DataManager.getMd5Str("REGISTER"));
                 map.put("CARDNO", "0000000000");
                 map.put("PHONE", "13888888888888");
                 map.put("REALNAME", "XXXXXXXXXXX");
@@ -48,7 +48,7 @@ public class LoginActivity extends BaseActivity {
                 map.put("CUSTOM", "XXXXXXXXXXXXX");
                 map.put("CUSTOMCONTENT", "XXXXXXXXXXXXXX");
 
-                DataManager.getInstance(this).RequestHttp(DataManager.getSearchBook(map), new ResultListener<LoginModel>() {
+                DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSearchBook(map), new ResultListener<LoginModel>() {
                     @Override
                     public void responSuccess(LoginModel obj) {
                         System.out.println("++++++++++222222222222++++++++++++" + obj.getResult());

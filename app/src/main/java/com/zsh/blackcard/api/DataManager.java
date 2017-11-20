@@ -1,16 +1,16 @@
-package com.zsh.blackcard.manager;
+package com.zsh.blackcard.api;
 
 import android.content.Context;
 
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.LoginModel;
-import com.zsh.blackcard.service.RetrofitService;
 import com.zsh.blackcard.untils.LogUtils;
-import com.zsh.blackcard.untils.RetrofitUtils;
+import com.zsh.blackcard.untils.Md5Untils;
 import com.zsh.blackcard.untils.UIUtils;
 
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import rx.Observable;
 import rx.Observer;
@@ -19,19 +19,18 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * Created by kkkkk on 2017/11/20.
- * 所有的网络请求都写在此处，调用
+ * 网络请求
  */
 
 public class DataManager {
+    //http://192.168.1.108:8080/MVNFHM/apphomein/getrecommendlist?COMMEND
     public static String BASE_URL = "http://192.168.1.108:8080/MVNFHM/";
-    private static RetrofitService retrofitService;
+    public static String FH = ",fh,";
     private static Context context;
     private static DataManager instance;
     private CompositeSubscription compositeSubscription = new CompositeSubscription();
 
     public static DataManager getInstance(Context context) {
-        retrofitService = RetrofitUtils.getInstance(context).getService();
         if (instance == null) {
             instance = new DataManager(context);
         }
@@ -42,11 +41,11 @@ public class DataManager {
         this.context = mContext;
     }
 
-    //例如。getSearchBook是在RetrofitService接口中声明的接口类型，参数类型。
-    //1.先在RetrofitService中声明接口方法。
-    //2.在本类写出该方法。在外部调用
-    public static Observable<LoginModel> getSearchBook(final Map<String, String> map) {
-        return retrofitService.getSearchBook(map);
+
+    public static String getMd5Str(String fn) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
+        // sdf.format(new Date());
+        return Md5Untils.md5(fn + sdf.format(new Date()) + FH);
     }
 
     /**
@@ -68,17 +67,14 @@ public class DataManager {
                             LogUtils.i("++++++", "++++++++++onCompleted++++++++++++");
                         }
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         LogUtils.i("++++++", "++++++++++e++++++++++++" + e.toString());
                         UIUtils.showToast(context.getResources().getString(R.string.generic_server_down));
-
                     }
-
                     @Override
                     public void onNext(T t) {
-                        if (null != listener) {
+                        if (null != listener && null != t) {
                             listener.responSuccess(t);
                         }
                     }
