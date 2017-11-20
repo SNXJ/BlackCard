@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/tv_exchange_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/base110dp"
+            android:gravity="center"
+            android:text="10月10日周二"
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/base17dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base105dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base50dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/text_"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/base4dp"
+                android:text="北京"
+                android:textSize="17sp" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_centerHorizontal="true"
+                android:text="20:30"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base50dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/text_"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/base4dp"
+                android:text="上海"
+                android:textSize="17sp" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_centerHorizontal="true"
+                android:text="22:30"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/base100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/text_"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/base4dp"
+                android:text="G330"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:layout_width="@dimen/base100dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ticket_long" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/base4dp"
+                android:text="4小时39分钟"
+                android:textSize="10sp" />
+
+
+        </LinearLayout>
+
+        <View style="@style/line" />
+    </RelativeLayout>
+    <!--火车票Item-->
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base70dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="二等座"
+            android:textSize="15sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="¥999"
+            android:textSize="17sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base44dp"
+            android:text="仅剩10张"
+            android:textSize="11sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_width="@dimen/base10dp"
+            android:layout_height="@dimen/base10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base66dp"
+            android:layout_marginTop="@dimen/base47dp"
+            android:background="@color/bg_org"
+            android:gravity="center"
+            android:text="订"
+            android:textColor="@color/main_black"
+            android:textSize="8sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base44dp"
+            android:text="会员减99"
+            android:textSize="11sp" />
+
+        <View style="@style/line" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base70dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="二等座"
+            android:textSize="15sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="¥999"
+            android:textSize="17sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base44dp"
+            android:text="仅剩10张"
+            android:textSize="11sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_width="@dimen/base10dp"
+            android:layout_height="@dimen/base10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base66dp"
+            android:layout_marginTop="@dimen/base47dp"
+            android:background="@color/bg_org"
+            android:gravity="center"
+            android:text="订"
+            android:textColor="@color/main_black"
+            android:textSize="8sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base44dp"
+            android:text="会员减99"
+            android:textSize="11sp" />
+
+        <View style="@style/line" />
+    </RelativeLayout>
+
+
+</LinearLayout>

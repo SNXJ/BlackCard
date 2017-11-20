@@ -41,8 +41,6 @@
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.TakeAddressActivity" />
         <activity android:name=".ui.TakeAdressDetailsActivity" />
-        <activity android:name=".ui.zgactivity.ZgMyActivity" />
-        <activity android:name=".ui.zgactivity.ZgMyIndentActivity" />
         <activity android:name=".ui.SbActivity" />
         <activity android:name=".ui.SbMyActivity" />
         <activity android:name=".ui.OrderDetailsActivity" />
@@ -64,7 +62,7 @@
         <activity android:name=".ui.PlaneActivity" />
         <activity android:name=".ui.CarActivity" />
         <activity android:name=".ui.EquestrianActivity" />
-        <activity android:name=".ui.BlackcoffeecurrencyActivity" />
+        <activity android:name=".ui.BlackCurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
         <activity android:name=".ui.home.HomeHotelActivity"></activity>
@@ -89,6 +87,46 @@
         <activity android:name=".ui.MySettingActivity"></activity>
         <activity android:name=".ui.HuoDongActivity"></activity>
         <activity android:name=".ui.OrderCenterActivity"></activity>
+
+        <activity android:name=".ui.CircleCenterActivity"></activity>
+        <activity android:name=".ui.HouseCenterActivity"></activity>
+        <activity android:name=".ui.WalletCashActivity"></activity>
+        <activity android:name=".ui.CusCenterChatActivity"></activity>
+        <activity android:name=".ui.MyPowerActivity"></activity>
+        <activity android:name=".ui.ExChangeActivity"></activity>
+        <activity android:name=".ui.EatDrinkDetailActivity"></activity>
+
+        <activity android:name=".ui.zgactivity.GoodsCategoryActivity"></activity>
+        <activity android:name=".ui.zgactivity.DiscoverActivity"></activity>
+        <activity android:name=".ui.zgactivity.PersonalActivity"></activity>
+        <activity android:name=".ui.live.AbMyFollowActivity"></activity>
+        <activity android:name=".ui.live.AbMyContributionActivity"></activity>
+        <activity android:name=".ui.live.AbMyTaskActivity"></activity>
+        <activity android:name=".ui.live.AbMySignActivity"></activity>
+        <activity android:name=".ui.WelcomeActivity"></activity>
+        <activity android:name=".ui.RegisterActivity"></activity>
+        <activity android:name=".ui.home.HomeMoreActivity"></activity>
+        <activity android:name=".ui.home.CommentActivity"></activity>
+        <activity android:name=".ui.home.CommentEditActivity"></activity>
+        <activity android:name=".ui.home.HomeKTVActivity"></activity>
+        <activity android:name=".ui.MsgCenterActivity"></activity>
+        <activity android:name=".ui.MsgSysCenterActivity"></activity>
+        <activity android:name=".ui.MsgSysDetailsActivity"></activity>
+        <activity android:name=".ui.MsgCenterDetailsActivity"></activity>
+        <activity android:name=".ui.TicketSearchActivity"></activity>
+        <activity android:name=".ui.TicketSeatActivity"></activity>
+        <activity android:name=".ui.TicketAddActivity"></activity>
+
+        <activity android:name=".ui.CommodityDetailBannerActivity"></activity>
+        <activity android:name=".ui.live.LiveOpenActivity"></activity>
+
+        <activity android:name=".ui.MyOrderActivity"></activity>
+        <activity android:name=".ui.CollectionActivity"></activity>
+
+        <activity android:name=".ui.live.LiveAnchorDetails2"></activity>
+        <activity android:name=".ui.live.VideoDetailsActivity"></activity>
+        <activity android:name=".ui.live.VideoIngActivity"></activity>
+        <activity android:name=".ui.live.AbMySettingActivity"></activity>
     </application>
 
 </manifest>

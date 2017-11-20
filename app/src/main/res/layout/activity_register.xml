@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/register_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/register_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base43dp"
+            android:layout_alignParentTop="true"
+            android:background="#0C0C0C">
+
+            <ImageView
+                android:id="@+id/blackwb_back"
+                android:layout_width="@dimen/base11dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base16dp"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="尊尚汇黑卡在线办理"
+                android:textColor="#FFFFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <me.crosswall.lib.coverflow.core.PagerContainer
+            android:id="@+id/pager_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base220dp">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/register_viewPager"
+                android:layout_width="@dimen/base300dp"
+                android:layout_height="@dimen/base200dp"
+                android:layout_gravity="center">
+
+            </android.support.v4.view.ViewPager>
+
+        </me.crosswall.lib.coverflow.core.PagerContainer>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/select_two_img"
+                android:layout_width="@dimen/base14dp"
+                android:layout_height="@dimen/base3dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/et_hint" />
+
+            <ImageView
+                android:id="@+id/select_one_img"
+                android:layout_width="@dimen/base14dp"
+                android:layout_height="@dimen/base3dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="@dimen/base6dp"
+                android:layout_toLeftOf="@+id/select_two_img"
+                android:background="@color/bg_white" />
+
+            <ImageView
+                android:id="@+id/select_three_img"
+                android:layout_width="@dimen/base14dp"
+                android:layout_height="@dimen/base3dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/base6dp"
+                android:layout_toRightOf="@+id/select_two_img"
+                android:background="@color/et_hint" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/register_recycler_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base15dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/registr_recycler_card_last"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#141414"
+            android:visibility="gone">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base15dp"
+            android:paddingLeft="@dimen/base27dp">
+
+            <TextView
+                android:id="@+id/register_bzsy_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="本周剩余名额"
+                android:textColor="#FF929292"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base10dp"
+                android:layout_toRightOf="@+id/register_bzsy_tv"
+                android:text="2%  （共50张）"
+                android:textColor="#FFF29E19"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base10dp"
+            android:layout_marginLeft="@dimen/base27dp"
+            android:layout_marginRight="@dimen/base27dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:max="50"
+            android:progress="40"
+            android:progressDrawable="@drawable/register_progress_style" />
+
+        <RelativeLayout
+            android:id="@+id/register_address_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base13dp"
+            android:background="#FF141414"
+            android:paddingBottom="@dimen/base5dp"
+            android:paddingLeft="@dimen/base10dp"
+            android:paddingRight="@dimen/base10dp"
+            android:paddingTop="@dimen/base5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收货地址"
+                android:textColor="#FF929292"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/register_address_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/register_up" />
+
+            <TextView
+                android:id="@+id/register_address_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/register_address_img"
+                android:text="未选"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base5dp"
+                android:layout_toLeftOf="@+id/register_address_tv"
+                android:text="*"
+                android:textColor="#FFF29E19"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/register_address_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="姓名"
+                android:textColorHint="#FF454545"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base1dp"
+                android:layout_marginTop="@dimen/base8dp"
+                android:background="@color/divider" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base15dp"
+                android:background="@null"
+                android:hint="手机号码"
+                android:textColorHint="#FF454545"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/divider" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:hint="重复手机号码"
+                android:textColorHint="#FF454545"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/divider" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:hint="省市区"
+                android:textColorHint="#FF454545"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/divider" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:hint="详细地址"
+                android:textColorHint="#FF454545"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/divider" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/register_number_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="13dp"
+            android:background="#FF141414"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择卡号"
+                android:textColor="#FF929292"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/register_number_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/register_up" />
+
+            <TextView
+                android:id="@+id/register_number_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/register_number_img"
+                android:text="随机"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/register_number_tv"
+                android:text="*"
+                android:textColor="#FFF29E19"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/register_number_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:layout_width="@dimen/base200dp"
+                android:layout_height="@dimen/base30dp"
+                android:layout_marginTop="@dimen/base5dp"
+                android:background="@drawable/shape_register_number_rg"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/register_number_left_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/register_select_number_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="随机"
+                    android:textColor="@drawable/register_select_rb_text_color"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/register_number_right_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/register_select_number_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="选号"
+                    android:textColor="@drawable/register_select_rb_text_color"
+                    android:textSize="14sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/register_number_tip_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="提示：若您选择随机分配，我们将在当前已开放号段内帮您分配卡号，并按照付款先后顺序发放。"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/register_number_manual_relative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <RelativeLayout
+                    android:id="@+id/register_number_search"
+                    android:layout_width="200dp"
+                    android:layout_height="32dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/register_number_search_bg">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="9dp"
+                        android:background="@null"
+                        android:hint="搜索您喜欢的号码，如8888"
+                        android:textColorHint="#FF585858"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/register_search_img_bg"
+                        android:scaleType="center"
+                        android:src="@mipmap/register_search" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/register_manual_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/register_number_search"
+                    android:layout_marginTop="13dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:id="@+id/register_number_zixuan_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="自选号码"
+                        android:textColor="#FF929292"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/register_number_zixuan_tv"
+                        android:text="自选仅需+20元选号费"
+                        android:textColor="#FF929292"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/register_number_search_bg"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="换一批"
+                        android:textColor="#FF929292"
+                        android:textSize="11sp" />
+
+                </RelativeLayout>
+                <!--自选号码列表-->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/register_number_manual_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_below="@+id/register_manual_relative"
+                    android:layout_marginTop="8dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:id="@+id/register_vip_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/register_number_manual_recycler"
+                    android:layout_marginTop="8dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="贵宾号码"
+                        android:textColor="#FF929292"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/register_number_search_bg"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="换一批"
+                        android:textColor="#FF929292"
+                        android:textSize="11sp" />
+
+                </RelativeLayout>
+
+                <!--贵宾号码列表-->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/register_number_vip_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_below="@+id/register_vip_relative"
+                    android:layout_marginTop="8dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:id="@+id/register_diamond_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/register_number_vip_recycler"
+                    android:layout_marginTop="8dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="金钻号码"
+                        android:textColor="#FF929292"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/register_number_search_bg"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="换一批"
+                        android:textColor="#FF929292"
+                        android:textSize="11sp" />
+
+                </RelativeLayout>
+                <!--金钻号码列表-->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/register_number_diamond_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_below="@+id/register_diamond_relative"
+                    android:layout_marginTop="8dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:id="@+id/register_glory_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/register_number_diamond_recycler"
+                    android:layout_marginTop="8dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="荣耀号码"
+                        android:textColor="#FF929292"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/register_number_search_bg"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="换一批"
+                        android:textColor="#FF929292"
+                        android:textSize="11sp" />
+
+                </RelativeLayout>
+                <!--荣耀号码列表-->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/register_number_glory_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_below="@+id/register_glory_relative"
+                    android:layout_marginTop="8dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:id="@+id/register_super_relative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/register_number_glory_recycler"
+                    android:layout_marginTop="8dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="超级黑卡靓号"
+                        android:textColor="#FF929292"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/register_number_search_bg"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="换一批"
+                        android:textColor="#FF929292"
+                        android:textSize="11sp" />
+
+                </RelativeLayout>
+
+                <RadioGroup
+                    android:id="@+id/register_super_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/register_super_relative"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/register_super_one_rb"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_left"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="300元"
+                        android:textColor="@drawable/register_select_rb_text_color"
+                        android:textSize="11sp" />
+
+                    <RadioButton
+                        android:id="@+id/register_super_two_rb"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_center"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="600元"
+                        android:textColor="@drawable/register_select_rb_text_color"
+                        android:textSize="11sp" />
+
+                    <RadioButton
+                        android:id="@+id/register_super_three_rb"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_center"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="1000元"
+                        android:textColor="@drawable/register_select_rb_text_color"
+                        android:textSize="11sp" />
+
+                    <RadioButton
+                        android:id="@+id/register_super_four_rb"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_center"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="5000元"
+                        android:textColor="@drawable/register_select_rb_text_color"
+                        android:textSize="11sp" />
+
+                    <RadioButton
+                        android:id="@+id/register_super_five_rb"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_right"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="10000元"
+                        android:textColor="@drawable/register_select_rb_text_color"
+                        android:textSize="11sp" />
+
+                </RadioGroup>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/register_super_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/base180dp"
+                    android:layout_below="@+id/register_super_rg"
+                    android:layout_marginTop="@dimen/base10dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/register_customer_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="13dp"
+            android:background="#FF141414"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="功能定制"
+                android:textColor="#FF929292"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/register_customer_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/register_up" />
+
+            <TextView
+                android:id="@+id/register_customer_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/register_customer_img"
+                android:text="定制"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/register_customer_tv"
+                android:text="*"
+                android:textColor="#FFF29E19"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/register_customer_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:layout_width="@dimen/base300dp"
+                android:layout_height="@dimen/base30dp"
+                android:layout_marginTop="@dimen/base5dp"
+                android:background="@drawable/shape_register_number_rg"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/register_customer_left_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/register_select_number_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="定制(200元)"
+                    android:textColor="@drawable/register_select_rb_text_color"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/register_customer_center_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/register_select_number_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="定制(800元)"
+                    android:textColor="@drawable/register_select_rb_text_color"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/register_customer_right_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/register_select_number_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="放弃定制"
+                    android:textColor="@drawable/register_select_rb_text_color"
+                    android:textSize="14sp" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/register_customer_left_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base13dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="@dimen/base200dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/base30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_center_false"
+                        android:gravity="center"
+                        android:hint="姓"
+                        android:textColor="@color/recharge_text"
+                        android:textColorHint="@color/recharge_text"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/base30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_center_false"
+                        android:gravity="center"
+                        android:hint="名"
+                        android:textColor="@color/recharge_text"
+                        android:textColorHint="@color/recharge_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/base13dp"
+                    android:gravity="center"
+                    android:text="图示：请输入您要定制的姓名的拼音大写，如（成龙）"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/base200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/base13dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/base30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_center_false"
+                        android:gravity="center"
+                        android:hint="CHENG"
+                        android:textColor="@color/recharge_text"
+                        android:textColorHint="@color/recharge_text"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/base30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_register_super_center_false"
+                        android:gravity="center"
+                        android:hint="LONG"
+                        android:textColor="@color/recharge_text"
+                        android:textColorHint="@color/recharge_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="@dimen/base200dp"
+                    android:layout_height="@dimen/base30dp"
+                    android:layout_marginTop="@dimen/base13dp"
+                    android:background="@drawable/shape_register_super_center_false"
+                    android:gravity="center"
+                    android:hint="请您输入自己的个性签名"
+                    android:textColor="@color/recharge_text"
+                    android:textColorHint="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/base330dp"
+                    android:layout_height="@dimen/base160dp"
+                    android:layout_marginTop="@dimen/base13dp"
+                    android:background="#FF0B0B0B"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/base13dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/base167dp"
+                        android:layout_height="@dimen/base107dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/signup_image_1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/base8dp"
+                        android:gravity="center"
+                        android:text="85%的用户选择为自己定制一张专属的环球黑卡"
+                        android:textColor="@color/recharge_text"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/register_customer_center_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base13dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/base268dp"
+                    android:layout_height="@dimen/base139dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/signup_image_3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/base8dp"
+                    android:gravity="center"
+                    android:text="全球能力磁石GPS定位战术项链"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="11sp" />
+
+                <RadioGroup
+                    android:layout_width="@dimen/base120dp"
+                    android:layout_height="@dimen/base35dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableLeft="@drawable/shape_register_customer_sex"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/base10dp"
+                        android:text="男"
+                        android:textColor="@color/recharge_text"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:drawableLeft="@drawable/shape_register_customer_sex"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/base10dp"
+                        android:text="女"
+                        android:textColor="@color/recharge_text"
+                        android:textSize="14sp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/register_customer_right_tv"
+                android:visibility="gone"
+                android:layout_marginTop="13dp"
+                android:gravity="center"
+                android:layout_width="275dp"
+                android:layout_height="wrap_content"
+                android:text="提示：标准卡发货时间约为付款后3-5个工作日
+63%的用户，选择为自己定制一张专属的尊尚黑卡"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/register_pay_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="13dp"
+            android:background="#FF141414"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付方式"
+                android:textColor="#FF929292"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/register_pay_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/register_up" />
+
+            <TextView
+                android:id="@+id/register_pay_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/register_pay_img"
+                android:text="微信"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/register_pay_tv"
+                android:text="*"
+                android:textColor="#FFF29E19"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:id="@+id/register_pay_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:layout_width="@dimen/base200dp"
+                android:layout_height="@dimen/base30dp"
+                android:layout_marginTop="@dimen/base18dp"
+                android:background="@drawable/shape_register_number_rg"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:paddingLeft="@dimen/base20dp"
+                    android:id="@+id/register_pay_left_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/wechat"
+                    android:background="@drawable/register_select_number_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="微信"
+                    android:textColor="@drawable/register_select_rb_text_color"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:paddingLeft="@dimen/base15dp"
+                    android:drawableLeft="@mipmap/alipay"
+                    android:id="@+id/register_pay_right_rb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/register_select_number_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="支付宝"
+                    android:textColor="@drawable/register_select_rb_text_color"
+                    android:textSize="15sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base40dp"
+                android:gravity="center"
+                android:text="我已经阅读并同意相关《服务与隐私条款》所有内容"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_marginTop="@dimen/base13dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base49dp">
+            
+            <LinearLayout
+                android:padding="@dimen/base4dp"
+                android:background="#FF0B0B0B"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="@dimen/base265dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="至尊会籍卡"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="总计：￥199（终身免年费）"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:background="#FF141414"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="提交信息"
+                android:textColor="@color/recharge_text"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

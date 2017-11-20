@@ -2,57 +2,44 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
-import com.zsh.blackcard.volley.NetUntil;
-import com.zsh.blackcard.volley.ResponseListener;
+import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.untils.RetrofitUtils;
 
 import java.util.Map;
+
+import rx.Observable;
+
 /**
  * @Author snxj .
  * @Date 2017/11/6
  * @Describe *
  */
 public class NetApi {
-    /**
-     * 测试
-     */
-//	public static final String SERVER_URL = "https://www.zyskcn.com/qdw/";
-    /**
-     * 发版
-     */
-    public static final String SERVER_URL = "https://app.qiandaowei.com/qdw/";
+    private static RetrofitService retrofitService;
+    private static NetApi instance;
 
-    /**
-     * HTTPS POST
-     *
-     * @param <T>
-     * @param mContext
-     * @param url
-     * @param paramsMap
-     * @param clz              MODEL
-     * @param responseListener
-     */
-    public static <T> void doPost(Context mContext, String url,
-                                  Map<String, String> paramsMap, final Class<T> clz,
-                                  final ResponseListener<T> responseListener) {
-        NetUntil.newInstance(mContext).doPostHttps(SERVER_URL + url, paramsMap, clz, responseListener);
+    public static NetApi getInstance(Context context) {
+        retrofitService = RetrofitUtils.getInstance(context).getService();
+        if (instance == null) {
+            instance = new NetApi();
+        }
+        return instance;
     }
 
     /**
-     * HTTPS GET
-     *
-     * @param <T>
-     * @param mContext
-     * @param url
-     * @param paramsMap
-     * @param clz              MODEL
-     * @param responseListener
+     * @param map
+     * @return
      */
-    @SuppressWarnings("unused")
-    private static <T> void doGet(Context mContext, String url,
-                                  Map<String, String> paramsMap, final Class<T> clz,
-                                  final ResponseListener<T> responseListener) {
-        NetUntil.newInstance(mContext).doGetHttps(SERVER_URL + url, paramsMap,
-                clz, responseListener);
+    public static Observable<LoginModel> getSearchBook(final Map<String, String> map) {
+        return retrofitService.getSearchBook(map);
     }
+    /**
+     * @param map
+     * @return
+     */
+    public static Observable<LoginModel> getBook(final Map<String, String> map) {
+        return retrofitService.getHomePage(map);
+    }
+
 
 }

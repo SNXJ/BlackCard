@@ -1,10 +1,11 @@
 package com.zsh.blackcard.untils;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.zsh.blackcard.R;
 
 /**
  * Name: StatusBarColorUntil
@@ -20,7 +21,7 @@ public class StatusBarColorUntil {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //5.0 以上直接设置状态栏颜色
             LogUtils.i("______5.0_________", "SDK+" + Build.VERSION.SDK_INT);
-            activity.getWindow().setStatusBarColor(Color.BLACK);
+            activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.main_black));
         } else {
             LogUtils.i("_______________", "SDK+" + Build.VERSION.SDK_INT);
             //根布局添加占位状态栏
@@ -28,7 +29,8 @@ public class StatusBarColorUntil {
             View statusBarView = new View(activity);
             ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     getStatusBarHeight(activity));
-            statusBarView.setBackgroundColor(Color.BLACK);
+           // statusBarView.setBackgroundColor(Color.BLACK);
+            statusBarView.setBackgroundColor(activity.getResources().getColor(R.color.main_black));
             decorView.addView(statusBarView, lp);
         }
     }

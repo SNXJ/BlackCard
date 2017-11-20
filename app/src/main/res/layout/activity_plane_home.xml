@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_black"
+    android:background="@mipmap/bj"
     android:orientation="vertical">
 
     <LinearLayout
@@ -114,7 +114,7 @@
                 android:layout_marginLeft="@dimen/base22dp"
                 android:layout_toRightOf="@+id/tv_xibie"
                 android:gravity="center"
-                android:text="2017-11-9"
+                android:text="商务座"
                 android:textColor="@color/title_text"
                 android:textSize="@dimen/base17dp" />
 
@@ -161,13 +161,8 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/bg_button"
-        android:gravity="center"
-        android:text="开始搜索"
-        android:textColor="@color/title_text"
-        android:textSize="@dimen/base17dp" />
+        android:id="@+id/btn_search"
+        style="@style/btn_buttom"
+        android:text="开始搜索" />
 </RelativeLayout>
 

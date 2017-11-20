@@ -1,472 +1,287 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/bj">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#101010"
         android:orientation="vertical">
 
-        <LinearLayout
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:background="#0C0C0C"
-            android:orientation="horizontal">
+            android:background="@color/main_black"
+            android:gravity="center"
+            android:text="我的"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13.5dp"
-                android:gravity="center"
-                android:text="我的"
-                android:textColor="#929292"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="94.5dp"
-            android:orientation="vertical">
+        <ImageView
+            android:layout_width="@dimen/base50dp"
+            android:layout_height="@dimen/base50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/my_headimg" />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/my_headimg" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10.5dp"
-                android:text="刘志坚"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-        </LinearLayout>
+        <TextView
+            style="@style/my_number_tv"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="刘志坚"
+            android:textSize="14sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/base70dp">
 
-            <TextView
-                android:id="@+id/my_friend_tv"
-                android:layout_width="28.5dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="53dp"
-                android:layout_marginTop="15dp"
-                android:text="好友"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+            <LinearLayout
+                android:id="@+id/my_friend_linear"
+                style="@style/my_number_linear"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base43dp">
 
-            <TextView
-                android:id="@+id/my_blackmoney_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:text="黑咖币"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                <TextView
+                    style="@style/my_number_tv"
+                    android:text="好友"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                <TextView
+                    style="@style/my_number_tv"
+                    android:text="99"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/my_black_linear"
+                style="@style/my_number_linear"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    style="@style/my_number_tv"
+                    android:text="黑咖币"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/my_number_tv"
+                    android:text="99"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/my_power_linear"
+                style="@style/my_number_linear"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="45.5dp"
-                android:layout_marginTop="15dp"
-                android:text="能量值"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base43dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="56dp"
-                android:layout_marginTop="38.5dp"
-                android:text="99"
-                android:textColor="#929292"
-                android:textSize="18sp" />
+                <TextView
+                    style="@style/my_number_tv"
+                    android:text="能量值"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="38.5dp"
-                android:text="99"
-                android:textColor="#929292"
-                android:textSize="18sp" />
+                <TextView
+                    style="@style/my_number_tv"
+                    android:text="99"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="55.5dp"
-                android:layout_marginTop="38.5dp"
-                android:text="99"
-                android:textColor="#929292"
-                android:textSize="18sp" />
+            </LinearLayout>
+
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:id="@+id/my_vip_center_relative"
+            style="@style/my_center_relative">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_1" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="会员中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/my_vip_center_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="会员中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_house_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_2" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="管家中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="管家中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_circle_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_3" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="圈子中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="圈子中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_huodong_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_4" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="活动中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/my_huodong_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="活动中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_shop_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_5" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="购物中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="购物中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_customer_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_6" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="客服中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/my_cus_center_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="客服中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_wallet_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_7" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="钱包中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/my_wallet_center_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="钱包中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_game_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_8" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="游戏中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/my_game_center_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="游戏中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
-                android:src="@mipmap/mine_icon_8" />
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_order_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
+                android:src="@mipmap/mine_icon_10" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="订单中心"
-                android:textColor="#929292"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/my_order_center_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal">
+                style="@style/my_center_tip_tv"
+                android:text="订单中心" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="21dp"
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_setting_center_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
                 android:src="@mipmap/mine_icon_9" />
 
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="14.5dp"
-                android:text="设置"
-                android:textColor="#929292"
-                android:textSize="15sp" />
+                style="@style/my_center_tip_tv"
+                android:text="设置" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+            <ImageView
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
 
-                <ImageView
-                    android:id="@+id/my_setting_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="18.75dp"
-                    android:src="@mipmap/more" />
-            </RelativeLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>

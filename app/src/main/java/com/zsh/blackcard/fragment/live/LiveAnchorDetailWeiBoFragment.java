@@ -14,14 +14,29 @@ import com.zsh.blackcard.R;
  * Description:  主播微博：
  */
 public class LiveAnchorDetailWeiBoFragment extends BaseFragment {
+    public static final String TITLE = "title";
+    private String mTitle = "";
     @Override
     public void initDate(Bundle savedInstanceState) {
-
+        if (getArguments() != null) {
+            mTitle = getArguments().getString(TITLE);
+        }
     }
+
+
+
 
     @Override
     public View initView(LayoutInflater inflater) {
         View view = View.inflate(getActivity(), R.layout.live_anchor_weibo_fragment, null);
         return view;
+    }
+
+    public static LiveAnchorDetailWeiBoFragment newInstance(String title) {
+        LiveAnchorDetailWeiBoFragment fragment = new LiveAnchorDetailWeiBoFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(TITLE, title);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 }

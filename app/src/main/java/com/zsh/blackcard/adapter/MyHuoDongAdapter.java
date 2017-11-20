@@ -23,13 +23,13 @@ public class MyHuoDongAdapter extends RecyclerView.Adapter<MyHuoDongAdapter.MyVi
     }
 
     @Override
-    public MyHuoDongAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.my_huodong_recycler_item,parent,false));
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MyHuoDongAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
 
     }
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="发现" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base35dp">
+
+        <RadioButton
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="精选"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+        <RadioButton
+
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/base90dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:gravity="center"
+            android:text="数码"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+        <RadioButton
+
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:gravity="center"
+            android:text="亲子"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+        <RadioButton
+
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base104dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:gravity="center"
+            android:text="时尚"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+        <RadioButton
+
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base40dp"
+            android:background="@drawable/button_underlin"
+            android:button="@null"
+            android:gravity="center"
+            android:text="美食"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</LinearLayout>

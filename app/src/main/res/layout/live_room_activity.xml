@@ -132,7 +132,7 @@
             android:layout_height="@dimen/base35dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/base48dp"
+            android:layout_marginRight="@dimen/base55dp"
             android:src="@mipmap/room_icon_4" />
 
         <ImageView

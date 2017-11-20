@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bj">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,215 +10,220 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:background="@color/main_black"
             android:layout_width="match_parent"
             android:layout_height="44dp">
+
             <RadioButton
-                android:layout_marginLeft="15dp"
-                android:button="@null"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="三亚"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:button="@null"
                 android:drawablePadding="4dp"
                 android:drawableRight="@mipmap/home_nav_more"
-                android:layout_centerVertical="true"
-                android:textSize="14sp"
                 android:gravity="center"
-                android:textColor="#929292" />
+                android:text="三亚"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
             <LinearLayout
                 android:layout_width="230dp"
                 android:layout_height="28dp"
-                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:orientation="horizontal"
+                android:layout_centerVertical="true"
                 android:background="@drawable/buttonshape"
-                >
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_marginLeft="16dp"
                     android:id="@+id/iv_search_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@mipmap/home_nav_search"
-                    />
+                    android:layout_marginLeft="16dp"
+                    android:src="@mipmap/home_nav_search" />
 
                 <EditText
                     android:id="@+id/et_search"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="7.65dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:singleLine="true"
-                    android:layout_marginLeft="7.65dp"
                     android:hint="搜索"
-                    android:textSize="14sp"
+                    android:singleLine="true"
                     android:textColorHint="#8E8E93"
-                    />
+                    android:textSize="14sp" />
             </LinearLayout>
         </RelativeLayout>
+
         <LinearLayout
             android:id="@+id/hj_eat_drink"
             android:layout_width="match_parent"
-            android:layout_height="165dp"
+            android:layout_height="wrap_content"
             android:background="@mipmap/toghter_image_1"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="65dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="吃喝玩乐"
-                android:textSize="15sp"
                 android:layout_gravity="center"
+                android:layout_marginTop="65dp"
                 android:gravity="center"
-                android:textColor="#ffffff"/>
+                android:text="吃喝玩乐"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Entertainment"
-                android:textSize="15sp"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:background="@mipmap/toghter_image_2"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="65dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="高端品鉴"
-                android:textSize="15sp"
                 android:layout_gravity="center"
+                android:layout_marginTop="65dp"
                 android:gravity="center"
-                android:textColor="#ffffff"/>
+                android:text="高端品鉴"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Entertainment"
-                android:textSize="15sp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:background="@mipmap/toghter_image_3"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="65dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="荣耀活动"
-                android:textSize="15sp"
                 android:layout_gravity="center"
+                android:layout_marginTop="65dp"
                 android:gravity="center"
-                android:textColor="#ffffff"/>
+                android:text="荣耀活动"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
             <TextView
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:text="Glory activities"
-                android:textSize="15sp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:background="@mipmap/toghter_image_4"
             android:orientation="vertical">
-            <TextView
-                android:layout_marginTop="65dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="金钻活动"
-                android:textSize="15sp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="#ffffff"/>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="65dp"
+                android:gravity="center"
+                android:text="金钻活动"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Diamond activities"
-                android:textSize="15sp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:background="@mipmap/toghter_image_5"
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="65dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="贵族活动"
-                android:textSize="15sp"
                 android:layout_gravity="center"
+                android:layout_marginTop="65dp"
                 android:gravity="center"
-                android:textColor="#ffffff"/>
+                android:text="贵族活动"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
             <TextView
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:text="VIP activities"
-                android:textSize="15sp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/toghter_image_6"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="22dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_marginTop="65dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="核力轰趴"
-                android:textSize="15sp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="#ffffff"/>
-            <TextView
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home party"
-                android:textSize="15sp"
-                android:textColor="#ffffff"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/toghter_image_6"
+                android:orientation="vertical">
 
-         </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="65dp"
+                    android:gravity="center"
+                    android:text="核力轰趴"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="Home party"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
         </RelativeLayout>
-        </LinearLayout>
+    </LinearLayout>
 </ScrollView>

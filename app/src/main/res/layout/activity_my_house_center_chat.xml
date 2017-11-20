@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj">
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="11dp"
+            android:layout_height="18.6dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.45dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="客服中心"
+            android:textColor="#929292"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/relative"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:src="@mipmap/my_headimg"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:padding="5dp"
+            android:gravity="center"
+            android:background="@drawable/shape_chat_tv"
+            android:textColor="@color/recharge_text"
+            android:layout_marginLeft="10dp"
+            android:text="您好，请问有什么可以帮助您？"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative2"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:paddingRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/line1">
+
+        <ImageView
+            android:id="@+id/img_me"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/my_headimg"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_toLeftOf="@+id/img_me"
+            android:padding="5dp"
+            android:gravity="center"
+            android:background="@drawable/shape_chat_tv"
+            android:textColor="@color/recharge_text"
+            android:layout_marginRight="10dp"
+            android:text="您好，我的提现什么时候到账"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/relative2"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:src="@mipmap/my_headimg"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:padding="5dp"
+            android:gravity="center"
+            android:background="@drawable/shape_chat_tv"
+            android:textColor="@color/recharge_text"
+            android:layout_marginLeft="10dp"
+            android:text="需要1—2个工作日，请耐心等待"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_add"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:background="#FF181818"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:id="@+id/img_video"
+            android:src="@mipmap/chat_icon_1"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/img_add"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/chat_icon_3"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/img_xiao"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/img_add"
+            android:src="@mipmap/chat_icon_2"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_chat_ed"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignBottom="@+id/img_video"
+            android:layout_alignTop="@+id/img_video"
+            android:layout_toLeftOf="@+id/img_xiao"
+            android:layout_toRightOf="@+id/img_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/relative_add_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <View
+            android:layout_alignParentTop="true"
+            android:background="@color/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        
+        <RelativeLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="30dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/chat_image_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="#FF929292"
+                android:textSize="10sp"
+                android:text="相册"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="30dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/chat_image_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="#FF929292"
+                android:textSize="10sp"
+                android:text="拍摄"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="30dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/chat_image_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:textColor="#FF929292"
+                android:textSize="10sp"
+                android:text="短视频"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        
+
+    </RelativeLayout>
+
+</RelativeLayout>

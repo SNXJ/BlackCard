@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/dialog_title_layout" />
+
+    <com.zsh.blackcard.view.datepickter.DatePicker2
+        android:id="@+id/my_datepicker2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base360dp"
+        android:paddingLeft="@dimen/base10dp"
+        android:paddingRight="@dimen/base10dp" />
+
+</LinearLayout>

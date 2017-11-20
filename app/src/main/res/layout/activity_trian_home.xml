@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_black"
+    android:background="@mipmap/bj"
     android:orientation="vertical">
 
     <LinearLayout
@@ -29,6 +29,7 @@
             android:layout_marginTop="@dimen/base25dp">
 
             <TextView
+                android:id="@+id/tv_exchange_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -39,6 +40,7 @@
                 android:textSize="@dimen/base17dp" />
 
             <TextView
+                android:id="@+id/tv_exchange_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -50,6 +52,7 @@
                 android:textSize="@dimen/base17dp" />
 
             <ImageView
+                android:id="@+id/im_exchange"
                 android:layout_width="@dimen/base25dp"
                 android:layout_height="@dimen/base25dp"
                 android:layout_centerInParent="true"
@@ -58,11 +61,12 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_date"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base60dp">
 
             <TextView
-                android:id="@+id/tv_data"
+                android:id="@+id/tv_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -73,11 +77,12 @@
                 android:textSize="@dimen/base15dp" />
 
             <TextView
+                android:id="@+id/tv_date_go"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/base22dp"
-                android:layout_toRightOf="@+id/tv_data"
+                android:layout_toRightOf="@+id/tv_temp"
                 android:gravity="center"
                 android:text="2017-11-9"
                 android:textColor="@color/title_text"
@@ -108,7 +113,7 @@
                 android:textSize="@dimen/base13dp" />
 
             <CheckBox
-                android:id="@+id/button1"
+                android:id="@+id/cb_student"
                 style="@style/plane_check_box"
                 android:layout_width="@dimen/base15dp"
                 android:layout_height="@dimen/base15dp"
@@ -126,14 +131,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/base5dp"
-                android:layout_toLeftOf="@+id/ck_gaitie"
+                android:layout_toLeftOf="@+id/cb_gaotie"
                 android:gravity="center"
                 android:text="只看高铁动/车票"
                 android:textColor="@color/title_text"
                 android:textSize="@dimen/base13dp" />
 
             <CheckBox
-                android:id="@+id/ck_gaitie"
+                android:id="@+id/cb_gaotie"
                 style="@style/plane_check_box"
                 android:layout_width="@dimen/base15dp"
                 android:layout_height="@dimen/base15dp"
@@ -147,13 +152,9 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/bg_button"
-        android:gravity="center"
+        android:id="@+id/btn_search"
+      style="@style/btn_buttom"
         android:text="开始搜索"
-        android:textColor="@color/title_text"
-        android:textSize="@dimen/base17dp" />
+        />
 </RelativeLayout>
 

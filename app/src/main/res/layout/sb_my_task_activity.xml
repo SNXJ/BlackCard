@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="任务中心" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp">
+
+        <ImageView
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp"
+            android:src="@mipmap/task_icon_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:gravity="center"
+            android:text="设置头像"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base34dp"
+            android:gravity="center"
+            android:text="你的颜值不错哦，可获得10个黑咖币"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="@dimen/base45dp"
+            android:layout_height="@dimen/base15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@drawable/shape_corner"
+            android:gravity="center"
+            android:text="已完成"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp">
+
+        <ImageView
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp"
+            android:src="@mipmap/task_icon_2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:gravity="center"
+            android:text="浏览主播"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base34dp"
+            android:gravity="center"
+            android:text="浏览三个正在直播的主播，可获得20个黑咖币"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="@dimen/base45dp"
+            android:layout_height="@dimen/base15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@drawable/shape_corner"
+            android:gravity="center"
+            android:text="已完成"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp">
+
+        <ImageView
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp"
+            android:src="@mipmap/task_icon_3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:gravity="center"
+            android:text="关注主播"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base34dp"
+            android:gravity="center"
+            android:text="关注五个主播，可获得30个黑咖币"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="@dimen/base45dp"
+            android:layout_height="@dimen/base15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@drawable/shape_corner"
+            android:gravity="center"
+            android:text="已完成"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp">
+
+        <ImageView
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp"
+            android:src="@mipmap/task_icon_4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:gravity="center"
+            android:text="送礼物给主播"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base34dp"
+            android:gravity="center"
+            android:text="为心仪的主播增加人气值，可获得50个黑咖币"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="@dimen/base45dp"
+            android:layout_height="@dimen/base15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@drawable/shape_corner"
+            android:gravity="center"
+            android:text="已完成"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp">
+
+        <ImageView
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base20dp"
+            android:src="@mipmap/task_icon_5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:gravity="center"
+            android:text="完成全部任务"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base60dp"
+            android:layout_marginTop="@dimen/base34dp"
+            android:gravity="center"
+            android:text="额外获得100个黑咖币"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="@dimen/base45dp"
+            android:layout_height="@dimen/base15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@drawable/shape_corner"
+            android:gravity="center"
+            android:text="已完成"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

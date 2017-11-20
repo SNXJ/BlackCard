@@ -1,6 +1,6 @@
 <resources>
-
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--修改主题为NoActionBar，在预览布局时不显示系统自带title-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -10,11 +10,30 @@
         <item name="android:listDivider">@drawable/divider</item>
 
     </style>
+
+
+    <!-- 总title-->
+    <style name="btn_buttom">
+        <item name="android:background">@color/bg_button</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base50dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/title_text</item>
+        <item name="android:textSize">@dimen/base17dp</item>
+    </style>
     <!-- 总title-->
     <style name="title_rl">
         <item name="android:background">@color/main_black</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/base44dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!-- 总title-->
+    <style name="text_">
+        <item name="android:textColor">@color/ff92_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
@@ -53,8 +72,103 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+    <!--时间选择-->
+    <style name="date_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 模糊 -->
+    </style>
+    <!-- 小星星 -->
+    <!--<style name="MyProRatingBar" parent="@android:style/Widget.RatingBar">-->
+    <!--<item name="android:progressDrawable">@drawable/myratingbar</item>-->
+    <!--<item name="android:minHeight">@dimen/base10dp</item>-->
+    <!--<item name="android:maxHeight">@dimen/base10dp</item>-->
+    <!--</style>-->
+    <!-- dialog从下往上出 -->
+    <style name="dailog_anim_enterorout_window_up">
+        <item name="android:windowEnterAnimation">@anim/p_trends_enter_window</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/p_trends_out_window</item>
+        <!-- 指定消失的动画xml -->
+    </style>
 
+    <style name="dialog_line">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/base1dp</item>
+        <item name="android:background">@color/dialog_line</item>
+    </style>
 
+    <style name="line">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/base1dp</item>
+        <item name="android:background">@color/line</item>
+    </style>
+
+    <style name="item_tv_left">
+        <item name="android:textColor">@color/ff92_text</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/base15dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="item_et">
+        <item name="android:textColor">@color/ff92_text</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginRight">@dimen/base15dp</item>
+        <item name="android:layout_marginLeft">@dimen/base19dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:hint">必填</item>
+        <item name="android:maxLength">15</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColorHint">@color/select_hint</item>
+    </style>
+    <!-- -->
+    <style name="item_tv_">
+        <item name="android:textColor">@color/select_hint</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">@dimen/base90dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <!-- -->
+
+    <style name="item_im_right">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:src">@mipmap/next</item>
+        <item name="android:layout_marginRight">@dimen/base15dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="item_rl">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+    </style>
+
+    <style name="item_ll">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
     <!-- 标题 RelativeLayout    背景自设设置 -->
     <style name="rl_title">
         <item name="android:background">@color/transparent</item>
@@ -77,4 +191,82 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
     </style>
+
+    <style name="home_pop_anim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_push_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_push_out</item>
+    </style>
+
+    <!--我的页面中心条目 RelativeLayout-->
+    <style name="my_center_relative">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base44dp</item>
+    </style>
+
+    <!--我的页面中心条目左侧图标 ImageView-->
+    <style name="my_center_left_img">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginLeft">@dimen/base20dp</item>
+    </style>
+
+    <!--我的页面中心条目文字提示 TextView-->
+    <style name="my_center_tip_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/base55dp</item>
+        <item name="android:textColor">@color/recharge_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--我的页面中心条目右侧箭头图标 ImageView-->
+    <style name="my_center_right_img">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/base20dp</item>
+    </style>
+
+    <!--我的界面包裹好友和99的父容器，点击事件触发控件 LinearLayout-->
+    <style name="my_number_linear">
+        <item name="android:layout_width">@dimen/base50dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <!--我的界面显示好友，黑咖币，能量值数量的 TextView-->
+    <style name="my_number_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/recharge_text</item>
+    </style>
+
+    <!--我的界面中心条目的View横线 View-->
+    <style name="my_center_view">
+        <item name="android:layout_marginLeft">@dimen/base20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">#1D1D1D</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <!--MainActivity底部导航栏 RadioButton-->
+    <style name="main_radio_button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/hometext</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
 </resources>

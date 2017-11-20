@@ -41,132 +41,334 @@
             android:text="配备最先进的有氧运动设备"
             android:textColor="@color/title_text"
             android:textSize="15sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-          android:layout_marginRight="@dimen/base22dp"
             android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base22dp"
             android:layout_marginTop="@dimen/base15dp"
             android:text="4.9"
             android:textColor="@color/title_text"
             android:textSize="18sp" />
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_marginBottom="@dimen/base10dp"
-    >
-    <ImageView
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/hotel_icon_1"
-        android:layout_marginLeft="@dimen/base15dp"
-        android:layout_marginRight="@dimen/base13dp"
-        />
-    <TextView
 
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WIFI"
-        android:layout_marginLeft="@dimen/base38dp"
-        android:textColor="@color/title_text"
-        android:textSize="11sp"
-        />
-    <ImageView
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/food_icon_1"
-        android:layout_marginLeft="@dimen/base89dp"
-        android:layout_marginRight="@dimen/base13dp"
-        />
-    <TextView
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="移动支付"
-        android:layout_marginLeft="@dimen/base112dp"
-        android:textColor="@color/title_text"
-        android:textSize="11sp"
-        />
-    <ImageView
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/hotel_icon_5"
-        android:layout_marginLeft="@dimen/base188dp"
-        />
-    <TextView
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="停车"
-        android:layout_marginLeft="@dimen/base213dp"
-        android:textColor="@color/title_text"
-        android:textSize="11sp"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base10dp">
 
-</RelativeLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:layout_marginRight="@dimen/base13dp"
+                android:src="@mipmap/hotel_icon_1" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base38dp"
+                android:text="WIFI"
+                android:textColor="@color/title_text"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base89dp"
+                android:layout_marginRight="@dimen/base13dp"
+                android:src="@mipmap/food_icon_1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base112dp"
+                android:text="移动支付"
+                android:textColor="@color/title_text"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base188dp"
+                android:src="@mipmap/hotel_icon_5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base213dp"
+                android:text="停车"
+                android:textColor="@color/title_text"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="@dimen/base35dp">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="0898-86868686"
-    android:layout_marginLeft="@dimen/base15dp"
-    android:textColor="@color/title_text"
-    android:textSize="12sp"
-    />
-<ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/hotel_icon_6"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/base13dp"
-        />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="@dimen/base35dp">
-        <!--自己-->
-        <Button
-            android:layout_centerVertical="true"
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="@dimen/base20dp"
-            android:background="#F29E19"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:textColor="@color/bg_white"
-            android:textSize="12sp"
-            android:text="4.9"
-            />
+        android:layout_height="@dimen/base35dp"
+        android:gravity="center_vertical">
+
         <TextView
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="99条评论"
-            android:layout_toLeftOf="@+id/im_food_next"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="0898-86868686"
+            android:textColor="@color/title_text"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base13dp"
+            android:src="@mipmap/hotel_icon_6" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_comment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base35dp"
+        android:gravity="center_vertical">
+        <!--自己-->
+        <Button
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:background="#F29E19"
+            android:text="4.9"
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/base12dp"
+            android:layout_toLeftOf="@+id/im_food_next"
+            android:text="99条评论"
 
             android:textColor="@color/title_text"
-            android:textSize="12sp"
-            />
+            android:textSize="12sp" />
+
         <ImageView
-            android:layout_centerVertical="true"
             android:id="@+id/im_food_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/next"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/base13dp"
-            />
+            android:src="@mipmap/next" />
+
+        <View
+            style="@style/line"
+            android:layout_height="0.5dp" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base65dp"
+        android:layout_marginTop="@dimen/base25dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/base50dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="入住"
+                android:textColor="@color/ff92_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:text="8-8"
+                android:textColor="@color/ff92_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base82dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="离开"
+                android:textColor="@color/ff92_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="7dp"
+                android:gravity="center"
+                android:text="8-9"
+                android:textColor="@color/ff92_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="@dimen/base70dp"
+            android:layout_height="@dimen/base23dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/addfriendshape"
+            android:gravity="center"
+            android:text="共一天"
+            android:textColor="@color/ff92_text"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base75dp"
+        android:layout_marginLeft="@dimen/base15dp">
+
+        <ImageView
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="@dimen/base55dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/hotel_image_7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base85dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="豪华贵宾房"
+            android:textColor="@color/ff92_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base85dp"
+            android:layout_marginTop="@dimen/base47dp"
+            android:text="60m   大床  1.8m"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp"
+            android:text="¥999"
+            android:textColor="@color/ff92_text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="@dimen/base10dp"
+            android:layout_height="@dimen/base10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base67dp"
+            android:layout_marginTop="@dimen/base48dp"
+            android:background="#F29E19"
+            android:gravity="center"
+            android:text="订"
+            android:textColor="@color/main_black"
+            android:textSize="8sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base47dp"
+            android:text="会员减99"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base75dp"
+        android:layout_marginLeft="@dimen/base15dp">
+
+        <ImageView
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="@dimen/base55dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/hotel_image_7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base85dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="豪华贵宾房"
+            android:textColor="@color/ff92_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base85dp"
+            android:layout_marginTop="@dimen/base45dp"
+            android:text="60m   大床  1.8m"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp"
+            android:text="¥999"
+            android:textColor="@color/ff92_text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="@dimen/base10dp"
+            android:layout_height="@dimen/base10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base67dp"
+            android:layout_marginTop="@dimen/base48dp"
+            android:background="#F29E19"
+            android:gravity="center"
+            android:text="订"
+            android:textColor="@color/main_black"
+            android:textSize="8sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base45dp"
+            android:text="会员减99"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+    </RelativeLayout>
 </LinearLayout>

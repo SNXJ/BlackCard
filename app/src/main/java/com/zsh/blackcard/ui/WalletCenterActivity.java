@@ -46,7 +46,7 @@ public class WalletCenterActivity extends BaseActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.my_wallet_cash_img:
-
+                ActivityUtils.startActivity(this,WalletCashActivity.class);
                 break;
             case R.id.my_wallet_surplus_img:
                 ActivityUtils.startActivity(this, BlackSurplusActivity.class);

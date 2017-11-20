@@ -50,6 +50,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/my_order_pay_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -63,6 +64,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
+                android:id="@+id/my_order_receipt_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -76,6 +78,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
+                android:id="@+id/my_order_comment_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -89,6 +92,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
+                android:id="@+id/my_order_service_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -117,6 +121,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/my_order_vip_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -130,6 +135,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
+                android:id="@+id/my_order_collection_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -143,7 +149,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/zgmy_address_btn"
+                android:id="@+id/my_order_address_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -157,6 +163,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
+                android:id="@+id/my_order_customer_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -186,7 +193,7 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/zgmy_rbt_discount"
+                android:id="@+id/my_order_discount_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -200,7 +207,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/zgmy_rbt_integral"
+                android:id="@+id/my_order_integral_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -214,6 +221,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
+                android:id="@+id/my_order_gift_rb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

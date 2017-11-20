@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base100dp"
+    android:paddingBottom="@dimen/base18dp"
+    android:paddingLeft="@dimen/base20dp"
+    android:paddingRight="@dimen/base20dp"
+    android:paddingTop="@dimen/base18dp">
+
+    <ImageView
+        android:id="@+id/my_order_payment_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/shopping_image_1" />
+
+    <TextView
+        android:layout_width="@dimen/base156dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base26dp"
+        android:layout_toRightOf="@+id/my_order_payment_img"
+        android:text="地亚Cartier伦敦SOLO手表 石英男表W6701005"
+        android:textColor="@color/recharge_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/my_order_payment_tv"
+        android:gravity="center"
+        android:paddingRight="@dimen/base5dp"
+        android:paddingLeft="@dimen/base5dp"
+        android:background="@drawable/my_order_cancle_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/base26dp"
+        android:layout_toRightOf="@+id/my_order_payment_img"
+        android:text="确认收货"
+        android:textColor="@color/recharge_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="待收货"
+        android:textColor="@color/recharge_text"
+        android:textSize="12sp" />
+
+</RelativeLayout>
