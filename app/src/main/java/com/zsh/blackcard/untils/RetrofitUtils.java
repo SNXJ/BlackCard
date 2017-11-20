@@ -3,6 +3,7 @@ package com.zsh.blackcard.untils;
 import android.content.Context;
 
 import com.google.gson.GsonBuilder;
+import com.zsh.blackcard.manager.DataManager;
 import com.zsh.blackcard.service.RetrofitService;
 
 import okhttp3.OkHttpClient;
@@ -42,7 +43,7 @@ public class RetrofitUtils {
     private void resetApp() {
         mRetrofit = new Retrofit.Builder()
                 //请求根地址
-                .baseUrl("http://192.168.1.108:8080/MVNFHM/")
+                .baseUrl(DataManager.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(factory)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -50,6 +51,7 @@ public class RetrofitUtils {
     }
 
     public RetrofitService getService() {
+
         return mRetrofit.create(RetrofitService.class);
     }
 }
