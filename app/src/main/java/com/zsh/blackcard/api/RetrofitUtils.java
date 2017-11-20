@@ -1,10 +1,8 @@
-package com.zsh.blackcard.untils;
+package com.zsh.blackcard.api;
 
 import android.content.Context;
 
 import com.google.gson.GsonBuilder;
-import com.zsh.blackcard.api.DataManager;
-import com.zsh.blackcard.api.RetrofitService;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

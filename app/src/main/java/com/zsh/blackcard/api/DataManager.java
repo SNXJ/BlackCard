@@ -71,13 +71,11 @@ public class DataManager {
                             LogUtils.i("++++++", "++++++++++onCompleted++++++++++++");
                         }
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         LogUtils.i("++++++", "++++++++++e++++++++++++" + e.toString());
                         UIUtils.showToast(context.getResources().getString(R.string.generic_server_down));
                     }
-
                     @Override
                     public void onNext(T t) {
                         if (null != listener && null != t) {
