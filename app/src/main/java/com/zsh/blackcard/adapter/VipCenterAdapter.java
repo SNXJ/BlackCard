@@ -13,7 +13,7 @@ import com.zsh.blackcard.ui.VipCenterActivity;
  * Created by kkkkk on 2017/11/10.
  */
 
-public class VipCenterAdapter extends RecyclerView.Adapter<VipCenterAdapter.MyViewHolder> {
+public class VipCenterAdapter extends RecyclerView.Adapter {
 
     private Context context;
 
@@ -22,13 +22,29 @@ public class VipCenterAdapter extends RecyclerView.Adapter<VipCenterAdapter.MyVi
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.vip_center_recycler_item,parent,false));
-        return myViewHolder;
+    public int getItemViewType(int position) {
+        switch (position) {
+            case 0:
+                return 0;
+            case 4:
+                return 4;
+        }
+        return 10;
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == 0) {
+            return new OneViewHolder(LayoutInflater.from(context).inflate(R.layout.vip_center_recycler_first_item, parent, false));
+        } else if (viewType == 4) {
+            return new FiveViewHolder(LayoutInflater.from(context).inflate(R.layout.vip_center_recycler_last_item, parent, false));
+        } else {
+            return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.vip_center_recycler_item, parent, false));
+        }
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
     }
 
@@ -41,6 +57,19 @@ public class VipCenterAdapter extends RecyclerView.Adapter<VipCenterAdapter.MyVi
 
         public MyViewHolder(View itemView) {
             super(itemView);
+        }
+    }
+
+    private class OneViewHolder extends MyViewHolder {
+
+        public OneViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    private class FiveViewHolder extends MyViewHolder {
+        public FiveViewHolder(View inflate) {
+            super(inflate);
         }
     }
 }

@@ -153,7 +153,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
         new CoverFlow.Builder()
                 .with(viewPager)
                 .scale(0.3f)
-                .pagerMargin(-40f)
+                .pagerMargin(-60f)
                 .spaceSize(0f)
                 .rotationY(0f)
                 .build();

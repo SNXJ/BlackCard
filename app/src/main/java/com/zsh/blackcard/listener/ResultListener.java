@@ -7,7 +7,7 @@ package com.zsh.blackcard.listener;
  * Description:描述：
  */
 public interface ResultListener<T> {
-    void responSuccess(T obj);
+    void responseSuccess(T obj);
 
     void onCompleted();
 }

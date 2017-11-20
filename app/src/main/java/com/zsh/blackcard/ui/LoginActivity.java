@@ -1,6 +1,8 @@
 package com.zsh.blackcard.ui;
 
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
@@ -8,10 +10,10 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.UIUtils;
 
-import java.util.Map;
-import java.util.TreeMap;
-
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,8 +24,11 @@ import butterknife.OnClick;
  * Description:描述：
  */
 public class LoginActivity extends BaseActivity {
-    // private CompositeSubscription compositeSubscription = new CompositeSubscription();
 
+    @BindView(R.id.login_user_et)
+    EditText login_user_et;
+    @BindView(R.id.login_pass_et)
+    EditText login_pass_et;
 
     @Override
     protected void initUI() {
@@ -36,39 +41,37 @@ public class LoginActivity extends BaseActivity {
         switch (view.getId()) {
             //登录
             case R.id.login_btn:
-                // new DataManager(this).MyTest();
-                Map<String, String> map = new TreeMap<>();
-                // map.put("FKEY", DataManager.getMd5Str("COMMEND"));
-                map.put("FKEY", DataManager.getMd5Str("REGISTER"));
-                map.put("CARDNO", "0000000000");
-                map.put("PHONE", "13888888888888");
-                map.put("REALNAME", "XXXXXXXXXXX");
-                map.put("PROVINCE", "XXXXXXXXXXX");
-                map.put("ADDRESS", "XXXXXXXXXXXX");
-                map.put("CUSTOM", "XXXXXXXXXXXXX");
-                map.put("CUSTOMCONTENT", "XXXXXXXXXXXXXX");
-
-                DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSearchBook(map), new ResultListener<LoginModel>() {
-                    @Override
-                    public void responSuccess(LoginModel obj) {
-                        System.out.println("++++++++++222222222222++++++++++++" + obj.getResult());
-                    }
-
-                    @Override
-                    public void onCompleted() {
-
-                    }
-                });
-
+                doLogin();
                 break;
             //在线申请
             case R.id.login_register_tv:
-
+                ActivityUtils.startActivity(this,RegisterActivity.class);
                 break;
             //忘记密码
             case R.id.login_forget_tv:
 
                 break;
+        }
+    }
+
+    //登录方法
+    private void doLogin() {
+        if (TextUtils.isEmpty(login_user_et.getText().toString().trim()) || TextUtils.isEmpty(login_pass_et.getText().toString().trim())) {
+            UIUtils.showToast("帐号或密码不能为空");
+        } else {
+            DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postLoginCard(DataManager.getMd5Str("LOGIN"), login_user_et.getText().toString().trim(), DataManager.getMd5PassWord(login_pass_et.getText().toString().trim())), new ResultListener<LoginModel>() {
+                @Override
+                public void responseSuccess(LoginModel obj) {
+                    if (obj.getResult().equals("04")) {
+                        UIUtils.showToast("帐号或密码错误");
+                    }
+                }
+
+                @Override
+                public void onCompleted() {
+
+                }
+            });
         }
     }
 }

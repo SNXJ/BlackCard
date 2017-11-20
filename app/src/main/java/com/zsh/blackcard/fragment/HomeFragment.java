@@ -31,6 +31,7 @@ import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.PlaneActivity;
 import com.zsh.blackcard.ui.TrianActivity;
+import com.zsh.blackcard.ui.WelcomeActivity;
 import com.zsh.blackcard.ui.home.HomeFoodActivity;
 import com.zsh.blackcard.ui.home.HomeHotelActivity;
 import com.zsh.blackcard.ui.home.HomeKTVActivity;
@@ -273,6 +274,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), SelectCityActivity.class));
                 break;
             case R.id.go_welcome_login_img:
+//                ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
                 // ActivityUtils.startActivity(getActivity(), LiveAnchorDetails2.class);
                 ActivityUtils.startActivity(getActivity(), LoginActivity.class);
                 // ActivityUtils.startActivity(getActivity(), VideoIngActivity.class);
