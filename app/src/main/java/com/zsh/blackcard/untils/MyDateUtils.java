@@ -54,6 +54,11 @@ public class MyDateUtils {
         return sdf.format(lefttime);
     }
 
+    public static String formatDate2(long lefttime) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
+        return sdf.format(new Date());
+    }
+
     /**
      * 字符串转为long
      *
@@ -130,7 +135,6 @@ public class MyDateUtils {
 //        }
 //        return dateFormatYMD.format(date);
 //    }
-
     public static Date getYDMStrToDate(String formatStr) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -160,13 +164,13 @@ public class MyDateUtils {
         // long times = cl.getTimeInMillis()-date.getTime();
         String value = "";
         // 计算出相差天数
-        double days = Math.floor(times / (double)(24 * 3600 * 1000));
+        double days = Math.floor(times / (double) (24 * 3600 * 1000));
         // 计算出小时数
         long leave1 = times % (24 * 3600 * 1000); // 计算天数后剩余的毫秒数
-        double hours = Math.floor(leave1 /(double) (3600 * 1000));
+        double hours = Math.floor(leave1 / (double) (3600 * 1000));
         // 计算相差分钟数
         long leave2 = leave1 % (3600 * 1000); // 计算小时数后剩余的毫秒数
-        double minutes = Math.floor(leave2 /(double) (60 * 1000));
+        double minutes = Math.floor(leave2 / (double) (60 * 1000));
         // 计算相差秒数
         double leave3 = leave2 % (60 * 1000); // 计算分钟数后剩余的毫秒数
         double seconds = Math.round(leave3 / 1000);

@@ -52,7 +52,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         StatusBarColorUntil.setStatusBarColor(this);
         initUI();
         ButterKnife.bind(this);
-
     }
 
     /**
