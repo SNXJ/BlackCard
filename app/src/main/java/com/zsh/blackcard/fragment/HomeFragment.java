@@ -21,12 +21,12 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeJournalAdapter;
 import com.zsh.blackcard.adapter.HomeNewAdapter;
 import com.zsh.blackcard.adapter.HomeSeverAdapter;
-import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.RecyclerViewItemOnClick;
 import com.zsh.blackcard.ui.CarActivity;
 import com.zsh.blackcard.ui.CruiseShipActivity;
 import com.zsh.blackcard.ui.EquestrianActivity;
+import com.zsh.blackcard.ui.LoginActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.PlaneActivity;
@@ -35,6 +35,7 @@ import com.zsh.blackcard.ui.home.HomeFoodActivity;
 import com.zsh.blackcard.ui.home.HomeHotelActivity;
 import com.zsh.blackcard.ui.home.HomeKTVActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
+import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 
@@ -273,8 +274,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.go_welcome_login_img:
                 // ActivityUtils.startActivity(getActivity(), LiveAnchorDetails2.class);
-               // ActivityUtils.startActivity(getActivity(), VideoIngActivity.class);
-                PublicDialog.homeTopPop(getActivity(), go_welcome_login_img, popListenter);
+                ActivityUtils.startActivity(getActivity(), LoginActivity.class);
+                // ActivityUtils.startActivity(getActivity(), VideoIngActivity.class);
+                // PublicDialog.homeTopPop(getActivity(), go_welcome_login_img, popListenter);
 
                 break;
         }

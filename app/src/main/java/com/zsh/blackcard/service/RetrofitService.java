@@ -1,10 +1,11 @@
 package com.zsh.blackcard.service;
 
-import com.zsh.blackcard.model.UserModel;
+import com.zsh.blackcard.model.LoginModel;
 
-import retrofit2.Call;
+import java.util.Map;
+
 import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -12,8 +13,7 @@ import rx.Observable;
  */
 
 public interface RetrofitService {
-
-    @GET("book/search")
-    Observable<UserModel> getSearchBook(@Query("q") String name,
-                                        @Query("tag") String tag);
+    //"REGISTER20171120,fh,"
+    @GET("appuserin/userregister?")
+    Observable<LoginModel> getSearchBook(@QueryMap Map<String, String> map);
 }
