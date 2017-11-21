@@ -51,13 +51,15 @@ public class PublicDialog {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.activity_live_main, null);
         final Dialog dialog = showDialogView(view, mContext);
+
         RadialViewLayout radialView = (RadialViewLayout) view.findViewById(R.id.ll_pop);
+        radialView.showOpenOrHide();
         radialView.setOnListener(new ItemClickListener() {
             @Override
             public void itemClick(int postion) {
                 switch (postion) {
                     case 0:
-                        dialog.dismiss();
+                       // dialog.dismiss();
                         break;
                     case 1://开
                         break;

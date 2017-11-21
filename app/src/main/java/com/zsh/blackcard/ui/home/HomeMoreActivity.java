@@ -12,6 +12,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeMoreAdapter;
 import com.zsh.blackcard.model.HomeNewModel;
 import com.zsh.blackcard.ui.GolfActivity;
+import com.zsh.blackcard.ui.HomePlaneActivity;
 
 import java.util.ArrayList;
 import java.util.List;

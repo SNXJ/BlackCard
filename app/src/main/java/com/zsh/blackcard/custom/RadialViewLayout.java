@@ -27,7 +27,7 @@ import butterknife.OnClick;
  */
 public class RadialViewLayout extends FrameLayout {
 
-    private final static long DURATION_SHORT = 400;
+    private final static long DURATION_SHORT = 500;
     @BindView(R.id.ll_black_weibo)
     View llBlackWeibo;
     @BindView(R.id.ll_live_video)
@@ -88,27 +88,11 @@ public class RadialViewLayout extends FrameLayout {
 
     @OnClick(R.id.ll_black_main)
     public void onMainButtonClicked(final View btn) {
-//        int resId;
-//        if (isOpen) {
-//            hide(llBlackWeibo);
-//            hide(llOpenLive);
-//            hide(llLiveVideo);
-//            isOpen = false;
-//            // resId ="关闭";
-//            resId = 0;
-//        } else {
-//            show(llBlackWeibo, 2, 300);
-//            show(llOpenLive, 3, 300);
-//            show(llLiveVideo, 4, 300);
-//            isOpen = true;
-//            resId = 1;
-//        }
-        //      onListener(resId);
         showOpenOrHide();
         btn.playSoundEffect(SoundEffectConstants.CLICK);
     }
 
-    private int showOpenOrHide() {
+    public int showOpenOrHide() {
         int resId;
         if (isOpen) {
             hide(llBlackWeibo);

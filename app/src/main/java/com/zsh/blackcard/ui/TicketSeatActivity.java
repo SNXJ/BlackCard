@@ -16,7 +16,6 @@ public class TicketSeatActivity extends BaseActivity {
     @Override
     protected void initUI() {
         setContentView(R.layout.ticket_seat_activity);
-
         findViewById(R.id.rl_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

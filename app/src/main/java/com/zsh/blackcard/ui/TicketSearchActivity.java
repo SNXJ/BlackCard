@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.fragment.live.LiveRankAnchorFragment;
+import com.zsh.blackcard.fragment.TicketSearchFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,22 +66,10 @@ public class TicketSearchActivity extends BaseActivity {
     List<Fragment> fragments = new ArrayList<>();
 
     private void initView() {
+        for (int i = 0; i < 7; i++) {
+            fragments.add(new TicketSearchFragment().newInstance(1));
+        }
 
-        // tabLayout.setAd
-        LiveRankAnchorFragment fragment1 = new LiveRankAnchorFragment();
-        LiveRankAnchorFragment fragment2 = new LiveRankAnchorFragment();
-        LiveRankAnchorFragment fragment3 = new LiveRankAnchorFragment();
-        LiveRankAnchorFragment fragment4 = new LiveRankAnchorFragment();
-        LiveRankAnchorFragment fragment5 = new LiveRankAnchorFragment();
-        LiveRankAnchorFragment fragment6 = new LiveRankAnchorFragment();
-        LiveRankAnchorFragment fragment7 = new LiveRankAnchorFragment();
-        fragments.add(fragment1);
-        fragments.add(fragment2);
-        fragments.add(fragment3);
-        fragments.add(fragment4);
-        fragments.add(fragment5);
-        fragments.add(fragment6);
-        fragments.add(fragment7);
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
         viewpager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewpager);
