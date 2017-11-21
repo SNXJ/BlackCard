@@ -1,4 +1,4 @@
-package com.zsh.blackcard.ui;
+package com.zsh.blackcard.ui.home;
 
 import android.content.Intent;
 import android.view.View;
@@ -11,17 +11,18 @@ import android.widget.TextView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.ui.TicketSearchActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Name: TrianActivity
+ * Name: HomeTrainActivity
  * Author: SNXJ
  * Date: 2017-11-09
  * Description:描述：
  */
-public class TrianActivity extends BaseActivity {
+public class HomeTrainActivity extends BaseActivity {
     @BindView(R.id.title_back)
     ImageView titleBack;
     @BindView(R.id.title_tv)
@@ -61,15 +62,15 @@ public class TrianActivity extends BaseActivity {
             case R.id.im_exchange:
                 break;
             case R.id.rl_date:
-                PublicDialog.dataDialog(TrianActivity.this);
+                PublicDialog.dataDialog(HomeTrainActivity.this);
                 break;
 //            case R.id.cb_student:
 //                break;
 //            case R.id.cb_gaotie:
 //                break;
             case R.id.btn_search:
-                //   startActivity(new Intent(TrianActivity.this,CommonlyActivity.class));
-                startActivity(new Intent(TrianActivity.this, TicketSearchActivity.class));
+                //   startActivity(new Intent(HomeTrainActivity.this,CommonlyActivity.class));
+                startActivity(new Intent(HomeTrainActivity.this, TicketSearchActivity.class));
                 break;
         }
     }

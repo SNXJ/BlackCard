@@ -11,9 +11,9 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:background="@color/main_black"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base44dp">
+            android:layout_height="@dimen/base44dp"
+            android:background="@color/main_black">
 
             <RadioButton
                 android:id="@+id/rb_city_home"
@@ -73,272 +73,100 @@
                 android:src="@mipmap/home_head_right" />
         </RelativeLayout>
 
-        <!-- 表格1-伸展 -->
-
-        <TableLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_type_recycler"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base205dp"
-            android:orientation="vertical">
+            android:paddingBottom="@dimen/base14dp"
+            android:paddingTop="@dimen/base14dp">
 
-            <TableRow android:layout_marginTop="@dimen/base25dp">
-
-                <ImageView
-                    android:id="@+id/im_home_food"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@mipmap/home_food" />
-
-                <ImageView
-                    android:id="@+id/im_home_hotel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@mipmap/home_hotel" />
-
-                <ImageView
-                    android:id="@+id/im__home_trian"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@mipmap/home_train" />
-
-                <ImageView
-                    android:id="@+id/im_home_plane"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@mipmap/home_plane" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="@dimen/base16dp">
-
-                <TextView
-                    android:id="@+id/ckmiddle_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="美食"
-                    android:textColor="@color/ff92_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/flmiddle_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="酒店"
-                    android:textColor="@color/ff92_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_home_trian"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="火车票"
-                    android:textColor="@color/ff92_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_home_plane"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="机票"
-                    android:textColor="@color/ff92_text"
-                    android:textSize="14sp" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="@dimen/base18dp">
-
-                <ImageView
-                    android:id="@+id/home_equestrain_img"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@mipmap/home_horse" />
-
-                <ImageView
-                    android:id="@+id/home_cruiseship_img"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@mipmap/home_ship" />
-
-                <ImageView
-                    android:id="@+id/home_car_img"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@mipmap/home_car" />
-
-                <ImageView
-                    android:id="@+id/im_home_more"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@mipmap/home_more" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="@dimen/base8dp">
-
-                <TextView
-                    android:id="@+id/home_equestrain_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="马术"
-                    android:textColor="@color/ff92_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/home_cruiseship_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="游艇"
-                    android:textColor="@color/ff92_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/home_car_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="豪车"
-                    android:textColor="@color/ff92_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_home_more"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="更多"
-                    android:textColor="@color/ff92_text"
-                    android:textSize="14sp" />
-            </TableRow>
-        </TableLayout>
+        </android.support.v7.widget.RecyclerView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base180dp"
-            android:layout_marginTop="@dimen/base18dp"
-            android:orientation="vertical">
+            android:layout_height="@dimen/base46dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/base180dp"
-                android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:src="@mipmap/home_first" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            <TextSwitcher
+                android:id="@+id/home_top_tvs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/base14dp">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/base15dp"
-                        android:src="@mipmap/home_first" />
-
-                    <TextSwitcher
-                        android:id="@+id/tv_notice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/base10dp" />
-                </LinearLayout>
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/homeheadnews_gv"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/base130dp"
-                    android:layout_marginTop="@dimen/base20dp"
-                    android:paddingLeft="@dimen/base15dp">
-
-                </android.support.v7.widget.RecyclerView>
-                <!--android:layout_marginLeft="@dimen/base15dp"-->
-            </LinearLayout>
+            </TextSwitcher>
 
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/base13dp"
-            android:layout_marginTop="@dimen/base8dp"
-            android:text="荣耀服务"
-            android:textColor="@color/ff92_text"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
+        
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/homeserve_gv"
+            android:id="@+id/home_top_recycler"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base80dp"
-            android:layout_marginTop="@dimen/base20dp"
-            android:paddingLeft="@dimen/base15dp">
+            android:layout_height="@dimen/base154dp">
+
+        </android.support.v7.widget.RecyclerView>
+        
+        <TextView
+            android:layout_marginLeft="@dimen/base15dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/recharge_text"
+            android:text="荣耀服务"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base46dp" />
+        
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_glory_service_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base120dp">
 
         </android.support.v7.widget.RecyclerView>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/base13dp"
-            android:layout_marginTop="@dimen/base22dp"
-            android:text="汇聚玩趴"
-            android:textColor="@color/ff92_text"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:textStyle="bold"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textColor="@color/recharge_text"
+            android:text="汇聚玩趴"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base46dp" />
 
         <ImageView
-            android:layout_width="@dimen/base345dp"
-            android:layout_height="@dimen/base95dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@mipmap/home_image_8"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/base18dp"
-            android:src="@mipmap/home_image_8" />
+            android:id="@+id/home_play_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base95dp">
+
+        </ImageView>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/base13dp"
-            android:layout_marginTop="@dimen/base22dp"
-            android:text="荣耀杂志"
-            android:textColor="@color/ff92_text"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:textStyle="bold"
             android:textSize="15sp"
-            android:textStyle="bold" />
-
+            android:textColor="@color/recharge_text"
+            android:text="荣耀杂志"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base46dp" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/homejournal_gv"
+            android:layout_marginBottom="@dimen/base36dp"
+            android:id="@+id/home_glory_magazine_recycler"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base114dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/base37dp"
-            android:layout_marginTop="@dimen/base18dp"
-            android:paddingLeft="@dimen/base15dp">
+            android:layout_height="@dimen/base114dp">
 
         </android.support.v7.widget.RecyclerView>
-
 
     </LinearLayout>
 </ScrollView>
