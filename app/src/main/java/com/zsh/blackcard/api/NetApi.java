@@ -2,10 +2,8 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
+import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.LoginModel;
-import com.zsh.blackcard.model.RegisterModel;
-
-import java.util.Map;
 
 import rx.Observable;
 
@@ -29,23 +27,6 @@ public class NetApi {
     }
 
     /**
-     * @param map
-     * @return
-     */
-
-    public Observable<RegisterModel> getSearchBook(final Map<String, String> map) {
-        return retrofitService.getSearchBook(map);
-    }
-
-    /**
-     * @param map
-     * @return
-     */
-    public Observable<RegisterModel> getBook(final Map<String, String> map) {
-        return retrofitService.getHomePage(map);
-    }
-
-    /**
      * 卡号密码登录
      *
      * @param cardNo   卡号
@@ -54,5 +35,9 @@ public class NetApi {
      */
     public Observable<LoginModel> postLoginCard(String md5, String cardNo, String passWord) {
         return retrofitService.postLoginCard(md5, cardNo, passWord);
+    }
+
+    public Observable<HomeTopModel> postHomePage(String md5){
+        return retrofitService.postHomePage(md5);
     }
 }

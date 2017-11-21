@@ -1,4 +1,4 @@
-package com.zsh.blackcard.ui;
+package com.zsh.blackcard.ui.home;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
@@ -6,7 +6,7 @@ import com.zsh.blackcard.R;
 /**
  * 游艇
  */
-public class CruiseShipActivity extends BaseActivity {
+public class HomeCruiseShipActivity extends BaseActivity {
 
     @Override
     protected void initUI() {

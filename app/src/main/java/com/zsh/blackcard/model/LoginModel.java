@@ -2,6 +2,7 @@ package com.zsh.blackcard.model;
 
 /**
  * Created by kkkkk on 2017/11/20.
+ * 此类为登录实体类
  */
 
 public class LoginModel {

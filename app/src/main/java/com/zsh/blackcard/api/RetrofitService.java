@@ -1,5 +1,6 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.RegisterModel;
 
@@ -25,12 +26,14 @@ public interface RetrofitService {
                                          @Field("CARDNO") String cardNo,
                                          @Field("PASSWORD") String passWord);
 
+    //首页接口
+    @FormUrlEncoded
+    @POST("apphomein/getrecommendlist?")
+    Observable<HomeTopModel> postHomePage(@Field("FKEY") String md5);
+
     //注册接口
     @GET("appuserin/userregister?")
     Observable<RegisterModel> getSearchBook(@QueryMap Map<String, String> map);
 
-    //首页接口
-    @POST("apphomein/getrecommendlist?")
-    Observable<RegisterModel> getHomePage(@QueryMap Map<String, String> map);
 
 }
