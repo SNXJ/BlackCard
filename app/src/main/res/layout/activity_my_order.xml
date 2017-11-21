@@ -31,15 +31,15 @@
     <!--4个padding解决文字无法平分大小问题-->
     <android.support.design.widget.TabLayout
         android:id="@+id/my_order_tabLayout"
-        app:tabPaddingBottom="-1dp"
-        app:tabPaddingEnd="-1dp"
-        app:tabPaddingStart="-1dp"
-        app:tabPaddingTop="-1dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base35dp"
         android:background="#101010"
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"
+        app:tabPaddingBottom="-1dp"
+        app:tabPaddingEnd="-1dp"
+        app:tabPaddingStart="-1dp"
+        app:tabPaddingTop="-1dp"
         app:tabSelectedTextColor="@color/bg_org"
         app:tabTextColor="@color/recharge_text">
 
@@ -72,10 +72,10 @@
     </android.support.design.widget.TabLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:background="#101010"
         android:id="@+id/order_center_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#101010">
 
     </android.support.v7.widget.RecyclerView>
 
