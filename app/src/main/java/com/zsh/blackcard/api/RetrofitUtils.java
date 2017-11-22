@@ -16,8 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitUtils {
     private Context mContext;
+    OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
-    OkHttpClient okHttpClient = new OkHttpClient();
     GsonConverterFactory factory = GsonConverterFactory.create(new GsonBuilder().create());
     private static RetrofitUtils instance = null;
     private Retrofit mRetrofit = null;
@@ -38,9 +38,11 @@ public class RetrofitUtils {
         resetApp();
     }
 
+
     private void resetApp() {
+        builder.addInterceptor(new LoggingInterceptor());
+        OkHttpClient okHttpClient = builder.build();
         mRetrofit = new Retrofit.Builder()
-                //请求根地址
                 .baseUrl(DataManager.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(factory)

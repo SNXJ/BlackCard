@@ -30,17 +30,16 @@ import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryServiceModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
-import com.zsh.blackcard.ui.HomePlaneActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.WelcomeActivity;
 import com.zsh.blackcard.ui.home.HomeCarActivity;
 import com.zsh.blackcard.ui.home.HomeCruiseShipActivity;
 import com.zsh.blackcard.ui.home.HomeEquestrianActivity;
-import com.zsh.blackcard.ui.home.HomeFoodActivity;
-import com.zsh.blackcard.ui.home.HomeHotelActivity;
+import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
 import com.zsh.blackcard.ui.home.HomeKTVActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsActivity;
+import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.UIUtils;
@@ -297,11 +296,13 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
         switch (position) {
             //美食
             case 0:
-                ActivityUtils.startActivity(getActivity(), HomeFoodActivity.class);
+
+                ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 0);
                 break;
             //酒店
             case 1:
-                ActivityUtils.startActivity(getActivity(), HomeHotelActivity.class);
+                ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 1);
+                // ActivityUtils.startActivity(getActivity(), HomeHotelActivity.class);
                 break;
             //火车票
             case 2:

@@ -3,10 +3,14 @@ package com.zsh.blackcard.api;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
+import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
+import com.zsh.blackcard.model.TrainModel;
 
 import java.util.Map;
 
@@ -60,5 +64,23 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appconvergein/convergelist?")
     Observable<HjRecyclerModel> postHjRecycler(@Field("FKEY")String md5);
+    //首页美食
+    @FormUrlEncoded
+    @POST("appsfoodin/sfood?")
+    Observable<HomeFoodModel> postHomeFoodList(@Field("FKEY") String md5);
 
+    //首页酒店
+    @FormUrlEncoded
+    @POST("appshotelin/shotel.do?")
+    Observable<HomeHotelModel> postHomeHotelList(@Field("FKEY") String md5);
+
+    //酒店详情
+    @FormUrlEncoded
+    @POST("appshotelin/hotelsyn?")
+    Observable<HotelDetailModel> postHotelDetail(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
+    //火车票
+    @FormUrlEncoded
+    @POST("apppersonalin/trainselect?")
+    Observable<TrainModel> postTrain(@QueryMap Map<String, String> map);
 }

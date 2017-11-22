@@ -6,27 +6,45 @@
         <!-- 中间TextView的宽度 -->
         <attr name="tvWidth" format="dimension" />
         <!--<attr name="tvColor" format="color"/>-->
-        <attr name="tvTextSize" format="dimension"/>
-        <attr name="btnTextSize" format="dimension"/>
+        <attr name="tvTextSize" format="dimension" />
+        <attr name="btnTextSize" format="dimension" />
     </declare-styleable>
     <declare-styleable name="SnappingStepper">
-        <attr name="min" format="integer"/>
-        <attr name="max" format="integer"/>
-        <attr name="value" format="integer"/>
-        <attr name="step" format="integer"/>
-        <attr name="text" format="string"/>
+        <attr name="min" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="value" format="integer" />
+        <attr name="step" format="integer" />
+        <attr name="text" format="string" />
         <attr name="mode" format="enum">
-            <enum name="auto" value="0"/>
-            <enum name="custom" value="1"/>
+            <enum name="auto" value="0" />
+            <enum name="custom" value="1" />
         </attr>
-        <attr name="stepper_background" format="color|reference"/>
-        <attr name="stepper_buttonBackground" format="color|reference"/>
-        <attr name="stepper_contentBackground" format="color|reference"/>
-        <attr name="stepper_contentTextColor" format="color"/>
-        <attr name="stepper_contentTextSize" format="float"/>
-        <attr name="stepper_leftButtonBackground" format="color|reference"/>
-        <attr name="stepper_rightButtonBackground" format="color|reference"/>
-        <attr name="stepper_leftButtonResources" format="color|reference"/>
-        <attr name="stepper_rightButtonResources" format="color|reference"/>
+        <attr name="stepper_background" format="color|reference" />
+        <attr name="stepper_buttonBackground" format="color|reference" />
+        <attr name="stepper_contentBackground" format="color|reference" />
+        <attr name="stepper_contentTextColor" format="color" />
+        <attr name="stepper_contentTextSize" format="float" />
+        <attr name="stepper_leftButtonBackground" format="color|reference" />
+        <attr name="stepper_rightButtonBackground" format="color|reference" />
+        <attr name="stepper_leftButtonResources" format="color|reference" />
+        <attr name="stepper_rightButtonResources" format="color|reference" />
+    </declare-styleable>
+    <!-- 自定义星星属性 -->
+    <declare-styleable name="star">
+        //星星数量
+        <attr name="starsNum" format="integer"></attr>
+        //星星宽度
+        <attr name="starWidth" format="dimension"></attr>
+        //星星高度
+        <attr name="starHeight" format="dimension"></attr>
+        //星星间距
+        <attr name="starDistance" format="dimension"></attr>
+        //星星背景
+        <attr name="starBackground" format="reference"></attr>
+        //星星变化背景
+        <attr name="starDrawBackground" format="reference"></attr>
+        //控件是否可以点击
+        <attr name="starClickable" format="boolean"></attr>
+
     </declare-styleable>
 </resources>
