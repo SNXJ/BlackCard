@@ -11,9 +11,14 @@ import android.widget.TextView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.ui.TicketSearchActivity;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -43,10 +48,29 @@ public class HomeTrainActivity extends BaseActivity {
     CheckBox cbGaotie;
     @BindView(R.id.btn_search)
     Button btnSearch;
+    private String date;
+    Map<String, String> map = new TreeMap<>();
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_trian_home);
+        ButterKnife.bind(this);
+
+    }
+
+    private void initData() {
+
+//        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postTrain(map), new ResultListener<TrainModel>() {
+//            @Override
+//            public void responseSuccess(TrainModel obj) {
+//
+//            }
+//
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//        });
     }
 
     @OnClick({R.id.title_back, R.id.tv_exchange_01, R.id.tv_exchange_02, R.id.im_exchange, R.id.rl_date, R.id.cb_student, R.id.cb_gaotie, R.id.btn_search})
@@ -60,18 +84,27 @@ public class HomeTrainActivity extends BaseActivity {
             case R.id.tv_exchange_02:
                 break;
             case R.id.im_exchange:
+                exchangeTv();
                 break;
             case R.id.rl_date:
-                PublicDialog.dataDialog(HomeTrainActivity.this);
+                PublicDialog.dateDialog(HomeTrainActivity.this, new DateListener() {
+                    @Override
+                    public void dateListener(String date) {
+                        tvDateGo.setText(date);
+                    }
+                });
                 break;
-//            case R.id.cb_student:
-//                break;
-//            case R.id.cb_gaotie:
-//                break;
             case R.id.btn_search:
                 //   startActivity(new Intent(HomeTrainActivity.this,CommonPassengerActivity.class));
                 startActivity(new Intent(HomeTrainActivity.this, TicketSearchActivity.class));
                 break;
         }
+    }
+
+    private void exchangeTv() {
+        String str1 = (String) tvExchange01.getText();
+        String str2 = (String) tvExchange02.getText();
+        tvExchange01.setText(str2);
+        tvExchange02.setText(str1);
     }
 }

@@ -76,7 +76,7 @@ public class ActivityUtils {
                                             String data, String title) {
         Intent intent = new Intent(activity, cls);
         intent.putExtra("data", data);
-        intent.putExtra("title", data);
+        intent.putExtra("title", title);
         activity.startActivity(intent);
     }
 

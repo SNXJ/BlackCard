@@ -1,10 +1,11 @@
-package com.zsh.blackcard.ui;
+package com.zsh.blackcard.ui.home;
 
 import android.content.Intent;
 import android.view.View;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.ui.TicketSearchActivity;
 
 /**
  * 计划

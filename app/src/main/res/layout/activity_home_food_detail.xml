@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="@dimen/base225dp"
         android:background="@mipmap/food_image_2">

@@ -3,11 +3,17 @@ package com.zsh.blackcard.api;
 import android.content.Context;
 
 import com.zsh.blackcard.model.HjRecyclerModel;
+import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
+
+import java.util.Map;
 
 import rx.Observable;
 
@@ -85,5 +91,21 @@ public class NetApi {
      */
     public Observable<HjRecyclerModel> postHjRecycler(String md5){
         return retrofitService.postHjRecycler(md5);
+    }
+
+    public Observable<HomeFoodModel> postHomeFoodList(String md5) {
+        return retrofitService.postHomeFoodList(md5);
+    }
+
+    public Observable<HomeHotelModel> postHomeHotelList(String md5) {
+        return retrofitService.postHomeHotelList(md5);
+    }
+
+    public Observable<HotelDetailModel> postHotelDetail(String md5, String id) {
+        return retrofitService.postHotelDetail(md5, id);
+    }
+
+    public Observable<TrainModel> postTrain(Map<String, String> map) {
+        return retrofitService.postTrain(map);
     }
 }

@@ -68,7 +68,6 @@ public class DataManager {
                     public void onCompleted() {
                         if (null != listener) {
                             listener.onCompleted();
-                            LogUtils.i("++++++", "++++++++++onCompleted++++++++++++");
                         }
                     }
 

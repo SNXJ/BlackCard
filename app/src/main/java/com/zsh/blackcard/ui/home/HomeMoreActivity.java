@@ -12,7 +12,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeMoreAdapter;
 import com.zsh.blackcard.model.HomeNewModel;
 import com.zsh.blackcard.ui.GolfActivity;
-import com.zsh.blackcard.ui.HomePlaneActivity;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +93,7 @@ public class HomeMoreActivity extends BaseActivity {
     private void itemClick(int position) {
         switch (position) {
             case 0:
-                startActivity(new Intent(this, HomeFoodActivity.class));
+                startActivity(new Intent(this, HomeFoodHotelActivity.class));
                 break;
             case 1:
                 startActivity(new Intent(this, HomeHotelActivity.class));
