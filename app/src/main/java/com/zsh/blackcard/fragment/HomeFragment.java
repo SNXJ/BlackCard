@@ -28,18 +28,17 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryServiceModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.ui.HomePlaneActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
-import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.WelcomeActivity;
 import com.zsh.blackcard.ui.home.HomeCarActivity;
 import com.zsh.blackcard.ui.home.HomeCruiseShipActivity;
 import com.zsh.blackcard.ui.home.HomeEquestrianActivity;
-import com.zsh.blackcard.ui.home.HomeKTVActivity;
-import com.zsh.blackcard.ui.home.HomePlaneActivity;
-import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.ui.home.HomeFoodActivity;
 import com.zsh.blackcard.ui.home.HomeHotelActivity;
+import com.zsh.blackcard.ui.home.HomeKTVActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
+import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -54,14 +53,14 @@ import butterknife.OnClick;
  * Created by admin on 2017/10/11.
  */
 
-public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTypeOnItemClick{
+public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTypeOnItemClick {
 
     //HomeTop 头条的item点击事件
-    class HomeTopOnItemClick implements BaseQuickAdapter.OnItemClickListener{
+    class HomeTopOnItemClick implements BaseQuickAdapter.OnItemClickListener {
 
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
                     break;
@@ -208,7 +207,7 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
                 list.add(homeGloryServiceModel);
             }
             homeGloryServiceAdapter = new HomeGloryServiceAdapter(list);
-            home_glory_service_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+            home_glory_service_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
             home_glory_service_recycler.setAdapter(homeGloryServiceAdapter);
             home_glory_service_recycler.setNestedScrollingEnabled(false);
         }
@@ -228,7 +227,7 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
                 list1.add(homeGloryMagazineModel);
             }
             homeGloryMagazineAdapter = new HomeGloryMagazineAdapter(list1);
-            home_glory_magazine_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+            home_glory_magazine_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
             home_glory_magazine_recycler.setAdapter(homeGloryMagazineAdapter);
             home_glory_magazine_recycler.setNestedScrollingEnabled(false);
         }
@@ -243,9 +242,9 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
     }
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_play_img,R.id.go_welcome_login_img})
+    @OnClick({R.id.home_play_img, R.id.go_welcome_login_img})
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.home_play_img:
                 if (sendMainActivity != null) {
                     sendMainActivity.goIntent();

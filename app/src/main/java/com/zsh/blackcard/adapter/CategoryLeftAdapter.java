@@ -14,7 +14,7 @@ import java.util.List;
  * Date: 2017-11-12
  * Description:描述：
  */
-public class CategoryLeftAdapter extends BaseQuickAdapter<String,BaseViewHolder> {
+public class CategoryLeftAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     private int selectPos = 0;
 
     public CategoryLeftAdapter(List<String> data) {
@@ -26,10 +26,10 @@ public class CategoryLeftAdapter extends BaseQuickAdapter<String,BaseViewHolder>
         if (selectPos == helper.getAdapterPosition()) {
             helper.setVisible(R.id.item_category_left_bg, true);
             helper.convertView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-            helper.setTextColor(R.id.item_category_left_type, Color.parseColor("#40a5f3"));
+            helper.setTextColor(R.id.item_category_left_type, Color.parseColor("#FFFFFF"));
         } else {
             helper.convertView.setBackgroundColor(Color.parseColor("#f7f7f7"));
-            helper.setTextColor(R.id.item_category_left_type, Color.parseColor("#333333"));
+            helper.setTextColor(R.id.item_category_left_type, Color.parseColor("#FF929292"));
             helper.setVisible(R.id.item_category_left_bg, false);
         }
 

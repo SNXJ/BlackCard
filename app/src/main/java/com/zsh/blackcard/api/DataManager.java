@@ -48,7 +48,7 @@ public class DataManager {
         return Md5Untils.md5(fn + sdf.format(new Date()) + FH);
     }
 
-    public static String getMd5PassWord(String passWord){
+    public static String getMd5PassWord(String passWord) {
         return Md5Untils.md5(passWord);
     }
 
@@ -71,11 +71,13 @@ public class DataManager {
                             LogUtils.i("++++++", "++++++++++onCompleted++++++++++++");
                         }
                     }
+
                     @Override
                     public void onError(Throwable e) {
                         LogUtils.i("++++++", "++++++++++e++++++++++++" + e.toString());
                         UIUtils.showToast(context.getResources().getString(R.string.generic_server_down));
                     }
+
                     @Override
                     public void onNext(T t) {
                         if (null != listener && null != t) {
@@ -83,7 +85,6 @@ public class DataManager {
                         }
                     }
                 })));
-
     }
 
 }

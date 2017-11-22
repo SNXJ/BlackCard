@@ -17,13 +17,11 @@ public class NetApi {
     private static NetApi netApi;
 
     public static NetApi getInstance(Context context) {
-
         retrofitService = RetrofitUtils.getInstance(context).getService();
         if (netApi == null) {
             netApi = new NetApi();
         }
         return netApi;
-
     }
 
     /**

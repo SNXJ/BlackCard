@@ -1,11 +1,10 @@
-package com.zsh.blackcard.ui.home;
+package com.zsh.blackcard.ui;
 
 import android.content.Intent;
 import android.view.View;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.ui.TicketSearchActivity;
 
 /**
  * 计划
@@ -19,7 +18,8 @@ public class HomePlaneActivity extends BaseActivity {
         findViewById(R.id.btn_search).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomePlaneActivity.this,TicketSearchActivity.class));
+                //  ActivityUtils
+                startActivity(new Intent(HomePlaneActivity.this, TicketSearchActivity.class));
             }
         });
     }
