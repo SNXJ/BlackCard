@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="vertical">
+
+        <RelativeLayout style="@style/title_rl">
+
+            <ImageView
+                android:id="@+id/title_back"
+                style="@style/title_im_back" />
+
+            <TextView
+                android:id="@+id/title_tv"
+                style="@style/title_tv"
+                android:text="头条" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:src="@mipmap/head_icon_2" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="21cake蛋糕预定"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base200dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/head_image_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="我敬重每一枚出炉的糕点，除了感谢它带给我甜蜜的愉悦，吃完之后将体会到的宇宙级美好，还神经质的认为手上捧着的是三四个世纪前的配方，它融化在我的舌尖，世间万物在一瞬变得渺小。
+
+本周，荣耀黑卡特权局联合21cake为持卡人精选了8款定制蛋糕
+"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="芒果姆斯"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="使用马达加斯加香草制作戚风香草坯"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base200dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/head_image_2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="朗姆芝士"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="使用马达加斯加香草制作戚风香草坯"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base200dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/head_image_3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="栗蓉暗香"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="使用马达加斯加香草制作戚风香草坯"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base200dp"
+            android:layout_marginBottom="@dimen/base15dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/head_image_4" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

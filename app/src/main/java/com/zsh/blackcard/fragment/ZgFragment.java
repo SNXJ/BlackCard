@@ -2,164 +2,140 @@ package com.zsh.blackcard.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.listener.ZGSlidingListener;
+import com.zsh.blackcard.adapter.ZgShopAdapter;
+import com.zsh.blackcard.model.ZgShopModel;
 import com.zsh.blackcard.ui.CommodityActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by admin on 2017/10/20.
  */
 
-public class ZgFragment extends BaseFragment {
-    private ViewPager zgvp;
-    private List<ImageView> imageList;
-    public LinearLayout lldot;
-    public View view;
-    private ImageView zgmyimg;
-    private ZGSlidingListener zGSlidingListener;
+public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener {
 
-    int src[] = {R.mipmap.but_banner_1, R.mipmap.toghter_image_1, R.mipmap.toghter_image_2};
+    @BindView(R.id.zg_recycler)
+    RecyclerView zg_recycler;
+    //尊购商品区适配器
+    private ZgShopAdapter zgShopAdapter;
 
-    public void sendStatus(ZGSlidingListener zglistener) {
-        this.zGSlidingListener = zglistener;
+    @BindView(R.id.zg_banner)
+    Banner zg_banner;
+    //设置商品区集合
+    private List<ZgShopModel> list = new ArrayList<>();
+    //设置轮播区图片集合
+    private List<Integer> bannerList = new ArrayList<>();
+
+    //商品列表点击事件
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        switch (position) {
+            //手表
+            case 0:
+                ActivityUtils.startActivityForData(getActivity(), CommodityActivity.class, "1b4ed4c57ef04933b97e8def48fc423a");
+                break;
+            //包袋
+            case 1:
+                ActivityUtils.startActivityForData(getActivity(), CommodityActivity.class, "a34d1f14a4b7481e8284ad4ba97a496b");
+                break;
+            //首饰
+            case 2:
+                ActivityUtils.startActivityForData(getActivity(), CommodityActivity.class, "2df2c7e628b14341be1e2932cb377c82");
+                break;
+            //豪车
+            case 3:
+                ActivityUtils.startActivityForData(getActivity(), CommodityActivity.class, "c387f598e5c64a1ea275a7ca3e77518c");
+                break;
+            //高尔夫汇
+            case 4:
+                //暂无
+                break;
+            //飞机游艇
+            case 5:
+                ActivityUtils.startActivityForData(getActivity(), CommodityActivity.class, "668b21fc68a44080899cfd840107af22");
+                break;
+            //家电数码
+            case 6:
+                ActivityUtils.startActivityForData(getActivity(), CommodityActivity.class, "a1d59672053f45e1a5499fb1d5850144");
+                break;
+        }
+    }
+
+    //banner加载图片类
+    private class MyImageLoader extends ImageLoader {
+
+        @Override
+        public void displayImage(Context context, Object path, ImageView imageView) {
+            imageView.setImageResource((Integer) path);
+        }
     }
 
     @Override
     public void initDate(Bundle savedInstanceState) {
-
+        //初始化轮播
+        initBanner();
+        //初始化商品区列表
+        initShopList();
     }
 
-    @OnClick(R.id.zg_watch_linear)
-    public void watchOnClick(){
-        ActivityUtils.startActivity(getActivity(), CommodityActivity.class);
+    //初始化商品区列表
+    private void initShopList() {
+        for (int i = 1; i < 8; i++) {
+            ZgShopModel zgShopModel = new ZgShopModel();
+            if (i % 2 != 0) {
+                zgShopModel.setItemType(1);
+            } else {
+                zgShopModel.setItemType(2);
+            }
+            list.add(zgShopModel);
+        }
+        if (zgShopAdapter == null) {
+            zgShopAdapter = new ZgShopAdapter(list);
+            zg_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+            zg_recycler.addItemDecoration(new SpacesItemDecoration(getActivity(), SpacesItemDecoration.VERTICAL_LIST));
+            zg_recycler.setAdapter(zgShopAdapter);
+            zg_recycler.setNestedScrollingEnabled(false);
+            zgShopAdapter.setOnItemClickListener(this);
+        }
+    }
+
+
+    //初始化banner轮播区
+    private void initBanner() {
+        bannerList.add(R.mipmap.but_banner_1);
+        bannerList.add(R.mipmap.but_banner_1);
+        bannerList.add(R.mipmap.but_banner_1);
+        zg_banner.setImages(bannerList);
+        zg_banner.setImageLoader(new MyImageLoader());
+        zg_banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+        zg_banner.setIndicatorGravity(BannerConfig.CENTER);
+        zg_banner.isAutoPlay(true);
+        zg_banner.setDelayTime(3000);
+        zg_banner.start();
     }
 
     @Override
     public View initView(LayoutInflater inflater) {
         view = View.inflate(getActivity(), R.layout.zgfragment, null);
-        ButterKnife.bind(this,view);
-        zgfindId();
-        zgvp.setAdapter(new MyAdapter(getActivity(), src));
-
-        //初始话
-        initDot();
-        zgvp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            public void onPageSelected(int position) {
-                // TODO Auto-generated method stub
-                for (int i = 0; i < imageList.size(); i++) {
-                    if (i == position) {
-                        imageList.get(i).setImageResource(R.drawable.select_zheng);
-                    } else {
-                        imageList.get(i).setImageResource(R.drawable.select_fan);
-                    }
-                }
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-                // TODO Auto-generated method stub
-            }
-        });
+        ButterKnife.bind(this, view);
         return view;
     }
-
-    private void zgfindId() {
-        zgvp = (ViewPager) view.findViewById(R.id.zg_vp);
-        lldot = (LinearLayout) view.findViewById(R.id.ll_dot);
-        zgmyimg = (ImageView) view.findViewById(R.id.zg_myleftimg);
-
-        zgmyimg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent zgmyintent = new Intent(getActivity(), ZgMyActivity.class);
-//                startActivity(zgmyintent);
-                zGSlidingListener.onMeauClick();
-
-            }
-        });
-
-    }
-
-    private void initDot() {
-        imageList = new ArrayList<>();
-        for (int i = 0; i < src.length; i++) {
-            ImageView image = new ImageView(getActivity().getApplicationContext());
-            if (i == 0) {
-                image.setImageResource(R.drawable.select_zheng);
-            } else {
-                image.setImageResource(R.drawable.select_fan);
-            }
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dip2px(getActivity(), 5), dip2px(getActivity(), 5));
-            params.setMargins(dip2px(getActivity(), 5), 0, dip2px(getActivity(), 5), 0);
-            lldot.addView(image, params);
-            imageList.add(image);
-        }
-    }
-
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-
-    class MyAdapter extends PagerAdapter {
-        private int[] src;
-        private Context context;
-
-        public MyAdapter(Context context, int[] src) {
-            // TODO Auto-generated constructor stub
-            this.context = context;
-            this.src = src;
-        }
-
-        @Override
-        public int getCount() {
-            // TODO Auto-generated method stub
-            return src.length;
-        }
-
-        @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            // TODO Auto-generated method stub
-            return arg0 == arg1;
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            // TODO Auto-generated method stub
-            ImageView view = new ImageView(context);
-            view.setImageResource(src[position]);
-            container.addView(view);
-            return view;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            // TODO Auto-generated method stub
-            container.removeView((View) object);
-        }
-    }
-
 }

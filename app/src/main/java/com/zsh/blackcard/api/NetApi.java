@@ -2,8 +2,12 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
+import com.zsh.blackcard.model.HjRecyclerModel;
+import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
+import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.model.ZgShopAreaModel;
 
 import rx.Observable;
 
@@ -35,7 +39,51 @@ public class NetApi {
         return retrofitService.postLoginCard(md5, cardNo, passWord);
     }
 
-    public Observable<HomeTopModel> postHomePage(String md5){
+    /**
+     * Home页面头条图片请求
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomeTopModel> postHomePage(String md5) {
         return retrofitService.postHomePage(md5);
+    }
+
+    /**
+     * 尊购页面，所有专区的列表点击事件的子页面
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ZgShopAreaModel> postShopArea(String md5, String id) {
+        return retrofitService.postShopArea(md5, id);
+    }
+
+    /**
+     * 首页头条新闻标题
+     * @param md5
+     * @return
+     */
+    public Observable<HomeTitleNewsModel> postHomeTitleNews(String md5){
+        return retrofitService.postHomeTitleNews(md5);
+    }
+
+    /**
+     * 首页头条新闻点击详情
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<HomeTitleNewsDetailModel> postHomeTitleNewsDetail(String md5,String id){
+        return retrofitService.postHomeTitleNewsDetail(md5,id);
+    }
+
+    /**
+     * 汇聚页面列表
+     * @param md5
+     * @return
+     */
+    public Observable<HjRecyclerModel> postHjRecycler(String md5){
+        return retrofitService.postHjRecycler(md5);
     }
 }

@@ -26,21 +26,20 @@
         android:hint="请输入您的黑卡卡号"
         android:layout_width="match_parent"
         android:inputType="number"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/base40dp" />
 
     <View
         android:id="@+id/login_user_v"
-        android:layout_marginTop="9dp"
         android:layout_below="@+id/login_user_et"
         android:background="@color/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <EditText
+        android:layout_marginTop="@dimen/base5dp"
         android:maxLines="1"
         android:digits="123456asd"
         android:textColor="@color/recharge_text"
-        android:layout_marginTop="30dp"
         android:id="@+id/login_pass_et"
         android:background="@null"
         android:textSize="14sp"
@@ -48,11 +47,10 @@
         android:layout_below="@+id/login_user_v"
         android:hint="请输入您的密码"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/base40dp" />
 
     <View
         android:id="@+id/login_pass_v"
-        android:layout_marginTop="9dp"
         android:layout_below="@+id/login_pass_et"
         android:background="@color/divider"
         android:layout_width="match_parent"
