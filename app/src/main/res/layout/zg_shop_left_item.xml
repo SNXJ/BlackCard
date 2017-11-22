@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base140dp">
+
+    <ImageView
+        android:id="@+id/zg_shop_img"
+        android:layout_marginLeft="@dimen/base42dp"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:layout_width="@dimen/base140dp"
+        android:layout_height="match_parent">
+        
+        <TextView
+            android:id="@+id/zg_shop__tv"
+            android:textSize="15sp"
+            android:textColor="@color/recharge_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:paddingTop="@dimen/base2dp"
+            android:paddingBottom="@dimen/base2dp"
+            android:layout_marginTop="@dimen/base12dp"
+            android:paddingRight="@dimen/base20dp"
+            android:paddingLeft="@dimen/base20dp"
+            android:background="@drawable/shape_zg_enter"
+            android:textSize="12sp"
+            android:textColor="@color/recharge_text"
+            android:text="ENTER"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+    </LinearLayout>
+    
+</RelativeLayout>

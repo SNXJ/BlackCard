@@ -53,7 +53,7 @@
         <activity android:name=".ui.DiscountCouponActivity" />
         <activity android:name=".ui.ShoppingDetailsActivity" />
         <activity android:name=".ui.DiscountExchangeActivity" />
-        <activity android:name=".ui.CommonlyActivity" />
+        <activity android:name=".ui.CommonPassengerActivity" />
         <activity android:name=".ui.EatDrinkActivity" />
         <activity android:name=".ui.EatDrinkSetActivity" />
         <activity android:name=".ui.DetailsRequireActivity" />
@@ -126,7 +126,8 @@
         <activity android:name=".ui.live.LiveAnchorDetails2"></activity>
         <activity android:name=".ui.live.VideoDetailsActivity"></activity>
         <activity android:name=".ui.live.VideoIngActivity"></activity>
-        <activity android:name=".ui.live.AbMySettingActivity"></activity>
+        <activity android:name=".ui.live.AbMySettingActivity"></activity>]
+        <activity android:name=".ui.home.HomeTopNewsActivity"></activity>
     </application>
 
 </manifest>

@@ -62,6 +62,7 @@ public class LoginActivity extends BaseActivity {
             DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postLoginCard(DataManager.getMd5Str("LOGIN"), login_user_et.getText().toString().trim(), DataManager.getMd5PassWord(login_pass_et.getText().toString().trim())), new ResultListener<LoginModel>() {
                 @Override
                 public void responseSuccess(LoginModel obj) {
+
                     if (obj.getResult().equals("04")) {
                         UIUtils.showToast("帐号或密码错误");
                     }

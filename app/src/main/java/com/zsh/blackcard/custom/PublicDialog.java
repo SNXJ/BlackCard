@@ -21,7 +21,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.SelectDataListener;
 import com.zsh.blackcard.ui.BlackWeiboActivity;
-import com.zsh.blackcard.ui.CommonlyActivity;
+import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.live.LiveAnchorDetails2;
 import com.zsh.blackcard.ui.live.LiveOpenActivity;
 import com.zsh.blackcard.ui.live.VideoDetailsActivity;
@@ -108,7 +108,7 @@ public class PublicDialog {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                mContext.startActivity(new Intent(mContext, CommonlyActivity.class));
+                mContext.startActivity(new Intent(mContext, CommonPassengerActivity.class));
             }
         });
     }

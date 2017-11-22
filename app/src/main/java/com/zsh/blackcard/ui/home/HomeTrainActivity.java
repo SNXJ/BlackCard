@@ -69,7 +69,7 @@ public class HomeTrainActivity extends BaseActivity {
 //            case R.id.cb_gaotie:
 //                break;
             case R.id.btn_search:
-                //   startActivity(new Intent(HomeTrainActivity.this,CommonlyActivity.class));
+                //   startActivity(new Intent(HomeTrainActivity.this,CommonPassengerActivity.class));
                 startActivity(new Intent(HomeTrainActivity.this, TicketSearchActivity.class));
                 break;
         }

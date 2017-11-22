@@ -1,14 +1,24 @@
 package com.zsh.blackcard.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.HjRecyclerAdapter;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.ui.EatDrinkActivity;
+import com.zsh.blackcard.untils.ActivityUtils;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -17,24 +27,49 @@ import com.zsh.blackcard.ui.EatDrinkActivity;
 
 public class HjFragment extends BaseFragment {
 
+    @BindView(R.id.hj_recycler)
+    RecyclerView hj_recycler;
+
+    private HjRecyclerAdapter hjRecyclerAdapter;
+    private HjRecyclerModel hjRecyclerModel;
+
     @Override
     public void initDate(Bundle savedInstanceState) {
+        hj_recycler.setNestedScrollingEnabled(false);
+
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHjRecycler(DataManager.getMd5Str("CONVERGELIST")), new ResultListener<HjRecyclerModel>() {
+            @Override
+            public void responseSuccess(HjRecyclerModel obj) {
+                hjRecyclerModel = obj;
+                hjRecyclerAdapter = new HjRecyclerAdapter(R.layout.hj_recycler_item,hjRecyclerModel.getPd());
+                hj_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+                hj_recycler.setAdapter(hjRecyclerAdapter);
+                hjRecyclerAdapter.setOnItemClickListener(new HjOnItemClick());
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+
 
     }
-
-    LinearLayout hj_eat_drink;
 
     @Override
     public View initView(LayoutInflater inflater) {
         View view = View.inflate(getActivity(), R.layout.hjfragment, null);
-        hj_eat_drink = (LinearLayout) view.findViewById(R.id.hj_eat_drink);
-        hj_eat_drink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), EatDrinkActivity.class);
-                startActivity(intent);
-            }
-        });
+        ButterKnife.bind(this,view);
         return view;
+    }
+
+    private class HjOnItemClick implements BaseQuickAdapter.OnItemClickListener{
+
+        @Override
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            //传递CONVERGE_ID和title标题
+            ActivityUtils.startActivityForData(getActivity(), EatDrinkActivity.class,hjRecyclerModel.getPd().get(position).getCONVERGE_ID(),hjRecyclerModel.getPd().get(position).getIMGCNCHAR());
+        }
     }
 }

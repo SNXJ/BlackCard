@@ -17,25 +17,25 @@
     </com.youth.banner.Banner>
 
     <Button
-        android:layout_marginBottom="@dimen/base36dp"
+        android:layout_marginBottom="@dimen/base38dp"
         android:id="@+id/welcome_register_btn"
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="@dimen/base36dp"
+        android:layout_marginLeft="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="在线申请"
         android:textColor="#FFFFFFFF"
         android:textSize="12sp" />
 
     <Button
-        android:layout_marginBottom="@dimen/base36dp"
+        android:layout_marginBottom="@dimen/base38dp"
         android:id="@+id/welcome_login_btn"
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/base36dp"
+        android:layout_marginRight="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="会籍登录"
         android:textColor="#FFFFFFFF"

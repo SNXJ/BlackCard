@@ -16,7 +16,7 @@ import butterknife.OnClick;
 /**
  * 常用乘客
  */
-public class CommonlyActivity extends BaseActivity {
+public class CommonPassengerActivity extends BaseActivity {
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -54,7 +54,7 @@ public class CommonlyActivity extends BaseActivity {
             case R.id.im_edit:
                 break;
             case R.id.btn_add:
-                startActivity( new Intent(CommonlyActivity.this,TicketAddActivity.class));
+                startActivity( new Intent(CommonPassengerActivity.this,TicketAddActivity.class));
                 break;
         }
     }

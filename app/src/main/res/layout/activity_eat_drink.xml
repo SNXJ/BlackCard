@@ -19,11 +19,11 @@
             android:src="@mipmap/back" />
 
         <TextView
+            android:id="@+id/hj_recycler_detail_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="吃喝玩乐"
-            android:textColor="#929292"
+            android:textColor="@color/recharge_text"
             android:textSize="17sp"
             android:textStyle="bold" />
 

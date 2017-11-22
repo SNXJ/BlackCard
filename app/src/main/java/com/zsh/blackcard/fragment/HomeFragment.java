@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -27,6 +28,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryServiceModel;
+import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.ui.HomePlaneActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
@@ -38,8 +40,10 @@ import com.zsh.blackcard.ui.home.HomeFoodActivity;
 import com.zsh.blackcard.ui.home.HomeHotelActivity;
 import com.zsh.blackcard.ui.home.HomeKTVActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
+import com.zsh.blackcard.ui.home.HomeTopNewsActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +60,7 @@ import butterknife.OnClick;
 public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTypeOnItemClick {
 
     //HomeTop 头条的item点击事件
-    class HomeTopOnItemClick implements BaseQuickAdapter.OnItemClickListener {
+    private class HomeTopOnItemClick implements BaseQuickAdapter.OnItemClickListener {
 
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -77,7 +81,7 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
         }
     }
 
-    //通过接口向Activity
+    //通过接口向Activity调用方法
     public interface SendMainActivity {
         void goIntent();
     }
@@ -109,16 +113,16 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
     //荣耀杂志列表适配器
     private HomeGloryMagazineAdapter homeGloryMagazineAdapter;
 
-    private String[] top_title = new String[]{"荣耀黑卡app全新上线,期待您的光临", "荣耀黑卡尊享至尊系列"};
+    private HomeTitleNewsModel homeTitleNewsModel;
 
     private int mSwitcherCount = 0;
 
-    private Handler handler = new Handler(new Handler.Callback() {
+    private Handler handler = new Handler(new Handler.Callback() {//2
         @Override
         public boolean handleMessage(Message msg) {
-            home_top_tvs.setText(top_title[mSwitcherCount % top_title.length]);
+            home_top_tvs.setText(homeTitleNewsModel.getPd().get(mSwitcherCount).getNEWSTITLE());
             mSwitcherCount++;
-            if (mSwitcherCount == 2) {
+            if (mSwitcherCount == homeTitleNewsModel.getPd().size()) {
                 mSwitcherCount = 0;
             }
             handler.sendEmptyMessageDelayed(1, 3000);
@@ -155,11 +159,25 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
                 return textView;
             }
         });
-
         //给滚动文字设置滚动动画
         home_top_tvs.setInAnimation(getActivity(), R.anim.enter_bottom);
         home_top_tvs.setOutAnimation(getActivity(), R.anim.leave_top);
-        handler.sendEmptyMessage(1);
+
+        //请求头条滚动文字
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeTitleNews(DataManager.getMd5Str("NEWSLIST")), new ResultListener<HomeTitleNewsModel>() {
+            @Override
+            public void responseSuccess(HomeTitleNewsModel obj) {
+                homeTitleNewsModel = obj;
+                handler.removeMessages(1);
+                handler.sendEmptyMessage(1);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
 
         //初始化头条列表
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePage(DataManager.getMd5Str("COMMEND")), new ResultListener<HomeTopModel>() {
@@ -241,6 +259,23 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
         return view;
     }
 
+    //title头条新闻标题点击事件
+    @OnClick(R.id.home_top_tvs)
+    public void titleNewsOnClick() {
+        switch (mSwitcherCount % homeTitleNewsModel.getPd().size()) {
+            case 0:
+                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(2).getNEWS_ID());
+                break;
+            case 1:
+                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(0).getNEWS_ID());
+                break;
+            case 2:
+                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(1).getNEWS_ID());
+                break;
+
+        }
+    }
+
     //普通控件的onClick事件
     @OnClick({R.id.home_play_img, R.id.go_welcome_login_img})
     public void onClick(View view) {
@@ -248,7 +283,6 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
             case R.id.home_play_img:
                 if (sendMainActivity != null) {
                     sendMainActivity.goIntent();
-                    System.out.println("22222");
                 }
                 break;
             case R.id.go_welcome_login_img:
