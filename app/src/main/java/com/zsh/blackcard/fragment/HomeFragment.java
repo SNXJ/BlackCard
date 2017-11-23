@@ -263,13 +263,13 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
     public void titleNewsOnClick() {
         switch (mSwitcherCount % homeTitleNewsModel.getPd().size()) {
             case 0:
-                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(2).getNEWS_ID());
+//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(2).getNEWS_ID());
                 break;
             case 1:
-                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(0).getNEWS_ID());
+//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(0).getNEWS_ID());
                 break;
             case 2:
-                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(1).getNEWS_ID());
+//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(1).getNEWS_ID());
                 break;
 
         }

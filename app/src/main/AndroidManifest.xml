@@ -130,6 +130,7 @@
         <activity android:name=".ui.live.VideoIngActivity"></activity>
         <activity android:name=".ui.live.AbMySettingActivity"></activity>]
         <activity android:name=".ui.home.HomeTopNewsActivity"></activity>
+        <activity android:name=".ui.EatDrinkSetDetailActivity"></activity>
     </application>
 
 </manifest>

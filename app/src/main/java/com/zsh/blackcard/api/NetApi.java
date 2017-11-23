@@ -2,6 +2,8 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
+import com.zsh.blackcard.model.EatDrinkDetailModel;
+import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
@@ -107,5 +109,25 @@ public class NetApi {
 
     public Observable<TrainModel> postTrain(Map<String, String> map) {
         return retrofitService.postTrain(map);
+    }
+
+    /**
+     * 汇聚页面指定聚会列表
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<EatDrinkModel> postHjRecyclerItem(String md5,String id){
+        return retrofitService.postHjRecyclerItem(md5,id);
+    }
+
+    /**
+     * 汇聚页面指定聚会列表点击查看详情
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<EatDrinkDetailModel> postHjRecyclerItemDetail(String md5,String id){
+        return retrofitService.postHjRecyclerItemDetail(md5,id);
     }
 }
