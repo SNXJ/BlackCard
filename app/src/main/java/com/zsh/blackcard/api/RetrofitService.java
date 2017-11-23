@@ -1,5 +1,7 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.EatDrinkDetailModel;
+import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
@@ -63,7 +65,14 @@ public interface RetrofitService {
     //汇聚页面列表
     @FormUrlEncoded
     @POST("appconvergein/convergelist?")
-    Observable<HjRecyclerModel> postHjRecycler(@Field("FKEY")String md5);
+    Observable<HjRecyclerModel> postHjRecycler(@Field("FKEY") String md5);
+
+    //汇聚页面指定聚会列表
+    @FormUrlEncoded
+    @POST("appconvergein/getpartylist?")
+    Observable<EatDrinkModel> postHjRecyclerItem(@Field("FKEY") String md5,
+                                                 @Field("CONVERGE_ID") String id);
+
     //首页美食
     @FormUrlEncoded
     @POST("appsfoodin/sfood?")
@@ -83,4 +92,10 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("apppersonalin/trainselect?")
     Observable<TrainModel> postTrain(@QueryMap Map<String, String> map);
+
+    //汇聚页面指定聚会列表点击了解详情
+    @FormUrlEncoded
+    @POST("appconvergein/getdetailbyid?")
+    Observable<EatDrinkDetailModel> postHjRecyclerItemDetail(@Field("FKEY") String md5,
+                                                             @Field("CONVERGEDETAIL_ID") String id);
 }

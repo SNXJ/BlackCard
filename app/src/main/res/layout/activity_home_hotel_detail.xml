@@ -375,7 +375,7 @@
             android:layout_width="@dimen/base70dp"
             android:layout_height="@dimen/base23dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/addfriendshape"
+            android:background="@drawable/shape_hj_child_item_add_friend"
             android:gravity="center"
             android:text="共一天"
             android:textColor="@color/ff92_text"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 描边 -->
+    <stroke
+        android:width="@dimen/base1dp"
+        android:color="@color/recharge_text" />
+    <corners android:radius="@dimen/base10dp" />
+
+</shape>
