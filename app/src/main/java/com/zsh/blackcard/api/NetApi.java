@@ -2,6 +2,8 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
+import com.zsh.blackcard.model.CommentAddModel;
+import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
@@ -11,6 +13,7 @@ import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
@@ -59,6 +62,7 @@ public class NetApi {
 
     /**
      * 尊购页面，所有专区的列表点击事件的子页面
+     *
      * @param md5
      * @param id
      * @return
@@ -69,44 +73,115 @@ public class NetApi {
 
     /**
      * 首页头条新闻标题
+     *
      * @param md5
      * @return
      */
-    public Observable<HomeTitleNewsModel> postHomeTitleNews(String md5){
+    public Observable<HomeTitleNewsModel> postHomeTitleNews(String md5) {
         return retrofitService.postHomeTitleNews(md5);
     }
 
     /**
      * 首页头条新闻点击详情
+     *
      * @param md5
      * @param id
      * @return
      */
-    public Observable<HomeTitleNewsDetailModel> postHomeTitleNewsDetail(String md5,String id){
-        return retrofitService.postHomeTitleNewsDetail(md5,id);
+    public Observable<HomeTitleNewsDetailModel> postHomeTitleNewsDetail(String md5, String id) {
+        return retrofitService.postHomeTitleNewsDetail(md5, id);
     }
 
     /**
      * 汇聚页面列表
+     *
      * @param md5
      * @return
      */
-    public Observable<HjRecyclerModel> postHjRecycler(String md5){
+    public Observable<HjRecyclerModel> postHjRecycler(String md5) {
         return retrofitService.postHjRecycler(md5);
     }
 
+    /**
+     * 美食列表
+     *
+     * @param md5
+     * @return
+     */
     public Observable<HomeFoodModel> postHomeFoodList(String md5) {
         return retrofitService.postHomeFoodList(md5);
     }
 
+    /**
+     * 酒店列表
+     *
+     * @param md5
+     * @param
+     * @return
+     */
     public Observable<HomeHotelModel> postHomeHotelList(String md5) {
         return retrofitService.postHomeHotelList(md5);
     }
 
+    /**
+     * 美食详情
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<HotelDetailModel> postFoodDetail(String md5, String id) {
+        return retrofitService.postHotelDetail(md5, id);
+    }
+
+    /**
+     * 酒店详情
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
     public Observable<HotelDetailModel> postHotelDetail(String md5, String id) {
         return retrofitService.postHotelDetail(md5, id);
     }
 
+    /**
+     * 酒店评价列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<CommentModel> postCommentList(String md5, String id) {
+        return retrofitService.postCommentList(md5, id);
+    }
+
+    /**
+     * 酒店评价列表
+     *
+     * @return
+     */
+    public Observable<CommentAddModel> postAddComment(Map<String, String> map) {
+        return retrofitService.addComment(map);
+    }
+
+    /**
+     * 酒店详情列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<HoteldetailsItemModel> postHotelDetailList(String md5, String id) {
+        return retrofitService.postHotelDetailList(md5, id);
+    }
+
+    /**
+     * 火车票
+     *
+     * @param map
+     * @return
+     */
     public Observable<TrainModel> postTrain(Map<String, String> map) {
         return retrofitService.postTrain(map);
     }

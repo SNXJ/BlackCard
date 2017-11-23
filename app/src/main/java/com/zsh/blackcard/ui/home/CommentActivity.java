@@ -1,11 +1,28 @@
 package com.zsh.blackcard.ui.home;
 
-import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.CommentitemAdapter;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.CommentModel;
+import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.view.Star;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Name: CommentActivity
@@ -14,17 +31,79 @@ import com.zsh.blackcard.R;
  * Description:评论列表：
  */
 public class CommentActivity extends BaseActivity {
-    TextView tv_go_comment;
+
+    @BindView(R.id.im_back)
+    ImageView imBack;
+    @BindView(R.id.title_tv)
+    TextView titleTv;
+    @BindView(R.id.tv_go_comment)
+    TextView tvGoComment;
+    @BindView(R.id.tv_score)
+    TextView tvScore;
+    @BindView(R.id.star)
+    Star star;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    private String id;
+    private CommentitemAdapter adapter;
+    private List<CommentModel.PdBean> dataList = new ArrayList<>();
 
     @Override
     protected void initUI() {
         setContentView(R.layout.comment_activity);
+        id = getIntent().getStringExtra("data");
+        ButterKnife.bind(this);
+        // initData();
+        setRVData(dataList);
+        star.setMark(4.5f);
+    }
 
-        findViewById(R.id.tv_go_comment).setOnClickListener(new View.OnClickListener() {
+    private void initData() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCommentList(DataManager.getMd5Str("SHOTELMEANEVA"), id), new ResultListener<CommentModel>() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CommentActivity.this, CommentEditActivity.class));
+            public void responseSuccess(CommentModel obj) {
+//                hotelData = obj.getPd();
+                //setData(obj.getPd());
+                setRVData(dataList);
+            }
+
+            @Override
+            public void onCompleted() {
+
             }
         });
+    }
+
+    private void setRVData(final List<CommentModel.PdBean> dataList) {
+
+        for (int i = 0; i < 3; i++) {
+            dataList.add(new CommentModel.PdBean());
+
+        }
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(llm);
+
+        adapter = new CommentitemAdapter(this, dataList);
+        recyclerView.setAdapter(adapter);
+        //  recyclerView.setNestedScrollingEnabled(true);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                // PublicDialog.hotelOrderDialog(HomeHotelDetailActivity.this, dataList.get(position), hotelData);
+
+            }
+        });
+    }
+
+    @OnClick({R.id.im_back, R.id.tv_go_comment})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.im_back:
+                finish();
+                break;
+            case R.id.tv_go_comment:
+                ActivityUtils.startActivityForData(CommentActivity.this, CommentEditActivity.class, id);
+                break;
+        }
     }
 }

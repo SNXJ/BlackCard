@@ -2,17 +2,20 @@ package com.zsh.blackcard.api;
 
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkModel;
+import com.zsh.blackcard.model.CommentAddModel;
+import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
-import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
-import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
+import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
+import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.RegisterModel;
-import com.zsh.blackcard.model.ZgShopAreaModel;
 import com.zsh.blackcard.model.TrainModel;
+import com.zsh.blackcard.model.ZgShopAreaModel;
 
 import java.util.Map;
 
@@ -78,6 +81,11 @@ public interface RetrofitService {
     @POST("appsfoodin/sfood?")
     Observable<HomeFoodModel> postHomeFoodList(@Field("FKEY") String md5);
 
+    //美食详情
+    @FormUrlEncoded
+    @POST("appshotelin/hotelsyn?")
+    Observable<HotelDetailModel> postFoodDetail(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
     //首页酒店
     @FormUrlEncoded
     @POST("appshotelin/shotel.do?")
@@ -87,6 +95,21 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appshotelin/hotelsyn?")
     Observable<HotelDetailModel> postHotelDetail(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
+    //酒店详情列表
+    @FormUrlEncoded
+    @POST("appshotelin/hoteldetaillist?")
+    Observable<HoteldetailsItemModel> postHotelDetailList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
+    //评论列表
+    @FormUrlEncoded
+    @POST("appshotelin/shotelmeaneva?")
+    Observable<CommentModel> postCommentList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
+    //添加评论
+//    @Multipart
+    @GET("appshotelin/shoteladdeva?")
+    Observable<CommentAddModel> addComment(@QueryMap Map<String, String> map);
 
     //火车票
     @FormUrlEncoded

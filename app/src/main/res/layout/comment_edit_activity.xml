@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Star="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_black"
@@ -8,7 +9,7 @@
     <RelativeLayout style="@style/title_rl">
 
         <ImageView
-            android:id="@+id/title_back"
+            android:id="@+id/im_back"
             style="@style/title_im_back" />
 
         <TextView
@@ -17,7 +18,7 @@
             android:text="发表评价" />
 
         <TextView
-            android:id="@+id/tv_go_comment"
+            android:id="@+id/tv_submmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -32,46 +33,22 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/base80dp">
 
-
-        <LinearLayout
+        <com.zsh.blackcard.view.Star
+            android:id="@+id/star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_toRightOf="@+id/tv_score"
+            Star:starBackground="@mipmap/star_gray"
+            Star:starClickable="false"
+            Star:starDistance="@dimen/base5dp"
+            Star:starDrawBackground="@mipmap/hotel_image_1"
+            Star:starHeight="@dimen/base25dp"
+            Star:starWidth="@dimen/base25dp"
+            Star:starsNum="5" />
 
-            android:gravity="center_horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/base20dp"
-                android:layout_height="@dimen/base21dp"
-                android:layout_marginRight="@dimen/base5dp"
-                android:src="@mipmap/hotel_image_1" />
-
-            <ImageView
-                android:layout_width="@dimen/base20dp"
-                android:layout_height="@dimen/base21dp"
-                android:layout_marginRight="@dimen/base5dp"
-                android:src="@mipmap/hotel_image_1" />
-
-            <ImageView
-                android:layout_width="@dimen/base20dp"
-                android:layout_height="@dimen/base21dp"
-                android:layout_marginRight="@dimen/base5dp"
-                android:src="@mipmap/hotel_image_1" />
-
-            <ImageView
-                android:layout_width="@dimen/base20dp"
-                android:layout_height="@dimen/base21dp"
-                android:layout_marginRight="@dimen/base5dp"
-                android:src="@mipmap/hotel_image_1" />
-
-            <ImageView
-                android:layout_width="@dimen/base20dp"
-                android:layout_height="@dimen/base21dp"
-                android:layout_marginRight="@dimen/base5dp"
-                android:src="@mipmap/hotel_image_1" />
-
-        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,12 +73,15 @@
         android:padding="@dimen/base10dp">
 
         <EditText
+            android:id="@+id/et_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#FF181818"
+            android:gravity="top"
             android:hint="请输入内容"
             android:maxLength="100"
             android:maxLines="5"
+            android:textColor="@color/ff92_text"
             android:textColorHint="@color/ff92_text"
             android:textSize="15sp" />
 

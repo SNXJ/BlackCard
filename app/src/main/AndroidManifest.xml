@@ -73,8 +73,8 @@
             android:name=".ui.home.HomeFoodHotelActivity"
             android:windowSoftInputMode="stateHidden|adjustPan|stateHidden"></activity>
         <activity android:name=".view.selectcity.SelectCityActivity"></activity>
-        <activity android:name=".ui.home.HomeFoodActivityDetail"></activity>
-        <activity android:name=".ui.home.HomeHotelActivityDetail"></activity>
+        <activity android:name=".ui.home.HomeFoodDetailActivity"></activity>
+        <activity android:name=".ui.home.HomeHotelDetailActivity"></activity>
         <activity android:name=".ui.MyFriendActivity"></activity>
         <activity android:name=".ui.VipCenterActivity"></activity>
         <activity android:name=".ui.CusCenterActivity"></activity>
@@ -128,9 +128,10 @@
         <activity android:name=".ui.live.LiveAnchorDetails2"></activity>
         <activity android:name=".ui.live.VideoDetailsActivity"></activity>
         <activity android:name=".ui.live.VideoIngActivity"></activity>
-        <activity android:name=".ui.live.AbMySettingActivity"></activity>]
+        <activity android:name=".ui.live.AbMySettingActivity"></activity>
         <activity android:name=".ui.home.HomeTopNewsActivity"></activity>
         <activity android:name=".ui.EatDrinkSetDetailActivity"></activity>
+        <activity android:name=".ui.OrderPayActivity"></activity>
     </application>
 
 </manifest>
