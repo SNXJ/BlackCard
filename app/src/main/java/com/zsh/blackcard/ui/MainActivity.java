@@ -12,6 +12,7 @@ import com.zsh.blackcard.fragment.HjFragment;
 import com.zsh.blackcard.fragment.HomeFragment;
 import com.zsh.blackcard.fragment.MyFragment;
 import com.zsh.blackcard.fragment.ZgFragment;
+import com.zsh.blackcard.ui.zgactivity.zgmyindentfragment.SlidingFragment;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import butterknife.BindView;
@@ -37,7 +38,7 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
         //获取碎片管理器
         fragmentManager = getSupportFragmentManager();
         frg_home = new HomeFragment();
-        frg_zg = new ZgFragment();
+        frg_zg = new SlidingFragment();
         frg_hj = new HjFragment();
         frg_my = new MyFragment();
 

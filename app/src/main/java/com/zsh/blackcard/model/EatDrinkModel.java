@@ -11,7 +11,7 @@ public class EatDrinkModel {
 
     /**
      * result : 01
-     * pd : [{"CONVERGETYPE":"jiuba","STARTTIME":"2017-11-20","ENDTIME":"2017-11-21","CONVERGEPER":"15","CONVERGEIMGS":"http://47.104.16.215:8088/convergeimgs/convergedetimgs/2.jpg,http://47.104.16.215:8088/convergeimgs/convergedetimgs/3.jpg,http://47.104.16.215:8088/convergeimgs/convergedetimgs/4.jpg,http://47.104.16.215:8088/convergeimgs/convergedetimgs/5.jpg","CONVERGEDETAIL_ID":"611861fdbf794fc5b25550f23c92aa3b","CONVERGETITLE":"LOL对赛","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"}]
+     * pd : [{"CONVERGETYPE":"jiuba","STARTTIME":"2017-11-20","ENDTIME":"2017-11-21","CONVERGEPER":"15","CONVERGEIMGS":["http://47.104.16.215:8088/convergeimgs/convergedetimgs/2.jpg","http://47.104.16.215:8088/convergeimgs/convergedetimgs/3.jpg","http://47.104.16.215:8088/convergeimgs/convergedetimgs/4.jpg","http://47.104.16.215:8088/convergeimgs/convergedetimgs/5.jpg"],"CONVERGEDETAIL_ID":"611861fdbf794fc5b25550f23c92aa3b","CONVERGETITLE":"LOL对赛","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"}]
      */
 
     private String result;
@@ -39,7 +39,7 @@ public class EatDrinkModel {
          * STARTTIME : 2017-11-20
          * ENDTIME : 2017-11-21
          * CONVERGEPER : 15
-         * CONVERGEIMGS : http://47.104.16.215:8088/convergeimgs/convergedetimgs/2.jpg,http://47.104.16.215:8088/convergeimgs/convergedetimgs/3.jpg,http://47.104.16.215:8088/convergeimgs/convergedetimgs/4.jpg,http://47.104.16.215:8088/convergeimgs/convergedetimgs/5.jpg
+         * CONVERGEIMGS : ["http://47.104.16.215:8088/convergeimgs/convergedetimgs/2.jpg","http://47.104.16.215:8088/convergeimgs/convergedetimgs/3.jpg","http://47.104.16.215:8088/convergeimgs/convergedetimgs/4.jpg","http://47.104.16.215:8088/convergeimgs/convergedetimgs/5.jpg"]
          * CONVERGEDETAIL_ID : 611861fdbf794fc5b25550f23c92aa3b
          * CONVERGETITLE : LOL对赛
          * HONOURUSER_ID : d6a3779de8204dfd9359403f54f7d27c
@@ -49,10 +49,10 @@ public class EatDrinkModel {
         private String STARTTIME;
         private String ENDTIME;
         private String CONVERGEPER;
-        private String CONVERGEIMGS;
         private String CONVERGEDETAIL_ID;
         private String CONVERGETITLE;
         private String HONOURUSER_ID;
+        private List<String> CONVERGEIMGS;
 
         public String getCONVERGETYPE() {
             return CONVERGETYPE;
@@ -86,14 +86,6 @@ public class EatDrinkModel {
             this.CONVERGEPER = CONVERGEPER;
         }
 
-        public String getCONVERGEIMGS() {
-            return CONVERGEIMGS;
-        }
-
-        public void setCONVERGEIMGS(String CONVERGEIMGS) {
-            this.CONVERGEIMGS = CONVERGEIMGS;
-        }
-
         public String getCONVERGEDETAIL_ID() {
             return CONVERGEDETAIL_ID;
         }
@@ -116,6 +108,14 @@ public class EatDrinkModel {
 
         public void setHONOURUSER_ID(String HONOURUSER_ID) {
             this.HONOURUSER_ID = HONOURUSER_ID;
+        }
+
+        public List<String> getCONVERGEIMGS() {
+            return CONVERGEIMGS;
+        }
+
+        public void setCONVERGEIMGS(List<String> CONVERGEIMGS) {
+            this.CONVERGEIMGS = CONVERGEIMGS;
         }
     }
 }

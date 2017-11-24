@@ -2,6 +2,7 @@ package com.zsh.blackcard.ui;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
@@ -23,6 +24,9 @@ public class CommodityActivity extends BaseActivity {
     @BindView(R.id.zg_commodity_recycler)
     RecyclerView zg_commodity_recycler;
 
+    @BindView(R.id.commodity_title_tv)
+    TextView commodity_title_tv;
+
     private ZgCommodityAdapter adapter;
 
     @Override
@@ -34,6 +38,8 @@ public class CommodityActivity extends BaseActivity {
 
     private void initDate() {
         String data = getIntent().getStringExtra("data");
+        String title = getIntent().getStringExtra("title");
+        commodity_title_tv.setText(title);
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postShopArea(DataManager.getMd5Str("SHIPPRE"), data), new ResultListener<ZgShopAreaModel>() {
             @Override
             public void responseSuccess(ZgShopAreaModel obj) {

@@ -2,13 +2,16 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
+import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
+import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
+import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
@@ -16,6 +19,8 @@ import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.TrainModel;
+import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
+import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
 import java.util.Map;
@@ -188,21 +193,74 @@ public class NetApi {
 
     /**
      * 汇聚页面指定聚会列表
+     *
      * @param md5
      * @param id
      * @return
      */
-    public Observable<EatDrinkModel> postHjRecyclerItem(String md5,String id){
-        return retrofitService.postHjRecyclerItem(md5,id);
+    public Observable<EatDrinkModel> postHjRecyclerItem(String md5, String id) {
+        return retrofitService.postHjRecyclerItem(md5, id);
     }
 
     /**
      * 汇聚页面指定聚会列表点击查看详情
+     *
      * @param md5
      * @param id
      * @return
      */
-    public Observable<EatDrinkDetailModel> postHjRecyclerItemDetail(String md5,String id){
-        return retrofitService.postHjRecyclerItemDetail(md5,id);
+    public Observable<EatDrinkDetailModel> postHjRecyclerItemDetail(String md5, String id) {
+        return retrofitService.postHjRecyclerItemDetail(md5, id);
+    }
+
+    /**
+     * 汇聚活动发布
+     *
+     * @param map
+     * @return
+     */
+    public Observable<HjReleaseModel> postHjRelease(Map<String, String> map) {
+        return retrofitService.postHjRelease(map);
+    }
+
+    /**
+     * 首页所有特权列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomePrivilegeModel> postHomePrivilege(String md5) {
+        return retrofitService.postHomePrivilege(md5);
+    }
+
+    /**
+     * 尊购侧滑界面私人定制列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<ZgPersonalTailorModel> postZgPersonalTailorModel(String md5) {
+        return retrofitService.postZgPersonalTailorModel(md5);
+    }
+
+    /**
+     * 尊购侧滑界面私人定制列表中的item详情页面
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ZgPersonalTailorDetailModel> postZgPersonalTailorDetail(String md5, String id) {
+        return retrofitService.postZgPersonalTailorDetail(md5, id);
+    }
+
+    /**
+     * 炫购收藏列表
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<CollectionModel> postCollection(String md5, String id) {
+        return retrofitService.postCollection(md5, id);
     }
 }

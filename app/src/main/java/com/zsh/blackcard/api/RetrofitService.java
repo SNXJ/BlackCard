@@ -1,12 +1,15 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
+import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
+import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
@@ -15,14 +18,20 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.TrainModel;
+import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
+import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.QueryMap;
 import rx.Observable;
 
@@ -121,4 +130,31 @@ public interface RetrofitService {
     @POST("appconvergein/getdetailbyid?")
     Observable<EatDrinkDetailModel> postHjRecyclerItemDetail(@Field("FKEY") String md5,
                                                              @Field("CONVERGEDETAIL_ID") String id);
+
+    //发布聚会
+    @FormUrlEncoded
+    @POST("appconvergein/adddetailparty?")
+    Observable<HjReleaseModel> postHjRelease(@FieldMap Map<String, String> map);
+
+    //首页特权
+    @FormUrlEncoded
+    @POST("apphomein/privilegelist?")
+    Observable<HomePrivilegeModel> postHomePrivilege(@Field("FKEY") String md5);
+
+    //尊购侧滑页面私人定制列表
+    @FormUrlEncoded
+    @POST("apppersonalin/personallist?")
+    Observable<ZgPersonalTailorModel> postZgPersonalTailorModel(@Field("FKEY") String md5);
+
+    //尊购侧滑页面私人定制详情
+    @FormUrlEncoded
+    @POST("apppersonalin/personaldet?")
+    Observable<ZgPersonalTailorDetailModel> postZgPersonalTailorDetail(@Field("FKEY") String md5,
+                                                                       @Field("PERSONAL_ID") String id);
+
+    //炫购收藏列表页面
+    @FormUrlEncoded
+    @POST("appshipin/shipcollect?")
+    Observable<CollectionModel> postCollection(@Field("FKEY") String md5,
+                                               @Field("HONOURUSER_ID") String id);
 }

@@ -60,6 +60,7 @@
             android:background="#1B1B1B" />
 
         <EditText
+            android:id="@+id/eat_drink_set_detail_content_et"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/detail_view"

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zsh.blackcard.ui.ZgPersonalTailorDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_black">
+
+        <ImageView
+            android:id="@+id/zg_personal_tailor_detail_one_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base225dp" />
+
+        <TextView
+            android:id="@+id/zg_personal_tailor_detail_one_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/zg_personal_tailor_detail_one_img"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/zg_personal_tailor_detail_two_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/zg_personal_tailor_detail_one_tv"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base25dp"
+            android:gravity="center"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/zg_personal_tailor_detail_three_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/zg_personal_tailor_detail_two_tv"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/zg_personal_tailor_detail_two_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base225dp"
+            android:layout_below="@+id/zg_personal_tailor_detail_three_tv"
+            android:layout_marginTop="@dimen/base10dp" />
+
+        <TextView
+            android:id="@+id/zg_personal_tailor_detail_four_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/zg_personal_tailor_detail_two_img"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base25dp"
+            android:gravity="center"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/zg_personal_tailor_detail_five_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/zg_personal_tailor_detail_four_tv"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/zg_personal_tailor_detail_three_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base225dp"
+            android:layout_below="@+id/zg_personal_tailor_detail_five_tv"
+            android:layout_marginTop="@dimen/base10dp" />
+
+        <Button
+            android:layout_below="@+id/zg_personal_tailor_detail_three_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base49dp"
+            android:layout_marginTop="@dimen/base20dp"
+            android:background="#141414"
+            android:text="召唤管家"
+            android:textColor="@color/recharge_text" />
+
+        <RelativeLayout
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base44dp"
+            android:background="@color/transparent">
+
+            <ImageView
+                android:id="@+id/title_back"
+                style="@style/title_im_back" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

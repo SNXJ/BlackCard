@@ -1,7 +1,6 @@
 package com.zsh.blackcard.adapter;
 
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -18,20 +17,16 @@ import java.util.List;
 
 public class HjChildRecyclerAdapter extends BaseQuickAdapter<EatDrinkModel.PdBean, BaseViewHolder> {
 
-    int[] imgIds = new int[]{R.id.hj_child_recycler_item_one_img, R.id.hj_child_recycler_item_two_img, R.id.hj_child_recycler_item_three_img, R.id.hj_child_recycler_item_four_img};
-
     public HjChildRecyclerAdapter(int layoutResId, @Nullable List<EatDrinkModel.PdBean> data) {
         super(layoutResId, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, EatDrinkModel.PdBean item) {
-        //读取图片进行分割。 所有图片都在一个字符串内。
-        String convergeimgs = item.getCONVERGEIMGS();
-        String[] split = convergeimgs.split(",");
-        for (int i = 0; i < split.length; i++) {
-            Glide.with(mContext).load(split[i]).into((ImageView) helper.getView(imgIds[i]));
-        }
+//        Glide.with(mContext).load(item.getCONVERGEIMGS().get(0)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_one_img));
+//        Glide.with(mContext).load(item.getCONVERGEIMGS().get(1)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_two_img));
+//        Glide.with(mContext).load(item.getCONVERGEIMGS().get(2)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_three_img));
+//        Glide.with(mContext).load(item.getCONVERGEIMGS().get(3)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_four_img));
         //活动方式
         helper.setText(R.id.hj_child_recycler_type_tv, "方式：" + item.getCONVERGETYPE());
         //设置活动开始事件

@@ -31,124 +31,121 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/home_top_news_detail_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:text="21cake蛋糕预定"
             android:textColor="@color/recharge_text"
             android:textSize="15sp" />
 
         <ImageView
+            android:id="@+id/home_top_news_detail_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base200dp"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/head_image_1" />
+            android:scaleType="fitXY" />
 
         <TextView
+            android:id="@+id/home_top_news_detail_content_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:text="我敬重每一枚出炉的糕点，除了感谢它带给我甜蜜的愉悦，吃完之后将体会到的宇宙级美好，还神经质的认为手上捧着的是三四个世纪前的配方，它融化在我的舌尖，世间万物在一瞬变得渺小。
-
-本周，荣耀黑卡特权局联合21cake为持卡人精选了8款定制蛋糕
-"
             android:textColor="@color/recharge_text"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/home_top_news_detail_small_title_one_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:text="芒果姆斯"
             android:textColor="@color/recharge_text"
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/home_top_news_detail_small_content_one_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:text="使用马达加斯加香草制作戚风香草坯"
             android:textColor="@color/recharge_text"
             android:textSize="12sp" />
 
         <ImageView
+            android:id="@+id/home_top_news_detail_small_one_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base200dp"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/head_image_2" />
+            android:scaleType="fitXY"/>
 
         <TextView
+            android:id="@+id/home_top_news_detail_small_title_two_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:text="朗姆芝士"
             android:textColor="@color/recharge_text"
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/home_top_news_detail_small_content_two_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:text="使用马达加斯加香草制作戚风香草坯"
             android:textColor="@color/recharge_text"
             android:textSize="12sp" />
 
         <ImageView
+            android:id="@+id/home_top_news_detail_small_two_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base200dp"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/head_image_3" />
+            android:scaleType="fitXY" />
 
         <TextView
+            android:id="@+id/home_top_news_detail_small_title_three_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:text="栗蓉暗香"
             android:textColor="@color/recharge_text"
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/home_top_news_detail_small_content_three_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:text="使用马达加斯加香草制作戚风香草坯"
             android:textColor="@color/recharge_text"
             android:textSize="12sp" />
 
         <ImageView
+            android:id="@+id/home_top_news_detail_small_three_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base200dp"
             android:layout_marginBottom="@dimen/base15dp"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/head_image_4" />
+            android:scaleType="fitXY" />
 
     </LinearLayout>
 

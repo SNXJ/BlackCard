@@ -7,9 +7,10 @@ package com.zsh.blackcard.model;
 
 public class HomeTitleNewsDetailModel {
 
+
     /**
      * result : 01
-     * pd : {"NEWSIMG":"主图222","IMGPIECEONE":"huonan","NEWSTITLE":"德玛西亚2","ISSHOW":1,"TITLEPIECETHREE":"标题三","CONTENTPIECEONE":"timu","IMGPIECETHREE":"图片三","TITLEPIECETWO":"标题二","NEWS_ID":"382889968336371625","TITLEPIECEONE":"yasuo","CONTENTPIECETWO":"内容二","CONTENTPIECETHREE":"内容三","NEWSCONTENT":"5V5比赛222","IMGPIECETWO":"图片二"}
+     * pd : {"NEWSIMG":"http://47.104.16.215:8088/newsimgs/73035c93f0d5418dae8a40d70f0fa3eb.png","IMGPIECEONE":"http://47.104.16.215:8088/newsimgs/c2cfe744ebfe49fa83736892aa46cb14.png","NEWSTITLE":"新闻标题","ISSHOW":1,"TITLEPIECETHREE":"新闻小标题3","CONTENTPIECEONE":"新闻小内容1","IMGPIECETHREE":"http://47.104.16.215:8088/newsimgs/25d7ca409aba4d4a8c927b9bb46ae55a.png","TITLEPIECETWO":"新闻小标题2","NEWS_ID":"383254886982090752","TITLEPIECEONE":"新闻小标题1","CONTENTPIECETWO":"新闻小内容2","CONTENTPIECETHREE":"新闻小内容3","NEWSCONTENT":"新闻内容","IMGPIECETWO":"http://47.104.16.215:8088/newsimgs/e9d45f52347549319375c96294670b7b.png"}
      */
 
     private String result;
@@ -33,20 +34,20 @@ public class HomeTitleNewsDetailModel {
 
     public static class PdBean {
         /**
-         * NEWSIMG : 主图222
-         * IMGPIECEONE : huonan
-         * NEWSTITLE : 德玛西亚2
+         * NEWSIMG : http://47.104.16.215:8088/newsimgs/73035c93f0d5418dae8a40d70f0fa3eb.png
+         * IMGPIECEONE : http://47.104.16.215:8088/newsimgs/c2cfe744ebfe49fa83736892aa46cb14.png
+         * NEWSTITLE : 新闻标题
          * ISSHOW : 1
-         * TITLEPIECETHREE : 标题三
-         * CONTENTPIECEONE : timu
-         * IMGPIECETHREE : 图片三
-         * TITLEPIECETWO : 标题二
-         * NEWS_ID : 382889968336371625
-         * TITLEPIECEONE : yasuo
-         * CONTENTPIECETWO : 内容二
-         * CONTENTPIECETHREE : 内容三
-         * NEWSCONTENT : 5V5比赛222
-         * IMGPIECETWO : 图片二
+         * TITLEPIECETHREE : 新闻小标题3
+         * CONTENTPIECEONE : 新闻小内容1
+         * IMGPIECETHREE : http://47.104.16.215:8088/newsimgs/25d7ca409aba4d4a8c927b9bb46ae55a.png
+         * TITLEPIECETWO : 新闻小标题2
+         * NEWS_ID : 383254886982090752
+         * TITLEPIECEONE : 新闻小标题1
+         * CONTENTPIECETWO : 新闻小内容2
+         * CONTENTPIECETHREE : 新闻小内容3
+         * NEWSCONTENT : 新闻内容
+         * IMGPIECETWO : http://47.104.16.215:8088/newsimgs/e9d45f52347549319375c96294670b7b.png
          */
 
         private String NEWSIMG;

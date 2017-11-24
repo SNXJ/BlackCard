@@ -15,16 +15,15 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
+/**
+ * 吃喝玩乐列表页面
+ */
 public class EatDrinkActivity extends BaseActivity {
 
     @BindView(R.id.hj_recycler_detail_title)
@@ -35,6 +34,8 @@ public class EatDrinkActivity extends BaseActivity {
     RecyclerView eat_drink_recycler;
 
     private HjChildRecyclerAdapter hjChildRecyclerAdapter;
+
+    private String data;
 
 
     @Override
@@ -69,14 +70,14 @@ public class EatDrinkActivity extends BaseActivity {
                 break;
             case R.id.hj_eat_set:
                 //跳转至去发布
-                ActivityUtils.startActivity(this, EatDrinkSetActivity.class);
+                ActivityUtils.startActivityForData(this, EatDrinkSetActivity.class,data);
                 break;
         }
     }
 
     private void initData() {
         Intent intent = getIntent();
-        String data = intent.getStringExtra("data");
+        data = intent.getStringExtra("data");
         String title = intent.getStringExtra("title");
         hj_recycler_detail_title.setText(title);
 
