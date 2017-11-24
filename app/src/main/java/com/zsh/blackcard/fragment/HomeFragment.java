@@ -36,7 +36,7 @@ import com.zsh.blackcard.ui.home.HomeCarActivity;
 import com.zsh.blackcard.ui.home.HomeCruiseShipActivity;
 import com.zsh.blackcard.ui.home.HomeEquestrianActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
-import com.zsh.blackcard.ui.home.HomeKTVActivity;
+import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
@@ -66,11 +66,11 @@ public class HomeFragment extends BaseFragment {
                 case 0:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
                     break;
-                case 1:
+                case 1://homeTopData
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
                     break;
                 case 2:
-                    ActivityUtils.startActivity(getActivity(), HomeKTVActivity.class);
+                    ActivityUtils.startActivityForData(getActivity(), HomeKTVDetailActivity.class, homeTopData.getPd().get(position).getSORT_ID());
                     break;
                 case 3:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
@@ -114,7 +114,7 @@ public class HomeFragment extends BaseFragment {
     private HomeTitleNewsModel homeTitleNewsModel;
 
     private int mSwitcherCount = 0;
-
+    private HomeTopModel homeTopData;//头条数据
     private Handler handler = new Handler(new Handler.Callback() {//2
         @Override
         public boolean handleMessage(Message msg) {
@@ -234,6 +234,7 @@ public class HomeFragment extends BaseFragment {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePage(DataManager.getMd5Str("COMMEND")), new ResultListener<HomeTopModel>() {
             @Override
             public void responseSuccess(HomeTopModel obj) {
+                homeTopData = obj;
                 System.out.println(obj);
                 for (int i = 0; i < obj.getPd().size(); i++) {
                     if (i == 0) {
@@ -245,6 +246,7 @@ public class HomeFragment extends BaseFragment {
                     }
                 }
 
+                //三亚国际饭店
                 if (homeTopAdapter == null) {
                     homeTopAdapter = new HomeTopAdapter(obj.getPd(), getActivity());
                     home_top_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));

@@ -15,7 +15,6 @@ import com.zsh.blackcard.R;
 
 /**
  * 自定义评价星星类(任何形状)
- *
  */
 
 public class Star extends View {
@@ -24,11 +23,11 @@ public class Star extends View {
     //星星个数
     private int starNum = 5;
     //星星高度
-    private int starHeight ;
+    private int starHeight;
     //星星宽度
-    private int starWidth ;
+    private int starWidth;
     //星星间距
-    private int starDistance ;
+    private int starDistance;
     //星星背景
     private Drawable starBackgroundBitmap;
     //动态星星
@@ -36,7 +35,7 @@ public class Star extends View {
     //星星变化监听
     private OnStarChangeListener changeListener;
     //是否可以点击
-    private boolean isClick = true;
+    private boolean isClick = false;
     //画笔
     private Paint mPaint;
 
@@ -50,7 +49,7 @@ public class Star extends View {
         init(mContext, attrs);
     }
 
-    private void init(Context mContext, AttributeSet attrs){
+    private void init(Context mContext, AttributeSet attrs) {
 
         //初始化控件属性
         TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.star);
@@ -58,51 +57,52 @@ public class Star extends View {
         starHeight = (int) typedArray.getDimension(R.styleable.star_starHeight, 0);
         starWidth = (int) typedArray.getDimension(R.styleable.star_starWidth, 0);
         starDistance = (int) typedArray.getDimension(R.styleable.star_starDistance, 0);
-        isClick = typedArray.getBoolean(R.styleable.star_starClickable,true);
+        isClick = typedArray.getBoolean(R.styleable.star_starClickable, true);
         starBackgroundBitmap = typedArray.getDrawable(R.styleable.star_starBackground);
         starDrawDrawable = drawableToBitmap(typedArray.getDrawable(R.styleable.star_starDrawBackground));
         typedArray.recycle();
+
         setClickable(isClick);
         //初始化画笔
         mPaint = new Paint();
         //设置抗锯齿
         mPaint.setAntiAlias(true);
-        mPaint.setShader(new BitmapShader(starDrawDrawable,BitmapShader.TileMode.CLAMP,BitmapShader.TileMode.CLAMP));
+        mPaint.setShader(new BitmapShader(starDrawDrawable, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));
     }
 
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(starWidth*starNum+starDistance*(starNum-1),starHeight);
+        setMeasuredDimension(starWidth * starNum + starDistance * (starNum - 1), starHeight);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (null==starDrawDrawable||null==starBackgroundBitmap){
+        if (null == starDrawDrawable || null == starBackgroundBitmap) {
             return;
         }
-        for (int i = 0;i<starNum;i++) {
+        for (int i = 0; i < starNum; i++) {
             starBackgroundBitmap.setBounds(starDistance * i + starWidth * i, 0, starWidth * (i + 1) + starDistance * i, starHeight);
             starBackgroundBitmap.draw(canvas);
         }
         if (starMark > 1) {
             canvas.drawRect(0, 0, starWidth, starHeight, mPaint);
-            if(starMark-(int)(starMark) == 0) {
+            if (starMark - (int) (starMark) == 0) {
                 for (int i = 1; i < starMark; i++) {
                     canvas.translate(starDistance + starWidth, 0);
                     canvas.drawRect(0, 0, starWidth, starHeight, mPaint);
                 }
-            }else {
+            } else {
                 for (int i = 1; i < starMark - 1; i++) {
                     canvas.translate(starDistance + starWidth, 0);
                     canvas.drawRect(0, 0, starWidth, starHeight, mPaint);
                 }
                 canvas.translate(starDistance + starWidth, 0);
-                canvas.drawRect(0, 0, starWidth * (Math.round((starMark - (int) (starMark))*10)*1.0f/10), starHeight, mPaint);
+                canvas.drawRect(0, 0, starWidth * (Math.round((starMark - (int) (starMark)) * 10) * 1.0f / 10), starHeight, mPaint);
             }
-        }else {
+        } else {
             canvas.drawRect(0, 0, starWidth * starMark, starHeight, mPaint);
         }
 
@@ -110,20 +110,23 @@ public class Star extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (!isClick) {
+            return true;
+        }
         int x = (int) event.getX();
-        if (x<0)
-            x=0;
-        if (x>getMeasuredWidth())
+        if (x < 0)
+            x = 0;
+        if (x > getMeasuredWidth())
             x = getMeasuredWidth();
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                setMark(x*1.0f / (getMeasuredWidth()*1.0f/starNum));
+                setMark(x * 1.0f / (getMeasuredWidth() * 1.0f / starNum));
                 break;
             case MotionEvent.ACTION_MOVE:
-                setMark(x*1.0f / (getMeasuredWidth()*1.0f/starNum));
+                setMark(x * 1.0f / (getMeasuredWidth() * 1.0f / starNum));
                 break;
             case MotionEvent.ACTION_UP:
-                setMark(x*1.0f / (getMeasuredWidth()*1.0f/starNum));
+                setMark(x * 1.0f / (getMeasuredWidth() * 1.0f / starNum));
                 break;
         }
         return true;
@@ -132,9 +135,9 @@ public class Star extends View {
     /**
      * 设置分数
      */
-    public void setMark(Float mark){
+    public void setMark(Float mark) {
         starMark = Math.round(mark * 10) * 1.0f / 10;
-        if (null!=changeListener){
+        if (null != changeListener) {
             changeListener.onStarChange(starMark);
         }
         invalidate();
@@ -143,30 +146,29 @@ public class Star extends View {
     /**
      * 设置监听
      */
-    public void setStarChangeLister(OnStarChangeListener starChangeLister){
+    public void setStarChangeLister(OnStarChangeListener starChangeLister) {
         changeListener = starChangeLister;
     }
 
     /**
      * 获取分数
      */
-    public float getMark(){
+    public float getMark() {
         return starMark;
     }
 
     /**
      * 星星数量变化监听接口
      */
-    public interface OnStarChangeListener{
+    public interface OnStarChangeListener {
         void onStarChange(Float mark);
     }
 
     /**
      * drawable转bitmap
      */
-    private Bitmap drawableToBitmap(Drawable drawable)
-    {
-        if (drawable == null)return null;
+    private Bitmap drawableToBitmap(Drawable drawable) {
+        if (drawable == null) return null;
         Bitmap bitmap = Bitmap.createBitmap(starWidth, starHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, starWidth, starHeight);

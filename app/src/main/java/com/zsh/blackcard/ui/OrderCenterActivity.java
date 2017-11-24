@@ -50,7 +50,7 @@ public class OrderCenterActivity extends BaseActivity {
                 ActivityUtils.startActivity(this,CollectionActivity.class);
                 break;
             case R.id.my_order_address_rb:
-                ActivityUtils.startActivity(this, TakeAdressDetailsActivity.class);
+                ActivityUtils.startActivity(this, AddressManageActivity.class);
                 break;
             case R.id.my_order_customer_rb:
                 ActivityUtils.startActivity(this, CusCenterChatActivity.class);

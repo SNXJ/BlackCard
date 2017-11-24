@@ -3,15 +3,21 @@ package com.zsh.blackcard.api;
 import android.content.Context;
 
 import com.zsh.blackcard.model.CollectionModel;
+import com.zsh.blackcard.model.AddressDelModel;
+import com.zsh.blackcard.model.AddressEditModel;
+import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkModel;
+import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
+import com.zsh.blackcard.model.HomeKTVDetailItemModel;
+import com.zsh.blackcard.model.HomeKTVDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
@@ -135,8 +141,8 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<HotelDetailModel> postFoodDetail(String md5, String id) {
-        return retrofitService.postHotelDetail(md5, id);
+    public Observable<FoodDetailModel> postFoodDetail(String md5, String id) {
+        return retrofitService.postFoodDetail(md5, id);
     }
 
     /**
@@ -169,6 +175,29 @@ public class NetApi {
     public Observable<CommentAddModel> postAddComment(Map<String, String> map) {
         return retrofitService.addComment(map);
     }
+
+    /**
+     * 详情
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<HomeKTVDetailModel> postKTVDetail(String md5, String id) {
+        return retrofitService.postKTVDetail(md5, id);
+    }
+
+    /**
+     * 详情列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<HomeKTVDetailItemModel> postHTKDetailList(String md5, String id) {
+        return retrofitService.postKTVDetailList(md5, id);
+    }
+
 
     /**
      * 酒店详情列表
@@ -262,5 +291,45 @@ public class NetApi {
      */
     public Observable<CollectionModel> postCollection(String md5, String id) {
         return retrofitService.postCollection(md5, id);
+    }
+
+    /**
+     * 地址管理
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<AddressManageModel> postAddressManage(String md5, String id) {
+        return retrofitService.postAddressManage(md5, id);
+    }
+
+    /**
+     * 删除地址管理
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<AddressDelModel> delAddress(String md5, String id) {
+        return retrofitService.delAddress(md5, id);
+    }
+
+    /**
+     * 添加地址管理
+     *
+     * @return
+     */
+    public Observable<AddressDelModel> addressAdd(Map<String, String> map) {
+        return retrofitService.addressAdd(map);
+    }
+
+    /**
+     * 编辑地址管理
+     *
+     * @return
+     */
+    public Observable<AddressDelModel> addressEdit(Map<String, String> map) {
+        return retrofitService.addressEdit(map);
     }
 }
