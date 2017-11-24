@@ -18,9 +18,9 @@
             <ImageView
                 android:id="@+id/zg_myleftimg"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="19.5dp"
+                android:layout_marginLeft="@dimen/base20dp"
                 android:src="@mipmap/buy_nav_mine" />
 
             <LinearLayout

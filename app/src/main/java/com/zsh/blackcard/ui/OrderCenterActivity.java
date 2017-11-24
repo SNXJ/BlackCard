@@ -45,6 +45,7 @@ public class OrderCenterActivity extends BaseActivity {
             case R.id.my_order_vip_rb:
                 ActivityUtils.startActivity(this, VipCenterActivity.class);
                 break;
+                //炫购收藏
             case R.id.my_order_collection_rb:
                 ActivityUtils.startActivity(this,CollectionActivity.class);
                 break;

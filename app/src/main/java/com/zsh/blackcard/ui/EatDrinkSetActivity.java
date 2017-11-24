@@ -1,5 +1,6 @@
 package com.zsh.blackcard.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,13 +11,19 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.HjReleaseModel;
+import com.zsh.blackcard.untils.UIUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,11 +58,21 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
     @BindView(R.id.hj_eat_set_year_tv)
     TextView hj_eat_set_year_tv;
     //详情
+    @BindView(R.id.hj_eat_set_detail_tv)
+    TextView hj_eat_set_detail_tv;
+
+    private Map<String, String> map = new HashMap<>();
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_eat_drink_set);
         ButterKnife.bind(this);
+        initData();
+    }
+
+    private void initData() {
+        String data = getIntent().getStringExtra("data");
+        map.put("CONVERGE_ID",data);
     }
 
     @OnClick({R.id.blackwb_back, R.id.hj_eat_set_startTime_relative, R.id.hj_eat_set_endTime_relative, R.id.hj_eat_set_price_relative, R.id.hj_eat_set_type_relative, R.id.hj_eat_set_people_relative, R.id.hj_eat_set_sex_relative, R.id.hj_eat_set_year_relative, R.id.hj_eat_set_detail_relative, R.id.hj_eat_set_release_btn})
@@ -94,8 +111,54 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
                 break;
             //详情
             case R.id.hj_eat_set_detail_relative:
-                ActivityUtils.startActivity(this, EatDrinkSetDetailActivity.class);
+//                ActivityUtils.startActivity(this, EatDrinkSetDetailActivity.class);
+                Intent intent = new Intent(this, EatDrinkSetDetailActivity.class);
+                startActivityForResult(intent, 0);
                 break;
+            //发布
+            case R.id.hj_eat_set_release_btn:
+                releaseBtn();
+                break;
+        }
+    }
+
+    /**
+     * Activity回调
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 0) {
+            String title = data.getStringExtra("title");
+            String content = data.getStringExtra("content");
+            hj_eat_set_detail_tv.setText(title);
+            map.put("CONVERGEDET", content);
+            map.put("CONVERGETITLE", title);
+            map.put("HONOURUSER_ID", "d6a3779de8204dfd9359403f54f7d27c");
+            map.put("FKEY", "1ddefea585d7289a2e8e9802b3567f21");
+        }
+    }
+
+    /**
+     * 提交校验发布信息不能有空值
+     */
+    private void releaseBtn() {
+        if (!TextUtils.isEmpty(hj_eat_set_startTime_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_endTime_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_price_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_type_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_people_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_sex_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_year_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_detail_tv.getText().toString())) {
+            DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHjRelease(map), new ResultListener<HjReleaseModel>() {
+                @Override
+                public void responseSuccess(HjReleaseModel obj) {
+                    UIUtils.showToast("发布成功");
+                }
+
+                @Override
+                public void onCompleted() {
+
+                }
+            });
         }
     }
 
@@ -105,16 +168,20 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
      * @param hj_eat_set_year_tv
      */
     private void showYear(final TextView hj_eat_set_year_tv) {
-        final List<String> listYear = new ArrayList<>();
+        final List<String> listMin = new ArrayList<>();
+        final List<String> listMax = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            listYear.add(String.valueOf(i));
+            listMin.add(String.valueOf(i));
+            listMax.add(String.valueOf(i));
         }
 
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
 
-                hj_eat_set_year_tv.setText(listYear.get(options1));
+                hj_eat_set_year_tv.setText(listMin.get(options1) + "—" + listMax.get(option2));
+                map.put("AGEMIN", listMin.get(options1));
+                map.put("AGEMAX", listMax.get(option2));
             }
         })
                 .setSubmitColor(Color.GRAY)
@@ -122,7 +189,7 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
                 .setTitleBgColor(Color.WHITE)
                 .setDividerColor(Color.WHITE)
                 .build();
-        pvOptions.setNPicker(listYear, null, null);
+        pvOptions.setNPicker(listMin, listMax, null);
         pvOptions.show();
     }
 
@@ -141,6 +208,13 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
 
                 hj_eat_set_sex_tv.setText(listSex.get(options1));
+                if (listSex.get(options1).equals("女")) {
+                    map.put("CONVERGESEX", "0");
+                } else if (listSex.get(options1).equals("男")) {
+                    map.put("CONVERGESEX", "1");
+                } else {
+                    map.put("CONVERGESEX", "2");
+                }
             }
         })
                 .setSubmitColor(Color.GRAY)
@@ -168,6 +242,7 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
 
                 hj_eat_set_people_tv.setText(listPeople.get(options1));
+                map.put("CONVERGEPER", hj_eat_set_people_tv.getText().toString());
             }
         })
                 .setSubmitColor(Color.GRAY)
@@ -182,9 +257,9 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
     /**
      * 方式选择器
      *
-     * @param tv
+     * @param hj_eat_set_type_tv
      */
-    private void showType(final TextView tv) {
+    private void showType(final TextView hj_eat_set_type_tv) {
         final List<String> listType = new ArrayList<>();
         listType.add("AA");
         listType.add("我请客");
@@ -193,7 +268,8 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
 
-                tv.setText(listType.get(options1));
+                hj_eat_set_type_tv.setText(listType.get(options1));
+                map.put("CONVERGETYPE", hj_eat_set_type_tv.getText().toString());
             }
         })
                 .setSubmitColor(Color.GRAY)
@@ -208,9 +284,9 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
     /**
      * 价格选择器
      *
-     * @param tv
+     * @param hj_eat_set_price_tv
      */
-    private void showPrice(final TextView tv) {
+    private void showPrice(final TextView hj_eat_set_price_tv) {
 
         final List<String> minList = new ArrayList<>();
         final List<String> maxList = new ArrayList<>();
@@ -222,9 +298,11 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
-                String s = minList.get(options1);
-                String s1 = maxList.get(option2);
-                tv.setText(s + "—" + s1);
+                String min = minList.get(options1);
+                String max = maxList.get(option2);
+                hj_eat_set_price_tv.setText(min + "—" + max);
+                map.put("PRICEMIN", min);
+                map.put("PRICEMAX", max);
             }
         })
                 .setSubmitColor(Color.GRAY)
@@ -249,6 +327,7 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 hj_eat_set_endTime_tv.setText(getTime(date));
+                map.put("ENDTIME", hj_eat_set_endTime_tv.getText().toString());
             }
         })
                 .setType(new boolean[]{true, true, true, false, false, false})
@@ -275,11 +354,8 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
         TimePickerView pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {//选中事件回调
-                if (TextUtils.isEmpty(hj_eat_set_endTime_tv.getText())) {
-                    hj_eat_set_startTime_tv.setText(getTime(date));
-                }else{
-
-                }
+                hj_eat_set_startTime_tv.setText(getTime(date));
+                map.put("STARTTIME", hj_eat_set_startTime_tv.getText().toString());
             }
         })
                 .setType(new boolean[]{true, true, true, false, false, false})

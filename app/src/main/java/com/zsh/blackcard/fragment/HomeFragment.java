@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -28,6 +27,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryServiceModel;
+import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.ui.MsgCenterActivity;
@@ -38,11 +38,10 @@ import com.zsh.blackcard.ui.home.HomeEquestrianActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
 import com.zsh.blackcard.ui.home.HomeKTVActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
-import com.zsh.blackcard.ui.home.HomeTopNewsActivity;
+import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,7 @@ import butterknife.OnClick;
  * Created by admin on 2017/10/11.
  */
 
-public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTypeOnItemClick {
+public class HomeFragment extends BaseFragment {
 
     //HomeTop 头条的item点击事件
     private class HomeTopOnItemClick implements BaseQuickAdapter.OnItemClickListener {
@@ -129,6 +128,51 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
         }
     });
 
+    /**
+     * 所有权限列表的点击事件
+     */
+    private class HomeTypeOnItemClick implements BaseQuickAdapter.OnItemClickListener {
+
+        @Override
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            switch (position) {
+                //美食
+                case 0:
+                    ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 0);
+                    break;
+                //酒店
+                case 1:
+                    ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 1);
+                    // ActivityUtils.startActivity(getActivity(), HomeHotelActivity.class);
+                    break;
+                //火车票
+                case 2:
+                    ActivityUtils.startActivity(getActivity(), HomeTrainActivity.class);
+                    break;
+                //机票
+                case 3:
+                    ActivityUtils.startActivity(getActivity(), HomePlaneActivity.class);
+                    break;
+                //马术
+                case 4:
+                    ActivityUtils.startActivity(getActivity(), HomeEquestrianActivity.class);
+                    break;
+                //游艇
+                case 5:
+                    ActivityUtils.startActivity(getActivity(), HomeCruiseShipActivity.class);
+                    break;
+                //豪车
+                case 6:
+                    ActivityUtils.startActivity(getActivity(), HomeCarActivity.class);
+                    break;
+                //更多
+                case 7:
+                    ActivityUtils.startActivity(getActivity(), HomeMoreActivity.class);
+                    break;
+            }
+        }
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -139,13 +183,21 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
     @Override
     public void initDate(Bundle savedInstanceState) {
         //初始化类型选择列表（美食，酒店，品鉴...）
-        if (homeTypeAdapter == null) {
-            homeTypeAdapter = new HomeTypeAdapter(getActivity());
-            home_type_recycler.setLayoutManager(new GridLayoutManager(getActivity(), 4));
-            home_type_recycler.setNestedScrollingEnabled(false);
-            home_type_recycler.setAdapter(homeTypeAdapter);
-            homeTypeAdapter.setHomeTypeOnItemClick(this);
-        }
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePrivilege(DataManager.getMd5Str("PRIVILIST")), new ResultListener<HomePrivilegeModel>() {
+            @Override
+            public void responseSuccess(HomePrivilegeModel obj) {
+                homeTypeAdapter = new HomeTypeAdapter(R.layout.home_type_recycler_item, obj.getPd());
+                home_type_recycler.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+                home_type_recycler.setNestedScrollingEnabled(false);
+                home_type_recycler.setAdapter(homeTypeAdapter);
+                homeTypeAdapter.setOnItemClickListener(new HomeTypeOnItemClick());
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
 
         //初始化头条文字滚动器
         home_top_tvs.setFactory(new ViewSwitcher.ViewFactory() {
@@ -178,7 +230,7 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
         });
 
 
-        //初始化头条列表
+        //初始化头条列表 2.4.6.8酒吧 三亚国际饭店 麦乐迪KTV
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePage(DataManager.getMd5Str("COMMEND")), new ResultListener<HomeTopModel>() {
             @Override
             public void responseSuccess(HomeTopModel obj) {
@@ -193,7 +245,6 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
                     }
                 }
 
-                //三亚国际饭店
                 if (homeTopAdapter == null) {
                     homeTopAdapter = new HomeTopAdapter(obj.getPd(), getActivity());
                     home_top_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -263,13 +314,13 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
     public void titleNewsOnClick() {
         switch (mSwitcherCount % homeTitleNewsModel.getPd().size()) {
             case 0:
-//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(2).getNEWS_ID());
+                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(homeTitleNewsModel.getPd().size()-1).getNEWS_ID());
                 break;
             case 1:
-//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(0).getNEWS_ID());
+                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(mSwitcherCount - 1).getNEWS_ID());
                 break;
             case 2:
-//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsActivity.class,homeTitleNewsModel.getPd().get(1).getNEWS_ID());
+                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(mSwitcherCount - 1).getNEWS_ID());
                 break;
 
         }
@@ -291,43 +342,43 @@ public class HomeFragment extends BaseFragment implements HomeTypeAdapter.HomeTy
     }
 
     //类型选择列表监听
-    @Override
-    public void homeTypeOnItemClick(int position) {
-        switch (position) {
-            //美食
-            case 0:
-
-                ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 0);
-                break;
-            //酒店
-            case 1:
-                ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 1);
-                // ActivityUtils.startActivity(getActivity(), HomeHotelActivity.class);
-                break;
-            //火车票
-            case 2:
-                ActivityUtils.startActivity(getActivity(), HomeTrainActivity.class);
-                break;
-            //机票
-            case 3:
-                ActivityUtils.startActivity(getActivity(), HomePlaneActivity.class);
-                break;
-            //马术
-            case 4:
-                ActivityUtils.startActivity(getActivity(), HomeEquestrianActivity.class);
-                break;
-            //游艇
-            case 5:
-                ActivityUtils.startActivity(getActivity(), HomeCruiseShipActivity.class);
-                break;
-            //豪车
-            case 6:
-                ActivityUtils.startActivity(getActivity(), HomeCarActivity.class);
-                break;
-            //更多
-            case 7:
-                ActivityUtils.startActivity(getActivity(), HomeMoreActivity.class);
-                break;
-        }
-    }
+//    @Override
+//    public void homeTypeOnItemClick(int position) {
+//        switch (position) {
+//            //美食
+//            case 0:
+//
+//                ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 0);
+//                break;
+//            //酒店
+//            case 1:
+//                ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 1);
+//                // ActivityUtils.startActivity(getActivity(), HomeHotelActivity.class);
+//                break;
+//            //火车票
+//            case 2:
+//                ActivityUtils.startActivity(getActivity(), HomeTrainActivity.class);
+//                break;
+//            //机票
+//            case 3:
+//                ActivityUtils.startActivity(getActivity(), HomePlaneActivity.class);
+//                break;
+//            //马术
+//            case 4:
+//                ActivityUtils.startActivity(getActivity(), HomeEquestrianActivity.class);
+//                break;
+//            //游艇
+//            case 5:
+//                ActivityUtils.startActivity(getActivity(), HomeCruiseShipActivity.class);
+//                break;
+//            //豪车
+//            case 6:
+//                ActivityUtils.startActivity(getActivity(), HomeCarActivity.class);
+//                break;
+//            //更多
+//            case 7:
+//                ActivityUtils.startActivity(getActivity(), HomeMoreActivity.class);
+//                break;
+//        }
+//    }
 }

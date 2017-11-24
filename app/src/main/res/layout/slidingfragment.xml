@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zsh.blackcard.custom.CustomDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/drawerlayout_frame"
+        android:id="@+id/drawerLayout_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="@dimen/base165dp"
@@ -44,5 +46,5 @@
             android:dividerHeight="0dp"
             android:paddingLeft="@dimen/base30dp" />
     </LinearLayout>
-</com.zsh.blackcard.custom.CustomDrawerLayout><!--</android.support.v4.widget.DrawerLayout>-->
+</android.support.v4.widget.DrawerLayout><!--</android.support.v4.widget.DrawerLayout>-->
 

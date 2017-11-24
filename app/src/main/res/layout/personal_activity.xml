@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/main_black">
+    android:layout_height="match_parent">
 
     <RelativeLayout style="@style/title_rl">
 
@@ -15,4 +15,11 @@
             style="@style/title_tv"
             android:text="私人定制" />
     </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/zg_drawer_personal_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

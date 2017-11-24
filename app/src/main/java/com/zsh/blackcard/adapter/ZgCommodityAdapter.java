@@ -1,7 +1,9 @@
 package com.zsh.blackcard.adapter;
 
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
@@ -22,6 +24,7 @@ public class ZgCommodityAdapter extends BaseQuickAdapter<ZgShopAreaModel.PdBean,
 
     @Override
     protected void convert(BaseViewHolder helper, ZgShopAreaModel.PdBean item) {
+        Glide.with(mContext).load(item.getPROSHOWIMG()).into((ImageView) helper.getView(R.id.commodity_recycler_item_img));
         helper.setText(R.id.commodity_recycler_item_name_tv,item.getPROTITLE());
         helper.setText(R.id.commodity_recycler_item_price_tv,"￥"+item.getPROPRICE());
     }
