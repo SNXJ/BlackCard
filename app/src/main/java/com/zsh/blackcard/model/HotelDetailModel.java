@@ -1,5 +1,7 @@
 package com.zsh.blackcard.model;
 
+import java.util.List;
+
 /**
  * Name: HotelDetailModel
  * Author: SNXJ
@@ -7,10 +9,9 @@ package com.zsh.blackcard.model;
  * Description:描述：
  */
 public class HotelDetailModel {
-
     /**
      * result : 01
-     * pd : {"HOTELEVALUATE":3.8,"HOTELADDRESS":"北京市, 北京市, 东城区, 建国门内大街, 26","SHOPSERVPARK":1,"HOTELNAMES":"如家酒店","SHOPSERVPAY":1,"HOTELDETAILSIMGS":"http://47.104.16.215:8088/sortimgs/sorthotelimgs/20171113175658128b05b1-42e4-4228-a3b9-bb5d112ff7f7.jpg,http://47.104.16.215:8088/sortimgs/sorthotelimgs/2017111317571523e9bc5c-fc7c-443d-9bc7-fe8f687bded7.jpg","SHOPSERVWIFI":1,"HOTELPHONE":"010-12345678","SHOPSERVFOOD":1,"HOTELEVACOUNT":1,"SHOPSERVFITNESS":1,"SHOPSERVSWIN":1}
+     * pd : {"HOTELEVALUATE":3.8,"HOTELADDRESS":"北京市 北京市 东城区 建国门内大街 26","SHOPSERVPARK":1,"HOTELNAMES":"如家酒店","SHOPSERVPAY":1,"HOTELDETAILSIMGS":["http://47.104.16.215:8088/sortimgs/sorthotelimgs/20171113175658128b05b1-42e4-4228-a3b9-bb5d112ff7f7.jpg","http://47.104.16.215:8088/sortimgs/sorthotelimgs/2017111317571523e9bc5c-fc7c-443d-9bc7-fe8f687bded7.jpg"],"SHOPSERVWIFI":1,"HOTELPHONE":"010-12345678","SHOPSERVFOOD":1,"HOTELEVACOUNT":1}
      */
 
     private String result;
@@ -35,17 +36,15 @@ public class HotelDetailModel {
     public static class PdBean {
         /**
          * HOTELEVALUATE : 3.8
-         * HOTELADDRESS : 北京市, 北京市, 东城区, 建国门内大街, 26
+         * HOTELADDRESS : 北京市 北京市 东城区 建国门内大街 26
          * SHOPSERVPARK : 1
          * HOTELNAMES : 如家酒店
          * SHOPSERVPAY : 1
-         * HOTELDETAILSIMGS : http://47.104.16.215:8088/sortimgs/sorthotelimgs/20171113175658128b05b1-42e4-4228-a3b9-bb5d112ff7f7.jpg,http://47.104.16.215:8088/sortimgs/sorthotelimgs/2017111317571523e9bc5c-fc7c-443d-9bc7-fe8f687bded7.jpg
+         * HOTELDETAILSIMGS : ["http://47.104.16.215:8088/sortimgs/sorthotelimgs/20171113175658128b05b1-42e4-4228-a3b9-bb5d112ff7f7.jpg","http://47.104.16.215:8088/sortimgs/sorthotelimgs/2017111317571523e9bc5c-fc7c-443d-9bc7-fe8f687bded7.jpg"]
          * SHOPSERVWIFI : 1
          * HOTELPHONE : 010-12345678
          * SHOPSERVFOOD : 1
          * HOTELEVACOUNT : 1
-         * SHOPSERVFITNESS : 1
-         * SHOPSERVSWIN : 1
          */
 
         private double HOTELEVALUATE;
@@ -53,13 +52,30 @@ public class HotelDetailModel {
         private int SHOPSERVPARK;
         private String HOTELNAMES;
         private int SHOPSERVPAY;
-        private String HOTELDETAILSIMGS;
         private int SHOPSERVWIFI;
         private String HOTELPHONE;
         private int SHOPSERVFOOD;
         private int HOTELEVACOUNT;
         private int SHOPSERVFITNESS;
         private int SHOPSERVSWIN;
+
+        public int getSHOPSERVFITNESS() {
+            return SHOPSERVFITNESS;
+        }
+
+        public void setSHOPSERVFITNESS(int SHOPSERVFITNESS) {
+            this.SHOPSERVFITNESS = SHOPSERVFITNESS;
+        }
+
+        public int getSHOPSERVSWIN() {
+            return SHOPSERVSWIN;
+        }
+
+        public void setSHOPSERVSWIN(int SHOPSERVSWIN) {
+            this.SHOPSERVSWIN = SHOPSERVSWIN;
+        }
+
+        private List<String> HOTELDETAILSIMGS;
 
         public double getHOTELEVALUATE() {
             return HOTELEVALUATE;
@@ -101,14 +117,6 @@ public class HotelDetailModel {
             this.SHOPSERVPAY = SHOPSERVPAY;
         }
 
-        public String getHOTELDETAILSIMGS() {
-            return HOTELDETAILSIMGS;
-        }
-
-        public void setHOTELDETAILSIMGS(String HOTELDETAILSIMGS) {
-            this.HOTELDETAILSIMGS = HOTELDETAILSIMGS;
-        }
-
         public int getSHOPSERVWIFI() {
             return SHOPSERVWIFI;
         }
@@ -141,20 +149,12 @@ public class HotelDetailModel {
             this.HOTELEVACOUNT = HOTELEVACOUNT;
         }
 
-        public int getSHOPSERVFITNESS() {
-            return SHOPSERVFITNESS;
+        public List<String> getHOTELDETAILSIMGS() {
+            return HOTELDETAILSIMGS;
         }
 
-        public void setSHOPSERVFITNESS(int SHOPSERVFITNESS) {
-            this.SHOPSERVFITNESS = SHOPSERVFITNESS;
-        }
-
-        public int getSHOPSERVSWIN() {
-            return SHOPSERVSWIN;
-        }
-
-        public void setSHOPSERVSWIN(int SHOPSERVSWIN) {
-            this.SHOPSERVSWIN = SHOPSERVSWIN;
+        public void setHOTELDETAILSIMGS(List<String> HOTELDETAILSIMGS) {
+            this.HOTELDETAILSIMGS = HOTELDETAILSIMGS;
         }
     }
 }

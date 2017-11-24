@@ -77,7 +77,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                 hotelAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeHotelActivityDetail.class, hotelList.get(position).getSORTHOTEL_ID());
+                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeHotelDetailActivity.class, hotelList.get(position).getSORTHOTEL_ID());
                     }
                 });
             }
@@ -104,7 +104,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                 foodAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeFoodActivityDetail.class, foodList.get(position).getSORTFOOD_ID());
+                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeFoodDetailActivity.class, foodList.get(position).getSORTFOOD_ID());
                     }
                 });
             }

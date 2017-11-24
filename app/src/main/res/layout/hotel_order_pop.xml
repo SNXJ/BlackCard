@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base410dp"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base80dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="三亚大中华希尔顿酒店"
+            android:textColor="@color/title_text"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base22dp"
+            android:layout_marginTop="@dimen/base5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.9"
+                android:textColor="@color/title_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="好评"
+                android:textColor="@color/title_text"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:src="@mipmap/hotel_icon_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base3dp"
+                    android:text="WIFI"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/food_icon_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/base4dp"
+                    android:text="移动支付"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_swim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/hotel_icon_4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/base4dp"
+
+                    android:text="游泳"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_fit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/hotel_icon_3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/base4dp"
+
+                    android:text="健身"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/hotel_icon_2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/base4dp"
+
+                    android:text="餐饮"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_park"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/hotel_icon_5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/base4dp"
+                    android:text="停车"
+                    android:textColor="@color/title_text"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base75dp"
+        android:layout_marginLeft="@dimen/base15dp">
+
+        <ImageView
+            android:id="@+id/im_dialog"
+            android:layout_width="@dimen/base55dp"
+            android:layout_height="@dimen/base55dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/hotel_image_7" />
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/base70dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="豪华贵宾房"
+                android:textColor="@color/ff92_text"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="6月8日入住，6月9日离开，1天"
+                android:textColor="@color/ff92_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tv_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="60m   大床  1.8m"
+                android:textColor="@color/ff92_text"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp"
+            android:text="¥999"
+            android:textColor="@color/ff92_text"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+    <View style="@style/dialog_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="房间数"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="@dimen/base75dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/im_reduce"
+                android:layout_width="@dimen/base20dp"
+                android:layout_height="@dimen/base20dp"
+                android:src="@mipmap/btn_reduce" />
+
+            <TextView
+                android:id="@+id/tv_count"
+                style="@style/text_"
+                android:layout_width="@dimen/base35dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLength="2"
+                android:singleLine="true"
+                android:text="1"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/im_plus"
+                android:layout_width="@dimen/base20dp"
+                android:layout_height="@dimen/base20dp"
+                android:src="@mipmap/btn_plus" />
+        </LinearLayout>
+
+        <View style="@style/dialog_line" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="入住人"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:hint="请输入你的姓名"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="15sp" />
+
+        <View style="@style/dialog_line" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="手机号"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_tel_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:hint="请输入你的手机号"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="15sp" />
+
+        <View style="@style/dialog_line" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="备注"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_other"
+            android:layout_width="@dimen/base250dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:hint="请输入你的特别需求"
+            android:maxLength="18"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="15sp" />
+
+        <View style="@style/dialog_line" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_order"
+        style="@style/btn_buttom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp"
+        android:text="确认订单" />
+
+</LinearLayout>

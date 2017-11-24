@@ -21,6 +21,8 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.SelectDateListener;
+import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.live.LiveAnchorDetails2;
@@ -43,6 +45,18 @@ import java.util.Calendar;
  * Description: 公共弹窗
  */
 public class PublicDialog {
+    /**
+     * 酒店订单
+     *
+     * @param mContext
+     */
+    public static void hotelOrderDialog(final Activity mContext, HoteldetailsItemModel.PdBean itemData, HotelDetailModel.PdBean hotelData) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.hotel_order_pop, null);
+        final Dialog dialog = showDialogView(view, mContext);
+
+
+    }
 
     /**
      * 尚播动画弹窗

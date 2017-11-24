@@ -69,7 +69,7 @@ public class HomeHotelActivity extends BaseActivity {
                 hotelAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        ActivityUtils.startActivityForData(HomeHotelActivity.this, HomeHotelActivityDetail.class, hotelList.get(position).getSORTHOTEL_ID());
+                        ActivityUtils.startActivityForData(HomeHotelActivity.this, HomeHotelDetailActivity.class, hotelList.get(position).getSORTHOTEL_ID());
                     }
                 });
             }
