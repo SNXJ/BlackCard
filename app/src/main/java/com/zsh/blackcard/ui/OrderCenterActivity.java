@@ -27,8 +27,9 @@ public class OrderCenterActivity extends BaseActivity {
             case R.id.zgmyback:
                 finish();
                 break;
+            //获取全部订单
             case R.id.zgmy_tv_dingdan:
-                ActivityUtils.startActivity(this, MyOrderActivity.class);
+                ActivityUtils.startActivityForData(this, MyOrderActivity.class, "1");
                 break;
             case R.id.my_order_pay_rb:
                 ActivityUtils.startActivityForData(this, MyOrderActivity.class, "2");
@@ -45,9 +46,9 @@ public class OrderCenterActivity extends BaseActivity {
             case R.id.my_order_vip_rb:
                 ActivityUtils.startActivity(this, VipCenterActivity.class);
                 break;
-                //炫购收藏
+            //炫购收藏
             case R.id.my_order_collection_rb:
-                ActivityUtils.startActivity(this,CollectionActivity.class);
+                ActivityUtils.startActivity(this, CollectionActivity.class);
                 break;
             case R.id.my_order_address_rb:
                 ActivityUtils.startActivity(this, AddressManageActivity.class);

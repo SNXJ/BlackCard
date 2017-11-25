@@ -18,6 +18,7 @@ import com.zsh.blackcard.untils.ActivityUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Name: PersonalActivity
@@ -37,6 +38,11 @@ public class PersonalActivity extends BaseActivity {
         setContentView(R.layout.personal_activity);
         ButterKnife.bind(this);
         initData();
+    }
+
+    @OnClick(R.id.title_back)
+    public void onClick(){
+        finish();
     }
 
     private void initData() {

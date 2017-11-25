@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base16dp"
         android:gravity="center"
-        android:text="卡诗顿新品正品"
         android:textColor="@color/recharge_text"
         android:textSize="12sp" />
 
@@ -29,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base10dp"
         android:gravity="center"
-        android:text="￥5688"
         android:textColor="@color/recharge_text"
         android:textSize="12sp" />
 

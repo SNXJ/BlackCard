@@ -2,8 +2,10 @@ package com.zsh.blackcard.ui;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.ZgCommodityAdapter;
@@ -11,6 +13,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ZgShopAreaModel;
+import com.zsh.blackcard.untils.ActivityUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +22,7 @@ import butterknife.OnClick;
 /**
  * 手表专区页面
  */
-public class CommodityActivity extends BaseActivity {
+public class CommodityActivity extends BaseActivity implements BaseQuickAdapter.OnItemClickListener{
 
     @BindView(R.id.zg_commodity_recycler)
     RecyclerView zg_commodity_recycler;
@@ -46,6 +49,7 @@ public class CommodityActivity extends BaseActivity {
                 adapter = new ZgCommodityAdapter(R.layout.zg_commodity_recycler_item,obj.getPd());
                 zg_commodity_recycler.setLayoutManager(new GridLayoutManager(CommodityActivity.this,2));
                 zg_commodity_recycler.setAdapter(adapter);
+                adapter.setOnItemClickListener(CommodityActivity.this);
             }
 
             @Override
@@ -60,5 +64,10 @@ public class CommodityActivity extends BaseActivity {
     @OnClick(R.id.blackwb_back)
     public void backClick() {
         finish();
+    }
+
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        ActivityUtils.startActivityForData(this,CommodityDetailBannerActivity.class,((ZgShopAreaModel.PdBean)adapter.getData().get(position)).getPRODUCT_ID());
     }
 }

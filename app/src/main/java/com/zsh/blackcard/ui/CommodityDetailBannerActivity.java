@@ -101,6 +101,8 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         setContentView(R.layout.activity_commodity_detail_banner);
         ButterKnife.bind(this);
 
+
+
         listImage.add(R.mipmap.shopping_image_1);
         listImage.add(R.mipmap.shopping_image_1);
         listImage.add(R.mipmap.shopping_image_1);
@@ -124,7 +126,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     }
 
     //商品，详情，评论点击。此处针对RadioButton点击采用OnClick监听。实现多次点击同一按钮依然可以响应事件。
-    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb})
+    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb,R.id.blackwb_back})
     public void radioButtonOnClick(View view) {
         switch (view.getId()) {
             case R.id.commodity_detail_banner_left_rb:

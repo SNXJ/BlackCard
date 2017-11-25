@@ -66,11 +66,11 @@ public class HomeFragment extends BaseFragment {
                 case 0:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
                     break;
-                case 1://homeTopData
+                case 1:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
                     break;
                 case 2:
-                    ActivityUtils.startActivityForData(getActivity(), HomeKTVDetailActivity.class, homeTopData.getPd().get(position).getSORT_ID());
+                    ActivityUtils.startActivityForData(getActivity(), HomeKTVDetailActivity.class, ((HomeTopModel.PdBean)adapter.getData().get(position)).getSORT_ID());
                     break;
                 case 3:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
@@ -114,7 +114,6 @@ public class HomeFragment extends BaseFragment {
     private HomeTitleNewsModel homeTitleNewsModel;
 
     private int mSwitcherCount = 0;
-    private HomeTopModel homeTopData;//头条数据
     private Handler handler = new Handler(new Handler.Callback() {//2
         @Override
         public boolean handleMessage(Message msg) {
@@ -234,7 +233,6 @@ public class HomeFragment extends BaseFragment {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePage(DataManager.getMd5Str("COMMEND")), new ResultListener<HomeTopModel>() {
             @Override
             public void responseSuccess(HomeTopModel obj) {
-                homeTopData = obj;
                 System.out.println(obj);
                 for (int i = 0; i < obj.getPd().size(); i++) {
                     if (i == 0) {

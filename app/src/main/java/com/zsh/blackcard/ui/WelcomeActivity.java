@@ -7,12 +7,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.view.ZoomOutPageTransformer;
 
@@ -29,22 +34,30 @@ import butterknife.OnClick;
 
 public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
 
-    private Banner banner;
     //引导页图片集合
-    private List<Integer> listImage = new ArrayList<>();
-    private ImageView img_one, img_two, img_three, img_four;
+    private List<String> listImage = new ArrayList<>();
 
     @BindView(R.id.welcome_register_btn)
     Button welcome_now_btn;
     @BindView(R.id.welcome_login_btn)
     Button welcome_login_btn;
+    @BindView(R.id.welcome_banner)
+    Banner welcome_banner;
+    @BindView(R.id.img_one)
+    ImageView img_one;
+    @BindView(R.id.img_two)
+    ImageView img_two;
+    @BindView(R.id.img_three)
+    ImageView img_three;
+    @BindView(R.id.img_four)
+    ImageView img_four;
 
     @OnClick({R.id.welcome_register_btn, R.id.welcome_login_btn})
     public void btnOnClick(View view) {
         switch (view.getId()) {
             //在线申请
             case R.id.welcome_register_btn:
-                ActivityUtils.startActivity(this,RegisterActivity.class);
+                ActivityUtils.startActivity(this, RegisterActivity.class);
                 break;
             //会籍登录
             case R.id.welcome_login_btn:
@@ -58,34 +71,34 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     protected void initUI() {
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
-        initView();
-        initOnClick();
-        initDate();
+        initData();
     }
 
-    private void initDate() {
-        listImage.add(R.mipmap.guide_image_1);
-        listImage.add(R.mipmap.guide_image_2);
-        listImage.add(R.mipmap.guide_image_3);
-        listImage.add(R.mipmap.guide_image_4);
-        banner.setImageLoader(new MyImageLoader());
-        banner.setImages(listImage);
-        banner.setBannerStyle(BannerConfig.NOT_INDICATOR);
-        //使用自定义动画
-        banner.setPageTransformer(false,new ZoomOutPageTransformer());
-        banner.start();
-    }
+    private void initData() {
+        //获取欢迎引导页轮播图片
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postWelcome(DataManager.getMd5Str("BOOTPAGELIST")), new ResultListener<WelcomeModel>() {
+            @Override
+            public void responseSuccess(WelcomeModel obj) {
+                //循环遍历图片添加进集合
+                for (int i = 0; i < obj.getPd().size(); i++) {
+                    listImage.add(obj.getPd().get(i).getSHOWIMG());
+                }
+                welcome_banner.setImageLoader(new MyImageLoader());
+                welcome_banner.setImages(listImage);
+                welcome_banner.setBannerStyle(BannerConfig.NOT_INDICATOR);
+                //使用自定义动画
+                welcome_banner.setPageTransformer(false, new ZoomOutPageTransformer());
+                welcome_banner.start();
+                welcome_banner.setOnPageChangeListener(WelcomeActivity.this);
+            }
 
-    private void initOnClick() {
-        banner.setOnPageChangeListener(this);
-    }
+            @Override
+            public void onCompleted() {
 
-    private void initView() {
-        banner = (Banner) findViewById(R.id.welcome_banner);
-        img_one = (ImageView) findViewById(R.id.img_one);
-        img_two = (ImageView) findViewById(R.id.img_two);
-        img_three = (ImageView) findViewById(R.id.img_three);
-        img_four = (ImageView) findViewById(R.id.img_four);
+            }
+        });
+
+
     }
 
     @Override
@@ -128,14 +141,7 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-            imageView.setImageResource((Integer) path);
+            Glide.with(context).load(path).into(imageView);
         }
-
-//        @Override
-//        public ImageView createImageView(Context context) {
-//            ImageView imageView = new ImageView(context);
-//            imageView.setScaleType(ImageView.ScaleType.CENTER);
-//            return imageView;
-//        }
     }
 }
