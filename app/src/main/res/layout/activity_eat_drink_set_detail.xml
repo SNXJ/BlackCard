@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj">
+
+    <RelativeLayout
+        android:id="@+id/hj_eat_set_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="详细要求"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/detail_relative"
+        android:layout_width="@dimen/base345dp"
+        android:layout_height="@dimen/base188dp"
+        android:layout_below="@+id/hj_eat_set_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/base37dp"
+        android:background="#181818"
+        android:paddingBottom="@dimen/base10dp"
+        android:paddingTop="@dimen/base10dp">
+
+        <EditText
+            android:id="@+id/eat_drink_set_detail_title_et"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base30dp"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_marginRight="@dimen/base10dp"
+            android:background="@null"
+            android:hint="标题"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:textColor="#FF454545"
+            android:textColorHint="#FF454545"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/eat_drink_set_detail_title_et"
+            android:background="#1B1B1B" />
+
+        <EditText
+            android:id="@+id/eat_drink_set_detail_content_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/detail_view"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_marginRight="@dimen/base10dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="请输入内容"
+            android:textColor="#FF454545"
+            android:textColorHint="#FF454545" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/detail_tv"
+        android:layout_marginTop="@dimen/base10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_relative"
+        android:layout_marginLeft="@dimen/base25dp"
+        android:text="最多支持4张图片上传，点击删除图片"
+        android:textColor="#FF454545" />
+
+    <ImageView
+        android:layout_marginTop="@dimen/base5dp"
+        android:layout_marginLeft="@dimen/base25dp"
+        android:layout_below="@+id/detail_tv"
+        android:src="@mipmap/detail_group_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

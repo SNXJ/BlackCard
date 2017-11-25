@@ -18,15 +18,19 @@ import android.widget.TextView;
 
 import com.zsh.blackcard.ChangeAddressPopwindow;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.ItemClickListener;
-import com.zsh.blackcard.listener.SelectDataListener;
+import com.zsh.blackcard.listener.SelectDateListener;
+import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.ui.BlackWeiboActivity;
-import com.zsh.blackcard.ui.CommonlyActivity;
+import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.live.LiveAnchorDetails2;
 import com.zsh.blackcard.ui.live.LiveOpenActivity;
 import com.zsh.blackcard.ui.live.VideoDetailsActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
 import com.zsh.blackcard.view.datepickter.DPMode;
+import com.zsh.blackcard.view.datepickter.DatePicker;
 import com.zsh.blackcard.view.datepickter.DatePicker2;
 import com.zsh.blackcard.wheelview.ChangeDateDialog;
 import com.zsh.blackcard.wheelview.SelsectOneDialog;
@@ -41,6 +45,18 @@ import java.util.Calendar;
  * Description: 公共弹窗
  */
 public class PublicDialog {
+    /**
+     * 酒店订单
+     *
+     * @param mContext
+     */
+    public static void hotelOrderDialog(final Activity mContext, HoteldetailsItemModel.PdBean itemData, HotelDetailModel.PdBean hotelData) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.hotel_order_pop, null);
+        final Dialog dialog = showDialogView(view, mContext);
+
+
+    }
 
     /**
      * 尚播动画弹窗
@@ -51,13 +67,15 @@ public class PublicDialog {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.activity_live_main, null);
         final Dialog dialog = showDialogView(view, mContext);
+
         RadialViewLayout radialView = (RadialViewLayout) view.findViewById(R.id.ll_pop);
+        radialView.showOpenOrHide();
         radialView.setOnListener(new ItemClickListener() {
             @Override
             public void itemClick(int postion) {
                 switch (postion) {
                     case 0:
-                        dialog.dismiss();
+                        // dialog.dismiss();
                         break;
                     case 1://开
                         break;
@@ -81,13 +99,19 @@ public class PublicDialog {
      *
      * @param mContext
      */
-    public static void dataDialog(final Activity mContext) {
+    public static void dateDialog(final Activity mContext, final DateListener listener) {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.data_dialog, null);
         final Dialog dialog = showDialogView(view, mContext);
         DatePicker2 picker = (DatePicker2) view.findViewById(R.id.my_datepicker2);
         picker.setDate(2017, 12);
         picker.setMode(DPMode.SINGLE);
+        picker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
+            @Override
+            public void onDatePicked(String date) {
+                listener.dateListener(date);
+            }
+        });
 
     }
 
@@ -106,7 +130,7 @@ public class PublicDialog {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                mContext.startActivity(new Intent(mContext, CommonlyActivity.class));
+                mContext.startActivity(new Intent(mContext, CommonPassengerActivity.class));
             }
         });
     }
@@ -253,7 +277,7 @@ public class PublicDialog {
      */
     public static void showSelectOneDialog(Activity context,
                                            String defaultJsonAsset, String defaultData,
-                                           final SelectDataListener listener) {
+                                           final SelectDateListener listener) {
         SelsectOneDialog mDialog = new SelsectOneDialog(context,
                 defaultJsonAsset, defaultData);
         mDialog.setAddress(defaultData, "");
@@ -280,7 +304,7 @@ public class PublicDialog {
      */
     public static void showSelectTwoDialog(Activity context,
                                            String defaultJsonAsset, String defaultData,
-                                           final SelectDataListener listener) {
+                                           final SelectDateListener listener) {
         SelsectTwoDialog mDialog = new SelsectTwoDialog(context,
                 defaultJsonAsset, defaultData);
         mDialog.setAddress(defaultData, "");

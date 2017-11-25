@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base12dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base10dp">
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:text="20:30"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base55dp"
+            android:src="@mipmap/ticket_small" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base126dp"
+            android:text="22:30"
+            android:textSize="15sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="¥999"
+            android:textSize="17sp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:text="首都T2"
+            android:textSize="10sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base95dp"
+            android:text="浦东T1"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base10dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:text="海航HU7609"
+            android:textSize="10sp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:text="中型机321"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+</LinearLayout>

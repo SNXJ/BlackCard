@@ -98,96 +98,9 @@
             android:textSize="15sp" />
     </RelativeLayout>
 
-    <include layout="@layout/hotel_sort_fragment"></include>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base110dp"
-        android:layout_gravity="center_vertical"
-        android:padding="@dimen/base15dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/im_left"
-            android:layout_width="@dimen/base80dp"
-            android:layout_height="@dimen/base80dp"
-            android:src="@mipmap/together_image_2" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base80dp"
-            android:layout_marginLeft="@dimen/base10dp"
-            android:layout_toRightOf="@+id/im_left">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:gravity="top"
-                android:text="如家—北京霍营地铁站"
-                android:textColor="@color/title_text"
-                android:textSize="15sp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="@dimen/base30dp"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="昌平区回龙观镇科星西路47号"
-                    android:textColor="@color/title_text"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="23公里"
-                    android:textColor="@color/title_text"
-                    android:textSize="11sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="center_vertical">
-
-                <!--<RatingBar-->
-                    <!--android:id="@+id/rb_org_star"-->
-                    <!--style="?android:attr/ratingBarStyleSmall"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                <!--android:progressDrawable="@drawable/myratingbar"-->
-                <!--android:isIndicator="true"-->
-                <!--android:numStars="5"-->
-                <!--android:rating="0"-->
-                <!--/>-->
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="（120条评价）"
-                    android:textColor="@color/title_text"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="￥499"
-                    android:textColor="@color/title_text"
-                    android:textSize="11sp" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-    </RelativeLayout>
+    <include
+        layout="@layout/hotel_sort_fragment"
+        android:visibility="gone"></include>
 
 
 </LinearLayout>

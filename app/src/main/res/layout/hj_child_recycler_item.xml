@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base59dp">
+
+        <ImageView
+            android:id="@+id/hj_child_recycler_head_img"
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/blog_image_1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_toRightOf="@+id/hj_child_recycler_head_img"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableRight="@drawable/togetherselect"
+                android:text="完成全部任务"
+                android:textColor="@color/recharge_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base6dp"
+                android:text="1.7km 19岁魔蝎座"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@drawable/shape_hj_child_item_add_friend"
+            android:gravity="center"
+            android:paddingBottom="@dimen/base1dp"
+            android:paddingLeft="@dimen/base7dp"
+            android:paddingRight="@dimen/base7dp"
+            android:paddingTop="@dimen/base1dp"
+            android:text="加好友"
+            android:textColor="@color/recharge_text"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/hj_child_recycler_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/hj_child_recycler_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:text="麦乐迪KTV嗨起来"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base82dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base13dp">
+
+            <ImageView
+                android:id="@+id/hj_child_recycler_item_one_img"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/base4dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/hj_child_recycler_item_two_img"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/base2dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/hj_child_recycler_item_three_img"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/base2dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/hj_child_recycler_item_four_img"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/base82dp"
+                android:layout_marginLeft="@dimen/base4dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/base14dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp">
+
+            <TextView
+                android:id="@+id/hj_child_recycler_startTime_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开始时间:2017年10月1日"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/hj_child_recycler_endTime_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="结束时间:2017年10月8日"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/hj_child_recycler_people_number_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hj_child_recycler_startTime_tv"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="人数:一对一"
+                android:textColor="#929292"
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:id="@+id/hj_child_recycler_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/hj_child_recycler_endTime_tv"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/hj_child_recycler_endTime_tv"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="方式:AA互动趴"
+                android:textColor="@color/recharge_text"
+                android:textSize="11sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

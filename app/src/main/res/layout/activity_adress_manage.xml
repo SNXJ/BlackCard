@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black">
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/im_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="收货地址管理" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <Button
+        android:id="@+id/btn_add"
+        style="@style/btn_buttom"
+        android:text="添加新地址" />
+</RelativeLayout>

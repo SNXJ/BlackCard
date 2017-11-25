@@ -14,6 +14,7 @@
         android:src="@mipmap/shopping_image_1" />
 
     <TextView
+        android:id="@+id/collection_recycler_item_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/base26dp"
@@ -23,7 +24,7 @@
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/my_order_payment_tv"
+        android:id="@+id/collection_recycler_item_price_tv"
         android:gravity="center"
         android:paddingRight="@dimen/base5dp"
         android:paddingLeft="@dimen/base5dp"

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base65dp">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base10dp"
+        android:text="09:00-18:00内任选3小时"
+        android:textColor="@color/title_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base37dp"
+        android:text="¥399"
+        android:textColor="@color/title_text"
+        android:textSize="17sp" />
+
+    <TextView
+        android:layout_width="@dimen/base10dp"
+        android:layout_height="@dimen/base10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/base67dp"
+        android:background="#F29E19"
+        android:gravity="center"
+        android:text="订"
+        android:textColor="@color/main_black"
+        android:textSize="8sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/base15dp"
+        android:text="会员减99"
+        android:textColor="@color/title_text"
+        android:textSize="11sp" />
+
+    <View style="@style/line"></View>
+
+</RelativeLayout>

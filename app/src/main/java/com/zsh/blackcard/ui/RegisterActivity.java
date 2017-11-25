@@ -153,7 +153,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
         new CoverFlow.Builder()
                 .with(viewPager)
                 .scale(0.3f)
-                .pagerMargin(-40f)
+                .pagerMargin(-60f)
                 .spaceSize(0f)
                 .rotationY(0f)
                 .build();
@@ -305,7 +305,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
     }
 
     //控制收货地址，号码选择框的关闭和开启
-    @OnClick({R.id.blackwb_back, R.id.register_address_relative, R.id.register_number_relative, R.id.register_customer_relative, R.id.register_pay_relative})
+    @OnClick({R.id.blackwb_back, R.id.register_address_relative, R.id.register_number_relative, R.id.register_customer_relative, R.id.register_pay_relative,R.id.register_submit_btn})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.blackwb_back:
@@ -339,6 +339,9 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
                 } else {
                     register_pay_linear.setVisibility(View.VISIBLE);
                 }
+                break;
+            case R.id.register_submit_btn:
+
                 break;
         }
     }

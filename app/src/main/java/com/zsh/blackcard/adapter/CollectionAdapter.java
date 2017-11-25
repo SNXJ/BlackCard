@@ -4,20 +4,25 @@ import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.zsh.blackcard.R;
+import com.zsh.blackcard.model.CollectionModel;
 
 import java.util.List;
 
 /**
  * Created by kkkkk on 2017/11/18.
+ * 炫购收藏列表适配器
  */
 
-public class CollectionAdapter extends BaseQuickAdapter<String,BaseViewHolder> {
-    public CollectionAdapter(int layoutResId, @Nullable List<String> data) {
+public class CollectionAdapter extends BaseQuickAdapter<CollectionModel.PdBean,BaseViewHolder> {
+
+    public CollectionAdapter(int layoutResId, @Nullable List<CollectionModel.PdBean> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, String item) {
-
+    protected void convert(BaseViewHolder helper, CollectionModel.PdBean item) {
+        helper.setText(R.id.collection_recycler_item_title_tv,item.getPROTITLE());
+        helper.setText(R.id.collection_recycler_item_title_tv,item.getPROTITLE());
     }
 }

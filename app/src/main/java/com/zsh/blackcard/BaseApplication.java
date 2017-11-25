@@ -12,12 +12,8 @@ import com.zsh.blackcard.untils.SharedPreferencesUtils;
  * @Describe *
  */
 public class BaseApplication extends Application {
+    public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";
 
-    public static final String TOPBUYBILL = "topBuyBill";
-    public static final String TOPSELLBILL = "topSellBill";
-    public static final String QIANGDAN = "ID_APP_NOTIFICATION_ACTIVITY_QIANGDAN";
-    public static final String BILL_NEW = "ID_APP_NOTIFICATION_BILL_NEW";
-    public static final String BILL_LIST = "ID_APP_NOTIFICATION_BILL_LIST";
     /* 获取主线程的上下文对象 */
     private static BaseApplication context;
     /* 获取主线程ID */
@@ -30,7 +26,6 @@ public class BaseApplication extends Application {
     private static final String LOGIN = "loginTag";// 登陆
     private static final String EXIT = "exit";// 退出
     private static final String HSAPAYPWD = "haspsypwd";// 支付密码
-
 
 
     public static BaseApplication getInstance() {

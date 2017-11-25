@@ -19,18 +19,19 @@
             android:src="@mipmap/back" />
 
         <TextView
+            android:id="@+id/hj_recycler_detail_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="吃喝玩乐"
-            android:textColor="#929292"
+            android:textColor="@color/recharge_text"
             android:textSize="17sp"
             android:textStyle="bold" />
 
         <TextView
+            android:gravity="center"
             android:id="@+id/hj_eat_set"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
@@ -39,164 +40,11 @@
             android:textSize="12sp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/eat_drink_recycler"
         android:layout_width="match_parent"
-        android:layout_height="59dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
-            android:src="@mipmap/blog_image_1" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:button="@null"
-                android:drawablePadding="5dp"
-                android:drawableRight="@drawable/togetherselect"
-                android:text="完成全部任务"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="1.7km 19岁摩羯座"
-                android:textColor="#929292"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="44dp"
-                android:layout_height="14dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/addfriendshape"
-                android:gravity="center"
-                android:text="加好友"
-                android:textColor="#929292"
-                android:textSize="10sp" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear_detail"
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="14dp"
-            android:text="麦乐迪KTV嗨起来"
-            android:textColor="#929292"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_marginTop="13dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="82.5dp">
-
-            <ImageView
-                android:layout_marginRight="4dp"
-                android:scaleType="fitXY"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="82.5dp"
-                android:src="@mipmap/home_image_3" />
-
-            <ImageView
-                android:layout_marginRight="2dp"
-                android:scaleType="fitXY"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="82.5dp"
-                android:src="@mipmap/home_image_1" />
-
-            <ImageView
-                android:layout_marginLeft="2dp"
-                android:scaleType="fitXY"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="82.5dp"
-                android:src="@mipmap/home_image_2" />
-
-            <ImageView
-                android:layout_marginLeft="4dp"
-                android:scaleType="fitXY"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="82.5dp"
-                android:src="@mipmap/home_image_4" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="开始时间:2017年10月1日"
-                android:textColor="#929292"
-                android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:text="结束时间:2017年10月8日"
-                android:textColor="#929292"
-                android:textSize="11sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="人数:一对一"
-                android:textColor="#929292"
-                android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="64.75dp"
-                android:text="方式:AA互动趴"
-                android:textColor="#929292"
-                android:textSize="11sp" />
-
-        </RelativeLayout>
-    </LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

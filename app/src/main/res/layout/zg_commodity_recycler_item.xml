@@ -3,29 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/base3dp"
-    android:paddingRight="@dimen/base3dp"
-    android:orientation="vertical">
+    android:paddingRight="@dimen/base3dp">
 
     <ImageView
-        android:src="@mipmap/goods_image_6"
+        android:id="@+id/commodity_recycler_item_img"
         android:layout_width="@dimen/base185dp"
-        android:layout_height="@dimen/base180dp" />
-    
-    <TextView
-        android:textSize="12sp"
-        android:textColor="@color/recharge_text"
-        android:text="卡诗顿新品正品全自动机械男表皮带防水夜光商务"
-        android:layout_width="@dimen/base150dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/base180dp"
+        android:scaleType="fitXY" />
 
     <TextView
-        android:layout_marginTop="@dimen/base10dp"
-        android:textSize="12sp"
-        android:textColor="@color/recharge_text"
-        android:text="￥5688"
-        android:gravity="center"
+        android:id="@+id/commodity_recycler_item_name_tv"
         android:layout_width="@dimen/base150dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base16dp"
+        android:gravity="center"
+        android:text="卡诗顿新品正品"
+        android:textColor="@color/recharge_text"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/commodity_recycler_item_price_tv"
+        android:layout_width="@dimen/base150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base10dp"
+        android:gravity="center"
+        android:text="￥5688"
+        android:textColor="@color/recharge_text"
+        android:textSize="12sp" />
 
 </LinearLayout>

@@ -11,12 +11,8 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeMoreAdapter;
 import com.zsh.blackcard.model.HomeNewModel;
-import com.zsh.blackcard.ui.CarActivity;
-import com.zsh.blackcard.ui.CruiseShipActivity;
-import com.zsh.blackcard.ui.EquestrianActivity;
 import com.zsh.blackcard.ui.GolfActivity;
-import com.zsh.blackcard.ui.PlaneActivity;
-import com.zsh.blackcard.ui.TrianActivity;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,46 +93,46 @@ public class HomeMoreActivity extends BaseActivity {
     private void itemClick(int position) {
         switch (position) {
             case 0:
-                startActivity(new Intent(this, HomeFoodActivity.class));
+                startActivity(new Intent(this, HomeFoodHotelActivity.class));
                 break;
             case 1:
                 startActivity(new Intent(this, HomeHotelActivity.class));
                 break;
             case 2:
-                startActivity(new Intent(this, TrianActivity.class));
+                startActivity(new Intent(this, HomeTrainActivity.class));
                 break;
             case 3:
-                startActivity(new Intent(this, PlaneActivity.class));
+                startActivity(new Intent(this, HomePlaneActivity.class));
                 break;
             case 4:
-                startActivity(new Intent(this, EquestrianActivity.class));
+                startActivity(new Intent(this, HomeEquestrianActivity.class));
                 break;
             case 5:
-                startActivity(new Intent(this, CruiseShipActivity.class));
+                startActivity(new Intent(this, HomeCruiseShipActivity.class));
                 break;
             case 6:
-                startActivity(new Intent(this, CarActivity.class));
+                startActivity(new Intent(this, HomeCarActivity.class));
                 break;
             case 7://直升机
-                startActivity(new Intent(this, EquestrianActivity.class));
+                startActivity(new Intent(this, HomeEquestrianActivity.class));
                 break;
             case 8:// "高尔夫汇"
                 startActivity(new Intent(this, GolfActivity.class));
                 break;
             case 9://, "私人订制",
-                startActivity(new Intent(this, EquestrianActivity.class));
+                startActivity(new Intent(this, HomeEquestrianActivity.class));
                 break;
             case 10:// "品牌杂志",
-                startActivity(new Intent(this, EquestrianActivity.class));
+                startActivity(new Intent(this, HomeEquestrianActivity.class));
                 break;
             case 11:// "健康养生",
-                startActivity(new Intent(this, EquestrianActivity.class));
+                startActivity(new Intent(this, HomeEquestrianActivity.class));
                 break;
             case 12://"高端品鉴",
-                startActivity(new Intent(this, EquestrianActivity.class));
+                startActivity(new Intent(this, HomeEquestrianActivity.class));
                 break;
             case 13:// "定制理财"
-                startActivity(new Intent(this, EquestrianActivity.class));
+                startActivity(new Intent(this, HomeEquestrianActivity.class));
                 break;
         }
 

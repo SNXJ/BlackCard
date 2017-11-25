@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/register_address_img"
-                android:text="未选"
+                android:text="必填"
                 android:textColor="@color/recharge_text"
                 android:textSize="11sp" />
 
@@ -194,12 +194,14 @@
             android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base10dp"
             android:orientation="vertical"
-            android:padding="5dp"
+            android:paddingLeft="@dimen/base5dp"
+            android:paddingRight="@dimen/base5dp"
             android:visibility="gone">
 
             <EditText
+                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="姓名"
                 android:textColorHint="#FF454545"
@@ -208,13 +210,12 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base1dp"
-                android:layout_marginTop="@dimen/base8dp"
                 android:background="@color/divider" />
 
             <EditText
+                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/base15dp"
+                android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="手机号码"
                 android:textColorHint="#FF454545"
@@ -222,14 +223,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="@dimen/base1dp"
                 android:background="@color/divider" />
 
             <EditText
+                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="重复手机号码"
                 android:textColorHint="#FF454545"
@@ -237,14 +237,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="@dimen/base1dp"
                 android:background="@color/divider" />
 
             <EditText
+                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="省市区"
                 android:textColorHint="#FF454545"
@@ -252,14 +251,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="@dimen/base1dp"
                 android:background="@color/divider" />
 
             <EditText
+                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="详细地址"
                 android:textColorHint="#FF454545"
@@ -267,8 +265,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="@dimen/base1dp"
                 android:background="@color/divider" />
 
         </LinearLayout>
@@ -307,7 +304,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/register_number_img"
-                android:text="随机"
+                android:text="卡号"
                 android:textColor="@color/recharge_text"
                 android:textSize="11sp" />
 
@@ -338,7 +335,6 @@
                 android:layout_width="@dimen/base200dp"
                 android:layout_height="@dimen/base30dp"
                 android:layout_marginTop="@dimen/base5dp"
-                android:background="@drawable/shape_register_number_rg"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -784,7 +780,6 @@
                 android:layout_width="@dimen/base300dp"
                 android:layout_height="@dimen/base30dp"
                 android:layout_marginTop="@dimen/base5dp"
-                android:background="@drawable/shape_register_number_rg"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -838,7 +833,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <EditText
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/base30dp"
                         android:layout_weight="1"
@@ -849,7 +844,7 @@
                         android:textColorHint="@color/recharge_text"
                         android:textSize="15sp" />
 
-                    <EditText
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/base30dp"
                         android:layout_weight="1"
@@ -878,6 +873,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/base30dp"
                         android:layout_weight="1"
@@ -889,6 +885,7 @@
                         android:textSize="15sp" />
 
                     <EditText
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/base30dp"
                         android:layout_weight="1"
@@ -900,17 +897,6 @@
                         android:textSize="15sp" />
 
                 </LinearLayout>
-
-                <EditText
-                    android:layout_width="@dimen/base200dp"
-                    android:layout_height="@dimen/base30dp"
-                    android:layout_marginTop="@dimen/base13dp"
-                    android:background="@drawable/shape_register_super_center_false"
-                    android:gravity="center"
-                    android:hint="请您输入自己的个性签名"
-                    android:textColor="@color/recharge_text"
-                    android:textColorHint="@color/recharge_text"
-                    android:textSize="15sp" />
 
                 <LinearLayout
                     android:layout_width="@dimen/base330dp"
@@ -1045,7 +1031,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/register_pay_img"
-                android:text="微信"
+                android:text="支付"
                 android:textColor="@color/recharge_text"
                 android:textSize="11sp" />
 
@@ -1073,7 +1059,6 @@
                 android:layout_width="@dimen/base200dp"
                 android:layout_height="@dimen/base30dp"
                 android:layout_marginTop="@dimen/base18dp"
-                android:background="@drawable/shape_register_number_rg"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -1151,7 +1136,8 @@
 
             </LinearLayout>
 
-            <TextView
+            <Button
+                android:id="@+id/register_submit_btn"
                 android:background="#FF141414"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

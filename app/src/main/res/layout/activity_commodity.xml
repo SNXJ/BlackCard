@@ -19,6 +19,7 @@
             android:src="@mipmap/back" />
 
         <TextView
+            android:id="@+id/commodity_title_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"

@@ -3,48 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/login_bg"
-    android:paddingBottom="40dp">
+    android:background="@mipmap/login_bg">
 
     <com.youth.banner.Banner
+        android:layout_marginTop="@dimen/base60dp"
+        android:layout_alignParentTop="true"
         android:id="@+id/welcome_banner"
         android:layout_width="match_parent"
-        android:layout_height="440dp"
-        android:layout_marginTop="40dp"
-        app:image_scale_type="center"
+        android:layout_height="@dimen/base440dp"
+        app:image_scale_type="center_inside"
         app:is_auto_play="false">
 
     </com.youth.banner.Banner>
 
     <Button
+        android:layout_marginBottom="@dimen/base38dp"
         android:id="@+id/welcome_register_btn"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/base120dp"
+        android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="37.5dp"
+        android:layout_marginLeft="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="在线申请"
         android:textColor="#FFFFFFFF"
         android:textSize="12sp" />
 
     <Button
+        android:layout_marginBottom="@dimen/base38dp"
         android:id="@+id/welcome_login_btn"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/base120dp"
+        android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="37.5dp"
+        android:layout_marginRight="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="会籍登录"
         android:textColor="#FFFFFFFF"
         android:textSize="12sp" />
 
     <LinearLayout
+        android:layout_below="@+id/welcome_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/welcome_banner"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
         <ImageView

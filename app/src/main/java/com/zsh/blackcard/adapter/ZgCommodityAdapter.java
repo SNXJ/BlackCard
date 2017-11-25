@@ -1,70 +1,31 @@
 package com.zsh.blackcard.adapter;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.ui.CommodityActivity;
+import com.zsh.blackcard.model.ZgShopAreaModel;
 
-import butterknife.ButterKnife;
+import java.util.List;
 
 /**
  * Created by kkkkk on 2017/11/17.
  * 尊购所有专区的适配器
  */
 
-public class ZgCommodityAdapter extends RecyclerView.Adapter<ZgCommodityAdapter.MyViewHolder> {
+public class ZgCommodityAdapter extends BaseQuickAdapter<ZgShopAreaModel.PdBean,BaseViewHolder> {
 
-    private Context context;
-
-    public ZgCommodityAdapter(CommodityActivity commodityActivity) {
-        this.context = commodityActivity;
-    }
-
-    private ZgCommodityOnItemClick zgCommodityOnItemClick;
-
-    public void setZgCommodityOnItemClick(ZgCommodityOnItemClick zgCommodityOnItemClick) {
-        this.zgCommodityOnItemClick = zgCommodityOnItemClick;
-    }
-
-    public interface ZgCommodityOnItemClick{
-        void commodityOnItemClick(int position);
+    public ZgCommodityAdapter(int layoutResId, @Nullable List<ZgShopAreaModel.PdBean> data) {
+        super(layoutResId, data);
     }
 
     @Override
-    public ZgCommodityAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.zg_commodity_recycler_item,parent,false));
-        return myViewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(ZgCommodityAdapter.MyViewHolder holder, final int position) {
-        holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(zgCommodityOnItemClick != null){
-                    zgCommodityOnItemClick.commodityOnItemClick(position);
-                }
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return 10;
-    }
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-
-        private View view;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this,itemView);
-            view = itemView;
-        }
+    protected void convert(BaseViewHolder helper, ZgShopAreaModel.PdBean item) {
+        Glide.with(mContext).load(item.getPROSHOWIMG()).into((ImageView) helper.getView(R.id.commodity_recycler_item_img));
+        helper.setText(R.id.commodity_recycler_item_name_tv,item.getPROTITLE());
+        helper.setText(R.id.commodity_recycler_item_price_tv,"￥"+item.getPROPRICE());
     }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/main_black"
+    android:paddingBottom="@dimen/base5dp">
+
+    <ImageView
+        android:id="@+id/zg_drawer_personal_recycler_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base175dp" />
+
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/zg_drawer_personal_recycler_china_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bg_white"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/zg_drawer_personal_recycler_english_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base10dp"
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/zg_drawer_personal_recycler_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base10dp"
+            android:background="@drawable/shape_zg_drawer_item_more"
+            android:paddingBottom="@dimen/base4dp"
+            android:paddingLeft="@dimen/base16dp"
+            android:paddingRight="@dimen/base16dp"
+            android:paddingTop="@dimen/base4dp"
+            android:text="查看更多"
+            android:textColor="@color/bg_white"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,15 +1,15 @@
 package com.zsh.blackcard.model;
 
 /**
- * Name: LoginModel
- * Author: SNXJ
- * Date: 2017-11-20
- * Description:描述：
+ * Created by kkkkk on 2017/11/20.
+ * 此类为登录实体类
  */
+
 public class LoginModel {
+
     /**
      * result : 01
-     * pd : {"START_TIME":"2015-12-02","NUMBER":"111","RIGHTS":"","IP":"","PHONE":"17601680524","SFID":"1212","USER_ID":"1e89e6504be349a68c025976b3ecc1d1","LAST_LOGIN":"","EMAIL":"313596790@qq.com","NAME":"会员甲","YEARS":2,"STATUS":"1","END_TIME":"2015-12-25","PASSWORD":"698d51a19d8a121ce581499d7b701668","BZ":"121","USERNAME":"a1","ROLE_ID":"115b386ff04f4352b060dffcd2b5d1da"}
+     * pd : {"PASSWORD":"1","REALNAME":"yu","PHONE":"17601680524","ADDRESS":"2","PROVINCE":"B","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","CARDNO":"10"}
      */
 
     private String result;
@@ -33,73 +33,37 @@ public class LoginModel {
 
     public static class PdBean {
         /**
-         * START_TIME : 2015-12-02
-         * NUMBER : 111
-         * RIGHTS :
-         * IP :
+         * PASSWORD : 1
+         * REALNAME : yu
          * PHONE : 17601680524
-         * SFID : 1212
-         * USER_ID : 1e89e6504be349a68c025976b3ecc1d1
-         * LAST_LOGIN :
-         * EMAIL : 313596790@qq.com
-         * NAME : 会员甲
-         * YEARS : 2
-         * STATUS : 1
-         * END_TIME : 2015-12-25
-         * PASSWORD : 698d51a19d8a121ce581499d7b701668
-         * BZ : 121
-         * USERNAME : a1
-         * ROLE_ID : 115b386ff04f4352b060dffcd2b5d1da
+         * ADDRESS : 2
+         * PROVINCE : B
+         * HONOURUSER_ID : d6a3779de8204dfd9359403f54f7d27c
+         * CARDNO : 10
          */
 
-        private String START_TIME;
-        private String NUMBER;
-        private String RIGHTS;
-        private String IP;
-        private String PHONE;
-        private String SFID;
-        private String USER_ID;
-        private String LAST_LOGIN;
-        private String EMAIL;
-        private String NAME;
-        private int YEARS;
-        private String STATUS;
-        private String END_TIME;
         private String PASSWORD;
-        private String BZ;
-        private String USERNAME;
-        private String ROLE_ID;
+        private String REALNAME;
+        private String PHONE;
+        private String ADDRESS;
+        private String PROVINCE;
+        private String HONOURUSER_ID;
+        private String CARDNO;
 
-        public String getSTART_TIME() {
-            return START_TIME;
+        public String getPASSWORD() {
+            return PASSWORD;
         }
 
-        public void setSTART_TIME(String START_TIME) {
-            this.START_TIME = START_TIME;
+        public void setPASSWORD(String PASSWORD) {
+            this.PASSWORD = PASSWORD;
         }
 
-        public String getNUMBER() {
-            return NUMBER;
+        public String getREALNAME() {
+            return REALNAME;
         }
 
-        public void setNUMBER(String NUMBER) {
-            this.NUMBER = NUMBER;
-        }
-
-        public String getRIGHTS() {
-            return RIGHTS;
-        }
-
-        public void setRIGHTS(String RIGHTS) {
-            this.RIGHTS = RIGHTS;
-        }
-
-        public String getIP() {
-            return IP;
-        }
-
-        public void setIP(String IP) {
-            this.IP = IP;
+        public void setREALNAME(String REALNAME) {
+            this.REALNAME = REALNAME;
         }
 
         public String getPHONE() {
@@ -110,100 +74,36 @@ public class LoginModel {
             this.PHONE = PHONE;
         }
 
-        public String getSFID() {
-            return SFID;
+        public String getADDRESS() {
+            return ADDRESS;
         }
 
-        public void setSFID(String SFID) {
-            this.SFID = SFID;
+        public void setADDRESS(String ADDRESS) {
+            this.ADDRESS = ADDRESS;
         }
 
-        public String getUSER_ID() {
-            return USER_ID;
+        public String getPROVINCE() {
+            return PROVINCE;
         }
 
-        public void setUSER_ID(String USER_ID) {
-            this.USER_ID = USER_ID;
+        public void setPROVINCE(String PROVINCE) {
+            this.PROVINCE = PROVINCE;
         }
 
-        public String getLAST_LOGIN() {
-            return LAST_LOGIN;
+        public String getHONOURUSER_ID() {
+            return HONOURUSER_ID;
         }
 
-        public void setLAST_LOGIN(String LAST_LOGIN) {
-            this.LAST_LOGIN = LAST_LOGIN;
+        public void setHONOURUSER_ID(String HONOURUSER_ID) {
+            this.HONOURUSER_ID = HONOURUSER_ID;
         }
 
-        public String getEMAIL() {
-            return EMAIL;
+        public String getCARDNO() {
+            return CARDNO;
         }
 
-        public void setEMAIL(String EMAIL) {
-            this.EMAIL = EMAIL;
-        }
-
-        public String getNAME() {
-            return NAME;
-        }
-
-        public void setNAME(String NAME) {
-            this.NAME = NAME;
-        }
-
-        public int getYEARS() {
-            return YEARS;
-        }
-
-        public void setYEARS(int YEARS) {
-            this.YEARS = YEARS;
-        }
-
-        public String getSTATUS() {
-            return STATUS;
-        }
-
-        public void setSTATUS(String STATUS) {
-            this.STATUS = STATUS;
-        }
-
-        public String getEND_TIME() {
-            return END_TIME;
-        }
-
-        public void setEND_TIME(String END_TIME) {
-            this.END_TIME = END_TIME;
-        }
-
-        public String getPASSWORD() {
-            return PASSWORD;
-        }
-
-        public void setPASSWORD(String PASSWORD) {
-            this.PASSWORD = PASSWORD;
-        }
-
-        public String getBZ() {
-            return BZ;
-        }
-
-        public void setBZ(String BZ) {
-            this.BZ = BZ;
-        }
-
-        public String getUSERNAME() {
-            return USERNAME;
-        }
-
-        public void setUSERNAME(String USERNAME) {
-            this.USERNAME = USERNAME;
-        }
-
-        public String getROLE_ID() {
-            return ROLE_ID;
-        }
-
-        public void setROLE_ID(String ROLE_ID) {
-            this.ROLE_ID = ROLE_ID;
+        public void setCARDNO(String CARDNO) {
+            this.CARDNO = CARDNO;
         }
     }
 }

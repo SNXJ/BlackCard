@@ -29,10 +29,10 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:paddingLeft="32.5dp"
-        android:paddingRight="32.5dp"
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="180dp"
+        android:paddingLeft="32.5dp"
+        android:paddingRight="32.5dp">
 
         <ImageView
             android:layout_width="310dp"
@@ -41,38 +41,36 @@
             android:src="@mipmap/member_image_1" />
 
         <ImageView
-            android:layout_gravity="center_horizontal"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:src="@mipmap/my_headimg" />
 
         <TextView
-            android:layout_gravity="center"
-            android:textColor="#FF929292"
-            android:text="普通会员"
-            android:textSize="16sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="普通会员"
+            android:textColor="#FF929292"
+            android:textSize="16sp" />
     </FrameLayout>
 
     <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:textColor="#FF929292"
-        android:text="会员尊享"
-        android:textSize="15sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    
-    <android.support.v7.widget.RecyclerView
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:id="@+id/my_vip_center_recycler"
         android:layout_marginTop="20dp"
+        android:text="会员尊享"
+        android:textColor="#FF929292"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_vip_center_recycler"
         android:layout_width="match_parent"
-        android:layout_height="85dp">
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp">
 
     </android.support.v7.widget.RecyclerView>
 

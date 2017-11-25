@@ -130,5 +130,12 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
         public void displayImage(Context context, Object path, ImageView imageView) {
             imageView.setImageResource((Integer) path);
         }
+
+//        @Override
+//        public ImageView createImageView(Context context) {
+//            ImageView imageView = new ImageView(context);
+//            imageView.setScaleType(ImageView.ScaleType.CENTER);
+//            return imageView;
+//        }
     }
 }
