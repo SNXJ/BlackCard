@@ -68,7 +68,7 @@ public class AddressEditActivity extends BaseActivity {
 
                 break;
             case R.id.ll_address:
-                takeOnClick();
+                //takeOnClick();
                 break;
         }
     }

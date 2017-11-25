@@ -5,7 +5,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
@@ -44,14 +43,14 @@ public class OrderPayActivity extends BaseActivity {
     protected void initUI() {
         setContentView(R.layout.order_pay_activity);
         ButterKnife.bind(this);
-        item = (HoteldetailsItemModel.PdBean) getIntent().getSerializableExtra("Serializable");
-
-        tvName.setText(item.getHOTELDETNAME());
-        tvTime.setText(item.getMyDES());
-        tvDes.setText(item.getHOTELDETBEDTYPE());
-        tvMoney.setText("订单金额￥" + item.getHOTELDETPRICE() + "");
-
-        Glide.with(this).load(item.getHOTELDETIMGS()).into(imImg);
+//        item = (HoteldetailsItemModel.PdBean) getIntent().getSerializableExtra("Serializable");
+//
+//        tvName.setText(item.getHOTELDETNAME());
+//        tvTime.setText(item.getMyDES());
+//        tvDes.setText(item.getHOTELDETBEDTYPE());
+//        tvMoney.setText("订单金额￥" + item.getHOTELDETPRICE() + "");
+//
+//        Glide.with(this).load(item.getHOTELDETIMGS()).into(imImg);
     }
 
     @OnClick({R.id.title_back, R.id.btn_pay})

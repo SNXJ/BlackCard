@@ -90,7 +90,7 @@ public interface RetrofitService {
     //首页美食
     @FormUrlEncoded
     @POST("appsfoodin/sfood?")
-    Observable<HomeFoodModel> postHomeFoodList(@Field("FKEY") String md5);
+    Observable<HomeFoodModel> postHomeFoodList(@Field("FKEY") String md5,@Field("HONOURUSER_ID") String userId );
 
     //美食详情
     @FormUrlEncoded
@@ -100,7 +100,7 @@ public interface RetrofitService {
     //首页酒店
     @FormUrlEncoded
     @POST("appshotelin/shotel.do?")
-    Observable<HomeHotelModel> postHomeHotelList(@Field("FKEY") String md5);
+    Observable<HomeHotelModel> postHomeHotelList(@Field("FKEY") String md5,@Field("HONOURUSER_ID") String userId );
 
     //酒店详情
     @FormUrlEncoded

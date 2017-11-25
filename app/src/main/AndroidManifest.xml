@@ -108,7 +108,7 @@
         <activity android:name=".ui.home.HomeMoreActivity" />
         <activity android:name=".ui.home.CommentActivity" />
         <activity android:name=".ui.home.CommentEditActivity" />
-        <activity android:name=".ui.home.HomeKTVActivity" />
+        <activity android:name=".ui.home.HomeKTVDetailActivity" />
         <activity android:name=".ui.MsgCenterActivity" />
         <activity android:name=".ui.MsgSysCenterActivity" />
         <activity android:name=".ui.MsgSysDetailsActivity" />

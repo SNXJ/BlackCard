@@ -2,10 +2,10 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
-import com.zsh.blackcard.model.CollectionModel;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.model.AddressDelModel;
-import com.zsh.blackcard.model.AddressEditModel;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
@@ -15,9 +15,9 @@ import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
-import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
+import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
@@ -120,7 +120,7 @@ public class NetApi {
      * @return
      */
     public Observable<HomeFoodModel> postHomeFoodList(String md5) {
-        return retrofitService.postHomeFoodList(md5);
+        return retrofitService.postHomeFoodList(md5, BaseApplication.HONOURUSER_ID);
     }
 
     /**
@@ -131,7 +131,7 @@ public class NetApi {
      * @return
      */
     public Observable<HomeHotelModel> postHomeHotelList(String md5) {
-        return retrofitService.postHomeHotelList(md5);
+        return retrofitService.postHomeHotelList(md5, BaseApplication.HONOURUSER_ID);
     }
 
     /**
@@ -285,6 +285,7 @@ public class NetApi {
 
     /**
      * 炫购收藏列表
+     *
      * @param md5
      * @param id
      * @return
