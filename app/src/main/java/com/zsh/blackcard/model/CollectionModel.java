@@ -11,7 +11,7 @@ public class CollectionModel {
 
     /**
      * result : 01
-     * pd : [{"PROTITLE":"欧米伽手表标题","PROPRICE":18888,"PRODUCT_ID":"382984525619134464"},{"PROTITLE":"卡地亚珠宝标题","PROPRICE":22222,"PRODUCT_ID":"382974470014369792"},{"PROTITLE":"欧米伽手表标题","PROPRICE":18888,"PRODUCT_ID":"382984525619134464"},{"PROTITLE":"卡地亚珠宝标题","PROPRICE":22222,"PRODUCT_ID":"382984525619134464"}]
+     * pd : [{"PROTITLE":"天梭手表的标题","PROPRICE":28888,"PROSHOWIMG":"http://47.104.16.215:8088/productimgs/productshowimgs/c8a97a262b8640f2aae2305507332405.png","PRODUCT_ID":"383674340182327296"},{"PROTITLE":"天梭手表的标题","PROPRICE":28888,"PROSHOWIMG":"http://47.104.16.215:8088/productimgs/productshowimgs/c8a97a262b8640f2aae2305507332405.png","PRODUCT_ID":"383674340182327296"}]
      */
 
     private String result;
@@ -35,13 +35,15 @@ public class CollectionModel {
 
     public static class PdBean {
         /**
-         * PROTITLE : 欧米伽手表标题
-         * PROPRICE : 18888.0
-         * PRODUCT_ID : 382984525619134464
+         * PROTITLE : 天梭手表的标题
+         * PROPRICE : 28888.0
+         * PROSHOWIMG : http://47.104.16.215:8088/productimgs/productshowimgs/c8a97a262b8640f2aae2305507332405.png
+         * PRODUCT_ID : 383674340182327296
          */
 
         private String PROTITLE;
         private double PROPRICE;
+        private String PROSHOWIMG;
         private String PRODUCT_ID;
 
         public String getPROTITLE() {
@@ -58,6 +60,14 @@ public class CollectionModel {
 
         public void setPROPRICE(double PROPRICE) {
             this.PROPRICE = PROPRICE;
+        }
+
+        public String getPROSHOWIMG() {
+            return PROSHOWIMG;
+        }
+
+        public void setPROSHOWIMG(String PROSHOWIMG) {
+            this.PROSHOWIMG = PROSHOWIMG;
         }
 
         public String getPRODUCT_ID() {

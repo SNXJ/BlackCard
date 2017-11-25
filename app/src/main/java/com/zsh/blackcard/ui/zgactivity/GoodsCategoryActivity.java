@@ -1,24 +1,28 @@
 package com.zsh.blackcard.ui.zgactivity;
 
-import android.content.Intent;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.SimpleAdapter;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.CategoryLeftAdapter;
-import com.zsh.blackcard.ui.ShoppingDetailsActivity;
+import com.zsh.blackcard.adapter.CategoryRightAdapter;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.CategoryLeftModel;
+import com.zsh.blackcard.model.CategoryRightModel;
+import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Name: GoodsCategory
@@ -26,92 +30,87 @@ import java.util.Map;
  * Date: 2017-11-12
  * Description:商品分类列表：
  */
-public class GoodsCategoryActivity extends BaseActivity {
-    //
-    private RecyclerView mLeftRvRecyclerView;
-    private GridView mRightGridView;
-  private List<String> categoryLeft;
-  //private List<int> categoryRight;
-  private CategoryLeftAdapter leftAdapter;
-  private   SimpleAdapter rightAdapter;
+public class GoodsCategoryActivity extends BaseActivity implements BaseQuickAdapter.OnItemClickListener {
+    //商品分类左边列表
+    @BindView(R.id.goods_category_recycler_left)
+    RecyclerView goods_category_recycler_left;
+    //商品分类右边列表
+    @BindView(R.id.goods_category_recycler_right)
+    RecyclerView goods_category_recycler_right;
+    //商品分类左边列表适配器
+    private CategoryLeftAdapter categoryLeftAdapter;
+    //商品分类右边列表适配器
+    private CategoryRightAdapter categoryRightAdapter;
+
+    private List<CategoryRightModel.PdBean> pdBeanList = new ArrayList<>();
 
     @Override
     protected void initUI() {
         setContentView(R.layout.goods_category_avtivity);
-        mLeftRvRecyclerView = (RecyclerView) findViewById(R.id.category_left_rv);
-        mRightGridView = (GridView) findViewById(R.id.category_right_gv);
-
+        ButterKnife.bind(this);
         initData();
-        leftAdapter=new CategoryLeftAdapter(categoryLeft);
-
-
-        rightAdapter= new SimpleAdapter(this,getData(img),R.layout.category_right_item,new String[]{"img"},new int[]{R.id.im_right_item});
-        mLeftRvRecyclerView.setAdapter(leftAdapter);
-        mRightGridView.setAdapter(rightAdapter);
-
-        mLeftRvRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-        mLeftRvRecyclerView.addOnItemTouchListener(new SimpleClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                leftAdapter.setSelectPos(i);
-                leftAdapter.notifyDataSetChanged();
-
-                dataList.clear();
-                dataList=    i%2==0?getData(img):getData(img2);
-                rightAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onItemLongClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-
-            }
-
-            @Override
-            public void onItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-
-            }
-
-            @Override
-            public void onItemChildLongClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-
-            }
-        });
-
-        mRightGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               // UIUtils.showToast("item="+position);
-            startActivity(new Intent(GoodsCategoryActivity.this, ShoppingDetailsActivity.class));
-            }
-        });
-
-    }
-    private List<Map<String, Object>> dataList   = new ArrayList<Map<String, Object>>();
-    private int[] img = {R.mipmap.brand_image_1,R.mipmap.brand_image_2,R.mipmap.brand_image_3,R.mipmap.brand_image_4,R.mipmap.brand_image_5,R.mipmap.brand_image_6,R.mipmap.brand_image_7,R.mipmap.brand_image_8,R.mipmap.brand_image_9,R.mipmap.brand_image_10,R.mipmap.brand_image_14,R.mipmap.brand_image_12,R.mipmap.brand_image_13 };
-    private int[] img2 = {R.mipmap.brand_image_5,R.mipmap.brand_image_6,R.mipmap.brand_image_7,R.mipmap.brand_image_8,R.mipmap.brand_image_9,R.mipmap.brand_image_10,R.mipmap.brand_image_14,R.mipmap.brand_image_12,R.mipmap.brand_image_13 };
-    private List<Map<String, Object>> getData(int[] img ) {
-        for (int i=0; i<img.length; i++) {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("img", img[i]);
-            dataList.add(map);
-        }
-        return dataList;
     }
 
+    @OnClick(R.id.back_img)
+    public void onClick(){
+        finish();
+    }
 
     private void initData() {
-        categoryLeft=new ArrayList<>();
-        categoryLeft.add("名物");
-        categoryLeft.add("美食");
-        categoryLeft.add("艺术品");
-        categoryLeft.add("包袋");
-        categoryLeft.add("腕表");
-        categoryLeft.add("首饰珠宝");
-        categoryLeft.add("运动户外");
+        //商品分类左边列表
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCategoryLeft(DataManager.getMd5Str("SHIPBR")), new ResultListener<CategoryLeftModel>() {
+            @Override
+            public void responseSuccess(CategoryLeftModel obj) {
+                categoryLeftAdapter = new CategoryLeftAdapter(R.layout.category_left_item, obj.getPd());
+                goods_category_recycler_left.setLayoutManager(new LinearLayoutManager(GoodsCategoryActivity.this));
+                goods_category_recycler_left.addItemDecoration(new SpacesItemDecoration(GoodsCategoryActivity.this, SpacesItemDecoration.VERTICAL_LIST));
+                goods_category_recycler_left.setAdapter(categoryLeftAdapter);
+                categoryLeftAdapter.setOnItemClickListener(GoodsCategoryActivity.this);
 
+                //如果左边列表加载成功，则默认加载列表中的第一个子列表
+                initRecyclerRight(obj.getPd().get(0).getBRAND_ID());
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
+    //加载右边列表的适配器
+    private void initRecyclerRight(String brand_id) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCategoryRight(DataManager.getMd5Str("SHIPBRIC"), brand_id), new ResultListener<CategoryRightModel>() {
+            @Override
+            public void responseSuccess(CategoryRightModel obj) {
+                if(pdBeanList != null){
+                    pdBeanList.clear();
+                }
+                pdBeanList.addAll(obj.getPd());
+                //如果适配器为空则创建新适配器，如果不为空则刷新。
+                if (categoryRightAdapter != null) {
+                    categoryRightAdapter.notifyDataSetChanged();
+                } else {
+                    categoryRightAdapter = new CategoryRightAdapter(R.layout.category_right_item, pdBeanList);
+                    goods_category_recycler_right.setLayoutManager(new GridLayoutManager(GoodsCategoryActivity.this, 3));
+                    goods_category_recycler_right.setAdapter(categoryRightAdapter);
+                }
 
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        //每次点击其他item，刷新列表。
+        categoryLeftAdapter.selectState(position);
+        categoryLeftAdapter.notifyDataSetChanged();
+        //加载右边列表
+        initRecyclerRight(((CategoryLeftModel.PdBean) adapter.getData().get(position)).getBRAND_ID());
+    }
 }

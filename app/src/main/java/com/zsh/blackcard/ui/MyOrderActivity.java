@@ -8,6 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.MyOrderCenterAdapter;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
@@ -32,7 +35,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
 
     private MyOrderCenterAdapter adapter;
 
-    private List<MyOrderModel> list = new ArrayList<>();
+    private List<MyOrderModel.PdBean> pdBeanList = new ArrayList<>();
 
     @Override
     protected void initUI() {
@@ -50,7 +53,8 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
     private void initDate() {
         Intent intent = getIntent();
         String data = intent.getStringExtra("data");
-        if (null == data) {
+        if ("1".equals(data)) {
+            postMyAppointOrder();
         } else if ("2".equals(data)) {
             my_order_tabLayout.getTabAt(1).select();
         } else if ("3".equals(data)) {
@@ -70,44 +74,119 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
     //点击tab
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-        if (list != null) {
-            list.clear();
-        }
 
         if (tab.getText().toString().equals("全部")) {
-            //to do
+            postMyAppointOrder();
         } else if (tab.getText().toString().equals("待付款")) {
-            //to do
-            for (int i = 0; i < 10; i++) {
-                MyOrderModel myOrderModel = new MyOrderModel(2);
-                list.add(myOrderModel);
-            }
+            postMyAppointOrder("0040001");
         } else if (tab.getText().toString().equals("待收货")) {
-            for (int i = 0; i < 10; i++) {
-                MyOrderModel myOrderModel = new MyOrderModel(3);
-                list.add(myOrderModel);
-            }
+            postMyAppointOrder("0040002");
         } else if (tab.getText().toString().equals("待评价")) {
-            for (int i = 0; i < 10; i++) {
-                MyOrderModel myOrderModel = new MyOrderModel(4);
-                list.add(myOrderModel);
-            }
+            postMyAppointOrder("0040003");
         } else if (tab.getText().toString().equals("退款售后")) {
-            for (int i = 0; i < 10; i++) {
-                MyOrderModel myOrderModel = new MyOrderModel(5);
-                list.add(myOrderModel);
-            }
+            postMyAppointOrder("0040004");
         }
 
-        if (adapter == null) {
-            adapter = new MyOrderCenterAdapter(list);
-            order_center_recycler.setLayoutManager(new LinearLayoutManager(this));
-            order_center_recycler.addItemDecoration(new SpacesItemDecoration(this, SpacesItemDecoration.VERTICAL_LIST));
-            order_center_recycler.setAdapter(adapter);
-        } else {
-            adapter.notifyDataSetChanged();
-            order_center_recycler.scrollToPosition(0);
-        }
+
+    }
+
+    /**
+     * 查询全部订单方法
+     */
+    private void postMyAppointOrder() {
+        //当为全部时，不同调用select，默认自动加载全部订单
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyAllOrder(DataManager.getMd5Str("ALLORDER"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyOrderModel>() {
+            @Override
+            public void responseSuccess(MyOrderModel obj) {
+                //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
+                if (obj.getResult().equals("01")) {
+                    if (pdBeanList != null) {
+                        pdBeanList.clear();
+                    }
+                    pdBeanList.addAll(obj.getPd());
+                    //遍历得到的所有订单结果，为订单赋值不同的itemType
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if (obj.getPd().get(i).getORDERSTATUS().equals("待付款")) {
+                            pdBeanList.get(i).setItemType(2);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("待收货")) {
+                            pdBeanList.get(i).setItemType(3);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("待评价")) {
+                            pdBeanList.get(i).setItemType(4);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("已完成")) {
+                            pdBeanList.get(i).setItemType(5);
+                        }
+                    }
+                } else {
+                    pdBeanList.clear();
+                }
+
+
+                if (adapter != null) {
+                    adapter.notifyDataSetChanged();
+                    order_center_recycler.scrollToPosition(0);
+                } else {
+                    adapter = new MyOrderCenterAdapter(pdBeanList);
+                    order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderActivity.this));
+                    order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderActivity.this, SpacesItemDecoration.VERTICAL_LIST));
+                    order_center_recycler.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    /**
+     * 指定查询订单方法
+     *
+     * @param state
+     */
+    private void postMyAppointOrder(String state) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyAppointOrder(DataManager.getMd5Str("CONORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<MyOrderModel>() {
+            @Override
+            public void responseSuccess(MyOrderModel obj) {
+                //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
+                if (obj.getResult().equals("01")) {
+                    if (pdBeanList != null) {
+                        pdBeanList.clear();
+                    }
+                    pdBeanList.addAll(obj.getPd());
+                    //遍历得到的所有订单结果，为订单赋值不同的itemType
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if (obj.getPd().get(i).getORDERSTATUS().equals("0040001")) {
+                            pdBeanList.get(i).setItemType(2);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040002")) {
+                            pdBeanList.get(i).setItemType(3);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040003")) {
+                            pdBeanList.get(i).setItemType(4);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040004")) {
+                            pdBeanList.get(i).setItemType(5);
+                        }
+                    }
+                } else {
+                    pdBeanList.clear();
+                }
+
+
+                if (adapter != null) {
+                    adapter.notifyDataSetChanged();
+                    order_center_recycler.scrollToPosition(0);
+                } else {
+                    adapter = new MyOrderCenterAdapter(pdBeanList);
+                    order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderActivity.this));
+                    order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderActivity.this, SpacesItemDecoration.VERTICAL_LIST));
+                    order_center_recycler.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     @Override

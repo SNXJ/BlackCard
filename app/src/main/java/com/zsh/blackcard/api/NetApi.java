@@ -5,6 +5,8 @@ import android.content.Context;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.model.AddressDelModel;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.CategoryLeftModel;
+import com.zsh.blackcard.model.CategoryRightModel;
 import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
@@ -24,7 +26,9 @@ import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.TrainModel;
+import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
@@ -332,5 +336,59 @@ public class NetApi {
      */
     public Observable<AddressDelModel> addressEdit(Map<String, String> map) {
         return retrofitService.addressEdit(map);
+    }
+
+    /**
+     * 全部订单查询接口
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<MyOrderModel> postMyAllOrder(String md5, String id) {
+        return retrofitService.postMyAllOrder(md5, id);
+    }
+
+    /**
+     * 指定订单查询接口，如：查询待付款，待收货等。
+     *
+     * @param md5
+     * @param id
+     * @param state
+     * @return
+     */
+    public Observable<MyOrderModel> postMyAppointOrder(String md5, String id, String state) {
+        return retrofitService.postMyAppointOrder(md5, id, state);
+    }
+
+    /**
+     * 商品分类左边列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<CategoryLeftModel> postCategoryLeft(String md5) {
+        return retrofitService.postCategoryLeft(md5);
+    }
+
+    /**
+     * 商品分类右边列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<CategoryRightModel> postCategoryRight(String md5, String id) {
+        return retrofitService.postCategoryRight(md5, id);
+    }
+
+    /**
+     * 获取欢迎引导页的轮播图片
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<WelcomeModel> postWelcome(String md5) {
+        return retrofitService.postWelcome(md5);
     }
 }

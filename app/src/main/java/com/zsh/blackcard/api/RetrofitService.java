@@ -2,6 +2,8 @@ package com.zsh.blackcard.api;
 
 import com.zsh.blackcard.model.AddressDelModel;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.CategoryLeftModel;
+import com.zsh.blackcard.model.CategoryRightModel;
 import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
@@ -21,8 +23,10 @@ import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.TrainModel;
+import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
@@ -90,7 +94,7 @@ public interface RetrofitService {
     //首页美食
     @FormUrlEncoded
     @POST("appsfoodin/sfood?")
-    Observable<HomeFoodModel> postHomeFoodList(@Field("FKEY") String md5,@Field("HONOURUSER_ID") String userId );
+    Observable<HomeFoodModel> postHomeFoodList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String userId);
 
     //美食详情
     @FormUrlEncoded
@@ -100,7 +104,7 @@ public interface RetrofitService {
     //首页酒店
     @FormUrlEncoded
     @POST("appshotelin/shotel.do?")
-    Observable<HomeHotelModel> postHomeHotelList(@Field("FKEY") String md5,@Field("HONOURUSER_ID") String userId );
+    Observable<HomeHotelModel> postHomeHotelList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String userId);
 
     //酒店详情
     @FormUrlEncoded
@@ -191,4 +195,33 @@ public interface RetrofitService {
     @POST("appshipin/shipcollect?")
     Observable<CollectionModel> postCollection(@Field("FKEY") String md5,
                                                @Field("HONOURUSER_ID") String id);
+
+    //查询全部订单接口
+    @FormUrlEncoded
+    @POST("apporderin/orderalllist?")
+    Observable<MyOrderModel> postMyAllOrder(@Field("FKEY") String md5,
+                                            @Field("HONOURUSER_ID") String id);
+
+    //指定查询订单接口（如：查询待收货，待付款等。）
+    @FormUrlEncoded
+    @POST("apporderin/orderconlist?")
+    Observable<MyOrderModel> postMyAppointOrder(@Field("FKEY") String md5,
+                                                @Field("HONOURUSER_ID") String id,
+                                                @Field("ORDERSTATUS") String state);
+
+    //商品分类左边列表
+    @FormUrlEncoded
+    @POST("appshipin/shipbrandlist?")
+    Observable<CategoryLeftModel> postCategoryLeft(@Field("FKEY") String md5);
+
+    //商品分类右边列表
+    @FormUrlEncoded
+    @POST("appshipin/shipbrandiconlist?")
+    Observable<CategoryRightModel> postCategoryRight(@Field("FKEY") String md5,
+                                                     @Field("BRAND_ID") String id);
+
+    //获取欢迎引导页的滚动图片数据
+    @FormUrlEncoded
+    @POST("appbootpagein/bootpagelist?")
+    Observable<WelcomeModel> postWelcome(@Field("FKEY") String md5);
 }
