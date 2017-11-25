@@ -1,14 +1,19 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.AddressDelModel;
+import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.CollectionModel;
-import com.zsh.blackcard.model.EatDrinkDetailModel;
-import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
+import com.zsh.blackcard.model.EatDrinkDetailModel;
+import com.zsh.blackcard.model.EatDrinkModel;
+import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
+import com.zsh.blackcard.model.HomeKTVDetailItemModel;
+import com.zsh.blackcard.model.HomeKTVDetailModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
@@ -24,14 +29,11 @@ import com.zsh.blackcard.model.ZgShopAreaModel;
 
 import java.util.Map;
 
-import okhttp3.MultipartBody;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.QueryMap;
 import rx.Observable;
 
@@ -88,17 +90,17 @@ public interface RetrofitService {
     //首页美食
     @FormUrlEncoded
     @POST("appsfoodin/sfood?")
-    Observable<HomeFoodModel> postHomeFoodList(@Field("FKEY") String md5);
+    Observable<HomeFoodModel> postHomeFoodList(@Field("FKEY") String md5,@Field("HONOURUSER_ID") String userId );
 
     //美食详情
     @FormUrlEncoded
-    @POST("appshotelin/hotelsyn?")
-    Observable<HotelDetailModel> postFoodDetail(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+    @POST("appsfoodin/foodsyn?")
+    Observable<FoodDetailModel> postFoodDetail(@Field("FKEY") String md5, @Field("SORTFOOD_ID") String id);
 
     //首页酒店
     @FormUrlEncoded
     @POST("appshotelin/shotel.do?")
-    Observable<HomeHotelModel> postHomeHotelList(@Field("FKEY") String md5);
+    Observable<HomeHotelModel> postHomeHotelList(@Field("FKEY") String md5,@Field("HONOURUSER_ID") String userId );
 
     //酒店详情
     @FormUrlEncoded
@@ -109,6 +111,16 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appshotelin/hoteldetaillist?")
     Observable<HoteldetailsItemModel> postHotelDetailList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
+    //KTV详情
+    @FormUrlEncoded
+    @POST("appsktvin/ktvsyn?")
+    Observable<HomeKTVDetailModel> postKTVDetail(@Field("FKEY") String md5, @Field("SORTKTV_ID") String id);
+
+    //KTV详情列表
+    @FormUrlEncoded
+    @POST("appsktvin/ktvdetaillist?")
+    Observable<HomeKTVDetailItemModel> postKTVDetailList(@Field("FKEY") String md5, @Field("SORTKTV_ID") String id);
 
     //评论列表
     @FormUrlEncoded
@@ -130,6 +142,28 @@ public interface RetrofitService {
     @POST("appconvergein/getdetailbyid?")
     Observable<EatDrinkDetailModel> postHjRecyclerItemDetail(@Field("FKEY") String md5,
                                                              @Field("CONVERGEDETAIL_ID") String id);
+
+    //地址管理
+    @FormUrlEncoded
+    @POST("appuserin/usershipadr?")
+    Observable<AddressManageModel> postAddressManage(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+
+
+    //添加地址
+//    @Multipart
+    @GET("appuserin/useraddshipadr?")
+    Observable<AddressDelModel> addressAdd(@QueryMap Map<String, String> map);
+
+    //删除地址
+    @FormUrlEncoded
+    @POST("appuserin/userdelshipadr?")
+    Observable<AddressDelModel> delAddress(@Field("FKEY") String md5,
+                                           @Field("ADDRESS_ID") String id);
+
+    //编辑地址
+    @GET("appuserin/useredishipadr?")
+    Observable<AddressDelModel> addressEdit(@QueryMap Map<String, String> map);
+
 
     //发布聚会
     @FormUrlEncoded

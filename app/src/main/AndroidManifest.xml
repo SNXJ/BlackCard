@@ -22,7 +22,7 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
-        android:name=".BaseApplication"
+        android:name="com.zsh.blackcard.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -39,8 +39,8 @@
         </activity>
         <activity android:name=".ui.BlackWeiboActivity" />
         <activity android:name=".ui.ShoppingCarActivity" />
-        <activity android:name=".ui.TakeAddressActivity" />
-        <activity android:name=".ui.TakeAdressDetailsActivity" />
+        <activity android:name=".ui.AddressEditActivity" />
+        <activity android:name=".ui.AddressManageActivity" />
         <activity android:name=".ui.SbActivity" />
         <activity android:name=".ui.SbMyActivity" />
         <activity android:name=".ui.OrderDetailsActivity" />
@@ -108,7 +108,7 @@
         <activity android:name=".ui.home.HomeMoreActivity" />
         <activity android:name=".ui.home.CommentActivity" />
         <activity android:name=".ui.home.CommentEditActivity" />
-        <activity android:name=".ui.home.HomeKTVActivity" />
+        <activity android:name=".ui.home.HomeKTVDetailActivity" />
         <activity android:name=".ui.MsgCenterActivity" />
         <activity android:name=".ui.MsgSysCenterActivity" />
         <activity android:name=".ui.MsgSysDetailsActivity" />

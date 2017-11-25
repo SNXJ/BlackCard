@@ -59,7 +59,25 @@ public class HomeTopModel {
          * RECOMMEND_ID : b610b1d557de48af84560734395f3fe6
          * SHOPNAME : 必胜客
          */
+        private String SHOPTYPE;
 
+        public String getSHOPTYPE() {
+            return SHOPTYPE;
+        }
+
+        public void setSHOPTYPE(String SHOPTYPE) {
+            this.SHOPTYPE = SHOPTYPE;
+        }
+
+        public String getSORT_ID() {
+            return SORT_ID;
+        }
+
+        public void setSORT_ID(String SORT_ID) {
+            this.SORT_ID = SORT_ID;
+        }
+
+        private String SORT_ID;
         private String IMAGES;
         private int SEQUENCE;
         private String RECOMMEND_ID;

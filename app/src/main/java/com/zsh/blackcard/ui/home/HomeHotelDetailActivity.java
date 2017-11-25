@@ -215,7 +215,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
                 et_tel_num.getText();
                 et_other.getText();
                 ActivityUtils.startActivityForSerializable(HomeHotelDetailActivity.this, OrderPayActivity.class, item);
-                // UIUtils.showToast("数量" + tv_count.getText());
+
             }
         });
     }

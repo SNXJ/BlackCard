@@ -17,7 +17,8 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.FoodDetailModel;
+import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import butterknife.BindView;
@@ -61,7 +62,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
     ImageView imFoodNext;
     @BindView(R.id.rl_comment)
     RelativeLayout rlComment;
-    private HotelDetailModel.PdBean hotelData;
+    private FoodDetailModel.PdBean foodData;
     private String id;
 
     @Override
@@ -73,11 +74,11 @@ public class HomeFoodDetailActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetail(DataManager.getMd5Str("HOTELSYN"), id), new ResultListener<HotelDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetail(DataManager.getMd5Str("SFOODSYN"), id), new ResultListener<FoodDetailModel>() {
             @Override
-            public void responseSuccess(HotelDetailModel obj) {
-                hotelData = obj.getPd();
-                setData(hotelData);
+            public void responseSuccess(FoodDetailModel obj) {
+                foodData = obj.getPd();
+                setData(foodData);
             }
 
             @Override
@@ -89,7 +90,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
 
     //初始化banner轮播区
     private void initBanner() {
-        topBanner.setImages(hotelData.getHOTELDETAILSIMGS());
+        topBanner.setImages(foodData.getSHOPDETAILSIMGS());
         topBanner.setImageLoader(new HomeFoodDetailActivity.MyImageLoader());
         topBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         topBanner.isAutoPlay(false);
@@ -105,20 +106,20 @@ public class HomeFoodDetailActivity extends BaseActivity {
         }
     }
 
-    private void setData(HotelDetailModel.PdBean hotelData) {
-        hotelName.setText(hotelData.getHOTELNAMES());
-        tvScore.setText(String.valueOf(hotelData.getHOTELEVALUATE()));
-        tvTel.setText(hotelData.getHOTELPHONE());
-        tvAddress.setText(hotelData.getHOTELADDRESS());
-        btScore.setText(String.valueOf(hotelData.getHOTELEVALUATE()));
-        tvComment.setText(hotelData.getHOTELEVACOUNT() + "条评论");
+    private void setData(FoodDetailModel.PdBean foodData) {
+        hotelName.setText(foodData.getSHOPNAMES());
+        tvScore.setText(String.valueOf(foodData.getSHOPEVALUATE()));
+        tvTel.setText(foodData.getSHOPPHONE());
+        tvAddress.setText(foodData.getSHOPADDRESS());
+        btScore.setText(String.valueOf(foodData.getSHOPEVALUATE()));
+        tvComment.setText(foodData.getSHOPEVACOUNT() + "条评论");
         initBanner();
-        showOrHint(hotelData.getSHOPSERVFOOD(), llFood);
-        showOrHint(hotelData.getSHOPSERVFITNESS(), llFit);
-        showOrHint(hotelData.getSHOPSERVPARK(), llPark);
-        showOrHint(hotelData.getSHOPSERVPAY(), llPay);
-        showOrHint(hotelData.getSHOPSERVSWIN(), llSwim);
-        showOrHint(hotelData.getSHOPSERVWIFI(), llWifi);
+        showOrHint(foodData.getSHOPSERVFOOD(), llFood);
+        showOrHint(foodData.getSHOPSERVFITNESS(), llFit);
+        showOrHint(foodData.getSHOPSERVPARK(), llPark);
+        showOrHint(foodData.getSHOPSERVPAY(), llPay);
+        showOrHint(foodData.getSHOPSERVSWIN(), llSwim);
+        showOrHint(foodData.getSHOPSERVWIFI(), llWifi);
 
     }
 
@@ -130,11 +131,14 @@ public class HomeFoodDetailActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.im_back, R.id.rl_comment})
+    @OnClick({R.id.im_back, R.id.rl_comment, R.id.btn_order})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.im_back:
                 finish();
+                break;
+            case R.id.btn_order:
+                ActivityUtils.startActivityForSerializable(HomeFoodDetailActivity.this, OrderPayActivity.class, foodData);
                 break;
             case R.id.rl_comment:
                 ActivityUtils.startActivity(HomeFoodDetailActivity.this, CommentActivity.class);

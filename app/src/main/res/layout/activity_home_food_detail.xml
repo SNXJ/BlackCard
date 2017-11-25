@@ -22,9 +22,9 @@
                 app:image_scale_type="center_crop"
                 app:indicator_drawable_selected="@mipmap/carousel_press"
                 app:indicator_drawable_unselected="@mipmap/carousel_normal"
-                app:indicator_height="@dimen/base2dp"
+                app:indicator_height="@dimen/base1dp"
                 app:indicator_margin="@dimen/base3dp"
-                app:indicator_width="@dimen/base20dp">
+                app:indicator_width="@dimen/base10dp">
 
             </com.youth.banner.Banner>
 
@@ -269,7 +269,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/base13dp"
-                android:src="@mipmap/hotel_icon_6" />
+                android:src="@mipmap/im_addres" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -336,5 +336,14 @@
                 android:layout_height="0.5dp" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_order"
+            style="@style/btn_buttom"
+            android:text="立即预定" />
     </LinearLayout>
 </LinearLayout>

@@ -1,7 +1,10 @@
 package com.zsh.blackcard.untils;
 
+import com.zsh.blackcard.model.FetureDateModel;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -9,9 +12,100 @@ import java.util.Date;
  * Name: MyCalendar
  * Author: SNXJ
  * Date: 2017-11-23
- * Description:描述：
+ * Description: 时间间隔
  */
 public class MyCalendar {
+    /**
+     * 获取未来天数的  日期与对应的星期
+     *
+     * @param intervals
+     * @return
+     */
+
+    public static ArrayList<FetureDateModel> getFetureDate_week(int intervals) {
+        ArrayList<FetureDateModel> fetureDaysList = new ArrayList<>();
+        for (int i = 0; i < intervals; i++) {
+            fetureDaysList.add(getFetureDate(i));
+        }
+        return fetureDaysList;
+    }
+
+    /**
+     * 获取当前日期是星期几<br>
+     *
+     * @param dt
+     * @return 当前日期是星期几
+     */
+    public static String getWeekOfDate(Date dt) {
+        String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dt);
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0)
+            w = 0;
+        return weekDays[w];
+    }
+
+    /**
+     * 获取过去或者未来 任意天内的日期数组
+     *
+     * @param intervals intervals天内
+     * @return 日期数组
+     */
+//    public static ArrayList<FetureDateModel> test(int intervals) {
+//        // ArrayList<FetureDateModel> pastDaysList = new ArrayList<>();
+//        ArrayList<FetureDateModel> fetureDaysList = new ArrayList<>();
+//        for (int i = 0; i < intervals; i++) {
+//            //  pastDaysList.add(getPastDate(i));
+//            fetureDaysList.add(getFetureDate(i));
+//        }
+//        return fetureDaysList;
+//    }
+
+    /**
+     * 获取过去第几天的日期
+     *
+     * @param past
+     * @return
+     */
+    public static String getPastDate(int past) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) - past);
+        Date today = calendar.getTime();
+
+        //  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd");
+        String result = format.format(today);
+        String week = getWeekOfDate(today);
+        //  LogUtils.i(null, result + "++++++++++++++++++" + week);
+        return result;
+    }
+
+    /**
+     * 获取未来 第 past 天的日期
+     *
+     * @param past
+     * @return
+     */
+    public static FetureDateModel getFetureDate(int past) {
+        String week;
+        FetureDateModel date = new FetureDateModel();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + past);
+        Date today = calendar.getTime();
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd");
+        String result = format.format(today);
+        if (past == 0) {
+            week = "今天";
+        } else {
+            week = getWeekOfDate(today);
+        }
+        date.setMouth_day(result);
+        date.setWeek(week);
+        // LogUtils.i(null, result + "++++++++++++++++++" + week);
+        return date;
+    }
+
     public static int getMonthSpace(String date1, String date2)
             throws ParseException {
 

@@ -53,9 +53,10 @@ public class CommentActivity extends BaseActivity {
         setContentView(R.layout.comment_activity);
         id = getIntent().getStringExtra("data");
         ButterKnife.bind(this);
-        // initData();
+         initData();
         setRVData(dataList);
-        star.setMark(4.5f);
+        //star.setMark(4.5f);
+
     }
 
     private void initData() {
@@ -76,10 +77,10 @@ public class CommentActivity extends BaseActivity {
 
     private void setRVData(final List<CommentModel.PdBean> dataList) {
 
-        for (int i = 0; i < 3; i++) {
-            dataList.add(new CommentModel.PdBean());
-
-        }
+//        for (int i = 0; i < 3; i++) {
+//            dataList.add(new CommentModel.PdBean());
+//
+//        }
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
 

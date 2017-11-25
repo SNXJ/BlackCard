@@ -42,7 +42,7 @@
             android:layout_marginLeft="@dimen/base10dp"
             android:layout_toRightOf="@+id/tv_score"
             Star:starBackground="@mipmap/star_gray"
-            Star:starClickable="false"
+            Star:starClickable="true"
             Star:starDistance="@dimen/base5dp"
             Star:starDrawBackground="@mipmap/hotel_image_1"
             Star:starHeight="@dimen/base25dp"
