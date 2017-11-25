@@ -88,4 +88,27 @@
 
     </LinearLayout>
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/cb_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:background="@null"
+            android:button="@null"
+            android:drawableLeft="@drawable/takecircle_select"
+            android:drawablePadding="@dimen/base5dp"
+            android:text="匿名评价"
+            android:textColor="#929292"
+            android:textSize="11sp" />
+
+
+    </RadioGroup>
+
+
 </LinearLayout>

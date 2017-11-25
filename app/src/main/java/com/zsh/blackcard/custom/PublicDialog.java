@@ -326,18 +326,17 @@ public class PublicDialog {
      * @param context
      * @param tv
      */
-    private void selectCity(Context context, TextView tv) {
+    public static void selectCity(Context context, final TextView tv) {
         ChangeAddressPopwindow mChangeAddressPopwindow = new ChangeAddressPopwindow(context);
         mChangeAddressPopwindow.setAddress("广东", "深圳", "福田区");
+
+
         mChangeAddressPopwindow.showAtLocation(tv, Gravity.BOTTOM, 0, 0);
         mChangeAddressPopwindow.setAddresskListener(new ChangeAddressPopwindow.OnAddressCListener() {
             @Override
             public void onClick(String province, String city, String area) {
-                // TODO Auto-generated method stub
-//                Toast.makeText(context,
-//                        province + "-" + city + "-" + area,
-//                        Toast.LENGTH_LONG).show();
 
+                tv.setText(province + city + area);
             }
         });
     }

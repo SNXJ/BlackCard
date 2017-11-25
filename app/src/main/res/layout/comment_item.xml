@@ -11,12 +11,14 @@
         android:layout_marginLeft="@dimen/base15dp">
 
         <ImageView
+            android:id="@+id/im_head"
             android:layout_width="@dimen/base40dp"
             android:layout_height="@dimen/base40dp"
             android:layout_centerVertical="true"
             android:src="@mipmap/blog_image_1" />
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base65dp"
@@ -26,6 +28,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base65dp"
@@ -37,6 +40,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/base15dp"

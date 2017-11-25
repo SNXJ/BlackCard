@@ -3,7 +3,6 @@ package com.zsh.blackcard.api;
 import android.content.Context;
 
 import com.zsh.blackcard.BaseApplication;
-import com.zsh.blackcard.model.AddressDelModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
@@ -27,14 +26,17 @@ import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
+import java.util.List;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import rx.Observable;
 
 /**
@@ -163,21 +165,40 @@ public class NetApi {
     /**
      * 酒店评价列表
      *
-     * @param md5
      * @param id
      * @return
      */
-    public Observable<CommentModel> postCommentList(String md5, String id) {
-        return retrofitService.postCommentList(md5, id);
+    public Observable<CommentModel> postCommentList(String id, int type) {
+
+        switch (type) {
+            case 0:
+                return retrofitService.postHotelCommentList(DataManager.getMd5Str("HOTELEVA"), id);
+            case 1:
+                return retrofitService.postFoodCommentList(DataManager.getMd5Str("FOODEVA"), id);
+            case 2:
+                return retrofitService.postKTVCommentList(DataManager.getMd5Str("KTVEVA"), id);
+
+            default:
+                break;
+        }
+        return null;
     }
 
     /**
-     * 酒店评价列表
+     * 添加评价
      *
      * @return
      */
-    public Observable<CommentAddModel> postAddComment(Map<String, String> map) {
-        return retrofitService.addComment(map);
+    public Observable<CommentAddModel> postAddComment(Map<String, String> map, int type) {
+        switch (type) {
+            case 0:
+                return retrofitService.addHotelComment(map);
+            case 1:
+                return retrofitService.addFoodComment(map);
+            case 2:
+                return retrofitService.addKTVComment(map);
+        }
+        return null;
     }
 
     /**
@@ -316,7 +337,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<AddressDelModel> delAddress(String md5, String id) {
+    public Observable<ResultModel> delAddress(String md5, String id) {
         return retrofitService.delAddress(md5, id);
     }
 
@@ -325,7 +346,7 @@ public class NetApi {
      *
      * @return
      */
-    public Observable<AddressDelModel> addressAdd(Map<String, String> map) {
+    public Observable<ResultModel> addressAdd(Map<String, String> map) {
         return retrofitService.addressAdd(map);
     }
 
@@ -334,9 +355,52 @@ public class NetApi {
      *
      * @return
      */
-    public Observable<AddressDelModel> addressEdit(Map<String, String> map) {
+    public Observable<ResultModel> addressEdit(Map<String, String> map) {
         return retrofitService.addressEdit(map);
     }
+
+    /**
+     * 上传单张图片
+     *
+     * @param md5
+     * @param userId
+     * @param imgPath
+     * @return
+     */
+    public Observable<ResultModel> upHeadIMG(String md5, String userId, String imgPath) {
+        return retrofitService.uploadHead(md5, userId, DataManager.getMultiPart(DataManager.getMultBuilder(DataManager.initMultBuilder(), imgPath, "showfile")));
+    }
+
+    /**
+     * 上传多张图片
+     *
+     * @param md5
+     * @param userId
+     * @param imgPathList
+     * @return
+     */
+    public Observable<ResultModel> upLoadListIMG(String md5, String userId, List<String> imgPathList) {
+        MultipartBody.Builder builder;
+        builder = DataManager.initMultBuilder();
+        for (int i = 0; i < imgPathList.size(); i++) {
+            builder = DataManager.getMultBuilder(builder, imgPathList.get(i), "showfile");//showfile  有可能不一样
+        }
+        return retrofitService.uploadListIMG(md5, userId, DataManager.getMultiPartList(builder));
+    }
+
+
+    //   public Observable<ResultModel> upLoadListIMG(String md5, String userId, List<String> pathList) {
+//        MultipartBody.Builder builder = new MultipartBody.Builder()
+//                .setType(MultipartBody.FORM);//表单类型
+//        //多张图片
+//        for (int i = 0; i < pathList.size(); i++) {
+//            File file = new File(pathList.get(i));//filePath 图片地址
+//            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//            builder.addFormDataPart("showfile", file.getName(), imageBody);//"showfile 后台接收图片流的参数名（每张应该不同）
+//        }
+//        List<MultipartBody.Part> parts = builder.build().parts();
+    //       return retrofitService.uploadListIMG(md5, userId, parts);
+    //  }
 
     /**
      * 全部订单查询接口

@@ -64,6 +64,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
     RelativeLayout rlComment;
     private FoodDetailModel.PdBean foodData;
     private String id;
+    private String score;
 
     @Override
     protected void initUI() {
@@ -107,6 +108,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
     }
 
     private void setData(FoodDetailModel.PdBean foodData) {
+        score = String.valueOf(foodData.getSHOPEVALUATE());
         hotelName.setText(foodData.getSHOPNAMES());
         tvScore.setText(String.valueOf(foodData.getSHOPEVALUATE()));
         tvTel.setText(foodData.getSHOPPHONE());
@@ -141,7 +143,8 @@ public class HomeFoodDetailActivity extends BaseActivity {
                 ActivityUtils.startActivityForSerializable(HomeFoodDetailActivity.this, OrderPayActivity.class, foodData);
                 break;
             case R.id.rl_comment:
-                ActivityUtils.startActivity(HomeFoodDetailActivity.this, CommentActivity.class);
+                //  ActivityUtils.startActivity(HomeFoodDetailActivity.this, CommentActivity.class);
+                ActivityUtils.startActivityForData(HomeFoodDetailActivity.this, CommentActivity.class, id, String.valueOf(score),1);
 
                 break;
         }

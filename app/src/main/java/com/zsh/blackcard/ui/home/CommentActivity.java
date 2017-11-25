@@ -6,10 +6,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.adapter.CommentitemAdapter;
+import com.zsh.blackcard.adapter.CommentListAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
@@ -45,26 +44,35 @@ public class CommentActivity extends BaseActivity {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private String id;
-    private CommentitemAdapter adapter;
+    private String score;
+    private int type;//0酒店 1美食 2
+    private CommentListAdapter adapter;
     private List<CommentModel.PdBean> dataList = new ArrayList<>();
 
     @Override
     protected void initUI() {
         setContentView(R.layout.comment_activity);
         id = getIntent().getStringExtra("data");
+        // id = "53443f6feed94a1bbce17a65e63dae28";
+        score = getIntent().getStringExtra("title");
+        type = getIntent().getIntExtra("type", 0);
         ButterKnife.bind(this);
-         initData();
-        setRVData(dataList);
-        //star.setMark(4.5f);
+        star.setMark(Float.parseFloat(score));
+        tvScore.setText(score);
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
+    }
+
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCommentList(DataManager.getMd5Str("SHOTELMEANEVA"), id), new ResultListener<CommentModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCommentList(id, type), new ResultListener<CommentModel>() {
             @Override
             public void responseSuccess(CommentModel obj) {
-//                hotelData = obj.getPd();
-                //setData(obj.getPd());
+                dataList = obj.getPd();
                 setRVData(dataList);
             }
 
@@ -76,24 +84,10 @@ public class CommentActivity extends BaseActivity {
     }
 
     private void setRVData(final List<CommentModel.PdBean> dataList) {
-
-//        for (int i = 0; i < 3; i++) {
-//            dataList.add(new CommentModel.PdBean());
-//
-//        }
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
-
-        adapter = new CommentitemAdapter(this, dataList);
+        adapter = new CommentListAdapter(this, dataList);
         recyclerView.setAdapter(adapter);
-        //  recyclerView.setNestedScrollingEnabled(true);
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                // PublicDialog.hotelOrderDialog(HomeHotelDetailActivity.this, dataList.get(position), hotelData);
-
-            }
-        });
     }
 
     @OnClick({R.id.im_back, R.id.tv_go_comment})
@@ -103,7 +97,7 @@ public class CommentActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_go_comment:
-                ActivityUtils.startActivityForData(CommentActivity.this, CommentEditActivity.class, id);
+                ActivityUtils.startActivityForData(CommentActivity.this, CommentEditActivity.class, id, "", type);
                 break;
         }
     }

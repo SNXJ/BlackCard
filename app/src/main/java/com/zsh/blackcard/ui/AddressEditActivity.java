@@ -1,20 +1,18 @@
 package com.zsh.blackcard.ui;
 
-import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zsh.blackcard.BaseActivity;
-import com.zsh.blackcard.ChangeAddressPopwindow;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.AddressDelModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.untils.UIUtils;
 
@@ -65,10 +63,10 @@ public class AddressEditActivity extends BaseActivity {
                 break;
             case R.id.tv_save:
                 getDataPutMap();
-
                 break;
             case R.id.ll_address:
-                //takeOnClick();
+                PublicDialog.selectCity(AddressEditActivity.this, tvAddress);
+                //   takeOnClick();
                 break;
         }
     }
@@ -105,9 +103,9 @@ public class AddressEditActivity extends BaseActivity {
     }
 
     private void saveData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addressAdd(map), new ResultListener<AddressDelModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addressAdd(map), new ResultListener<ResultModel>() {
             @Override
-            public void responseSuccess(AddressDelModel obj) {
+            public void responseSuccess(ResultModel obj) {
                 if ("01".equals(obj.getResult())) {
                     UIUtils.showToast("保存成功");
                     finish();
@@ -124,9 +122,9 @@ public class AddressEditActivity extends BaseActivity {
     }
 
     private void editData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addressEdit(map), new ResultListener<AddressDelModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addressEdit(map), new ResultListener<ResultModel>() {
             @Override
-            public void responseSuccess(AddressDelModel obj) {
+            public void responseSuccess(ResultModel obj) {
                 if ("01".equals(obj.getResult())) {
                     UIUtils.showToast("保存成功");
                     finish();
@@ -144,24 +142,24 @@ public class AddressEditActivity extends BaseActivity {
 
     private void takeOnClick() {
 
-        llAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChangeAddressPopwindow mChangeAddressPopwindow = new ChangeAddressPopwindow(AddressEditActivity.this);
-                mChangeAddressPopwindow.setAddress("广东", "深圳", "福田区");
-                mChangeAddressPopwindow.showAtLocation(llAddress, Gravity.BOTTOM, 0, 0);
-                mChangeAddressPopwindow.setAddresskListener(new ChangeAddressPopwindow.OnAddressCListener() {
-                    @Override
-                    public void onClick(String province, String city, String area) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(AddressEditActivity.this,
-                                province + "-" + city + "-" + area,
-                                Toast.LENGTH_LONG).show();
-                        tvAddress.setText(province + city + area);
-                    }
-                });
-            }
-        });
+//        llAddress.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ChangeAddressPopwindow mChangeAddressPopwindow = new ChangeAddressPopwindow(AddressEditActivity.this);
+//                mChangeAddressPopwindow.setAddress("广东", "深圳", "福田区");
+//                mChangeAddressPopwindow.showAtLocation(llAddress, Gravity.BOTTOM, 0, 0);
+//                mChangeAddressPopwindow.setAddresskListener(new ChangeAddressPopwindow.OnAddressCListener() {
+//                    @Override
+//                    public void onClick(String province, String city, String area) {
+//                        // TODO Auto-generated method stub
+//                        Toast.makeText(AddressEditActivity.this,
+//                                province + "-" + city + "-" + area,
+//                                Toast.LENGTH_LONG).show();
+//                        tvAddress.setText(province + city + area);
+//                    }
+//                });
+//            }
+//        });
     }
 
 
