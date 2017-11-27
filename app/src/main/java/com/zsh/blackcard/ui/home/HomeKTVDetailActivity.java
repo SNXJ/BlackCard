@@ -84,6 +84,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private String id;
+    private String score;
 
     final List<HomeKTVDetailItemModel.PdBean> dataList = new ArrayList<>();
     List<FetureDateModel> tabList = new ArrayList<>();
@@ -168,6 +169,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
     }
 
     private void setData(HomeKTVDetailModel.PdBean hotelData) {
+        score = String.valueOf(hotelData.getKTVEVALUATE());
         hotelName.setText(hotelData.getKTVNAMES());
         tvScore.setText(String.valueOf(hotelData.getKTVEVALUATE()));
         tvTel.setText(hotelData.getKTVPHONE());
@@ -235,7 +237,8 @@ public class HomeKTVDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.rl_comment:
-                ActivityUtils.startActivityForData(HomeKTVDetailActivity.this, CommentActivity.class, id);
+                ActivityUtils.startActivityForData(HomeKTVDetailActivity.this, CommentActivity.class, id, String.valueOf(score), 2);
+
                 break;
         }
     }

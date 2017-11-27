@@ -1,11 +1,13 @@
 package com.zsh.blackcard.ui.home;
 
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
@@ -38,14 +40,19 @@ public class CommentEditActivity extends BaseActivity {
     Star star;
     @BindView(R.id.et_comment)
     EditText etComment;
+    @BindView(R.id.cb_show)
+    CheckBox rbShow;
     private String id;
     Map<String, String> map = new TreeMap<>();
     private float starNum;
+    private String isShow;
+    private int type;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.comment_edit_activity);
         id = getIntent().getStringExtra("data");
+        type = getIntent().getIntExtra("type", 0);
         ButterKnife.bind(this);
         star.setStarChangeLister(new Star.OnStarChangeListener() {
             @Override
@@ -57,14 +64,27 @@ public class CommentEditActivity extends BaseActivity {
     }
 
     private void submit() {
-        //etComment.getText();
-        map.put("FKEY", DataManager.getMd5Str("SHOTELADDEVA"));
-        map.put("SORTHOTEL_ID", id);
-        map.put("HONOURUSER_ID", "d6a3779de8204dfd9359403f54f7d27c");
+        switch (type) {
+            case 0:
+                map.put("FKEY", DataManager.getMd5Str("SHOTELADDEVA"));
+                map.put("SORTHOTEL_ID", id);
+                break;
+            case 1:
+                map.put("FKEY", DataManager.getMd5Str("SFOODADDEVA"));
+                map.put("SORTFOOD_ID", id);
+                break;
+            case 2:
+                map.put("FKEY", DataManager.getMd5Str("SKTVADDEVA"));
+                map.put("SORTKTV_ID", id);
+                break;
+        }
+
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
         map.put("EVALUATECONTENT", etComment.getText().toString());//内容
         map.put("EVALUATECOINT", String.valueOf(starNum));//星星
+        map.put("ISSHOW", rbShow.isChecked() ? "1" : "0");//星星
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postAddComment(map), new ResultListener<CommentAddModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postAddComment(map, type), new ResultListener<CommentAddModel>() {
             @Override
             public void responseSuccess(CommentAddModel obj) {
                 if ("01".equals(obj.getResult())) {

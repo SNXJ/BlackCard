@@ -86,7 +86,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     @BindView(R.id.top_banner)
     Banner topBanner;
     private String id;
-
+    private Double score;
 
     final List<HoteldetailsItemModel> dataList = new ArrayList<>();
     private HotelDetailsitemAdapter adapter;
@@ -221,6 +221,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     }
 
     private void setData(HotelDetailModel.PdBean hotelData) {
+        score = hotelData.getHOTELEVALUATE();
         hotelName.setText(hotelData.getHOTELNAMES());
         tvScore.setText(String.valueOf(hotelData.getHOTELEVALUATE()));
         tvTel.setText(hotelData.getHOTELPHONE());
@@ -285,7 +286,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_comment:
-                ActivityUtils.startActivityForData(HomeHotelDetailActivity.this, CommentActivity.class, id);
+                ActivityUtils.startActivityForData(HomeHotelDetailActivity.this, CommentActivity.class, id, String.valueOf(score), 0);
                 break;
             case R.id.ll_check_in:
                 PublicDialog.dateDialog(HomeHotelDetailActivity.this, new DateListener() {

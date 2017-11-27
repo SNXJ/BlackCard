@@ -1,12 +1,12 @@
 package com.zsh.blackcard.model;
 
 /**
- * Name: AddressDelModel
+ * Name: ResultModel
  * Author: SNXJ
  * Date: 2017-11-24
- * Description:描述：
+ * Description:只有result  公共的
  */
-public class AddressDelModel {
+public class ResultModel {
     String result;
 
     public String getResult() {

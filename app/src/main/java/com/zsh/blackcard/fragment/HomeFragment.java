@@ -1,5 +1,6 @@
 package com.zsh.blackcard.fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -38,10 +40,11 @@ import com.zsh.blackcard.ui.home.HomeEquestrianActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
 import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
-import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
+import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.MPermissionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -314,7 +317,7 @@ public class HomeFragment extends BaseFragment {
     public void titleNewsOnClick() {
         switch (mSwitcherCount % homeTitleNewsModel.getPd().size()) {
             case 0:
-                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(homeTitleNewsModel.getPd().size()-1).getNEWS_ID());
+                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(homeTitleNewsModel.getPd().size() - 1).getNEWS_ID());
                 break;
             case 1:
                 ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(mSwitcherCount - 1).getNEWS_ID());
@@ -337,48 +340,40 @@ public class HomeFragment extends BaseFragment {
                 break;
             case R.id.go_welcome_login_img:
                 ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
+                // requestRead();
+//                DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, ""), new ResultListener<ResultModel>() {
+//                    @Override
+//                    public void responseSuccess(ResultModel obj) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//                });
+
                 break;
         }
     }
 
-    //类型选择列表监听
-//    @Override
-//    public void homeTypeOnItemClick(int position) {
-//        switch (position) {
-//            //美食
-//            case 0:
-//
-//                ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 0);
-//                break;
-//            //酒店
-//            case 1:
-//                ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 1);
-//                // ActivityUtils.startActivity(getActivity(), HomeHotelActivity.class);
-//                break;
-//            //火车票
-//            case 2:
-//                ActivityUtils.startActivity(getActivity(), HomeTrainActivity.class);
-//                break;
-//            //机票
-//            case 3:
-//                ActivityUtils.startActivity(getActivity(), HomePlaneActivity.class);
-//                break;
-//            //马术
-//            case 4:
-//                ActivityUtils.startActivity(getActivity(), HomeEquestrianActivity.class);
-//                break;
-//            //游艇
-//            case 5:
-//                ActivityUtils.startActivity(getActivity(), HomeCruiseShipActivity.class);
-//                break;
-//            //豪车
-//            case 6:
-//                ActivityUtils.startActivity(getActivity(), HomeCarActivity.class);
-//                break;
-//            //更多
-//            case 7:
-//                ActivityUtils.startActivity(getActivity(), HomeMoreActivity.class);
-//                break;
-//        }
-//    }
+    private void requestRead() {
+        String[] PERMISSIONS_STORAGE = {
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        };
+        MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
+                , new MPermissionUtils.OnPermissionListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        Toast.makeText(getActivity(), "授权成功,!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPermissionDenied() {
+                        MPermissionUtils.showTipsDialog(getActivity());
+                    }
+                });
+
+    }
 }

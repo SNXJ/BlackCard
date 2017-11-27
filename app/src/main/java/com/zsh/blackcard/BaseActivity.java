@@ -3,6 +3,7 @@ package com.zsh.blackcard;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.MyActivityManager;
 import com.zsh.blackcard.untils.StatusBarColorUntil;
 
@@ -26,6 +28,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     //  public User user;
     public Bundle savedInstanceState;
     private boolean okAppBarLayout;
+    private boolean isExit;
+    private long exitTime = 0;
 
     public static Activity getForegroundActivity() {
         return mForegroundActivity;
@@ -88,6 +92,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    //权限
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        MPermissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -95,4 +106,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         return super.onTouchEvent(event);
     }
+
+
+
 }

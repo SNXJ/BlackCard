@@ -1,6 +1,6 @@
 package com.zsh.blackcard.api;
 
-import com.zsh.blackcard.model.AddressDelModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
@@ -31,13 +31,18 @@ import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
+import java.util.List;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import rx.Observable;
 
@@ -126,15 +131,33 @@ public interface RetrofitService {
     @POST("appsktvin/ktvdetaillist?")
     Observable<HomeKTVDetailItemModel> postKTVDetailList(@Field("FKEY") String md5, @Field("SORTKTV_ID") String id);
 
-    //评论列表
+    //酒店评论列表
     @FormUrlEncoded
-    @POST("appshotelin/shotelmeaneva?")
-    Observable<CommentModel> postCommentList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+    @POST("appshotelin/hotelevalist?")
+    Observable<CommentModel> postHotelCommentList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
 
-    //添加评论
-//    @Multipart
+    //Food评论列表
+    @FormUrlEncoded
+    @POST("appsfoodin/foodevalist?")//FOODEVA
+    Observable<CommentModel> postFoodCommentList(@Field("FKEY") String md5, @Field("SORTFOOD_ID") String id);
+
+    //KTV评论列表
+    @FormUrlEncoded
+    @POST("appsktvin/ktvevalist?")//KTVEVA
+    Observable<CommentModel> postKTVCommentList(@Field("FKEY") String md5, @Field("SORTKTV_ID") String id);
+
+    //添加Hotel评论
+
     @GET("appshotelin/shoteladdeva?")
-    Observable<CommentAddModel> addComment(@QueryMap Map<String, String> map);
+    Observable<CommentAddModel> addHotelComment(@QueryMap Map<String, String> map);
+
+    //添加Food评论
+    @GET("appsfoodin/sfoodaddeva?")//SFOODADDEVA
+    Observable<CommentAddModel> addFoodComment(@QueryMap Map<String, String> map);
+
+    //添加KTV评论
+    @GET("appsktvin/sktvaddeva?") //SKTVADDEVA
+    Observable<CommentAddModel> addKTVComment(@QueryMap Map<String, String> map);
 
     //火车票
     @FormUrlEncoded
@@ -156,17 +179,17 @@ public interface RetrofitService {
     //添加地址
 //    @Multipart
     @GET("appuserin/useraddshipadr?")
-    Observable<AddressDelModel> addressAdd(@QueryMap Map<String, String> map);
+    Observable<ResultModel> addressAdd(@QueryMap Map<String, String> map);
 
     //删除地址
     @FormUrlEncoded
     @POST("appuserin/userdelshipadr?")
-    Observable<AddressDelModel> delAddress(@Field("FKEY") String md5,
-                                           @Field("ADDRESS_ID") String id);
+    Observable<ResultModel> delAddress(@Field("FKEY") String md5,
+                                       @Field("ADDRESS_ID") String id);
 
     //编辑地址
     @GET("appuserin/useredishipadr?")
-    Observable<AddressDelModel> addressEdit(@QueryMap Map<String, String> map);
+    Observable<ResultModel> addressEdit(@QueryMap Map<String, String> map);
 
 
     //发布聚会
@@ -195,6 +218,25 @@ public interface RetrofitService {
     @POST("appshipin/shipcollect?")
     Observable<CollectionModel> postCollection(@Field("FKEY") String md5,
                                                @Field("HONOURUSER_ID") String id);
+
+
+    /**
+     * 上传头像
+     */
+
+    @Multipart
+    @POST("appuserin/up.do?")
+    Observable<ResultModel> uploadHead(@Query("FKEY") String md5, @Query("HONOURUSER_ID") String id, @Part MultipartBody.Part part);
+
+    /**
+     * 上传多张
+     */
+
+    @Multipart
+    @POST("appuserin/up.do?")
+    Observable<ResultModel> uploadListIMG(@Query("FKEY") String md5, @Query("HONOURUSER_ID") String id, @Part List<MultipartBody.Part> partList);
+    //
+
 
     //查询全部订单接口
     @FormUrlEncoded
