@@ -53,13 +53,11 @@ public class CommentActivity extends BaseActivity {
     protected void initUI() {
         setContentView(R.layout.comment_activity);
         id = getIntent().getStringExtra("data");
-        // id = "53443f6feed94a1bbce17a65e63dae28";
         score = getIntent().getStringExtra("title");
         type = getIntent().getIntExtra("type", 0);
         ButterKnife.bind(this);
         star.setMark(Float.parseFloat(score));
         tvScore.setText(score);
-
     }
 
     @Override

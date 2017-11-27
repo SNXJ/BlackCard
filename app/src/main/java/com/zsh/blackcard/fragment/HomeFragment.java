@@ -28,11 +28,13 @@ import com.zsh.blackcard.adapter.HomeTopAdapter;
 import com.zsh.blackcard.adapter.HomeTypeAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomePlayModel;
-import com.zsh.blackcard.model.HomePrivilegeModel;
+
+import com.zsh.blackcard.model.HomeNewModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.ui.MsgCenterActivity;
@@ -48,6 +50,7 @@ import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.MPermissionUtils;
+import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +65,20 @@ import butterknife.OnClick;
  */
 
 public class HomeFragment extends BaseFragment {
+    private String[] titles = new String[]{
+            "美食", "酒店", "火车票", "机票", "马术", "游艇", "豪车", "更多"};
 
+    private Integer[] images = {
+            R.mipmap.home_food,
+            R.mipmap.home_hotel,
+            R.mipmap.home_train,
+            R.mipmap.home_plane,
+            R.mipmap.home_horse,
+            R.mipmap.home_ship,
+            R.mipmap.home_car,
+            R.mipmap.home_more,
+    };
+    List<HomeNewModel> typeList = new ArrayList<>();
 
 
     //HomeTop 头条的item点击事件
@@ -71,8 +87,9 @@ public class HomeFragment extends BaseFragment {
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             switch (position) {
-                case 0:
-                    ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
+                case 0://
+                    ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_BAR);
+                    // ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
                     break;
                 case 1:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
@@ -146,14 +163,9 @@ public class HomeFragment extends BaseFragment {
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             switch (position) {
-                //美食
-                case 0:
-                    ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 0);
-                    break;
-                //酒店
-                case 1:
-                    ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, 1);
-                    // ActivityUtils.startActivity(getActivity(), HomeHotelActivity.class);
+                case 0: //美食
+                case 1://酒店
+                    ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, position);
                     break;
                 //火车票
                 case 2:
@@ -164,8 +176,8 @@ public class HomeFragment extends BaseFragment {
                     ActivityUtils.startActivity(getActivity(), HomePlaneActivity.class);
                     break;
                 //马术
-                case 4:
-                    ActivityUtils.startActivity(getActivity(), HomeEquestrianActivity.class);
+                case 4://
+                    ActivityUtils.startActivityForData(getActivity(), HomeEquestrianActivity.class, "");
                     break;
                 //游艇
                 case 5:
@@ -193,25 +205,17 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initDate(Bundle savedInstanceState) {
         //初始化类型选择列表（美食，酒店，品鉴...）
-
-
-
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePrivilege(DataManager.getMd5Str("PRIVILIST")), new ResultListener<HomePrivilegeModel>() {
-            @Override
-            public void responseSuccess(HomePrivilegeModel obj) {
-                homeTypeAdapter = new HomeTypeAdapter(R.layout.home_type_recycler_item, obj.getPd());
-                home_type_recycler.setLayoutManager(new GridLayoutManager(getActivity(), 4));
-                home_type_recycler.setNestedScrollingEnabled(false);
-                home_type_recycler.setAdapter(homeTypeAdapter);
-                homeTypeAdapter.setOnItemClickListener(new HomeTypeOnItemClick());
-            }
-
-            @Override
-            public void onCompleted() {
-
-            }
-        });
-
+        for (int i = 0; i < titles.length; i++) {
+            HomeNewModel pic = new HomeNewModel();
+            pic.setImageId(images[i]);
+            pic.setTitle(titles[i]);
+            typeList.add(pic);
+        }
+        homeTypeAdapter = new HomeTypeAdapter(R.layout.home_type_recycler_item, typeList);
+        home_type_recycler.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+        home_type_recycler.setNestedScrollingEnabled(false);
+        home_type_recycler.setAdapter(homeTypeAdapter);
+        homeTypeAdapter.setOnItemClickListener(new HomeTypeOnItemClick());
         //初始化头条文字滚动器
         home_top_tvs.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
@@ -247,6 +251,7 @@ public class HomeFragment extends BaseFragment {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePage(DataManager.getMd5Str("COMMEND")), new ResultListener<HomeTopModel>() {
             @Override
             public void responseSuccess(HomeTopModel obj) {
+                System.out.println(obj);
                 for (int i = 0; i < obj.getPd().size(); i++) {
                     if (i == 0) {
                         obj.getPd().get(i).setItemType(1);
@@ -289,7 +294,7 @@ public class HomeFragment extends BaseFragment {
 
                 if (homeGloryServiceAdapter == null) {
                     homeGloryServiceAdapter = new HomeGloryServiceAdapter(obj.getPd());
-                    home_glory_service_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+                    home_glory_service_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                     home_glory_service_recycler.setNestedScrollingEnabled(false);
                     home_glory_service_recycler.setAdapter(homeGloryServiceAdapter);
                 }
@@ -362,13 +367,16 @@ public class HomeFragment extends BaseFragment {
     }
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_play_img, R.id.go_welcome_login_img})
+    @OnClick({R.id.home_play_img, R.id.go_welcome_login_img, R.id.rb_city_home})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.home_play_img:
                 if (sendMainActivity != null) {
                     sendMainActivity.goIntent();
                 }
+                break;
+            case R.id.rb_city_home:
+                ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
             case R.id.go_welcome_login_img:
                 ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);

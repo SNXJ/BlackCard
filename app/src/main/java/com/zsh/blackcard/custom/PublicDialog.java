@@ -11,18 +11,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.zsh.blackcard.ChangeAddressPopwindow;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.ItemClickListener;
+import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.SelectDateListener;
-import com.zsh.blackcard.model.HotelDetailModel;
-import com.zsh.blackcard.model.HoteldetailsItemModel;
+import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.live.LiveAnchorDetails2;
@@ -46,16 +49,103 @@ import java.util.Calendar;
  */
 public class PublicDialog {
     /**
-     * 酒店订单
+     * 订单弹窗
      *
      * @param mContext
      */
-    public static void hotelOrderDialog(final Activity mContext, HoteldetailsItemModel.PdBean itemData, HotelDetailModel.PdBean hotelData) {
+    public static void orderDialog(final Activity mContext, final OrderDialogModel data, final OrderDiaListenter listenter) {
+        if (null == data) {
+            return;
+        }
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.hotel_order_pop, null);
-        final Dialog dialog = showDialogView(view, mContext);
+        final Dialog dialog = PublicDialog.showDialogView(view, mContext);
+        Button bt_order = (Button) view.findViewById(R.id.bt_order);
+        TextView tv_score = (TextView) view.findViewById(R.id.tv_score);
+        TextView tv_name = (TextView) view.findViewById(R.id.tv_name);
+        LinearLayout ll_wifi = (LinearLayout) view.findViewById(R.id.ll_wifi);
+        LinearLayout ll_park = (LinearLayout) view.findViewById(R.id.ll_park);
+        LinearLayout ll_pay = (LinearLayout) view.findViewById(R.id.ll_pay);
+        LinearLayout ll_fit = (LinearLayout) view.findViewById(R.id.ll_fit);
+        LinearLayout ll_food = (LinearLayout) view.findViewById(R.id.ll_food);
+        LinearLayout ll_swim = (LinearLayout) view.findViewById(R.id.ll_swim);
+        ImageView im_dialog = (ImageView) view.findViewById(R.id.im_dialog);
+        ImageView im_reduce = (ImageView) view.findViewById(R.id.im_reduce);
+        ImageView im_plus = (ImageView) view.findViewById(R.id.im_plus);
+        final TextView tv_count = (TextView) view.findViewById(R.id.tv_count);
+        TextView tv_info = (TextView) view.findViewById(R.id.tv_info);
+        TextView tv_time = (TextView) view.findViewById(R.id.tv_time);
+        TextView tv_des = (TextView) view.findViewById(R.id.tv_des);
+        TextView tv_money = (TextView) view.findViewById(R.id.tv_money);
+        final EditText et_name = (EditText) view.findViewById(R.id.et_name);
+        final EditText et_tel_num = (EditText) view.findViewById(R.id.et_tel_num);
+        final EditText et_other = (EditText) view.findViewById(R.id.et_other);
+
+        showOrHint(data.getDj_food(), ll_food);
+        showOrHint(data.getDj_fit(), ll_fit);
+        showOrHint(data.getDj_park(), ll_park);
+        showOrHint(data.getDj_pay(), ll_pay);
+        showOrHint(data.getDj_swim(), ll_swim);
+        showOrHint(data.getDj_wifi(), ll_wifi);
+        tv_name.setText(data.getDj_top_name());
+        tv_score.setText(data.getDj_score());
+
+        tv_info.setText(data.getDj_item_name());
+
+        tv_time.setText(data.getDj_item_date());
+        tv_des.setText(data.getDj_item_des());
+        tv_money.setText("￥" + data.getDj_item_money() + "");
+        Glide.with(mContext).load(data.getDj_item_img()).into(im_dialog);
+
+        im_plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int res = Integer.parseInt(tv_count.getText() + "");
+                if (res > 98) {
+                    return;
+                } else {
+                    tv_count.setText((res + 1) + "");
+                }
+            }
+        });
+        im_reduce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int res = Integer.parseInt(tv_count.getText() + "");
+                if (res < 1) {
+                    return;
+                } else {
+                    tv_count.setText((res - 1) + "");
+                }
+            }
+        });
 
 
+        bt_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null != dialog) {
+                    dialog.dismiss();
+                }
+                data.setDj_order_name(et_name.getText().toString().trim());
+                data.setDj_order_num(tv_count.getText().toString().trim());
+                data.setDj_order_phone(et_tel_num.getText().toString().trim());
+                data.setDj_order_other(et_other.getText().toString().trim());
+
+                listenter.OrderDiaListenter(data);
+                //  ActivityUtils.startActivityForSerializable(mContext, OrderPayActivity.class, data);
+
+            }
+        });
+    }
+
+
+    private static void showOrHint(int i, LinearLayout ll) {
+        if (i == 1) {
+            ll.setVisibility(View.VISIBLE);
+        } else {
+            ll.setVisibility(View.GONE);
+        }
     }
 
     /**

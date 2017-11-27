@@ -11,6 +11,7 @@ import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.untils.UIUtils;
@@ -65,17 +66,21 @@ public class CommentEditActivity extends BaseActivity {
 
     private void submit() {
         switch (type) {
-            case 0:
+            case HomeTypeConstant.HOME_TYPE_HOTEL:
                 map.put("FKEY", DataManager.getMd5Str("SHOTELADDEVA"));
                 map.put("SORTHOTEL_ID", id);
                 break;
-            case 1:
+            case HomeTypeConstant.HOME_TYPE_FOOD:
                 map.put("FKEY", DataManager.getMd5Str("SFOODADDEVA"));
                 map.put("SORTFOOD_ID", id);
                 break;
-            case 2:
+            case HomeTypeConstant.HOME_TYPE_KTV:
                 map.put("FKEY", DataManager.getMd5Str("SKTVADDEVA"));
                 map.put("SORTKTV_ID", id);
+                break;
+            case HomeTypeConstant.HOME_TYPE_BAR:
+                map.put("FKEY", DataManager.getMd5Str("ADDBAREVA"));
+                map.put("SORTBAR_ID", id);
                 break;
         }
 

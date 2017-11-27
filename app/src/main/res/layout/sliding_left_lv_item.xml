@@ -6,4 +6,4 @@
     android:layout_height="@dimen/base45dp"
     android:layout_centerVertical="true"
     android:textColor="@color/ff92_text"
-    android:textSize="15sp" /><!--android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"-->
+    android:textSize="15sp" />
