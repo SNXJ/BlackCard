@@ -141,7 +141,6 @@
         <ImageView
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp"
-            android:src="@mipmap/home_image_8"
             android:layout_gravity="center_horizontal"
             android:id="@+id/home_play_img"
             android:layout_width="match_parent"

@@ -7,7 +7,9 @@
     <FrameLayout
         android:id="@+id/drawerLayout_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
     </FrameLayout>
 
@@ -46,5 +48,5 @@
             android:dividerHeight="0dp"
             android:paddingLeft="@dimen/base30dp" />
     </LinearLayout>
-</android.support.v4.widget.DrawerLayout><!--</android.support.v4.widget.DrawerLayout>-->
+</android.support.v4.widget.DrawerLayout>
 

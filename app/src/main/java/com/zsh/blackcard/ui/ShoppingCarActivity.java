@@ -10,6 +10,10 @@ import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.ShoppingCarAdapter;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
@@ -29,7 +33,8 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
     RecyclerView shopping_car_recycler;
     //购物车列表适配器
     private ShoppingCarAdapter shoppingCarAdapter;
-    private List<String> list = new ArrayList<>();
+
+    private List<ShoppingCarModel.PdBean> pdBeanList = new ArrayList<>();
 
     @Override
     protected void initUI() {
@@ -44,26 +49,33 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
     }
 
     private void initData() {
-        for (int i = 0; i < 10; i++) {
-            list.add(i+"");
-        }
+        //加载购物车列表
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postShoppingCar(DataManager.getMd5Str("SHOPPINGCART"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<ShoppingCarModel>() {
+            @Override
+            public void responseSuccess(ShoppingCarModel obj) {
+                pdBeanList.addAll(obj.getPd());
+                shoppingCarAdapter = new ShoppingCarAdapter(R.layout.activity_shopping_car_item, pdBeanList);
+                shopping_car_recycler.setLayoutManager(new LinearLayoutManager(ShoppingCarActivity.this));
+                shopping_car_recycler.addItemDecoration(new SpacesItemDecoration(ShoppingCarActivity.this, SpacesItemDecoration.VERTICAL_LIST));
+                shopping_car_recycler.setAdapter(shoppingCarAdapter);
+                shoppingCarAdapter.setOnItemChildClickListener(ShoppingCarActivity.this);
+            }
 
-        shoppingCarAdapter = new ShoppingCarAdapter(R.layout.activity_shopping_car_item, list);
-        shopping_car_recycler.setLayoutManager(new LinearLayoutManager(this));
-        shopping_car_recycler.addItemDecoration(new SpacesItemDecoration(this, SpacesItemDecoration.VERTICAL_LIST));
-        shopping_car_recycler.setAdapter(shoppingCarAdapter);
-        shoppingCarAdapter.setOnItemChildClickListener(this);
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         switch (view.getId()) {
             case R.id.shopping_car_item_right_delete:
-                list.remove(position);
+                pdBeanList.remove(position);
                 UIUtils.showToast("删除成功");
                 shoppingCarAdapter.notifyItemRemoved(position);
-                shoppingCarAdapter.notifyItemRangeChanged(position,list.size());
-//                System.out.println(list.get(position)+"=====");
+                shoppingCarAdapter.notifyItemRangeChanged(position, pdBeanList.size());
                 break;
         }
     }

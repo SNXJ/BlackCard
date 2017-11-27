@@ -4,7 +4,6 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
-import com.zsh.blackcard.model.HomeGloryServiceModel;
 
 import java.util.List;
 

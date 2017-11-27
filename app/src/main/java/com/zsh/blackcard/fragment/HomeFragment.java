@@ -12,11 +12,13 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
@@ -28,13 +30,14 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
-import com.zsh.blackcard.model.HomeGloryServiceModel;
+import com.zsh.blackcard.model.HomeGloryServerModel;
+import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.WelcomeActivity;
-import com.zsh.blackcard.ui.home.HomeCarActivity;
+import com.zsh.blackcard.ui.home.HomeCarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeCruiseShipActivity;
 import com.zsh.blackcard.ui.home.HomeEquestrianActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
@@ -60,6 +63,8 @@ import butterknife.OnClick;
 
 public class HomeFragment extends BaseFragment {
 
+
+
     //HomeTop 头条的item点击事件
     private class HomeTopOnItemClick implements BaseQuickAdapter.OnItemClickListener {
 
@@ -73,7 +78,7 @@ public class HomeFragment extends BaseFragment {
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
                     break;
                 case 2:
-                    ActivityUtils.startActivityForData(getActivity(), HomeKTVDetailActivity.class, ((HomeTopModel.PdBean)adapter.getData().get(position)).getSORT_ID());
+                    ActivityUtils.startActivityForData(getActivity(), HomeKTVDetailActivity.class, ((HomeTopModel.PdBean) adapter.getData().get(position)).getSORT_ID());
                     break;
                 case 3:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
@@ -101,6 +106,9 @@ public class HomeFragment extends BaseFragment {
     //荣耀杂志列表
     @BindView(R.id.home_glory_magazine_recycler)
     RecyclerView home_glory_magazine_recycler;
+    //汇聚玩趴图片
+    @BindView(R.id.home_play_img)
+    ImageView home_play_img;
 
     @BindView(R.id.home_top_tvs)
     TextSwitcher home_top_tvs;
@@ -165,7 +173,7 @@ public class HomeFragment extends BaseFragment {
                     break;
                 //豪车
                 case 6:
-                    ActivityUtils.startActivity(getActivity(), HomeCarActivity.class);
+                    ActivityUtils.startActivity(getActivity(), HomeCarDetailActivity.class);
                     break;
                 //更多
                 case 7:
@@ -185,6 +193,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initDate(Bundle savedInstanceState) {
         //初始化类型选择列表（美食，酒店，品鉴...）
+
+
+
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePrivilege(DataManager.getMd5Str("PRIVILIST")), new ResultListener<HomePrivilegeModel>() {
             @Override
             public void responseSuccess(HomePrivilegeModel obj) {
@@ -236,7 +247,6 @@ public class HomeFragment extends BaseFragment {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePage(DataManager.getMd5Str("COMMEND")), new ResultListener<HomeTopModel>() {
             @Override
             public void responseSuccess(HomeTopModel obj) {
-                System.out.println(obj);
                 for (int i = 0; i < obj.getPd().size(); i++) {
                     if (i == 0) {
                         obj.getPd().get(i).setItemType(1);
@@ -264,24 +274,46 @@ public class HomeFragment extends BaseFragment {
         });
 
         //初始化荣耀服务列表
-        List<HomeGloryServiceModel> list = new ArrayList<>();
-        if (homeGloryServiceAdapter == null) {
-            for (int i = 0; i < 3; i++) {
-                HomeGloryServiceModel homeGloryServiceModel = new HomeGloryServiceModel();
-                if (i == 0) {
-                    homeGloryServiceModel.setItemType(1);
-                } else if (i == 2) {
-                    homeGloryServiceModel.setItemType(3);
-                } else {
-                    homeGloryServiceModel.setItemType(2);
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryServer(DataManager.getMd5Str("SERVER")), new ResultListener<HomeGloryServerModel>() {
+            @Override
+            public void responseSuccess(HomeGloryServerModel obj) {
+                for (int i = 0; i < obj.getPd().size(); i++) {
+                    if (i == 0) {
+                        obj.getPd().get(i).setItemType(1);
+                    } else if (i == obj.getPd().size() - 1) {
+                        obj.getPd().get(i).setItemType(3);
+                    } else {
+                        obj.getPd().get(i).setItemType(2);
+                    }
                 }
-                list.add(homeGloryServiceModel);
+
+                if (homeGloryServiceAdapter == null) {
+                    homeGloryServiceAdapter = new HomeGloryServiceAdapter(obj.getPd());
+                    home_glory_service_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+                    home_glory_service_recycler.setNestedScrollingEnabled(false);
+                    home_glory_service_recycler.setAdapter(homeGloryServiceAdapter);
+                }
+
             }
-            homeGloryServiceAdapter = new HomeGloryServiceAdapter(list);
-            home_glory_service_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-            home_glory_service_recycler.setAdapter(homeGloryServiceAdapter);
-            home_glory_service_recycler.setNestedScrollingEnabled(false);
-        }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+        //初始化汇聚玩趴图片接口
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePlay(DataManager.getMd5Str("PARTY")), new ResultListener<HomePlayModel>() {
+            @Override
+            public void responseSuccess(HomePlayModel obj) {
+                Glide.with(getActivity()).load(obj.getPd().getPARTYIMG()).into(home_play_img);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
 
         //初始化荣耀杂志列表
         List<HomeGloryMagazineModel> list1 = new ArrayList<>();

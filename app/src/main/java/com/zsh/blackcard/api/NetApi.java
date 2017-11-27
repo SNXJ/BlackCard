@@ -15,9 +15,11 @@ import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
+import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
@@ -27,10 +29,13 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
+import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
+import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
 import java.util.List;
@@ -454,5 +459,70 @@ public class NetApi {
      */
     public Observable<WelcomeModel> postWelcome(String md5) {
         return retrofitService.postWelcome(md5);
+    }
+
+    /**
+     * 购物车列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ShoppingCarModel> postShoppingCar(String md5, String id) {
+        return retrofitService.postShoppingCar(md5, id);
+    }
+
+    /**
+     * 购物车删除商品
+     *
+     * @param md5
+     * @param PRODUCT_ID
+     * @param HONOURUSER_ID
+     * @return
+     */
+    public Observable<ResultModel> postShoppingCarDelete(String md5, String PRODUCT_ID, String HONOURUSER_ID) {
+        return retrofitService.postShoppingCarDelete(md5, PRODUCT_ID, HONOURUSER_ID);
+    }
+
+    /**
+     * 获取尊购页面轮播图
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<ZgBannerModel> postZgBanner(String md5) {
+        return retrofitService.postZgBanner(md5);
+    }
+
+    /**
+     * 尊购模糊查询接口
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param KEYWORDS
+     * @return
+     */
+    public Observable<ZgSearchModel> postZgSearch(String md5, String HONOURUSER_ID, String KEYWORDS) {
+        return retrofitService.postZgSearch(md5, HONOURUSER_ID, KEYWORDS);
+    }
+
+    /**
+     * 首页汇聚玩趴图片接口
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomePlayModel> postHomePlay(String md5) {
+        return retrofitService.postHomePlay(md5);
+    }
+
+    /**
+     * 首页荣耀服务列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomeGloryServerModel> postHomeGloryServer(String md5) {
+        return retrofitService.postHomeGloryServer(md5);
     }
 }
