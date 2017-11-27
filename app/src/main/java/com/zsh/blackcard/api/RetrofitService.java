@@ -1,5 +1,7 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.HomeGloryServerModel;
+import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
@@ -25,10 +27,13 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.RegisterModel;
+import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
+import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
+import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
 import java.util.List;
@@ -138,12 +143,14 @@ public interface RetrofitService {
 
     //Food评论列表
     @FormUrlEncoded
-    @POST("appsfoodin/foodevalist?")//FOODEVA
+    @POST("appsfoodin/foodevalist?")
+//FOODEVA
     Observable<CommentModel> postFoodCommentList(@Field("FKEY") String md5, @Field("SORTFOOD_ID") String id);
 
     //KTV评论列表
     @FormUrlEncoded
-    @POST("appsktvin/ktvevalist?")//KTVEVA
+    @POST("appsktvin/ktvevalist?")
+//KTVEVA
     Observable<CommentModel> postKTVCommentList(@Field("FKEY") String md5, @Field("SORTKTV_ID") String id);
 
     //添加Hotel评论
@@ -152,11 +159,13 @@ public interface RetrofitService {
     Observable<CommentAddModel> addHotelComment(@QueryMap Map<String, String> map);
 
     //添加Food评论
-    @GET("appsfoodin/sfoodaddeva?")//SFOODADDEVA
+    @GET("appsfoodin/sfoodaddeva?")
+//SFOODADDEVA
     Observable<CommentAddModel> addFoodComment(@QueryMap Map<String, String> map);
 
     //添加KTV评论
-    @GET("appsktvin/sktvaddeva?") //SKTVADDEVA
+    @GET("appsktvin/sktvaddeva?")
+    //SKTVADDEVA
     Observable<CommentAddModel> addKTVComment(@QueryMap Map<String, String> map);
 
     //火车票
@@ -266,4 +275,40 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appbootpagein/bootpagelist?")
     Observable<WelcomeModel> postWelcome(@Field("FKEY") String md5);
+
+    //购物车列表接口(未完成，有待修改)
+    @FormUrlEncoded
+    @POST("apporderin/shoppingcart?")
+    Observable<ShoppingCarModel> postShoppingCar(@Field("FKEY") String md5,
+                                                 @Field("HONOURUSER_ID") String id);
+
+    //从购物车删除商品(未完成，有待修改)
+    @FormUrlEncoded
+    @POST("apporderin/shoppingcartdel?")
+    Observable<ResultModel> postShoppingCarDelete(@Field("FKEY") String md5,
+                                                  @Field("PRODUCT_ID") String PRODUCT_ID,
+                                                  @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //尊购界面banner轮播图
+    @FormUrlEncoded
+    @POST("appshipin/scarouselfigure?")
+    Observable<ZgBannerModel> postZgBanner(@Field("FKEY") String md5);
+
+    //尊购模糊查询接口
+    @FormUrlEncoded
+    @POST("appshipin/shipdimquery?")
+    Observable<ZgSearchModel> postZgSearch(@Field("FKEY") String md5,
+                                           @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                           @Field("KEYWORDS") String KEYWORDS);
+
+    //首页汇聚玩趴图片接口
+    @FormUrlEncoded
+    @POST("apphomein/partyimg.do?")
+    Observable<HomePlayModel> postHomePlay(@Field("FKEY") String md5);
+
+    //首页荣耀服务图片接口
+    @FormUrlEncoded
+    @POST("appserverin/server.do?")
+    Observable<HomeGloryServerModel> postHomeGloryServer(@Field("FKEY") String md5);
+
 }

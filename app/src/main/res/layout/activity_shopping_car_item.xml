@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shopping_car_item_easy"
     android:layout_width="match_parent"
     android:layout_height="@dimen/base120dp"
-    android:id="@+id/shopping_car_item_easy"
-    app:rightMenuView="@+id/shopping_car_item_right_delete"
-    app:contentView="@+id/shopping_car_item_relative">
+    app:contentView="@+id/shopping_car_item_relative"
+    app:rightMenuView="@+id/shopping_car_item_right_delete">
 
     <RelativeLayout
         android:id="@+id/shopping_car_item_relative"
@@ -22,30 +22,31 @@
             android:paddingTop="@dimen/base47dp" />
 
         <ImageView
-            android:id="@+id/shopping_car_item_img"
+            android:id="@+id/shopping_car_icon_img"
             android:layout_width="@dimen/base60dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/shopping_car_item_cb"
-            android:src="@mipmap/shopping_image_1" />
+            android:layout_toRightOf="@+id/shopping_car_item_cb" />
 
         <TextView
+            android:id="@+id/shopping_car_title_tv"
             android:layout_width="@dimen/base156dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base23dp"
             android:layout_marginTop="@dimen/base22dp"
-            android:layout_toRightOf="@+id/shopping_car_item_img"
+            android:layout_toRightOf="@+id/shopping_car_icon_img"
             android:text="卡地亚Cartier伦敦SOLO手表 石英男表W6701005"
             android:textColor="@color/recharge_text"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/shopping_car_price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/base28dp"
             android:layout_marginLeft="@dimen/base23dp"
-            android:layout_toRightOf="@+id/shopping_car_item_img"
+            android:layout_toRightOf="@+id/shopping_car_icon_img"
             android:text="￥49200"
             android:textColor="@color/recharge_text"
             android:textSize="12sp" />
@@ -73,7 +74,7 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/commodity_detail_number_et"
+                android:id="@+id/shopping_car_number_et"
                 android:layout_width="@dimen/base30dp"
                 android:layout_height="@dimen/base15dp"
                 android:background="@drawable/shape_register_super_center_false"
@@ -97,13 +98,13 @@
     </RelativeLayout>
 
     <TextView
-        android:textColor="@color/recharge_text"
-        android:textSize="15sp"
         android:id="@+id/shopping_car_item_right_delete"
         android:layout_width="@dimen/base90dp"
         android:layout_height="match_parent"
         android:background="#141414"
         android:gravity="center"
-        android:text="删除" />
+        android:text="删除"
+        android:textColor="@color/recharge_text"
+        android:textSize="15sp" />
 
 </com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

@@ -111,7 +111,7 @@ public class HomeMoreActivity extends BaseActivity {
                 startActivity(new Intent(this, HomeCruiseShipActivity.class));
                 break;
             case 6:
-                startActivity(new Intent(this, HomeCarActivity.class));
+                startActivity(new Intent(this, HomeCarDetailActivity.class));
                 break;
             case 7://直升机
                 startActivity(new Intent(this, HomeEquestrianActivity.class));

@@ -18,6 +18,11 @@ import java.util.List;
 
 public class HomeTypeAdapter extends BaseQuickAdapter<HomePrivilegeModel.PdBean,BaseViewHolder> {
 
+    @Override
+    public int getItemCount() {
+        return 8;
+    }
+
     public HomeTypeAdapter(int layoutResId, @Nullable List<HomePrivilegeModel.PdBean> data) {
         super(layoutResId, data);
     }
