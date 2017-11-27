@@ -10,12 +10,15 @@ import android.widget.RadioButton;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.HomeBarAdapter;
 import com.zsh.blackcard.adapter.HomeFoodAdapter;
 import com.zsh.blackcard.adapter.HomeHotelAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.untils.ActivityUtils;
@@ -46,7 +49,9 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     private List<HomeFoodModel.PdBean> foodList = new ArrayList<>();
     private HomeFoodAdapter foodAdapter;
     private List<HomeHotelModel.PdBean> hotelList = new ArrayList<>();
+    private List<HomeBarModel.PdBean> barList = new ArrayList<>();
     private HomeHotelAdapter hotelAdapter;
+    private HomeBarAdapter barAdapter;
 
     private int type;
 
@@ -56,11 +61,39 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         type = getIntent().getIntExtra("data", 0);
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        if (0 == type) {
+        if (HomeTypeConstant.HOME_TYPE_FOOD == type) {
             initFoodData();
-        } else {
+        } else if (HomeTypeConstant.HOME_TYPE_HOTEL == type) {
             initHotelData();
+        } else if (HomeTypeConstant.HOME_TYPE_BAR == type) {
+            initBarData();
         }
+    }
+
+    private void initBarData() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeBarList(DataManager.getMd5Str("SORTBAR")), new ResultListener<HomeBarModel>() {
+            @Override
+            public void responseSuccess(HomeBarModel obj) {
+                barList = obj.getPd();
+                if (null != barAdapter) {
+                    barAdapter.notifyDataSetChanged();
+                } else {
+                    barAdapter = new HomeBarAdapter(barList, HomeFoodHotelActivity.this);
+                    recyclerView.setAdapter(barAdapter);
+                }
+                barAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeBarDetailActivity.class, barList.get(position).getSORTBAR_ID());
+                    }
+                });
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     private void initHotelData() {
@@ -128,7 +161,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                         rbSort);
                 break;
             case R.id.rb_brand:
-                if (0 == type) {
+                if (HomeTypeConstant.HOME_TYPE_FOOD == type) {
                     PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
                             rbBrand);
                 } else {
@@ -137,7 +170,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                 }
                 break;
             case R.id.rb_filter:
-                if (0 == type) {
+                if (HomeTypeConstant.HOME_TYPE_FOOD == type) {
                     PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
                             rbFilter);
                 } else {

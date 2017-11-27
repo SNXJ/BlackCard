@@ -61,7 +61,7 @@
         <activity android:name=".ui.GolfActivity" />
         <activity android:name=".ui.home.HomeCruiseShipActivity" />
         <activity android:name=".ui.home.HomePlaneActivity" />
-        <activity android:name=".ui.home.HomeCarDetailActivity" />
+        <activity android:name=".ui.home.HomeCarActivity" />
         <activity android:name=".ui.home.HomeEquestrianActivity" />
         <activity android:name=".ui.BlackCurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
@@ -130,6 +130,7 @@
         <activity android:name=".ui.OrderPayActivity" />
         <activity android:name=".ui.ZgPersonalTailorDetailActivity"></activity>
         <activity android:name=".ui.ZgSearchActivity"/>
+        <activity android:name=".ui.home.HomeBarDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -3,7 +3,10 @@ package com.zsh.blackcard.api;
 import android.content.Context;
 
 import com.zsh.blackcard.BaseApplication;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.BarDetailModel;
+import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
 import com.zsh.blackcard.model.CollectionModel;
@@ -14,6 +17,7 @@ import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
+import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
@@ -25,6 +29,7 @@ import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HotelOrderModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
@@ -146,6 +151,17 @@ public class NetApi {
     }
 
     /**
+     * 酒店列表
+     *
+     * @param md5
+     * @param
+     * @return
+     */
+    public Observable<HomeBarModel> postHomeBarList(String md5) {
+        return retrofitService.postHomeBarlList(md5, BaseApplication.HONOURUSER_ID);
+    }
+
+    /**
      * 美食详情
      *
      * @param md5
@@ -168,6 +184,28 @@ public class NetApi {
     }
 
     /**
+     * 酒吧详情
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<BarDetailModel> postBarDetail(String md5, String id) {
+        return retrofitService.postBarDetail(md5, id);
+    }
+
+    /**
+     * 酒吧详情
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<BardetailsItemModel> postBarDetailList(String md5, String id) {
+        return retrofitService.postBarDetailList(md5, id);
+    }
+
+    /**
      * 酒店评价列表
      *
      * @param id
@@ -176,13 +214,14 @@ public class NetApi {
     public Observable<CommentModel> postCommentList(String id, int type) {
 
         switch (type) {
-            case 0:
+            case HomeTypeConstant.HOME_TYPE_HOTEL:
                 return retrofitService.postHotelCommentList(DataManager.getMd5Str("HOTELEVA"), id);
-            case 1:
+            case HomeTypeConstant.HOME_TYPE_FOOD:
                 return retrofitService.postFoodCommentList(DataManager.getMd5Str("FOODEVA"), id);
-            case 2:
+            case HomeTypeConstant.HOME_TYPE_KTV:
                 return retrofitService.postKTVCommentList(DataManager.getMd5Str("KTVEVA"), id);
-
+            case HomeTypeConstant.HOME_TYPE_BAR:
+                return retrofitService.postBarCommentList(DataManager.getMd5Str("BAREVA"), id);
             default:
                 break;
         }
@@ -196,12 +235,14 @@ public class NetApi {
      */
     public Observable<CommentAddModel> postAddComment(Map<String, String> map, int type) {
         switch (type) {
-            case 0:
+            case HomeTypeConstant.HOME_TYPE_HOTEL:
                 return retrofitService.addHotelComment(map);
-            case 1:
+            case HomeTypeConstant.HOME_TYPE_FOOD:
                 return retrofitService.addFoodComment(map);
-            case 2:
+            case HomeTypeConstant.HOME_TYPE_KTV:
                 return retrofitService.addKTVComment(map);
+            case HomeTypeConstant.HOME_TYPE_BAR:
+                return retrofitService.addBarComment(map);
         }
         return null;
     }
@@ -251,6 +292,16 @@ public class NetApi {
     }
 
     /**
+     * 订单
+     *
+     * @param map
+     * @return
+     */
+    public Observable<HotelOrderModel> postHotelOrder(Map<String, String> map) {
+        return retrofitService.hotelOrder(map);
+    }
+
+    /**
      * 汇聚页面指定聚会列表
      *
      * @param md5
@@ -290,6 +341,16 @@ public class NetApi {
      */
     public Observable<HomePrivilegeModel> postHomePrivilege(String md5) {
         return retrofitService.postHomePrivilege(md5);
+    }
+
+    /**
+     * 首页所有特权列表(仅马术，游艇，飞机，高尔夫，豪车)
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomePrivilegeModel> privilegePart(String md5, String id) {
+        return retrofitService.privilegePart(md5, id);
     }
 
     /**

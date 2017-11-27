@@ -197,8 +197,8 @@ public class HomeKTVDetailActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                // PublicDialog.hotelOrderDialog(HomeHotelDetailActivity.this, dataList.get(position), hotelData);
-                // hotelOrderDialog(dataList.get(position));
+                // PublicDialog.orderDialog(HomeHotelDetailActivity.this, dataList.get(position), hotelData);
+                // orderDialog(dataList.get(position));
             }
         });
     }

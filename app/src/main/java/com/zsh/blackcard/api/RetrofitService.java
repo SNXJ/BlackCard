@@ -4,6 +4,8 @@ import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.BarDetailModel;
+import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
 import com.zsh.blackcard.model.CollectionModel;
@@ -14,6 +16,7 @@ import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
+import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
@@ -23,11 +26,13 @@ import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HotelOrderModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
@@ -116,10 +121,25 @@ public interface RetrofitService {
     @POST("appshotelin/shotel.do?")
     Observable<HomeHotelModel> postHomeHotelList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String userId);
 
+    //首页酒吧列表
+    @FormUrlEncoded
+    @POST("appsbarin/sbar.do?")
+    Observable<HomeBarModel> postHomeBarlList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String userId);
+
     //酒店详情
     @FormUrlEncoded
     @POST("appshotelin/hotelsyn?")
     Observable<HotelDetailModel> postHotelDetail(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
+    //酒吧详情
+    @FormUrlEncoded
+    @POST("appsbarin/barsyn.do?")
+    Observable<BarDetailModel> postBarDetail(@Field("FKEY") String md5, @Field("SORTBAR_ID") String id);
+
+    //酒吧详情列表
+    @FormUrlEncoded
+    @POST("appsbarin/bardetaillist.do?")
+    Observable<BardetailsItemModel> postBarDetailList(@Field("FKEY") String md5, @Field("SORTBAR_ID") String id);
 
     //酒店详情列表
     @FormUrlEncoded
@@ -150,8 +170,12 @@ public interface RetrofitService {
     //KTV评论列表
     @FormUrlEncoded
     @POST("appsktvin/ktvevalist?")
-//KTVEVA
     Observable<CommentModel> postKTVCommentList(@Field("FKEY") String md5, @Field("SORTKTV_ID") String id);
+
+    //KTV评论列表
+    @FormUrlEncoded
+    @POST("appsbarin/barevalist?")
+    Observable<CommentModel> postBarCommentList(@Field("FKEY") String md5, @Field("SORTBAR_ID") String id);
 
     //添加Hotel评论
 
@@ -159,14 +183,22 @@ public interface RetrofitService {
     Observable<CommentAddModel> addHotelComment(@QueryMap Map<String, String> map);
 
     //添加Food评论
-    @GET("appsfoodin/sfoodaddeva?")
-//SFOODADDEVA
+    @GET("appsfoodin/sfoodaddeva?")//SFOODADDEVA
     Observable<CommentAddModel> addFoodComment(@QueryMap Map<String, String> map);
 
     //添加KTV评论
-    @GET("appsktvin/sktvaddeva?")
-    //SKTVADDEVA
+    @GET("appsktvin/sktvaddeva?") //SKTVADDEVA
     Observable<CommentAddModel> addKTVComment(@QueryMap Map<String, String> map);
+
+    //添加Bar评论
+    @GET("appsbarin/addbareva.do?")
+    //ADDBAREVA
+    Observable<CommentAddModel> addBarComment(@QueryMap Map<String, String> map);
+
+    //生成酒店订单
+    @GET("appshotelin/shiphotelorder?")
+    //ADDBAREVA
+    Observable<HotelOrderModel> hotelOrder(@QueryMap Map<String, String> map);
 
     //火车票
     @FormUrlEncoded
@@ -210,6 +242,11 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("apphomein/privilegelist?")
     Observable<HomePrivilegeModel> postHomePrivilege(@Field("FKEY") String md5);
+
+    //首页特权(仅马术，游艇，飞机，高尔夫，豪车)
+    @FormUrlEncoded
+    @POST("apphomein/privilegedet?")
+    Observable<HomePrivilegeModel> privilegePart(@Field("FKEY") String md5, @Field("PRIVILEGE_ID") String id);
 
     //尊购侧滑页面私人定制列表
     @FormUrlEncoded

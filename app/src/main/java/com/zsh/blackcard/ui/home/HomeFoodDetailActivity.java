@@ -16,6 +16,7 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
@@ -144,7 +145,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
                 break;
             case R.id.rl_comment:
                 //  ActivityUtils.startActivity(HomeFoodDetailActivity.this, CommentActivity.class);
-                ActivityUtils.startActivityForData(HomeFoodDetailActivity.this, CommentActivity.class, id, String.valueOf(score),1);
+                ActivityUtils.startActivityForData(HomeFoodDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.HOME_TYPE_FOOD);
 
                 break;
         }

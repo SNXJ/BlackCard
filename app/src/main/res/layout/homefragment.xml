@@ -75,7 +75,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_type_recycler"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base205dp"
+            android:layout_height="wrap_content"
             android:paddingBottom="@dimen/base14dp"
             android:paddingTop="@dimen/base14dp">
 
@@ -112,15 +112,15 @@
         </android.support.v7.widget.RecyclerView>
         
         <TextView
-            android:layout_marginLeft="@dimen/base15dp"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:textColor="@color/recharge_text"
-            android:text="荣耀服务"
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/base46dp" />
-        
+            android:layout_height="@dimen/base46dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:gravity="center"
+            android:text="荣耀服务"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_glory_service_recycler"
             android:layout_width="match_parent"
@@ -129,22 +129,23 @@
         </android.support.v7.widget.RecyclerView>
 
         <TextView
-            android:layout_marginLeft="@dimen/base15dp"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:textColor="@color/recharge_text"
-            android:text="汇聚玩趴"
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/base46dp" />
+            android:layout_height="@dimen/base46dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:gravity="center"
+            android:text="汇聚玩趴"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <ImageView
-            android:layout_marginLeft="@dimen/base15dp"
-            android:layout_marginRight="@dimen/base15dp"
-            android:layout_gravity="center_horizontal"
             android:id="@+id/home_play_img"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base95dp">
+            android:layout_height="@dimen/base95dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+           >
 
         </ImageView>
 
