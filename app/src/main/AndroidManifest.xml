@@ -21,9 +21,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
-
     <application
-        android:name="com.zsh.blackcard.BaseApplication"
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -58,10 +57,10 @@
         <activity android:name=".ui.EatDrinkActivity" />
         <activity android:name=".ui.EatDrinkSetActivity" />
         <activity android:name=".ui.DetailsRequireActivity" />
-        <activity android:name=".ui.GolfActivity" />
+        <activity android:name=".ui.GolfDetailActivity" />
         <activity android:name=".ui.home.HomeCruiseShipActivity" />
         <activity android:name=".ui.home.HomePlaneActivity" />
-        <activity android:name=".ui.home.HomeCarActivity" />
+        <activity android:name=".ui.home.HomeCarDetailActivity" />
         <activity android:name=".ui.home.HomeEquestrianActivity" />
         <activity android:name=".ui.BlackCurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
@@ -128,9 +127,11 @@
         <activity android:name=".ui.home.HomeTopNewsDetailActivity" />
         <activity android:name=".ui.EatDrinkSetDetailActivity" />
         <activity android:name=".ui.OrderPayActivity" />
-        <activity android:name=".ui.ZgPersonalTailorDetailActivity"></activity>
-        <activity android:name=".ui.ZgSearchActivity"/>
-        <activity android:name=".ui.home.HomeBarDetailActivity"></activity>
+        <activity android:name=".ui.ZgPersonalTailorDetailActivity" />
+        <activity android:name=".ui.ZgSearchActivity" />
+        <activity android:name=".ui.home.HomeBarDetailActivity" />
+        <activity android:name=".ui.home.HomeKTVRecyclerActivity"></activity>
+        <activity android:name=".ui.home.HomeGolfActivity"></activity>
     </application>
 
 </manifest>

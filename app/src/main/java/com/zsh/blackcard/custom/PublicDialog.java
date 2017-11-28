@@ -19,7 +19,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.zsh.blackcard.ChangeAddressPopwindow;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.ItemClickListener;
@@ -406,27 +405,6 @@ public class PublicDialog {
                 if (listener != null) {
                     listener.actionListener(province, city);
                 }
-            }
-        });
-    }
-
-    /**
-     * 省市县地址滚轮心选择
-     *
-     * @param context
-     * @param tv
-     */
-    public static void selectCity(Context context, final TextView tv) {
-        ChangeAddressPopwindow mChangeAddressPopwindow = new ChangeAddressPopwindow(context);
-        mChangeAddressPopwindow.setAddress("广东", "深圳", "福田区");
-
-
-        mChangeAddressPopwindow.showAtLocation(tv, Gravity.BOTTOM, 0, 0);
-        mChangeAddressPopwindow.setAddresskListener(new ChangeAddressPopwindow.OnAddressCListener() {
-            @Override
-            public void onClick(String province, String city, String area) {
-
-                tv.setText(province + city + area);
             }
         });
     }

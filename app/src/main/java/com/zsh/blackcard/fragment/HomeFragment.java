@@ -44,6 +44,7 @@ import com.zsh.blackcard.ui.home.HomeCruiseShipActivity;
 import com.zsh.blackcard.ui.home.HomeEquestrianActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
 import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
+import com.zsh.blackcard.ui.home.HomeKTVRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
@@ -95,7 +96,8 @@ public class HomeFragment extends BaseFragment {
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
                     break;
                 case 2:
-                    ActivityUtils.startActivityForData(getActivity(), HomeKTVDetailActivity.class, ((HomeTopModel.PdBean) adapter.getData().get(position)).getSORT_ID());
+                    ActivityUtils.startActivityForIntData(getActivity(), HomeKTVRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_KTV);
+//                    ActivityUtils.startActivityForData(getActivity(), HomeKTVDetailActivity.class, ((HomeTopModel.PdBean) adapter.getData().get(position)).getSORT_ID());
                     break;
                 case 3:
                     ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);

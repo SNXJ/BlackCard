@@ -85,4 +85,6 @@ dependencies {
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
     //添加列表滑动删除
     implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.2'
+    //添加popwindow弹窗
+    implementation 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
 }

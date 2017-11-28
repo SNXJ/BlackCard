@@ -17,6 +17,9 @@ import com.zsh.blackcard.fragment.sbfragment.NearbyFragment;
 import com.zsh.blackcard.fragment.sbfragment.RdFragment;
 import com.zsh.blackcard.fragment.sbfragment.TypeFragment;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * 尚播Activity
  */
@@ -30,10 +33,26 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
     private RadioButton rb_nearby;
     private RadioButton rb_type;
     private ViewPager sbvp;
+    private int defaultPage = 0;
+
+    /**
+     * /**
+     * 从尚播界面会去主页面时，通过传值确定首页选中相对应的页面。
+     */
+    @OnClick(R.id.sb_home_back)
+    public void onClick() {
+        Intent intent = new Intent();
+        intent.putExtra("default", defaultPage);
+        setResult(1, intent);
+        finish();
+    }
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_sb);
+        ButterKnife.bind(this);
+        //获取从哪个MainActivity传递过来的数值标识
+        defaultPage = getIntent().getIntExtra("default", 0);
         //网络请求判断
         Httpclient();
         sbfindId();
@@ -136,8 +155,8 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 PublicDialog.openLiveDialog(SbActivity.this);
-               //  startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
-               // startActivity(new Intent(SbActivity.this, LiveOpenActivity.class));
+                //  startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
+                // startActivity(new Intent(SbActivity.this, LiveOpenActivity.class));
             }
         });
     }

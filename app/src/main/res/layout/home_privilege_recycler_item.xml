@@ -8,6 +8,7 @@
     android:paddingTop="@dimen/base20dp">
 
     <ImageView
+        android:scaleType="fitXY"
         android:id="@+id/home_privilege_recycler_item_img"
         android:layout_width="@dimen/base80dp"
         android:layout_height="@dimen/base80dp" />
