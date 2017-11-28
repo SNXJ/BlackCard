@@ -16,19 +16,28 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.BarDetailsitemAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
+import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.BarDetailModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
+import com.zsh.blackcard.model.OrderDialogModel;
+import com.zsh.blackcard.model.OrderResultModel;
+import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -113,12 +122,75 @@ public class HomeBarDetailActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                // PublicDialog.orderDialog(HomeHotelDetailActivity.this, dataList.get(position), hotelData);
+                orderDialog(dataList.get(position));
 
             }
         });
     }
 
+    OrderDialogModel orderData = new OrderDialogModel();
+
+    public void orderDialog(final BardetailsItemModel.PdBean item) {
+        orderData.setDj_top_name(barData.getBARNAMES());
+        orderData.setDj_score(String.valueOf(barData.getBAREVALUATE()));
+        orderData.setDj_fit(barData.getSHOPSERVFITNESS());
+        orderData.setDj_wifi(barData.getSHOPSERVWIFI());
+        orderData.setDj_swim(barData.getSHOPSERVSWIN());
+        orderData.setDj_pay(barData.getSHOPSERVPAY());
+        orderData.setDj_park(barData.getSHOPSERVPARK());
+        orderData.setDj_food(barData.getSHOPSERVFOOD());
+//        orderData.setDj_item_img(item.getKTVDETIMGS());
+//        orderData.setDj_check_in(dataIn);
+//        orderData.setDj_check_out(dataOut);
+//        orderData.setDj_check_count(tvTotle.getText().toString());
+        orderData.setDj_item_date(item.getBARDETTITLE());
+        //  orderData.setDj_item_des(item.getKTVDETTYPE());
+        orderData.setDj_item_name(item.getBARDETTITLE());
+        orderData.setDj_item_money(item.getBARDETPRICE() + "");
+        orderData.setDj_item_id(item.getBARDETAIL_ID());
+        PublicDialog.orderDialog(HomeBarDetailActivity.this, orderData, listenter);
+
+    }
+
+    OrderDiaListenter listenter = new OrderDiaListenter() {
+        @Override
+        public void OrderDiaListenter(OrderDialogModel orderData) {
+            postOrder(orderData);
+        }
+    };
+
+    private void postOrder(final OrderDialogModel orderData) {
+        Map<String, String> map = new TreeMap<>();
+        map.put("FKEY", DataManager.getMd5Str("ADDBARORDER"));
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
+        map.put("ORDERUNAME", orderData.getDj_order_name());
+        map.put("ORDERPHONE", orderData.getDj_order_phone());
+        map.put("ORDERREMARK", orderData.getDj_order_other());
+        map.put("ORDERMONEY", orderData.getDj_item_money());
+        map.put("ORDERROOMNUM", orderData.getDj_order_num());
+
+        map.put("ORDERROOMBEGIN", orderData.getDj_check_in());//入住
+        map.put("ORDERROOMEND", orderData.getDj_check_out());//离开
+        map.put("BARDETAIL_ID", orderData.getDj_item_id());//id
+
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postBarOrder(map), new ResultListener<OrderResultModel>() {
+            @Override
+            public void responseSuccess(OrderResultModel obj) {
+                if ("01".equals(obj.getResult())) {
+                    orderData.setDj_return_id(obj.getORDERNUMBER());
+                    ActivityUtils.startActivityForSerializable(HomeBarDetailActivity.this, OrderPayActivity.class, orderData);
+                } else {
+                    UIUtils.showToast("失败");
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+    }
 
     private void setData(BarDetailModel.PdBean hotelData) {
         score = hotelData.getBAREVALUATE();

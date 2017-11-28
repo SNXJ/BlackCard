@@ -11,10 +11,12 @@ import java.io.Serializable;
 public class OrderDialogModel implements Serializable {
 
 
+    private String dj_return_id;//返回的订单ID
+    private String dj_item_id;//条目的ID
+
     private String dj_top_name;
     private String dj_score;
     private String dj_check_in;
-
 
     private String dj_check_out;
     private String dj_check_count;
@@ -33,6 +35,20 @@ public class OrderDialogModel implements Serializable {
     private String dj_order_name;
     private String dj_order_phone;
     private String dj_order_other;
+    public String getDj_item_id() {
+        return dj_item_id;
+    }
+
+    public void setDj_item_id(String dj_item_id) {
+        this.dj_item_id = dj_item_id;
+    }
+    public String getDj_return_id() {
+        return dj_return_id;
+    }
+
+    public void setDj_return_id(String dj_return_id) {
+        this.dj_return_id = dj_return_id;
+    }
 
     public String getDj_top_name() {
         return dj_top_name;

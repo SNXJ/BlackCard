@@ -102,6 +102,7 @@
             android:textSize="15sp" />
 
         <CheckBox
+            android:id="@+id/cb_wx_pay"
             style="@style/plane_check_box"
             android:layout_width="@dimen/base18dp"
             android:layout_height="@dimen/base18dp"
@@ -145,6 +146,7 @@
             android:textSize="15sp" />
 
         <CheckBox
+            android:id="@+id/cb_ali_pay"
             style="@style/plane_check_box"
             android:layout_width="@dimen/base18dp"
             android:layout_height="@dimen/base18dp"

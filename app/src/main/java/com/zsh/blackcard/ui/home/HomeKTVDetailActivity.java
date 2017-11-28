@@ -17,20 +17,29 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.KTVDetailsiTAbAdapter;
 import com.zsh.blackcard.adapter.KTVDetailsitemAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.FetureDateModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
+import com.zsh.blackcard.model.OrderResultModel;
+import com.zsh.blackcard.model.OrderDialogModel;
+import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.MyCalendar;
+import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,7 +99,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
     List<FetureDateModel> tabList = new ArrayList<>();
     private KTVDetailsitemAdapter adapter;
     private KTVDetailsiTAbAdapter tabAdapter;
-    private HomeKTVDetailModel.PdBean hotelData;
+    private HomeKTVDetailModel.PdBean ktvData;
 
     @Override
     protected void initUI() {
@@ -106,8 +115,8 @@ public class HomeKTVDetailActivity extends BaseActivity {
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postKTVDetail(DataManager.getMd5Str("KTVSYN"), id), new ResultListener<HomeKTVDetailModel>() {
             @Override
             public void responseSuccess(HomeKTVDetailModel obj) {
-                hotelData = obj.getPd();
-                setData(hotelData);
+                ktvData = obj.getPd();
+                setData(ktvData);
             }
 
             @Override
@@ -168,21 +177,21 @@ public class HomeKTVDetailActivity extends BaseActivity {
 
     }
 
-    private void setData(HomeKTVDetailModel.PdBean hotelData) {
-        score = String.valueOf(hotelData.getKTVEVALUATE());
-        hotelName.setText(hotelData.getKTVNAMES());
-        tvScore.setText(String.valueOf(hotelData.getKTVEVALUATE()));
-        tvTel.setText(hotelData.getKTVPHONE());
-        tvAddress.setText(hotelData.getKTVADDRESS());
-        btScore.setText(String.valueOf(hotelData.getKTVEVALUATE()));
-        tvComment.setText(hotelData.getKTVEVACOUNT() + "条评论");
+    private void setData(HomeKTVDetailModel.PdBean ktvData) {
+        score = String.valueOf(ktvData.getKTVEVALUATE());
+        hotelName.setText(ktvData.getKTVNAMES());
+        tvScore.setText(String.valueOf(ktvData.getKTVEVALUATE()));
+        tvTel.setText(ktvData.getKTVPHONE());
+        tvAddress.setText(ktvData.getKTVADDRESS());
+        btScore.setText(String.valueOf(ktvData.getKTVEVALUATE()));
+        tvComment.setText(ktvData.getKTVEVACOUNT() + "条评论");
         initBanner();
-        showOrHint(hotelData.getSHOPSERVFOOD(), llFood);
-        showOrHint(hotelData.getSHOPSERVFITNESS(), llFit);
-        showOrHint(hotelData.getSHOPSERVPARK(), llPark);
-        showOrHint(hotelData.getSHOPSERVPAY(), llPay);
-        showOrHint(hotelData.getSHOPSERVSWIN(), llSwim);
-        showOrHint(hotelData.getSHOPSERVWIFI(), llWifi);
+        showOrHint(ktvData.getSHOPSERVFOOD(), llFood);
+        showOrHint(ktvData.getSHOPSERVFITNESS(), llFit);
+        showOrHint(ktvData.getSHOPSERVPARK(), llPark);
+        showOrHint(ktvData.getSHOPSERVPAY(), llPay);
+        showOrHint(ktvData.getSHOPSERVSWIN(), llSwim);
+        showOrHint(ktvData.getSHOPSERVWIFI(), llWifi);
 
     }
 
@@ -197,15 +206,79 @@ public class HomeKTVDetailActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                // PublicDialog.orderDialog(HomeHotelDetailActivity.this, dataList.get(position), hotelData);
-                // orderDialog(dataList.get(position));
+                orderDialog(dataList.get(position));
+
             }
         });
     }
 
+    OrderDialogModel orderData = new OrderDialogModel();
+
+    public void orderDialog(final HomeKTVDetailItemModel.PdBean item) {
+        orderData.setDj_top_name(ktvData.getKTVNAMES());
+        orderData.setDj_score(String.valueOf(ktvData.getKTVEVALUATE()));
+        orderData.setDj_fit(ktvData.getSHOPSERVFITNESS());
+        orderData.setDj_wifi(ktvData.getSHOPSERVWIFI());
+        orderData.setDj_swim(ktvData.getSHOPSERVSWIN());
+        orderData.setDj_pay(ktvData.getSHOPSERVPAY());
+        orderData.setDj_park(ktvData.getSHOPSERVPARK());
+        orderData.setDj_food(ktvData.getSHOPSERVFOOD());
+//        orderData.setDj_item_img(item.getKTVDETIMGS());
+//        orderData.setDj_check_in(dataIn);
+//        orderData.setDj_check_out(dataOut);
+//        orderData.setDj_check_count(tvTotle.getText().toString());
+        orderData.setDj_item_date(item.getKTVDETTYPE());
+        //  orderData.setDj_item_des(item.getKTVDETTYPE());
+        orderData.setDj_item_name(item.getKTVDETTITLE());
+        orderData.setDj_item_money(item.getKTVDETPRICE() + "");
+        orderData.setDj_item_id(item.getKTVDETAIL_ID());
+        PublicDialog.orderDialog(HomeKTVDetailActivity.this, orderData, listenter);
+
+    }
+
+    OrderDiaListenter listenter = new OrderDiaListenter() {
+        @Override
+        public void OrderDiaListenter(OrderDialogModel orderData) {
+            postOrder(orderData);
+        }
+    };
+
+    private void postOrder(final OrderDialogModel orderData) {
+        Map<String, String> map = new TreeMap<>();
+        map.put("FKEY", DataManager.getMd5Str("SHIPKTVORDER"));
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
+        map.put("ORDERUNAME", orderData.getDj_order_name());
+        map.put("ORDERPHONE", orderData.getDj_order_phone());
+        map.put("ORDERREMARK", orderData.getDj_order_other());
+        map.put("ORDERMONEY", orderData.getDj_item_money());
+        map.put("ORDERROOMNUM", orderData.getDj_order_num());
+
+        map.put("ORDERROOMBEGIN", orderData.getDj_check_in());//入住
+        map.put("ORDERROOMEND", orderData.getDj_check_out());//离开
+        map.put("KTVDETAIL_ID", orderData.getDj_item_id());//类型
+
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postKTVOrder(map), new ResultListener<OrderResultModel>() {
+            @Override
+            public void responseSuccess(OrderResultModel obj) {
+                if ("01".equals(obj.getResult())) {
+                    orderData.setDj_return_id(obj.getORDERNUMBER());
+                    ActivityUtils.startActivityForSerializable(HomeKTVDetailActivity.this, OrderPayActivity.class, orderData);
+                } else {
+                    UIUtils.showToast("失败");
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+    }
+
     //初始化banner轮播区
     private void initBanner() {
-        topBanner.setImages(hotelData.getKTVDETAILSIMGS());
+        topBanner.setImages(ktvData.getKTVDETAILSIMGS());
         topBanner.setImageLoader(new MyImageLoader());
         topBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         topBanner.isAutoPlay(false);

@@ -31,7 +31,7 @@ import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HotelDetailModel;
-import com.zsh.blackcard.model.HotelOrderModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
@@ -294,13 +294,31 @@ public class NetApi {
     }
 
     /**
-     * 订单
+     * Hotel订单
      *
      * @param map
      * @return
      */
-    public Observable<HotelOrderModel> postHotelOrder(Map<String, String> map) {
+    public Observable<OrderResultModel> postHotelOrder(Map<String, String> map) {
         return retrofitService.hotelOrder(map);
+    }
+    /**
+     * ktv订单
+     *
+     * @param map
+     * @return
+     */
+    public Observable<OrderResultModel> postKTVOrder(Map<String, String> map) {
+        return retrofitService.KTVOrder(map);
+    }
+    /**
+     * ktv订单
+     *
+     * @param map
+     * @return
+     */
+    public Observable<OrderResultModel> postBarOrder(Map<String, String> map) {
+        return retrofitService.BarOrder(map);
     }
 
     /**
