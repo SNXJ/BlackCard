@@ -15,7 +15,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomePrivilegeModel;
-import com.zsh.blackcard.ui.GolfActivity;
+import com.zsh.blackcard.ui.GolfDetailActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import butterknife.BindView;
@@ -112,7 +112,7 @@ public class HomeMoreActivity extends BaseActivity {
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
                 case 8:// "高尔夫汇"
-                    startActivity(new Intent(HomeMoreActivity.this, GolfActivity.class));
+                    startActivity(new Intent(HomeMoreActivity.this, HomeGolfActivity.class));
                     break;
                 case 9://, "私人订制",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));

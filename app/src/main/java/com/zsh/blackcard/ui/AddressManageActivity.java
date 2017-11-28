@@ -98,7 +98,7 @@ public class AddressManageActivity extends BaseActivity {
 
     private void setRbStatus(View view, int position) {
 
-         CheckBox cb = (CheckBox) view;
+        CheckBox cb = (CheckBox) view;
 
 //        if (cb.isChecked()) {
 //            cb.setChecked(false);

@@ -1,6 +1,8 @@
 package com.zsh.blackcard.api;
 
 import com.zsh.blackcard.model.HomeGloryServerModel;
+import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeKTVRecyclerModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.AddressManageModel;
@@ -183,11 +185,13 @@ public interface RetrofitService {
     Observable<CommentAddModel> addHotelComment(@QueryMap Map<String, String> map);
 
     //添加Food评论
-    @GET("appsfoodin/sfoodaddeva?")//SFOODADDEVA
+    @GET("appsfoodin/sfoodaddeva?")
+//SFOODADDEVA
     Observable<CommentAddModel> addFoodComment(@QueryMap Map<String, String> map);
 
     //添加KTV评论
-    @GET("appsktvin/sktvaddeva?") //SKTVADDEVA
+    @GET("appsktvin/sktvaddeva?")
+    //SKTVADDEVA
     Observable<CommentAddModel> addKTVComment(@QueryMap Map<String, String> map);
 
     //添加Bar评论
@@ -348,4 +352,15 @@ public interface RetrofitService {
     @POST("appserverin/server.do?")
     Observable<HomeGloryServerModel> postHomeGloryServer(@Field("FKEY") String md5);
 
+    //首页KTV列表接口
+    @FormUrlEncoded
+    @POST("appsktvin/sktv.do?")
+    Observable<HomeKTVRecyclerModel> postHomeKTVRecycler(@Field("FKEY") String md5,
+                                                         @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //首页高尔夫汇列表接口
+    @FormUrlEncoded
+    @POST("appserverin/sgolflist.do?")
+    Observable<HomeGolfRecyclerModel> postHomeGolfRecycler(@Field("FKEY") String md5,
+                                                           @Field("HONOURUSER_ID") String HONOURUSER_ID);
 }

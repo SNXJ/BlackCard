@@ -20,9 +20,11 @@ import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
+import com.zsh.blackcard.model.HomeGolfRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
+import com.zsh.blackcard.model.HomeKTVRecyclerModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
@@ -585,5 +587,27 @@ public class NetApi {
      */
     public Observable<HomeGloryServerModel> postHomeGloryServer(String md5) {
         return retrofitService.postHomeGloryServer(md5);
+    }
+
+    /**
+     * 首页KTV列表
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<HomeKTVRecyclerModel> postHomeKTVRecycler(String md5, String user_id) {
+        return retrofitService.postHomeKTVRecycler(md5, user_id);
+    }
+
+    /**
+     * 首页高尔夫汇列表
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<HomeGolfRecyclerModel> postHomeGolfRecycler(String md5, String user_id) {
+        return retrofitService.postHomeGolfRecycler(md5, user_id);
     }
 }
