@@ -35,26 +35,20 @@ public class HomeBarModel {
     }
 
     public static class PdBean {
-        /**
-         * SHOWIMAGES : http://47.104.16.215:8088/sortimgs/sortbarimgs/sortbarshowimgs/a791fabc6bd04cb2a5825d19fa01c93a.png
-         * BARPHONE : 010-11111
-         * BAREVACOUNT : 3
-         * distance : {"result":"success","distance":"6.948098389930397"}
-         * BARLATITUDE : 39.865397
-         * BARPRICE : 111
-         * BARNAMES : BAR1
-         * HONOURUSER_ID : d6a3779de8204dfd9359403f54f7d27c
-         * BARDETAILSIMGS : ,http://47.104.16.215:8088/sortimgs/sortbarimgs/2c6bdf7fba624786b2ba0519306f6b7b.png,http://47.104.16.215:8088/sortimgs/sortbarimgs/999d6272809448c89fde5b676d1cc80f.png
-         * BARLONGITUDE : 116.454093
-         * SORTBAR_ID : 383578103407968256
-         * BARADDRESS : 北京市 北京市 丰台区 南三环东路辅路
-         * BAREVALUATE : 3.7
-         */
 
         private String SHOWIMAGES;
         private String BARPHONE;
         private int BAREVACOUNT;
-        private DistanceBean distance;
+        private String distance;
+
+        public String getDistance() {
+            return distance;
+        }
+
+        public void setDistance(String distance) {
+            this.distance = distance;
+        }
+
         private String BARLATITUDE;
         private int BARPRICE;
         private String BARNAMES;
@@ -89,13 +83,6 @@ public class HomeBarModel {
             this.BAREVACOUNT = BAREVACOUNT;
         }
 
-        public DistanceBean getDistance() {
-            return distance;
-        }
-
-        public void setDistance(DistanceBean distance) {
-            this.distance = distance;
-        }
 
         public String getBARLATITUDE() {
             return BARLATITUDE;
@@ -169,30 +156,5 @@ public class HomeBarModel {
             this.BAREVALUATE = BAREVALUATE;
         }
 
-        public static class DistanceBean {
-            /**
-             * result : success
-             * distance : 6.948098389930397
-             */
-
-            private String result;
-            private String distance;
-
-            public String getResult() {
-                return result;
-            }
-
-            public void setResult(String result) {
-                this.result = result;
-            }
-
-            public String getDistance() {
-                return distance;
-            }
-
-            public void setDistance(String distance) {
-                this.distance = distance;
-            }
-        }
     }
 }

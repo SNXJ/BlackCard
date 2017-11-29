@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeKTVRecyclerModel;
 import com.zsh.blackcard.view.Star;
 
@@ -35,7 +34,7 @@ public class HomeKTVAdapter extends BaseQuickAdapter<HomeKTVRecyclerModel.PdBean
         helper.setText(R.id.tv_name, item.getKTVNAMES());
         helper.setText(R.id.tv_address, item.getKTVADDRESS());
         helper.setText(R.id.tv_comment, "(" + item.getKTVEVACOUNT() + "条评价)");
-        String dis = item.getDistance().getDistance();
+        String dis = item.getDistance();
         dis = dis.substring(0, dis.indexOf("."));
         helper.setText(R.id.tv_distance, dis + "公里");
         Glide.with(context).load(item.getSHOWIMAGES()).into((ImageView) helper.getView(R.id.im_hotel));

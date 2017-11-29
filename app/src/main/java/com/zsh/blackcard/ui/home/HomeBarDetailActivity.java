@@ -32,6 +32,7 @@ import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
@@ -92,6 +93,7 @@ public class HomeBarDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_home_bar_detail);
         ButterKnife.bind(this);
         id = getIntent().getStringExtra("data");
+        LogUtils.i("++++++++++++++++", "+++++++++++++++++=" + id);
         initData();
         initRV();
     }

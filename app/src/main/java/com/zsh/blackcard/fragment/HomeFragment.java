@@ -32,19 +32,16 @@ import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
-import com.zsh.blackcard.model.HomePlayModel;
-
 import com.zsh.blackcard.model.HomeNewModel;
+import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
-import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.WelcomeActivity;
-import com.zsh.blackcard.ui.home.HomeCarDetailActivity;
-import com.zsh.blackcard.ui.home.HomeCruiseShipActivity;
-import com.zsh.blackcard.ui.home.HomeEquestrianActivity;
+import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
+import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
+import com.zsh.blackcard.ui.home.HomeHotelDetailActivity;
 import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
-import com.zsh.blackcard.ui.home.HomeKTVRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
@@ -90,21 +87,26 @@ public class HomeFragment extends BaseFragment {
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             switch (position) {
                 case 0://
-                    ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_BAR);
-                    // ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
+                    topGoDetails(HomeBarDetailActivity.class, adapter, position);
                     break;
                 case 1:
-                    ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
+                    topGoDetails(HomeFoodDetailActivity.class, adapter, position);
                     break;
                 case 2:
-                    ActivityUtils.startActivityForIntData(getActivity(), HomeKTVRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_KTV);
-//                    ActivityUtils.startActivityForData(getActivity(), HomeKTVDetailActivity.class, ((HomeTopModel.PdBean) adapter.getData().get(position)).getSORT_ID());
+                    topGoDetails(HomeKTVDetailActivity.class, adapter, position);
                     break;
                 case 3:
-                    ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
+                    topGoDetails(HomeHotelDetailActivity.class, adapter, position);
+                    break;
+                case 4://游艇
+                    // ActivityUtils.startActivityForData(getActivity(), HomeHotelDetailActivity.class, ((HomeTopModel.PdBean) adapter.getData().get(position)).getSORT_ID());
                     break;
             }
         }
+    }
+
+    private void topGoDetails(Class<?> cls, BaseQuickAdapter adapter, int position) {
+        ActivityUtils.startActivityForData(getActivity(), cls, ((HomeTopModel.PdBean) adapter.getData().get(position)).getSORT_ID());
     }
 
     //通过接口向Activity调用方法
@@ -180,19 +182,19 @@ public class HomeFragment extends BaseFragment {
                     break;
                 //马术
                 case 4://
-                    ActivityUtils.startActivityForIntData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_HORSE);
+                    ActivityUtils.startActivityForData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_HORSE);
                     break;
                 //游艇
                 case 5:
                     //游艇详情界面
 //                    ActivityUtils.startActivity(getActivity(), HomeCruiseShipActivity.class);
-                    ActivityUtils.startActivityForIntData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_YACHT);
+                    ActivityUtils.startActivityForData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_YACHT);
                     break;
                 //豪车
                 case 6:
                     //豪车详情页面
 //                    ActivityUtils.startActivity(getActivity(), HomeCarDetailActivity.class);
-                    ActivityUtils.startActivityForIntData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_CAR);
+                    ActivityUtils.startActivityForData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_CAR);
                     break;
                 //更多
                 case 7:
@@ -399,7 +401,6 @@ public class HomeFragment extends BaseFragment {
 //
 //                    }
 //                });
-
                 break;
         }
     }

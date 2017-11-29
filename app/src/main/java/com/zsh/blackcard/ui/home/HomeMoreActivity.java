@@ -78,55 +78,61 @@ public class HomeMoreActivity extends BaseActivity {
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             String privilege_id = ((HomePrivilegeModel.PdBean) adapter.getData().get(position)).getPRIVILEGE_ID();
-            switch (position) {
+            String type = ((HomePrivilegeModel.PdBean) adapter.getData().get(position)).getPRIVILEGETYPE();
+            switch (type) {
                 //美食
-                case 0:
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, 0);
+                case HomeTypeConstant.MORE_TYPE_FOOD:
+                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_FOOD);
                     break;
                 //酒店
-                case 1:
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, 1);
-                    // ActivityUtils.startActivity(HomeMoreActivity.this, HomeHotelActivity.class);
+                case HomeTypeConstant.MORE_TYPE_HOTEL:
+                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_HOTEL);
+                    break;
+                case HomeTypeConstant.MORE_TYPE_BAR:
+                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_BAR);
+                    break;
+                case HomeTypeConstant.MORE_TYPE_KTV:
+                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_KTV);
                     break;
                 //火车票
-                case 2:
+                case HomeTypeConstant.MORE_TYPE_TRIAN:
                     ActivityUtils.startActivity(HomeMoreActivity.this, HomeTrainActivity.class);
                     break;
                 //机票
-                case 3:
+                case HomeTypeConstant.MORE_TYPE_PLAN:
                     ActivityUtils.startActivity(HomeMoreActivity.this, HomePlaneActivity.class);
                     break;
                 //马术
-                case 4://TODO
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_HORSE);
+                case HomeTypeConstant.MORE_TYPE_HORSE:
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_HORSE);
                     break;
                 //游艇
-                case 5:
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_YACHT);
+                case HomeTypeConstant.MORE_TYPE_YACHT:
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_YACHT);
                     break;
                 //豪车
-                case 6:
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_CAR);
+                case HomeTypeConstant.MORE_TYPE_CAR:
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_CAR);
                     break;
-                case 7://直升机
+                case HomeTypeConstant.MORE_TYPE_COPTER://直升机
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
-                case 8:// "高尔夫汇"
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_GOLF);
+                case HomeTypeConstant.MORE_TYPE_GLOF:// "高尔夫汇"
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_GLOF);
                     break;
-                case 9://, "私人订制",
+                case HomeTypeConstant.MORE_TYPE_PERSON://, "私人订制",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
-                case 10:// "品牌杂志",
+                case HomeTypeConstant.MORE_TYPE_MAGANZINE:// "品牌杂志",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
-                case 11:// "健康养生",
+                case HomeTypeConstant.MORE_TYPE_HEATH:// "健康养生",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
-                case 12://"高端品鉴",
+                case HomeTypeConstant.MORE_TYPE_HIGH://"高端品鉴",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
-                case 13:// "定制理财"
+                case HomeTypeConstant.MORE_TYPE_FINANCE:// "定制理财"
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
             }
