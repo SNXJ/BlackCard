@@ -7,25 +7,25 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeCarRecyclerModel;
+import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 
 import java.util.List;
 
 /**
- * Created by kkkkk on 2017/11/28.
- * 高尔夫列表适配器
+ * Created by kkkkk on 2017/11/29.
+ * 豪车列表适配器
  */
 
-public class HomeGolfRecyclerAdapter extends BaseQuickAdapter<HomeGolfRecyclerModel.PdBean, BaseViewHolder> {
-
-    public HomeGolfRecyclerAdapter(int layoutResId, @Nullable List<HomeGolfRecyclerModel.PdBean> data) {
+public class HomeCarRecyclerAdapter extends BaseQuickAdapter<HomeCarRecyclerModel.PdBean, BaseViewHolder> {
+    public HomeCarRecyclerAdapter(int layoutResId, @Nullable List<HomeCarRecyclerModel.PdBean> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, HomeGolfRecyclerModel.PdBean item) {
-        helper.setText(R.id.home_privilege_recycler_item_name_tv, item.getGOLFNAMES());
-        helper.setText(R.id.home_privilege_recycler_item_address_tv, item.getGOLFADDRESS());
+    protected void convert(BaseViewHolder helper, HomeCarRecyclerModel.PdBean item) {
+        helper.setText(R.id.home_privilege_recycler_item_name_tv, item.getLUXCARNAMES());
+        helper.setText(R.id.home_privilege_recycler_item_address_tv, item.getLUXCARADDRESS());
         helper.setText(R.id.home_privilege_recycler_item_distance_tv, item.getDistance().substring(0, item.getDistance().indexOf(".")) + "公里");
         Glide.with(mContext).load(item.getSHOWIMAGES()).into((ImageView) helper.getView(R.id.home_privilege_recycler_item_img));
     }

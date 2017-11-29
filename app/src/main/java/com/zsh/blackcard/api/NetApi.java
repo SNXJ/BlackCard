@@ -18,9 +18,12 @@ import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
+import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
+import com.zsh.blackcard.model.HomeGolfDetailModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
@@ -30,6 +33,7 @@ import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
@@ -302,6 +306,7 @@ public class NetApi {
     public Observable<OrderResultModel> postHotelOrder(Map<String, String> map) {
         return retrofitService.hotelOrder(map);
     }
+
     /**
      * ktv订单
      *
@@ -311,6 +316,7 @@ public class NetApi {
     public Observable<OrderResultModel> postKTVOrder(Map<String, String> map) {
         return retrofitService.KTVOrder(map);
     }
+
     /**
      * ktv订单
      *
@@ -627,5 +633,49 @@ public class NetApi {
      */
     public Observable<HomeGolfRecyclerModel> postHomeGolfRecycler(String md5, String user_id) {
         return retrofitService.postHomeGolfRecycler(md5, user_id);
+    }
+
+    /**
+     * 首页马术列表接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<HomeHorseRecyclerModel> postHomeHorseRecycler(String md5, String user_id) {
+        return retrofitService.postHomeHorseRecycler(md5, user_id);
+    }
+
+    /**
+     * 首页豪车列表接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<HomeCarRecyclerModel> postHomeCarRecycler(String md5, String user_id) {
+        return retrofitService.postHomeCarRecycler(md5, user_id);
+    }
+
+    /**
+     * 首页游艇列表接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<HomeYachtRecyclerModel> postHomeYachtRecycler(String md5, String user_id) {
+        return retrofitService.postHomeYachtRecycler(md5, user_id);
+    }
+
+    /**
+     * 高尔夫汇详情
+     *
+     * @param md5
+     * @param golf_id
+     * @return
+     */
+    public Observable<HomeGolfDetailModel> postHomeGolfDetail(String md5, String golf_id) {
+        return retrofitService.postHomeGolfDetail(md5, golf_id);
     }
 }

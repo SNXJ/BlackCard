@@ -13,9 +13,9 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeTypeMoreAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomePrivilegeModel;
-import com.zsh.blackcard.ui.GolfDetailActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import butterknife.BindView;
@@ -98,21 +98,21 @@ public class HomeMoreActivity extends BaseActivity {
                     break;
                 //马术
                 case 4://TODO
-                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomeEquestrianActivity.class, privilege_id);
+                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_HORSE);
                     break;
                 //游艇
                 case 5:
-                    ActivityUtils.startActivity(HomeMoreActivity.this, HomeCruiseShipActivity.class);
+                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_YACHT);
                     break;
                 //豪车
                 case 6:
-                    ActivityUtils.startActivity(HomeMoreActivity.this, HomeCarDetailActivity.class);
+                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_CAR);
                     break;
                 case 7://直升机
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
                 case 8:// "高尔夫汇"
-                    startActivity(new Intent(HomeMoreActivity.this, HomeGolfActivity.class));
+                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_GOLF);
                     break;
                 case 9://, "私人订制",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
