@@ -47,7 +47,9 @@ public class HomeKTVRecyclerModel {
          */
 
         private String SHOWIMAGES;
-        private DistanceBean distance;
+        private String distance;
+
+
         private String KTVNAMES;
         private String SORTKTV_ID;
         private String KTVADDRESS;
@@ -64,13 +66,6 @@ public class HomeKTVRecyclerModel {
             this.SHOWIMAGES = SHOWIMAGES;
         }
 
-        public DistanceBean getDistance() {
-            return distance;
-        }
-
-        public void setDistance(DistanceBean distance) {
-            this.distance = distance;
-        }
 
         public String getKTVNAMES() {
             return KTVNAMES;
@@ -128,30 +123,12 @@ public class HomeKTVRecyclerModel {
             this.HONOURUSER_ID = HONOURUSER_ID;
         }
 
-        public static class DistanceBean {
-            /**
-             * result : success
-             * distance : 7.6938062127341595
-             */
+        public String getDistance() {
+            return distance;
+        }
 
-            private String result;
-            private String distance;
-
-            public String getResult() {
-                return result;
-            }
-
-            public void setResult(String result) {
-                this.result = result;
-            }
-
-            public String getDistance() {
-                return distance;
-            }
-
-            public void setDistance(String distance) {
-                this.distance = distance;
-            }
+        public void setDistance(String distance) {
+            this.distance = distance;
         }
     }
 }
