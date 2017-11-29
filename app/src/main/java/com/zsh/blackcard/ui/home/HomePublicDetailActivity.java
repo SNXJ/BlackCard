@@ -11,6 +11,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeCarDetailModel;
+import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeGolfDetailModel;
 import com.zsh.blackcard.model.HomeHorseDetailModel;
 import com.zsh.blackcard.model.HomeYachtDetailModel;
@@ -59,10 +60,34 @@ public class HomePublicDetailActivity extends BaseActivity {
         } else if (data.equals(HomeTypeConstant.MORE_TYPE_CAR)) {
             //加载豪车
             initDataCar(title);
-        } else {
+        } else if (data.equals(HomeTypeConstant.MORE_TYPE_YACHT)) {
             //加载游艇
             initDataYacht(title);
+        } else if (data.equals(HomeTypeConstant.MORE_TYPE_COPTER)) {
+            //加载飞机
+            initCopter();
         }
+    }
+
+    private void initCopter() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeCopterDetail(DataManager.getMd5Str("HORSEDETAIL")), new ResultListener<HomeCopterDetailModel>() {
+            @Override
+            public void responseSuccess(HomeCopterDetailModel obj) {
+                Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getPLANEDETIMGS().get(0)).into(home_public_detail_one_img);
+                Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getPLANEDETIMGS().get(1)).into(home_public_detail_two_img);
+                Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getPLANEDETIMGS().get(2)).into(home_public_detail_three_img);
+                home_public_detail_introduce_tv.setText(obj.getPd().get(0).getPLANEDETINTRO());
+                home_public_detail_title_tv.setText(obj.getPd().get(0).getPUPINTROTITLE());
+                home_public_detail_title_content_tv.setText(obj.getPd().get(0).getPUPINTROCONTENT());
+                home_public_detail_care_tv.setText(obj.getPd().get(0).getPDOWNINTROTITLE());
+                home_public_detail_care_content_tv.setText(obj.getPd().get(0).getPDOWNINTROCONTENT());
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     private void initDataYacht(String title) {
