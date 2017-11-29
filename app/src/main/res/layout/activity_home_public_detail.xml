@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/main_black"
     tools:context=".ui.home.HomePublicDetailActivity">
 
@@ -12,11 +11,13 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/home_public_detail_one_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base225dp" />
 
         <TextView
+            android:textColor="@color/recharge_text"
             android:id="@+id/home_public_detail_introduce_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
             android:textSize="12sp" />
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/home_public_detail_two_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base225dp"
@@ -34,12 +36,15 @@
             android:layout_marginTop="@dimen/base20dp" />
 
         <ImageView
+            android:layout_marginTop="@dimen/base20dp"
+            android:scaleType="fitXY"
             android:id="@+id/home_public_detail_three_img"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base225dp"
             android:layout_below="@+id/home_public_detail_two_img" />
 
         <TextView
+            android:textColor="@color/recharge_text"
             android:id="@+id/home_public_detail_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,6 +56,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:textColor="@color/recharge_text"
             android:id="@+id/home_public_detail_title_content_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,6 +67,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:textColor="@color/recharge_text"
             android:id="@+id/home_public_detail_care_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,6 +79,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:textColor="@color/recharge_text"
             android:id="@+id/home_public_detail_care_content_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
