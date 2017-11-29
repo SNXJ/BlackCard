@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:textColor="@color/recharge_text"
         android:id="@+id/zg_search_item_tv"
         android:textSize="15sp"
         android:layout_width="match_parent"

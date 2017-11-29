@@ -1,12 +1,15 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeGolfDetailModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeHorseDetailModel;
 import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeKTVRecyclerModel;
 import com.zsh.blackcard.model.HomePlayModel;
+import com.zsh.blackcard.model.HomeYachtDetailModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.AddressManageModel;
@@ -401,4 +404,23 @@ public interface RetrofitService {
     @POST("appserverin/golfdetail.do?")
     Observable<HomeGolfDetailModel> postHomeGolfDetail(@Field("FKEY") String md5,
                                                        @Field("GOLFSHOP_ID") String GOLFSHOP_ID);
+
+    //马术详情接口
+    @FormUrlEncoded
+    @POST("appserverin/horsedetail.do?")
+    Observable<HomeHorseDetailModel> postHomeHorseDetail(@Field("FKEY") String md5,
+                                                         @Field("HORSESHOP_ID") String HORSESHOP_ID);
+
+    //豪车详情接口
+    @FormUrlEncoded
+    @POST("appserverin/luxcardetail.do?")
+    Observable<HomeCarDetailModel> postHomeCarDetail(@Field("FKEY") String md5,
+                                                     @Field("LUXCARSHOP_ID") String LUXCARSHOP_ID);
+
+    //游艇详情接口
+    @FormUrlEncoded
+    @POST("appserverin/yachtdetail.do?")
+    Observable<HomeYachtDetailModel> postHomeYachtDetail(@Field("FKEY") String md5,
+                                                         @Field("YACHTSHOP_ID") String YACHTSHOP_ID);
 }
+

@@ -91,6 +91,7 @@ public class HomeMoreActivity extends BaseActivity {
                 case HomeTypeConstant.MORE_TYPE_BAR:
                     ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_BAR);
                     break;
+                //KTV
                 case HomeTypeConstant.MORE_TYPE_KTV:
                     ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_KTV);
                     break;

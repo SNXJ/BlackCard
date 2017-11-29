@@ -28,6 +28,7 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:background="@color/ff14_bt"
         android:id="@+id/zg_search_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:id="@+id/welcome_banner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base440dp"
+        android:layout_height="@dimen/base400dp"
         app:image_scale_type="center_inside"
         app:is_auto_play="false">
 
@@ -42,6 +42,7 @@
         android:textSize="12sp" />
 
     <LinearLayout
+        android:layout_marginTop="@dimen/base10dp"
         android:layout_below="@+id/welcome_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -16,15 +16,19 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeHorseDetailModel;
 import com.zsh.blackcard.model.HomeHorseRecyclerModel;
+import com.zsh.blackcard.model.HomeYachtDetailModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by kkkkk on 2017/11/29.
@@ -105,6 +109,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
             public void responseSuccess(HomeYachtRecyclerModel obj) {
                 homeYachtRecyclerAdapter = new HomeYachtRecyclerAdapter(R.layout.home_public_recycler_item, obj.getPd());
                 recycler.setAdapter(homeYachtRecyclerAdapter);
+                homeYachtRecyclerAdapter.setOnItemClickListener(HomePublicRecyclerActivity.this);
             }
 
             @Override
@@ -120,6 +125,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
             public void responseSuccess(HomeCarRecyclerModel obj) {
                 homeCarRecyclerAdapter = new HomeCarRecyclerAdapter(R.layout.home_public_recycler_item, obj.getPd());
                 recycler.setAdapter(homeCarRecyclerAdapter);
+                homeCarRecyclerAdapter.setOnItemClickListener(HomePublicRecyclerActivity.this);
             }
 
             @Override
@@ -135,6 +141,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
             public void responseSuccess(HomeHorseRecyclerModel obj) {
                 homeHorseRecyclerAdapter = new HomeHorseRecyclerAdapter(R.layout.home_public_recycler_item, obj.getPd());
                 recycler.setAdapter(homeHorseRecyclerAdapter);
+                homeHorseRecyclerAdapter.setOnItemClickListener(HomePublicRecyclerActivity.this);
             }
 
             @Override
@@ -148,6 +155,23 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     //高尔夫汇列表点击
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_GLOF, ((HomeGolfRecyclerModel.PdBean) adapter.getData().get(position)).getGOLFSHOP_ID());
+        if (adapter instanceof HomeGolfRecyclerAdapter) {
+            //高尔夫汇列表点击
+            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_GLOF, ((HomeGolfRecyclerModel.PdBean) adapter.getData().get(position)).getGOLFSHOP_ID());
+        } else if (adapter instanceof HomeHorseRecyclerAdapter) {
+            //马术详情点击
+            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_HORSE, ((HomeHorseDetailModel.PdBean) adapter.getData().get(position)).getHORSESHOP_ID());
+        } else if (adapter instanceof HomeCarRecyclerAdapter) {
+            //豪车
+            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_CAR, ((HomeCarDetailModel.PdBean) adapter.getData().get(position)).getLUXCARSHOP_ID());
+        } else {
+            //游艇
+            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_CAR, ((HomeYachtDetailModel.PdBean) adapter.getData().get(position)).getYACHTDET_ID());
+        }
+    }
+
+    @OnClick(R.id.title_back)
+    public void onClick(){
+        finish();
     }
 }
