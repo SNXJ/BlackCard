@@ -47,6 +47,7 @@ import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
 import com.zsh.blackcard.ui.home.HomeKTVRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
+import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
@@ -179,15 +180,19 @@ public class HomeFragment extends BaseFragment {
                     break;
                 //马术
                 case 4://
-                    ActivityUtils.startActivityForData(getActivity(), HomeEquestrianActivity.class, "");
+                    ActivityUtils.startActivityForIntData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_HORSE);
                     break;
                 //游艇
                 case 5:
-                    ActivityUtils.startActivity(getActivity(), HomeCruiseShipActivity.class);
+                    //游艇详情界面
+//                    ActivityUtils.startActivity(getActivity(), HomeCruiseShipActivity.class);
+                    ActivityUtils.startActivityForIntData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_YACHT);
                     break;
                 //豪车
                 case 6:
-                    ActivityUtils.startActivity(getActivity(), HomeCarDetailActivity.class);
+                    //豪车详情页面
+//                    ActivityUtils.startActivity(getActivity(), HomeCarDetailActivity.class);
+                    ActivityUtils.startActivityForIntData(getActivity(), HomePublicRecyclerActivity.class, HomeTypeConstant.HOME_TYPE_CAR);
                     break;
                 //更多
                 case 7:

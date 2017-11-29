@@ -1,9 +1,13 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
+import com.zsh.blackcard.model.HomeGolfDetailModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeKTVRecyclerModel;
 import com.zsh.blackcard.model.HomePlayModel;
+import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.BarDetailModel;
@@ -373,4 +377,28 @@ public interface RetrofitService {
     @POST("appserverin/sgolflist.do?")
     Observable<HomeGolfRecyclerModel> postHomeGolfRecycler(@Field("FKEY") String md5,
                                                            @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //首页马术列表接口
+    @FormUrlEncoded
+    @POST("appserverin/shorselist.do?")
+    Observable<HomeHorseRecyclerModel> postHomeHorseRecycler(@Field("FKEY") String md5,
+                                                             @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //首页豪车列表接口
+    @FormUrlEncoded
+    @POST("appserverin/sluxcarlist.do?")
+    Observable<HomeCarRecyclerModel> postHomeCarRecycler(@Field("FKEY") String md5,
+                                                         @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //首页游艇列表接口
+    @FormUrlEncoded
+    @POST("appserverin/syachtlist.do?")
+    Observable<HomeYachtRecyclerModel> postHomeYachtRecycler(@Field("FKEY") String md5,
+                                                             @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //高尔夫汇详情接口
+    @FormUrlEncoded
+    @POST("appserverin/golfdetail.do?")
+    Observable<HomeGolfDetailModel> postHomeGolfDetail(@Field("FKEY") String md5,
+                                                       @Field("GOLFSHOP_ID") String GOLFSHOP_ID);
 }

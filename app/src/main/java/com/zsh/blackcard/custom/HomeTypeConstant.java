@@ -13,4 +13,9 @@ public class HomeTypeConstant {
     public static final int HOME_TYPE_KTV = 2;//KTV
     public static final int HOME_TYPE_BAR = 3;//酒吧
 
+    public static final int HOME_TYPE_HORSE = 4;//马术
+    public static final int HOME_TYPE_CAR = 5;//豪车
+    public static final int HOME_TYPE_YACHT = 6;//游艇
+    public static final int HOME_TYPE_GOLF = 7;//高尔夫
+
 }

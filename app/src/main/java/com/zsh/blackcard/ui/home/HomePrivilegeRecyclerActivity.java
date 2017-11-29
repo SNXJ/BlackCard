@@ -25,7 +25,7 @@ public class HomePrivilegeRecyclerActivity extends BaseActivity {
     }
 
     /**
-     * 加载指定特权列表  列表行布局已完成  home_privilege_recycler_item
+     * 加载指定特权列表  列表行布局已完成  home_public_recycler_item
      */
     private void initData() {
 
