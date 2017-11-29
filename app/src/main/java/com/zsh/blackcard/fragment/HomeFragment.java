@@ -37,6 +37,7 @@ import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.ui.WelcomeActivity;
+import com.zsh.blackcard.ui.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
@@ -151,7 +152,7 @@ public class HomeFragment extends BaseFragment {
         @Override
         public boolean handleMessage(Message msg) {
             home_top_tvs.setText(homeTitleNewsModel.getPd().get(mSwitcherCount).getNEWSTITLE());
-            mSwitcherCount++;
+            mSwitcherCount++;//1,2,0
             if (mSwitcherCount == homeTitleNewsModel.getPd().size()) {
                 mSwitcherCount = 0;
             }
@@ -361,7 +362,7 @@ public class HomeFragment extends BaseFragment {
     //title头条新闻标题点击事件
     @OnClick(R.id.home_top_tvs)
     public void titleNewsOnClick() {
-        switch (mSwitcherCount % homeTitleNewsModel.getPd().size()) {
+        switch (mSwitcherCount) {
             case 0:
                 ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(homeTitleNewsModel.getPd().size() - 1).getNEWS_ID());
                 break;
@@ -376,7 +377,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_play_img, R.id.go_welcome_login_img, R.id.rb_city_home})
+    @OnClick({R.id.home_play_img, R.id.go_welcome_login_img, R.id.rb_city_home, R.id.home_search_linear})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.home_play_img:
@@ -401,6 +402,9 @@ public class HomeFragment extends BaseFragment {
 //
 //                    }
 //                });
+                break;
+            case R.id.home_search_linear:
+                ActivityUtils.startActivity(getActivity(), ZgSearchActivity.class);
                 break;
         }
     }

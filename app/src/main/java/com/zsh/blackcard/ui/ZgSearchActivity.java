@@ -17,6 +17,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ZgSearchModel;
+import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,13 +47,16 @@ public class ZgSearchActivity extends BaseActivity implements TextView.OnEditorA
     protected void initUI() {
         setContentView(R.layout.activity_zg_search);
         ButterKnife.bind(this);
+        zg_search_recycler.setLayoutManager(new LinearLayoutManager(this));
+        zg_search_recycler.addItemDecoration(new SpacesItemDecoration(this, SpacesItemDecoration.VERTICAL_LIST));
         //给键盘确定添加监听
         zg_search_et.setOnEditorActionListener(this);
     }
 
     @OnClick(R.id.title_back)
-    public void onClick(){
+    public void onClick() {
         finish();
+        hideInputSoft();
     }
 
     @Override
@@ -71,13 +75,10 @@ public class ZgSearchActivity extends BaseActivity implements TextView.OnEditorA
             @Override
             public void responseSuccess(ZgSearchModel obj) {
                 if (zgSearchAdapter == null) {
-                    if (!obj.getResult().equals("01")) {
-                        zgSearchAdapter = new ZgSearchAdapter(R.layout.zg_search_item, pdBeanList);
-                    } else {
+                    if (obj.getResult().equals("01")) {
                         pdBeanList.addAll(obj.getPd());
-                        zgSearchAdapter = new ZgSearchAdapter(R.layout.zg_search_item, pdBeanList);
                     }
-                    zg_search_recycler.setLayoutManager(new LinearLayoutManager(ZgSearchActivity.this));
+                    zgSearchAdapter = new ZgSearchAdapter(R.layout.zg_search_item, pdBeanList);
                     zg_search_recycler.setAdapter(zgSearchAdapter);
                     zgSearchAdapter.setEmptyView(R.layout.zg_search_empty, zg_search_recycler);
                 } else {

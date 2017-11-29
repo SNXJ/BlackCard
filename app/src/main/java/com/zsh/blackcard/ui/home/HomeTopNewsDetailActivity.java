@@ -60,21 +60,90 @@ public class HomeTopNewsDetailActivity extends BaseActivity {
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeTitleNewsDetail(DataManager.getMd5Str("NEWSDET"), data), new ResultListener<HomeTitleNewsDetailModel>() {
             @Override
             public void responseSuccess(HomeTitleNewsDetailModel obj) {
-                home_top_news_detail_title_tv.setText(obj.getPd().getNEWSTITLE());
-                home_top_news_detail_content_tv.setText(obj.getPd().getNEWSCONTENT());
-                Glide.with(HomeTopNewsDetailActivity.this).load(obj.getPd().getNEWSIMG()).into(home_top_news_detail_img);
+                //根据返回字段是否为空，自动设置相对应的控件是否隐藏
+                if (obj.getPd().getNEWSTITLE().equals("")) {
+                    home_top_news_detail_title_tv.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_title_tv.setVisibility(View.VISIBLE);
+                    home_top_news_detail_title_tv.setText(obj.getPd().getNEWSTITLE());
+                }
 
-                home_top_news_detail_small_title_one_tv.setText(obj.getPd().getTITLEPIECEONE());
-                home_top_news_detail_small_content_one_tv.setText(obj.getPd().getCONTENTPIECEONE());
-                Glide.with(HomeTopNewsDetailActivity.this).load(obj.getPd().getIMGPIECEONE()).into(home_top_news_detail_small_one_img);
+                if (obj.getPd().getNEWSCONTENT().equals("")) {
+                    home_top_news_detail_content_tv.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_content_tv.setVisibility(View.VISIBLE);
+                    home_top_news_detail_content_tv.setText(obj.getPd().getNEWSCONTENT());
+                }
 
-                home_top_news_detail_small_title_two_tv.setText(obj.getPd().getTITLEPIECETWO());
-                home_top_news_detail_small_content_two_tv.setText(obj.getPd().getCONTENTPIECETWO());
-                Glide.with(HomeTopNewsDetailActivity.this).load(obj.getPd().getIMGPIECETWO()).into(home_top_news_detail_small_two_img);
+                if (obj.getPd().getNEWSIMG().equals("")) {
+                    home_top_news_detail_img.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_img.setVisibility(View.VISIBLE);
+                    Glide.with(HomeTopNewsDetailActivity.this).load(obj.getPd().getNEWSIMG()).into(home_top_news_detail_img);
+                }
 
-                home_top_news_detail_small_title_three_tv.setText(obj.getPd().getTITLEPIECETHREE());
-                home_top_news_detail_small_content_three_tv.setText(obj.getPd().getCONTENTPIECETHREE());
-                Glide.with(HomeTopNewsDetailActivity.this).load(obj.getPd().getIMGPIECETHREE()).into(home_top_news_detail_small_three_img);
+                if (obj.getPd().getTITLEPIECEONE().equals("")) {
+                    home_top_news_detail_small_title_one_tv.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_title_one_tv.setVisibility(View.VISIBLE);
+                    home_top_news_detail_small_title_one_tv.setText(obj.getPd().getTITLEPIECEONE());
+                }
+
+                if (obj.getPd().getCONTENTPIECEONE().equals("")) {
+                    home_top_news_detail_small_content_one_tv.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_content_one_tv.setVisibility(View.VISIBLE);
+                    home_top_news_detail_small_content_one_tv.setText(obj.getPd().getCONTENTPIECEONE());
+                }
+
+                if (obj.getPd().getIMGPIECEONE().equals("")) {
+                    home_top_news_detail_small_one_img.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_one_img.setVisibility(View.VISIBLE);
+                    Glide.with(HomeTopNewsDetailActivity.this).load(obj.getPd().getIMGPIECEONE()).into(home_top_news_detail_small_one_img);
+                }
+
+                if (obj.getPd().getTITLEPIECETWO().equals("")) {
+                    home_top_news_detail_small_title_two_tv.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_title_two_tv.setVisibility(View.VISIBLE);
+                    home_top_news_detail_small_title_two_tv.setText(obj.getPd().getTITLEPIECETWO());
+                }
+
+                if (obj.getPd().getCONTENTPIECETWO().equals("")) {
+                    home_top_news_detail_small_content_two_tv.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_content_two_tv.setVisibility(View.VISIBLE);
+                    home_top_news_detail_small_content_two_tv.setText(obj.getPd().getCONTENTPIECETWO());
+                }
+
+                if (obj.getPd().getIMGPIECETWO().equals("")) {
+                    home_top_news_detail_small_two_img.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_two_img.setVisibility(View.VISIBLE);
+                    Glide.with(HomeTopNewsDetailActivity.this).load(obj.getPd().getIMGPIECETWO()).into(home_top_news_detail_small_two_img);
+                }
+
+                if (obj.getPd().getTITLEPIECETHREE().equals("")) {
+                    home_top_news_detail_small_title_three_tv.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_title_three_tv.setVisibility(View.VISIBLE);
+                    home_top_news_detail_small_title_three_tv.setText(obj.getPd().getTITLEPIECETHREE());
+                }
+
+                if (obj.getPd().getCONTENTPIECETHREE().equals("")) {
+                    home_top_news_detail_small_content_three_tv.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_content_three_tv.setVisibility(View.VISIBLE);
+                    home_top_news_detail_small_content_three_tv.setText(obj.getPd().getCONTENTPIECETHREE());
+                }
+
+                if (obj.getPd().getIMGPIECETHREE().equals("")) {
+                    home_top_news_detail_small_three_img.setVisibility(View.GONE);
+                } else {
+                    home_top_news_detail_small_three_img.setVisibility(View.VISIBLE);
+                    Glide.with(HomeTopNewsDetailActivity.this).load(obj.getPd().getIMGPIECETHREE()).into(home_top_news_detail_small_three_img);
+                }
 
             }
 
@@ -86,8 +155,8 @@ public class HomeTopNewsDetailActivity extends BaseActivity {
     }
 
     @OnClick(R.id.title_back)
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.title_back:
                 finish();
                 break;

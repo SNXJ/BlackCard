@@ -18,11 +18,13 @@ import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
+import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeGolfDetailModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeHorseDetailModel;
 import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
@@ -33,12 +35,13 @@ import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.model.HomeYachtDetailModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.HotelDetailModel;
-import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
@@ -677,5 +680,38 @@ public class NetApi {
      */
     public Observable<HomeGolfDetailModel> postHomeGolfDetail(String md5, String golf_id) {
         return retrofitService.postHomeGolfDetail(md5, golf_id);
+    }
+
+    /**
+     * 马术详情
+     *
+     * @param md5
+     * @param horse_id
+     * @return
+     */
+    public Observable<HomeHorseDetailModel> postHomeHorseDetail(String md5, String horse_id) {
+        return retrofitService.postHomeHorseDetail(md5, horse_id);
+    }
+
+    /**
+     * 豪车详情接口
+     *
+     * @param md5
+     * @param car_id
+     * @return
+     */
+    public Observable<HomeCarDetailModel> postHomeCarDetail(String md5, String car_id) {
+        return retrofitService.postHomeCarDetail(md5, car_id);
+    }
+
+    /**
+     * 游艇详情接口
+     *
+     * @param md5
+     * @param yacht_id
+     * @return
+     */
+    public Observable<HomeYachtDetailModel> postHomeYachtDetail(String md5, String yacht_id) {
+        return retrofitService.postHomeYachtDetail(md5, yacht_id);
     }
 }
