@@ -37,6 +37,6 @@ public class HomeBarAdapter extends BaseQuickAdapter<HomeBarModel.PdBean, BaseVi
         String dis = item.getDistance();
         dis = dis.substring(0, dis.indexOf("."));
         helper.setText(R.id.tv_distance, dis + "公里");
-        Glide.with(context).load(item.getSHOWIMAGES()).into((ImageView) helper.getView(R.id.im_hotel));
+        Glide.with(context).load(item.getSHOWIMAGES()).into((ImageView) helper.getView(R.id.im_img));
     }
 }

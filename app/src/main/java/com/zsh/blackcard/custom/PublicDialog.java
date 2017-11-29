@@ -54,7 +54,7 @@ public class PublicDialog {
      *
      * @param mContext
      */
-    public static void orderDialog(final Activity mContext, final OrderDialogModel data, final OrderDiaListenter listenter) {
+    public static void orderDialog(final Activity mContext, String type, final OrderDialogModel data, final OrderDiaListenter listenter) {
         if (null == data) {
             return;
         }
@@ -74,6 +74,8 @@ public class PublicDialog {
         ImageView im_reduce = (ImageView) view.findViewById(R.id.im_reduce);
         ImageView im_plus = (ImageView) view.findViewById(R.id.im_plus);
         final TextView tv_count = (TextView) view.findViewById(R.id.tv_count);
+
+        TextView tv_num_name = (TextView) view.findViewById(R.id.tv_num_name);//房间数 or 数量
         TextView tv_info = (TextView) view.findViewById(R.id.tv_info);
         TextView tv_time = (TextView) view.findViewById(R.id.tv_time);
         TextView tv_des = (TextView) view.findViewById(R.id.tv_des);
@@ -81,7 +83,11 @@ public class PublicDialog {
         final EditText et_name = (EditText) view.findViewById(R.id.et_name);
         final EditText et_tel_num = (EditText) view.findViewById(R.id.et_tel_num);
         final EditText et_other = (EditText) view.findViewById(R.id.et_other);
-
+        if (type.equals(HomeTypeConstant.ORDER_TYPE_ROOM)) {//酒店
+            tv_num_name.setText("房间数");
+        } else {
+            tv_num_name.setText("数量");
+        }
         showOrHint(data.getDj_food(), ll_food);
         showOrHint(data.getDj_fit(), ll_fit);
         showOrHint(data.getDj_park(), ll_park);

@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.model.HoteldetailsItemModel;
+import com.zsh.blackcard.model.FoodDetailsListModel;
 
 import java.util.List;
 
@@ -18,16 +18,16 @@ import java.util.List;
  * Date: 2017-11-23
  * Description:描述：
  */
-public class HotelDetailsitemAdapter extends BaseQuickAdapter<HoteldetailsItemModel.PdBean, BaseViewHolder> {
+public class FoodDetailListAdapter extends BaseQuickAdapter<FoodDetailsListModel.PdBean, BaseViewHolder> {
     private Context context;
 
-    public HotelDetailsitemAdapter(Context context, @Nullable List<HoteldetailsItemModel.PdBean> data) {
+    public FoodDetailListAdapter(Context context, @Nullable List<FoodDetailsListModel.PdBean> data) {
         super(R.layout.home_hotel_food_detail_item, data);
         this.context = context;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, HoteldetailsItemModel.PdBean item) {
+    protected void convert(BaseViewHolder helper, FoodDetailsListModel.PdBean item) {
         helper.setText(R.id.tv_money, "￥" + item.getHOTELDETPRICE());
         helper.setText(R.id.tv_name, item.getHOTELDETNAME());
         helper.setText(R.id.tv_des, item.getHOTELDETBEDTYPE());

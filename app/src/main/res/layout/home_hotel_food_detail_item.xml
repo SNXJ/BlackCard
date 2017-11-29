@@ -5,7 +5,7 @@
     android:layout_marginLeft="@dimen/base15dp">
 
     <ImageView
-        android:id="@+id/im_hotel"
+        android:id="@+id/im_img"
         android:layout_width="@dimen/base55dp"
         android:layout_height="@dimen/base55dp"
         android:layout_centerVertical="true"

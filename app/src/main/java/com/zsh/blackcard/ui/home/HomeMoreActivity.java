@@ -82,18 +82,18 @@ public class HomeMoreActivity extends BaseActivity {
             switch (type) {
                 //美食
                 case HomeTypeConstant.MORE_TYPE_FOOD:
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_FOOD);
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.MORE_TYPE_FOOD);
                     break;
                 //酒店
                 case HomeTypeConstant.MORE_TYPE_HOTEL:
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_HOTEL);
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.MORE_TYPE_HOTEL);
                     break;
                 case HomeTypeConstant.MORE_TYPE_BAR:
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_BAR);
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.MORE_TYPE_BAR);
                     break;
                 //KTV
                 case HomeTypeConstant.MORE_TYPE_KTV:
-                    ActivityUtils.startActivityForIntData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.HOME_TYPE_KTV);
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomeFoodHotelActivity.class, HomeTypeConstant.MORE_TYPE_KTV);
                     break;
                 //火车票
                 case HomeTypeConstant.MORE_TYPE_TRIAN:
@@ -118,13 +118,13 @@ public class HomeMoreActivity extends BaseActivity {
                 case HomeTypeConstant.MORE_TYPE_COPTER://直升机
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
-                case HomeTypeConstant.MORE_TYPE_GLOF:// "高尔夫汇"
-                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_GLOF);
+                case HomeTypeConstant.MORE_TYPE_GOLF:// "高尔夫汇"
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_GOLF);
                     break;
                 case HomeTypeConstant.MORE_TYPE_PERSON://, "私人订制",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
-                case HomeTypeConstant.MORE_TYPE_MAGANZINE:// "品牌杂志",
+                case HomeTypeConstant.MORE_TYPE_MAGAZINE:// "品牌杂志",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
                     break;
                 case HomeTypeConstant.MORE_TYPE_HEATH:// "健康养生",

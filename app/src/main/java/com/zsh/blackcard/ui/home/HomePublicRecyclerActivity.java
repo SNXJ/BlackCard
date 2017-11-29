@@ -79,7 +79,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
                 //加载游艇列表
                 initYacht();
                 break;
-            case HomeTypeConstant.MORE_TYPE_GLOF:
+            case HomeTypeConstant.MORE_TYPE_GOLF:
                 title_tv.setText("高尔夫");
                 //加载高尔夫汇列表
                 initGolf();
@@ -157,7 +157,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         if (adapter instanceof HomeGolfRecyclerAdapter) {
             //高尔夫汇列表点击
-            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_GLOF, ((HomeGolfRecyclerModel.PdBean) adapter.getData().get(position)).getGOLFSHOP_ID());
+            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_GOLF, ((HomeGolfRecyclerModel.PdBean) adapter.getData().get(position)).getGOLFSHOP_ID());
         } else if (adapter instanceof HomeHorseRecyclerAdapter) {
             //马术详情点击
             ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_HORSE, ((HomeHorseDetailModel.PdBean) adapter.getData().get(position)).getHORSESHOP_ID());

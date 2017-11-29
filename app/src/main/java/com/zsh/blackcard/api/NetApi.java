@@ -15,6 +15,8 @@ import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.FoodDetailModel;
+import com.zsh.blackcard.model.FoodDetailsListModel;
+import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
@@ -220,16 +222,16 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<CommentModel> postCommentList(String id, int type) {
+    public Observable<CommentModel> postCommentList(String id, String type) {
 
         switch (type) {
-            case HomeTypeConstant.HOME_TYPE_HOTEL:
+            case HomeTypeConstant.MORE_TYPE_HOTEL:
                 return retrofitService.postHotelCommentList(DataManager.getMd5Str("HOTELEVA"), id);
-            case HomeTypeConstant.HOME_TYPE_FOOD:
+            case HomeTypeConstant.MORE_TYPE_FOOD:
                 return retrofitService.postFoodCommentList(DataManager.getMd5Str("FOODEVA"), id);
-            case HomeTypeConstant.HOME_TYPE_KTV:
+            case HomeTypeConstant.MORE_TYPE_KTV:
                 return retrofitService.postKTVCommentList(DataManager.getMd5Str("KTVEVA"), id);
-            case HomeTypeConstant.HOME_TYPE_BAR:
+            case HomeTypeConstant.MORE_TYPE_BAR:
                 return retrofitService.postBarCommentList(DataManager.getMd5Str("BAREVA"), id);
             default:
                 break;
@@ -242,15 +244,15 @@ public class NetApi {
      *
      * @return
      */
-    public Observable<CommentAddModel> postAddComment(Map<String, String> map, int type) {
+    public Observable<CommentAddModel> postAddComment(Map<String, String> map, String type) {
         switch (type) {
-            case HomeTypeConstant.HOME_TYPE_HOTEL:
+            case HomeTypeConstant.MORE_TYPE_HOTEL:
                 return retrofitService.addHotelComment(map);
-            case HomeTypeConstant.HOME_TYPE_FOOD:
+            case HomeTypeConstant.MORE_TYPE_FOOD:
                 return retrofitService.addFoodComment(map);
-            case HomeTypeConstant.HOME_TYPE_KTV:
+            case HomeTypeConstant.MORE_TYPE_KTV:
                 return retrofitService.addKTVComment(map);
-            case HomeTypeConstant.HOME_TYPE_BAR:
+            case HomeTypeConstant.MORE_TYPE_BAR:
                 return retrofitService.addBarComment(map);
         }
         return null;
@@ -288,6 +290,61 @@ public class NetApi {
      */
     public Observable<HoteldetailsItemModel> postHotelDetailList(String md5, String id) {
         return retrofitService.postHotelDetailList(md5, id);
+    }
+
+    /**
+     * 美食详情列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<FoodDetailsListModel> postFoodDetailList(String md5, String id) {
+        return retrofitService.postFoodDetailList(md5, id);
+    }
+
+    /**
+     * 美食详情更多列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<FoodDetailsMoreListModel> postFoodDetailMoreList(String md5, String id) {
+        return retrofitService.postFoodDetailMoreList(md5, id);
+    }
+
+    /**
+     * 酒店详情更多列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<FoodDetailsMoreListModel> postHotelDetailMoreList(String md5, String id) {
+        return retrofitService.postHotelDetailMoreList(md5, id);
+    }
+
+    /**
+     * KTV详情更多列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<FoodDetailsMoreListModel> postKTVDetailMoreList(String md5, String id) {
+        return retrofitService.postKTVDetailMoreList(md5, id);
+    }
+
+    /**
+     * 酒吧详情更多列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<FoodDetailsMoreListModel> postBarDetailMoreList(String md5, String id) {
+        return retrofitService.postBarDetailMoreList(md5, id);
     }
 
     /**

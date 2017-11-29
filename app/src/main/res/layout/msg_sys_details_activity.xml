@@ -59,6 +59,7 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,7 +67,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_data"
+            android:id="@+id/tv_data1"
             style="@style/text_"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
@@ -76,7 +77,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_data"
+            android:layout_below="@+id/tv_data1"
             android:layout_marginRight="@dimen/base30dp"
             android:paddingLeft="@dimen/base18dp">
 

@@ -150,7 +150,7 @@ public class HomeBarDetailActivity extends BaseActivity {
         orderData.setDj_item_name(item.getBARDETTITLE());
         orderData.setDj_item_money(item.getBARDETPRICE() + "");
         orderData.setDj_item_id(item.getBARDETAIL_ID());
-        PublicDialog.orderDialog(HomeBarDetailActivity.this, orderData, listenter);
+        PublicDialog.orderDialog(HomeBarDetailActivity.this, HomeTypeConstant.ORDER_TYPE_NUM,orderData, listenter);
 
     }
 
@@ -258,7 +258,7 @@ public class HomeBarDetailActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_comment:
-                ActivityUtils.startActivityForData(HomeBarDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.HOME_TYPE_BAR);
+                ActivityUtils.startActivityForData(HomeBarDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.MORE_TYPE_BAR);
                 break;
             case R.id.im_back:
                 finish();

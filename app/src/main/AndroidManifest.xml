@@ -84,7 +84,6 @@
         <activity android:name=".ui.BlackCurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
-        <activity android:name=".ui.home.HomeHotelActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.live.LiveActivity" />
         <activity android:name=".ui.home.HomeTrainActivity" />
@@ -149,7 +148,6 @@
         <activity android:name=".ui.ZgPersonalTailorDetailActivity" />
         <activity android:name=".ui.ZgSearchActivity" />
         <activity android:name=".ui.home.HomeBarDetailActivity" />
-        <activity android:name=".ui.home.HomeKTVRecyclerActivity" />
         <activity android:name=".ui.home.HomePublicRecyclerActivity" />
         <activity android:name=".ui.home.HomePublicDetailActivity"></activity>
     </application>

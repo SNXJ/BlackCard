@@ -23,24 +23,32 @@ import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.FoodDetailModel;
+import com.zsh.blackcard.model.FoodDetailsListModel;
+import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
+import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
+import com.zsh.blackcard.model.HomeGolfDetailModel;
+import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
+import com.zsh.blackcard.model.HomeKTVRecyclerModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.HotelDetailModel;
-import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
@@ -156,6 +164,31 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appshotelin/hoteldetaillist?")
     Observable<HoteldetailsItemModel> postHotelDetailList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
+    //美食详情列表
+    @FormUrlEncoded
+    @POST("appshotelin/hoteldetaillist?")
+    Observable<FoodDetailsListModel> postFoodDetailList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+
+    //美食详情更多列表
+    @FormUrlEncoded
+    @POST("appsfoodin/sfoodlistrand.do?")
+    Observable<FoodDetailsMoreListModel> postFoodDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+
+    //酒店详情更多列表
+    @FormUrlEncoded
+    @POST("appsfoodin/sfoodlistrand.do?")
+    Observable<FoodDetailsMoreListModel> postHotelDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+
+    //KTV详情更多列表
+    @FormUrlEncoded
+    @POST("appsktvin/sktvlistrand.do?")
+    Observable<FoodDetailsMoreListModel> postKTVDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+
+    //酒吧详情更多列表
+    @FormUrlEncoded
+    @POST("appsbarin/sbarlistrand.do?")
+    Observable<FoodDetailsMoreListModel> postBarDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
 
     //KTV详情
     @FormUrlEncoded
@@ -423,4 +456,3 @@ public interface RetrofitService {
     Observable<HomeYachtDetailModel> postHomeYachtDetail(@Field("FKEY") String md5,
                                                          @Field("YACHTSHOP_ID") String YACHTSHOP_ID);
 }
-

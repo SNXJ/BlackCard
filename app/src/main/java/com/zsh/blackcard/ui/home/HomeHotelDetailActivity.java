@@ -157,7 +157,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
         orderData.setDj_item_des(item.getHOTELDETBEDTYPE());
         orderData.setDj_item_name(item.getHOTELDETNAME());
         orderData.setDj_item_money(item.getHOTELDETPRICE() + "");
-        PublicDialog.orderDialog(HomeHotelDetailActivity.this, orderData, listenter);
+        PublicDialog.orderDialog(HomeHotelDetailActivity.this,HomeTypeConstant.ORDER_TYPE_ROOM, orderData, listenter);
 
     }
 
@@ -264,7 +264,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_comment:
-                ActivityUtils.startActivityForData(HomeHotelDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.HOME_TYPE_HOTEL);
+                ActivityUtils.startActivityForData(HomeHotelDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.MORE_TYPE_HOTEL);
                 break;
             case R.id.ll_check_in:
                 PublicDialog.dateDialog(HomeHotelDetailActivity.this, "请选择日期", new DateListener() {
