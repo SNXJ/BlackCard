@@ -14,6 +14,7 @@ import com.zsh.blackcard.adapter.HomeHorseRecyclerAdapter;
 import com.zsh.blackcard.adapter.HomeYachtRecyclerAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
@@ -54,27 +55,27 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     }
 
     private void initData() {
-        int data = getIntent().getIntExtra("data", 0);
+        String data = getIntent().getStringExtra("data");
         recycler.setLayoutManager(new LinearLayoutManager(this));
         //给列表添加横线
         recycler.addItemDecoration(new SpacesItemDecoration(this, SpacesItemDecoration.VERTICAL_LIST));
         switch (data) {
-            case 4:
+            case HomeTypeConstant.MORE_TYPE_HORSE:
                 title_tv.setText("马术");
                 //加载马术列表
                 initHorse();
                 break;
-            case 5:
+            case HomeTypeConstant.MORE_TYPE_CAR:
                 title_tv.setText("豪车");
                 //加载豪车列表
                 initCar();
                 break;
-            case 6:
+            case HomeTypeConstant.MORE_TYPE_YACHT:
                 title_tv.setText("游艇");
                 //加载游艇列表
                 initYacht();
                 break;
-            case 7:
+            case HomeTypeConstant.MORE_TYPE_GLOF:
                 title_tv.setText("高尔夫");
                 //加载高尔夫汇列表
                 initGolf();
@@ -147,6 +148,6 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     //高尔夫汇列表点击
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        ActivityUtils.startActivityForData(this,HomePublicDetailActivity.class,"k",((HomeGolfRecyclerModel.PdBean)adapter.getData().get(position)).getGOLFSHOP_ID());
+        ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_GLOF, ((HomeGolfRecyclerModel.PdBean) adapter.getData().get(position)).getGOLFSHOP_ID());
     }
 }

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
@@ -14,8 +15,9 @@ import com.zsh.blackcard.model.HomeGolfDetailModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class HomePublicDetailActivity extends AppCompatActivity {
+public class HomePublicDetailActivity extends BaseActivity {
 
     @BindView(R.id.home_public_detail_one_img)
     ImageView home_public_detail_one_img;
@@ -35,8 +37,7 @@ public class HomePublicDetailActivity extends AppCompatActivity {
     TextView home_public_detail_care_content_tv;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initUI() {
         setContentView(R.layout.activity_home_public_detail);
         ButterKnife.bind(this);
         initData();
@@ -50,6 +51,11 @@ public class HomePublicDetailActivity extends AppCompatActivity {
         if(data.equals("k")){
             initDataGolf(title);
         }
+    }
+
+    @OnClick(R.id.title_back)
+    public void onClick(){
+        finish();
     }
 
     private void initDataGolf(String title) {
