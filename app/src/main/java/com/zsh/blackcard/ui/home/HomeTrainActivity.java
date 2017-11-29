@@ -87,7 +87,7 @@ public class HomeTrainActivity extends BaseActivity {
                 exchangeTv();
                 break;
             case R.id.rl_date:
-                PublicDialog.dateDialog(HomeTrainActivity.this, new DateListener() {
+                PublicDialog.dateDialog(HomeTrainActivity.this, "请选择日期", new DateListener() {
                     @Override
                     public void dateListener(String date) {
                         tvDateGo.setText(date);

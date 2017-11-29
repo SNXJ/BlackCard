@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.skyfishjy.library.RippleBackground;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.untils.MyCalendar;
 import com.zsh.blackcard.view.datepickter.DPCManager;
 import com.zsh.blackcard.view.datepickter.DPDecor;
 import com.zsh.blackcard.view.datepickter.DPMode;
@@ -17,7 +18,9 @@ import com.zsh.blackcard.view.datepickter.DPTManager;
 import com.zsh.blackcard.view.datepickter.DatePicker;
 import com.zsh.blackcard.view.datepickter.MyTheme;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,8 +56,6 @@ public class AbMySignActivity extends BaseActivity {
     }
 
 
-
-
     DPTManager dptMager;
     List<String> tmp = new ArrayList<>();
 
@@ -74,14 +75,15 @@ public class AbMySignActivity extends BaseActivity {
         //动态更新的时候必须  清除cache
         dpcManager.clearnDATE_CACHE(); //清除cache
         //重新设置日期
-        tmp.add("2017-11-20");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateNowStr = sdf.format(new Date());
+        tmp.add(dateNowStr);
         setDataBg();
     }
 
     private void setDataBg() {
         dpcManager.setDecorBG(tmp); //预先设置日期背景 一定要在在开始设置
-
-        myDatepicker.setDate(2017, 11); //设置日期
+        myDatepicker.setDate(MyCalendar.getNowYear(), MyCalendar.getNowMonth());
 
         myDatepicker.setMode(DPMode.MULTIPLE); //设置选择模式
 
@@ -89,10 +91,10 @@ public class AbMySignActivity extends BaseActivity {
         myDatepicker.setTodayDisplay(false); //是否高亮显示今天
         myDatepicker.setHolidayDisplay(false); //是否显示假期
         myDatepicker.setDeferredDisplay(false); //是否显示补休
-         myDatepicker.setIsScroll(false); //是否允许滑动 false表示左右上下都不能滑动  单项设置上下or左右 你需要自己扩展
-         myDatepicker.setIsSelChangeColor(true, getResources().getColor(R.color.main_black)); //设置选择的日期字体颜色,不然有的背景颜色和默认的字体颜色不搭
+        myDatepicker.setIsScroll(false); //是否允许滑动 false表示左右上下都不能滑动  单项设置上下or左右 你需要自己扩展
+        myDatepicker.setIsSelChangeColor(true, getResources().getColor(R.color.main_black)); //设置选择的日期字体颜色,不然有的背景颜色和默认的字体颜色不搭
 
-         myDatepicker.setMiddleTitle("2017年" + 11 + "月"); //左上方text
+        myDatepicker.setMiddleTitle(MyCalendar.getNowYear() + "年" + MyCalendar.getNowMonth() + "月"); //左上方text
 
         //设置预先选中日期的背景颜色
         myDatepicker.setDPDecor(new DPDecor() {

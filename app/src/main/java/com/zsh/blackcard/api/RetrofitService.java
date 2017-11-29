@@ -20,21 +20,23 @@ import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
+import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HotelDetailModel;
-import com.zsh.blackcard.model.HotelOrderModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.RegisterModel;
-import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
@@ -202,7 +204,15 @@ public interface RetrofitService {
     //生成酒店订单
     @GET("appshotelin/shiphotelorder?")
     //ADDBAREVA
-    Observable<HotelOrderModel> hotelOrder(@QueryMap Map<String, String> map);
+    Observable<OrderResultModel> hotelOrder(@QueryMap Map<String, String> map);
+
+    //生成KTV订单
+    @GET("appsbarin/addbarorder.do?")
+    Observable<OrderResultModel> KTVOrder(@QueryMap Map<String, String> map);
+
+    //生成Bar订单
+    @GET("appsktvin/shipktvorder?")
+    Observable<OrderResultModel> BarOrder(@QueryMap Map<String, String> map);
 
     //火车票
     @FormUrlEncoded

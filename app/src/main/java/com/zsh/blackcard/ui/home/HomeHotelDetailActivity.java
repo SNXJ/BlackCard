@@ -28,11 +28,13 @@ import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HotelDetailModel;
-import com.zsh.blackcard.model.HotelOrderModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.OrderDialogModel;
+import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.MyCalendar;
+import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,7 +168,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
         }
     };
 
-    private void postOrder(OrderDialogModel orderData) {
+    private void postOrder(final OrderDialogModel orderData) {
         Map<String, String> map = new TreeMap<>();
         map.put("FKEY", DataManager.getMd5Str("SHIPHOTELORDER"));
         map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
@@ -180,10 +182,11 @@ public class HomeHotelDetailActivity extends BaseActivity {
         map.put("ORDERDAYS", days + "");//天数
         map.put("HOTELDETAIL_ID", orderData.getDj_item_name());//类型
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelOrder(map), new ResultListener<HotelOrderModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelOrder(map), new ResultListener<OrderResultModel>() {
             @Override
-            public void responseSuccess(HotelOrderModel obj) {
-                // ActivityUtils.startActivityForSerializable(mContext, OrderPayActivity.class, data);
+            public void responseSuccess(OrderResultModel obj) {
+                orderData.setDj_return_id(obj.getORDERNUMBER());
+                ActivityUtils.startActivityForSerializable(HomeHotelDetailActivity.this, OrderPayActivity.class, orderData);
             }
 
             @Override
@@ -264,40 +267,42 @@ public class HomeHotelDetailActivity extends BaseActivity {
                 ActivityUtils.startActivityForData(HomeHotelDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.HOME_TYPE_HOTEL);
                 break;
             case R.id.ll_check_in:
-                PublicDialog.dateDialog(HomeHotelDetailActivity.this, new DateListener() {
+                PublicDialog.dateDialog(HomeHotelDetailActivity.this, "请选择日期", new DateListener() {
                     @Override
                     public void dateListener(String data) {
                         dataIn = data;
-                        try {
-                            days = MyCalendar.getDateSpace(dataIn, dataOut);
-                            tvTotle.setText("共" + MyCalendar.getDateSpace(dataIn, dataOut) + "天");
-                        } catch (Exception e) {
-
-                        }
-                        tvCheckIn.setText(data.substring(5));
+                        setDate(data, tvCheckIn);
                     }
                 });
-                //TODO
                 break;
             case R.id.ll_check_out:
-                PublicDialog.dateDialog(HomeHotelDetailActivity.this, new DateListener() {
+                PublicDialog.dateDialog(HomeHotelDetailActivity.this, "请选择日期", new DateListener() {
                     @Override
                     public void dateListener(String data) {
                         dataOut = data;
-                        try {
-                            tvTotle.setText("共" + MyCalendar.getDateSpace(dataIn, dataOut) + "天");
-
-                        } catch (Exception e) {
-
-                        }
-                        tvCheckOut.setText(data.substring(5));
+                        setDate(data, tvCheckOut);
                     }
                 });
-                //TODO
                 break;
             case R.id.im_back:
                 finish();
                 break;
         }
     }
+
+    private void setDate(String data, TextView tv) {
+        try {
+            days = MyCalendar.getDateSpace(dataIn, dataOut);
+            if (days < 0) {
+                UIUtils.showToast("日期选择有误请重新选择");
+                return;
+            } else {
+                tvTotle.setText("共" + days + "天");
+            }
+        } catch (Exception e) {
+
+        }
+        tv.setText(data.substring(5));
+    }
 }
+

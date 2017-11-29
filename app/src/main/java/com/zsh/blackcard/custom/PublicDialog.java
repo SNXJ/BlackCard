@@ -31,6 +31,8 @@ import com.zsh.blackcard.ui.live.LiveAnchorDetails2;
 import com.zsh.blackcard.ui.live.LiveOpenActivity;
 import com.zsh.blackcard.ui.live.VideoDetailsActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
+import com.zsh.blackcard.untils.MyCalendar;
+import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.datepickter.DPMode;
 import com.zsh.blackcard.view.datepickter.DatePicker;
 import com.zsh.blackcard.view.datepickter.DatePicker2;
@@ -188,20 +190,54 @@ public class PublicDialog {
      *
      * @param mContext
      */
-    public static void dateDialog(final Activity mContext, final DateListener listener) {
+    private static String dateTemp = null;
+
+    public static void dateDialog(final Activity mContext, String title, final DateListener listener) {
+
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.data_dialog, null);
+        TextView tv_sure = (TextView) view.findViewById(R.id.btn_myinfo_sure);
+        TextView tv_cancle = (TextView) view.findViewById(R.id.btn_myinfo_cancel);
+        TextView tv_title = (TextView) view.findViewById(R.id.tv_dialog_title);
+        tv_title.setText(title);
         final Dialog dialog = showDialogView(view, mContext);
         DatePicker2 picker = (DatePicker2) view.findViewById(R.id.my_datepicker2);
-        picker.setDate(2017, 12);
+        picker.setDate(MyCalendar.getNowYear(), MyCalendar.getNowMonth());
+
+        picker.setFestivalDisplay(false); //是否显示节日
+        picker.setTodayDisplay(false); //是否高亮显示今天
+        picker.setHolidayDisplay(false); //是否显示假期
+        picker.setDeferredDisplay(false); //是否显示补休
+
         picker.setMode(DPMode.SINGLE);
         picker.setOnDatePickedListener(new DatePicker.OnDatePickedListener() {
             @Override
             public void onDatePicked(String date) {
-                listener.dateListener(date);
+                if (MyCalendar.todayBefore(date)) {
+                    UIUtils.showToast("请选择正确的日期");
+                } else {
+                    listener.dateListener(date);
+                    dateTemp = date;
+                }
             }
         });
+        tv_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        tv_sure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dateTemp == null) {
+                    UIUtils.showToast("请选择日期");
+                } else {
+                    dialog.dismiss();
+                }
 
+            }
+        });
     }
 
 
