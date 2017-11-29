@@ -56,22 +56,28 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     private HomeBarAdapter barAdapter;
     private List<HomeKTVRecyclerModel.PdBean> ktvList = new ArrayList<>();
     private HomeKTVAdapter ktvAdapter;
-    private int type;
+    private String type;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_home_food_hotel);
-        type = getIntent().getIntExtra("data", 0);
+        type = getIntent().getStringExtra("data");
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        if (HomeTypeConstant.HOME_TYPE_FOOD == type) {
-            initFoodData();
-        } else if (HomeTypeConstant.HOME_TYPE_HOTEL == type) {
-            initHotelData();
-        } else if (HomeTypeConstant.HOME_TYPE_BAR == type) {
-            initBarData();
-        } else {
-            initKTVData();
+
+        switch (type) {
+            case HomeTypeConstant.MORE_TYPE_FOOD:
+                initFoodData();
+                break;
+            case HomeTypeConstant.MORE_TYPE_HOTEL:
+                initHotelData();
+                break;
+            case HomeTypeConstant.MORE_TYPE_BAR:
+                initBarData();
+                break;
+            case HomeTypeConstant.MORE_TYPE_KTV:
+                initKTVData();
+                break;
         }
     }
 
@@ -192,7 +198,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                         rbSort);
                 break;
             case R.id.rb_brand:
-                if (HomeTypeConstant.HOME_TYPE_FOOD == type) {
+                if (HomeTypeConstant.MORE_TYPE_FOOD.equals(type)) {
                     PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
                             rbBrand);
                 } else {
@@ -201,7 +207,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                 }
                 break;
             case R.id.rb_filter:
-                if (HomeTypeConstant.HOME_TYPE_FOOD == type) {
+                if (HomeTypeConstant.MORE_TYPE_FOOD.equals(type)) {
                     PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
                             rbFilter);
                 } else {

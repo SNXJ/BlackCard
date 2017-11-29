@@ -23,6 +23,7 @@ import com.zsh.blackcard.adapter.KTVDetailsiTAbAdapter;
 import com.zsh.blackcard.adapter.KTVDetailsitemAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
@@ -232,7 +233,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
         orderData.setDj_item_name(item.getKTVDETTITLE());
         orderData.setDj_item_money(item.getKTVDETPRICE() + "");
         orderData.setDj_item_id(item.getKTVDETAIL_ID());
-        PublicDialog.orderDialog(HomeKTVDetailActivity.this, orderData, listenter);
+        PublicDialog.orderDialog(HomeKTVDetailActivity.this, HomeTypeConstant.ORDER_TYPE_ROOM, orderData, listenter);
 
     }
 
@@ -310,7 +311,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.rl_comment:
-                ActivityUtils.startActivityForData(HomeKTVDetailActivity.this, CommentActivity.class, id, String.valueOf(score), 2);
+                ActivityUtils.startActivityForData(HomeKTVDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.MORE_TYPE_KTV);
 
                 break;
         }

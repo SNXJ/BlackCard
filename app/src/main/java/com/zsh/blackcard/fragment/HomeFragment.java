@@ -170,8 +170,10 @@ public class HomeFragment extends BaseFragment {
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             switch (position) {
                 case 0: //美食
+                    ActivityUtils.startActivityForData(getActivity(), HomeFoodHotelActivity.class, HomeTypeConstant.MORE_TYPE_FOOD);
+                    break;
                 case 1://酒店
-                    ActivityUtils.startActivityForIntData(getActivity(), HomeFoodHotelActivity.class, position);
+                    ActivityUtils.startActivityForData(getActivity(), HomeFoodHotelActivity.class, HomeTypeConstant.MORE_TYPE_HOTEL);
                     break;
                 //火车票
                 case 2:

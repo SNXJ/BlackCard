@@ -1,7 +1,5 @@
 package com.zsh.blackcard.ui.home;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,7 +50,7 @@ public class HomePublicDetailActivity extends BaseActivity {
         String data = getIntent().getStringExtra("data");
         String title = getIntent().getStringExtra("title");
 
-        if (data.equals(HomeTypeConstant.MORE_TYPE_GLOF)) {
+        if (data.equals(HomeTypeConstant.MORE_TYPE_GOLF)) {
             //加载高尔夫详情
             initDataGolf(title);
         } else if (data.equals(HomeTypeConstant.MORE_TYPE_HORSE)) {

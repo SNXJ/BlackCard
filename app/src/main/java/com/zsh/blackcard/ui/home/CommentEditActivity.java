@@ -47,13 +47,13 @@ public class CommentEditActivity extends BaseActivity {
     Map<String, String> map = new TreeMap<>();
     private float starNum;
     private String isShow;
-    private int type;
+    private String type;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.comment_edit_activity);
         id = getIntent().getStringExtra("data");
-        type = getIntent().getIntExtra("type", 0);
+        type = getIntent().getStringExtra("type");
         ButterKnife.bind(this);
         star.setStarChangeLister(new Star.OnStarChangeListener() {
             @Override
@@ -66,19 +66,19 @@ public class CommentEditActivity extends BaseActivity {
 
     private void submit() {
         switch (type) {
-            case HomeTypeConstant.HOME_TYPE_HOTEL:
+            case HomeTypeConstant.MORE_TYPE_HOTEL:
                 map.put("FKEY", DataManager.getMd5Str("SHOTELADDEVA"));
                 map.put("SORTHOTEL_ID", id);
                 break;
-            case HomeTypeConstant.HOME_TYPE_FOOD:
+            case HomeTypeConstant.MORE_TYPE_FOOD:
                 map.put("FKEY", DataManager.getMd5Str("SFOODADDEVA"));
                 map.put("SORTFOOD_ID", id);
                 break;
-            case HomeTypeConstant.HOME_TYPE_KTV:
+            case HomeTypeConstant.MORE_TYPE_KTV:
                 map.put("FKEY", DataManager.getMd5Str("SKTVADDEVA"));
                 map.put("SORTKTV_ID", id);
                 break;
-            case HomeTypeConstant.HOME_TYPE_BAR:
+            case HomeTypeConstant.MORE_TYPE_BAR:
                 map.put("FKEY", DataManager.getMd5Str("ADDBAREVA"));
                 map.put("SORTBAR_ID", id);
                 break;

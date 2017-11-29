@@ -81,7 +81,7 @@ public class ActivityUtils {
     }
 
     public static void startActivityForData(Activity activity, Class<?> cls,
-                                            String data, String title, int type) {
+                                            String data, String title, String type) {
         Intent intent = new Intent(activity, cls);
         intent.putExtra("data", data);
         intent.putExtra("title", title);

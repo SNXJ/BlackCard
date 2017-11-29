@@ -3,13 +3,13 @@
     xmlns:Star="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_hotel_item"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="@dimen/base75dp"
     android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/im_img"
-        android:layout_width="@dimen/base80dp"
-        android:layout_height="@dimen/base80dp"
+        android:layout_width="@dimen/base55dp"
+        android:layout_height="@dimen/base55dp"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="15dp"
         android:src="@mipmap/hotel_image_7" />
@@ -24,8 +24,8 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="如家—背景霍营地铁站店"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="豆捞坊（胜利店）"
             android:textColor="#929292"
             android:textSize="15sp" />
 
@@ -33,7 +33,7 @@
             android:id="@+id/tv_address"
             android:layout_width="@dimen/base150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/base5dp"
             android:singleLine="true"
             android:text="昌平区回龙观镇科星西路47号"
             android:textColor="#929292"
@@ -43,7 +43,7 @@
             android:id="@+id/ll_star"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/base15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base5dp"
             android:orientation="horizontal">
 
             <com.zsh.blackcard.view.Star
@@ -62,7 +62,7 @@
                 android:id="@+id/tv_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="@dimen/base5dp"
                 android:text="(120条评价)"
                 android:textColor="#929292"
                 android:textSize="11sp" />
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="@dimen/base25dp"
             android:text="23公里"
             android:textColor="#929292"
             android:textSize="11sp" />
@@ -89,18 +89,13 @@
             android:id="@+id/tv_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/base5dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="83dp"
             android:text="￥499"
             android:textColor="#929292"
             android:textSize="11sp" />
     </RelativeLayout>
-
-
-    <include
-        layout="@layout/hotel_sort_fragment"
-        android:visibility="gone"></include>
-
 
 </LinearLayout>

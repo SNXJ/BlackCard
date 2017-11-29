@@ -34,6 +34,6 @@ public class HomeHotelAdapter extends BaseQuickAdapter<HomeHotelModel.PdBean, Ba
         helper.setText(R.id.tv_name, null == item.getHOTELNAMES() ? "北京" : item.getHOTELNAMES());
         helper.setText(R.id.tv_address, item.getHOTELADDRESS());
         helper.setText(R.id.tv_comment, "(" + item.getHOTELEVACOUNT() + "条评价)");
-        Glide.with(context).load(item.getSHOWIMAGES()).into((ImageView) helper.getView(R.id.im_hotel));
+        Glide.with(context).load(item.getSHOWIMAGES()).into((ImageView) helper.getView(R.id.im_img));
     }
 }

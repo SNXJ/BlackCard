@@ -45,7 +45,7 @@ public class CommentActivity extends BaseActivity {
     RecyclerView recyclerView;
     private String id;
     private String score;
-    private int type;//0酒店 1美食 2
+    private String type;
     private CommentListAdapter adapter;
     private List<CommentModel.PdBean> dataList = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class CommentActivity extends BaseActivity {
         setContentView(R.layout.comment_activity);
         id = getIntent().getStringExtra("data");
         score = getIntent().getStringExtra("title");
-        type = getIntent().getIntExtra("type", 0);
+        type = getIntent().getStringExtra("type");
         ButterKnife.bind(this);
         star.setMark(Float.parseFloat(score));
         tvScore.setText(score);
