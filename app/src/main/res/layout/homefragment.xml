@@ -29,6 +29,7 @@
                 android:textSize="14sp" />
 
             <LinearLayout
+                android:id="@+id/home_search_linear"
                 android:layout_width="@dimen/base250dp"
                 android:layout_height="@dimen/base28dp"
                 android:layout_centerHorizontal="true"
@@ -46,7 +47,7 @@
                     android:layout_marginLeft="@dimen/base16dp"
                     android:src="@mipmap/home_nav_search" />
 
-                <EditText
+                <TextView
                     android:id="@+id/et_search"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_type_recycler"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base205dp"
+            android:layout_height="wrap_content"
             android:paddingBottom="@dimen/base14dp"
             android:paddingTop="@dimen/base14dp">
 
@@ -103,24 +104,24 @@
             </TextSwitcher>
 
         </LinearLayout>
-        
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_top_recycler"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base154dp">
 
         </android.support.v7.widget.RecyclerView>
-        
+
         <TextView
-            android:layout_marginLeft="@dimen/base15dp"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:textColor="@color/recharge_text"
-            android:text="荣耀服务"
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/base46dp" />
-        
+            android:layout_height="@dimen/base46dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:gravity="center"
+            android:text="荣耀服务"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_glory_service_recycler"
             android:layout_width="match_parent"
@@ -129,41 +130,40 @@
         </android.support.v7.widget.RecyclerView>
 
         <TextView
-            android:layout_marginLeft="@dimen/base15dp"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:textColor="@color/recharge_text"
-            android:text="汇聚玩趴"
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/base46dp" />
+            android:layout_height="@dimen/base46dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:gravity="center"
+            android:text="汇聚玩趴"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <ImageView
-            android:layout_marginLeft="@dimen/base15dp"
-            android:layout_marginRight="@dimen/base15dp"
-            android:src="@mipmap/home_image_8"
-            android:layout_gravity="center_horizontal"
             android:id="@+id/home_play_img"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base95dp">
+            android:layout_height="@dimen/base95dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp">
 
         </ImageView>
 
         <TextView
-            android:layout_marginLeft="@dimen/base15dp"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:textColor="@color/recharge_text"
-            android:text="荣耀杂志"
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/base46dp" />
+            android:layout_height="@dimen/base46dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:gravity="center"
+            android:text="荣耀杂志"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <android.support.v7.widget.RecyclerView
-            android:layout_marginBottom="@dimen/base36dp"
             android:id="@+id/home_glory_magazine_recycler"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base114dp">
+            android:layout_height="@dimen/base114dp"
+            android:layout_marginBottom="@dimen/base36dp">
 
         </android.support.v7.widget.RecyclerView>
 

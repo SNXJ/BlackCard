@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base114dp"
+    android:paddingBottom="@dimen/base20dp"
+    android:paddingLeft="@dimen/base15dp"
+    android:paddingRight="@dimen/base15dp"
+    android:paddingTop="@dimen/base20dp">
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/home_privilege_recycler_item_img"
+        android:layout_width="@dimen/base80dp"
+        android:layout_height="@dimen/base80dp" />
+
+    <TextView
+        android:id="@+id/home_privilege_recycler_item_name_tv"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base10dp"
+        android:layout_toRightOf="@+id/home_privilege_recycler_item_img"
+        android:textColor="@color/recharge_text" />
+
+    <TextView
+        android:id="@+id/home_privilege_recycler_item_address_tv"
+        android:layout_marginTop="@dimen/base17dp"
+        android:layout_below="@+id/home_privilege_recycler_item_name_tv"
+        android:textSize="11sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base10dp"
+        android:layout_toRightOf="@+id/home_privilege_recycler_item_img"
+        android:textColor="@color/recharge_text" />
+
+    <TextView
+        android:id="@+id/home_privilege_recycler_item_distance_tv"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/base17dp"
+        android:textSize="11sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base10dp"
+        android:layout_toRightOf="@+id/home_privilege_recycler_item_img"
+        android:textColor="@color/recharge_text" />
+
+</RelativeLayout>

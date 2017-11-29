@@ -1,14 +1,11 @@
 package com.zsh.blackcard.ui.home;
 
 
-import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -20,21 +17,29 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HotelDetailsitemAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.DateListener;
+import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
+import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.MyCalendar;
+import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -86,7 +91,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     @BindView(R.id.top_banner)
     Banner topBanner;
     private String id;
-
+    private Double score;
 
     final List<HoteldetailsItemModel> dataList = new ArrayList<>();
     private HotelDetailsitemAdapter adapter;
@@ -128,99 +133,72 @@ public class HomeHotelDetailActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                // PublicDialog.hotelOrderDialog(HomeHotelDetailActivity.this, dataList.get(position), hotelData);
-                hotelOrderDialog(dataList.get(position));
+                orderDialog(dataList.get(position));
             }
         });
     }
 
+    OrderDialogModel orderData = new OrderDialogModel();
 
-    public void hotelOrderDialog(final HoteldetailsItemModel.PdBean item) {
-        if (null == hotelData) {
-            return;
+    public void orderDialog(final HoteldetailsItemModel.PdBean item) {
+        orderData.setDj_top_name(hotelData.getHOTELNAMES());
+        orderData.setDj_score(String.valueOf(hotelData.getHOTELEVALUATE()));
+        orderData.setDj_fit(hotelData.getSHOPSERVFITNESS());
+        orderData.setDj_wifi(hotelData.getSHOPSERVWIFI());
+        orderData.setDj_swim(hotelData.getSHOPSERVSWIN());
+        orderData.setDj_pay(hotelData.getSHOPSERVPAY());
+        orderData.setDj_park(hotelData.getSHOPSERVPARK());
+        orderData.setDj_food(hotelData.getSHOPSERVFOOD());
+        orderData.setDj_item_img(item.getHOTELDETIMGS());
+        orderData.setDj_check_in(dataIn);
+        orderData.setDj_check_out(dataOut);
+        orderData.setDj_check_count(tvTotle.getText().toString());
+        orderData.setDj_item_date(dataIn + "入住," + dataOut + "离开，" + tvTotle.getText());
+        orderData.setDj_item_des(item.getHOTELDETBEDTYPE());
+        orderData.setDj_item_name(item.getHOTELDETNAME());
+        orderData.setDj_item_money(item.getHOTELDETPRICE() + "");
+        PublicDialog.orderDialog(HomeHotelDetailActivity.this,HomeTypeConstant.ORDER_TYPE_ROOM, orderData, listenter);
+
+    }
+
+    OrderDiaListenter listenter = new OrderDiaListenter() {
+        @Override
+        public void OrderDiaListenter(OrderDialogModel orderData) {
+            postOrder(orderData);
         }
-        View view = LayoutInflater.from(HomeHotelDetailActivity.this).inflate(
-                R.layout.hotel_order_pop, null);
-        final Dialog dialog = PublicDialog.showDialogView(view, HomeHotelDetailActivity.this);
-        Button bt_order = (Button) view.findViewById(R.id.bt_order);
+    };
 
-        TextView tv_score = (TextView) view.findViewById(R.id.tv_score);
-        TextView tv_name = (TextView) view.findViewById(R.id.tv_name);
-        LinearLayout ll_wifi = (LinearLayout) view.findViewById(R.id.ll_wifi);
-        LinearLayout ll_park = (LinearLayout) view.findViewById(R.id.ll_park);
-        LinearLayout ll_pay = (LinearLayout) view.findViewById(R.id.ll_pay);
-        LinearLayout ll_fit = (LinearLayout) view.findViewById(R.id.ll_fit);
-        LinearLayout ll_food = (LinearLayout) view.findViewById(R.id.ll_food);
-        LinearLayout ll_swim = (LinearLayout) view.findViewById(R.id.ll_swim);
-        ImageView im_dialog = (ImageView) view.findViewById(R.id.im_dialog);
-        ImageView im_reduce = (ImageView) view.findViewById(R.id.im_reduce);
-        ImageView im_plus = (ImageView) view.findViewById(R.id.im_plus);
-        final TextView tv_count = (TextView) view.findViewById(R.id.tv_count);
-        TextView tv_info = (TextView) view.findViewById(R.id.tv_info);
-        TextView tv_time = (TextView) view.findViewById(R.id.tv_time);
-        TextView tv_des = (TextView) view.findViewById(R.id.tv_des);
-        TextView tv_money = (TextView) view.findViewById(R.id.tv_money);
-        final EditText et_name = (EditText) view.findViewById(R.id.et_name);
-        final EditText et_tel_num = (EditText) view.findViewById(R.id.et_tel_num);
-        final EditText et_other = (EditText) view.findViewById(R.id.et_other);
+    private void postOrder(final OrderDialogModel orderData) {
+        Map<String, String> map = new TreeMap<>();
+        map.put("FKEY", DataManager.getMd5Str("SHIPHOTELORDER"));
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
+        map.put("ORDERUNAME", orderData.getDj_order_name());
+        map.put("ORDERPHONE", orderData.getDj_order_phone());
+        map.put("ORDERREMARK", orderData.getDj_order_other());
+        map.put("ORDERMONEY", orderData.getDj_item_money());
+        map.put("ORDERROOMNUM", orderData.getDj_order_num());
+        map.put("ORDERCHECKDATE", orderData.getDj_check_in());//入住
+        map.put("ORDERLEAVEDATE", orderData.getDj_check_out());//离开
+        map.put("ORDERDAYS", days + "");//天数
+        map.put("HOTELDETAIL_ID", orderData.getDj_item_name());//类型
 
-        showOrHint(hotelData.getSHOPSERVFOOD(), ll_food);
-        showOrHint(hotelData.getSHOPSERVFITNESS(), ll_fit);
-        showOrHint(hotelData.getSHOPSERVPARK(), ll_park);
-        showOrHint(hotelData.getSHOPSERVPAY(), ll_pay);
-        showOrHint(hotelData.getSHOPSERVSWIN(), ll_swim);
-        showOrHint(hotelData.getSHOPSERVWIFI(), ll_wifi);
-        tv_name.setText(hotelData.getHOTELNAMES());
-        tv_score.setText(String.valueOf(hotelData.getHOTELEVALUATE()));
-
-        tv_info.setText(item.getHOTELDETNAME());
-        //TODO 自己算
-        tv_time.setText(dataIn + "入住," + dataOut + "离开，" + tvTotle.getText());
-        tv_des.setText(item.getHOTELDETBEDTYPE());
-        tv_money.setText("￥" + item.getHOTELDETPRICE() + "");
-        item.setMyDES(dataIn + "入住," + dataOut + "离开，" + tvTotle.getText());
-
-        Glide.with(this).load(item.getHOTELDETIMGS()).into(im_dialog);
-
-        im_plus.setOnClickListener(new View.OnClickListener() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelOrder(map), new ResultListener<OrderResultModel>() {
             @Override
-            public void onClick(View v) {
-                int res = Integer.parseInt(tv_count.getText() + "");
-                if (res > 98) {
-                    return;
-                } else {
-                    tv_count.setText((res + 1) + "");
-                }
+            public void responseSuccess(OrderResultModel obj) {
+                orderData.setDj_return_id(obj.getORDERNUMBER());
+                ActivityUtils.startActivityForSerializable(HomeHotelDetailActivity.this, OrderPayActivity.class, orderData);
             }
-        });
-        im_reduce.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
-                int res = Integer.parseInt(tv_count.getText() + "");
-                if (res < 1) {
-                    return;
-                } else {
-                    tv_count.setText((res - 1) + "");
-                }
-            }
-        });
-        bt_order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != dialog) {
-                    dialog.dismiss();
-                }
-                tv_count.getText();
-                et_name.getText();
-                et_tel_num.getText();
-                et_other.getText();
-                ActivityUtils.startActivityForSerializable(HomeHotelDetailActivity.this, OrderPayActivity.class, item);
+            public void onCompleted() {
 
             }
         });
+
     }
 
     private void setData(HotelDetailModel.PdBean hotelData) {
+        score = hotelData.getHOTELEVALUATE();
         hotelName.setText(hotelData.getHOTELNAMES());
         tvScore.setText(String.valueOf(hotelData.getHOTELEVALUATE()));
         tvTel.setText(hotelData.getHOTELPHONE());
@@ -280,47 +258,51 @@ public class HomeHotelDetailActivity extends BaseActivity {
 
     private String dataIn = null;
     private String dataOut = null;
+    private int days;
 
     @OnClick({R.id.rl_comment, R.id.ll_check_out, R.id.ll_check_in, R.id.im_back})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_comment:
-                ActivityUtils.startActivityForData(HomeHotelDetailActivity.this, CommentActivity.class, id);
+                ActivityUtils.startActivityForData(HomeHotelDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.MORE_TYPE_HOTEL);
                 break;
             case R.id.ll_check_in:
-                PublicDialog.dateDialog(HomeHotelDetailActivity.this, new DateListener() {
+                PublicDialog.dateDialog(HomeHotelDetailActivity.this, "请选择日期", new DateListener() {
                     @Override
                     public void dateListener(String data) {
                         dataIn = data;
-                        try {
-                            tvTotle.setText("共" + MyCalendar.getDateSpace(dataIn, dataOut) + "天");
-                        } catch (Exception e) {
-
-                        }
-                        tvCheckIn.setText(data.substring(5));
+                        setDate(data, tvCheckIn);
                     }
                 });
-                //TODO
                 break;
             case R.id.ll_check_out:
-                PublicDialog.dateDialog(HomeHotelDetailActivity.this, new DateListener() {
+                PublicDialog.dateDialog(HomeHotelDetailActivity.this, "请选择日期", new DateListener() {
                     @Override
                     public void dateListener(String data) {
                         dataOut = data;
-                        try {
-                            tvTotle.setText("共" + MyCalendar.getDateSpace(dataIn, dataOut) + "天");
-
-                        } catch (Exception e) {
-
-                        }
-                        tvCheckOut.setText(data.substring(5));
+                        setDate(data, tvCheckOut);
                     }
                 });
-                //TODO
                 break;
             case R.id.im_back:
                 finish();
                 break;
         }
     }
+
+    private void setDate(String data, TextView tv) {
+        try {
+            days = MyCalendar.getDateSpace(dataIn, dataOut);
+            if (days < 0) {
+                UIUtils.showToast("日期选择有误请重新选择");
+                return;
+            } else {
+                tvTotle.setText("共" + days + "天");
+            }
+        } catch (Exception e) {
+
+        }
+        tv.setText(data.substring(5));
+    }
 }
+

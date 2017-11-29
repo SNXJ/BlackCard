@@ -43,6 +43,15 @@ public class HomePrivilegeModel {
         private String PRIVILEGENAME;
         private String PRIVILEGE_ID;
         private String PRIVILEGEIMGS;
+        private String PRIVILEGETYPE;//类型
+
+        public String getPRIVILEGETYPE() {
+            return PRIVILEGETYPE;
+        }
+
+        public void setPRIVILEGETYPE(String PRIVILEGETYPE) {
+            this.PRIVILEGETYPE = PRIVILEGETYPE;
+        }
 
         public String getPRIVILEGENAME() {
             return PRIVILEGENAME;

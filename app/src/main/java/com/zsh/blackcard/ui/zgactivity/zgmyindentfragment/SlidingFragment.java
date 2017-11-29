@@ -16,10 +16,12 @@ import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.fragment.ZgFragment;
 import com.zsh.blackcard.listener.ZGSlidingListener;
+import com.zsh.blackcard.ui.CollectionActivity;
 import com.zsh.blackcard.ui.ShoppingCarActivity;
 import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
 import com.zsh.blackcard.ui.zgactivity.GoodsCategoryActivity;
 import com.zsh.blackcard.ui.zgactivity.PersonalActivity;
+import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,7 +111,7 @@ public class SlidingFragment extends BaseFragment {
                 startActivity(new Intent(getActivity(), ShoppingCarActivity.class));
                 break;
             case 3://炫购
-                startActivity(new Intent(getActivity(), GoodsCategoryActivity.class));
+                ActivityUtils.startActivity(getActivity(), CollectionActivity.class);
                 break;
             case 4://私人定制
                 startActivity(new Intent(getActivity(), PersonalActivity.class));

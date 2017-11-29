@@ -15,6 +15,44 @@ import java.util.Date;
  * Description: 时间间隔
  */
 public class MyCalendar {
+
+    public static int getNowYear() {
+        Calendar now = Calendar.getInstance();
+        return now.get(Calendar.YEAR);
+    }
+
+    public static int getNowMonth() {
+        Calendar now = Calendar.getInstance();
+        return (now.get(Calendar.MONTH) + 1);
+
+    }
+
+    /**
+     * 是否是今天之前
+     *
+     * @param date
+     * @return
+     */
+    public static boolean todayBefore(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateNowStr = sdf.format(new Date());
+
+        int i = -1;
+        try {
+            i = getDateSpace(dateNowStr, date);
+        } catch (Exception e) {
+
+        }
+        LogUtils.i("++++++++iii++++++++++", "++++++++++iiiii+++++++++++" + i);
+        if (i < 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
     /**
      * 获取未来天数的  日期与对应的星期
      *
@@ -151,7 +189,7 @@ public class MyCalendar {
         //得到两个日期相差的天数
         int days = ((int) (caled.getTime().getTime() / 1000) - (int) (calst.getTime().getTime() / 1000)) / 3600 / 24;
         if (days < 0) {
-            return 0;
+            return -1;
         }
         return days;
     }

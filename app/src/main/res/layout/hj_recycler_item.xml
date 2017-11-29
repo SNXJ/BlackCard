@@ -4,9 +4,10 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:scaleType="fitXY"
         android:id="@+id/hj_recycler_item_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/base163dp" />
     
     <LinearLayout
         android:layout_centerInParent="true"

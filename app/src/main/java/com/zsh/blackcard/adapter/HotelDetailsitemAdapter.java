@@ -22,7 +22,7 @@ public class HotelDetailsitemAdapter extends BaseQuickAdapter<HoteldetailsItemMo
     private Context context;
 
     public HotelDetailsitemAdapter(Context context, @Nullable List<HoteldetailsItemModel.PdBean> data) {
-        super(R.layout.home_hotel_detail_item, data);
+        super(R.layout.home_hotel_food_detail_item, data);
         this.context = context;
     }
 
@@ -34,6 +34,6 @@ public class HotelDetailsitemAdapter extends BaseQuickAdapter<HoteldetailsItemMo
         //TODO
         // helper.setText(R.id.tv_vip, item.getHOTELDETBEDTYPE());
 
-        Glide.with(context).load(item.getHOTELDETIMGS()).into((ImageView) helper.getView(R.id.im_hotel));
+        Glide.with(context).load(item.getHOTELDETIMGS()).into((ImageView) helper.getView(R.id.im_img));
     }
 }

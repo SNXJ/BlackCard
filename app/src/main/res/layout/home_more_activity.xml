@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_black"
+    android:background="@mipmap/bj"
     android:orientation="vertical">
 
     <RelativeLayout style="@style/title_rl">
@@ -17,15 +17,12 @@
             android:text="黑卡特权" />
     </RelativeLayout>
 
-    <GridView
-        android:id="@+id/gv_more"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/home_more_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/base30dp"
-        android:background="@color/main_black"
-        android:horizontalSpacing="@dimen/base10dp"
-        android:numColumns="4"
-        android:scrollbars="none"
-        android:verticalSpacing="@dimen/base18dp"></GridView>
+        android:layout_marginTop="@dimen/base10dp">
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

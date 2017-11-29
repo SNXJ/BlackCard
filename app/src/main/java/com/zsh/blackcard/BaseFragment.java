@@ -3,15 +3,15 @@ package com.zsh.blackcard;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.StatusBarColorUntil;
-
-import butterknife.ButterKnife;
 
 
 /**
@@ -63,4 +63,10 @@ public abstract class BaseFragment extends Fragment {
      * 初始化view
      */
     public abstract View initView(LayoutInflater inflater);
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        MPermissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }

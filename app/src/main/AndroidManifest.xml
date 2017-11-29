@@ -20,9 +20,29 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    //即构科技
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
-        android:name="com.zsh.blackcard.BaseApplication"
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,7 +50,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan|stateHidden">
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,15 +77,13 @@
         <activity android:name=".ui.EatDrinkActivity" />
         <activity android:name=".ui.EatDrinkSetActivity" />
         <activity android:name=".ui.DetailsRequireActivity" />
-        <activity android:name=".ui.GolfActivity" />
         <activity android:name=".ui.home.HomeCruiseShipActivity" />
         <activity android:name=".ui.home.HomePlaneActivity" />
-        <activity android:name=".ui.home.HomeCarActivity" />
+        <activity android:name=".ui.home.HomeCarDetailActivity" />
         <activity android:name=".ui.home.HomeEquestrianActivity" />
         <activity android:name=".ui.BlackCurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
-        <activity android:name=".ui.home.HomeHotelActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.live.LiveActivity" />
         <activity android:name=".ui.home.HomeTrainActivity" />
@@ -127,7 +145,11 @@
         <activity android:name=".ui.home.HomeTopNewsDetailActivity" />
         <activity android:name=".ui.EatDrinkSetDetailActivity" />
         <activity android:name=".ui.OrderPayActivity" />
-        <activity android:name=".ui.ZgPersonalTailorDetailActivity"></activity>
+        <activity android:name=".ui.ZgPersonalTailorDetailActivity" />
+        <activity android:name=".ui.ZgSearchActivity" />
+        <activity android:name=".ui.home.HomeBarDetailActivity" />
+        <activity android:name=".ui.home.HomePublicRecyclerActivity" />
+        <activity android:name=".ui.home.HomePublicDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -8,10 +8,15 @@ import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.Md5Untils;
 import com.zsh.blackcard.untils.UIUtils;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -25,6 +30,7 @@ import rx.subscriptions.CompositeSubscription;
 public class DataManager {
     //http://192.168.1.108:8080/MVNFHM/apphomein/getrecommendlist?COMMEND
     public static String BASE_URL = "http://192.168.1.108:8080/ZSHINTER/";
+//    public static String BASE_URL = "http://192.168.1.134:8080/ZSHINTER/";
     public static String FH = ",fh,";
     private static Context context;
     private static DataManager instance;
@@ -44,7 +50,6 @@ public class DataManager {
 
     public static String getMd5Str(String fn) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
-        // sdf.format(new Date());
         return Md5Untils.md5(fn + sdf.format(new Date()) + FH);
     }
 
@@ -85,5 +90,66 @@ public class DataManager {
                     }
                 })));
     }
+
+    /**
+     * 初始化builder
+     *
+     * @return
+     */
+    public static MultipartBody.Builder initMultBuilder() {
+        MultipartBody.Builder builder = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM);//表单类型
+        return builder;
+    }
+
+    /**
+     * builde设置参数
+     *
+     * @param builder
+     * @param imgPath
+     * @param imgKey
+     * @return
+     */
+    public static MultipartBody.Builder getMultBuilder(MultipartBody.Builder builder, String imgPath, String imgKey) {
+        File file = new File(imgPath);//filePath 图片地址
+        RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        builder.addFormDataPart(imgKey, file.getName(), imageBody);
+        return builder;
+    }
+
+    /**
+     * Part
+     *
+     * @param builder
+     * @return
+     */
+    public static MultipartBody.Part getMultiPart(MultipartBody.Builder builder) {
+        MultipartBody.Part part = builder.build().part(0);
+        return part;
+    }
+
+    /**
+     * PartList
+     *
+     * @param builder
+     * @return
+     */
+    public static List<MultipartBody.Part> getMultiPartList(MultipartBody.Builder builder) {
+        List<MultipartBody.Part> parts = builder.build().parts();
+        return parts;
+    }
+
+//       public Observable<ResultModel> upLoadListIMG(String md5, String userId, List<String> pathList) {
+//        MultipartBody.Builder builder = new MultipartBody.Builder()
+//                .setType(MultipartBody.FORM);//表单类型
+//        //多张图片
+//        for (int i = 0; i < pathList.size(); i++) {
+//            File file = new File(pathList.get(i));//filePath 图片地址
+//            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//            builder.addFormDataPart("showfile", file.getName(), imageBody);//"showfile 后台接收图片流的参数名（每张应该不同）
+//        }
+//        List<MultipartBody.Part> parts = builder.build().parts();
+//           return retrofitService.uploadListIMG(md5, userId, parts);
+//      }
 
 }

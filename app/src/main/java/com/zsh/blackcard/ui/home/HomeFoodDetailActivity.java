@@ -1,6 +1,8 @@
 package com.zsh.blackcard.ui.home;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -9,17 +11,32 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.FoodDetailListAdapter;
+import com.zsh.blackcard.adapter.FoodDetailMoreListAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
+import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.FoodDetailModel;
+import com.zsh.blackcard.model.FoodDetailsListModel;
+import com.zsh.blackcard.model.FoodDetailsMoreListModel;
+import com.zsh.blackcard.model.OrderDialogModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,8 +79,15 @@ public class HomeFoodDetailActivity extends BaseActivity {
     ImageView imFoodNext;
     @BindView(R.id.rl_comment)
     RelativeLayout rlComment;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.more_recyclerView)
+    RecyclerView moreRecyclerView;
     private FoodDetailModel.PdBean foodData;
     private String id;
+    private String score;
+    private FoodDetailListAdapter adapter;
+    private FoodDetailMoreListAdapter moreAdapter;
 
     @Override
     protected void initUI() {
@@ -71,6 +95,8 @@ public class HomeFoodDetailActivity extends BaseActivity {
         id = getIntent().getStringExtra("data");
         ButterKnife.bind(this);
         initData();
+        initRV();
+        initMoreRV();
     }
 
     private void initData() {
@@ -88,10 +114,125 @@ public class HomeFoodDetailActivity extends BaseActivity {
         });
     }
 
+    private void initRV() {//TODO
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailList(DataManager.getMd5Str("HOTELDETAIL"), id), new ResultListener<FoodDetailsListModel>() {
+            @Override
+            public void responseSuccess(FoodDetailsListModel obj) {
+
+                List<FoodDetailsListModel.PdBean> dataList = obj.getPd();
+                setRVData(dataList);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void setRVData(final List<FoodDetailsListModel.PdBean> dataList) {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(llm);
+
+        adapter = new FoodDetailListAdapter(this, dataList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setNestedScrollingEnabled(false);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                //  orderDialog(dataList.get(position));
+            }
+        });
+    }
+
+    private void initMoreRV() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailMoreList(DataManager.getMd5Str("SORTFOODRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<FoodDetailsMoreListModel>() {
+            @Override
+            public void responseSuccess(FoodDetailsMoreListModel obj) {
+
+                List<FoodDetailsMoreListModel.PdBean> dataList = obj.getPd();
+                setMoreRVData(dataList);
+            }
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void setMoreRVData(final List<FoodDetailsMoreListModel.PdBean> dataList) {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(llm);
+
+        moreAdapter = new FoodDetailMoreListAdapter(this, dataList);
+        moreRecyclerView.setAdapter(moreAdapter);
+        moreRecyclerView.setNestedScrollingEnabled(false);
+
+    }
+
+    OrderDialogModel orderData = new OrderDialogModel();
+
+    public void orderDialog(final FoodDetailsListModel.PdBean item) {
+        orderData.setDj_top_name(foodData.getSHOPNAMES());
+        orderData.setDj_score(String.valueOf(foodData.getSHOPEVALUATE()));
+        orderData.setDj_fit(foodData.getSHOPSERVFITNESS());
+        orderData.setDj_wifi(foodData.getSHOPSERVWIFI());
+        orderData.setDj_swim(foodData.getSHOPSERVSWIN());
+        orderData.setDj_pay(foodData.getSHOPSERVPAY());
+        orderData.setDj_park(foodData.getSHOPSERVPARK());
+        orderData.setDj_food(foodData.getSHOPSERVFOOD());
+        orderData.setDj_item_img(item.getHOTELDETIMGS());
+//        orderData.setDj_check_in(dataIn);
+//        orderData.setDj_check_out(dataOut);
+//        orderData.setDj_check_count(tvTotle.getText().toString());
+//        orderData.setDj_item_date(dataIn + "入住," + dataOut + "离开，" + tvTotle.getText());
+        orderData.setDj_item_des(item.getHOTELDETBEDTYPE());
+        orderData.setDj_item_name(item.getHOTELDETNAME());
+        orderData.setDj_item_money(item.getHOTELDETPRICE() + "");
+        PublicDialog.orderDialog(HomeFoodDetailActivity.this, HomeTypeConstant.ORDER_TYPE_NUM, orderData, listenter);
+
+    }
+
+    OrderDiaListenter listenter = new OrderDiaListenter() {
+        @Override
+        public void OrderDiaListenter(OrderDialogModel orderData) {
+            postOrder(orderData);
+        }
+    };
+
+    private void postOrder(final OrderDialogModel orderData) {
+        Map<String, String> map = new TreeMap<>();
+        map.put("FKEY", DataManager.getMd5Str("SHIPHOTELORDER"));
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
+        map.put("ORDERUNAME", orderData.getDj_order_name());
+        map.put("ORDERPHONE", orderData.getDj_order_phone());
+        map.put("ORDERREMARK", orderData.getDj_order_other());
+        map.put("ORDERMONEY", orderData.getDj_item_money());
+        map.put("ORDERROOMNUM", orderData.getDj_order_num());
+        map.put("ORDERCHECKDATE", orderData.getDj_check_in());//入住
+        map.put("ORDERLEAVEDATE", orderData.getDj_check_out());//离开
+        // map.put("ORDERDAYS", days + "");//天数
+        map.put("HOTELDETAIL_ID", orderData.getDj_item_name());//类型
+
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelOrder(map), new ResultListener<OrderResultModel>() {
+            @Override
+            public void responseSuccess(OrderResultModel obj) {
+                orderData.setDj_return_id(obj.getORDERNUMBER());
+                ActivityUtils.startActivityForSerializable(HomeFoodDetailActivity.this, OrderPayActivity.class, orderData);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+    }
+
     //初始化banner轮播区
     private void initBanner() {
         topBanner.setImages(foodData.getSHOPDETAILSIMGS());
-        topBanner.setImageLoader(new HomeFoodDetailActivity.MyImageLoader());
+        topBanner.setImageLoader(new MyImageLoader());
         topBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         topBanner.isAutoPlay(false);
         topBanner.setIndicatorGravity(BannerConfig.RIGHT);
@@ -107,6 +248,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
     }
 
     private void setData(FoodDetailModel.PdBean foodData) {
+        score = String.valueOf(foodData.getSHOPEVALUATE());
         hotelName.setText(foodData.getSHOPNAMES());
         tvScore.setText(String.valueOf(foodData.getSHOPEVALUATE()));
         tvTel.setText(foodData.getSHOPPHONE());
@@ -131,17 +273,18 @@ public class HomeFoodDetailActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.im_back, R.id.rl_comment, R.id.btn_order})
+    // ActivityUtils.startActivityForSerializable(HomeFoodDetailActivity.this, OrderPayActivity.class, orderData);
+    @OnClick({R.id.im_back, R.id.rl_comment})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.im_back:
                 finish();
                 break;
-            case R.id.btn_order:
-                ActivityUtils.startActivityForSerializable(HomeFoodDetailActivity.this, OrderPayActivity.class, foodData);
-                break;
+
+
             case R.id.rl_comment:
-                ActivityUtils.startActivity(HomeFoodDetailActivity.this, CommentActivity.class);
+                //  ActivityUtils.startActivity(HomeFoodDetailActivity.this, CommentActivity.class);
+                ActivityUtils.startActivityForData(HomeFoodDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.MORE_TYPE_FOOD);
 
                 break;
         }

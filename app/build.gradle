@@ -11,6 +11,9 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
+        }
     }
     repositories {
         flatDir {
@@ -20,9 +23,9 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
-            zipAlignEnabled true
-            shrinkResources true
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -35,11 +38,14 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            jniLibs.srcDirs = ['zego_libs']
+
         }
     }
 }
 
 dependencies {
+    compile fileTree(dir: 'zego_libs', include: ['*.jar'])
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -83,4 +89,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.3.1'
     //添加第三方日期滚动选择器
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    //添加列表滑动删除
+    implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.2'
+    //添加popwindow弹窗
+    implementation 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
 }

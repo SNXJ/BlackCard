@@ -10,7 +10,7 @@
         android:layout_height="@dimen/base80dp"
         android:layout_marginLeft="@dimen/base5dp"
         android:layout_marginRight="@dimen/base15dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="fitXY" />
 
     <TextView
         android:layout_marginLeft="@dimen/base5dp"

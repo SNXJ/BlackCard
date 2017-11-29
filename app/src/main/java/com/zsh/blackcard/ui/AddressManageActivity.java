@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,8 +15,8 @@ import com.zsh.blackcard.adapter.AddressManageAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.AddressDelModel;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.UIUtils;
 
@@ -41,6 +42,7 @@ public class AddressManageActivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.btn_add)
     Button btnAdd;
+
     List<AddressManageModel.PdBean> dataList = new ArrayList<>();
     private AddressManageAdapter adapter;
 
@@ -69,7 +71,10 @@ public class AddressManageActivity extends BaseActivity {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                         switch (view.getId()) {
-                            case R.id.rb_set:
+                            case R.id.cb_set:
+
+                                setRbStatus(view, position);
+
                                 break;
                             case R.id.rb_edit:
                                 ActivityUtils.startActivityForSerializable(AddressManageActivity.this, AddressEditActivity.class, dataList.get(position));
@@ -91,10 +96,23 @@ public class AddressManageActivity extends BaseActivity {
         });
     }
 
+    private void setRbStatus(View view, int position) {
+
+        CheckBox cb = (CheckBox) view;
+
+//        if (cb.isChecked()) {
+//            cb.setChecked(false);
+//        } else {
+//            cb.setChecked(true);
+//        }
+        //TODO 修改实体类字段状态
+        adapter.notifyDataSetChanged();
+    }
+
     private void delData(String id, final int position) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).delAddress(DataManager.getMd5Str("SHIPADR"), id), new ResultListener<AddressDelModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).delAddress(DataManager.getMd5Str("SHIPADR"), id), new ResultListener<ResultModel>() {
             @Override
-            public void responseSuccess(AddressDelModel obj) {
+            public void responseSuccess(ResultModel obj) {
                 if ("01".equals(obj.getResult())) {
                     UIUtils.showToast("删除成功");
                     if (null != adapter) {

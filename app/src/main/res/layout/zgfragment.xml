@@ -24,6 +24,7 @@
                 android:src="@mipmap/buy_nav_mine" />
 
             <LinearLayout
+                android:id="@+id/zg_title_search_linear"
                 android:layout_width="230dp"
                 android:layout_height="28dp"
                 android:layout_centerHorizontal="true"
@@ -39,8 +40,8 @@
                     android:layout_marginLeft="16dp"
                     android:src="@mipmap/home_nav_search" />
 
-                <EditText
-                    android:id="@+id/et_search"
+                <TextView
+                    android:id="@+id/zg_title_search_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -48,7 +49,6 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="搜索"
-                    android:singleLine="true"
                     android:textColorHint="#8E8E93"
                     android:textSize="14sp" />
 

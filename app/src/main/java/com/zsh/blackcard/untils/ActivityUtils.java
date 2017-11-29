@@ -80,6 +80,15 @@ public class ActivityUtils {
         activity.startActivity(intent);
     }
 
+    public static void startActivityForData(Activity activity, Class<?> cls,
+                                            String data, String title, String type) {
+        Intent intent = new Intent(activity, cls);
+        intent.putExtra("data", data);
+        intent.putExtra("title", title);
+        intent.putExtra("type", type);
+        activity.startActivity(intent);
+    }
+
     /**
      * 启动Activity传String数据并接收返回结果 key:"data"
      *

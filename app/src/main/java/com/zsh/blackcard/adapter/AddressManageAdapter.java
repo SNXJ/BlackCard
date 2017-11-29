@@ -21,7 +21,7 @@ public class AddressManageAdapter extends BaseQuickAdapter<AddressManageModel.Pd
         helper.setText(R.id.tv_name, item.getCONSIGNEE());
         helper.setText(R.id.tv_tel, item.getADRPHONE());
         helper.setText(R.id.tv_address, item.getADDRESS());
-        helper.addOnClickListener(R.id.rb_set);
+        helper.addOnClickListener(R.id.cb_set);
         helper.addOnClickListener(R.id.rb_edit);
         helper.addOnClickListener(R.id.rb_del);
 

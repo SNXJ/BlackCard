@@ -1,5 +1,6 @@
 package com.zsh.blackcard.ui;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,6 +27,15 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
 
     @BindView(R.id.radio_btn_hj)
     RadioButton radio_btn_hj;
+    @BindView(R.id.radio_btn_home)
+    RadioButton radio_btn_home;
+    @BindView(R.id.radio_btn_zg)
+    RadioButton radio_btn_zg;
+    @BindView(R.id.radio_btn_my)
+    RadioButton radio_btn_my;
+
+    //默认页面编码
+    private int defaultPage = 0;
 
     @Override
     protected void initUI() {
@@ -56,26 +66,32 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
             case R.id.radio_btn_home:
                 if (isChecked) {
                     replaceFragment(frg_home);
+                    defaultPage = 0;
                 }
                 break;
             case R.id.radio_btn_zg:
                 if (isChecked) {
                     replaceFragment(frg_zg);
+                    defaultPage = 1;
                 }
                 break;
             case R.id.radio_btn_sb:
                 if (isChecked) {
-                    ActivityUtils.startActivity(this, SbActivity.class);
+                    Intent intent = new Intent(this, SbActivity.class);
+                    intent.putExtra("default", defaultPage);
+                    startActivityForResult(intent, 1);
                 }
                 break;
             case R.id.radio_btn_hj:
                 if (isChecked) {
                     replaceFragment(frg_hj);
+                    defaultPage = 3;
                 }
                 break;
             case R.id.radio_btn_my:
                 if (isChecked) {
                     replaceFragment(frg_my);
+                    defaultPage = 4;
                 }
                 break;
         }
@@ -95,5 +111,29 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
     @Override
     public void goIntent() {
         radio_btn_hj.setChecked(true);
+    }
+
+    /**
+     * 默认从尚播界面回来时，自动选择上个页面
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1 && requestCode == 1) {
+            defaultPage = data.getIntExtra("default", 0);
+            if (defaultPage == 0) {
+                radio_btn_home.setChecked(true);
+            } else if (defaultPage == 1) {
+                radio_btn_zg.setChecked(true);
+            } else if (defaultPage == 3) {
+                radio_btn_hj.setChecked(true);
+            } else if (defaultPage == 4) {
+                radio_btn_my.setChecked(true);
+            }
+        }
     }
 }

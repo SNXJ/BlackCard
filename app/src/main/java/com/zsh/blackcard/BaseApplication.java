@@ -12,7 +12,7 @@ import com.zsh.blackcard.untils.SharedPreferencesUtils;
  * @Describe *
  */
 public class BaseApplication extends Application {
-    public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";
+    public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp
 
     /* 获取主线程的上下文对象 */
     private static BaseApplication context;

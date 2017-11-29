@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingBottom="7dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="7dp">
+
+    <TextView
+        android:id="@+id/zg_my_order_popWindow_item_tv"
+        android:layout_width="@dimen/base100dp"
+        android:layout_height="@dimen/base30dp"
+        android:gravity="center"
+        android:textColor="#FF929292"
+        android:textSize="15sp" />
+
+</RelativeLayout>

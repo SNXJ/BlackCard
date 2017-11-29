@@ -10,14 +10,19 @@ import android.widget.RadioButton;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.HomeBarAdapter;
 import com.zsh.blackcard.adapter.HomeFoodAdapter;
 import com.zsh.blackcard.adapter.HomeHotelAdapter;
+import com.zsh.blackcard.adapter.HomeKTVAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
+import com.zsh.blackcard.model.HomeKTVRecyclerModel;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -46,21 +51,86 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     private List<HomeFoodModel.PdBean> foodList = new ArrayList<>();
     private HomeFoodAdapter foodAdapter;
     private List<HomeHotelModel.PdBean> hotelList = new ArrayList<>();
+    private List<HomeBarModel.PdBean> barList = new ArrayList<>();
     private HomeHotelAdapter hotelAdapter;
-
-    private int type;
+    private HomeBarAdapter barAdapter;
+    private List<HomeKTVRecyclerModel.PdBean> ktvList = new ArrayList<>();
+    private HomeKTVAdapter ktvAdapter;
+    private String type;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_home_food_hotel);
-        type = getIntent().getIntExtra("data", 0);
+        type = getIntent().getStringExtra("data");
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        if (0 == type) {
-            initFoodData();
-        } else {
-            initHotelData();
+
+        switch (type) {
+            case HomeTypeConstant.MORE_TYPE_FOOD:
+                initFoodData();
+                break;
+            case HomeTypeConstant.MORE_TYPE_HOTEL:
+                initHotelData();
+                break;
+            case HomeTypeConstant.MORE_TYPE_BAR:
+                initBarData();
+                break;
+            case HomeTypeConstant.MORE_TYPE_KTV:
+                initKTVData();
+                break;
         }
+    }
+
+    private void initKTVData() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeKTVRecycler(DataManager.getMd5Str("SORTKTV"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeKTVRecyclerModel>() {
+            @Override
+            public void responseSuccess(HomeKTVRecyclerModel obj) {
+                ktvList = obj.getPd();
+                if (null != ktvAdapter) {
+                    ktvAdapter.notifyDataSetChanged();
+                } else {
+                    ktvAdapter = new HomeKTVAdapter(ktvList, HomeFoodHotelActivity.this);
+                    recyclerView.setAdapter(ktvAdapter);
+                }
+                ktvAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeKTVDetailActivity.class, ktvList.get(position).getSORTKTV_ID());
+                    }
+                });
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void initBarData() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeBarList(DataManager.getMd5Str("SORTBAR")), new ResultListener<HomeBarModel>() {
+            @Override
+            public void responseSuccess(HomeBarModel obj) {
+                barList = obj.getPd();
+                if (null != barAdapter) {
+                    barAdapter.notifyDataSetChanged();
+                } else {
+                    barAdapter = new HomeBarAdapter(barList, HomeFoodHotelActivity.this);
+                    recyclerView.setAdapter(barAdapter);
+                }
+                barAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeBarDetailActivity.class, barList.get(position).getSORTBAR_ID());
+                    }
+                });
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     private void initHotelData() {
@@ -128,7 +198,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                         rbSort);
                 break;
             case R.id.rb_brand:
-                if (0 == type) {
+                if (HomeTypeConstant.MORE_TYPE_FOOD.equals(type)) {
                     PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
                             rbBrand);
                 } else {
@@ -137,7 +207,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                 }
                 break;
             case R.id.rb_filter:
-                if (0 == type) {
+                if (HomeTypeConstant.MORE_TYPE_FOOD.equals(type)) {
                     PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
                             rbFilter);
                 } else {
@@ -148,14 +218,4 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         }
     }
 
-
-//    酒店
-//    排序：推荐。距离由近到远。评分由高到低 。价格由高到低。价格由低到高
-//    品牌：全部品牌。如家。7天。汉庭。锦江之星。
-//    筛选：经济型酒店。高端酒店。主题酒店。度假酒店。公寓型酒店。客栈。青年旅社
-//
-//            美食
-//    排序：推荐。距离由近到远。评分由高到低 。价格由高到低。价格由低到高
-//    品牌：全聚德。海底捞。眉州小吃。呷浦呷哺。肯德基。必胜客//foodbrand
-//    筛选：甜点饮品。火锅。自助餐。小吃快餐。日韩料理。西餐。烧烤烤肉。素食
 }
