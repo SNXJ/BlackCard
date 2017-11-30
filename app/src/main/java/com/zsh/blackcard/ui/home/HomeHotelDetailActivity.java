@@ -19,6 +19,7 @@ import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.HotelDetailMoreListAdapter;
 import com.zsh.blackcard.adapter.HotelDetailsitemAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
@@ -28,9 +29,10 @@ import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HotelDetailModel;
-import com.zsh.blackcard.model.OrderResultModel;
+import com.zsh.blackcard.model.HotelDetailsMoreListModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.OrderDialogModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.MyCalendar;
@@ -90,8 +92,13 @@ public class HomeHotelDetailActivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.top_banner)
     Banner topBanner;
+    @BindView(R.id.tv_search_more)
+    TextView tvSearchMore;
+    @BindView(R.id.more_recyclerView)
+    RecyclerView moreRecyclerView;
     private String id;
     private Double score;
+    private HotelDetailMoreListAdapter moreAdapter;
 
     final List<HoteldetailsItemModel> dataList = new ArrayList<>();
     private HotelDetailsitemAdapter adapter;
@@ -104,6 +111,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
         id = getIntent().getStringExtra("data");
         initData();
         initRV();
+        initMoreRV();
     }
 
     private void initRV() {
@@ -138,6 +146,40 @@ public class HomeHotelDetailActivity extends BaseActivity {
         });
     }
 
+    private void initMoreRV() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelDetailMoreList(DataManager.getMd5Str("SORTHOTELRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<HotelDetailsMoreListModel>() {
+            @Override
+            public void responseSuccess(HotelDetailsMoreListModel obj) {
+                List<HotelDetailsMoreListModel.PdBean> dataList = obj.getPd();
+                setMoreRVData(dataList);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void setMoreRVData(final List<HotelDetailsMoreListModel.PdBean> dataList) {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        moreRecyclerView.setLayoutManager(llm);
+        if (null == moreAdapter) {
+            moreAdapter = new HotelDetailMoreListAdapter(this, dataList);
+            moreRecyclerView.setAdapter(moreAdapter);
+        } else {
+            moreAdapter.notifyDataSetChanged();
+        }
+        moreRecyclerView.setNestedScrollingEnabled(false);
+        moreAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityUtils.startActivityForData(HomeHotelDetailActivity.this, HomeHotelDetailActivity.class, dataList.get(position).getSORTHOTEL_ID());
+                finish();
+            }
+        });
+    }
+
     OrderDialogModel orderData = new OrderDialogModel();
 
     public void orderDialog(final HoteldetailsItemModel.PdBean item) {
@@ -157,7 +199,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
         orderData.setDj_item_des(item.getHOTELDETBEDTYPE());
         orderData.setDj_item_name(item.getHOTELDETNAME());
         orderData.setDj_item_money(item.getHOTELDETPRICE() + "");
-        PublicDialog.orderDialog(HomeHotelDetailActivity.this,HomeTypeConstant.ORDER_TYPE_ROOM, orderData, listenter);
+        PublicDialog.orderDialog(HomeHotelDetailActivity.this, HomeTypeConstant.ORDER_TYPE_ROOM, orderData, listenter);
 
     }
 
@@ -225,6 +267,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
         topBanner.start();
     }
 
+
     //banner加载图片类
     private class MyImageLoader extends ImageLoader {
         @Override
@@ -260,7 +303,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     private String dataOut = null;
     private int days;
 
-    @OnClick({R.id.rl_comment, R.id.ll_check_out, R.id.ll_check_in, R.id.im_back})
+    @OnClick({R.id.rl_comment, R.id.ll_check_out, R.id.ll_check_in, R.id.im_back, R.id.tv_search_more})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_comment:
@@ -286,6 +329,9 @@ public class HomeHotelDetailActivity extends BaseActivity {
                 break;
             case R.id.im_back:
                 finish();
+                break;
+            case R.id.tv_search_more:
+                initMoreRV();
                 break;
         }
     }

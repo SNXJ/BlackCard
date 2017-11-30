@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
-
+//apply from: 'tinker-support.gradle'
 android {
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
@@ -15,6 +15,7 @@ android {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
         }
     }
+
     repositories {
         flatDir {
             dirs 'libs'
@@ -93,4 +94,12 @@ dependencies {
     implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.2'
     //添加popwindow弹窗
     implementation 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
+    //Bugly
+    //compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //
+    compile "com.android.support:multidex:1.0.1" // 多dex配置
+
+
 }

@@ -1,8 +1,12 @@
 package com.zsh.blackcard;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Handler;
+import android.support.multidex.MultiDex;
 
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.beta.Beta;
 import com.zsh.blackcard.untils.PackageUtils;
 import com.zsh.blackcard.untils.SharedPreferencesUtils;
 
@@ -13,7 +17,7 @@ import com.zsh.blackcard.untils.SharedPreferencesUtils;
  */
 public class BaseApplication extends Application {
     public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp
-
+    private String BUGLY_ID = "815c4ef8fb";
     /* 获取主线程的上下文对象 */
     private static BaseApplication context;
     /* 获取主线程ID */
@@ -59,7 +63,9 @@ public class BaseApplication extends Application {
         if (versionCode != getVersionCode()) {
             setFristStart(true);
         }
-
+        //  CrashReport.initCrashReport(getApplicationContext(), BUGLY_ID, true);//测试True 发布false
+        Bugly.init(getApplicationContext(), BUGLY_ID, false);//是否开启debug模式，true表示打开debug模式，false表示关闭调试模式
+        Beta.autoInit = true;//自动初始化
 
     }
 
@@ -120,5 +126,13 @@ public class BaseApplication extends Application {
         SharedPreferencesUtils.clearObjectData(data);
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        // you must install multiDex whatever tinker is installed!
+        MultiDex.install(base);
+        // 安装tinker
+        Beta.installTinker();
+    }
 
 }

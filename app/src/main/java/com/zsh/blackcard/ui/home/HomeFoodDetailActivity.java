@@ -83,6 +83,8 @@ public class HomeFoodDetailActivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.more_recyclerView)
     RecyclerView moreRecyclerView;
+    @BindView(R.id.tv_search_more)
+    TextView tvSearchMore;
     private FoodDetailModel.PdBean foodData;
     private String id;
     private String score;
@@ -115,7 +117,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
     }
 
     private void initRV() {//TODO
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailList(DataManager.getMd5Str("HOTELDETAIL"), id), new ResultListener<FoodDetailsListModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailList(DataManager.getMd5Str(""), id), new ResultListener<FoodDetailsListModel>() {
             @Override
             public void responseSuccess(FoodDetailsListModel obj) {
 
@@ -149,10 +151,10 @@ public class HomeFoodDetailActivity extends BaseActivity {
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailMoreList(DataManager.getMd5Str("SORTFOODRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<FoodDetailsMoreListModel>() {
             @Override
             public void responseSuccess(FoodDetailsMoreListModel obj) {
-
                 List<FoodDetailsMoreListModel.PdBean> dataList = obj.getPd();
                 setMoreRVData(dataList);
             }
+
             @Override
             public void onCompleted() {
 
@@ -162,12 +164,21 @@ public class HomeFoodDetailActivity extends BaseActivity {
 
     private void setMoreRVData(final List<FoodDetailsMoreListModel.PdBean> dataList) {
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(llm);
-
-        moreAdapter = new FoodDetailMoreListAdapter(this, dataList);
-        moreRecyclerView.setAdapter(moreAdapter);
+        moreRecyclerView.setLayoutManager(llm);
+        if (null == moreAdapter) {
+            moreAdapter = new FoodDetailMoreListAdapter(this, dataList);
+            moreRecyclerView.setAdapter(moreAdapter);
+        } else {
+            moreAdapter.notifyDataSetChanged();
+        }
         moreRecyclerView.setNestedScrollingEnabled(false);
-
+        moreAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityUtils.startActivityForData(HomeFoodDetailActivity.this, HomeFoodDetailActivity.class, dataList.get(position).getSORTFOOD_ID());
+              //  finish();
+            }
+        });
     }
 
     OrderDialogModel orderData = new OrderDialogModel();
@@ -239,6 +250,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
         topBanner.start();
     }
 
+
     //banner加载图片类
     private class MyImageLoader extends ImageLoader {
         @Override
@@ -274,14 +286,15 @@ public class HomeFoodDetailActivity extends BaseActivity {
     }
 
     // ActivityUtils.startActivityForSerializable(HomeFoodDetailActivity.this, OrderPayActivity.class, orderData);
-    @OnClick({R.id.im_back, R.id.rl_comment})
+    @OnClick({R.id.im_back, R.id.rl_comment, R.id.tv_search_more})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.im_back:
                 finish();
                 break;
-
-
+            case R.id.tv_search_more:
+                initMoreRV();
+                break;
             case R.id.rl_comment:
                 //  ActivityUtils.startActivity(HomeFoodDetailActivity.this, CommentActivity.class);
                 ActivityUtils.startActivityForData(HomeFoodDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.MORE_TYPE_FOOD);

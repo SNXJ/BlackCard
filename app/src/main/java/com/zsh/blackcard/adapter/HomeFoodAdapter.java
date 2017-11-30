@@ -29,7 +29,7 @@ public class HomeFoodAdapter extends BaseQuickAdapter<HomeFoodModel.PdBean, Base
     @Override
     protected void convert(BaseViewHolder helper, HomeFoodModel.PdBean item) {
         Star star = helper.getView(R.id.star);
-        star.setMark((float) item.getSHOPEVACOUNT());
+        star.setMark((float) item.getSHOPEVALUATE());
         helper.setText(R.id.tv_money, "￥" + item.getSHOPPRICE() + "/位");
         helper.setText(R.id.tv_address, item.getSHOPADDRESS());
         helper.setText(R.id.tv_comment, "(" + item.getSHOPEVACOUNT() + "条评价)");

@@ -1,20 +1,8 @@
 package com.zsh.blackcard.api;
 
-import com.zsh.blackcard.model.HomeCopterDetailModel;
-import com.zsh.blackcard.model.HomeCarDetailModel;
-import com.zsh.blackcard.model.HomeCarRecyclerModel;
-import com.zsh.blackcard.model.HomeGloryServerModel;
-import com.zsh.blackcard.model.HomeGolfDetailModel;
-import com.zsh.blackcard.model.HomeGolfRecyclerModel;
-import com.zsh.blackcard.model.HomeHorseDetailModel;
-import com.zsh.blackcard.model.HomeHorseRecyclerModel;
-import com.zsh.blackcard.model.HomeKTVRecyclerModel;
-import com.zsh.blackcard.model.HomePlayModel;
-import com.zsh.blackcard.model.HomeYachtDetailModel;
-import com.zsh.blackcard.model.HomeYachtRecyclerModel;
-import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.BarDetailModel;
+import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
@@ -29,20 +17,36 @@ import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
+import com.zsh.blackcard.model.HomeCarDetailModel;
+import com.zsh.blackcard.model.HomeCarRecyclerModel;
+import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMusicModel;
+import com.zsh.blackcard.model.HomeGloryServerModel;
+import com.zsh.blackcard.model.HomeGolfDetailModel;
+import com.zsh.blackcard.model.HomeGolfRecyclerModel;
+import com.zsh.blackcard.model.HomeHorseDetailModel;
+import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
+import com.zsh.blackcard.model.HomeKTVRecyclerModel;
+import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.model.HomeYachtDetailModel;
+import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HotelDetailsMoreListModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
+import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.RegisterModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
@@ -169,18 +173,18 @@ public interface RetrofitService {
 
     //酒店详情更多列表
     @FormUrlEncoded
-    @POST("appsfoodin/sfoodlistrand.do?")
-    Observable<FoodDetailsMoreListModel> postHotelDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+    @POST("appshotelin/shotellistrand.do?")
+    Observable<HotelDetailsMoreListModel> postHotelDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
 
     //KTV详情更多列表
     @FormUrlEncoded
     @POST("appsktvin/sktvlistrand.do?")
-    Observable<FoodDetailsMoreListModel> postKTVDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+    Observable<KTVDetailsMoreListModel> postKTVDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
 
     //酒吧详情更多列表
     @FormUrlEncoded
     @POST("appsbarin/sbarlistrand.do?")
-    Observable<FoodDetailsMoreListModel> postBarDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+    Observable<BarDetailsMoreListModel> postBarDetailMoreList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
 
     //KTV详情
     @FormUrlEncoded
@@ -393,6 +397,11 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appserverin/server.do?")
     Observable<HomeGloryServerModel> postHomeGloryServer(@Field("FKEY") String md5);
+
+    //首页荣耀音乐
+    @FormUrlEncoded
+    @POST("appmusicin/musicreclist.do?")
+    Observable<HomeGloryMusicModel> postHomeGloryMusic(@Field("FKEY") String md5);
 
     //首页KTV列表接口
     @FormUrlEncoded

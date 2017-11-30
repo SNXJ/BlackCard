@@ -29,9 +29,11 @@ public abstract class BaseFragment extends Fragment {
         super();
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         context = getActivity();
         StatusBarColorUntil.setStatusBarColor(getActivity());
         baseApplication = BaseApplication.getApplication();
