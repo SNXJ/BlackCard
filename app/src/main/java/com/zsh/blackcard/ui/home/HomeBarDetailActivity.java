@@ -2,6 +2,7 @@ package com.zsh.blackcard.ui.home;
 
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
+import com.zsh.blackcard.adapter.BarDetailMoreListAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
@@ -26,13 +28,13 @@ import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.BarDetailModel;
+import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
@@ -81,21 +83,27 @@ public class HomeBarDetailActivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.top_banner)
     Banner topBanner;
+    @BindView(R.id.tv_search_more)
+    TextView tvSearchMore;
+    @BindView(R.id.more_recyclerView)
+    RecyclerView moreRecyclerView;
     private String id;
     private Double score;
 
     final List<HoteldetailsItemModel> dataList = new ArrayList<>();
     private BarDetailsitemAdapter adapter;
+    private BarDetailMoreListAdapter moreAdapter;
     private BarDetailModel.PdBean barData;
+
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_home_bar_detail);
         ButterKnife.bind(this);
         id = getIntent().getStringExtra("data");
-        LogUtils.i("++++++++++++++++", "+++++++++++++++++=" + id);
         initData();
         initRV();
+        initMoreRV();
     }
 
     private void initRV() {
@@ -130,6 +138,39 @@ public class HomeBarDetailActivity extends BaseActivity {
         });
     }
 
+    private void initMoreRV() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postBarDetailMoreList(DataManager.getMd5Str("SORTBARRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<BarDetailsMoreListModel>() {
+            @Override
+            public void responseSuccess(BarDetailsMoreListModel obj) {
+                List<BarDetailsMoreListModel.PdBean> dataList = obj.getPd();
+                setMoreRVData(dataList);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void setMoreRVData(final List<BarDetailsMoreListModel.PdBean> dataList) {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        moreRecyclerView.setLayoutManager(llm);
+        if (null == moreAdapter) {
+            moreAdapter = new BarDetailMoreListAdapter(this, dataList);
+            moreRecyclerView.setAdapter(moreAdapter);
+        } else {
+            moreAdapter.notifyDataSetChanged();
+        }
+        moreRecyclerView.setNestedScrollingEnabled(false);
+        moreAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityUtils.startActivityForData(HomeBarDetailActivity.this, HomeBarDetailActivity.class, dataList.get(position).getSORTBAR_ID());
+            }
+        });
+    }
+
     OrderDialogModel orderData = new OrderDialogModel();
 
     public void orderDialog(final BardetailsItemModel.PdBean item) {
@@ -150,7 +191,7 @@ public class HomeBarDetailActivity extends BaseActivity {
         orderData.setDj_item_name(item.getBARDETTITLE());
         orderData.setDj_item_money(item.getBARDETPRICE() + "");
         orderData.setDj_item_id(item.getBARDETAIL_ID());
-        PublicDialog.orderDialog(HomeBarDetailActivity.this, HomeTypeConstant.ORDER_TYPE_NUM,orderData, listenter);
+        PublicDialog.orderDialog(HomeBarDetailActivity.this, HomeTypeConstant.ORDER_TYPE_NUM, orderData, listenter);
 
     }
 
@@ -220,6 +261,17 @@ public class HomeBarDetailActivity extends BaseActivity {
         topBanner.isAutoPlay(false);
         topBanner.setIndicatorGravity(BannerConfig.RIGHT);
         topBanner.start();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.tv_search_more)
+    public void onClick() {
     }
 
     //banner加载图片类

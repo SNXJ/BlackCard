@@ -29,7 +29,7 @@ public class HomeHotelAdapter extends BaseQuickAdapter<HomeHotelModel.PdBean, Ba
     @Override
     protected void convert(BaseViewHolder helper, HomeHotelModel.PdBean item) {
         Star star = helper.getView(R.id.star);
-        star.setMark((float) item.getHOTELEVACOUNT());
+        star.setMark((float) item.getHOTELEVALUATE());
         helper.setText(R.id.tv_money, "￥" + item.getHOTELPRICE());
         helper.setText(R.id.tv_name, null == item.getHOTELNAMES() ? "北京" : item.getHOTELNAMES());
         helper.setText(R.id.tv_address, item.getHOTELADDRESS());

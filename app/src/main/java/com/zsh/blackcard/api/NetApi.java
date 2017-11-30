@@ -6,6 +6,7 @@ import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.BarDetailModel;
+import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
@@ -24,6 +25,7 @@ import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeGolfDetailModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
@@ -41,7 +43,9 @@ import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HomeYachtDetailModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HotelDetailsMoreListModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
+import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderResultModel;
@@ -322,7 +326,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsMoreListModel> postHotelDetailMoreList(String md5, String id) {
+    public Observable<HotelDetailsMoreListModel> postHotelDetailMoreList(String md5, String id) {
         return retrofitService.postHotelDetailMoreList(md5, id);
     }
 
@@ -333,7 +337,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsMoreListModel> postKTVDetailMoreList(String md5, String id) {
+    public Observable<KTVDetailsMoreListModel> postKTVDetailMoreList(String md5, String id) {
         return retrofitService.postKTVDetailMoreList(md5, id);
     }
 
@@ -344,7 +348,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsMoreListModel> postBarDetailMoreList(String md5, String id) {
+    public Observable<BarDetailsMoreListModel> postBarDetailMoreList(String md5, String id) {
         return retrofitService.postBarDetailMoreList(md5, id);
     }
 
@@ -672,6 +676,16 @@ public class NetApi {
      */
     public Observable<HomeGloryServerModel> postHomeGloryServer(String md5) {
         return retrofitService.postHomeGloryServer(md5);
+    }
+
+    /**
+     * 首页荣耀服务列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomeGloryMusicModel> postHomeGloryMusic(String md5) {
+        return retrofitService.postHomeGloryMusic(md5);
     }
 
     /**

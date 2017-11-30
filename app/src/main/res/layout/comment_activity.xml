@@ -26,7 +26,8 @@
             android:layout_marginRight="@dimen/base20dp"
             android:text="去评价"
             android:textColor="@color/ff92_text"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="invisible" />
     </RelativeLayout>
 
     <RelativeLayout

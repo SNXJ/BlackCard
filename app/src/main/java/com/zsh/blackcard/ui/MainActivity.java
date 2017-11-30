@@ -12,9 +12,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.fragment.HjFragment;
 import com.zsh.blackcard.fragment.HomeFragment;
 import com.zsh.blackcard.fragment.MyFragment;
-import com.zsh.blackcard.fragment.ZgFragment;
 import com.zsh.blackcard.ui.zgactivity.zgmyindentfragment.SlidingFragment;
-import com.zsh.blackcard.untils.ActivityUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +42,8 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
         initData();
     }
 
+    FragmentTransaction fragmentTransaction;
+
     private void initData() {
         //获取碎片管理器
         fragmentManager = getSupportFragmentManager();
@@ -52,11 +52,13 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
         frg_hj = new HjFragment();
         frg_my = new MyFragment();
 
-        //默认加载第一个碎片页面
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // 默认加载第一个碎片页面
+        fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.main_container, frg_home);
         fragmentTransaction.commit();
         frg_replace = frg_home;
+
     }
 
     //定制号码选择控制
@@ -99,12 +101,14 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
 
     //封装隐藏和显示布局方法
     private void replaceFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction
+                fragmentTransaction = fragmentManager.beginTransaction();
         if (fragment.isAdded()) {
             fragmentTransaction.hide(frg_replace).show(fragment).commit();
         } else {
             fragmentTransaction.hide(frg_replace).add(R.id.main_container, fragment).commit();
         }
+
         frg_replace = fragment;
     }
 

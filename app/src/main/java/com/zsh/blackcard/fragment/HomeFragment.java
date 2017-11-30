@@ -20,9 +20,11 @@ import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.tencent.bugly.beta.Beta;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeGloryMagazineAdapter;
+import com.zsh.blackcard.adapter.HomeGloryMusicAdapter;
 import com.zsh.blackcard.adapter.HomeGloryServiceAdapter;
 import com.zsh.blackcard.adapter.HomeTopAdapter;
 import com.zsh.blackcard.adapter.HomeTypeAdapter;
@@ -31,12 +33,12 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
+import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeNewModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
-import com.zsh.blackcard.ui.WelcomeActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
@@ -66,6 +68,8 @@ import butterknife.OnClick;
  */
 
 public class HomeFragment extends BaseFragment {
+
+
     private String[] titles = new String[]{
             "美食", "酒店", "火车票", "机票", "马术", "游艇", "豪车", "更多"};
 
@@ -133,6 +137,9 @@ public class HomeFragment extends BaseFragment {
     //汇聚玩趴图片
     @BindView(R.id.home_play_img)
     ImageView home_play_img;
+    //荣耀音乐
+    @BindView(R.id.home_glory_music_recycler)
+    RecyclerView homeGloryMusicRecycler;
 
     @BindView(R.id.home_top_tvs)
     TextSwitcher home_top_tvs;
@@ -143,6 +150,7 @@ public class HomeFragment extends BaseFragment {
     private HomeTopAdapter homeTopAdapter;
     //荣耀服务列表选择适配器
     private HomeGloryServiceAdapter homeGloryServiceAdapter;
+    private HomeGloryMusicAdapter homeGloryMusicAdapter;
     //荣耀杂志列表适配器
     private HomeGloryMagazineAdapter homeGloryMagazineAdapter;
 
@@ -374,6 +382,36 @@ public class HomeFragment extends BaseFragment {
             home_glory_magazine_recycler.setAdapter(homeGloryMagazineAdapter);
             home_glory_magazine_recycler.setNestedScrollingEnabled(false);
         }
+
+        //初始化荣耀音乐
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryMusic(DataManager.getMd5Str("MUSICLIST")), new ResultListener<HomeGloryMusicModel>() {
+            @Override
+            public void responseSuccess(HomeGloryMusicModel obj) {
+                for (int i = 0; i < obj.getPd().size(); i++) {
+                    if (i == 0) {
+                        obj.getPd().get(i).setItemType(1);
+                    } else if (i == obj.getPd().size() - 1) {
+                        obj.getPd().get(i).setItemType(3);
+                    } else {
+                        obj.getPd().get(i).setItemType(2);
+                    }
+                }
+
+                if (homeGloryMusicAdapter == null) {
+                    homeGloryMusicAdapter = new HomeGloryMusicAdapter(obj.getPd());
+                    homeGloryMusicRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                    homeGloryMusicRecycler.setNestedScrollingEnabled(false);
+                    homeGloryMusicRecycler.setAdapter(homeGloryMusicAdapter);
+                    homeGloryMusicAdapter.setOnItemClickListener(new HomeGloryServerOnItemClick());
+                }
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
 
@@ -414,7 +452,9 @@ public class HomeFragment extends BaseFragment {
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
             case R.id.go_welcome_login_img:
-                ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
+                Beta.checkUpgrade();
+                // CrashReport.testJavaCrash();
+                //  ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
                 // requestRead();
 //                DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, ""), new ResultListener<ResultModel>() {
 //                    @Override
