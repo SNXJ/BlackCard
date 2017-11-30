@@ -452,4 +452,10 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appserverin/planedetail.do?")
     Observable<HomeCopterDetailModel> postHomeCopterDetail(@Field("FKEY") String md5);
+
+    //荣耀服务列表详情点击
+    @FormUrlEncoded
+    @POST("appserverin/serverdetaillist.do?")
+    Observable<Object> postHomeGloryHorseDetail(@Field("FKEY") String md5,
+                                                @Field("SERVER_ID") String SERVER_ID);
 }

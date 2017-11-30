@@ -150,6 +150,7 @@
         <activity android:name=".ui.home.HomeBarDetailActivity" />
         <activity android:name=".ui.home.HomePublicRecyclerActivity" />
         <activity android:name=".ui.home.HomePublicDetailActivity"></activity>
+        <activity android:name=".ui.home.HomeGloryServerDetailActivity"/>
     </application>
 
 </manifest>

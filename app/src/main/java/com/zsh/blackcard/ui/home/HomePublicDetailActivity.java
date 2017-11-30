@@ -43,7 +43,12 @@ public class HomePublicDetailActivity extends BaseActivity {
     protected void initUI() {
         setContentView(R.layout.activity_home_public_detail);
         ButterKnife.bind(this);
-        initData();
+
+        try {
+            initData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void initData() {

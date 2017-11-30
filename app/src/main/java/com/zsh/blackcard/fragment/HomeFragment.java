@@ -41,6 +41,7 @@ import com.zsh.blackcard.ui.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
+import com.zsh.blackcard.ui.home.HomeGloryServerDetailActivity;
 import com.zsh.blackcard.ui.home.HomeHotelDetailActivity;
 import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
@@ -160,6 +161,27 @@ public class HomeFragment extends BaseFragment {
             return false;
         }
     });
+
+    /**
+     * 荣耀服务点击列表
+     */
+    private class HomeGloryServerOnItemClick implements BaseQuickAdapter.OnItemClickListener {
+
+        @Override
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            switch (((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSORTHIGH_ID()) {
+                case "383990553504645120":
+                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383990553504645120", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
+                    break;
+                case "383995103208800256":
+                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383995103208800256", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
+                    break;
+                case "383994744717443072":
+                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383994744717443072", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
+                    break;
+            }
+        }
+    }
 
     /**
      * 所有权限列表的点击事件
@@ -309,6 +331,7 @@ public class HomeFragment extends BaseFragment {
                     home_glory_service_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                     home_glory_service_recycler.setNestedScrollingEnabled(false);
                     home_glory_service_recycler.setAdapter(homeGloryServiceAdapter);
+                    homeGloryServiceAdapter.setOnItemClickListener(new HomeGloryServerOnItemClick());
                 }
 
             }
