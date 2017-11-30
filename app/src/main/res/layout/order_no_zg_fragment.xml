@@ -34,13 +34,14 @@
             android:textSize="14sp" />
 
         <RadioButton
+            android:paddingTop="@dimen/base5dp"
             android:id="@+id/my_order_receipt_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:button="@null"
-            android:drawablePadding="6dp"
+            android:drawablePadding="12dp"
             android:drawableTop="@mipmap/mine1_icon_1"
             android:gravity="center"
             android:text="待付款"
@@ -62,13 +63,14 @@
             android:textSize="14sp" />
 
         <RadioButton
+            android:paddingTop="@dimen/base5dp"
             android:id="@+id/my_order_service_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:button="@null"
-            android:drawablePadding="6dp"
+            android:drawablePadding="12dp"
             android:drawableTop="@mipmap/mine1_icon_3"
             android:gravity="center"
             android:text="待评价"

@@ -35,5 +35,7 @@ public class MyOrderCenterAdapter extends BaseMultiItemQuickAdapter<MyOrderModel
     protected void convert(BaseViewHolder helper, MyOrderModel.PdBean item) {
         Glide.with(mContext).load(item.getPROSHOWIMG()).into((ImageView) helper.getView(R.id.my_order_img));
         helper.setText(R.id.my_order_title_tv, item.getPROTITLE());
+        helper.addOnClickListener(R.id.my_order_pay_tv);
+        helper.addOnClickListener(R.id.my_order_ok_tv);
     }
 }
