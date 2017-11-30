@@ -793,4 +793,17 @@ public class NetApi {
     public Observable<Object> postHomeGloryHorseDetail(String md5, String server_id) {
         return retrofitService.postHomeGloryHorseDetail(md5, server_id);
     }
+
+    /**
+     * 我的订单 点击确认收货，修改订单为待评价
+     *
+     * @param md5
+     * @param ORDER_ID
+     * @param HONOURUSER_ID
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<ResultModel> postMyOrderOk(String md5, String ORDER_ID, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postMyOrderOk(md5, ORDER_ID, HONOURUSER_ID, ORDERSTATUS);
+    }
 }

@@ -74,6 +74,15 @@ public class MyOrderModel {
         private String PRODUCT_ID;
         private int PRODUCTCOUNT;
         private String HONOURUSER_ID;
+        private String ORDER_ID;
+
+        public String getORDER_ID() {
+            return ORDER_ID;
+        }
+
+        public void setORDER_ID(String ORDER_ID) {
+            this.ORDER_ID = ORDER_ID;
+        }
 
         public double getORDERMONEY() {
             return ORDERMONEY;

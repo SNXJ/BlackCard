@@ -458,4 +458,12 @@ public interface RetrofitService {
     @POST("appserverin/serverdetaillist.do?")
     Observable<Object> postHomeGloryHorseDetail(@Field("FKEY") String md5,
                                                 @Field("SERVER_ID") String SERVER_ID);
+
+    //订单中心确认收货按钮接口
+    @FormUrlEncoded
+    @POST("apporderin/shiporderstaupd?")
+    Observable<ResultModel> postMyOrderOk(@Field("FKEY") String md5,
+                                          @Field("ORDER_ID") String ORDER_ID,
+                                          @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                          @Field("ORDERSTATUS") String ORDERSTATUS);
 }

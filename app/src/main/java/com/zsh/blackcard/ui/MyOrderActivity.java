@@ -1,10 +1,14 @@
 package com.zsh.blackcard.ui;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.MyOrderCenterAdapter;
@@ -12,6 +16,9 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;
@@ -25,7 +32,7 @@ import butterknife.OnClick;
  * Created by kkkkk on 2017/11/18.
  */
 
-public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSelectedListener {
+public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, BaseQuickAdapter.OnItemChildClickListener {
 
     @BindView(R.id.order_center_recycler)
     RecyclerView order_center_recycler;
@@ -121,15 +128,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                 }
 
 
-                if (adapter != null) {
-                    adapter.notifyDataSetChanged();
-                    order_center_recycler.scrollToPosition(0);
-                } else {
-                    adapter = new MyOrderCenterAdapter(pdBeanList);
-                    order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderActivity.this));
-                    order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderActivity.this, SpacesItemDecoration.VERTICAL_LIST));
-                    order_center_recycler.setAdapter(adapter);
-                }
+                loadRecycler();
             }
 
             @Override
@@ -137,6 +136,22 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
 
             }
         });
+    }
+
+    /**
+     * 加载列表或刷新列表
+     */
+    private void loadRecycler() {
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+            order_center_recycler.scrollToPosition(0);
+        } else {
+            adapter = new MyOrderCenterAdapter(pdBeanList);
+            order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderActivity.this));
+            order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderActivity.this, SpacesItemDecoration.VERTICAL_LIST));
+            order_center_recycler.setAdapter(adapter);
+            adapter.setOnItemChildClickListener(MyOrderActivity.this);
+        }
     }
 
     /**
@@ -171,15 +186,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                 }
 
 
-                if (adapter != null) {
-                    adapter.notifyDataSetChanged();
-                    order_center_recycler.scrollToPosition(0);
-                } else {
-                    adapter = new MyOrderCenterAdapter(pdBeanList);
-                    order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderActivity.this));
-                    order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderActivity.this, SpacesItemDecoration.VERTICAL_LIST));
-                    order_center_recycler.setAdapter(adapter);
-                }
+                loadRecycler();
             }
 
             @Override
@@ -197,5 +204,41 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+        switch (view.getId()) {
+            //付款按钮
+            case R.id.my_order_pay_tv:
+                ActivityUtils.startActivity(this, ConfirmOrderActivity.class);
+                break;
+            //确认收货
+            case R.id.my_order_ok_tv:
+                UIUtils.showToast(((MyOrderModel.PdBean) adapter.getData().get(position)).getORDER_ID());
+                initOk(my_order_tabLayout.getSelectedTabPosition(), position, ((MyOrderModel.PdBean) adapter.getData().get(position)).getORDER_ID());
+                break;
+        }
+
+    }
+
+    private void initOk(final int selectedTabPosition, int position, String order_id) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_id, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
+            @Override
+            public void responseSuccess(ResultModel obj) {
+                if (selectedTabPosition == 0) {
+                    postMyAppointOrder();
+                } else {
+                    postMyAppointOrder("0040002");
+                }
+//                UIUtils.showToast("收货成功");
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 }
