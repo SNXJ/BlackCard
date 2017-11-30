@@ -52,6 +52,8 @@ public class HomeHorseDetailModel {
         private String HORSEDETINTRO;
         private String PDOWNINTROTITLE;
         private List<String> HORSEDETIMGS;
+        private String PDOWNINTROCONTENT;
+
 
         public List<String> getHORSEDETIMGS() {
             return HORSEDETIMGS;
@@ -61,7 +63,6 @@ public class HomeHorseDetailModel {
             this.HORSEDETIMGS = HORSEDETIMGS;
         }
 
-        private String PDOWNINTROCONTENT;
 
         public String getHORSEDET_ID() {
             return HORSEDET_ID;

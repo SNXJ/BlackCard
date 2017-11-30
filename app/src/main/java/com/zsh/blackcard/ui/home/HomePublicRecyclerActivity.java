@@ -24,6 +24,7 @@ import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeYachtDetailModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import butterknife.BindView;
@@ -155,23 +156,29 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     //高尔夫汇列表点击
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        if (adapter instanceof HomeGolfRecyclerAdapter) {
-            //高尔夫汇列表点击
-            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_GOLF, ((HomeGolfRecyclerModel.PdBean) adapter.getData().get(position)).getGOLFSHOP_ID());
-        } else if (adapter instanceof HomeHorseRecyclerAdapter) {
-            //马术详情点击
-            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_HORSE, ((HomeHorseDetailModel.PdBean) adapter.getData().get(position)).getHORSESHOP_ID());
-        } else if (adapter instanceof HomeCarRecyclerAdapter) {
-            //豪车
-            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_CAR, ((HomeCarDetailModel.PdBean) adapter.getData().get(position)).getLUXCARSHOP_ID());
-        } else {
-            //游艇
-            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_CAR, ((HomeYachtDetailModel.PdBean) adapter.getData().get(position)).getYACHTDET_ID());
+        //等待接口bean类修改。抛出异常
+        try {
+            if (adapter instanceof HomeGolfRecyclerAdapter) {
+                //高尔夫汇列表点击
+                ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_GOLF, ((HomeGolfRecyclerModel.PdBean) adapter.getData().get(position)).getGOLFSHOP_ID());
+            } else if (adapter instanceof HomeHorseRecyclerAdapter) {
+                //马术详情点击
+                ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_HORSE, ((HomeHorseDetailModel.PdBean) adapter.getData().get(position)).getHORSESHOP_ID());
+            } else if (adapter instanceof HomeCarRecyclerAdapter) {
+                //豪车
+                ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_CAR, ((HomeCarDetailModel.PdBean) adapter.getData().get(position)).getLUXCARSHOP_ID());
+            } else {
+                //游艇
+                ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_YACHT, ((HomeYachtDetailModel.PdBean) adapter.getData().get(position)).getYACHTDET_ID());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            UIUtils.showToast("接口有问题，等待服务器修改数据");
         }
     }
 
     @OnClick(R.id.title_back)
-    public void onClick(){
+    public void onClick() {
         finish();
     }
 }

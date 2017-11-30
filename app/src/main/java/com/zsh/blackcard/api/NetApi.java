@@ -782,4 +782,15 @@ public class NetApi {
     public Observable<HomeCopterDetailModel> postHomeCopterDetail(String md5) {
         return retrofitService.postHomeCopterDetail(md5);
     }
+
+    /**
+     * 首页荣耀服务列表详情点击
+     *
+     * @param md5
+     * @param server_id
+     * @return
+     */
+    public Observable<Object> postHomeGloryHorseDetail(String md5, String server_id) {
+        return retrofitService.postHomeGloryHorseDetail(md5, server_id);
+    }
 }
