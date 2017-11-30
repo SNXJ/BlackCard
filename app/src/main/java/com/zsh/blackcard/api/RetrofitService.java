@@ -1,5 +1,6 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
@@ -28,29 +29,20 @@ import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
-import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeFoodModel;
-import com.zsh.blackcard.model.HomeGloryServerModel;
-import com.zsh.blackcard.model.HomeGolfDetailModel;
-import com.zsh.blackcard.model.HomeGolfRecyclerModel;
-import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
-import com.zsh.blackcard.model.HomeKTVRecyclerModel;
-import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
-import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.RegisterModel;
-import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
@@ -455,4 +447,9 @@ public interface RetrofitService {
     @POST("appserverin/yachtdetail.do?")
     Observable<HomeYachtDetailModel> postHomeYachtDetail(@Field("FKEY") String md5,
                                                          @Field("YACHTSHOP_ID") String YACHTSHOP_ID);
+
+    //飞机详情接口
+    @FormUrlEncoded
+    @POST("appserverin/planedetail.do?")
+    Observable<HomeCopterDetailModel> postHomeCopterDetail(@Field("FKEY") String md5);
 }

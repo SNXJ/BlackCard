@@ -115,8 +115,8 @@ public class HomeMoreActivity extends BaseActivity {
                 case HomeTypeConstant.MORE_TYPE_CAR:
                     ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_CAR);
                     break;
-                case HomeTypeConstant.MORE_TYPE_COPTER://直升机
-                    startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
+                case HomeTypeConstant.MORE_TYPE_COPTER://飞机
+                    ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_COPTER);
                     break;
                 case HomeTypeConstant.MORE_TYPE_GOLF:// "高尔夫汇"
                     ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_GOLF);

@@ -22,6 +22,7 @@ import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
+import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeGolfDetailModel;
@@ -770,5 +771,15 @@ public class NetApi {
      */
     public Observable<HomeYachtDetailModel> postHomeYachtDetail(String md5, String yacht_id) {
         return retrofitService.postHomeYachtDetail(md5, yacht_id);
+    }
+
+    /**
+     * 飞机详情接口
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomeCopterDetailModel> postHomeCopterDetail(String md5) {
+        return retrofitService.postHomeCopterDetail(md5);
     }
 }
