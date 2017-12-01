@@ -44,6 +44,7 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ResultModel;
@@ -475,4 +476,11 @@ public interface RetrofitService {
                                           @Field("ORDER_ID") String ORDER_ID,
                                           @Field("HONOURUSER_ID") String HONOURUSER_ID,
                                           @Field("ORDERSTATUS") String ORDERSTATUS);
+
+    //订单中心所有酒吧订单
+    @FormUrlEncoded
+    @POST("appsbarin/barorderalllist.do?")
+    Observable<OrderCenterBarRecyclerModel> postOrderCenterBarRecycler(@Field("FKEY") String md5,
+                                                                       @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                                                       @Field("ORDERSTATUS") String ORDERSTATUS);
 }

@@ -29,8 +29,8 @@ import rx.subscriptions.CompositeSubscription;
 
 public class DataManager {
     //   public static String BASE_URL = "http://192.168.1.108:8080/ZSHINTER/";
-//    public static String BASE_URL = "http://192.168.1.134:8081/ZSHINTER/";//振华
-    public static String BASE_URL = "http://47.104.16.215:8080/ZSHINTER/";//阿里云
+    public static String BASE_URL = "http://192.168.1.134:8081/ZSHINTER/";//振华
+//    public static String BASE_URL = "http://47.104.16.215:8080/ZSHINTER/";//阿里云
     public static String FH = ",fh,";
     private static Context context;
     private static DataManager instance;

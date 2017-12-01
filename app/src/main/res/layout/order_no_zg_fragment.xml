@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/zgmy_tv_dingdan"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
         android:layout_marginLeft="15dp"
         android:gravity="center_vertical"
@@ -20,7 +20,7 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/my_order_pay_rb"
+            android:id="@+id/my_order_all_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -35,7 +35,7 @@
 
         <RadioButton
             android:paddingTop="@dimen/base5dp"
-            android:id="@+id/my_order_receipt_rb"
+            android:id="@+id/my_order_fk_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -49,7 +49,7 @@
             android:textSize="14sp" />
 
         <RadioButton
-            android:id="@+id/my_order_comment_rb"
+            android:id="@+id/my_order_sy_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -64,7 +64,7 @@
 
         <RadioButton
             android:paddingTop="@dimen/base5dp"
-            android:id="@+id/my_order_service_rb"
+            android:id="@+id/my_order_pj_rb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
