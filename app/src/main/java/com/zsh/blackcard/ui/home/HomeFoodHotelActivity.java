@@ -6,9 +6,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeBarAdapter;
 import com.zsh.blackcard.adapter.HomeFoodAdapter;
@@ -18,15 +20,18 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
-import com.zsh.blackcard.model.HomeKTVRecyclerModel;
+import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,13 +53,17 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     RadioButton rbFilter;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.rl_hotel_empty)
+    RelativeLayout rl_empty;
+
+
     private List<HomeFoodModel.PdBean> foodList = new ArrayList<>();
     private HomeFoodAdapter foodAdapter;
     private List<HomeHotelModel.PdBean> hotelList = new ArrayList<>();
     private List<HomeBarModel.PdBean> barList = new ArrayList<>();
     private HomeHotelAdapter hotelAdapter;
     private HomeBarAdapter barAdapter;
-    private List<HomeKTVRecyclerModel.PdBean> ktvList = new ArrayList<>();
+    private List<HomeKTVModel.PdBean> ktvList = new ArrayList<>();
     private HomeKTVAdapter ktvAdapter;
     private String type;
 
@@ -82,22 +91,11 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     }
 
     private void initKTVData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeKTVRecycler(DataManager.getMd5Str("SORTKTV"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeKTVRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeKTVRecycler(DataManager.getMd5Str("SORTKTV"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeKTVModel>() {
             @Override
-            public void responseSuccess(HomeKTVRecyclerModel obj) {
-                ktvList = obj.getPd();
-                if (null != ktvAdapter) {
-                    ktvAdapter.notifyDataSetChanged();
-                } else {
-                    ktvAdapter = new HomeKTVAdapter(ktvList, HomeFoodHotelActivity.this);
-                    recyclerView.setAdapter(ktvAdapter);
-                }
-                ktvAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeKTVDetailActivity.class, ktvList.get(position).getSORTKTV_ID());
-                    }
-                });
+            public void responseSuccess(HomeKTVModel obj) {
+                notifyKTVAdapter(obj);
+
             }
 
             @Override
@@ -111,19 +109,8 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeBarList(DataManager.getMd5Str("SORTBAR")), new ResultListener<HomeBarModel>() {
             @Override
             public void responseSuccess(HomeBarModel obj) {
-                barList = obj.getPd();
-                if (null != barAdapter) {
-                    barAdapter.notifyDataSetChanged();
-                } else {
-                    barAdapter = new HomeBarAdapter(barList, HomeFoodHotelActivity.this);
-                    recyclerView.setAdapter(barAdapter);
-                }
-                barAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeBarDetailActivity.class, barList.get(position).getSORTBAR_ID());
-                    }
-                });
+                notifyBarAdapter(obj);
+
             }
 
             @Override
@@ -137,19 +124,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeHotelList(DataManager.getMd5Str("SORTHOTEL")), new ResultListener<HomeHotelModel>() {
             @Override
             public void responseSuccess(HomeHotelModel obj) {
-                hotelList = obj.getPd();
-                if (null != hotelAdapter) {
-                    hotelAdapter.notifyDataSetChanged();
-                } else {
-                    hotelAdapter = new HomeHotelAdapter(hotelList, HomeFoodHotelActivity.this);
-                    recyclerView.setAdapter(hotelAdapter);
-                }
-                hotelAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeHotelDetailActivity.class, hotelList.get(position).getSORTHOTEL_ID());
-                    }
-                });
+                notifyHotelAdapter(obj);
             }
 
             @Override
@@ -160,23 +135,174 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
 
     }
 
+    Map<String, String> map = new TreeMap<>();
+
+    private void filterFoodData(String str1, String str2, String str3, String str4) {
+        map.put("FKEY", DataManager.getMd5Str("SORTFOODSEQUENCE"));
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
+        map.put("COLUMN", str1);
+        map.put("SEQUENCE", str2);
+        map.put("BRAND", str3);
+        map.put("STYLE", str4);
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).filterFoodList(map), new ResultListener<HomeFoodModel>() {
+            @Override
+            public void responseSuccess(HomeFoodModel obj) {
+                notifyFoodAdapter(obj);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+    }
+
+    private void filterHotelData(String str1, String str2, String str3, String str4) {
+        map.put("FKEY", DataManager.getMd5Str("SORTHOTELSEQUENCE"));
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
+        map.put("COLUMN", str1);
+        map.put("SEQUENCE", str2);
+        map.put("BRAND", str3);
+        map.put("STYLE", str4);
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).filterHotelList(map), new ResultListener<HomeHotelModel>() {
+            @Override
+            public void responseSuccess(HomeHotelModel obj) {
+                notifyHotelAdapter(obj);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+    }
+
+    private void filterKTVData(String str1, String str2, String str3, String str4) {
+        map.put("FKEY", DataManager.getMd5Str("SORTKTVSEQUENCE"));
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
+        map.put("COLUMN", str1);
+        map.put("SEQUENCE", str2);
+        map.put("BRAND", str3);
+        map.put("STYLE", str4);
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).filterKTVList(map), new ResultListener<HomeKTVModel>() {
+            @Override
+            public void responseSuccess(HomeKTVModel obj) {
+                notifyKTVAdapter(obj);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+    }
+
+    private void notifyKTVAdapter(HomeKTVModel obj) {
+        ktvList.clear();
+        ktvList.addAll(obj.getPd());
+        if (null != ktvAdapter) {
+            ktvAdapter.notifyDataSetChanged();
+        } else {
+            ktvAdapter = new HomeKTVAdapter(ktvList, HomeFoodHotelActivity.this);
+            recyclerView.setAdapter(ktvAdapter);
+        }
+
+        ktvAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
+
+        ktvAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeKTVDetailActivity.class, ktvList.get(position).getSORTKTV_ID());
+            }
+        });
+    }
+
+
+    private void filterBarData(String str1, String str2, String str3, String str4) {
+        map.put("FKEY", DataManager.getMd5Str("SORTBARSEQUENCE"));
+        map.put("HONOURUSER_ID", BaseApplication.HONOURUSER_ID);
+        map.put("COLUMN", str1);
+        map.put("SEQUENCE", str2);
+        map.put("BRAND", str3);
+        map.put("STYLE", str4);
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).filterBarList(map), new ResultListener<HomeBarModel>() {
+            @Override
+            public void responseSuccess(HomeBarModel obj) {
+                notifyBarAdapter(obj);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+    }
+
+    private void notifyBarAdapter(HomeBarModel obj) {
+        barList.clear();
+        barList.addAll(obj.getPd());
+        if (null != barAdapter) {
+            barAdapter.notifyDataSetChanged();
+        } else {
+            barAdapter = new HomeBarAdapter(barList, HomeFoodHotelActivity.this);
+            recyclerView.setAdapter(barAdapter);
+        }
+        barAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
+        barAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeBarDetailActivity.class, barList.get(position).getSORTBAR_ID());
+            }
+        });
+    }
+
+    private void notifyHotelAdapter(HomeHotelModel obj) {
+        hotelList.clear();
+        hotelList.addAll(obj.getPd());
+        if (null != hotelAdapter) {
+            hotelAdapter.notifyDataSetChanged();
+        } else {
+            hotelAdapter = new HomeHotelAdapter(hotelList, HomeFoodHotelActivity.this);
+            recyclerView.setAdapter(hotelAdapter);
+        }
+        hotelAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
+        hotelAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeHotelDetailActivity.class, hotelList.get(position).getSORTHOTEL_ID());
+            }
+        });
+    }
+
+    private void notifyFoodAdapter(HomeFoodModel obj) {
+        foodList.clear();
+        foodList.addAll(obj.getPd());
+        if (null != foodAdapter) {
+            foodAdapter.notifyDataSetChanged();
+
+        } else {
+            foodAdapter = new HomeFoodAdapter(foodList, HomeFoodHotelActivity.this);
+            recyclerView.setAdapter(foodAdapter);
+        }
+        foodAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
+        foodAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeFoodDetailActivity.class, foodList.get(position).getSORTFOOD_ID());
+            }
+        });
+
+    }
+
     private void initFoodData() {
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeFoodList(DataManager.getMd5Str("SORTFOOD")), new ResultListener<HomeFoodModel>() {
             @Override
             public void responseSuccess(HomeFoodModel obj) {
-                foodList = obj.getPd();
-                if (null != foodAdapter) {
-                    foodAdapter.notifyDataSetChanged();
-                } else {
-                    foodAdapter = new HomeFoodAdapter(foodList, HomeFoodHotelActivity.this);
-                    recyclerView.setAdapter(foodAdapter);
-                }
-                foodAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeFoodDetailActivity.class, foodList.get(position).getSORTFOOD_ID());
-                    }
-                });
+                notifyFoodAdapter(obj);
             }
 
             @Override
@@ -194,28 +320,128 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.rb_sort:
-                PublicDialog.selectOneDialog(this, "foodSort.json", "推荐",
-                        rbSort);
+                filterSort();
                 break;
             case R.id.rb_brand:
-                if (HomeTypeConstant.MORE_TYPE_FOOD.equals(type)) {
-                    PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
-                            rbBrand);
-                } else {
-                    PublicDialog.selectOneDialog(this, "hotelbrand.json", "全部品牌",
-                            rbBrand);
-                }
+                filterBrand();
                 break;
             case R.id.rb_filter:
-                if (HomeTypeConstant.MORE_TYPE_FOOD.equals(type)) {
-                    PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
-                            rbFilter);
-                } else {
-                    PublicDialog.selectOneDialog(this, "hotelFilter.json", "高端酒店",
-                            rbFilter);
-                }
+                filterFilter();
                 break;
         }
     }
+
+
+    private void filterSort() {
+        //推荐。距离由近到远。评分由高到低 。价格由高到低。价格由低到高
+        //TODO
+        PublicDialog.selectOneDialog(this, "foodSort.json", "推荐",
+                new FilterListener() {
+                    @Override
+                    public void resultListener(String str) {
+                        switch (str) {
+                            case "推荐":
+                                filterFoodData("", "", "", "");
+                                break;
+                            case "距离由近到远":
+                                break;
+                            case "评分由高到低":
+                                break;
+                            case "价格由高到低":
+                                break;
+                            case "价格由低到高":
+                                break;
+                        }
+                    }
+                });
+    }
+
+    private void filterBrand() {
+
+        switch (type) {
+            case HomeTypeConstant.MORE_TYPE_FOOD:
+                PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
+                        new FilterListener() {
+                            @Override
+                            public void resultListener(String str) {
+                                filterFoodData("", "", str, "");
+                            }
+                        });
+                break;
+            case HomeTypeConstant.MORE_TYPE_HOTEL:
+                PublicDialog.selectOneDialog(this, "hotelbrand.json", "全部品牌",
+                        new FilterListener() {
+                            @Override
+                            public void resultListener(String str) {
+                                filterHotelData("", "", str, "");
+                            }
+                        });
+                break;
+            case HomeTypeConstant.MORE_TYPE_BAR:
+                PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
+                        new FilterListener() {
+                            @Override
+                            public void resultListener(String str) {
+                                filterBarData("", "", str, "");
+                            }
+                        });
+
+                break;
+            case HomeTypeConstant.MORE_TYPE_KTV:
+                PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
+                        new FilterListener() {
+                            @Override
+                            public void resultListener(String str) {
+                                filterKTVData("", "", str, "");
+                            }
+                        });
+                break;
+        }
+
+    }
+
+    private void filterFilter() {
+        switch (type) {
+            case HomeTypeConstant.MORE_TYPE_FOOD:
+                PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
+                        new FilterListener() {
+                            @Override
+                            public void resultListener(String str) {
+                                filterFoodData("", "", "", str);
+                            }
+                        });
+                break;
+            case HomeTypeConstant.MORE_TYPE_HOTEL:
+                PublicDialog.selectOneDialog(this, "hotelFilter.json", "高端酒店",
+                        new FilterListener() {
+                            @Override
+                            public void resultListener(String str) {
+                                filterHotelData("", "", "", str);
+                            }
+                        });
+                break;
+            case HomeTypeConstant.MORE_TYPE_BAR:
+                PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
+                        new FilterListener() {
+                            @Override
+                            public void resultListener(String str) {
+                                filterBarData("", "", "", str);
+                            }
+                        });
+
+                break;
+            case HomeTypeConstant.MORE_TYPE_KTV:
+                PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
+                        new FilterListener() {
+                            @Override
+                            public void resultListener(String str) {
+                                filterKTVData("", "", "", str);
+                            }
+                        });
+
+                break;
+        }
+    }
+
 
 }

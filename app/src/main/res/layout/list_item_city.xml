@@ -10,21 +10,20 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/base31dp"
         android:layout_marginRight="@dimen/base25dp"
-        android:background="#f5f5f5"
+        android:background="#1A1A1A"
         android:clickable="false"
         android:enabled="false">
 
         <TextView
             android:id="@+id/alpha"
+            style="@style/text_"
             android:layout_width="@dimen/base55dp"
             android:layout_height="@dimen/base31dp"
             android:layout_marginLeft="@dimen/base12dp"
-            android:background="#f5f5f5"
             android:clickable="false"
             android:enabled="false"
             android:gravity="center_vertical"
-            android:textColor="#8E8D8B"
-            android:textSize="11sp"
+            android:textSize="14sp"
             android:visibility="gone" />
     </RelativeLayout>
 
@@ -40,17 +39,16 @@
 
     <TextView
         android:id="@+id/name"
+        style="@style/text_"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base40dp"
         android:padding="@dimen/base12dp"
-        android:textColor="#4c4c4c"
         android:textSize="13dp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/base1dp"
-        android:layout_marginLeft="@dimen/base10dp"
         android:layout_marginRight="@dimen/base25dp"
-        android:background="#f1f1f1" />
+        android:background="@color/line" />
 
 </LinearLayout>

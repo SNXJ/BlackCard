@@ -30,7 +30,7 @@ import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
-import com.zsh.blackcard.model.HomeKTVRecyclerModel;
+import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
@@ -407,8 +407,8 @@ public interface RetrofitService {
     //首页KTV列表接口
     @FormUrlEncoded
     @POST("appsktvin/sktv.do?")
-    Observable<HomeKTVRecyclerModel> postHomeKTVRecycler(@Field("FKEY") String md5,
-                                                         @Field("HONOURUSER_ID") String HONOURUSER_ID);
+    Observable<HomeKTVModel> postHomeKTVRecycler(@Field("FKEY") String md5,
+                                                 @Field("HONOURUSER_ID") String HONOURUSER_ID);
 
     //首页高尔夫汇列表接口
     @FormUrlEncoded
@@ -476,6 +476,23 @@ public interface RetrofitService {
                                           @Field("ORDER_ID") String ORDER_ID,
                                           @Field("HONOURUSER_ID") String HONOURUSER_ID,
                                           @Field("ORDERSTATUS") String ORDERSTATUS);
+
+
+    //美食筛选
+    @GET("appsfoodin/sfoodlistsequence.do?")
+    Observable<HomeFoodModel> filterFoodList(@QueryMap Map<String, String> map);
+
+    //Hotel筛选
+    @GET("appshotelin/shotellistsequence.do?")
+    Observable<HomeHotelModel> filterHotelList(@QueryMap Map<String, String> map);
+
+    //KTV筛选
+    @GET("appsktvin/sktvlistsequence.do?")
+    Observable<HomeKTVModel> filterKTVList(@QueryMap Map<String, String> map);
+
+    //筛选
+    @GET("appsbarin/sbarlistsequence.do?")
+    Observable<HomeBarModel> filterBarList(@QueryMap Map<String, String> map);
 
     //订单中心所有酒吧订单
     @FormUrlEncoded

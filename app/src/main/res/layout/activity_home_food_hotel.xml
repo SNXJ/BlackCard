@@ -108,9 +108,7 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <include
-        layout="@layout/food_sort_fragment"
-        android:visibility="gone"></include>
+    <include layout="@layout/home_hotel_empty_layout"></include>
 
 
 </LinearLayout>

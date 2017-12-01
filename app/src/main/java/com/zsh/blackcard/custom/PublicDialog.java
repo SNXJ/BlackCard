@@ -15,12 +15,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.DateListener;
+import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.SelectDateListener;
@@ -379,10 +379,9 @@ public class PublicDialog {
      * @param context
      * @param defaultJsonAsset json文件  选择内容
      * @param defaultData
-     * @param rb
      */
     public static void selectOneDialog(Activity context,
-                                       String defaultJsonAsset, String defaultData, final RadioButton rb) {
+                                       String defaultJsonAsset, String defaultData, final FilterListener listener) {
         SelsectOneDialog mDialog = new SelsectOneDialog(context,
                 defaultJsonAsset, defaultData);
         mDialog.setAddress(defaultData, "");
@@ -392,7 +391,7 @@ public class PublicDialog {
             @Override
             public void onClick(String province, String city) {
                 // TODO Auto-generated method stub
-                rb.setText(province);
+                listener.resultListener(province);
             }
         });
     }
