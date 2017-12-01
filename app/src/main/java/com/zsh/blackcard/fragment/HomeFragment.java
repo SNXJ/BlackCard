@@ -402,7 +402,7 @@ public class HomeFragment extends BaseFragment {
                     homeGloryMusicRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                     homeGloryMusicRecycler.setNestedScrollingEnabled(false);
                     homeGloryMusicRecycler.setAdapter(homeGloryMusicAdapter);
-                    homeGloryMusicAdapter.setOnItemClickListener(new HomeGloryServerOnItemClick());
+//                    homeGloryMusicAdapter.setOnItemClickListener(new HomeGloryServerOnItemClick());
                 }
 
             }

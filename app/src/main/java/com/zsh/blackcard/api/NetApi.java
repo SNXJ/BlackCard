@@ -48,6 +48,7 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
@@ -819,5 +820,16 @@ public class NetApi {
      */
     public Observable<ResultModel> postMyOrderOk(String md5, String ORDER_ID, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postMyOrderOk(md5, ORDER_ID, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 订单中心酒吧全部订单查询
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @return
+     */
+    public Observable<OrderCenterBarRecyclerModel> postOrderCenterBarRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postOrderCenterBarRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
     }
 }

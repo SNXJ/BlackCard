@@ -57,7 +57,6 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeGloryHorseDetail(DataManager.getMd5Str("SERVERDETAIL"), title), new ResultListener<Object>() {
             @Override
             public void responseSuccess(Object obj) {
-                System.out.println("@22222");
                 Gson gson = new Gson();
                 switch (data) {
                     case "383990553504645120":

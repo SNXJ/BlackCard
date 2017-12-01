@@ -173,6 +173,7 @@
         <activity android:name=".ui.home.HomePublicRecyclerActivity" />
         <activity android:name=".ui.home.HomePublicDetailActivity"></activity>
         <activity android:name=".ui.home.HomeGloryServerDetailActivity" />
+        <activity android:name=".ui.MyOrderOtherActivity"/>
     </application>
 
 </manifest>

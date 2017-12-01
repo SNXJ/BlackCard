@@ -1,24 +1,18 @@
 package com.zsh.blackcard.ui;
 
 import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.adapter.MyOrderCenterAdapter;
+import com.zsh.blackcard.adapter.MyOrderCenterOtherAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;
@@ -30,23 +24,24 @@ import butterknife.OnClick;
 
 /**
  * Created by kkkkk on 2017/11/18.
+ * 订单中心 除尊购以外的所有公用界面
  */
 
-public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, BaseQuickAdapter.OnItemChildClickListener {
+public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTabSelectedListener {
 
-    @BindView(R.id.order_center_recycler)
+    @BindView(R.id.order_center_other_recycler)
     RecyclerView order_center_recycler;
 
-    @BindView(R.id.my_order_tabLayout)
+    @BindView(R.id.my_order_other_tabLayout)
     TabLayout my_order_tabLayout;
 
-    private MyOrderCenterAdapter adapter;
+    private MyOrderCenterOtherAdapter adapter;
 
-    private List<MyOrderModel.PdBean> pdBeanList = new ArrayList<>();
+    private List<OrderCenterBarRecyclerModel.PdBean> pdBeanList = new ArrayList<>();
 
     @Override
     protected void initUI() {
-        setContentView(R.layout.activity_my_order);
+        setContentView(R.layout.activity_my_order_other);
         ButterKnife.bind(this);
         initOnClick();
         initDate();
@@ -60,16 +55,17 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
     private void initDate() {
         Intent intent = getIntent();
         String data = intent.getStringExtra("data");
-        if ("1".equals(data)) {
+        if ("".equals(data)) {
             postMyAppointOrder();
-        } else if ("2".equals(data)) {
+        } else if ("0040001".equals(data)) {
+            //选择待付款
             my_order_tabLayout.getTabAt(1).select();
-        } else if ("3".equals(data)) {
+        } else if ("0040004".equals(data)) {
+            //待使用
             my_order_tabLayout.getTabAt(2).select();
-        } else if ("4".equals(data)) {
+        } else if ("0040003".equals(data)) {
+            //待评价
             my_order_tabLayout.getTabAt(3).select();
-        } else if ("5".equals(data)) {
-            my_order_tabLayout.getTabAt(4).select();
         }
 
     }
@@ -86,15 +82,11 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
             postMyAppointOrder();
         } else if (tab.getText().toString().equals("待付款")) {
             postMyAppointOrder("0040001");
-        } else if (tab.getText().toString().equals("待收货")) {
-            postMyAppointOrder("0040002");
+        } else if (tab.getText().toString().equals("待使用")) {
+            postMyAppointOrder("0040004");
         } else if (tab.getText().toString().equals("待评价")) {
             postMyAppointOrder("0040003");
-        } else if (tab.getText().toString().equals("退款售后")) {
-            postMyAppointOrder("0040004");
         }
-
-
     }
 
     /**
@@ -102,9 +94,9 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
      */
     private void postMyAppointOrder() {
         //当为全部时，不同调用select，默认自动加载全部订单
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyAllOrder(DataManager.getMd5Str("ALLORDER"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyOrderModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterBarRecycler(DataManager.getMd5Str("ALLBARORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterBarRecyclerModel>() {
             @Override
-            public void responseSuccess(MyOrderModel obj) {
+            public void responseSuccess(OrderCenterBarRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
                 if (obj.getResult().equals("01")) {
                     if (pdBeanList != null) {
@@ -113,14 +105,12 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                     pdBeanList.addAll(obj.getPd());
                     //遍历得到的所有订单结果，为订单赋值不同的itemType
                     for (int i = 0; i < obj.getPd().size(); i++) {
-                        if (obj.getPd().get(i).getORDERSTATUS().equals("待付款")) {
+                        if (obj.getPd().get(i).getORDERSTATUS().equals("0040001")) {
                             pdBeanList.get(i).setItemType(2);
-                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("待收货")) {
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040004")) {
                             pdBeanList.get(i).setItemType(3);
-                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("待评价")) {
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040003")) {
                             pdBeanList.get(i).setItemType(4);
-                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("已完成")) {
-                            pdBeanList.get(i).setItemType(5);
                         }
                     }
                 } else {
@@ -146,11 +136,10 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
             adapter.notifyDataSetChanged();
             order_center_recycler.scrollToPosition(0);
         } else {
-            adapter = new MyOrderCenterAdapter(pdBeanList);
-            order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderActivity.this));
-            order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderActivity.this, SpacesItemDecoration.VERTICAL_LIST));
+            adapter = new MyOrderCenterOtherAdapter(pdBeanList);
+            order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderOtherActivity.this));
+            order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderOtherActivity.this, SpacesItemDecoration.VERTICAL_LIST));
             order_center_recycler.setAdapter(adapter);
-            adapter.setOnItemChildClickListener(MyOrderActivity.this);
         }
     }
 
@@ -160,9 +149,9 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
      * @param state
      */
     private void postMyAppointOrder(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyAppointOrder(DataManager.getMd5Str("CONORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<MyOrderModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterBarRecycler(DataManager.getMd5Str("ALLBARORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterBarRecyclerModel>() {
             @Override
-            public void responseSuccess(MyOrderModel obj) {
+            public void responseSuccess(OrderCenterBarRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
                 if (obj.getResult().equals("01")) {
                     if (pdBeanList != null) {
@@ -173,12 +162,10 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                     for (int i = 0; i < obj.getPd().size(); i++) {
                         if (obj.getPd().get(i).getORDERSTATUS().equals("0040001")) {
                             pdBeanList.get(i).setItemType(2);
-                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040002")) {
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040004")) {
                             pdBeanList.get(i).setItemType(3);
                         } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040003")) {
                             pdBeanList.get(i).setItemType(4);
-                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040004")) {
-                            pdBeanList.get(i).setItemType(5);
                         }
                     }
                 } else {
@@ -203,23 +190,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
 
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
-
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-        switch (view.getId()) {
-            //付款按钮
-            case R.id.my_order_pay_tv:
-                ActivityUtils.startActivity(this, ConfirmOrderActivity.class);
-                break;
-            //确认收货
-            case R.id.my_order_ok_tv:
-                UIUtils.showToast(((MyOrderModel.PdBean) adapter.getData().get(position)).getORDER_ID());
-//                initOk(my_order_tabLayout.getSelectedTabPosition(), position, ((MyOrderModel.PdBean) adapter.getData().get(position)).getORDER_ID());
-                break;
-        }
 
     }
 
