@@ -47,6 +47,42 @@ public class HomeFoodModel {
          * SHOPNAMES : 菲罗牛排主题自助西餐厅
          * SHOPEVALUATE : 3.5
          */
+        private String BRAND;
+        private String HONOURUSER_ID;
+        private String STYLE;
+        private String distance;
+
+        public String getBRAND() {
+            return BRAND;
+        }
+
+        public void setBRAND(String BRAND) {
+            this.BRAND = BRAND;
+        }
+
+        public String getHONOURUSER_ID() {
+            return HONOURUSER_ID;
+        }
+
+        public void setHONOURUSER_ID(String HONOURUSER_ID) {
+            this.HONOURUSER_ID = HONOURUSER_ID;
+        }
+
+        public String getSTYLE() {
+            return STYLE;
+        }
+
+        public void setSTYLE(String STYLE) {
+            this.STYLE = STYLE;
+        }
+
+        public String getDistance() {
+            return distance;
+        }
+
+        public void setDistance(String distance) {
+            this.distance = distance;
+        }
 
         private int SHOPPRICE;
         private String SHOPDETAILSIMGS;

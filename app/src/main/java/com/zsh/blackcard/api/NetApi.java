@@ -34,7 +34,7 @@ import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
-import com.zsh.blackcard.model.HomeKTVRecyclerModel;
+import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
@@ -698,7 +698,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<HomeKTVRecyclerModel> postHomeKTVRecycler(String md5, String user_id) {
+    public Observable<HomeKTVModel> postHomeKTVRecycler(String md5, String user_id) {
         return retrofitService.postHomeKTVRecycler(md5, user_id);
     }
 
@@ -836,6 +836,7 @@ public class NetApi {
     }
 
     /**
+
      * 订单中心KTV全部订单查询
      *
      * @param md5
@@ -845,5 +846,45 @@ public class NetApi {
      */
     public Observable<OrderCenterKTVRecyclerModel> postOrderCenterKTVRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postOrderCenterKTVRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+
+     * 美食筛选
+     *
+     * @param map
+     * @return
+     */
+    public Observable<HomeFoodModel> filterFoodList(Map<String, String> map) {
+        return retrofitService.filterFoodList(map);
+    }
+
+    /**
+     * 酒店筛选
+     *
+     * @param map
+     * @return
+     */
+    public Observable<HomeHotelModel> filterHotelList(Map<String, String> map) {
+        return retrofitService.filterHotelList(map);
+    }
+
+    /**
+     * KTV筛选
+     *
+     * @param map
+     * @return
+     */
+
+    public Observable<HomeKTVModel> filterKTVList(Map<String, String> map) {
+        return retrofitService.filterKTVList(map);
+    }
+
+    /**
+     * 酒吧筛选
+     *
+     * @param map
+     * @return
+     */
+    public Observable<HomeBarModel> filterBarList(Map<String, String> map) {
+        return retrofitService.filterBarList(map);
+
     }
 }

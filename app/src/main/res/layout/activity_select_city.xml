@@ -1,86 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="#ffffff"
-                android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
 
     <RelativeLayout
-            android:id="@+id/title"
-            style="@style/rl_title"
-            android:background="@color/main_black">
+        android:id="@+id/title"
+        style="@style/rl_title"
+        android:background="@color/main_black">
 
         <ImageView
-                android:id="@+id/im_back"
-                style="@style/iv_title_back"/>
+            android:id="@+id/im_back"
+            style="@style/iv_title_back" />
 
         <TextView
-                style="@style/tv_title"
-                android:text="城市选择"/>
+            style="@style/tv_title"
+            android:text="城市选择" />
     </RelativeLayout>
 
     <EditText
-            android:id="@+id/sh"
-            android:padding="@dimen/base5dp"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/base31dp"
-            android:layout_below="@id/title"
-            android:background="#f5f5f5"
-            android:singleLine="true"
-            android:maxLength="15"
-            android:layout_margin="@dimen/base10dp"
-            android:drawableLeft="@mipmap/home_nav_search"
-            android:drawablePadding="@dimen/base8dp"
-            android:hint="输入城市名或拼音"
-            android:textColor="#999999"
-            android:textSize="14sp">
-    </EditText>
+        android:id="@+id/sh"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/base31dp"
+        android:layout_below="@id/title"
+        android:layout_margin="@dimen/base10dp"
+        android:background="#1A1A1A"
+        android:drawableLeft="@mipmap/home_nav_search"
+        android:drawablePadding="@dimen/base8dp"
+        android:hint="输入城市名或拼音"
+        android:maxLength="15"
+        android:padding="@dimen/base5dp"
+        android:singleLine="true"
+        android:textColor="#FF929292"
+        android:textColorHint="#FF929292"
+        android:textSize="14sp"></EditText>
     <!--         android:background="@drawable/cityhot_edittext_bg" -->
 
     <ListView
-            android:id="@+id/list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/sh"
-            android:cacheColorHint="#00000000"
-            android:divider="#00000000"
-            android:dividerHeight="0dp"
-            android:listSelector="@android:color/transparent"
-            android:scrollbars="none"/>
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/sh"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" />
 
     <ListView
-            android:id="@+id/search_result"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/sh"
-            android:layout_marginTop="@dimen/base7dp"
-            android:cacheColorHint="#00000000"
-            android:divider="#00000000"
-            android:dividerHeight="0dp"
-            android:listSelector="@android:color/transparent"
-            android:scrollbars="none"
-            android:visibility="gone"/>
+        android:id="@+id/search_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/sh"
+        android:layout_marginTop="@dimen/base7dp"
+        android:cacheColorHint="#00000000"
+        android:divider="#1D1D1D"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none"
+        android:visibility="gone" />
 
     <TextView
-            android:id="@+id/tv_noresult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sh"
-            android:gravity="center"
-            android:padding="@dimen/base10dp"
-            android:text="抱歉,暂时没有找到相关城市"
-            android:textColor="#4c4c4c"
-            android:textSize="16sp"
-            android:visibility="gone"/>
+        android:id="@+id/tv_noresult"
+        style="@style/text_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sh"
+        android:gravity="center"
+        android:padding="@dimen/base10dp"
+        android:text="抱歉,暂时没有找到相关城市"
+        android:textSize="16sp"
+        android:visibility="gone" />
 
     <com.zsh.blackcard.view.selectcity.MyLetterListView
-            android:id="@+id/MyLetterListView01"
-            android:layout_width="@dimen/base25dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/sh"
-            android:layout_marginRight="@dimen/base2dp"
-            android:layout_marginTop="@dimen/base7dp"
-            android:layout_marginBottom="@dimen/base7dp"/>
+        android:id="@+id/MyLetterListView01"
+        android:layout_width="@dimen/base25dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/sh"
+        android:layout_marginBottom="@dimen/base7dp"
+        android:layout_marginRight="@dimen/base2dp"
+        android:layout_marginTop="@dimen/base7dp" />
 
 </RelativeLayout>

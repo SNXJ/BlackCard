@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@drawable/item_selector_city"
-              android:gravity="center"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_selector_city"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
-            android:id="@+id/city"
-            android:layout_width="@dimen/base80dp"
-            android:layout_height="@dimen/base31dp"
-            android:gravity="center"
-            android:text="北京"
-            android:textColor="#747474"
-            android:textSize="14sp"/>
+        android:id="@+id/city"
+        style="@style/text_"
+        android:layout_width="@dimen/base70dp"
+        android:layout_height="@dimen/base30dp"
+        android:gravity="center"
+        android:text="北京"
+
+        android:textSize="14sp" />
 
 </LinearLayout>

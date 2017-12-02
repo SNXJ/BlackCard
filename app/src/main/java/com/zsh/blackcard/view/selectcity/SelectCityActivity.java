@@ -30,6 +30,7 @@ import android.widget.TextView;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.SharedPreferencesUtils;
+import com.zsh.blackcard.untils.StatusBarColorUntil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,10 +80,10 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
     private List<City> city_result;
     private EditText sh;
     private TextView tv_noresult;
-   // private String currentCity;
-   // private int locateProcess = 1;
- //   private boolean isNeedFresh;
-   // private DatabaseHelper helper;
+    // private String currentCity;
+    // private int locateProcess = 1;
+    //   private boolean isNeedFresh;
+    // private DatabaseHelper helper;
     private ImageView select_back;
     private String allCity = null;
     private String selectCity = null;
@@ -107,6 +108,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        StatusBarColorUntil.setStatusBarColor(this);
         setContentView(R.layout.activity_select_city);
 
         allCity = getIntent().getStringExtra("allCity");
@@ -118,7 +120,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
         resultList = (ListView) findViewById(R.id.search_result);
         sh = (EditText) findViewById(R.id.sh);
         tv_noresult = (TextView) findViewById(R.id.tv_noresult);
-      //  helper = new DatabaseHelper(this);
+        //  helper = new DatabaseHelper(this);
         select_back = (ImageView) findViewById(R.id.im_back);
         select_back.setOnClickListener(new OnClickListener() {
             @Override
@@ -166,11 +168,11 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
             }
         });
         letterListView = (MyLetterListView) findViewById(R.id.MyLetterListView01);
-            letterListView.setOnTouchingLetterChangedListener(new LetterListViewListener());
+        letterListView.setOnTouchingLetterChangedListener(new LetterListViewListener());
         alphaIndexer = new HashMap<String, Integer>();
         handler = new Handler();
         overlayThread = new OverlayThread();
-       // isNeedFresh = true;
+        // isNeedFresh = true;
         personList.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -182,7 +184,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
                 }
             }
         });
-       // locateProcess = 1;
+        // locateProcess = 1;
         personList.setAdapter(adapter);
         personList.setOnScrollListener(this);
         resultListAdapter = new ResultListAdapter(this, city_result);
@@ -232,16 +234,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
         city_hot.add(city);
         city = new City("天津", "0");
         city_hot.add(city);
-        city = new City("西安", "0");
-        city_hot.add(city);
-        city = new City("南京", "0");
-        city_hot.add(city);
-        city = new City("杭州", "0");
-        city_hot.add(city);
-        city = new City("成都", "0");
-        city_hot.add(city);
-        city = new City("重庆", "0");
-        city_hot.add(city);
+
     }
 
     @SuppressWarnings("unchecked")

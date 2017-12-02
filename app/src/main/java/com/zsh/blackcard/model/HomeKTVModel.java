@@ -7,7 +7,7 @@ import java.util.List;
  * 获取首页，KTV酒吧
  */
 
-public class HomeKTVRecyclerModel {
+public class HomeKTVModel {
 
     /**
      * result : 01
