@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.multidex.MultiDex;
 
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.zsh.blackcard.untils.PackageUtils;
@@ -16,6 +18,8 @@ import com.zsh.blackcard.untils.SharedPreferencesUtils;
  * @Describe *
  */
 public class BaseApplication extends Application {
+    @GlideModule
+    public final class MyAppGlideModule extends AppGlideModule {}
     public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp
     private String BUGLY_ID = "815c4ef8fb";
     /* 获取主线程的上下文对象 */

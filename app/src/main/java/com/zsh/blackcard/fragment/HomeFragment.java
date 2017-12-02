@@ -15,12 +15,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.tencent.bugly.beta.Beta;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeGloryMagazineAdapter;
@@ -52,7 +54,9 @@ import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.MPermissionUtils;
+import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 import java.util.ArrayList;
@@ -244,8 +248,21 @@ public class HomeFragment extends BaseFragment {
         sendMainActivity = (SendMainActivity) getActivity();
     }
 
+
+    public LocationClient mLocationClient = null;
+    private MyLocationListener myListener = new MyLocationListener();
+
     @Override
     public void initDate(Bundle savedInstanceState) {
+        mLocationClient = new LocationClient(getActivity());
+        //声明LocationClient类
+        mLocationClient.registerLocationListener(myListener);
+        //注册监听函数
+        LocationClientOption option = new LocationClientOption();
+        option.setIsNeedAddress(true);
+        mLocationClient.setLocOption(option);
+
+
         //初始化类型选择列表（美食，酒店，品鉴...）
         for (int i = 0; i < titles.length; i++) {
             HomeNewModel pic = new HomeNewModel();
@@ -452,21 +469,9 @@ public class HomeFragment extends BaseFragment {
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
             case R.id.go_welcome_login_img:
-                Beta.checkUpgrade();
-                // CrashReport.testJavaCrash();
-                //  ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
-                // requestRead();
-//                DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, ""), new ResultListener<ResultModel>() {
-//                    @Override
-//                    public void responseSuccess(ResultModel obj) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onCompleted() {
-//
-//                    }
-//                });
+
+                requestPermissions();
+                // ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
                 break;
             case R.id.home_search_linear:
                 ActivityUtils.startActivity(getActivity(), ZgSearchActivity.class);
@@ -474,16 +479,38 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    private void requestRead() {
+    public class MyLocationListener extends BDAbstractLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
+            //以下只列举部分获取地址相关的结果信息
+            //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
+
+            String addr = location.getAddrStr();    //获取详细地址信息
+            String country = location.getCountry();    //获取国家
+            String province = location.getProvince();    //获取省份
+            String city = location.getCity();    //获取城市
+            String district = location.getDistrict();    //获取区县
+            String street = location.getStreet();    //获取街道信息
+            int errorCode = location.getLocType();
+            location.getLocationID();
+
+            LogUtils.i("++++", location.getLocationID() + "++++++++id++++++++++++" + city + "++++++++++++++" + street + "++++++++++++" + errorCode);
+            UIUtils.showToast(country + "++++++++++++++++++++" + city + "++++++++++++++" + street + "++++++++++++" + errorCode);
+        }
+    }
+
+    private void requestPermissions() {
         String[] PERMISSIONS_STORAGE = {
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
         };
         MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
                 , new MPermissionUtils.OnPermissionListener() {
                     @Override
                     public void onPermissionGranted() {
-                        Toast.makeText(getActivity(), "授权成功,!", Toast.LENGTH_SHORT).show();
+                        UIUtils.showToast("授权成功");
+                        mLocationClient.start();
                     }
 
                     @Override

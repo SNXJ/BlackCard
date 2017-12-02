@@ -29,6 +29,8 @@ public abstract class BaseFragment extends Fragment {
         super();
     }
 
+//    public LocationClient mLocationClient = null;
+//    private MyLocationListener myListener = new MyLocationListener();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,13 @@ public abstract class BaseFragment extends Fragment {
         StatusBarColorUntil.setStatusBarColor(getActivity());
         baseApplication = BaseApplication.getApplication();
         //  user = SharedPreferencesUtils.getUser(baseApplication);
+//        mLocationClient = new LocationClient(getApplicationContext());
+//        //声明LocationClient类
+//        mLocationClient.registerLocationListener(myListener);
+//        //注册监听函数
+//        LocationClientOption option = new LocationClientOption();
+//        option.setIsNeedAddress(true);
+//        mLocationClient.setLocOption(option);
     }
 
     @Override

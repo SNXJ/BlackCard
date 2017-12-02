@@ -57,13 +57,15 @@ public class OrderCenterBarRecyclerModel {
         private String BARDETAIL_ID;
         private String HONOURUSER_ID;
 
+
+        public void setORDERMONEY(double ORDERMONEY) {
+            this.ORDERMONEY = ORDERMONEY;
+        }
+
         public double getORDERMONEY() {
             return ORDERMONEY;
         }
 
-        public void setORDERMONEY(int ORDERMONEY) {
-            this.ORDERMONEY = ORDERMONEY;
-        }
 
         public String getBARORDER_ID() {
             return BARORDER_ID;
