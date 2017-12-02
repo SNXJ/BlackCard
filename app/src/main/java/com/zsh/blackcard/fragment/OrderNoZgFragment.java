@@ -58,32 +58,24 @@ public class OrderNoZgFragment extends BaseFragment {
         return view;
     }
 
-    @OnCheckedChanged({R.id.my_order_all_rb, R.id.my_order_fk_rb, R.id.my_order_sy_rb, R.id.my_order_pj_rb})
-    public void onChecked(CompoundButton buttonView, boolean isChecked) {
-        switch (buttonView.getId()) {
+    @OnClick({R.id.my_order_all_rb, R.id.my_order_fk_rb, R.id.my_order_sy_rb, R.id.my_order_pj_rb})
+    public void onClick(View view) {
+        switch (view.getId()) {
             //全部
             case R.id.my_order_all_rb:
-                if (isChecked) {
-                    ActivityUtils.startActivityForData(getActivity(), MyOrderOtherActivity.class, "");
-                }
+                ActivityUtils.startActivityForData(getActivity(), MyOrderOtherActivity.class, "",orderCenterActivity.getSearchTitle());
                 break;
             //待付款
             case R.id.my_order_fk_rb:
-                if (isChecked) {
-                    ActivityUtils.startActivityForData(getActivity(), MyOrderOtherActivity.class, "0040001");
-                }
+                ActivityUtils.startActivityForData(getActivity(), MyOrderOtherActivity.class, "0040001",orderCenterActivity.getSearchTitle());
                 break;
             //待使用
             case R.id.my_order_sy_rb:
-                if (isChecked) {
-                    ActivityUtils.startActivityForData(getActivity(), MyOrderOtherActivity.class, "0040004");
-                }
+                ActivityUtils.startActivityForData(getActivity(), MyOrderOtherActivity.class, "0040002",orderCenterActivity.getSearchTitle());
                 break;
             //待评价
             case R.id.my_order_pj_rb:
-                if (isChecked) {
-                    ActivityUtils.startActivityForData(getActivity(), MyOrderOtherActivity.class, "0040003");
-                }
+                ActivityUtils.startActivityForData(getActivity(), MyOrderOtherActivity.class, "0040003",orderCenterActivity.getSearchTitle());
                 break;
         }
     }

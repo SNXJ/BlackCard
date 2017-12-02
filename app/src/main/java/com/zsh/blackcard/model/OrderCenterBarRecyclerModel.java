@@ -126,8 +126,6 @@ public class OrderCenterBarRecyclerModel {
             return itemType;
         }
 
-        //全部
-//        public static final int ALL = 1;
         //待付款
         public static final int PAYMENT = 2;
         //待使用

@@ -156,7 +156,7 @@ public class OrderCenterActivity extends BaseActivity implements BaseQuickAdapte
                     orderNoZgFragment = new OrderNoZgFragment();
                     fragmentTransaction.replace(R.id.zg_container, orderNoZgFragment);
                 } else {
-                    if(orderZgFragment.isAdded()){
+                    if (orderZgFragment.isAdded()) {
                         fragmentTransaction.replace(R.id.zg_container, orderNoZgFragment);
                     }
                 }

@@ -49,6 +49,7 @@ import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
@@ -60,6 +61,7 @@ import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
+import java.net.IDN;
 import java.util.List;
 import java.util.Map;
 
@@ -834,6 +836,17 @@ public class NetApi {
     }
 
     /**
+
+     * 订单中心KTV全部订单查询
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<OrderCenterKTVRecyclerModel> postOrderCenterKTVRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postOrderCenterKTVRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+
      * 美食筛选
      *
      * @param map
@@ -872,5 +885,6 @@ public class NetApi {
      */
     public Observable<HomeBarModel> filterBarList(Map<String, String> map) {
         return retrofitService.filterBarList(map);
+
     }
 }

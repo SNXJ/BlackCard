@@ -117,7 +117,7 @@ public class HomePublicDetailActivity extends BaseActivity {
     }
 
     private void initDataCar(String title) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeCarDetail(DataManager.getMd5Str("HORSEDETAIL"), title), new ResultListener<HomeCarDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeCarDetail(DataManager.getMd5Str("LUXCARDETAIL"), title), new ResultListener<HomeCarDetailModel>() {
             @Override
             public void responseSuccess(HomeCarDetailModel obj) {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getLUXCARDETIMGS().get(0)).into(home_public_detail_one_img);

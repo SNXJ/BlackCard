@@ -16,6 +16,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomePrivilegeModel;
+import com.zsh.blackcard.ui.zgactivity.PersonalActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import butterknife.BindView;
@@ -122,7 +123,7 @@ public class HomeMoreActivity extends BaseActivity {
                     ActivityUtils.startActivityForData(HomeMoreActivity.this, HomePublicRecyclerActivity.class, HomeTypeConstant.MORE_TYPE_GOLF);
                     break;
                 case HomeTypeConstant.MORE_TYPE_PERSON://, "私人订制",
-                    startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
+                    startActivity(new Intent(HomeMoreActivity.this, PersonalActivity.class));
                     break;
                 case HomeTypeConstant.MORE_TYPE_MAGAZINE:// "品牌杂志",
                     startActivity(new Intent(HomeMoreActivity.this, HomeEquestrianActivity.class));
