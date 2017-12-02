@@ -1,21 +1,16 @@
 package com.zsh.blackcard.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
-import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.custom.GlideCircleTransform;
 import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.view.Star;
 
 import java.util.List;
-
-import jp.wasabeef.glide.transformations.CropTransformation;
 
 /**
  * Name: HomeFoodAdapter
