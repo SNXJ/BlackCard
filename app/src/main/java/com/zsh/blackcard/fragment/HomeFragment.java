@@ -17,10 +17,6 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.baidu.location.BDAbstractLocationListener;
-import com.baidu.location.BDLocation;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseFragment;
@@ -54,7 +50,6 @@ import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
@@ -248,19 +243,8 @@ public class HomeFragment extends BaseFragment {
         sendMainActivity = (SendMainActivity) getActivity();
     }
 
-
-    public LocationClient mLocationClient = null;
-    private MyLocationListener myListener = new MyLocationListener();
-
     @Override
     public void initDate(Bundle savedInstanceState) {
-        mLocationClient = new LocationClient(getActivity());
-        //声明LocationClient类
-        mLocationClient.registerLocationListener(myListener);
-        //注册监听函数
-        LocationClientOption option = new LocationClientOption();
-        option.setIsNeedAddress(true);
-        mLocationClient.setLocOption(option);
 
 
         //初始化类型选择列表（美食，酒店，品鉴...）
@@ -479,27 +463,6 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    public class MyLocationListener extends BDAbstractLocationListener {
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
-            //以下只列举部分获取地址相关的结果信息
-            //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
-
-            String addr = location.getAddrStr();    //获取详细地址信息
-            String country = location.getCountry();    //获取国家
-            String province = location.getProvince();    //获取省份
-            String city = location.getCity();    //获取城市
-            String district = location.getDistrict();    //获取区县
-            String street = location.getStreet();    //获取街道信息
-            int errorCode = location.getLocType();
-            location.getLocationID();
-
-            LogUtils.i("++++", location.getLocationID() + "++++++++id++++++++++++" + city + "++++++++++++++" + street + "++++++++++++" + errorCode);
-            UIUtils.showToast(country + "++++++++++++++++++++" + city + "++++++++++++++" + street + "++++++++++++" + errorCode);
-        }
-    }
-
     private void requestPermissions() {
         String[] PERMISSIONS_STORAGE = {
                 Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -510,7 +473,6 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onPermissionGranted() {
                         UIUtils.showToast("授权成功");
-                        mLocationClient.start();
                     }
 
                     @Override

@@ -46,6 +46,7 @@ import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.HotelDetailsMoreListModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
+import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
@@ -61,7 +62,6 @@ import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
-import java.net.IDN;
 import java.util.List;
 import java.util.Map;
 
@@ -836,7 +836,6 @@ public class NetApi {
     }
 
     /**
-
      * 订单中心KTV全部订单查询
      *
      * @param md5
@@ -846,11 +845,10 @@ public class NetApi {
      */
     public Observable<OrderCenterKTVRecyclerModel> postOrderCenterKTVRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postOrderCenterKTVRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+    }
 
+    /**
      * 美食筛选
-     *
-     * @param map
-     * @return
      */
     public Observable<HomeFoodModel> filterFoodList(Map<String, String> map) {
         return retrofitService.filterFoodList(map);
@@ -885,6 +883,9 @@ public class NetApi {
      */
     public Observable<HomeBarModel> filterBarList(Map<String, String> map) {
         return retrofitService.filterBarList(map);
+    }
 
+    public Observable<LiveInfoListModel> pullLive(String appid) {
+        return retrofitService.pullLive(appid);
     }
 }

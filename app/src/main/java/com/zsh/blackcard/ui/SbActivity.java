@@ -164,7 +164,7 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 PublicDialog.openLiveDialog(SbActivity.this);
-                //  startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
+                //  startActivity(new Intent(SbActivity.this, SingleAnchorActivity.class));//弹窗
                 // startActivity(new Intent(SbActivity.this, LiveOpenActivity.class));
             }
         });

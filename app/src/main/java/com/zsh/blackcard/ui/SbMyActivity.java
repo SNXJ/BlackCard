@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.ui.live.AbMyContributionActivity;
-import com.zsh.blackcard.ui.live.AbMyFollowActivity;
-import com.zsh.blackcard.ui.live.AbMySettingActivity;
-import com.zsh.blackcard.ui.live.AbMySignActivity;
-import com.zsh.blackcard.ui.live.AbMyTaskActivity;
-import com.zsh.blackcard.ui.live.LiveRankActivity;
+import com.zsh.blackcard.live.AbMyContributionActivity;
+import com.zsh.blackcard.live.AbMyFollowActivity;
+import com.zsh.blackcard.live.AbMySettingActivity;
+import com.zsh.blackcard.live.AbMySignActivity;
+import com.zsh.blackcard.live.AbMyTaskActivity;
+import com.zsh.blackcard.live.LiveRankActivity;
 
 
 /**

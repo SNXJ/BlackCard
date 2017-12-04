@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.StatusBarColorUntil;
 
+import butterknife.ButterKnife;
+
 
 /**
  * @author sxj
@@ -29,8 +31,6 @@ public abstract class BaseFragment extends Fragment {
         super();
     }
 
-//    public LocationClient mLocationClient = null;
-//    private MyLocationListener myListener = new MyLocationListener();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,20 +40,22 @@ public abstract class BaseFragment extends Fragment {
         StatusBarColorUntil.setStatusBarColor(getActivity());
         baseApplication = BaseApplication.getApplication();
         //  user = SharedPreferencesUtils.getUser(baseApplication);
-//        mLocationClient = new LocationClient(getApplicationContext());
-//        //声明LocationClient类
-//        mLocationClient.registerLocationListener(myListener);
-//        //注册监听函数
-//        LocationClientOption option = new LocationClientOption();
-//        option.setIsNeedAddress(true);
-//        mLocationClient.setLocOption(option);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = initView(inflater);
-        initDate(savedInstanceState);
+        if (view == null) {
+            view = initView(inflater);
+            // 初始化View注入
+            ButterKnife.bind(this, view);
+            initDate(savedInstanceState);
+        } else {
+            ViewGroup viewGroup = (ViewGroup) view.getParent();
+            if (viewGroup != null) {
+                viewGroup.removeView(view);
+            }
+        }
         return view;
     }
 

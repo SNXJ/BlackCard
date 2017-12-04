@@ -131,7 +131,7 @@
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
         <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.live.LiveActivity" />
+        <activity android:name=".live.SingleAnchorActivity" />
         <activity android:name=".ui.home.HomeTrainActivity" />
         <activity
             android:name=".ui.home.HomeFoodHotelActivity"
@@ -144,11 +144,11 @@
         <activity android:name=".ui.CusCenterActivity" />
         <activity android:name=".ui.WalletCenterActivity" />
         <activity android:name=".ui.zgactivity.BlackSurplusActivity" />
-        <activity android:name=".ui.live.LiveRechargeActivity" />
-        <activity android:name=".ui.live.RewardMoneyActivity" />
-        <activity android:name=".ui.live.LiveRankActivity" />
-        <activity android:name=".ui.live.LiveRoomActivity" />
-        <activity android:name=".ui.live.LiveAnchorDetails" />
+        <activity android:name=".live.LiveRechargeActivity" />
+        <activity android:name=".live.RewardMoneyActivity" />
+        <activity android:name=".live.LiveRankActivity" />
+        <activity android:name=".live.LiveRoomActivity" />
+        <activity android:name=".live.LiveAnchorDetails" />
         <activity android:name=".ui.zgactivity.GameCenterActivity" />
         <activity android:name=".ui.MySettingActivity" />
         <activity android:name=".ui.HuoDongActivity" />
@@ -163,10 +163,10 @@
         <activity android:name=".ui.zgactivity.GoodsCategoryActivity" />
         <activity android:name=".ui.zgactivity.DiscoverActivity" />
         <activity android:name=".ui.zgactivity.PersonalActivity" />
-        <activity android:name=".ui.live.AbMyFollowActivity" />
-        <activity android:name=".ui.live.AbMyContributionActivity" />
-        <activity android:name=".ui.live.AbMyTaskActivity" />
-        <activity android:name=".ui.live.AbMySignActivity" />
+        <activity android:name=".live.AbMyFollowActivity" />
+        <activity android:name=".live.AbMyContributionActivity" />
+        <activity android:name=".live.AbMyTaskActivity" />
+        <activity android:name=".live.AbMySignActivity" />
         <activity android:name=".ui.WelcomeActivity" />
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.home.HomeMoreActivity" />
@@ -181,13 +181,13 @@
         <activity android:name=".ui.TicketSeatActivity" />
         <activity android:name=".ui.TicketAddActivity" />
         <activity android:name=".ui.CommodityDetailBannerActivity" />
-        <activity android:name=".ui.live.LiveOpenActivity" />
+        <activity android:name=".live.LiveOpenActivity" />
         <activity android:name=".ui.MyOrderActivity" />
         <activity android:name=".ui.CollectionActivity" />
-        <activity android:name=".ui.live.LiveAnchorDetails2" />
-        <activity android:name=".ui.live.VideoDetailsActivity" />
-        <activity android:name=".ui.live.VideoIngActivity" />
-        <activity android:name=".ui.live.AbMySettingActivity" />
+        <activity android:name=".live.LiveAnchorDetails2" />
+        <activity android:name=".live.VideoDetailsActivity" />
+        <activity android:name=".live.VideoIngActivity" />
+        <activity android:name=".live.AbMySettingActivity" />
         <activity android:name=".ui.home.HomeTopNewsDetailActivity" />
         <activity android:name=".ui.EatDrinkSetDetailActivity" />
         <activity android:name=".ui.OrderPayActivity" />
@@ -198,6 +198,10 @@
         <activity android:name=".ui.home.HomePublicDetailActivity"></activity>
         <activity android:name=".ui.home.HomeGloryServerDetailActivity" />
         <activity android:name=".ui.MyOrderOtherActivity" />
+        <activity android:name=".live.SingleAnchorActivity" />
+        <activity android:name=".live.BasePublishActivity" />
+        <activity android:name=".live.LiveAnchorListActivity" />
+        <activity android:name=".live.SingleAnchorPlayActivity" />
     </application>
 
 </manifest>

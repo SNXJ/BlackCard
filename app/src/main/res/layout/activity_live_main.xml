@@ -3,14 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent">
-    <!--android:background="@mipmap/vague_bg"-->
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/base180dp"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:background="@android:color/transparent"-->
-    <!--&gt;-->
-
 
     <com.zsh.blackcard.custom.RadialViewLayout
         android:id="@+id/ll_pop"
@@ -23,3 +15,11 @@
 
     <!--</RelativeLayout>-->
 </RelativeLayout>
+
+
+
+
+
+
+
+
