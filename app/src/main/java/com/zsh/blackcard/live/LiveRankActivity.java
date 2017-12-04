@@ -1,4 +1,4 @@
-package com.zsh.blackcard.ui.live;
+package com.zsh.blackcard.live;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;

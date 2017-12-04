@@ -38,17 +38,15 @@ android {
     }
     sourceSets {
         main {
-            jniLibs.srcDirs = ['libs']
-            jniLibs.srcDirs = ['zego_libs']
-
+            jniLibs.srcDirs = ['libs','zego_libs']
         }
     }
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile fileTree(dir: 'zego_libs', include: ['*.jar'])
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -88,6 +86,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     //添加Glide图片加载
     implementation 'com.github.bumptech.glide:glide:4.3.1'
+    implementation 'jp.wasabeef:glide-transformations:2.0.0'
     //添加第三方日期滚动选择器
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
     //添加列表滑动删除

@@ -298,6 +298,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
 
     }
 
+
     private void initFoodData() {
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeFoodList(DataManager.getMd5Str("SORTFOOD")), new ResultListener<HomeFoodModel>() {
             @Override
@@ -336,24 +337,56 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         //推荐。距离由近到远。评分由高到低 。价格由高到低。价格由低到高
         //TODO
         PublicDialog.selectOneDialog(this, "foodSort.json", "推荐",
+
                 new FilterListener() {
                     @Override
                     public void resultListener(String str) {
+                        String str1 = "";
+                        String str2 = "";
                         switch (str) {
                             case "推荐":
-                                filterFoodData("", "", "", "");
+
                                 break;
-                            case "距离由近到远":
+                            case "距离由近到远"://BAREVALUATE
+                                str1 = "";
+                                str2 = "";
                                 break;
                             case "评分由高到低":
+                                str1 = "SHOPEVALUATE";
+                                str2 = "DESC";
                                 break;
                             case "价格由高到低":
+                                str1 = "SHOPPRICE";
+                                str2 = "DESC";
                                 break;
                             case "价格由低到高":
+                                str1 = "SHOPPRICE";
+                                str2 = "ASC";
                                 break;
+
                         }
+                        filterData(str1, str2);
+
                     }
                 });
+    }
+
+    private void filterData(String str1, String str2) {
+        switch (type) {
+            case HomeTypeConstant.MORE_TYPE_FOOD:
+                filterFoodData(str1, str2, "", "");
+                break;
+            case HomeTypeConstant.MORE_TYPE_HOTEL:
+                filterHotelData(str1, str2, "", "");
+                break;
+            case HomeTypeConstant.MORE_TYPE_BAR:
+
+                filterBarData(str1, str2, "", "");
+                break;
+            case HomeTypeConstant.MORE_TYPE_KTV:
+                filterKTVData(str1, str2, "", "");
+                break;
+        }
     }
 
     private void filterBrand() {

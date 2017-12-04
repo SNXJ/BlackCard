@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextureView
+        android:id="@+id/textureView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rlyt_quality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_marginTop="@dimen/base50dp">
+
+            <TextView
+                android:id="@+id/tv_quality_color"
+                android:layout_width="@dimen/base10dp"
+                android:layout_height="@dimen/base10dp"
+                android:layout_centerVertical="true"
+                tools:background="@drawable/circle_green" />
+
+            <TextView
+                android:id="@+id/tv_live_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base12dp"
+                android:textColor="@color/ff92_text"
+                android:textSize="14sp"
+                tools:text="当前质量" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/rlyt_quality"
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="分享"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tv_switch_full_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_share"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base5dp"
+            android:text="切换全屏"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+</RelativeLayout>

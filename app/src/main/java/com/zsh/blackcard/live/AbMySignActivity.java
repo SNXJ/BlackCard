@@ -1,4 +1,4 @@
-package com.zsh.blackcard.ui.live;
+package com.zsh.blackcard.live;
 
 import android.content.Context;
 import android.graphics.Canvas;

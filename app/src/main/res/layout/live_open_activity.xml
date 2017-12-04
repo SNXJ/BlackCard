@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_black"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:gravity="center_horizontal">
+
+    <TextureView
+        android:id="@+id/textureView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,7 +49,7 @@
     <EditText
         android:id="@+id/et_edit_title"
         style="@style/text_"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/base200dp"
         android:background="@null"
         android:gravity="center"
@@ -150,4 +156,4 @@
             android:text="开启直播即代表同意《尚播用户协议》"
             android:textSize="11sp" />
     </RelativeLayout>
-</LinearLayout>
+</FrameLayout>

@@ -27,9 +27,9 @@ import com.zsh.blackcard.listener.SelectDateListener;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
-import com.zsh.blackcard.ui.live.LiveAnchorDetails2;
-import com.zsh.blackcard.ui.live.LiveOpenActivity;
-import com.zsh.blackcard.ui.live.VideoDetailsActivity;
+import com.zsh.blackcard.live.LiveAnchorDetails2;
+import com.zsh.blackcard.live.LiveOpenActivity;
+import com.zsh.blackcard.live.VideoDetailsActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
 import com.zsh.blackcard.untils.MyCalendar;
 import com.zsh.blackcard.untils.UIUtils;
@@ -165,7 +165,7 @@ public class PublicDialog {
                 R.layout.activity_live_main, null);
         final Dialog dialog = showDialogView(view, mContext);
 
-        RadialViewLayout radialView = (RadialViewLayout) view.findViewById(R.id.ll_pop);
+            RadialViewLayout radialView = (RadialViewLayout) view.findViewById(R.id.ll_pop);
         radialView.showOpenOrHide();
         radialView.setOnListener(new ItemClickListener() {
             @Override

@@ -42,6 +42,7 @@ import com.zsh.blackcard.model.HotelDetailModel;
 import com.zsh.blackcard.model.HotelDetailsMoreListModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
+import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
@@ -508,4 +509,8 @@ public interface RetrofitService {
     Observable<OrderCenterKTVRecyclerModel> postOrderCenterKTVRecycler(@Field("FKEY") String md5,
                                                                        @Field("HONOURUSER_ID") String HONOURUSER_ID,
                                                                        @Field("ORDERSTATUS") String ORDERSTATUS);
+
+
+    @GET("https://liveroom1739272706-api.zego.im/demo/roomlist?appid=1739272706")
+    Observable<LiveInfoListModel> pullLive(@Query("FKEY") String md5);
 }

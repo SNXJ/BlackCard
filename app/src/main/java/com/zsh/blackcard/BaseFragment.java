@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.StatusBarColorUntil;
 
+import butterknife.ButterKnife;
+
 
 /**
  * @author sxj
@@ -43,8 +45,17 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = initView(inflater);
-        initDate(savedInstanceState);
+        if (view == null) {
+            view = initView(inflater);
+            // 初始化View注入
+            ButterKnife.bind(this, view);
+            initDate(savedInstanceState);
+        } else {
+            ViewGroup viewGroup = (ViewGroup) view.getParent();
+            if (viewGroup != null) {
+                viewGroup.removeView(view);
+            }
+        }
         return view;
     }
 

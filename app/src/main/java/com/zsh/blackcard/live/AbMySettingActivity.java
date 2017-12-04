@@ -1,17 +1,17 @@
-package com.zsh.blackcard.ui.live;
+package com.zsh.blackcard.live;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
 /**
- * Name: VideoIngActivity
+ * Name: AbMySettingActivity
  * Author: SNXJ
  * Date: 2017-11-18
  * Description:描述：
  */
-public class VideoIngActivity extends BaseActivity {
+public class AbMySettingActivity extends BaseActivity {
     @Override
     protected void initUI() {
-        setContentView(R.layout.video_ing_activity);
+        setContentView(R.layout.ab_my_setting_activity);
     }
 }

@@ -1,4 +1,4 @@
-package com.zsh.blackcard.ui.live;
+package com.zsh.blackcard.live;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
