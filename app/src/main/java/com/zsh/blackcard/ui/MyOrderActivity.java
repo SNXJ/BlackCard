@@ -216,23 +216,22 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                 break;
             //确认收货
             case R.id.my_order_ok_tv:
-                UIUtils.showToast(((MyOrderModel.PdBean) adapter.getData().get(position)).getORDER_ID());
-//                initOk(my_order_tabLayout.getSelectedTabPosition(), position, ((MyOrderModel.PdBean) adapter.getData().get(position)).getORDER_ID());
+                initOk(my_order_tabLayout.getSelectedTabPosition(), ((MyOrderModel.PdBean) adapter.getData().get(position)).getORDERNUMBER());
                 break;
         }
 
     }
 
-    private void initOk(final int selectedTabPosition, int position, String order_id) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_id, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
+    private void initOk(final int selectedTabPosition, String order_number) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_number, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (selectedTabPosition == 0) {
                     postMyAppointOrder();
                 } else {
-                    postMyAppointOrder("0040002");
+                    postMyAppointOrder("0040003");
                 }
-//                UIUtils.showToast("收货成功");
+                UIUtils.showToast("收货成功");
             }
 
             @Override

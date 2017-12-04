@@ -24,7 +24,7 @@
                 android:drawablePadding="@dimen/base4dp"
                 android:drawableRight="@mipmap/home_nav_more"
                 android:gravity="center"
-                android:text="三亚"
+                android:text="未知"
                 android:textColor="@color/ff92_text"
                 android:textSize="14sp" />
 

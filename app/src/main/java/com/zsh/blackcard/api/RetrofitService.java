@@ -10,9 +10,7 @@ import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
-import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.FoodDetailModel;
-import com.zsh.blackcard.model.FoodDetailsListModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
@@ -20,6 +18,7 @@ import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
+import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
@@ -46,6 +45,8 @@ import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.RegisterModel;
@@ -119,10 +120,7 @@ public interface RetrofitService {
     Observable<HjRecyclerModel> postHjRecycler(@Field("FKEY") String md5);
 
     //汇聚页面指定聚会列表
-    @FormUrlEncoded
-    @POST("appconvergein/getpartylist?")
-    Observable<EatDrinkModel> postHjRecyclerItem(@Field("FKEY") String md5,
-                                                 @Field("CONVERGE_ID") String id);
+
 
     //首页美食
     @FormUrlEncoded
@@ -164,10 +162,10 @@ public interface RetrofitService {
     @POST("appshotelin/hoteldetaillist?")
     Observable<HoteldetailsItemModel> postHotelDetailList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
 
-    //美食详情列表
+    //美食套餐列表
     @FormUrlEncoded
-    @POST("appshotelin/hoteldetaillist?")
-    Observable<FoodDetailsListModel> postFoodDetailList(@Field("FKEY") String md5, @Field("SORTHOTEL_ID") String id);
+    @POST("appsfoodin/fooddetaillist.do?")
+    Observable<HomeFoodDetailPackageModel> postFoodDetailList(@Field("FKEY") String md5, @Field("SORTFOOD_ID") String id);
 
     //美食详情更多列表
     @FormUrlEncoded
@@ -475,7 +473,7 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("apporderin/shiporderstaupd?")
     Observable<ResultModel> postMyOrderOk(@Field("FKEY") String md5,
-                                          @Field("ORDER_ID") String ORDER_ID,
+                                          @Field("ORDERNUMBER") String ORDERNUMBER,
                                           @Field("HONOURUSER_ID") String HONOURUSER_ID,
                                           @Field("ORDERSTATUS") String ORDERSTATUS);
 
@@ -510,7 +508,30 @@ public interface RetrofitService {
                                                                        @Field("HONOURUSER_ID") String HONOURUSER_ID,
                                                                        @Field("ORDERSTATUS") String ORDERSTATUS);
 
+    //订单中心所有酒店订单
+    @FormUrlEncoded
+    @POST("appshotelin/hotelorderalllist.do?")
+    Observable<OrderCenterHotelRecyclerModel> postOrderCenterHotelRecycler(@Field("FKEY") String md5,
+                                                                           @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                                                           @Field("ORDERSTATUS") String ORDERSTATUS);
+
+    //订单中心所有美食订单
+    @FormUrlEncoded
+    @POST("appsfoodin/foodorderalllist.do?")
+    Observable<OrderCenterFoodRecyclerModel> postOrderCenterFoodRecycler(@Field("FKEY") String md5,
+                                                                         @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                                                         @Field("ORDERSTATUS") String ORDERSTATUS);
+
+    //尊购订单状态修改
+    @FormUrlEncoded
+    @POST("apporderin/shiporderstaupd?")
+    Observable<ResultModel> postZgChange(@Field("FKEY") String md5,
+                                         @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                         @Field("ORDERNUMBER") String ORDERNUMBER,
+                                         @Field("ORDERSTATUS") String ORDERSTATUS);
+
 
     @GET("https://liveroom1739272706-api.zego.im/demo/roomlist?appid=1739272706")
     Observable<LiveInfoListModel> pullLive(@Query("FKEY") String md5);
 }
+

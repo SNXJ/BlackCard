@@ -70,8 +70,8 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_home_food_hotel);
-        type = getIntent().getStringExtra("data");
         ButterKnife.bind(this);
+        type = getIntent().getStringExtra("data");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         switch (type) {

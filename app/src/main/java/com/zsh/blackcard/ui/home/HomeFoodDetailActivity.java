@@ -29,6 +29,7 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.FoodDetailsListModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
+import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
@@ -116,12 +117,13 @@ public class HomeFoodDetailActivity extends BaseActivity {
         });
     }
 
+    //套餐列表
     private void initRV() {//TODO
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailList(DataManager.getMd5Str(""), id), new ResultListener<FoodDetailsListModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailList(DataManager.getMd5Str("FOODDETAIL"), id), new ResultListener<HomeFoodDetailPackageModel>() {
             @Override
-            public void responseSuccess(FoodDetailsListModel obj) {
+            public void responseSuccess(HomeFoodDetailPackageModel obj) {
 
-                List<FoodDetailsListModel.PdBean> dataList = obj.getPd();
+                List<HomeFoodDetailPackageModel.PdBean> dataList = obj.getPd();
                 setRVData(dataList);
             }
 
@@ -132,7 +134,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
         });
     }
 
-    private void setRVData(final List<FoodDetailsListModel.PdBean> dataList) {
+    private void setRVData(final List<HomeFoodDetailPackageModel.PdBean> dataList) {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
 
@@ -176,7 +178,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ActivityUtils.startActivityForData(HomeFoodDetailActivity.this, HomeFoodDetailActivity.class, dataList.get(position).getSORTFOOD_ID());
-              //  finish();
+                //  finish();
             }
         });
     }

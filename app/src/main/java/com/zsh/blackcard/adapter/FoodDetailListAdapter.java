@@ -9,6 +9,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.model.FoodDetailsListModel;
+import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 
 import java.util.List;
 
@@ -18,22 +19,22 @@ import java.util.List;
  * Date: 2017-11-23
  * Description:描述：
  */
-public class FoodDetailListAdapter extends BaseQuickAdapter<FoodDetailsListModel.PdBean, BaseViewHolder> {
+public class FoodDetailListAdapter extends BaseQuickAdapter<HomeFoodDetailPackageModel.PdBean, BaseViewHolder> {
     private Context context;
 
-    public FoodDetailListAdapter(Context context, @Nullable List<FoodDetailsListModel.PdBean> data) {
+    public FoodDetailListAdapter(Context context, @Nullable List<HomeFoodDetailPackageModel.PdBean> data) {
         super(R.layout.home_hotel_food_detail_item, data);
         this.context = context;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, FoodDetailsListModel.PdBean item) {
-        helper.setText(R.id.tv_money, "￥" + item.getHOTELDETPRICE());
-        helper.setText(R.id.tv_name, item.getHOTELDETNAME());
-        helper.setText(R.id.tv_des, item.getHOTELDETBEDTYPE());
+    protected void convert(BaseViewHolder helper, HomeFoodDetailPackageModel.PdBean item) {
+        helper.setText(R.id.tv_money, "￥" + item.getFOODDETPRICE());
+        helper.setText(R.id.tv_name, item.getFOODDETNAME());
+        helper.setText(R.id.tv_des, item.getFOODDETREMARK());
         //TODO
         // helper.setText(R.id.tv_vip, item.getHOTELDETBEDTYPE());
 
-        Glide.with(context).load(item.getHOTELDETIMGS()).into((ImageView) helper.getView(R.id.im_img));
+        Glide.with(context).load(item.getFOODDETIMGS()).into((ImageView) helper.getView(R.id.im_img));
     }
 }
