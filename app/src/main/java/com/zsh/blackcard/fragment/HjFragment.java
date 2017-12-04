@@ -31,7 +31,6 @@ public class HjFragment extends BaseFragment {
     RecyclerView hj_recycler;
 
     private HjRecyclerAdapter hjRecyclerAdapter;
-    private HjRecyclerModel hjRecyclerModel;
 
     @Override
     public void initDate(Bundle savedInstanceState) {
@@ -40,8 +39,7 @@ public class HjFragment extends BaseFragment {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHjRecycler(DataManager.getMd5Str("CONVERGELIST")), new ResultListener<HjRecyclerModel>() {
             @Override
             public void responseSuccess(HjRecyclerModel obj) {
-                hjRecyclerModel = obj;
-                hjRecyclerAdapter = new HjRecyclerAdapter(R.layout.hj_recycler_item,hjRecyclerModel.getPd());
+                hjRecyclerAdapter = new HjRecyclerAdapter(R.layout.hj_recycler_item,obj.getPd());
                 hj_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
                 hj_recycler.setAdapter(hjRecyclerAdapter);
                 hjRecyclerAdapter.setOnItemClickListener(new HjOnItemClick());
@@ -69,7 +67,7 @@ public class HjFragment extends BaseFragment {
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             //传递CONVERGE_ID和title标题
-            ActivityUtils.startActivityForData(getActivity(), EatDrinkActivity.class,hjRecyclerModel.getPd().get(position).getCONVERGE_ID(),hjRecyclerModel.getPd().get(position).getIMGCNCHAR());
+            ActivityUtils.startActivityForData(getActivity(), EatDrinkActivity.class,((HjRecyclerModel.PdBean)adapter.getData().get(position)).getCONVERGE_ID(),((HjRecyclerModel.PdBean)adapter.getData().get(position)).getIMGENCHAR());
         }
     }
 }

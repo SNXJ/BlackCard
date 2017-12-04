@@ -8,11 +8,15 @@ import android.support.v7.widget.RecyclerView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.MyOrderCenterOtherBarAdapter;
+import com.zsh.blackcard.adapter.MyOrderCenterOtherFoodAdapter;
+import com.zsh.blackcard.adapter.MyOrderCenterOtherHotelAdapter;
 import com.zsh.blackcard.adapter.MyOrderCenterOtherKTVAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.view.SpacesItemDecoration;
@@ -41,10 +45,19 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
     private MyOrderCenterOtherBarAdapter myOrderCenterOtherBarAdapter;
     //KTV订单适配器
     private MyOrderCenterOtherKTVAdapter myOrderCenterOtherKTVAdapter;
+    //酒店订单适配器
+    private MyOrderCenterOtherHotelAdapter myOrderCenterOtherHotelAdapter;
+    //美食订单适配器
+    private MyOrderCenterOtherFoodAdapter myOrderCenterOtherFoodAdapter;
+
     //酒吧订单集合
-    private List<OrderCenterBarRecyclerModel.PdBean> pdBarList = new ArrayList<>();
+    private List<OrderCenterBarRecyclerModel.PdBean> pdBarList;
     //KTV订单集合
-    private List<OrderCenterKTVRecyclerModel.PdBean> pdKTVList = new ArrayList<>();
+    private List<OrderCenterKTVRecyclerModel.PdBean> pdKTVList;
+    //酒店订单集合
+    private List<OrderCenterHotelRecyclerModel.PdBean> pdHotelList;
+    //美食订单集合
+    private List<OrderCenterFoodRecyclerModel.PdBean> pdFoodList;
 
     private String title;
 
@@ -67,6 +80,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
         title = intent.getStringExtra("title");
         switch (title) {
             case "酒吧":
+                pdBarList = new ArrayList<>();
                 if ("".equals(data)) {
                     postBarAllOrder();
                 } else if ("0040001".equals(data)) {
@@ -81,6 +95,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
                 }
                 break;
             case "KTV":
+                pdKTVList = new ArrayList<>();
                 if ("".equals(data)) {
                     postKTVAllOrder();
                 } else if ("0040001".equals(data)) {
@@ -94,6 +109,197 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
                     my_order_tabLayout.getTabAt(3).select();
                 }
                 break;
+            case "酒店":
+                pdHotelList = new ArrayList<>();
+                if ("".equals(data)) {
+                    postHotelAllOrder();
+                } else if ("0040001".equals(data)) {
+                    //选择待付款
+                    my_order_tabLayout.getTabAt(1).select();
+                } else if ("0040002".equals(data)) {
+                    //待使用
+                    my_order_tabLayout.getTabAt(2).select();
+                } else if ("0040003".equals(data)) {
+                    //待评价
+                    my_order_tabLayout.getTabAt(3).select();
+                }
+                break;
+            case "美食":
+                pdFoodList = new ArrayList<>();
+                if ("".equals(data)) {
+                    postFoodAllOrder();
+                } else if ("0040001".equals(data)) {
+                    //选择待付款
+                    my_order_tabLayout.getTabAt(1).select();
+                } else if ("0040002".equals(data)) {
+                    //待使用
+                    my_order_tabLayout.getTabAt(2).select();
+                } else if ("0040003".equals(data)) {
+                    //待评价
+                    my_order_tabLayout.getTabAt(3).select();
+                }
+                break;
+        }
+    }
+
+    //美食全部订单查询
+    private void postFoodAllOrder() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterFoodRecycler(DataManager.getMd5Str("ALLFOODORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterFoodRecyclerModel>() {
+            @Override
+            public void responseSuccess(OrderCenterFoodRecyclerModel obj) {
+                //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
+                if (obj.getResult().equals("01")) {
+                    if (pdFoodList != null) {
+                        pdFoodList.clear();
+                    }
+                    pdFoodList.addAll(obj.getPd());
+                    //遍历得到的所有订单结果，为订单赋值不同的itemType
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if (obj.getPd().get(i).getORDERSTATUS().equals("0040001")) {
+                            pdFoodList.get(i).setItemType(2);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040002")) {
+                            pdFoodList.get(i).setItemType(3);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040003")) {
+                            pdFoodList.get(i).setItemType(4);
+                        }
+                    }
+                } else {
+                    pdFoodList.clear();
+                }
+                loadFoodRecycler();
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    //美食指定订单查询
+    private void postFoodAllOrder(String state) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterFoodRecycler(DataManager.getMd5Str("ALLFOODORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterFoodRecyclerModel>() {
+            @Override
+            public void responseSuccess(OrderCenterFoodRecyclerModel obj) {
+                //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
+                if (obj.getResult().equals("01")) {
+                    if (pdFoodList != null) {
+                        pdFoodList.clear();
+                    }
+                    pdFoodList.addAll(obj.getPd());
+                    //遍历得到的所有订单结果，为订单赋值不同的itemType
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if (obj.getPd().get(i).getORDERSTATUS().equals("0040001")) {
+                            pdFoodList.get(i).setItemType(2);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040002")) {
+                            pdFoodList.get(i).setItemType(3);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040003")) {
+                            pdFoodList.get(i).setItemType(4);
+                        }
+                    }
+                } else {
+                    pdFoodList.clear();
+                }
+                loadFoodRecycler();
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    //加载美食列表
+    private void loadFoodRecycler() {
+        if (myOrderCenterOtherFoodAdapter != null) {
+            myOrderCenterOtherFoodAdapter.notifyDataSetChanged();
+            order_center_recycler.scrollToPosition(0);
+        } else {
+            myOrderCenterOtherFoodAdapter = new MyOrderCenterOtherFoodAdapter(pdFoodList);
+            order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderOtherActivity.this));
+            order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderOtherActivity.this, SpacesItemDecoration.VERTICAL_LIST));
+            order_center_recycler.setAdapter(myOrderCenterOtherFoodAdapter);
+        }
+    }
+
+    //查询酒店全部订单
+    private void postHotelAllOrder() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterHotelRecycler(DataManager.getMd5Str("ALLHOTELORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterHotelRecyclerModel>() {
+            @Override
+            public void responseSuccess(OrderCenterHotelRecyclerModel obj) {
+                //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
+                if (obj.getResult().equals("01")) {
+                    if (pdHotelList != null) {
+                        pdHotelList.clear();
+                    }
+                    pdHotelList.addAll(obj.getPd());
+                    //遍历得到的所有订单结果，为订单赋值不同的itemType
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if (obj.getPd().get(i).getORDERSTATUS().equals("0040001")) {
+                            pdHotelList.get(i).setItemType(2);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040002")) {
+                            pdHotelList.get(i).setItemType(3);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040003")) {
+                            pdHotelList.get(i).setItemType(4);
+                        }
+                    }
+                } else {
+                    pdHotelList.clear();
+                }
+                loadHotelRecycler();
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    //查询酒店指定条件订单
+    private void postHotelAllOrder(String state) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterHotelRecycler(DataManager.getMd5Str("ALLHOTELORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterHotelRecyclerModel>() {
+            @Override
+            public void responseSuccess(OrderCenterHotelRecyclerModel obj) {
+                //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
+                if (obj.getResult().equals("01")) {
+                    if (pdHotelList != null) {
+                        pdHotelList.clear();
+                    }
+                    pdHotelList.addAll(obj.getPd());
+                    //遍历得到的所有订单结果，为订单赋值不同的itemType
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if (obj.getPd().get(i).getORDERSTATUS().equals("0040001")) {
+                            pdHotelList.get(i).setItemType(2);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040002")) {
+                            pdHotelList.get(i).setItemType(3);
+                        } else if (obj.getPd().get(i).getORDERSTATUS().equals("0040003")) {
+                            pdHotelList.get(i).setItemType(4);
+                        }
+                    }
+                } else {
+                    pdHotelList.clear();
+                }
+                loadHotelRecycler();
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void loadHotelRecycler() {
+        if (myOrderCenterOtherHotelAdapter != null) {
+            myOrderCenterOtherHotelAdapter.notifyDataSetChanged();
+            order_center_recycler.scrollToPosition(0);
+        } else {
+            myOrderCenterOtherHotelAdapter = new MyOrderCenterOtherHotelAdapter(pdHotelList);
+            order_center_recycler.setLayoutManager(new LinearLayoutManager(MyOrderOtherActivity.this));
+            order_center_recycler.addItemDecoration(new SpacesItemDecoration(MyOrderOtherActivity.this, SpacesItemDecoration.VERTICAL_LIST));
+            order_center_recycler.setAdapter(myOrderCenterOtherHotelAdapter);
         }
     }
 
@@ -206,6 +412,28 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
                     postKTVAllOrder("0040002");
                 } else if (tab.getText().toString().equals("待评价")) {
                     postKTVAllOrder("0040003");
+                }
+                break;
+            case "酒店":
+                if (tab.getText().toString().equals("全部")) {
+                    postHotelAllOrder();
+                } else if (tab.getText().toString().equals("待付款")) {
+                    postHotelAllOrder("0040001");
+                } else if (tab.getText().toString().equals("待使用")) {
+                    postHotelAllOrder("0040002");
+                } else if (tab.getText().toString().equals("待评价")) {
+                    postHotelAllOrder("0040003");
+                }
+                break;
+            case "美食":
+                if (tab.getText().toString().equals("全部")) {
+                    postFoodAllOrder();
+                } else if (tab.getText().toString().equals("待付款")) {
+                    postFoodAllOrder("0040001");
+                } else if (tab.getText().toString().equals("待使用")) {
+                    postFoodAllOrder("0040002");
+                } else if (tab.getText().toString().equals("待评价")) {
+                    postFoodAllOrder("0040003");
                 }
                 break;
         }

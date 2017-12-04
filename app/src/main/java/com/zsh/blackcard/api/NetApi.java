@@ -14,9 +14,7 @@ import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
-import com.zsh.blackcard.model.EatDrinkModel;
 import com.zsh.blackcard.model.FoodDetailModel;
-import com.zsh.blackcard.model.FoodDetailsListModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
@@ -24,6 +22,7 @@ import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
+import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
@@ -50,6 +49,8 @@ import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.ResultModel;
@@ -307,7 +308,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsListModel> postFoodDetailList(String md5, String id) {
+    public Observable<HomeFoodDetailPackageModel> postFoodDetailList(String md5, String id) {
         return retrofitService.postFoodDetailList(md5, id);
     }
 
@@ -402,9 +403,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<EatDrinkModel> postHjRecyclerItem(String md5, String id) {
-        return retrofitService.postHjRecyclerItem(md5, id);
-    }
+
 
     /**
      * 汇聚页面指定聚会列表点击查看详情
@@ -815,13 +814,13 @@ public class NetApi {
      * 我的订单 点击确认收货，修改订单为待评价
      *
      * @param md5
-     * @param ORDER_ID
+     * @param ORDERNUMBER
      * @param HONOURUSER_ID
      * @param ORDERSTATUS
      * @return
      */
-    public Observable<ResultModel> postMyOrderOk(String md5, String ORDER_ID, String HONOURUSER_ID, String ORDERSTATUS) {
-        return retrofitService.postMyOrderOk(md5, ORDER_ID, HONOURUSER_ID, ORDERSTATUS);
+    public Observable<ResultModel> postMyOrderOk(String md5, String ORDERNUMBER, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postMyOrderOk(md5, ORDERNUMBER, HONOURUSER_ID, ORDERSTATUS);
     }
 
     /**
@@ -845,6 +844,43 @@ public class NetApi {
      */
     public Observable<OrderCenterKTVRecyclerModel> postOrderCenterKTVRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postOrderCenterKTVRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 订单中心酒店全部订单查询
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<OrderCenterHotelRecyclerModel> postOrderCenterHotelRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postOrderCenterHotelRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 订单中心美食全部订单查询
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<OrderCenterFoodRecyclerModel> postOrderCenterFoodRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postOrderCenterFoodRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 尊购订单状态修改
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param ORDERNUMBER
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<ResultModel> postZgChange(String md5, String HONOURUSER_ID, String ORDERNUMBER, String ORDERSTATUS) {
+        return retrofitService.postZgChange(md5, HONOURUSER_ID, ORDERNUMBER, ORDERSTATUS);
     }
 
     /**

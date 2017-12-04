@@ -13,12 +13,19 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.tencent.bugly.beta.Beta;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeGloryMagazineAdapter;
@@ -84,6 +91,66 @@ public class HomeFragment extends BaseFragment {
     };
     List<HomeNewModel> typeList = new ArrayList<>();
 
+    public LocationClient locationClient = null;
+    private MyLocation myLocation = new MyLocation();
+
+    static {
+        System.loadLibrary("locSDK7a");
+    }
+
+    @BindView(R.id.rb_city_home)
+    RadioButton rb_city_home;
+
+    private class MyLocation extends BDAbstractLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            double latitude = bdLocation.getLatitude();    //获取纬度信息
+            double longitude = bdLocation.getLongitude();    //获取经度信息
+            float radius = bdLocation.getRadius();    //获取定位精度，默认值为0.0f
+            String city = bdLocation.getCity();
+            if (city.contains("市")) {
+                rb_city_home.setText(city.substring(0, city.indexOf("市")));
+            }
+
+            String coorType = bdLocation.getCoorType();
+            //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
+
+            int errorCode = bdLocation.getLocType();
+
+
+            System.out.println(latitude + "\n=====" + longitude + "\n=====" + radius + "\n=====" + coorType + "\n=====" + errorCode);
+        }
+    }
+
+    //当碎片隐藏时 关闭定位，当打开时开启定位
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            locationClient.stop();
+        } else {
+            locationClient.start();
+        }
+    }
+
+    //初始化定位方法
+    private void initLocation() {
+        locationClient = new LocationClient(BaseApplication.getInstance());
+        locationClient.registerLocationListener(myLocation);
+
+        LocationClientOption option = new LocationClientOption();
+        //高精度定位
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
+        //定位编码
+        option.setCoorType("bd09ll");
+        //需要详细地址信息
+        option.setIsNeedAddress(true);
+        //定位周期（毫秒）
+        option.setScanSpan(5000 * 12 * 60 * 2);
+        locationClient.setLocOption(option);
+        locationClient.start();
+    }
 
     //HomeTop 头条的item点击事件
     private class HomeTopOnItemClick implements BaseQuickAdapter.OnItemClickListener {
@@ -243,10 +310,11 @@ public class HomeFragment extends BaseFragment {
         sendMainActivity = (SendMainActivity) getActivity();
     }
 
+
     @Override
     public void initDate(Bundle savedInstanceState) {
-
-
+        //初始化定位
+        initLocation();
         //初始化类型选择列表（美食，酒店，品鉴...）
         for (int i = 0; i < titles.length; i++) {
             HomeNewModel pic = new HomeNewModel();
@@ -414,7 +482,6 @@ public class HomeFragment extends BaseFragment {
             }
         });
     }
-
 
     @Override
     public View initView(LayoutInflater inflater) {
