@@ -14,6 +14,7 @@ import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
+import com.zsh.blackcard.model.EatDrinkRecyclerModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
@@ -24,6 +25,7 @@ import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeGolfDetailModel;
@@ -397,13 +399,17 @@ public class NetApi {
     }
 
     /**
-     * 汇聚页面指定聚会列表
+     * 汇聚列表指定聚会页面
      *
      * @param md5
-     * @param id
+     * @param HONOURUSER_ID
+     * @param CONVERGE_ID
+     * @param STATUS
      * @return
      */
-
+    public Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(String md5, String HONOURUSER_ID, String CONVERGE_ID, String STATUS) {
+        return retrofitService.postEatDrinkRecycler(md5, HONOURUSER_ID, CONVERGE_ID, STATUS);
+    }
 
     /**
      * 汇聚页面指定聚会列表点击查看详情
@@ -923,5 +929,15 @@ public class NetApi {
 
     public Observable<LiveInfoListModel> pullLive(String appid) {
         return retrofitService.pullLive(appid);
+    }
+
+    /**
+     * 首页荣耀杂志列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomeGloryMagazineModel> postHomeGloryMagazine(String md5) {
+        return retrofitService.postHomeGloryMagazine(md5);
     }
 }

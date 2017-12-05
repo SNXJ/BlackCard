@@ -28,35 +28,39 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="35dp">
+        android:layout_height="@dimen/base35dp"
+        android:orientation="horizontal">
 
-        <TextView
+        <RadioButton
+            android:id="@+id/my_huodong_left_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
             android:gravity="center"
-            android:textColor="#FF929292"
-            android:textSize="15sp"
             android:text="我发布的"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:textColor="@color/hometext"
+            android:textSize="15sp" />
 
-        <TextView
+        <RadioButton
+            android:id="@+id/my_huodong_right_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
             android:gravity="center"
-            android:textColor="#FF929292"
-            android:textSize="15sp"
             android:text="我参与的"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:textColor="@color/hometext"
+            android:textSize="15sp" />
 
-    </LinearLayout>
+    </RadioGroup>
 
     <View
-        android:background="@color/divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="@color/divider" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_huodong_recyclerView"

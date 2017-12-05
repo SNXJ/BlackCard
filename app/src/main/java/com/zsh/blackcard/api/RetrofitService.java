@@ -10,6 +10,7 @@ import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
+import com.zsh.blackcard.model.EatDrinkRecyclerModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
@@ -20,6 +21,7 @@ import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeGolfDetailModel;
@@ -120,7 +122,12 @@ public interface RetrofitService {
     Observable<HjRecyclerModel> postHjRecycler(@Field("FKEY") String md5);
 
     //汇聚页面指定聚会列表
-
+    @FormUrlEncoded
+    @POST("appconvergein/getpartylist?")
+    Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(@Field("FKEY") String md5,
+                                                           @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                                           @Field("CONVERGE_ID") String CONVERGE_ID,
+                                                           @Field("STATUS") String STATUS);
 
     //首页美食
     @FormUrlEncoded
@@ -533,5 +540,10 @@ public interface RetrofitService {
 
     @GET("https://liveroom1739272706-api.zego.im/demo/roomlist?appid=1739272706")
     Observable<LiveInfoListModel> pullLive(@Query("FKEY") String md5);
+
+    //首页荣耀杂志列表
+    @FormUrlEncoded
+    @POST("apphomein/magazinelist?")
+    Observable<HomeGloryMagazineModel> postHomeGloryMagazine(@Field("FKEY") String md5);
 }
 

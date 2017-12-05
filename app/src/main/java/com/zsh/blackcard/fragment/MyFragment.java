@@ -76,6 +76,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_circle_center_relative:
                 ActivityUtils.startActivity(getActivity(), CircleCenterActivity.class);
                 break;
+            //活动中心
             case R.id.my_huodong_center_relative:
                 ActivityUtils.startActivity(getActivity(), HuoDongActivity.class);
                 break;
