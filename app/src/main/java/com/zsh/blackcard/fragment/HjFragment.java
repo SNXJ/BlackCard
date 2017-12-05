@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RadioButton;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseFragment;
@@ -13,12 +14,20 @@ import com.zsh.blackcard.adapter.HjRecyclerAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.CityEventModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.ui.EatDrinkActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.view.selectcity.SelectCityActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 
 /**
@@ -29,6 +38,10 @@ public class HjFragment extends BaseFragment {
 
     @BindView(R.id.hj_recycler)
     RecyclerView hj_recycler;
+    @BindView(R.id.rb_hj_city)
+    RadioButton rbHjCity;
+    Unbinder unbinder;
+
 
     private HjRecyclerAdapter hjRecyclerAdapter;
 
@@ -39,7 +52,7 @@ public class HjFragment extends BaseFragment {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHjRecycler(DataManager.getMd5Str("CONVERGELIST")), new ResultListener<HjRecyclerModel>() {
             @Override
             public void responseSuccess(HjRecyclerModel obj) {
-                hjRecyclerAdapter = new HjRecyclerAdapter(R.layout.hj_recycler_item,obj.getPd());
+                hjRecyclerAdapter = new HjRecyclerAdapter(R.layout.hj_recycler_item, obj.getPd());
                 hj_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
                 hj_recycler.setAdapter(hjRecyclerAdapter);
                 hjRecyclerAdapter.setOnItemClickListener(new HjOnItemClick());
@@ -50,24 +63,41 @@ public class HjFragment extends BaseFragment {
 
             }
         });
-
-
-
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(CityEventModel event) {
+        rbHjCity.setText(event.getCity());
+    }
+
+
 
     @Override
     public View initView(LayoutInflater inflater) {
         View view = View.inflate(getActivity(), R.layout.hjfragment, null);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
+        EventBus.getDefault().register(this);
         return view;
     }
 
-    private class HjOnItemClick implements BaseQuickAdapter.OnItemClickListener{
+
+    @OnClick(R.id.rb_hj_city)
+    public void onClick() {
+        ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
+    }
+
+
+    private class HjOnItemClick implements BaseQuickAdapter.OnItemClickListener {
 
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             //传递CONVERGE_ID和title标题
             ActivityUtils.startActivityForData(getActivity(), EatDrinkActivity.class,((HjRecyclerModel.PdBean)adapter.getData().get(position)).getCONVERGE_ID(),((HjRecyclerModel.PdBean)adapter.getData().get(position)).getIMGCNCHAR());
         }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

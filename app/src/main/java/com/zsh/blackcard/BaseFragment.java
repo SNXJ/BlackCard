@@ -40,6 +40,7 @@ public abstract class BaseFragment extends Fragment {
         StatusBarColorUntil.setStatusBarColor(getActivity());
         baseApplication = BaseApplication.getApplication();
         //  user = SharedPreferencesUtils.getUser(baseApplication);
+
     }
 
     @Override
@@ -82,4 +83,5 @@ public abstract class BaseFragment extends Fragment {
         MPermissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
 }

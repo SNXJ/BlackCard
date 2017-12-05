@@ -35,7 +35,7 @@ android {
     }
     sourceSets {
         main {
-            jniLibs.srcDirs = ['libs','zego_libs']
+            jniLibs.srcDirs = ['libs', 'zego_libs']
 
         }
     }
@@ -60,10 +60,10 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:25.3.1'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.google.code.gson:gson-parent:2.8.2'
-    implementation 'com.github.nicccccccccce.zxing:ZxingLib:1.0.5'
+   // implementation 'com.github.nicccccccccce.zxing:ZxingLib:1.0.5'
+    compile 'com.google.zxing:core:3.3.0'
+    compile 'com.mylhyl:zxingscanner:2.0.0'
     implementation 'com.alibaba:fastjson:1.2.40'
-    //    implementation 'com.jakewharton:butterknife:8.4.0'
-    //添加ButterKnife注解控件，3.0版本无法兼容已解决。
     implementation 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     implementation 'com.belerweb:pinyin4j:2.5.1'
@@ -97,6 +97,7 @@ dependencies {
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
     //
     compile "com.android.support:multidex:1.0.1" // 多dex配置
+    compile 'org.greenrobot:eventbus:3.0.0'
     //添加视频播放第三方
     implementation 'cn.jzvd:jiaozivideoplayer:6.2.1'
 }

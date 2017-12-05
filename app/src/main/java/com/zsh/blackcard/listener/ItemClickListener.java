@@ -8,4 +8,5 @@ package com.zsh.blackcard.listener;
  */
 public interface ItemClickListener {
     void itemClick(int postion);
+
 }

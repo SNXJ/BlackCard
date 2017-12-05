@@ -107,6 +107,7 @@ public class RadialViewLayout extends FrameLayout {
             show(llLiveVideo, 4, 300);
             isOpen = true;
             resId = 1;
+            llBlackMain.animate().rotation(-90f).setInterpolator(new AccelerateDecelerateInterpolator()).start();
         }
         onListener(resId);
         return resId;
@@ -162,7 +163,7 @@ public class RadialViewLayout extends FrameLayout {
             }
         })
                 .start();
-        llBlackMain.animate().rotation(45f).setInterpolator(new AccelerateDecelerateInterpolator()).start();
+//        llBlackMain.animate().rotation(45f).setInterpolator(new AccelerateDecelerateInterpolator()).start();
 
     }
 
@@ -226,6 +227,6 @@ public class RadialViewLayout extends FrameLayout {
             }
         })
                 .start();
-        llBlackMain.animate().rotation(-45f).setInterpolator(new AccelerateDecelerateInterpolator()).start();
+//        llBlackMain.animate().rotation(-45f).setInterpolator(new AccelerateDecelerateInterpolator()).start();
     }
 }

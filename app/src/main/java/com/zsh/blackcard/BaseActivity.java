@@ -57,6 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         initUI();
         ButterKnife.bind(this);
+        //   EventBus.getDefault().register(this);
 
     }
 
@@ -107,5 +108,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onTouchEvent(event);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // EventBus.getDefault().unregister(this);
+    }
 }
