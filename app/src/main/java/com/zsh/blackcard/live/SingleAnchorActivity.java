@@ -31,6 +31,8 @@ import java.util.HashMap;
  * Description: 单向
  */
 public class SingleAnchorActivity extends BasePublishActivity {
+    public SingleAnchorActivity() {
+    }
 
     /**
      * 启动入口.

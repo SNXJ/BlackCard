@@ -9,6 +9,8 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.custom.ViewPagerIndicator;
 import com.zsh.blackcard.fragment.live.LiveAnchorDetailWeiBoFragment;
+import com.zsh.blackcard.listener.ItemClickListener;
+import com.zsh.blackcard.untils.LogUtils;
 
 import butterknife.BindView;
 
@@ -37,6 +39,13 @@ public class LiveAnchorDetails2 extends BaseActivity {
 
         initDatas();
         initEvents();
+        mIndicator.setItemOnClick(new ItemClickListener() {
+            @Override
+            public void itemClick(int position) {
+                LogUtils.i("++++++++++", "++++++++position+++++" + position);
+                mViewPager.setCurrentItem(position);
+            }
+        });
 
     }
 

@@ -9,7 +9,8 @@
     <color name="title_text">#929292</color><!--title 字体-->
     <color name="recharge_text">#FF929292</color><!--title 字体-->
     <color name="bg_button">#0B0B0B</color><!--title 字体-->
-
+    <color name="transparent">#00000000</color>
+    <color name="translucence">#b0000000</color>
     <color name="sign_bg">#252525</color>
     <color name="ff92_text">#FF929292</color>
     <color name="ff0c_bg">#FF0C0C0C</color>

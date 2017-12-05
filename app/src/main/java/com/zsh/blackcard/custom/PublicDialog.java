@@ -24,12 +24,11 @@ import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.SelectDateListener;
+import com.zsh.blackcard.live.LiveAnchorDetails2;
+import com.zsh.blackcard.live.LiveOpenActivity;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
-import com.zsh.blackcard.live.LiveAnchorDetails2;
-import com.zsh.blackcard.live.LiveOpenActivity;
-import com.zsh.blackcard.live.VideoDetailsActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
 import com.zsh.blackcard.untils.MyCalendar;
 import com.zsh.blackcard.untils.UIUtils;
@@ -164,15 +163,15 @@ public class PublicDialog {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.activity_live_main, null);
         final Dialog dialog = showDialogView(view, mContext);
-
-            RadialViewLayout radialView = (RadialViewLayout) view.findViewById(R.id.ll_pop);
+        dialog.setCanceledOnTouchOutside(false);
+        RadialViewLayout radialView = (RadialViewLayout) view.findViewById(R.id.ll_pop);
         radialView.showOpenOrHide();
         radialView.setOnListener(new ItemClickListener() {
             @Override
             public void itemClick(int postion) {
                 switch (postion) {
                     case 0:
-                        // dialog.dismiss();
+                        dialog.dismiss();
                         break;
                     case 1://开
                         break;
@@ -183,7 +182,8 @@ public class PublicDialog {
                         mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));
                         break;
                     case 4:
-                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));
+//                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));
+                        mContext.startActivity(new Intent(mContext, LiveAnchorDetails2.class));
                         break;
                 }
             }
@@ -285,6 +285,7 @@ public class PublicDialog {
             }
         });
         // }
+
         //设置默认获取焦点
         popWinShare.setFocusable(true);
         //以某个控件的x和y的偏移量位置开始显示窗口

@@ -22,6 +22,15 @@ import com.zsh.blackcard.untils.SharedPreferencesUtils;
 public class BaseApplication extends Application implements Thread.UncaughtExceptionHandler {
     public static final String TAG = BaseApplication.class.getSimpleName();
     Thread.UncaughtExceptionHandler mDefaultHandler;
+
+    public static String getHonouruserId() {
+        return HONOURUSER_ID;
+    }
+
+    public static void setHonouruserId(String honouruserId) {
+        HONOURUSER_ID = honouruserId;
+    }
+
     public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp
     private String BUGLY_ID = "815c4ef8fb";
     /* 获取主线程的上下文对象 */
@@ -63,17 +72,13 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
         super.onCreate();
         this.context = this;
         instance = this;
-        // mInstance = this ;
         int versionCode = PackageUtils.getVersionVode();
-
         if (versionCode != getVersionCode()) {
             setFristStart(true);
         }
         ZegoApiManager.getInstance().initSDK();
-        //  CrashReport.initCrashReport(getApplicationContext(), BUGLY_ID, true);//测试True 发布false
         Bugly.init(getApplicationContext(), BUGLY_ID, false);//是否开启debug模式，true表示打开debug模式，false表示关闭调试模式
         Beta.autoInit = true;//自动初始化
-
     }
 
     public boolean isFristStart() {

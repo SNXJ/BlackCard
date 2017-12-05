@@ -28,9 +28,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.model.CityEventModel;
 import com.zsh.blackcard.untils.LogUtils;
-import com.zsh.blackcard.untils.SharedPreferencesUtils;
 import com.zsh.blackcard.untils.StatusBarColorUntil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -86,7 +88,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
     // private DatabaseHelper helper;
     private ImageView select_back;
     private String allCity = null;
-    private String selectCity = null;
+
 
     //	public void InsertCity(String name) {
 //		SQLiteDatabase db = helper.getReadableDatabase();
@@ -112,7 +114,6 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
         setContentView(R.layout.activity_select_city);
 
         allCity = getIntent().getStringExtra("allCity");
-        selectCity = getIntent().getStringExtra("cityType");
         personList = (ListView) findViewById(R.id.list_view);
         allCity_lists = new ArrayList<City>();
         city_hot = new ArrayList<City>();
@@ -180,7 +181,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
                                     int position, long id) {
                 if (position >= 2) {
                     // 全部城市
-                    saveCity2SP(allCity_lists.get(position).getName());
+                    postCityEvent(allCity_lists.get(position).getName());
                 }
             }
         });
@@ -194,7 +195,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // 搜索结果 城市
-                saveCity2SP(city_result.get(position).getName());
+                postCityEvent(city_result.get(position).getName());
             }
         });
         initOverlay();
@@ -287,19 +288,16 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
         personList.setAdapter(adapter);
     }
 
-    private void saveCity2SP(String city) {
-        if (selectCity != null) {
-            SharedPreferencesUtils.putStringData(this, selectCity, city);
-        } else {
-            SharedPreferencesUtils.putStringData(this, "selectCity", city);
-        }
+    private void postCityEvent(String city) {
+        EventBus.getDefault().post(new CityEventModel(city));
         cityFinish();
     }
 
     public void cityFinish() {
         finish();
-        windowManager.removeView(overlay);
+          windowManager.removeView(overlay);
     }
+
 
     private void initOverlay() {
         mReady = true;
@@ -489,7 +487,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
-                        saveCity2SP(city_hot.get(position).getName());
+                        postCityEvent(city_hot.get(position).getName());
                     }
                 });
                 hotCity.setAdapter(new HotCityAdapter(context, this.hotList));

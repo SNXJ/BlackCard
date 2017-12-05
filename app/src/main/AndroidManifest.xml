@@ -70,8 +70,11 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="xvUbh3AQD8GMh2TBHGWlSGrPHEq2KSzG"></meta-data>
+            android:value="x44CZgW2VKxstNTFqe6zTYpgU5BbXr6r"></meta-data>
 
+        <activity
+            android:name=".ui.WelcomeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan">
@@ -169,7 +172,7 @@
         <activity android:name=".live.AbMyContributionActivity" />
         <activity android:name=".live.AbMyTaskActivity" />
         <activity android:name=".live.AbMySignActivity" />
-        <activity android:name=".ui.WelcomeActivity" />
+
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.home.HomeMoreActivity" />
         <activity android:name=".ui.home.CommentActivity" />
@@ -200,10 +203,10 @@
         <activity android:name=".ui.home.HomePublicDetailActivity"></activity>
         <activity android:name=".ui.home.HomeGloryServerDetailActivity" />
         <activity android:name=".ui.MyOrderOtherActivity" />
-        <activity android:name=".live.SingleAnchorActivity" />
-        <activity android:name=".live.BasePublishActivity" />
         <activity android:name=".live.LiveAnchorListActivity" />
         <activity android:name=".live.SingleAnchorPlayActivity" />
+        <activity android:name=".ui.home.HomeScannerActivity" />
+        <activity android:name=".ui.home.HomeScannerWebViewAvyivity" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zsh.blackcard.custom.GaussPager xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zsh.blackcard.custom.GaussPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_black"
@@ -120,6 +121,8 @@
     <android.support.v4.view.ViewPager
         android:id="@id/id_stickynavlayout_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
 
 </com.zsh.blackcard.custom.GaussPager>

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.zsh.blackcard.listener.ItemClickListener;
+
 /**
  * Tab 指示器
  */
@@ -89,6 +91,7 @@ public class ViewPagerIndicator extends LinearLayout {
 
         setWeightSum(count);
         for (int i = 0; i < count; i++) {
+            final int position = i;
             TextView tv = new TextView(getContext());
             LayoutParams lp = new LayoutParams(0,
                     LayoutParams.MATCH_PARENT);
@@ -101,6 +104,9 @@ public class ViewPagerIndicator extends LinearLayout {
             tv.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (null != listener) {
+                        listener.itemClick(position);
+                    }
 
                 }
             });
@@ -108,4 +114,9 @@ public class ViewPagerIndicator extends LinearLayout {
         }
     }
 
+    ItemClickListener listener;
+
+    public void setItemOnClick(ItemClickListener listener) {
+        this.listener = listener;
+    }
 }

@@ -5,12 +5,10 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
@@ -58,10 +56,12 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
             //在线申请
             case R.id.welcome_register_btn:
                 ActivityUtils.startActivity(this, RegisterActivity.class);
+
                 break;
             //会籍登录
             case R.id.welcome_login_btn:
                 ActivityUtils.startActivity(this, LoginActivity.class);
+                finish();
                 break;
         }
     }

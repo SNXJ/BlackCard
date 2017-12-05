@@ -24,7 +24,6 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.tencent.bugly.beta.Beta;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
@@ -36,7 +35,10 @@ import com.zsh.blackcard.adapter.HomeTypeAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
+import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.CityEventModel;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
@@ -44,6 +46,8 @@ import com.zsh.blackcard.model.HomeNewModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.ui.MsgCenterActivity;
+import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
@@ -54,12 +58,17 @@ import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
+import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.MPermissionUtils;
-import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,14 +121,10 @@ public class HomeFragment extends BaseFragment {
             if (city.contains("市")) {
                 rb_city_home.setText(city.substring(0, city.indexOf("市")));
             }
-
             String coorType = bdLocation.getCoorType();
             //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
-
             int errorCode = bdLocation.getLocType();
-
-
-            System.out.println(latitude + "\n=====" + longitude + "\n=====" + radius + "\n=====" + coorType + "\n=====" + errorCode);
+            LogUtils.i("+++++++++", errorCode + "+++++location+++++++" + city);
         }
     }
 
@@ -209,6 +214,8 @@ public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.home_top_tvs)
     TextSwitcher home_top_tvs;
+    @BindView(R.id.home_top_pop)
+    ImageView home_top_pop;
 
     //头部列表选择适配器
     private HomeTypeAdapter homeTypeAdapter;
@@ -314,7 +321,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initDate(Bundle savedInstanceState) {
         //初始化定位
-        initLocation();
+        requestLocationPer();
         //初始化类型选择列表（美食，酒店，品鉴...）
         for (int i = 0; i < titles.length; i++) {
             HomeNewModel pic = new HomeNewModel();
@@ -495,6 +502,8 @@ public class HomeFragment extends BaseFragment {
     public View initView(LayoutInflater inflater) {
         View view = View.inflate(getActivity(), R.layout.homefragment, null);
         ButterKnife.bind(this, view);
+        EventBus.getDefault().register(this);
+
         return view;
     }
 
@@ -516,7 +525,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_play_img, R.id.go_welcome_login_img, R.id.rb_city_home, R.id.home_search_linear})
+    @OnClick({R.id.home_play_img, R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.home_play_img:
@@ -527,10 +536,10 @@ public class HomeFragment extends BaseFragment {
             case R.id.rb_city_home:
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
-            case R.id.go_welcome_login_img:
+            case R.id.home_top_pop:
 
-                requestPermissions();
-                // ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
+                PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
+
                 break;
             case R.id.home_search_linear:
                 ActivityUtils.startActivity(getActivity(), ZgSearchActivity.class);
@@ -538,16 +547,41 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    private void requestPermissions() {
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(CityEventModel event) {
+        rb_city_home.setText(event.getCity());
+
+    }
+
+    private ItemClickListener topPopItemListener = new ItemClickListener() {
+        @Override
+        public void itemClick(int postion) {
+            switch (postion) {
+                case 0:
+                    requestCAMERA();
+                    break;
+                case 1:
+                    ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
+                    break;
+                case 2:
+                    ActivityUtils.startActivity(getActivity(), MsgSysCenterActivity.class);
+                    break;
+                case 3:
+                    ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
+                    break;
+            }
+        }
+    };
+
+    private void requestCAMERA() {
         String[] PERMISSIONS_STORAGE = {
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.CAMERA,
         };
         MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
                 , new MPermissionUtils.OnPermissionListener() {
                     @Override
                     public void onPermissionGranted() {
-                        UIUtils.showToast("授权成功");
+                        ActivityUtils.startActivity(getActivity(), HomeScannerActivity.class);
                     }
 
                     @Override
@@ -556,5 +590,31 @@ public class HomeFragment extends BaseFragment {
                     }
                 });
 
+    }
+
+    private void requestLocationPer() {
+        String[] PERMISSIONS_STORAGE = {
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+        };
+        MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
+                , new MPermissionUtils.OnPermissionListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        initLocation();
+                    }
+
+                    @Override
+                    public void onPermissionDenied() {
+                        MPermissionUtils.showTipsDialog(getActivity());
+                    }
+                });
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

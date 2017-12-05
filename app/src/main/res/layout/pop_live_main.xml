@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/base180dp"
-    android:background="@color/bg_white">
+    android:background="@android:color/transparent">
 
     <LinearLayout
         android:id="@+id/ll_black_weibo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/base50dp"
+        android:layout_height="@dimen/base50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/base8dp"
@@ -34,8 +34,8 @@
 
     <LinearLayout
         android:id="@+id/ll_live_video"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/base50dp"
+        android:layout_height="@dimen/base50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/base8dp"
@@ -62,8 +62,8 @@
 
     <LinearLayout
         android:id="@+id/ll_open_live"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/base50dp"
+        android:layout_height="@dimen/base50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/base8dp"
