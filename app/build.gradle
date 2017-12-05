@@ -97,4 +97,6 @@ dependencies {
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
     //
     compile "com.android.support:multidex:1.0.1" // 多dex配置
+    //添加视频播放第三方
+    implementation 'cn.jzvd:jiaozivideoplayer:6.2.1'
 }

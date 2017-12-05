@@ -8,8 +8,8 @@
         android:id="@+id/home_glory_magazine_recycler_item_img"
         android:layout_width="@dimen/base96dp"
         android:layout_height="@dimen/base114dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:scaleType="centerCrop" />
+        android:layout_marginLeft="@dimen/base5dp"
+        android:layout_marginRight="@dimen/base5dp"
+        android:scaleType="fitXY" />
 
 </LinearLayout>

@@ -17,70 +17,75 @@
             android:text="发现" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base35dp">
+        android:layout_height="@dimen/base35dp"
+        android:orientation="horizontal">
+
+        <!--android:background="@drawable/button_underlin"-->
 
         <RadioButton
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:background="@drawable/button_underlin"
+            android:id="@+id/discover_one_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:button="@null"
             android:checked="true"
             android:gravity="center"
             android:text="精选"
-            android:textColor="@color/sbtext"
+            android:textColor="@color/hometext"
             android:textSize="15sp" />
 
         <RadioButton
-
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="@dimen/base90dp"
-            android:background="@drawable/button_underlin"
+            android:id="@+id/discover_two_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="数码"
-            android:textColor="@color/sbtext"
+            android:textColor="@color/hometext"
             android:textSize="15sp" />
 
         <RadioButton
-
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/button_underlin"
+            android:id="@+id/discover_three_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="亲子"
-            android:textColor="@color/sbtext"
+            android:textColor="@color/hometext"
             android:textSize="15sp" />
 
         <RadioButton
-
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base104dp"
-            android:background="@drawable/button_underlin"
+            android:id="@+id/discover_four_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="时尚"
-            android:textColor="@color/sbtext"
+            android:textColor="@color/hometext"
             android:textSize="15sp" />
 
         <RadioButton
-
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base40dp"
-            android:background="@drawable/button_underlin"
+            android:id="@+id/discover_five_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
             android:text="美食"
-            android:textColor="@color/sbtext"
+            android:textColor="@color/hometext"
             android:textSize="15sp" />
-    </RelativeLayout>
+    </RadioGroup>
+
+    <cn.jzvd.JZVideoPlayerStandard
+        android:id="@+id/discover_video"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base200dp">
+
+    </cn.jzvd.JZVideoPlayerStandard>
+
 </LinearLayout>

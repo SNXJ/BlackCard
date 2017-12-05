@@ -67,7 +67,7 @@ public class HjFragment extends BaseFragment {
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             //传递CONVERGE_ID和title标题
-            ActivityUtils.startActivityForData(getActivity(), EatDrinkActivity.class,((HjRecyclerModel.PdBean)adapter.getData().get(position)).getCONVERGE_ID(),((HjRecyclerModel.PdBean)adapter.getData().get(position)).getIMGENCHAR());
+            ActivityUtils.startActivityForData(getActivity(), EatDrinkActivity.class,((HjRecyclerModel.PdBean)adapter.getData().get(position)).getCONVERGE_ID(),((HjRecyclerModel.PdBean)adapter.getData().get(position)).getIMGCNCHAR());
         }
     }
 }

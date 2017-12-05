@@ -433,24 +433,32 @@ public class HomeFragment extends BaseFragment {
         });
 
         //初始化荣耀杂志列表
-        List<HomeGloryMagazineModel> list1 = new ArrayList<>();
-        if (homeGloryMagazineAdapter == null) {
-            for (int i = 0; i < 4; i++) {
-                HomeGloryMagazineModel homeGloryMagazineModel = new HomeGloryMagazineModel();
-                if (i == 0) {
-                    homeGloryMagazineModel.setItemType(1);
-                } else if (i == 3) {
-                    homeGloryMagazineModel.setItemType(3);
-                } else {
-                    homeGloryMagazineModel.setItemType(2);
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryMagazine(DataManager.getMd5Str("MAGAZINE")), new ResultListener<HomeGloryMagazineModel>() {
+            @Override
+            public void responseSuccess(HomeGloryMagazineModel obj) {
+                for (int i = 0; i < obj.getPd().size(); i++) {
+                    if (i == 0) {
+                        obj.getPd().get(i).setItemType(1);
+                    } else if (i == obj.getPd().size() - 1) {
+                        obj.getPd().get(i).setItemType(3);
+                    } else {
+                        obj.getPd().get(i).setItemType(2);
+                    }
                 }
-                list1.add(homeGloryMagazineModel);
+
+                if (homeGloryMagazineAdapter == null) {
+                    homeGloryMagazineAdapter = new HomeGloryMagazineAdapter(obj.getPd());
+                    home_glory_magazine_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                    home_glory_magazine_recycler.setAdapter(homeGloryMagazineAdapter);
+                    home_glory_magazine_recycler.setNestedScrollingEnabled(false);
+                }
             }
-            homeGloryMagazineAdapter = new HomeGloryMagazineAdapter(list1);
-            home_glory_magazine_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-            home_glory_magazine_recycler.setAdapter(homeGloryMagazineAdapter);
-            home_glory_magazine_recycler.setNestedScrollingEnabled(false);
-        }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
 
         //初始化荣耀音乐
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryMusic(DataManager.getMd5Str("MUSICLIST")), new ResultListener<HomeGloryMusicModel>() {
