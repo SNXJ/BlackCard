@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
+import com.tencent.bugly.crashreport.CrashReport;
+import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.live.zego.ZegoApiManager;
 import com.zsh.blackcard.untils.PackageUtils;
 import com.zsh.blackcard.untils.SharedPreferencesUtils;
@@ -22,15 +24,6 @@ import com.zsh.blackcard.untils.SharedPreferencesUtils;
 public class BaseApplication extends Application implements Thread.UncaughtExceptionHandler {
     public static final String TAG = BaseApplication.class.getSimpleName();
     Thread.UncaughtExceptionHandler mDefaultHandler;
-
-    public static String getHonouruserId() {
-        return HONOURUSER_ID;
-    }
-
-    public static void setHonouruserId(String honouruserId) {
-        HONOURUSER_ID = honouruserId;
-    }
-
     public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp
     private String BUGLY_ID = "815c4ef8fb";
     /* 获取主线程的上下文对象 */
@@ -77,8 +70,19 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
             setFristStart(true);
         }
         ZegoApiManager.getInstance().initSDK();
-        Bugly.init(getApplicationContext(), BUGLY_ID, false);//是否开启debug模式，true表示打开debug模式，false表示关闭调试模式
+        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(this);
+        Bugly.init(getApplicationContext(), BUGLY_ID, true);//是否开启debug模式，true表示打开debug模式，false表示关闭调试模式
         Beta.autoInit = true;//自动初始化
+        strategy.setAppChannel(DataManager.APP_CHANNEL);
+    }
+
+
+    public static String getHonouruserId() {
+        return HONOURUSER_ID;
+    }
+
+    public static void setHonouruserId(String honouruserId) {
+        HONOURUSER_ID = honouruserId;
     }
 
     public boolean isFristStart() {

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.custom.HomeTypeConstant;
+import com.zsh.blackcard.model.AbMyFriendModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.BarDetailModel;
 import com.zsh.blackcard.model.BarDetailsMoreListModel;
@@ -941,6 +942,50 @@ public class NetApi {
      */
     public Observable<HomeGloryMagazineModel> postHomeGloryMagazine(String md5) {
         return retrofitService.postHomeGloryMagazine(md5);
+    }
+
+    /**
+     * 粉丝列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<AbMyFriendModel> myFollowList(String md5, String id) {
+        return retrofitService.myFollowList(md5, id);
+    }
+
+    /**
+     * 删除好友
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ResultModel> delFriend(String md5, String id, String delId) {
+        return retrofitService.delFriend(md5, id, delId);
+    }
+
+    /**
+     * 好友列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<AbMyFriendModel> myFriendList(String md5, String id) {
+        return retrofitService.myFriendsList(md5, id);
+    }
+
+    /**
+     * 添加好友
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ResultModel> addFriend(String md5, String id, String delId) {
+        return retrofitService.addFriends(md5, id, delId);
     }
 
     /**
