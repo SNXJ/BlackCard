@@ -1,11 +1,13 @@
 package com.zsh.blackcard.fragment;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -34,6 +36,12 @@ import com.zsh.blackcard.ui.zgactivity.GameCenterActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.PhotoUntils;
+import com.zsh.blackcard.untils.UIUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,6 +90,19 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.my_shop_center_relative:
 //                ActivityUtils.startActivity(getActivity(), );
+                Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+                calendar.set(Calendar.DAY_OF_MONTH, day + 7);
+                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+                datePickerDialog.show();
                 break;
             case R.id.my_customer_center_relative:
                 ActivityUtils.startActivity(getActivity(), CusCenterChatActivity.class);
@@ -110,11 +131,28 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
+    private Long getMills() throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = format.parse("2017-12-12");
+        long longDate = date.getTime();
+        return longDate;
+    }
+
+    private Long getMill() throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse("2017-12-06");
+        long longDate = date.getTime();
+        return longDate;
+    }
+
+    private String getTime(Date date) {//可根据需要自行截取数据显示
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
+    }
+
     @OnClick(R.id.im_avatar)
     public void onClick() {
         requestPermissions();
-
-
     }
 
     private void requestPermissions() {

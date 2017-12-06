@@ -57,6 +57,8 @@ import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
+import com.zsh.blackcard.model.ZgFindModel;
+import com.zsh.blackcard.model.ZgFindTitleModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
@@ -545,5 +547,16 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("apphomein/magazinelist?")
     Observable<HomeGloryMagazineModel> postHomeGloryMagazine(@Field("FKEY") String md5);
+
+    //尊购发现页面菜单选项
+    @FormUrlEncoded
+    @POST("appdiscoverin/caidan.do?")
+    Observable<ZgFindTitleModel> postZgFindTiele(@Field("FKEY") String md5);
+
+    //尊购发现页面条目对应的列表
+    @FormUrlEncoded
+    @POST("appdiscoverin/discoverlist.do?")
+    Observable<ZgFindModel> postZgFind(@Field("FKEY") String md5,
+                                       @Field("CAIDAN_ID") String CAIDAN_ID);
 }
 

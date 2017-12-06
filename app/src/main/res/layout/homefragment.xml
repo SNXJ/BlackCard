@@ -180,7 +180,7 @@
             android:id="@+id/home_glory_music_recycler"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base120dp"
-            android:layout_marginBottom="@dimen/base30dp">
+            android:layout_marginBottom="@dimen/base10dp">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>

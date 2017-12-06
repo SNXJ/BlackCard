@@ -60,6 +60,8 @@ import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
+import com.zsh.blackcard.model.ZgFindModel;
+import com.zsh.blackcard.model.ZgFindTitleModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
@@ -939,5 +941,26 @@ public class NetApi {
      */
     public Observable<HomeGloryMagazineModel> postHomeGloryMagazine(String md5) {
         return retrofitService.postHomeGloryMagazine(md5);
+    }
+
+    /**
+     * 尊购发现菜单选项
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<ZgFindTitleModel> postZgFindTiele(String md5) {
+        return retrofitService.postZgFindTiele(md5);
+    }
+
+    /**
+     * 尊购发现页面条目对应列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ZgFindModel> postZgFind(String md5, String id) {
+        return retrofitService.postZgFind(md5, id);
     }
 }
