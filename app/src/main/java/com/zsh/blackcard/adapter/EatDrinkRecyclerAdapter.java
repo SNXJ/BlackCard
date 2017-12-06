@@ -34,5 +34,6 @@ public class EatDrinkRecyclerAdapter extends BaseQuickAdapter<EatDrinkRecyclerMo
         Glide.with(mContext).load(item.getCONVERGEIMGS().get(2)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_three_img));
         Glide.with(mContext).load(item.getCONVERGEIMGS().get(3)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_four_img));
         helper.addOnClickListener(R.id.hj_child_recycler_linear);
+        helper.addOnClickListener(R.id.tv_add_friend);
     }
 }

@@ -1,5 +1,6 @@
 package com.zsh.blackcard.api;
 
+import com.zsh.blackcard.model.AbMyFriendModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.BarDetailModel;
 import com.zsh.blackcard.model.BarDetailsMoreListModel;
@@ -558,5 +559,25 @@ public interface RetrofitService {
     @POST("appdiscoverin/discoverlist.do?")
     Observable<ZgFindModel> postZgFind(@Field("FKEY") String md5,
                                        @Field("CAIDAN_ID") String CAIDAN_ID);
+
+    //粉丝列表
+    @FormUrlEncoded
+    @POST("appfriendin/refriendlist?")
+    Observable<AbMyFriendModel> myFollowList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+
+    //删除好友
+    @FormUrlEncoded
+    @POST("appfriendin/delfriend?")
+    Observable<ResultModel> delFriend(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id, @Field("REHONOURUSER_ID") String delId);
+
+    //好友列表
+    @FormUrlEncoded
+    @POST("appfriendin/friendlist?")
+    Observable<AbMyFriendModel> myFriendsList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
+
+    //添加好友
+    @FormUrlEncoded
+    @POST("appfriendin/addfriend?")
+    Observable<ResultModel> addFriends(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id, @Field("REHONOURUSER_ID") String addId);
 }
 

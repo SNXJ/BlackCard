@@ -71,6 +71,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_add_friend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -318,23 +319,23 @@
             android:layout_below="@+id/hj_eat_set_year_relative">
 
             <TextView
-                android:layout_marginTop="@dimen/base13dp"
                 android:id="@+id/hj_eat_detail_details_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/base15dp"
+                android:layout_marginTop="@dimen/base13dp"
                 android:text="详细要求"
                 android:textColor="#929292"
                 android:textSize="14sp" />
 
             <TextView
-                android:layout_marginTop="@dimen/base10dp"
-                android:layout_below="@+id/hj_eat_detail_details_tv"
                 android:id="@+id/hj_eat_detail_detail_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/hj_eat_detail_details_tv"
                 android:layout_marginLeft="@dimen/base15dp"
                 android:layout_marginRight="@dimen/base15dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:textColor="@color/recharge_text"
                 android:textSize="12sp" />
 

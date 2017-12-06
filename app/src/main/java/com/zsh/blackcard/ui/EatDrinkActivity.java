@@ -8,14 +8,16 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.EatDrinkRecyclerAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.view.SpacesItemDecoration;
+import com.zsh.blackcard.untils.UIUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,10 +55,14 @@ public class EatDrinkActivity extends BaseActivity {
             switch (view.getId()) {
                 //查看指定聚会详情
                 case R.id.hj_child_recycler_linear:
-                    ActivityUtils.startActivityForData(EatDrinkActivity.this, EatDrinkDetailActivity.class,((EatDrinkRecyclerModel.PdBean) adapter.getData().get(position)).getCONVERGEDETAIL_ID());
+                    ActivityUtils.startActivityForData(EatDrinkActivity.this, EatDrinkDetailActivity.class, ((EatDrinkRecyclerModel.PdBean) adapter.getData().get(position)).getCONVERGEDETAIL_ID());
                     break;
                 case R.id.hj_child_recycler_head_img:
 
+                    break;
+                case R.id.tv_add_friend://加好友
+                    String id = ((EatDrinkRecyclerModel.PdBean) adapter.getData().get(position)).getHONOURUSER_ID();
+                    addFriend(id);
                     break;
             }
         }
@@ -91,6 +97,21 @@ public class EatDrinkActivity extends BaseActivity {
                     eat_drink_recycler.setAdapter(eatDrinkRecyclerAdapter);
                     eatDrinkRecyclerAdapter.setOnItemChildClickListener(new HjChildRecyclerOnItemClick());
                 }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void addFriend(String addId) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addFriend(DataManager.getMd5Str("FRIENDADD"), BaseApplication.getHonouruserId(), addId), new ResultListener<ResultModel>() {
+            @Override
+            public void responseSuccess(ResultModel obj) {
+                //TODO 修改状态
+                UIUtils.showToast("已添加");
             }
 
             @Override

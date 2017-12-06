@@ -295,9 +295,14 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
 
     public void cityFinish() {
         finish();
-          windowManager.removeView(overlay);
+        windowManager.removeView(overlay);
     }
 
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//
+//    }
 
     private void initOverlay() {
         mReady = true;

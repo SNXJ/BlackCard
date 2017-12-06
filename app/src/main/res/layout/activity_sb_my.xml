@@ -48,6 +48,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/ll_guanzhu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -75,6 +76,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_hkb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -103,6 +105,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_fans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
