@@ -13,6 +13,7 @@ import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.live.zego.ZegoApiManager;
+import com.zsh.blackcard.music.untils.AppCache;
 import com.zsh.blackcard.untils.PackageUtils;
 import com.zsh.blackcard.untils.SharedPreferencesUtils;
 
@@ -74,6 +75,7 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
         Bugly.init(getApplicationContext(), BUGLY_ID, true);//是否开启debug模式，true表示打开debug模式，false表示关闭调试模式
         Beta.autoInit = true;//自动初始化
         strategy.setAppChannel(DataManager.APP_CHANNEL);
+        AppCache.init(this);
     }
 
 

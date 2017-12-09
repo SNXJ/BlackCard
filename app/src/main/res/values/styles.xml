@@ -115,6 +115,10 @@
         <item name="android:background">@color/line</item>
     </style>
 
+    <style name="tab_music_main">
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="item_tv_left">
         <item name="android:textColor">@color/ff92_text</item>
         <item name="android:layout_centerVertical">true</item>

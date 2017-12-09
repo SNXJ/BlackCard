@@ -46,6 +46,13 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.model.MusicDetailListModel;
+import com.zsh.blackcard.model.MusicDjModel;
+import com.zsh.blackcard.model.MusicRankingModel;
+import com.zsh.blackcard.model.MusicRecommendModel;
+import com.zsh.blackcard.model.MusicSingerModel;
+import com.zsh.blackcard.model.MusicSingerSongsModel;
+import com.zsh.blackcard.model.MusicSongDetailsModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
@@ -579,5 +586,50 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appfriendin/addfriend?")
     Observable<ResultModel> addFriends(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id, @Field("REHONOURUSER_ID") String addId);
+
+    //电台列表
+    @FormUrlEncoded
+    @POST("appmusicin/getcategorylist?")
+    Observable<MusicDjModel> getMusicDjList(@Field("FKEY") String md5);
+
+    //电台下的歌曲列表
+    @FormUrlEncoded
+    @POST("appmusicin/getchannelsong?")
+    Observable<MusicDetailListModel> getMusicDjSongList(@Field("FKEY") String md5, @Field("ch_name") String channelName);
+
+    //歌曲详情
+    @FormUrlEncoded
+    @POST("appmusicin/getsongplay?")
+    Observable<MusicSongDetailsModel> getMusicSongDetail(@Field("FKEY") String md5, @Field("songid") String songId);
+
+    //查询歌曲列表
+    @FormUrlEncoded
+    @POST("appmusicin/getsearchsong?")
+    Observable<ResultModel> getMusicQueryList(@Field("FKEY") String md5, @Field("query") String searchStr);
+
+    //音乐排行榜
+    @FormUrlEncoded
+    @POST("appmusicin/getbilllist?")
+    Observable<MusicRankingModel> getRankingList(@Field("FKEY") String md5, @Field("offset") String offset, @Field("type") String type);
+
+    //获得某首歌曲的歌词
+    @FormUrlEncoded
+    @POST("appmusicin/getlry?")
+    Observable<ResultModel> getMusicLry(@Field("FKEY") String md5, @Field("songid") String songId);
+
+    //每日推荐歌曲
+    @FormUrlEncoded
+    @POST("appmusicin/getrecommandsonglist?")
+    Observable<MusicRecommendModel> getMusicRecommendList(@Field("FKEY") String md5);
+
+    //歌手
+    @FormUrlEncoded
+    @POST("appmusicin/gethotartist?")
+    Observable<MusicSingerModel> getMusicSingerList(@Field("FKEY") String md5, @Field("offset") String offset);
+
+    //歌手所有歌曲
+    @FormUrlEncoded
+    @POST("appmusicin/getsonglist?")
+    Observable<MusicSingerSongsModel> getSingerSongs(@Field("FKEY") String md5, @Field("tinguid") String tinguid, @Field("offset") String offset);
 }
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/base10dp"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/base120dp"
+        android:layout_height="@dimen/base110dp">
+
+        <ImageView
+            android:id="@+id/im_image"
+            android:layout_width="@dimen/base120dp"
+            android:layout_height="@dimen/base110dp"
+            android:src="@mipmap/music_image_1" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            style="@style/text_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base6dp"
+            android:layout_marginLeft="@dimen/base25dp"
+            android:text="55.8万"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_des"
+        style="@style/text_"
+        android:layout_width="@dimen/base120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:maxLines="2"
+        android:padding="@dimen/base8dp"
+        android:text="聆听一首打开你心情的乡村音乐"
+        android:textSize="11sp" />
+</LinearLayout>
