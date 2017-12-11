@@ -20,6 +20,7 @@ android {
     }
     buildTypes {
         release {
+            multiDexEnabled true
             minifyEnabled false
             zipAlignEnabled false
             shrinkResources false
@@ -38,7 +39,12 @@ android {
 
         }
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 }
+
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -99,6 +105,11 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     //添加视频播放第三方
     implementation 'cn.jzvd:jiaozivideoplayer:6.2.1'
+
+    //添加图片选择器
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.7'
+
     //歌词
     compile 'me.wcy:lrcview:2.0.1'
+
 }

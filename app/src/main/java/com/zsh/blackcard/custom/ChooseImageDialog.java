@@ -7,7 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.ui.SbSendWeiBoActivity;
+import com.zsh.blackcard.untils.CameraAndFileUtils;
 import com.zsh.blackcard.untils.PhotoUntils;
 
 /**
@@ -35,16 +40,16 @@ public class ChooseImageDialog {
         tv_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //权限
-
-                PhotoUntils.openCameraImage(f);
+                //打开相机，拍照后裁剪
+                CameraAndFileUtils.upHeadImage(mContext,f);
                 dialog.dismiss();
             }
         });
         tv_file.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PhotoUntils.openLocalImage(f);
+                //打开相册，此处为单选图片
+                CameraAndFileUtils.upFileImage(mContext,f);
                 dialog.dismiss();
             }
         });

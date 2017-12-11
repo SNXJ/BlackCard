@@ -1,17 +1,16 @@
 package com.zsh.blackcard.fragment;
 
 import android.Manifest;
-import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.entity.LocalMedia;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
@@ -36,12 +35,8 @@ import com.zsh.blackcard.ui.zgactivity.GameCenterActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.PhotoUntils;
-import com.zsh.blackcard.untils.UIUtils;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,8 +51,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
     @BindView(R.id.im_avatar)
     ImageView imAvatar;
-    private Uri resultUri;
-
 
     @Override
     public void initDate(Bundle savedInstanceState) {
@@ -81,6 +74,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_house_center_relative:
                 ActivityUtils.startActivity(getActivity(), HouseCenterActivity.class);
                 break;
+            //圈子中心
             case R.id.my_circle_center_relative:
                 ActivityUtils.startActivity(getActivity(), CircleCenterActivity.class);
                 break;
@@ -90,19 +84,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.my_shop_center_relative:
 //                ActivityUtils.startActivity(getActivity(), );
-                Calendar calendar = Calendar.getInstance();
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                    }
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-                datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
-                calendar.set(Calendar.DAY_OF_MONTH, day + 7);
-                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
-                datePickerDialog.show();
                 break;
             case R.id.my_customer_center_relative:
                 ActivityUtils.startActivity(getActivity(), CusCenterChatActivity.class);
@@ -129,25 +110,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 ActivityUtils.startActivity(getActivity(), MyPowerActivity.class);
                 break;
         }
-    }
-
-    private Long getMills() throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = format.parse("2017-12-12");
-        long longDate = date.getTime();
-        return longDate;
-    }
-
-    private Long getMill() throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = format.parse("2017-12-06");
-        long longDate = date.getTime();
-        return longDate;
-    }
-
-    private String getTime(Date date) {//可根据需要自行截取数据显示
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        return format.format(date);
     }
 
     @OnClick(R.id.im_avatar)
@@ -178,27 +140,32 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
         switch (requestCode) {
             case PhotoUntils.GET_IMAGE_FROM_PHONE://相册
-                PhotoUntils.cropImage(MyFragment.this, data.getData());// 裁剪图片
+                //如果没有选择图片，则不进行裁剪
+                if (!selectList.isEmpty()) {
+                    upAvatar(selectList.get(0).getPath());
+                }
                 break;
             case PhotoUntils.GET_IMAGE_BY_CAMERA://照相机
-                PhotoUntils.cropImage(MyFragment.this, PhotoUntils.imageUriFromCamera);// 裁剪图片
-                break;
-            case PhotoUntils.CROP_IMAGE://裁剪后的处理
-                upAvatar(PhotoUntils.getImageAbsolutePath(getActivity(), PhotoUntils.cropImageUri));
+                //如果打开相机没有拍照，则不进行裁剪
+                if (!selectList.isEmpty()) {
+                    upAvatar(selectList.get(0).getPath());
+                }
                 break;
         }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void upAvatar(String imgPath) {
+    private void upAvatar(final String imgPath) {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, imgPath), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 Glide.with(MyFragment.this).
-                        load(PhotoUntils.cropImageUri).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(getActivity())))
+                        load(imgPath).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(getActivity())))
                         .into(imAvatar);
+                System.out.println("上传成功");
             }
 
             @Override

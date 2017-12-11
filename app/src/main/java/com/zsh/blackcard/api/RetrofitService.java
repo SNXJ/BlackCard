@@ -7,6 +7,7 @@ import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
+import com.zsh.blackcard.model.CircleCenterCommentRecyclerModel;
 import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
@@ -14,6 +15,7 @@ import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
+import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
@@ -46,6 +48,9 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
+
+import com.zsh.blackcard.model.MyCircleModel;
+
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -55,6 +60,7 @@ import com.zsh.blackcard.model.MusicRecommendModel;
 import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
+
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
@@ -63,6 +69,7 @@ import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.model.SettingUserInfoModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
@@ -345,6 +352,22 @@ public interface RetrofitService {
     Observable<ResultModel> uploadHead(@Query("FKEY") String md5, @Query("HONOURUSER_ID") String id, @Part MultipartBody.Part part);
 
     /**
+     * 上传黑微博内容和图片
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param CONTENT
+     * @param fileList
+     * @return
+     */
+    @Multipart
+    @POST("appcirclein/addcircle.do?")
+    Observable<ResultModel> postSendWeiBo(@Query("FKEY") String md5,
+                                          @Query("HONOURUSER_ID") String HONOURUSER_ID,
+                                          @Query("CONTENT") String CONTENT,
+                                          @Part List<MultipartBody.Part> fileList);
+
+    /**
      * 上传多张
      */
 
@@ -589,6 +612,63 @@ public interface RetrofitService {
     @POST("appfriendin/addfriend?")
     Observable<ResultModel> addFriends(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id, @Field("REHONOURUSER_ID") String addId);
 
+
+    //获取酒店、美食、KTV、酒吧的条件筛选获取
+    @FormUrlEncoded
+    @POST("appsfoodin/brandstylelist.do?")
+    Observable<FoodHotelBarKTVDialogModel> postFoodHotelBarKTVDialog(@Field("FKEY") String md5,
+                                                                     @Field("TYPE") String type,
+                                                                     @Field("SORTNAME") String sortName);
+
+    //我的页面，圈子中心接口
+    @FormUrlEncoded
+    @POST("appcirclein/circlelist.do?")
+    Observable<MyCircleModel> postCircleCenterRecycle(@Field("FKEY") String md5,
+                                                      @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //圈子中心点赞接口
+    @FormUrlEncoded
+    @POST("appcirclein/dotAgree.do?")
+    Observable<ResultModel> postCircleCenterYeah(@Field("FKEY") String md5,
+                                                 @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                                 @Field("CIRCLE_ID") String CIRCLE_ID);
+
+    //圈子中心获取评论接口
+    @FormUrlEncoded
+    @POST("appcirclein/commentlist.do?")
+    Observable<CircleCenterCommentRecyclerModel> postCircleCenterCommentRecycler(@Field("FKEY") String md5,
+                                                                                 @Field("CIRCLE_ID") String CIRCLE_ID);
+
+    //修改用户个人资料
+    @FormUrlEncoded
+    @POST("appuserin/userpersonalinfo.do?")
+    Observable<ResultModel> postUserInfoChange(@Field("FKEY") String md5,
+                                               @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                               @FieldMap Map<String, String> map);
+
+    //设置帐号与安全登录密码修改
+    @FormUrlEncoded
+    @POST("appuserin/userupdpassword.do?")
+    Observable<ResultModel> postSecurityPassWord(@Field("FKEY") String md5,
+                                                 @Field("HONOURUSER_ID") String TOHONOURUSER_ID,
+                                                 @Field("PASSWORD") String PASSWORD,
+                                                 @Field("OLDPASSWORD") String OLDPASSWORD);
+
+    //设置个人资料接口
+    @FormUrlEncoded
+    @POST("appuserin/getuserinfo.do?")
+    Observable<SettingUserInfoModel> postSettingUserInfo(@Field("FKEY") String md5,
+                                                         @Field("HONOURUSER_ID") String user_id);
+
+    //圈子中心评论接口
+    @FormUrlEncoded
+    @POST("appcirclein/addcomment.do?")
+    Observable<ResultModel> postCircleCenterComment(@Field("FKEY") String md5,
+                                                    @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                                    @Field("CIRCLE_ID") String CIRCLE_ID,
+                                                    @Field("COMCONTENT") String COMCONTENT,
+                                                    @Field("REPLYHONOURUSER_ID") String REPLYHONOURUSER_ID);
+
     //电台列表
     @FormUrlEncoded
     @POST("appmusicin/getcategorylist?")
@@ -638,5 +718,6 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appmusicin/getsonglist?")
     Observable<MusicSingerSongsModel> getSingerSongs(@Field("FKEY") String md5, @Field("tinguid") String tinguid, @Field("offset") String offset);
+
 }
 

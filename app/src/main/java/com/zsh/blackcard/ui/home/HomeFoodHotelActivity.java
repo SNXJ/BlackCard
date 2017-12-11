@@ -1,5 +1,6 @@
 package com.zsh.blackcard.ui.home;
 
+import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
+import com.bigkoo.pickerview.OptionsPickerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.BaseApplication;
@@ -22,11 +24,13 @@ import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
 import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +70,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     private List<HomeKTVModel.PdBean> ktvList = new ArrayList<>();
     private HomeKTVAdapter ktvAdapter;
     private String type;
+    private List<String> searchList = new ArrayList<>();
 
     @Override
     protected void initUI() {
@@ -278,12 +283,12 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         });
     }
 
+    //美食加载
     private void notifyFoodAdapter(HomeFoodModel obj) {
         foodList.clear();
         foodList.addAll(obj.getPd());
         if (null != foodAdapter) {
             foodAdapter.notifyDataSetChanged();
-
         } else {
             foodAdapter = new HomeFoodAdapter(foodList, HomeFoodHotelActivity.this);
             recyclerView.setAdapter(foodAdapter);
@@ -393,85 +398,103 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
 
         switch (type) {
             case HomeTypeConstant.MORE_TYPE_FOOD:
-                PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
-                        new FilterListener() {
-                            @Override
-                            public void resultListener(String str) {
-                                filterFoodData("", "", str, "");
-                            }
-                        });
+                //发起请求
+                searchBrandAndScreen("0", "0");
                 break;
             case HomeTypeConstant.MORE_TYPE_HOTEL:
-                PublicDialog.selectOneDialog(this, "hotelbrand.json", "全部品牌",
-                        new FilterListener() {
-                            @Override
-                            public void resultListener(String str) {
-                                filterHotelData("", "", str, "");
-                            }
-                        });
+                searchBrandAndScreen("0", "1");
                 break;
             case HomeTypeConstant.MORE_TYPE_BAR:
-                PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
-                        new FilterListener() {
-                            @Override
-                            public void resultListener(String str) {
-                                filterBarData("", "", str, "");
-                            }
-                        });
-
+                searchBrandAndScreen("0", "3");
                 break;
             case HomeTypeConstant.MORE_TYPE_KTV:
-                PublicDialog.selectOneDialog(this, "foodbrand.json", "海底捞",
-                        new FilterListener() {
-                            @Override
-                            public void resultListener(String str) {
-                                filterKTVData("", "", str, "");
-                            }
-                        });
+                searchBrandAndScreen("0", "2");
                 break;
         }
 
     }
 
+    private void searchBrandAndScreen(final String type, String sortName) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodHotelBarKTVDialog(DataManager.getMd5Str("BRANDLIST"), type, sortName), new ResultListener<FoodHotelBarKTVDialogModel>() {
+            @Override
+            public void responseSuccess(FoodHotelBarKTVDialogModel obj) {
+                brandDialog(obj.getPd(), type);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void brandDialog(final List<FoodHotelBarKTVDialogModel.PdBean> pd, final String type) {
+        if (!searchList.isEmpty()) {
+            searchList.clear();
+        }
+        for (int i = 0; i < pd.size(); i++) {
+            searchList.add(pd.get(i).getNAME());
+        }
+        OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
+                if (type.equals("1")) {
+                    switch (HomeFoodHotelActivity.this.type) {
+                        case HomeTypeConstant.MORE_TYPE_FOOD:
+                            filterFoodData("", "", "", pd.get(options1).getNAME());
+                            break;
+                        case HomeTypeConstant.MORE_TYPE_HOTEL:
+                            filterHotelData("", "", "", pd.get(options1).getNAME());
+                            break;
+                        case HomeTypeConstant.MORE_TYPE_BAR:
+                            filterBarData("", "", "", pd.get(options1).getNAME());
+                            break;
+                        case HomeTypeConstant.MORE_TYPE_KTV:
+                            filterKTVData("", "", "", pd.get(options1).getNAME());
+                            break;
+                    }
+                } else if (type.equals("0")) {
+                    switch (HomeFoodHotelActivity.this.type) {
+                        case HomeTypeConstant.MORE_TYPE_FOOD:
+                            filterFoodData("", "", pd.get(options1).getNAME(), "");
+                            break;
+                        case HomeTypeConstant.MORE_TYPE_HOTEL:
+                            filterHotelData("", "", pd.get(options1).getNAME(), "");
+                            break;
+                        case HomeTypeConstant.MORE_TYPE_BAR:
+                            filterBarData("", "", pd.get(options1).getNAME(), "");
+                            break;
+                        case HomeTypeConstant.MORE_TYPE_KTV:
+                            filterKTVData("", "", pd.get(options1).getNAME(), "");
+                            break;
+                    }
+                }
+            }
+        })
+                .setSubmitColor(Color.GRAY)
+                .setCancelColor(Color.GRAY)
+                .setTitleBgColor(Color.WHITE)
+                .setDividerColor(Color.WHITE)
+                .setContentTextSize(16)
+                .setLineSpacingMultiplier(2f)
+                .build();
+        pvOptions.setNPicker(searchList, null, null);
+        pvOptions.show();
+    }
+
     private void filterFilter() {
         switch (type) {
             case HomeTypeConstant.MORE_TYPE_FOOD:
-                PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
-                        new FilterListener() {
-                            @Override
-                            public void resultListener(String str) {
-                                filterFoodData("", "", "", str);
-                            }
-                        });
+                searchBrandAndScreen("1", "0");
                 break;
             case HomeTypeConstant.MORE_TYPE_HOTEL:
-                PublicDialog.selectOneDialog(this, "hotelFilter.json", "高端酒店",
-                        new FilterListener() {
-                            @Override
-                            public void resultListener(String str) {
-                                filterHotelData("", "", "", str);
-                            }
-                        });
+                searchBrandAndScreen("1", "1");
                 break;
             case HomeTypeConstant.MORE_TYPE_BAR:
-                PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
-                        new FilterListener() {
-                            @Override
-                            public void resultListener(String str) {
-                                filterBarData("", "", "", str);
-                            }
-                        });
-
+                searchBrandAndScreen("1", "3");
                 break;
             case HomeTypeConstant.MORE_TYPE_KTV:
-                PublicDialog.selectOneDialog(this, "foodFilter.json", "火锅",
-                        new FilterListener() {
-                            @Override
-                            public void resultListener(String str) {
-                                filterKTVData("", "", "", str);
-                            }
-                        });
-
+                searchBrandAndScreen("1", "2");
                 break;
         }
     }

@@ -83,16 +83,6 @@ public class DiscoverActivity extends BaseActivity implements TabLayout.OnTabSel
 
             }
         });
-
-//        jzVideoPlayerStandard.setUp("http://jzvd.nathen.cn/342a5f7ef6124a4a8faf00e738b8bee4/cf6d9db0bd4d41f59d09ea0a81e918fd-5287d2089db37e62345123a1be272f8b.mp4"
-//                , JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "饺子闭眼睛");
-//        Glide.with(this).load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512469813308&di=a52a2b064d45fb2f09cc2ad79dc0b39e&imgtype=0&src=http%3A%2F%2Fimg2.gamfe.com%2Fuserfiles%2F24409%2Fphoto%2Fshow_201011181905095393.jpg").into(jzVideoPlayerStandard.thumbImageView);
-//        jzVideoPlayerStandard.setJzUserAction(new JZUserActionStandard() {
-//            @Override
-//            public void onEvent(int type, Object url, int screen, Object... objects) {
-//
-//            }
-//        });
     }
 
     @Override

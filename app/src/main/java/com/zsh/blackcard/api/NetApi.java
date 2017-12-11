@@ -2,6 +2,7 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
+import com.luck.picture.lib.entity.LocalMedia;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.model.AbMyFriendModel;
@@ -11,6 +12,7 @@ import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
+import com.zsh.blackcard.model.CircleCenterCommentRecyclerModel;
 import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
@@ -18,6 +20,7 @@ import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
+import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
@@ -50,6 +53,9 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
+
+import com.zsh.blackcard.model.MyCircleModel;
+
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -59,6 +65,7 @@ import com.zsh.blackcard.model.MusicRecommendModel;
 import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
+
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
@@ -66,6 +73,7 @@ import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.model.SettingUserInfoModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
@@ -77,10 +85,13 @@ import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.Observable;
 
 /**
@@ -546,6 +557,36 @@ public class NetApi {
      */
     public Observable<ResultModel> upHeadIMG(String md5, String userId, String imgPath) {
         return retrofitService.uploadHead(md5, userId, DataManager.getMultiPart(DataManager.getMultBuilder(DataManager.initMultBuilder(), imgPath, "showfile")));
+    }
+
+//    public Observable<ResultModel> postSendWeiBo(String md5, String HONOURUSER_ID, String CONTENT, String imgPath) {
+//        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, DataManager.getMultiPart(DataManager.getMultBuilder(DataManager.initMultBuilder(),imgPath,"SHOWIMAGES")));
+//    }
+
+    /**
+     * 上传黑微博内容和图片
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param CONTENT
+     * @param listPath
+     * @return
+     */
+    public Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia) {
+        //如果有图片上传，则加载body，如果没有上传图片则加载空body
+        if (localMedia.size() != 0) {
+            for (int i = 0; i < localMedia.size(); i++) {
+                File file = new File(localMedia.get(i).getPath());
+                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", file.getName(), imageBody);
+                listPath.add(part);
+            }
+        } else {
+            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+            MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
+            listPath.add(part);
+        }
+        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, listPath);
     }
 
     /**
@@ -1020,6 +1061,98 @@ public class NetApi {
     }
 
     /**
+
+     * 美食，酒吧，酒店，KTV品牌和筛选条件请求
+     *
+     * @param md5
+     * @param type
+     * @param sortName
+     * @return
+     */
+    public Observable<FoodHotelBarKTVDialogModel> postFoodHotelBarKTVDialog(String md5, String type, String sortName) {
+        return retrofitService.postFoodHotelBarKTVDialog(md5, type, sortName);
+    }
+
+    /**
+     * 我的页面，圈子中心接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<MyCircleModel> postCircleCenterRecycle(String md5, String user_id) {
+        return retrofitService.postCircleCenterRecycle(md5, user_id);
+    }
+
+    /**
+     * 圈子中心点赞接口
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param CIRCLE_ID
+     * @return
+     */
+    public Observable<ResultModel> postCircleCenterYeah(String md5, String HONOURUSER_ID, String CIRCLE_ID) {
+        return retrofitService.postCircleCenterYeah(md5, HONOURUSER_ID, CIRCLE_ID);
+    }
+
+    /**
+     * 圈子中心评论接口
+     *
+     * @param md5
+     * @param CIRCLE_ID
+     * @return
+     */
+    public Observable<CircleCenterCommentRecyclerModel> postCircleCenterCommentRecycler(String md5, String CIRCLE_ID) {
+        return retrofitService.postCircleCenterCommentRecycler(md5, CIRCLE_ID);
+    }
+
+    /**
+     * 设置个人资料修改
+     *
+     * @param map
+     * @return
+     */
+    public Observable<ResultModel> postUserInfoChange(String md5, String user_id, Map<String, String> map) {
+        return retrofitService.postUserInfoChange(md5, user_id, map);
+    }
+
+    /**
+     * 设置帐号与安全登录密码修改
+     *
+     * @param md5
+     * @param user_id
+     * @param passWord
+     * @return
+     */
+    public Observable<ResultModel> postSecurityPassWord(String md5, String user_id, String passWord, String OLDPASSWORD) {
+        return retrofitService.postSecurityPassWord(md5, user_id, passWord, OLDPASSWORD);
+    }
+
+    /**
+     * 设置个人资料接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<SettingUserInfoModel> postSettingUserInfo(String md5, String user_id) {
+        return retrofitService.postSettingUserInfo(md5, user_id);
+    }
+
+    /**
+     * 圈子中心评论接口
+     *
+     * @param md5
+     * @param user_id
+     * @param circle_id
+     * @param content
+     * @param reply_id
+     * @return
+     */
+    public Observable<ResultModel> postCircleCenterComment(String md5, String user_id, String circle_id, String content, String reply_id) {
+        return retrofitService.postCircleCenterComment(md5, user_id, circle_id, content, reply_id);
+/**
      * 电台列表
      *
      * @param md5
@@ -1117,5 +1250,6 @@ public class NetApi {
      */
     public Observable<MusicSingerSongsModel> getSingerSongs(String md5, String singerId, String offset) {
         return retrofitService.getSingerSongs(md5, singerId, offset);
+
     }
 }

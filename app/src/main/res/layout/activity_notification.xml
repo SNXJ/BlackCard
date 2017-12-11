@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bj"
@@ -25,32 +26,36 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="设置"
+            android:text="新消息通知"
             android:textColor="@color/recharge_text"
             android:textSize="17sp" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/my_setting_info_relative"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base42dp">
+        android:layout_height="@dimen/base43dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/base15dp"
-            android:text="个人资料"
+            android:text="接收新消息通知"
             android:textColor="@color/recharge_text"
             android:textSize="14sp" />
 
-        <ImageView
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/my_setting_msg_msg_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/base15dp"
-            android:src="@mipmap/more" />
+            app:kswAnimationDuration="300"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswThumbHeight="@dimen/base20dp"
+            app:kswThumbWidth="@dimen/base20dp" />
 
         <View
             android:layout_width="match_parent"
@@ -61,26 +66,30 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/my_setting_notification_relative"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base42dp">
+        android:layout_height="@dimen/base43dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/base15dp"
-            android:text="新消息通知"
+            android:text="声音"
             android:textColor="@color/recharge_text"
             android:textSize="14sp" />
 
-        <ImageView
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/my_setting_msg_voice_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/base15dp"
-            android:src="@mipmap/more" />
+            app:kswAnimationDuration="300"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswThumbHeight="@dimen/base20dp"
+            app:kswThumbWidth="@dimen/base20dp" />
 
         <View
             android:layout_width="match_parent"
@@ -91,26 +100,30 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/my_setting_security_relative"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base42dp">
+        android:layout_height="@dimen/base43dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/base15dp"
-            android:text="帐号与安全"
+            android:text="震动"
             android:textColor="@color/recharge_text"
             android:textSize="14sp" />
 
-        <ImageView
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/my_setting_msg_shock_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/base15dp"
-            android:src="@mipmap/more" />
+            app:kswAnimationDuration="300"
+            app:kswBackDrawable="@drawable/selector_my_setting_msg"
+            app:kswThumbDrawable="@drawable/selector_my_setting_msg_thumb"
+            app:kswThumbHeight="@dimen/base20dp"
+            app:kswThumbWidth="@dimen/base20dp" />
 
         <View
             android:layout_width="match_parent"
@@ -119,65 +132,4 @@
             android:background="@color/divider" />
 
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/my_setting_about_relative"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base42dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:text="关于我们"
-            android:textColor="@color/recharge_text"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/base15dp"
-            android:src="@mipmap/more" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base1dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/divider" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/my_setting_exit_relative"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base42dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:text="退出当前帐号"
-            android:textColor="@color/recharge_text"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/base15dp"
-            android:src="@mipmap/more" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base1dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/divider" />
-
-    </RelativeLayout>
-
 </LinearLayout>

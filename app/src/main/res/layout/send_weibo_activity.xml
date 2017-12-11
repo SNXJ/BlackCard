@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <RelativeLayout
+        android:id="@+id/hj_eat_set_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp"
+        android:background="#090909">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="发微博"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/send_weiBo_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:gravity="center"
+            android:text="发布"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <EditText
+        android:layout_below="@+id/hj_eat_set_title"
+        android:id="@+id/send_weiBo_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base178dp"
+        android:layout_margin="@dimen/base15dp"
+        android:background="@drawable/edit_text"
+        android:gravity="start"
+        android:hint="请输入内容"
+        android:padding="@dimen/base10dp"
+        android:textColor="@color/recharge_text"
+        android:textColorHint="@color/recharge_text"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/detail_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/send_weiBo_et"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:text="最多支持4张图片上传"
+        android:textColor="@color/recharge_text" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/detail_tv"
+        android:id="@+id/send_weiBo_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base15dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

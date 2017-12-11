@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    tools:context="com.zsh.blackcard.ui.CircleCenterCommentActivity">
+
+    <RelativeLayout
+        android:id="@+id/title_relative"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="11dp"
+            android:layout_height="18.6dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15.45dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="评论"
+            android:textColor="#929292"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/circle_center_comment_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_relative"
+        android:layout_below="@+id/title_relative">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <RelativeLayout
+        android:id="@+id/bottom_relative"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#0C0C0C"
+        android:paddingBottom="@dimen/base10dp"
+        android:paddingLeft="@dimen/base15dp"
+        android:paddingRight="@dimen/base15dp"
+        android:paddingTop="@dimen/base10dp">
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/circle_center_comment_send_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/comment_icon_send" />
+
+        <EditText
+            android:id="@+id/circle_center_comment_content_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/base10dp"
+            android:layout_toLeftOf="@+id/circle_center_comment_send_img"
+            android:background="@drawable/circle_center_comment_et"
+            android:hint="有什么想要说的么？"
+            android:paddingLeft="@dimen/base15dp"
+            android:paddingRight="@dimen/base15dp"
+            android:textColor="@color/recharge_text"
+            android:textColorHint="@color/recharge_text"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
