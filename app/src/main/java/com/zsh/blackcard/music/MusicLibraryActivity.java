@@ -50,7 +50,6 @@ public class MusicLibraryActivity extends BaseActivity {
         fragments.add(MusicReOtherFragment.newInstance(1));//新歌
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
         musicMianViewpage.setOffscreenPageLimit(6);
-
         musicMianViewpage.setAdapter(adapter);
         musicMainTab.setupWithViewPager(musicMianViewpage);
 

@@ -6,6 +6,7 @@
     android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/im_image"
         android:layout_width="@dimen/base110dp"
         android:layout_height="@dimen/base110dp"
         android:layout_gravity="center_vertical"
@@ -19,6 +20,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_text1"
             style="@style/text_"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -26,6 +28,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/tv_text2"
             style="@style/text_"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -33,6 +36,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/tv_text3"
             style="@style/text_"
             android:layout_height="0dp"
             android:layout_weight="1"

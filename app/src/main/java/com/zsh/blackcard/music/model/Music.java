@@ -7,10 +7,22 @@ import java.io.Serializable;
  * Created by wcy on 2015/11/27.
  */
 public class Music implements Serializable {
+
     // 歌曲类型:本地/网络
     private Type type;
     // [本地歌曲]歌曲id
     private long id;
+
+    public String getSongId() {
+        return SongId;
+    }
+
+    public void setSongId(String songId) {
+        SongId = songId;
+    }
+
+    //网络 歌曲id
+    private String SongId;
     // 音乐标题
     private String title;
     // 艺术家

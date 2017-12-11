@@ -18,11 +18,11 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicRankingModel;
 import com.zsh.blackcard.model.MusicRecommendModel;
-import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
 import com.zsh.blackcard.music.model.Music;
 import com.zsh.blackcard.music.untils.AppCache;
+import com.zsh.blackcard.untils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,9 +49,30 @@ public class MusicDetailActivity extends BaseMusicActivity {
     List<MusicDetailListModel.PdBean.ResultBean.SonglistBean> listDjData = new ArrayList<>();
     private boolean isPlayFragmentShow = false;
     private String ch_name;
-    private static String singerId;
-    static List<MusicRecommendModel.PdBean.ResultBean.ListBean> recommendDataList;
-    static List<MusicRankingModel.PdBean.SongListBean> reOtherDataList;
+    private static String singerId = null;
+    private static String rankType = null;
+    static List<MusicRecommendModel.PdBean.ResultBean.ListBean> recommendDataList = new ArrayList<>();
+    static List<MusicRankingModel.PdBean.SongListBean> reOtherDataList = new ArrayList<>();
+    private List<MusicSingerSongsModel.PdBean.SonglistBean> singerSongList = new ArrayList<>();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        singerId = null;
+        rankType = null;
+        if (null != recommendDataList) {
+            recommendDataList.clear();
+        }
+        if (null != reOtherDataList) {
+            reOtherDataList.clear();
+        }
+        if (null != singerSongList) {
+            singerSongList.clear();
+        }
+        if (null != listDjData) {
+            listDjData.clear();
+        }
+    }
 
     public static void setRecommendData(List<MusicRecommendModel.PdBean.ResultBean.ListBean> dataList) {
         recommendDataList = dataList;
@@ -65,6 +86,10 @@ public class MusicDetailActivity extends BaseMusicActivity {
         singerId = id;
     }
 
+    public static void setRankType(String type) {
+        rankType = type;
+    }
+
     @Override
     protected void initView() {
         setContentView(R.layout.music_details);
@@ -74,23 +99,42 @@ public class MusicDetailActivity extends BaseMusicActivity {
 
     private void initData() {
         ch_name = getIntent().getStringExtra("data");
-        if (null != recommendDataList) {
+        LogUtils.i("+++++++ch_name+++++++", "+++++++++++++" + ch_name);
+        LogUtils.i("+++++++rankType+++++++", "+++++++++++++" + rankType);
+        if (null != recommendDataList && recommendDataList.size() > 0) {
             setRecommendListData();
         } else if (null != ch_name) {
             initDjData();
-        } else if (null != reOtherDataList) {
+        } else if (null != reOtherDataList && reOtherDataList.size() > 0) {
             setReOtherData();
         } else if (null != singerId) {
-            getSingerData();
+            getSingerSongData();
+        } else if (null != rankType) {
+            getRankDataByType();
         }
     }
 
-    private void getSingerData() {
+    private void getRankDataByType() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getRankingList(DataManager.getMd5Str("BILLLIST"), "1", rankType + ""), new ResultListener<MusicRankingModel>() {
+            @Override
+            public void responseSuccess(MusicRankingModel obj) {
+                reOtherDataList.addAll(obj.getPd().getSong_list());
+                setReOtherData();
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void getSingerSongData() {
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSingerSongs(DataManager.getMd5Str("SONGLIST"), singerId, "1"), new ResultListener<MusicSingerSongsModel>() {
             @Override
             public void responseSuccess(MusicSingerSongsModel obj) {
                 // TODO没有数据
-//
+                singerSongList = obj.getPd().getSonglist();
                 setSingerSomgData();
             }
 
@@ -102,15 +146,13 @@ public class MusicDetailActivity extends BaseMusicActivity {
     }
 
     private void setSingerSomgData() {
-        List<MusicSingerModel.PdBean.ArtistBean> dataList = null;
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        singerSongAdapter = new MusicSingerSongAdapter(dataList);
+        singerSongAdapter = new MusicSingerSongAdapter(singerSongList);
         recyclerView.setAdapter(singerSongAdapter);
         singerSongAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                //  getSongDetail(listData.get(position).getSongid());
+                getSongDetail(singerSongList.get(position).getSong_id());
             }
         });
 
@@ -128,7 +170,7 @@ public class MusicDetailActivity extends BaseMusicActivity {
                 getSongDetail(listDjData.get(position).getSongid());
             }
         });
-
+        djdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
     }
 
     private void setRecommendListData() {
@@ -138,11 +180,11 @@ public class MusicDetailActivity extends BaseMusicActivity {
         recommendAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                getSongDetail(listData.get(position).getSongid());
+                getSongDetail(recommendDataList.get(position).getSong_id());
 
             }
         });
-
+        recommendAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
     }
 
     private void setReOtherData() {
@@ -152,20 +194,22 @@ public class MusicDetailActivity extends BaseMusicActivity {
         reOtherAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                getSongDetail(listData.get(position).getSongid());
+                getSongDetail(reOtherDataList.get(position).getSong_id());
 
             }
         });
-
+        reOtherAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
     }
 
-    private void getSongDetail(String songId) {
+
+    private void getSongDetail(final String songId) {
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSongDetails(DataManager.getMd5Str("SONGPLAY"), songId), new ResultListener<MusicSongDetailsModel>() {
             @Override
             public void responseSuccess(MusicSongDetailsModel obj) {
                 MusicSongDetailsModel.PdBean.BitrateBean musicData = obj.getPd().getBitrate();
                 MusicSongDetailsModel.PdBean.SonginfoBean songinfo = obj.getPd().getSonginfo();
                 Music music = new Music();
+                music.setSongId(songId);
                 music.setType(Music.Type.ONLINE);
                 music.setTitle(songinfo.getTitle());
                 music.setArtist(songinfo.getAuthor());

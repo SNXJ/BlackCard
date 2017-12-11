@@ -15,7 +15,6 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MusicDjModel;
-import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -87,21 +86,7 @@ public class MusicDjActivity extends BaseActivity {
         });
     }
 
-    private void getLry() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getMusicLry(DataManager.getMd5Str("LRY"), "877578"), new ResultListener<ResultModel>() {
-            @Override
-            public void responseSuccess(ResultModel obj) {
-//                adapter = new MusicDjAdapter(dataList);
-//                djRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//                djRecyclerView.setAdapter(adapter);
-            }
 
-            @Override
-            public void onCompleted() {
-
-            }
-        });
-    }
 
     @OnClick(R.id.title_back)
     public void onClick() {

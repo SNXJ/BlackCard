@@ -52,6 +52,8 @@ import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
+import com.zsh.blackcard.model.MusicLrcModel;
+import com.zsh.blackcard.model.MusicRankAllModel;
 import com.zsh.blackcard.model.MusicRankingModel;
 import com.zsh.blackcard.model.MusicRecommendModel;
 import com.zsh.blackcard.model.MusicSingerModel;
@@ -1017,34 +1019,102 @@ public class NetApi {
         return retrofitService.postZgFind(md5, id);
     }
 
+    /**
+     * 电台列表
+     *
+     * @param md5
+     * @return
+     */
     public Observable<MusicDjModel> getMusicDjList(String md5) {
         return retrofitService.getMusicDjList(md5);
     }
 
+    /**
+     * 电台详情列表
+     *
+     * @param md5
+     * @param channelName
+     * @return
+     */
     public Observable<MusicDetailListModel> getMusicDjSongList(String md5, String channelName) {
         return retrofitService.getMusicDjSongList(md5, channelName);
     }
 
+    /**
+     * 歌曲详情
+     *
+     * @param md5
+     * @param songId
+     * @return
+     */
     public Observable<MusicSongDetailsModel> getSongDetails(String md5, String songId) {
         return retrofitService.getMusicSongDetail(md5, songId);
     }
 
-    public Observable<ResultModel> getMusicLry(String md5, String songid) {
+    /**
+     * 歌词
+     *
+     * @param md5
+     * @param songid
+     * @return
+     */
+    public Observable<MusicLrcModel> getMusicLry(String md5, String songid) {
         return retrofitService.getMusicLry(md5, songid);
     }
 
+    /**
+     * 音乐排行榜列表
+     *
+     * @param md5
+     * @param offset
+     * @param type
+     * @return
+     */
     public Observable<MusicRankingModel> getRankingList(String md5, String offset, String type) {
         return retrofitService.getRankingList(md5, offset, type);
     }
 
+    /**
+     * 音乐排行榜(首页)
+     *
+     * @param md5
+     * @param offset
+     * @param type
+     * @return
+     */
+    public Observable<MusicRankAllModel> getMusicRanking(String md5, String offset, String type) {
+        return retrofitService.getMusicRanking(md5, offset, type);
+    }
+
+    /**
+     * 推荐
+     *
+     * @param md5
+     * @return
+     */
     public Observable<MusicRecommendModel> getMusicRecommendList(String md5) {
         return retrofitService.getMusicRecommendList(md5);
     }
 
+    /**
+     * 歌手列表
+     *
+     * @param md5
+     * @param offset
+     * @return
+     */
     public Observable<MusicSingerModel> getMusicSingerList(String md5, String offset) {
         return retrofitService.getMusicSingerList(md5, offset);
     }
 
+    /**
+     * 歌手歌曲列表
+     *
+     * @param md5
+     * @param singerId
+     * @param offset
+     * @return
+     */
     public Observable<MusicSingerSongsModel> getSingerSongs(String md5, String singerId, String offset) {
         return retrofitService.getSingerSongs(md5, singerId, offset);
     }

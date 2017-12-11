@@ -32,6 +32,7 @@ public abstract class BaseMusicActivity extends BaseActivity {
     protected void initUI() {
         checkService();
         initView();
+
     }
 
     public PlayService getPlayService() {
@@ -75,8 +76,5 @@ public abstract class BaseMusicActivity extends BaseActivity {
             unbindService(mPlayServiceConnection);
         }
         super.onDestroy();
-//        playService.onDestroy();
-
-
     }
 }

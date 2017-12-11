@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 
 /**
  * SharedPreferences工具类
- * Created by wcy on 2015/11/28.
  */
 public class Preferences {
     private static final String MUSIC_ID = "music_id";

@@ -48,6 +48,8 @@ import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
+import com.zsh.blackcard.model.MusicLrcModel;
+import com.zsh.blackcard.model.MusicRankAllModel;
 import com.zsh.blackcard.model.MusicRankingModel;
 import com.zsh.blackcard.model.MusicRecommendModel;
 import com.zsh.blackcard.model.MusicSingerModel;
@@ -612,10 +614,15 @@ public interface RetrofitService {
     @POST("appmusicin/getbilllist?")
     Observable<MusicRankingModel> getRankingList(@Field("FKEY") String md5, @Field("offset") String offset, @Field("type") String type);
 
+    //音乐排行榜(首页)
+    @FormUrlEncoded
+    @POST("appmusicin/getbilllistall?")
+    Observable<MusicRankAllModel> getMusicRanking(@Field("FKEY") String md5, @Field("offset") String offset, @Field("type") String str);
+
     //获得某首歌曲的歌词
     @FormUrlEncoded
     @POST("appmusicin/getlry?")
-    Observable<ResultModel> getMusicLry(@Field("FKEY") String md5, @Field("songid") String songId);
+    Observable<MusicLrcModel> getMusicLry(@Field("FKEY") String md5, @Field("songid") String songId);
 
     //每日推荐歌曲
     @FormUrlEncoded

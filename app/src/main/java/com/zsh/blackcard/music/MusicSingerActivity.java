@@ -91,7 +91,7 @@ public class MusicSingerActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                MusicDetailActivity.setSingerId(dataList.get(position).getArtist_id());
+                MusicDetailActivity.setSingerId(dataList.get(position).getTing_uid());
                 ActivityUtils.startActivity(MusicSingerActivity.this, MusicDetailActivity.class);
             }
         });

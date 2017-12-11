@@ -99,5 +99,6 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     //添加视频播放第三方
     implementation 'cn.jzvd:jiaozivideoplayer:6.2.1'
+    //歌词
     compile 'me.wcy:lrcview:2.0.1'
 }

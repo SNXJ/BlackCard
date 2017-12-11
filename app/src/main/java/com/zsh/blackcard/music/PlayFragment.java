@@ -4,15 +4,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.media.AudioManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,19 +24,24 @@ import android.widget.TextView;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.BitmapListener;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.MusicLrcModel;
 import com.zsh.blackcard.music.model.Music;
 import com.zsh.blackcard.music.service.OnPlayerEventListener;
 import com.zsh.blackcard.music.service.PlayService;
 import com.zsh.blackcard.music.untils.Actions;
 import com.zsh.blackcard.music.untils.AppCache;
-import com.zsh.blackcard.music.untils.CoverLoader;
-import com.zsh.blackcard.music.untils.FileUtils;
+import com.zsh.blackcard.music.untils.ImageUtils;
 import com.zsh.blackcard.music.untils.PlayModeEnum;
 import com.zsh.blackcard.music.untils.Preferences;
 import com.zsh.blackcard.music.untils.ScreenUtils;
 import com.zsh.blackcard.music.untils.SystemUtils;
 import com.zsh.blackcard.music.widget.AlbumCoverView;
 import com.zsh.blackcard.music.widget.IndicatorLayout;
+import com.zsh.blackcard.untils.BitmapUtils;
 import com.zsh.blackcard.untils.UIUtils;
 
 import java.io.File;
@@ -112,12 +117,10 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //  initSystemBar();
         initViewPager();
         ilIndicator.create(mViewPagerContent.size());
         initPlayMode();
         onChangeImpl(getPlayService().getPlayingMusic());
-
         getPlayService().setOnPlayEventListener(this);
     }
 
@@ -131,7 +134,7 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
     protected PlayService getPlayService() {
         PlayService playService = AppCache.getPlayService();
         if (playService == null) {
-            //  throw new NullPointerException("play service is null");
+            throw new NullPointerException("play service is null");
         }
         return playService;
     }
@@ -149,16 +152,6 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
         vpPlay.addOnPageChangeListener(this);
     }
 
-    /**
-     * 沉浸式状态栏
-     */
-    private void initSystemBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            ScreenUtils.init(getActivity());
-            int top = ScreenUtils.getStatusBarHeight();
-            llContent.setPadding(0, top, 0, 0);
-        }
-    }
 
     private void initViewPager() {
         View coverView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_play_page_cover, null);
@@ -321,7 +314,6 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
         if (music == null) {
             return;
         }
-
         tvTitle.setText(music.getTitle());
         tvArtist.setText(music.getArtist());
         sbProgress.setProgress((int) getPlayService().getCurrentPosition());
@@ -385,56 +377,54 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
     }
 
     private void setCoverAndBg(final Music music) {
-        mAlbumCoverView.setCoverBitmap(CoverLoader.getInstance().loadRound(music));
-        ivPlayingBg.setImageBitmap(CoverLoader.getInstance().loadBlur(music));
+        setCoverAndBgBitmp(music);
+//        mAlbumCoverView.setCoverBitmap(CoverLoader.getInstance().loadRound(music));
+//        ivPlayingBg.setImageBitmap(CoverLoader.getInstance().loadBlur(music));
     }
 
-    private void setLrc(final Music music) {
-        if (music.getType() == Music.Type.LOCAL) {
-            String lrcPath = FileUtils.getLrcFilePath(music);
-            if (!TextUtils.isEmpty(lrcPath)) {
-                loadLrc(lrcPath);
-//            } else {
-//                new SearchLrc(music.getArtist(), music.getTitle()) {
-//                    @Override
-//                    public void onPrepare() {
-//                        // 设置tag防止歌词下载完成后已切换歌曲
-//                        vpPlay.setTag(music);
-//
-//                        loadLrc("");
-//                        setLrcLabel("正在搜索歌词");
-//                    }
-//
-//                    @Override
-//                    public void onExecuteSuccess(@NonNull String lrcPath) {
-//                        if (vpPlay.getTag() != music) {
-//                            return;
-//                        }
-//
-//                        // 清除tag
-//                        vpPlay.setTag(null);
-//
-//                        loadLrc(lrcPath);
-//                        setLrcLabel("暂无歌词");
-//                    }
-//
-//                    @Override
-//                    public void onExecuteFail(Exception e) {
-//                        if (vpPlay.getTag() != music) {
-//                            return;
-//                        }
-//
-//                        // 清除tag
-//                        vpPlay.setTag(null);
-//
-//                        setLrcLabel("暂无歌词");
-//                    }
-//                }.execute();
+    private void setCoverAndBgBitmp(final Music music) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                BitmapUtils.getbitmapByUrl(music.getCoverPath(), new BitmapListener() {
+                    @Override
+                    public void bitmapListener(Bitmap bitmap) {
+                        final Message msg = Message.obtain();
+                        if (null == bitmap) {
+                            msg.what = 0;
+                            msg.obj = null;
+                        } else {
+                            bitmap = ImageUtils.resizeImage(bitmap, ScreenUtils.getScreenWidth() / 2, ScreenUtils.getScreenWidth() / 2);
+                            bitmap = ImageUtils.createCircleImage(bitmap);
+                            msg.what = 1;
+                            msg.obj = bitmap;
+                        }
+                        myHandler.sendMessage(msg);
+                    }
+                });
+
+
             }
-        } else {
-            String lrcPath = FileUtils.getLrcDir() + FileUtils.getLrcFileName(music.getArtist(), music.getTitle());
-            loadLrc(lrcPath);
+        }).start();
+    }
+
+    private Handler myHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    mAlbumCoverView.setCoverBitmap((Bitmap) msg.obj);
+                    break;
+                case 0:
+                    mAlbumCoverView.setCoverBitmap(null);
+                    break;
+            }
+            super.handleMessage(msg);
         }
+    };
+
+
+    private void setLrc(final Music music) {
+        getLry(music.getSongId());
     }
 
     private void loadLrc(String path) {
@@ -442,6 +432,7 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
         mLrcViewSingle.loadLrc(file);
         mLrcViewFull.loadLrc(file);
     }
+
 
     private void setLrcLabel(String label) {
         mLrcViewSingle.setLabel(label);
@@ -495,5 +486,20 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView(mViews.get(position));
         }
+    }
+
+    private void getLry(String songId) {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getMusicLry(DataManager.getMd5Str("LRY"), songId), new ResultListener<MusicLrcModel>() {
+            @Override
+            public void responseSuccess(MusicLrcModel obj) {
+                String lrc = obj.getPd().getLrcContent();
+                setLrcLabel(lrc);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 }

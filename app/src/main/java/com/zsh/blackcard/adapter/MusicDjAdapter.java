@@ -26,7 +26,7 @@ public class MusicDjAdapter extends BaseQuickAdapter<MusicDjModel.PdBean.ResultB
     @Override
     protected void convert(final BaseViewHolder helper, MusicDjModel.PdBean.ResultBean.ChannellistBean item) {
         helper.setText(R.id.tv_name, item.getName());
-        helper.setText(R.id.tv_des, "当前热度为" + item.getValue());
+        helper.setText(R.id.tv_des, "当前热度为" + item.getValue() + "万");
         Glide.with(mContext).load(item.getThumb()).into((ImageView) helper.getView(R.id.im_image));
     }
 }
