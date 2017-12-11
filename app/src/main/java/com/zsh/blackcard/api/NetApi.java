@@ -53,7 +53,19 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
+
 import com.zsh.blackcard.model.MyCircleModel;
+
+import com.zsh.blackcard.model.MusicDetailListModel;
+import com.zsh.blackcard.model.MusicDjModel;
+import com.zsh.blackcard.model.MusicLrcModel;
+import com.zsh.blackcard.model.MusicRankAllModel;
+import com.zsh.blackcard.model.MusicRankingModel;
+import com.zsh.blackcard.model.MusicRecommendModel;
+import com.zsh.blackcard.model.MusicSingerModel;
+import com.zsh.blackcard.model.MusicSingerSongsModel;
+import com.zsh.blackcard.model.MusicSongDetailsModel;
+
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
@@ -595,18 +607,19 @@ public class NetApi {
     }
 
 
-    //   public Observable<ResultModel> upLoadListIMG(String md5, String userId, List<String> pathList) {
+//       public Observable<ResultModel> upLoadListIMG2(String md5, String userId, List<String> pathList) {
 //        MultipartBody.Builder builder = new MultipartBody.Builder()
 //                .setType(MultipartBody.FORM);//表单类型
 //        //多张图片
 //        for (int i = 0; i < pathList.size(); i++) {
 //            File file = new File(pathList.get(i));//filePath 图片地址
 //            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//
 //            builder.addFormDataPart("showfile", file.getName(), imageBody);//"showfile 后台接收图片流的参数名（每张应该不同）
 //        }
 //        List<MultipartBody.Part> parts = builder.build().parts();
-    //       return retrofitService.uploadListIMG(md5, userId, parts);
-    //  }
+//           return retrofitService.uploadListIMG(md5, userId, parts);
+//      }
 
     /**
      * 全部订单查询接口
@@ -1048,6 +1061,7 @@ public class NetApi {
     }
 
     /**
+
      * 美食，酒吧，酒店，KTV品牌和筛选条件请求
      *
      * @param md5
@@ -1138,5 +1152,104 @@ public class NetApi {
      */
     public Observable<ResultModel> postCircleCenterComment(String md5, String user_id, String circle_id, String content, String reply_id) {
         return retrofitService.postCircleCenterComment(md5, user_id, circle_id, content, reply_id);
+/**
+     * 电台列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<MusicDjModel> getMusicDjList(String md5) {
+        return retrofitService.getMusicDjList(md5);
+    }
+
+    /**
+     * 电台详情列表
+     *
+     * @param md5
+     * @param channelName
+     * @return
+     */
+    public Observable<MusicDetailListModel> getMusicDjSongList(String md5, String channelName) {
+        return retrofitService.getMusicDjSongList(md5, channelName);
+    }
+
+    /**
+     * 歌曲详情
+     *
+     * @param md5
+     * @param songId
+     * @return
+     */
+    public Observable<MusicSongDetailsModel> getSongDetails(String md5, String songId) {
+        return retrofitService.getMusicSongDetail(md5, songId);
+    }
+
+    /**
+     * 歌词
+     *
+     * @param md5
+     * @param songid
+     * @return
+     */
+    public Observable<MusicLrcModel> getMusicLry(String md5, String songid) {
+        return retrofitService.getMusicLry(md5, songid);
+    }
+
+    /**
+     * 音乐排行榜列表
+     *
+     * @param md5
+     * @param offset
+     * @param type
+     * @return
+     */
+    public Observable<MusicRankingModel> getRankingList(String md5, String offset, String type) {
+        return retrofitService.getRankingList(md5, offset, type);
+    }
+
+    /**
+     * 音乐排行榜(首页)
+     *
+     * @param md5
+     * @param offset
+     * @param type
+     * @return
+     */
+    public Observable<MusicRankAllModel> getMusicRanking(String md5, String offset, String type) {
+        return retrofitService.getMusicRanking(md5, offset, type);
+    }
+
+    /**
+     * 推荐
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<MusicRecommendModel> getMusicRecommendList(String md5) {
+        return retrofitService.getMusicRecommendList(md5);
+    }
+
+    /**
+     * 歌手列表
+     *
+     * @param md5
+     * @param offset
+     * @return
+     */
+    public Observable<MusicSingerModel> getMusicSingerList(String md5, String offset) {
+        return retrofitService.getMusicSingerList(md5, offset);
+    }
+
+    /**
+     * 歌手歌曲列表
+     *
+     * @param md5
+     * @param singerId
+     * @param offset
+     * @return
+     */
+    public Observable<MusicSingerSongsModel> getSingerSongs(String md5, String singerId, String offset) {
+        return retrofitService.getSingerSongs(md5, singerId, offset);
+
     }
 }

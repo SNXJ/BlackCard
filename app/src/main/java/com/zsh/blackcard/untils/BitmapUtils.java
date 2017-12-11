@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
+import com.zsh.blackcard.listener.BitmapListener;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -75,6 +77,41 @@ public class BitmapUtils {
             e.printStackTrace();
         }
         return bitmap;
+
+    }
+
+    /**
+     * 根据图片的url路径获得Bitmap对象
+     *
+     * @param url
+     * @return
+     */
+    public static void getbitmapByUrl(String url, BitmapListener listener) {
+        URL fileUrl = null;
+        Bitmap bitmap = null;
+
+        try {
+            fileUrl = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (fileUrl == null) {
+                return;
+            }
+            HttpURLConnection conn = (HttpURLConnection) fileUrl
+                    .openConnection();
+            conn.setDoInput(true);
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            bitmap = BitmapFactory.decodeStream(is);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        listener.bitmapListener(bitmap);
+//        return bitmap;
 
     }
 

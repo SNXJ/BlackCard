@@ -46,6 +46,10 @@ import com.zsh.blackcard.model.HomeNewModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
+import com.zsh.blackcard.music.MusicDjActivity;
+import com.zsh.blackcard.music.MusicLibraryActivity;
+import com.zsh.blackcard.music.MusicRankingActivity;
+import com.zsh.blackcard.music.MusicSingerActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
@@ -261,6 +265,28 @@ public class HomeFragment extends BaseFragment {
                     ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383994744717443072", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
                     break;
             }
+        }
+    }
+
+    private class HomeMusicServerOnItemClick implements BaseQuickAdapter.OnItemClickListener {
+
+        @Override
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            switch (position) {
+                case 0:
+                    ActivityUtils.startActivity(getActivity(), MusicSingerActivity.class);
+                    break;
+                case 1:
+                    ActivityUtils.startActivity(getActivity(), MusicRankingActivity.class);
+                    break;
+                case 2:
+                    ActivityUtils.startActivity(getActivity(), MusicLibraryActivity.class);
+                    break;
+                case 3:
+                    ActivityUtils.startActivity(getActivity(), MusicDjActivity.class);
+                    break;
+            }
+
         }
     }
 
@@ -486,7 +512,7 @@ public class HomeFragment extends BaseFragment {
                     homeGloryMusicRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                     homeGloryMusicRecycler.setNestedScrollingEnabled(false);
                     homeGloryMusicRecycler.setAdapter(homeGloryMusicAdapter);
-//                    homeGloryMusicAdapter.setOnItemClickListener(new HomeGloryServerOnItemClick());
+                    homeGloryMusicAdapter.setOnItemClickListener(new HomeMusicServerOnItemClick());
                 }
 
             }

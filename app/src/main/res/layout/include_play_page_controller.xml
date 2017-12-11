@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base150dp"
+    android:layout_marginTop="@dimen/base5dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/tv_current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@color/ff92_text"
+            android:textSize="10sp" />
+
+        <SeekBar
+            android:id="@+id/sb_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
+            android:progressDrawable="@drawable/seek_bar_progress_style"
+            android:thumb="@mipmap/ic_seek_bar_progress_btn" />
+
+        <TextView
+            android:id="@+id/tv_total_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@color/ff92_text"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base35dp">
+
+        <ImageView
+            android:id="@+id/iv_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/music_next"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/iv_prev"
+            android:layout_width="@dimen/base25dp"
+            android:layout_height="@dimen/base25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base55dp"
+            android:layout_toLeftOf="@+id/iv_play"
+            android:src="@mipmap/music_front" />
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/play_btn_play_pause_selector" />
+
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="@dimen/base25dp"
+            android:layout_height="@dimen/base25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base55dp"
+            android:layout_toRightOf="@id/iv_play"
+            android:src="@mipmap/music_next" />
+    </RelativeLayout>
+</LinearLayout>

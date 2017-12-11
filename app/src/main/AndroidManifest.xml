@@ -207,6 +207,7 @@
         <activity android:name=".live.SingleAnchorPlayActivity" />
         <activity android:name=".ui.home.HomeScannerActivity" />
         <activity android:name=".ui.home.HomeScannerWebViewAvyivity" />
+
         <activity android:name=".ui.SbSendWeiBoActivity" />
         <activity android:name=".ui.CircleCenterCommentActivity" />
         <activity android:name=".ui.my.UserInfoActivity" />
@@ -215,6 +216,26 @@
         <activity android:name=".ui.my.SecurityLoginActivity" />
         <activity android:name=".ui.my.SecurityPayActivity" />
         <activity android:name=".ui.my.ChangeForResultActivity"></activity>
+
+        <activity android:name=".music.MusicLibraryActivity" />
+        <activity android:name=".music.MusicDetailActivity" />
+        <activity android:name=".music.MusicRankingActivity" />
+        <activity android:name=".music.MusicDjActivity" />
+        <activity android:name=".music.MusicSingerActivity" />
+
+        <service android:name=".music.service.PlayService" />
+
+        <receiver android:name=".music.receiver.RemoteControlReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".music.receiver.StatusBarReceiver">
+            <intent-filter>
+                <action android:name="STATUS_BAR_ACTIONS" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
