@@ -64,7 +64,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/go_welcome_login_img"
+                android:id="@+id/home_top_pop"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
@@ -162,10 +162,26 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_glory_magazine_recycler"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base114dp"
-            android:layout_marginBottom="@dimen/base36dp">
+            android:layout_height="@dimen/base114dp">
 
         </android.support.v7.widget.RecyclerView>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base46dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:gravity="center"
+            android:text="荣耀音乐"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_glory_music_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base120dp"
+            android:layout_marginBottom="@dimen/base10dp">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </ScrollView>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shopping_car_item_easy"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base60dp"
+    app:contentView="@+id/rl_content"
+    app:rightMenuView="@+id/tv_item_delete">
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp">
+
+        <ImageView
+            android:id="@+id/im_head"
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/blog_image_1" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base65dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:text="爱跳舞的小丑"
+            android:textColor="@color/ff92_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_fans_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base13dp"
+            android:layout_marginLeft="@dimen/base65dp"
+            android:text="粉丝数：28492"
+            android:textColor="@color/ff92_text"
+            android:textSize="11sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/line" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_item_delete"
+        style="@style/text_"
+        android:layout_width="@dimen/base90dp"
+        android:layout_height="match_parent"
+        android:background="@color/ff14_bt"
+        android:gravity="center"
+        android:text="删除"
+        android:textSize="15sp" />
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

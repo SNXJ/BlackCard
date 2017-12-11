@@ -3,17 +3,23 @@ package com.zsh.blackcard.ui;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.ui.live.AbMyContributionActivity;
-import com.zsh.blackcard.ui.live.AbMyFollowActivity;
-import com.zsh.blackcard.ui.live.AbMySettingActivity;
-import com.zsh.blackcard.ui.live.AbMySignActivity;
-import com.zsh.blackcard.ui.live.AbMyTaskActivity;
-import com.zsh.blackcard.ui.live.LiveRankActivity;
+import com.zsh.blackcard.live.AbMyContributionActivity;
+import com.zsh.blackcard.live.AbMyFriendActivity;
+import com.zsh.blackcard.live.AbMySettingActivity;
+import com.zsh.blackcard.live.AbMySignActivity;
+import com.zsh.blackcard.live.AbMyTaskActivity;
+import com.zsh.blackcard.live.LiveRankActivity;
+import com.zsh.blackcard.untils.ActivityUtils;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -24,68 +30,63 @@ import com.zsh.blackcard.ui.live.LiveRankActivity;
  */
 public class SbMyActivity extends BaseActivity implements View.OnClickListener {
 
-    private ImageView title_back;
-    private TextView title_tv;
-    private ImageView im_head;
-    private TextView tv_name;
-    private TextView tv_guanzhu;
-    private TextView tv_hkb;
-    private TextView tv_fans;
-    private TextView tv_guanzhu_num;
-    private TextView tv_hkb_num;
-    private TextView tv_fans_num;
-    private RelativeLayout rl_gxbang;
-    private RelativeLayout rl_sign;
-    private RelativeLayout rl_rank;
-    private RelativeLayout rl_center;
-    private RelativeLayout ll_sb_setting;
-
-
-    private void bindViews() {
-        title_back = (ImageView) findViewById(R.id.title_back);
-        title_tv = (TextView) findViewById(R.id.title_tv);
-        im_head = (ImageView) findViewById(R.id.im_head);
-        tv_name = (TextView) findViewById(R.id.tv_name);
-        tv_guanzhu = (TextView) findViewById(R.id.tv_guanzhu);
-        tv_hkb = (TextView) findViewById(R.id.tv_hkb);
-        tv_fans = (TextView) findViewById(R.id.tv_fans);
-        tv_guanzhu_num = (TextView) findViewById(R.id.tv_guanzhu_num);
-        tv_hkb_num = (TextView) findViewById(R.id.tv_hkb_num);
-        tv_fans_num = (TextView) findViewById(R.id.tv_fans_num);
-        rl_gxbang = (RelativeLayout) findViewById(R.id.rl_gxbang);
-        rl_sign = (RelativeLayout) findViewById(R.id.rl_sign);
-        rl_rank = (RelativeLayout) findViewById(R.id.rl_rank);
-        rl_center = (RelativeLayout) findViewById(R.id.rl_center);
-        ll_sb_setting = (RelativeLayout) findViewById(R.id.ll_sb_setting);
-
-        title_back.setOnClickListener(this);
-        im_head.setOnClickListener(this);
-        tv_name.setOnClickListener(this);
-        tv_guanzhu.setOnClickListener(this);
-        tv_hkb.setOnClickListener(this);
-        tv_fans.setOnClickListener(this);
-        tv_guanzhu_num.setOnClickListener(this);
-        tv_hkb_num.setOnClickListener(this);
-        tv_fans_num.setOnClickListener(this);
-        rl_gxbang.setOnClickListener(this);
-        rl_sign.setOnClickListener(this);
-        rl_rank.setOnClickListener(this);
-        rl_center.setOnClickListener(this);
-        ll_sb_setting.setOnClickListener(this);
-    }
-
+    @BindView(R.id.title_back)
+    ImageView titleBack;
+    @BindView(R.id.title_tv)
+    TextView titleTv;
+    @BindView(R.id.im_head)
+    ImageView imHead;
+    @BindView(R.id.tv_name)
+    TextView tvName;
+    @BindView(R.id.tv_guanzhu)
+    TextView tvGuanzhu;
+    @BindView(R.id.tv_guanzhu_num)
+    TextView tvGuanzhuNum;
+    @BindView(R.id.ll_guanzhu)
+    LinearLayout llGuanzhu;
+    @BindView(R.id.tv_hkb)
+    TextView tvHkb;
+    @BindView(R.id.tv_hkb_num)
+    TextView tvHkbNum;
+    @BindView(R.id.ll_hkb)
+    LinearLayout llHkb;
+    @BindView(R.id.tv_fans)
+    TextView tvFans;
+    @BindView(R.id.tv_fans_num)
+    TextView tvFansNum;
+    @BindView(R.id.ll_fans)
+    LinearLayout llFans;
+    @BindView(R.id.rl_gxbang)
+    RelativeLayout rlGxbang;
+    @BindView(R.id.rl_sign)
+    RelativeLayout rlSign;
+    @BindView(R.id.rl_rank)
+    RelativeLayout rlRank;
+    @BindView(R.id.rl_center)
+    RelativeLayout rlCenter;
+    @BindView(R.id.ll_sb_setting)
+    RelativeLayout llSbSetting;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_sb_my);
-        bindViews();
+        ButterKnife.bind(this);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    @OnClick({R.id.title_back, R.id.ll_guanzhu, R.id.ll_hkb, R.id.ll_fans, R.id.rl_gxbang, R.id.rl_sign, R.id.rl_rank, R.id.rl_center, R.id.ll_sb_setting})
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.title_back:
                 finish();
+                break;
+            case R.id.ll_guanzhu:
+                ActivityUtils.startActivityForData(SbMyActivity.this, AbMyFriendActivity.class, "0");
+                break;
+            case R.id.ll_hkb:
+                startActivity(new Intent(SbMyActivity.this, BlackCurrencyActivity.class));
+                break;
+            case R.id.ll_fans:
+                ActivityUtils.startActivityForData(SbMyActivity.this, AbMyFriendActivity.class, "1");
                 break;
             case R.id.rl_gxbang:
                 startActivity(new Intent(SbMyActivity.this, AbMyContributionActivity.class));
@@ -93,34 +94,15 @@ public class SbMyActivity extends BaseActivity implements View.OnClickListener {
             case R.id.rl_sign:
                 startActivity(new Intent(SbMyActivity.this, AbMySignActivity.class));
                 break;
-            case R.id.rl_center:
-                startActivity(new Intent(SbMyActivity.this, AbMyTaskActivity.class));
-                break;
             case R.id.rl_rank:
                 startActivity(new Intent(SbMyActivity.this, LiveRankActivity.class));
-
                 break;
-            case R.id.tv_guanzhu:
-            case R.id.tv_guanzhu_num:
-                startActivity(new Intent(SbMyActivity.this, AbMyFollowActivity.class));
-                break;
-            case R.id.tv_hkb:
-            case R.id.tv_hkb_num:
-                startActivity(new Intent(SbMyActivity.this, BlackCurrencyActivity.class));
-                break;
-            case R.id.tv_fans_num:
-            case R.id.tv_fans:
-                startActivity(new Intent(SbMyActivity.this, AbMyFollowActivity.class));
-                break;
-            case R.id.im_head:
+            case R.id.rl_center:
+                startActivity(new Intent(SbMyActivity.this, AbMyTaskActivity.class));
                 break;
             case R.id.ll_sb_setting:
                 startActivity(new Intent(SbMyActivity.this, AbMySettingActivity.class));
                 break;
-            default:
-                break;
         }
-
     }
-
 }

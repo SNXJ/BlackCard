@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.model.HomeKTVRecyclerModel;
+import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.view.Star;
 
 import java.util.List;
@@ -18,16 +18,16 @@ import java.util.List;
  * Date: 2017-11-22
  * Description:描述：
  */
-public class HomeKTVAdapter extends BaseQuickAdapter<HomeKTVRecyclerModel.PdBean, BaseViewHolder> {
+public class HomeKTVAdapter extends BaseQuickAdapter<HomeKTVModel.PdBean, BaseViewHolder> {
     private Context context;
 
-    public HomeKTVAdapter(List<HomeKTVRecyclerModel.PdBean> data, Context context) {
+    public HomeKTVAdapter(List<HomeKTVModel.PdBean> data, Context context) {
         super(R.layout.home_hotel_item, data);
         this.context = context;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, HomeKTVRecyclerModel.PdBean item) {
+    protected void convert(BaseViewHolder helper, HomeKTVModel.PdBean item) {
         Star star = helper.getView(R.id.star);
         star.setMark((float) item.getKTVEVALUATE());
         helper.setText(R.id.tv_money, "￥" + item.getKTVPRICE());

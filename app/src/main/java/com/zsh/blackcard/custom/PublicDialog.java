@@ -15,21 +15,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.DateListener;
+import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.SelectDateListener;
+import com.zsh.blackcard.live.LiveAnchorDetails2;
+import com.zsh.blackcard.live.LiveOpenActivity;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
-import com.zsh.blackcard.ui.live.LiveAnchorDetails2;
-import com.zsh.blackcard.ui.live.LiveOpenActivity;
-import com.zsh.blackcard.ui.live.VideoDetailsActivity;
+import com.zsh.blackcard.ui.SbSendWeiBoActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
 import com.zsh.blackcard.untils.MyCalendar;
 import com.zsh.blackcard.untils.UIUtils;
@@ -164,7 +164,7 @@ public class PublicDialog {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.activity_live_main, null);
         final Dialog dialog = showDialogView(view, mContext);
-
+        dialog.setCanceledOnTouchOutside(false);
         RadialViewLayout radialView = (RadialViewLayout) view.findViewById(R.id.ll_pop);
         radialView.showOpenOrHide();
         radialView.setOnListener(new ItemClickListener() {
@@ -172,18 +172,19 @@ public class PublicDialog {
             public void itemClick(int postion) {
                 switch (postion) {
                     case 0:
-                        // dialog.dismiss();
+                        dialog.dismiss();
                         break;
                     case 1://开
                         break;
                     case 2:
-                        mContext.startActivity(new Intent(mContext, BlackWeiboActivity.class));
+                        mContext.startActivity(new Intent(mContext, SbSendWeiBoActivity.class));
                         break;
                     case 3:
                         mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));
                         break;
                     case 4:
-                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));
+//                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));
+                        mContext.startActivity(new Intent(mContext, LiveAnchorDetails2.class));
                         break;
                 }
             }
@@ -285,6 +286,7 @@ public class PublicDialog {
             }
         });
         // }
+
         //设置默认获取焦点
         popWinShare.setFocusable(true);
         //以某个控件的x和y的偏移量位置开始显示窗口
@@ -379,10 +381,9 @@ public class PublicDialog {
      * @param context
      * @param defaultJsonAsset json文件  选择内容
      * @param defaultData
-     * @param rb
      */
     public static void selectOneDialog(Activity context,
-                                       String defaultJsonAsset, String defaultData, final RadioButton rb) {
+                                       String defaultJsonAsset, String defaultData, final FilterListener listener) {
         SelsectOneDialog mDialog = new SelsectOneDialog(context,
                 defaultJsonAsset, defaultData);
         mDialog.setAddress(defaultData, "");
@@ -392,7 +393,7 @@ public class PublicDialog {
             @Override
             public void onClick(String province, String city) {
                 // TODO Auto-generated method stub
-                rb.setText(province);
+                listener.resultListener(province);
             }
         });
     }

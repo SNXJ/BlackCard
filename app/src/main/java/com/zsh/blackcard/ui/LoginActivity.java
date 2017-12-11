@@ -41,11 +41,13 @@ public class LoginActivity extends BaseActivity {
         switch (view.getId()) {
             //登录
             case R.id.login_btn:
-                doLogin();
+                ActivityUtils.startActivity(this, MainActivity.class);
+                finish();
+                // doLogin();
                 break;
             //在线申请
             case R.id.login_register_tv:
-                ActivityUtils.startActivity(this,RegisterActivity.class);
+                ActivityUtils.startActivity(this, RegisterActivity.class);
                 break;
             //忘记密码
             case R.id.login_forget_tv:

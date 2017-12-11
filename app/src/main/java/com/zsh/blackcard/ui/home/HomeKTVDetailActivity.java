@@ -1,6 +1,7 @@
 package com.zsh.blackcard.ui.home;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.KTVDetailMoreListAdapter;
 import com.zsh.blackcard.adapter.KTVDetailsiTAbAdapter;
 import com.zsh.blackcard.adapter.KTVDetailsitemAdapter;
 import com.zsh.blackcard.api.DataManager;
@@ -30,8 +32,9 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.FetureDateModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
-import com.zsh.blackcard.model.OrderResultModel;
+import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.OrderDialogModel;
+import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.MyCalendar;
@@ -89,12 +92,16 @@ public class HomeKTVDetailActivity extends BaseActivity {
     RelativeLayout rlComment;
     @BindView(R.id.tab_recyclerView)
     RecyclerView tabRecyclerView;
-    //    @BindView(R.id.btn_recyclerView)
-//    RecyclerView btnRecyclerView;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.tv_search_more)
+    TextView tvSearchMore;
+    @BindView(R.id.more_recyclerView)
+    RecyclerView moreRecyclerView;
     private String id;
     private String score;
+    private KTVDetailMoreListAdapter moreAdapter;
 
     final List<HomeKTVDetailItemModel.PdBean> dataList = new ArrayList<>();
     List<FetureDateModel> tabList = new ArrayList<>();
@@ -110,6 +117,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
         initData();
         initTabRV();
         initRV();
+        initMoreRV();
     }
 
     private void initData() {
@@ -213,6 +221,39 @@ public class HomeKTVDetailActivity extends BaseActivity {
         });
     }
 
+    private void initMoreRV() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postKTVDetailMoreList(DataManager.getMd5Str("SORTKTVRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<KTVDetailsMoreListModel>() {
+            @Override
+            public void responseSuccess(KTVDetailsMoreListModel obj) {
+                List<KTVDetailsMoreListModel.PdBean> dataList = obj.getPd();
+                setMoreRVData(dataList);
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    private void setMoreRVData(final List<KTVDetailsMoreListModel.PdBean> dataList) {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        moreRecyclerView.setLayoutManager(llm);
+        if (null == moreAdapter) {
+            moreAdapter = new KTVDetailMoreListAdapter(this, dataList);
+            moreRecyclerView.setAdapter(moreAdapter);
+        } else {
+            moreAdapter.notifyDataSetChanged();
+        }
+        moreRecyclerView.setNestedScrollingEnabled(false);
+        moreAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityUtils.startActivityForData(HomeKTVDetailActivity.this, HomeKTVDetailActivity.class, dataList.get(position).getSORTKTV_ID());
+            }
+        });
+    }
+
     OrderDialogModel orderData = new OrderDialogModel();
 
     public void orderDialog(final HomeKTVDetailItemModel.PdBean item) {
@@ -287,6 +328,17 @@ public class HomeKTVDetailActivity extends BaseActivity {
         topBanner.start();
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.tv_search_more)
+    public void onClick() {
+    }
+
     //banner加载图片类
     private class MyImageLoader extends ImageLoader {
         @Override
@@ -304,11 +356,14 @@ public class HomeKTVDetailActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.im_back, R.id.rl_comment})
+    @OnClick({R.id.im_back, R.id.rl_comment, R.id.tv_search_more})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.im_back:
                 finish();
+                break;
+            case R.id.tv_search_more:
+                initMoreRV();
                 break;
             case R.id.rl_comment:
                 ActivityUtils.startActivityForData(HomeKTVDetailActivity.this, CommentActivity.class, id, String.valueOf(score), HomeTypeConstant.MORE_TYPE_KTV);

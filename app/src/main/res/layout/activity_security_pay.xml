@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical"
+    tools:context="com.zsh.blackcard.ui.my.SecurityLoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base42dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:scaleType="center"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/my_settng_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="支付密码"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/my_setting_security_login_save_tv"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="原密码"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:text="121321546"
+            android:layout_marginLeft="@dimen/base90dp"
+            android:textColor="@color/recharge_text"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="新密码"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <EditText
+            android:background="@null"
+            android:textColorHint="#FF454545"
+            android:hint="请输入新密码"
+            android:layout_marginLeft="@dimen/base90dp"
+            android:textColor="@color/recharge_text"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="确认密码"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <EditText
+            android:background="@null"
+            android:textColorHint="#FF454545"
+            android:hint="再次输入新密码"
+            android:layout_marginLeft="@dimen/base90dp"
+            android:textColor="@color/recharge_text"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

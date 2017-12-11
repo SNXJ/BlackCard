@@ -14,6 +14,7 @@
             android:background="@color/main_black">
 
             <RadioButton
+                android:id="@+id/rb_hj_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

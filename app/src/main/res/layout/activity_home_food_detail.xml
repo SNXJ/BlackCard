@@ -37,24 +37,21 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="@dimen/base30dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/base5dp">
+            android:layout_alignParentBottom="true">
 
             <TextView
                 style="@style/text_"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/base15dp"
-                android:layout_marginTop="@dimen/base10dp"
                 android:text="更多商家"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/tv_search_more"
                 style="@style/text_"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginBottom="@dimen/base5dp"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/base15dp"
-                android:layout_marginTop="@dimen/base10dp"
                 android:text="换一批"
                 android:textSize="15sp" />
 

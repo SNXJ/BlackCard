@@ -24,7 +24,7 @@ import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgShopModel;
 import com.zsh.blackcard.ui.CommodityActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
-import com.zsh.blackcard.ui.zgactivity.zgmyindentfragment.SlidingFragment;
+import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
@@ -61,7 +61,7 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
 
 
     //普通按钮点击事件
-    @OnClick({R.id.zg_myleftimg, R.id.zg_title_search_linear})
+    @OnClick({R.id.zg_myleftimg, R.id.zg_title_search_linear, R.id.im_scanner})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.zg_myleftimg:
@@ -69,6 +69,9 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
                 break;
             case R.id.zg_title_search_linear:
                 ActivityUtils.startActivity(getActivity(), ZgSearchActivity.class);
+                break;
+            case R.id.im_scanner:
+                ActivityUtils.startActivity(getActivity(), HomeScannerActivity.class);
                 break;
         }
     }
@@ -173,10 +176,13 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
 
     }
 
+
     @Override
     public View initView(LayoutInflater inflater) {
         view = View.inflate(getActivity(), R.layout.zgfragment, null);
         ButterKnife.bind(this, view);
         return view;
     }
+
+
 }

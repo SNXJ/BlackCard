@@ -50,7 +50,7 @@ public class OrderPayActivity extends BaseActivity {
     protected void initUI() {
         setContentView(R.layout.order_pay_activity);
         ButterKnife.bind(this);
-        data = (OrderDialogModel) getIntent().getSerializableExtra("Serializable");
+         data = (OrderDialogModel) getIntent().getSerializableExtra("Serializable");
         tvName.setText(data.getDj_item_name());
         tvTime.setText(data.getDj_item_des());
         tvDes.setText(data.getDj_item_date());

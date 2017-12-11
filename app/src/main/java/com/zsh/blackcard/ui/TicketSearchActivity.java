@@ -72,6 +72,8 @@ public class TicketSearchActivity extends BaseActivity {
 
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
         viewpager.setAdapter(adapter);
+        viewpager.setOffscreenPageLimit(6);
+
         tabLayout.setupWithViewPager(viewpager);
 
 

@@ -20,21 +20,39 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    //即构科技
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    //即构科技
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
+    //Bugly
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    //即构科技
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -48,6 +66,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="BUGLY_APP_CHANNEL"
+            android:value="SUN" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="x44CZgW2VKxstNTFqe6zTYpgU5BbXr6r" />
+
+        <activity
+            android:name=".ui.WelcomeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan">
@@ -57,6 +85,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
         <activity android:name=".ui.BlackWeiboActivity" />
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.AddressEditActivity" />
@@ -85,7 +134,7 @@
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
         <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.live.LiveActivity" />
+        <activity android:name=".live.SingleAnchorActivity" />
         <activity android:name=".ui.home.HomeTrainActivity" />
         <activity
             android:name=".ui.home.HomeFoodHotelActivity"
@@ -98,11 +147,11 @@
         <activity android:name=".ui.CusCenterActivity" />
         <activity android:name=".ui.WalletCenterActivity" />
         <activity android:name=".ui.zgactivity.BlackSurplusActivity" />
-        <activity android:name=".ui.live.LiveRechargeActivity" />
-        <activity android:name=".ui.live.RewardMoneyActivity" />
-        <activity android:name=".ui.live.LiveRankActivity" />
-        <activity android:name=".ui.live.LiveRoomActivity" />
-        <activity android:name=".ui.live.LiveAnchorDetails" />
+        <activity android:name=".live.LiveRechargeActivity" />
+        <activity android:name=".live.RewardMoneyActivity" />
+        <activity android:name=".live.LiveRankActivity" />
+        <activity android:name=".live.LiveRoomActivity" />
+        <activity android:name=".live.LiveAnchorDetails" />
         <activity android:name=".ui.zgactivity.GameCenterActivity" />
         <activity android:name=".ui.MySettingActivity" />
         <activity android:name=".ui.HuoDongActivity" />
@@ -115,13 +164,15 @@
         <activity android:name=".ui.ExChangeActivity" />
         <activity android:name=".ui.EatDrinkDetailActivity" />
         <activity android:name=".ui.zgactivity.GoodsCategoryActivity" />
-        <activity android:name=".ui.zgactivity.DiscoverActivity" />
+        <activity
+            android:name=".ui.zgactivity.DiscoverActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.zgactivity.PersonalActivity" />
-        <activity android:name=".ui.live.AbMyFollowActivity" />
-        <activity android:name=".ui.live.AbMyContributionActivity" />
-        <activity android:name=".ui.live.AbMyTaskActivity" />
-        <activity android:name=".ui.live.AbMySignActivity" />
-        <activity android:name=".ui.WelcomeActivity" />
+        <activity android:name=".live.AbMyFriendActivity" />
+        <activity android:name=".live.AbMyContributionActivity" />
+        <activity android:name=".live.AbMyTaskActivity" />
+        <activity android:name=".live.AbMySignActivity" />
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.home.HomeMoreActivity" />
         <activity android:name=".ui.home.CommentActivity" />
@@ -135,13 +186,13 @@
         <activity android:name=".ui.TicketSeatActivity" />
         <activity android:name=".ui.TicketAddActivity" />
         <activity android:name=".ui.CommodityDetailBannerActivity" />
-        <activity android:name=".ui.live.LiveOpenActivity" />
+        <activity android:name=".live.LiveOpenActivity" />
         <activity android:name=".ui.MyOrderActivity" />
         <activity android:name=".ui.CollectionActivity" />
-        <activity android:name=".ui.live.LiveAnchorDetails2" />
-        <activity android:name=".ui.live.VideoDetailsActivity" />
-        <activity android:name=".ui.live.VideoIngActivity" />
-        <activity android:name=".ui.live.AbMySettingActivity" />
+        <activity android:name=".live.LiveAnchorDetails2" />
+        <activity android:name=".live.VideoDetailsActivity" />
+        <activity android:name=".live.VideoIngActivity" />
+        <activity android:name=".live.AbMySettingActivity" />
         <activity android:name=".ui.home.HomeTopNewsDetailActivity" />
         <activity android:name=".ui.EatDrinkSetDetailActivity" />
         <activity android:name=".ui.OrderPayActivity" />
@@ -149,7 +200,42 @@
         <activity android:name=".ui.ZgSearchActivity" />
         <activity android:name=".ui.home.HomeBarDetailActivity" />
         <activity android:name=".ui.home.HomePublicRecyclerActivity" />
-        <activity android:name=".ui.home.HomePublicDetailActivity"></activity>
+        <activity android:name=".ui.home.HomePublicDetailActivity" />
+        <activity android:name=".ui.home.HomeGloryServerDetailActivity" />
+        <activity android:name=".ui.MyOrderOtherActivity" />
+        <activity android:name=".live.LiveAnchorListActivity" />
+        <activity android:name=".live.SingleAnchorPlayActivity" />
+        <activity android:name=".ui.home.HomeScannerActivity" />
+        <activity android:name=".ui.home.HomeScannerWebViewAvyivity" />
+
+        <activity android:name=".ui.SbSendWeiBoActivity" />
+        <activity android:name=".ui.CircleCenterCommentActivity" />
+        <activity android:name=".ui.my.UserInfoActivity" />
+        <activity android:name=".ui.my.NotificationActivity" />
+        <activity android:name=".ui.my.SecurityActivity" />
+        <activity android:name=".ui.my.SecurityLoginActivity" />
+        <activity android:name=".ui.my.SecurityPayActivity" />
+        <activity android:name=".ui.my.ChangeForResultActivity"></activity>
+
+        <activity android:name=".music.MusicLibraryActivity" />
+        <activity android:name=".music.MusicDetailActivity" />
+        <activity android:name=".music.MusicRankingActivity" />
+        <activity android:name=".music.MusicDjActivity" />
+        <activity android:name=".music.MusicSingerActivity" />
+
+        <service android:name=".music.service.PlayService" />
+
+        <receiver android:name=".music.receiver.RemoteControlReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".music.receiver.StatusBarReceiver">
+            <intent-filter>
+                <action android:name="STATUS_BAR_ACTIONS" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

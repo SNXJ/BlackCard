@@ -24,6 +24,7 @@ import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeYachtDetailModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import butterknife.BindView;
@@ -160,18 +161,18 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
             ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_GOLF, ((HomeGolfRecyclerModel.PdBean) adapter.getData().get(position)).getGOLFSHOP_ID());
         } else if (adapter instanceof HomeHorseRecyclerAdapter) {
             //马术详情点击
-            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_HORSE, ((HomeHorseDetailModel.PdBean) adapter.getData().get(position)).getHORSESHOP_ID());
+            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_HORSE, ((HomeHorseRecyclerModel.PdBean) adapter.getData().get(position)).getHORSESHOP_ID());
         } else if (adapter instanceof HomeCarRecyclerAdapter) {
             //豪车
-            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_CAR, ((HomeCarDetailModel.PdBean) adapter.getData().get(position)).getLUXCARSHOP_ID());
+            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_CAR, ((HomeCarRecyclerModel.PdBean) adapter.getData().get(position)).getLUXCARSHOP_ID());
         } else {
             //游艇
-            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_CAR, ((HomeYachtDetailModel.PdBean) adapter.getData().get(position)).getYACHTDET_ID());
+            ActivityUtils.startActivityForData(this, HomePublicDetailActivity.class, HomeTypeConstant.MORE_TYPE_YACHT, ((HomeYachtRecyclerModel.PdBean) adapter.getData().get(position)).getYACHTSHOP_ID());
         }
     }
 
     @OnClick(R.id.title_back)
-    public void onClick(){
+    public void onClick() {
         finish();
     }
 }

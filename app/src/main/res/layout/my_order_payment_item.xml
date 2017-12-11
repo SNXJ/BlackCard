@@ -38,6 +38,7 @@
         android:textSize="12sp" />
 
     <TextView
+        android:id="@+id/my_order_pay_tv"
         android:gravity="center"
         android:paddingRight="@dimen/base5dp"
         android:paddingLeft="@dimen/base5dp"

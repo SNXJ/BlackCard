@@ -1,6 +1,5 @@
 package com.zsh.blackcard.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ public class FoodDetailsMoreListModel {
 
     /**
      * result : 01
-     * pd : [{"HOTELDETROOMNUM":"22","HOTELDETNAME":"豪华双人间","HOTELDETPERNUM":"2","HOTELDETROOMSIZE":"85","HOTELDETIMGS":"http://47.104.16.215:8088/\nsortimgs/sorthotelimgs/hoteldetimgs/3a49133c3b0e494d85d9729f1ed312ab.jpg,http://47.104.16.215:8088/\nsortimgs/sorthotelimgs/hoteldetimgs/7a2e6ea78d974de5886ac3f2a750593f.png","SORTHOTEL_ID":"53443f6feed94a1bbce17a65e63dae28","HOTELDETBATHROOM":"1","HOTELDETAIL_ID":"53b4f3c1dfa84ee697469ce762c400c5","HOTELDETBREAKFAST":1,"HOTELDETBEDTYPE":"单人床1.35*2  2张","HOTELDETPRICE":222},{"HOTELDETROOMNUM":"11","HOTELDETNAME":"豪华单人间","HOTELDETPERNUM":"1","HOTELDETROOMSIZE":"60","HOTELDETIMGS":"http://47.104.16.215:8088/\nsortimgs/sorthotelimgs/hoteldetimgs/7ed2b4aeb1794fa08ebd4cceef20ccbb.jpg","SORTHOTEL_ID":"53443f6feed94a1bbce17a65e63dae28","HOTELDETBATHROOM":"1","HOTELDETAIL_ID":"eb13492baadf4766a7d48fb8193a13a6","HOTELDETBREAKFAST":1,"HOTELDETBEDTYPE":"大床 60㎡ 1.8m 1张","HOTELDETPRICE":111}]
+     * pd : [{"SHOPPRICE":299,"SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sortfoodimgs/sortfoodshowimgs/9c576b0cdfd94c388b1dc48cc37fd4a7.png","SHOPADDRESS":"北京市 北京市 朝阳区 广渠路 52号","SORTFOOD_ID":"382585869963362304","distance":"5.050353703962636","SHOPEVACOUNT":2,"SHOPNAMES":"菲罗牛排主题自助西餐厅双井分店","SHOPEVALUATE":2.8,"HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"},{"SHOPPRICE":399,"SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sortfoodimgs/sortfoodshowimgs/ca48ec53999a4adfaff3a0c8f84cf531.png","SHOPADDRESS":"北京市 北京市 朝阳区 潘家园路 甲1号","SORTFOOD_ID":"382585520535896064","distance":"5.942040455075951","SHOPEVACOUNT":6,"SHOPNAMES":"菲罗牛排主题自助西餐厅","SHOPEVALUATE":3.2,"HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"}]
      */
 
     private String result;
@@ -35,131 +34,99 @@ public class FoodDetailsMoreListModel {
         this.pd = pd;
     }
 
-    public static class PdBean implements Serializable {
+    public static class PdBean {
         /**
-         * HOTELDETROOMNUM : 22
-         * HOTELDETNAME : 豪华双人间
-         * HOTELDETPERNUM : 2
-         * HOTELDETROOMSIZE : 85
-         * HOTELDETIMGS : http://47.104.16.215:8088/
-         * sortimgs/sorthotelimgs/hoteldetimgs/3a49133c3b0e494d85d9729f1ed312ab.jpg,http://47.104.16.215:8088/
-         * sortimgs/sorthotelimgs/hoteldetimgs/7a2e6ea78d974de5886ac3f2a750593f.png
-         * SORTHOTEL_ID : 53443f6feed94a1bbce17a65e63dae28
-         * HOTELDETBATHROOM : 1
-         * HOTELDETAIL_ID : 53b4f3c1dfa84ee697469ce762c400c5
-         * HOTELDETBREAKFAST : 1
-         * HOTELDETBEDTYPE : 单人床1.35*2  2张
-         * HOTELDETPRICE : 222
+         * SHOPPRICE : 299
+         * SHOWIMAGES : http://47.104.16.215:8088/sortimgs/sortfoodimgs/sortfoodshowimgs/9c576b0cdfd94c388b1dc48cc37fd4a7.png
+         * SHOPADDRESS : 北京市 北京市 朝阳区 广渠路 52号
+         * SORTFOOD_ID : 382585869963362304
+         * distance : 5.050353703962636
+         * SHOPEVACOUNT : 2
+         * SHOPNAMES : 菲罗牛排主题自助西餐厅双井分店
+         * SHOPEVALUATE : 2.8
+         * HONOURUSER_ID : d6a3779de8204dfd9359403f54f7d27c
          */
 
-        private String HOTELDETROOMNUM;
-        private String HOTELDETNAME;
-        private String HOTELDETPERNUM;
-        private String HOTELDETROOMSIZE;
-        private String HOTELDETIMGS;
-        private String SORTHOTEL_ID;
-        private String HOTELDETBATHROOM;
-        private String HOTELDETAIL_ID;
-        private int HOTELDETBREAKFAST;
-        private String HOTELDETBEDTYPE;
-        private int HOTELDETPRICE;
+        private int SHOPPRICE;
+        private String SHOWIMAGES;
+        private String SHOPADDRESS;
+        private String SORTFOOD_ID;
+        private String distance;
+        private int SHOPEVACOUNT;
+        private String SHOPNAMES;
+        private double SHOPEVALUATE;
+        private String HONOURUSER_ID;
 
-        private String myDES;
-
-        public String getMyDES() {
-            return myDES;
+        public int getSHOPPRICE() {
+            return SHOPPRICE;
         }
 
-        public void setMyDES(String myDES) {
-            this.myDES = myDES;
+        public void setSHOPPRICE(int SHOPPRICE) {
+            this.SHOPPRICE = SHOPPRICE;
         }
 
-        public String getHOTELDETROOMNUM() {
-            return HOTELDETROOMNUM;
+        public String getSHOWIMAGES() {
+            return SHOWIMAGES;
         }
 
-        public void setHOTELDETROOMNUM(String HOTELDETROOMNUM) {
-            this.HOTELDETROOMNUM = HOTELDETROOMNUM;
+        public void setSHOWIMAGES(String SHOWIMAGES) {
+            this.SHOWIMAGES = SHOWIMAGES;
         }
 
-        public String getHOTELDETNAME() {
-            return HOTELDETNAME;
+        public String getSHOPADDRESS() {
+            return SHOPADDRESS;
         }
 
-        public void setHOTELDETNAME(String HOTELDETNAME) {
-            this.HOTELDETNAME = HOTELDETNAME;
+        public void setSHOPADDRESS(String SHOPADDRESS) {
+            this.SHOPADDRESS = SHOPADDRESS;
         }
 
-        public String getHOTELDETPERNUM() {
-            return HOTELDETPERNUM;
+        public String getSORTFOOD_ID() {
+            return SORTFOOD_ID;
         }
 
-        public void setHOTELDETPERNUM(String HOTELDETPERNUM) {
-            this.HOTELDETPERNUM = HOTELDETPERNUM;
+        public void setSORTFOOD_ID(String SORTFOOD_ID) {
+            this.SORTFOOD_ID = SORTFOOD_ID;
         }
 
-        public String getHOTELDETROOMSIZE() {
-            return HOTELDETROOMSIZE;
+        public String getDistance() {
+            return distance;
         }
 
-        public void setHOTELDETROOMSIZE(String HOTELDETROOMSIZE) {
-            this.HOTELDETROOMSIZE = HOTELDETROOMSIZE;
+        public void setDistance(String distance) {
+            this.distance = distance;
         }
 
-        public String getHOTELDETIMGS() {
-            return HOTELDETIMGS;
+        public int getSHOPEVACOUNT() {
+            return SHOPEVACOUNT;
         }
 
-        public void setHOTELDETIMGS(String HOTELDETIMGS) {
-            this.HOTELDETIMGS = HOTELDETIMGS;
+        public void setSHOPEVACOUNT(int SHOPEVACOUNT) {
+            this.SHOPEVACOUNT = SHOPEVACOUNT;
         }
 
-        public String getSORTHOTEL_ID() {
-            return SORTHOTEL_ID;
+        public String getSHOPNAMES() {
+            return SHOPNAMES;
         }
 
-        public void setSORTHOTEL_ID(String SORTHOTEL_ID) {
-            this.SORTHOTEL_ID = SORTHOTEL_ID;
+        public void setSHOPNAMES(String SHOPNAMES) {
+            this.SHOPNAMES = SHOPNAMES;
         }
 
-        public String getHOTELDETBATHROOM() {
-            return HOTELDETBATHROOM;
+        public double getSHOPEVALUATE() {
+            return SHOPEVALUATE;
         }
 
-        public void setHOTELDETBATHROOM(String HOTELDETBATHROOM) {
-            this.HOTELDETBATHROOM = HOTELDETBATHROOM;
+        public void setSHOPEVALUATE(double SHOPEVALUATE) {
+            this.SHOPEVALUATE = SHOPEVALUATE;
         }
 
-        public String getHOTELDETAIL_ID() {
-            return HOTELDETAIL_ID;
+        public String getHONOURUSER_ID() {
+            return HONOURUSER_ID;
         }
 
-        public void setHOTELDETAIL_ID(String HOTELDETAIL_ID) {
-            this.HOTELDETAIL_ID = HOTELDETAIL_ID;
-        }
-
-        public int getHOTELDETBREAKFAST() {
-            return HOTELDETBREAKFAST;
-        }
-
-        public void setHOTELDETBREAKFAST(int HOTELDETBREAKFAST) {
-            this.HOTELDETBREAKFAST = HOTELDETBREAKFAST;
-        }
-
-        public String getHOTELDETBEDTYPE() {
-            return HOTELDETBEDTYPE;
-        }
-
-        public void setHOTELDETBEDTYPE(String HOTELDETBEDTYPE) {
-            this.HOTELDETBEDTYPE = HOTELDETBEDTYPE;
-        }
-
-        public int getHOTELDETPRICE() {
-            return HOTELDETPRICE;
-        }
-
-        public void setHOTELDETPRICE(int HOTELDETPRICE) {
-            this.HOTELDETPRICE = HOTELDETPRICE;
+        public void setHONOURUSER_ID(String HONOURUSER_ID) {
+            this.HONOURUSER_ID = HONOURUSER_ID;
         }
     }
 }

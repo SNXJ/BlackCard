@@ -28,9 +28,10 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public class DataManager {
-    //http://192.168.1.108:8080/MVNFHM/apphomein/getrecommendlist?COMMEND
     public static String BASE_URL = "http://192.168.1.108:8080/ZSHINTER/";
-//    public static String BASE_URL = "http://192.168.1.134:8080/ZSHINTER/";
+    //        public static String BASE_URL = "http://47.104.16.215:8080/ZSHINTER/";//阿里云
+//    public static String APP_CHANNEL = "SUN_TEST";
+    public static String APP_CHANNEL = "DEV_TEST";
     public static String FH = ",fh,";
     private static Context context;
     private static DataManager instance;

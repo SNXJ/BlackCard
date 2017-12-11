@@ -16,6 +16,7 @@ import com.zsh.blackcard.R;
 public class LiveAnchorDetailWeiBoFragment extends BaseFragment {
     public static final String TITLE = "title";
     private String mTitle = "";
+
     @Override
     public void initDate(Bundle savedInstanceState) {
         if (getArguments() != null) {
@@ -24,10 +25,9 @@ public class LiveAnchorDetailWeiBoFragment extends BaseFragment {
     }
 
 
-
-
     @Override
     public View initView(LayoutInflater inflater) {
+
         View view = View.inflate(getActivity(), R.layout.live_anchor_weibo_fragment, null);
         return view;
     }

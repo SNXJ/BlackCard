@@ -103,6 +103,44 @@
 
             </android.support.v7.widget.RecyclerView>
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base30dp"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                style="@style/text_"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:text="更多商家"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_search_more"
+                style="@style/text_"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:text="换一批"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main_black"
+            android:descendantFocusability="blocksDescendants">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/more_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/main_black" />
+        </RelativeLayout>
+
     </LinearLayout>
 
 

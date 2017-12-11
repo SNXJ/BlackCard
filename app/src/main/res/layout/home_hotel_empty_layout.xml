@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_hotel_empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black">
+
+
+    <TextView
+        style="@style/text_"
+        android:layout_centerInParent="true"
+        android:text="暂时没有数据" />
+</RelativeLayout>

@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -41,6 +42,14 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
      */
     @OnClick(R.id.sb_home_back)
     public void onClick() {
+        Intent intent = new Intent();
+        intent.putExtra("default", defaultPage);
+        setResult(1, intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra("default", defaultPage);
         setResult(1, intent);
@@ -155,7 +164,7 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 PublicDialog.openLiveDialog(SbActivity.this);
-                //  startActivity(new Intent(SbActivity.this, LiveActivity.class));//弹窗
+                //  startActivity(new Intent(SbActivity.this, SingleAnchorActivity.class));//弹窗
                 // startActivity(new Intent(SbActivity.this, LiveOpenActivity.class));
             }
         });

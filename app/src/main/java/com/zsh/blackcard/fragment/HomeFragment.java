@@ -13,44 +13,66 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.HomeGloryMagazineAdapter;
+import com.zsh.blackcard.adapter.HomeGloryMusicAdapter;
 import com.zsh.blackcard.adapter.HomeGloryServiceAdapter;
 import com.zsh.blackcard.adapter.HomeTopAdapter;
 import com.zsh.blackcard.adapter.HomeTypeAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
+import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.CityEventModel;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
+import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeNewModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
-import com.zsh.blackcard.ui.WelcomeActivity;
+import com.zsh.blackcard.music.MusicDjActivity;
+import com.zsh.blackcard.music.MusicLibraryActivity;
+import com.zsh.blackcard.music.MusicRankingActivity;
+import com.zsh.blackcard.music.MusicSingerActivity;
+import com.zsh.blackcard.ui.MsgCenterActivity;
+import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
+import com.zsh.blackcard.ui.home.HomeGloryServerDetailActivity;
 import com.zsh.blackcard.ui.home.HomeHotelDetailActivity;
 import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
+import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +87,8 @@ import butterknife.OnClick;
  */
 
 public class HomeFragment extends BaseFragment {
+
+
     private String[] titles = new String[]{
             "美食", "酒店", "火车票", "机票", "马术", "游艇", "豪车", "更多"};
 
@@ -80,6 +104,62 @@ public class HomeFragment extends BaseFragment {
     };
     List<HomeNewModel> typeList = new ArrayList<>();
 
+    public LocationClient locationClient = null;
+    private MyLocation myLocation = new MyLocation();
+
+    static {
+        System.loadLibrary("locSDK7a");
+    }
+
+    @BindView(R.id.rb_city_home)
+    RadioButton rb_city_home;
+
+    private class MyLocation extends BDAbstractLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            double latitude = bdLocation.getLatitude();    //获取纬度信息
+            double longitude = bdLocation.getLongitude();    //获取经度信息
+            float radius = bdLocation.getRadius();    //获取定位精度，默认值为0.0f
+            String city = bdLocation.getCity();
+            if (city.contains("市")) {
+                rb_city_home.setText(city.substring(0, city.indexOf("市")));
+            }
+            String coorType = bdLocation.getCoorType();
+            //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
+            int errorCode = bdLocation.getLocType();
+            LogUtils.i("+++++++++", errorCode + "+++++location+++++++" + city);
+        }
+    }
+
+    //当碎片隐藏时 关闭定位，当打开时开启定位
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            locationClient.stop();
+        } else {
+            locationClient.start();
+        }
+    }
+
+    //初始化定位方法
+    private void initLocation() {
+        locationClient = new LocationClient(BaseApplication.getInstance());
+        locationClient.registerLocationListener(myLocation);
+
+        LocationClientOption option = new LocationClientOption();
+        //高精度定位
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
+        //定位编码
+        option.setCoorType("bd09ll");
+        //需要详细地址信息
+        option.setIsNeedAddress(true);
+        //定位周期（毫秒）
+        option.setScanSpan(5000 * 12 * 60 * 2);
+        locationClient.setLocOption(option);
+        locationClient.start();
+    }
 
     //HomeTop 头条的item点击事件
     private class HomeTopOnItemClick implements BaseQuickAdapter.OnItemClickListener {
@@ -132,9 +212,14 @@ public class HomeFragment extends BaseFragment {
     //汇聚玩趴图片
     @BindView(R.id.home_play_img)
     ImageView home_play_img;
+    //荣耀音乐
+    @BindView(R.id.home_glory_music_recycler)
+    RecyclerView homeGloryMusicRecycler;
 
     @BindView(R.id.home_top_tvs)
     TextSwitcher home_top_tvs;
+    @BindView(R.id.home_top_pop)
+    ImageView home_top_pop;
 
     //头部列表选择适配器
     private HomeTypeAdapter homeTypeAdapter;
@@ -142,6 +227,7 @@ public class HomeFragment extends BaseFragment {
     private HomeTopAdapter homeTopAdapter;
     //荣耀服务列表选择适配器
     private HomeGloryServiceAdapter homeGloryServiceAdapter;
+    private HomeGloryMusicAdapter homeGloryMusicAdapter;
     //荣耀杂志列表适配器
     private HomeGloryMagazineAdapter homeGloryMagazineAdapter;
 
@@ -160,6 +246,49 @@ public class HomeFragment extends BaseFragment {
             return false;
         }
     });
+
+    /**
+     * 荣耀服务点击列表
+     */
+    private class HomeGloryServerOnItemClick implements BaseQuickAdapter.OnItemClickListener {
+
+        @Override
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            switch (((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSORTHIGH_ID()) {
+                case "383990553504645120":
+                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383990553504645120", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
+                    break;
+                case "383995103208800256":
+                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383995103208800256", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
+                    break;
+                case "383994744717443072":
+                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383994744717443072", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
+                    break;
+            }
+        }
+    }
+
+    private class HomeMusicServerOnItemClick implements BaseQuickAdapter.OnItemClickListener {
+
+        @Override
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            switch (position) {
+                case 0:
+                    ActivityUtils.startActivity(getActivity(), MusicSingerActivity.class);
+                    break;
+                case 1:
+                    ActivityUtils.startActivity(getActivity(), MusicRankingActivity.class);
+                    break;
+                case 2:
+                    ActivityUtils.startActivity(getActivity(), MusicLibraryActivity.class);
+                    break;
+                case 3:
+                    ActivityUtils.startActivity(getActivity(), MusicDjActivity.class);
+                    break;
+            }
+
+        }
+    }
 
     /**
      * 所有权限列表的点击事件
@@ -214,8 +343,11 @@ public class HomeFragment extends BaseFragment {
         sendMainActivity = (SendMainActivity) getActivity();
     }
 
+
     @Override
     public void initDate(Bundle savedInstanceState) {
+        //初始化定位
+        requestLocationPer();
         //初始化类型选择列表（美食，酒店，品鉴...）
         for (int i = 0; i < titles.length; i++) {
             HomeNewModel pic = new HomeNewModel();
@@ -309,6 +441,7 @@ public class HomeFragment extends BaseFragment {
                     home_glory_service_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                     home_glory_service_recycler.setNestedScrollingEnabled(false);
                     home_glory_service_recycler.setAdapter(homeGloryServiceAdapter);
+                    homeGloryServiceAdapter.setOnItemClickListener(new HomeGloryServerOnItemClick());
                 }
 
             }
@@ -333,31 +466,70 @@ public class HomeFragment extends BaseFragment {
         });
 
         //初始化荣耀杂志列表
-        List<HomeGloryMagazineModel> list1 = new ArrayList<>();
-        if (homeGloryMagazineAdapter == null) {
-            for (int i = 0; i < 4; i++) {
-                HomeGloryMagazineModel homeGloryMagazineModel = new HomeGloryMagazineModel();
-                if (i == 0) {
-                    homeGloryMagazineModel.setItemType(1);
-                } else if (i == 3) {
-                    homeGloryMagazineModel.setItemType(3);
-                } else {
-                    homeGloryMagazineModel.setItemType(2);
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryMagazine(DataManager.getMd5Str("MAGAZINE")), new ResultListener<HomeGloryMagazineModel>() {
+            @Override
+            public void responseSuccess(HomeGloryMagazineModel obj) {
+                for (int i = 0; i < obj.getPd().size(); i++) {
+                    if (i == 0) {
+                        obj.getPd().get(i).setItemType(1);
+                    } else if (i == obj.getPd().size() - 1) {
+                        obj.getPd().get(i).setItemType(3);
+                    } else {
+                        obj.getPd().get(i).setItemType(2);
+                    }
                 }
-                list1.add(homeGloryMagazineModel);
-            }
-            homeGloryMagazineAdapter = new HomeGloryMagazineAdapter(list1);
-            home_glory_magazine_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-            home_glory_magazine_recycler.setAdapter(homeGloryMagazineAdapter);
-            home_glory_magazine_recycler.setNestedScrollingEnabled(false);
-        }
-    }
 
+                if (homeGloryMagazineAdapter == null) {
+                    homeGloryMagazineAdapter = new HomeGloryMagazineAdapter(obj.getPd());
+                    home_glory_magazine_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                    home_glory_magazine_recycler.setAdapter(homeGloryMagazineAdapter);
+                    home_glory_magazine_recycler.setNestedScrollingEnabled(false);
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+        //初始化荣耀音乐
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryMusic(DataManager.getMd5Str("MUSICLIST")), new ResultListener<HomeGloryMusicModel>() {
+            @Override
+            public void responseSuccess(HomeGloryMusicModel obj) {
+                for (int i = 0; i < obj.getPd().size(); i++) {
+                    if (i == 0) {
+                        obj.getPd().get(i).setItemType(1);
+                    } else if (i == obj.getPd().size() - 1) {
+                        obj.getPd().get(i).setItemType(3);
+                    } else {
+                        obj.getPd().get(i).setItemType(2);
+                    }
+                }
+
+                if (homeGloryMusicAdapter == null) {
+                    homeGloryMusicAdapter = new HomeGloryMusicAdapter(obj.getPd());
+                    homeGloryMusicRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                    homeGloryMusicRecycler.setNestedScrollingEnabled(false);
+                    homeGloryMusicRecycler.setAdapter(homeGloryMusicAdapter);
+                    homeGloryMusicAdapter.setOnItemClickListener(new HomeMusicServerOnItemClick());
+                }
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
 
     @Override
     public View initView(LayoutInflater inflater) {
         View view = View.inflate(getActivity(), R.layout.homefragment, null);
         ButterKnife.bind(this, view);
+        EventBus.getDefault().register(this);
+
         return view;
     }
 
@@ -379,7 +551,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_play_img, R.id.go_welcome_login_img, R.id.rb_city_home, R.id.home_search_linear})
+    @OnClick({R.id.home_play_img, R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.home_play_img:
@@ -390,20 +562,10 @@ public class HomeFragment extends BaseFragment {
             case R.id.rb_city_home:
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
-            case R.id.go_welcome_login_img:
-                ActivityUtils.startActivity(getActivity(), WelcomeActivity.class);
-                // requestRead();
-//                DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, ""), new ResultListener<ResultModel>() {
-//                    @Override
-//                    public void responseSuccess(ResultModel obj) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onCompleted() {
-//
-//                    }
-//                });
+            case R.id.home_top_pop:
+
+                PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
+
                 break;
             case R.id.home_search_linear:
                 ActivityUtils.startActivity(getActivity(), ZgSearchActivity.class);
@@ -411,16 +573,41 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    private void requestRead() {
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(CityEventModel event) {
+        rb_city_home.setText(event.getCity());
+
+    }
+
+    private ItemClickListener topPopItemListener = new ItemClickListener() {
+        @Override
+        public void itemClick(int postion) {
+            switch (postion) {
+                case 0:
+                    requestCAMERA();
+                    break;
+                case 1:
+                    ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
+                    break;
+                case 2:
+                    ActivityUtils.startActivity(getActivity(), MsgSysCenterActivity.class);
+                    break;
+                case 3:
+                    ActivityUtils.startActivity(getActivity(), MsgCenterActivity.class);
+                    break;
+            }
+        }
+    };
+
+    private void requestCAMERA() {
         String[] PERMISSIONS_STORAGE = {
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.CAMERA,
         };
         MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
                 , new MPermissionUtils.OnPermissionListener() {
                     @Override
                     public void onPermissionGranted() {
-                        Toast.makeText(getActivity(), "授权成功,!", Toast.LENGTH_SHORT).show();
+                        ActivityUtils.startActivity(getActivity(), HomeScannerActivity.class);
                     }
 
                     @Override
@@ -429,5 +616,31 @@ public class HomeFragment extends BaseFragment {
                     }
                 });
 
+    }
+
+    private void requestLocationPer() {
+        String[] PERMISSIONS_STORAGE = {
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+        };
+        MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
+                , new MPermissionUtils.OnPermissionListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        initLocation();
+                    }
+
+                    @Override
+                    public void onPermissionDenied() {
+                        MPermissionUtils.showTipsDialog(getActivity());
+                    }
+                });
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

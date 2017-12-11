@@ -3,6 +3,9 @@ package com.zsh.blackcard.api;
 import android.content.Context;
 
 import com.google.gson.GsonBuilder;
+import com.zsh.blackcard.untils.LogUtils;
+
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -16,9 +19,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitUtils {
     private Context mContext;
-    OkHttpClient.Builder builder = new OkHttpClient.Builder();
+    private OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
-    GsonConverterFactory factory = GsonConverterFactory.create(new GsonBuilder().create());
+    private GsonConverterFactory factory = GsonConverterFactory.create(new GsonBuilder().create());
     private static RetrofitUtils instance = null;
     private Retrofit mRetrofit = null;
 
@@ -40,7 +43,10 @@ public class RetrofitUtils {
 
 
     private void resetApp() {
-        builder.addInterceptor(new LoggingInterceptor());
+        if (LogUtils.LOG_LEVEL > 0) {
+            builder.addInterceptor(new LoggingInterceptor());
+        }
+        builder.connectTimeout(10, TimeUnit.SECONDS);//
         OkHttpClient okHttpClient = builder.build();
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(DataManager.BASE_URL)
@@ -51,7 +57,6 @@ public class RetrofitUtils {
     }
 
     public RetrofitService getService() {
-
         return mRetrofit.create(RetrofitService.class);
     }
 }

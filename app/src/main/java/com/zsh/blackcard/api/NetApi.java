@@ -2,27 +2,35 @@ package com.zsh.blackcard.api;
 
 import android.content.Context;
 
+import com.luck.picture.lib.entity.LocalMedia;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.custom.HomeTypeConstant;
+import com.zsh.blackcard.model.AbMyFriendModel;
 import com.zsh.blackcard.model.AddressManageModel;
 import com.zsh.blackcard.model.BarDetailModel;
+import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
+import com.zsh.blackcard.model.CircleCenterCommentRecyclerModel;
 import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
-import com.zsh.blackcard.model.EatDrinkModel;
+import com.zsh.blackcard.model.EatDrinkRecyclerModel;
 import com.zsh.blackcard.model.FoodDetailModel;
-import com.zsh.blackcard.model.FoodDetailsListModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
+import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.model.HjReleaseModel;
 import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
+import com.zsh.blackcard.model.HomeCopterDetailModel;
+import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMagazineModel;
+import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
 import com.zsh.blackcard.model.HomeGolfDetailModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
@@ -31,7 +39,7 @@ import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVDetailItemModel;
 import com.zsh.blackcard.model.HomeKTVDetailModel;
-import com.zsh.blackcard.model.HomeKTVRecyclerModel;
+import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
@@ -40,24 +48,50 @@ import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.model.HomeYachtDetailModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.model.HotelDetailModel;
+import com.zsh.blackcard.model.HotelDetailsMoreListModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
+import com.zsh.blackcard.model.KTVDetailsMoreListModel;
+import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
+
+import com.zsh.blackcard.model.MyCircleModel;
+
+import com.zsh.blackcard.model.MusicDetailListModel;
+import com.zsh.blackcard.model.MusicDjModel;
+import com.zsh.blackcard.model.MusicLrcModel;
+import com.zsh.blackcard.model.MusicRankAllModel;
+import com.zsh.blackcard.model.MusicRankingModel;
+import com.zsh.blackcard.model.MusicRecommendModel;
+import com.zsh.blackcard.model.MusicSingerModel;
+import com.zsh.blackcard.model.MusicSingerSongsModel;
+import com.zsh.blackcard.model.MusicSongDetailsModel;
+
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
+import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.model.SettingUserInfoModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
+import com.zsh.blackcard.model.ZgFindModel;
+import com.zsh.blackcard.model.ZgFindTitleModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.Observable;
 
 /**
@@ -299,7 +333,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsListModel> postFoodDetailList(String md5, String id) {
+    public Observable<HomeFoodDetailPackageModel> postFoodDetailList(String md5, String id) {
         return retrofitService.postFoodDetailList(md5, id);
     }
 
@@ -321,7 +355,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsMoreListModel> postHotelDetailMoreList(String md5, String id) {
+    public Observable<HotelDetailsMoreListModel> postHotelDetailMoreList(String md5, String id) {
         return retrofitService.postHotelDetailMoreList(md5, id);
     }
 
@@ -332,7 +366,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsMoreListModel> postKTVDetailMoreList(String md5, String id) {
+    public Observable<KTVDetailsMoreListModel> postKTVDetailMoreList(String md5, String id) {
         return retrofitService.postKTVDetailMoreList(md5, id);
     }
 
@@ -343,7 +377,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsMoreListModel> postBarDetailMoreList(String md5, String id) {
+    public Observable<BarDetailsMoreListModel> postBarDetailMoreList(String md5, String id) {
         return retrofitService.postBarDetailMoreList(md5, id);
     }
 
@@ -388,14 +422,16 @@ public class NetApi {
     }
 
     /**
-     * 汇聚页面指定聚会列表
+     * 汇聚列表指定聚会页面
      *
      * @param md5
-     * @param id
+     * @param HONOURUSER_ID
+     * @param CONVERGE_ID
+     * @param STATUS
      * @return
      */
-    public Observable<EatDrinkModel> postHjRecyclerItem(String md5, String id) {
-        return retrofitService.postHjRecyclerItem(md5, id);
+    public Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(String md5, String HONOURUSER_ID, String CONVERGE_ID, String STATUS) {
+        return retrofitService.postEatDrinkRecycler(md5, HONOURUSER_ID, CONVERGE_ID, STATUS);
     }
 
     /**
@@ -523,6 +559,36 @@ public class NetApi {
         return retrofitService.uploadHead(md5, userId, DataManager.getMultiPart(DataManager.getMultBuilder(DataManager.initMultBuilder(), imgPath, "showfile")));
     }
 
+//    public Observable<ResultModel> postSendWeiBo(String md5, String HONOURUSER_ID, String CONTENT, String imgPath) {
+//        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, DataManager.getMultiPart(DataManager.getMultBuilder(DataManager.initMultBuilder(),imgPath,"SHOWIMAGES")));
+//    }
+
+    /**
+     * 上传黑微博内容和图片
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param CONTENT
+     * @param listPath
+     * @return
+     */
+    public Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia) {
+        //如果有图片上传，则加载body，如果没有上传图片则加载空body
+        if (localMedia.size() != 0) {
+            for (int i = 0; i < localMedia.size(); i++) {
+                File file = new File(localMedia.get(i).getPath());
+                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", file.getName(), imageBody);
+                listPath.add(part);
+            }
+        } else {
+            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+            MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
+            listPath.add(part);
+        }
+        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, listPath);
+    }
+
     /**
      * 上传多张图片
      *
@@ -541,18 +607,19 @@ public class NetApi {
     }
 
 
-    //   public Observable<ResultModel> upLoadListIMG(String md5, String userId, List<String> pathList) {
+//       public Observable<ResultModel> upLoadListIMG2(String md5, String userId, List<String> pathList) {
 //        MultipartBody.Builder builder = new MultipartBody.Builder()
 //                .setType(MultipartBody.FORM);//表单类型
 //        //多张图片
 //        for (int i = 0; i < pathList.size(); i++) {
 //            File file = new File(pathList.get(i));//filePath 图片地址
 //            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//
 //            builder.addFormDataPart("showfile", file.getName(), imageBody);//"showfile 后台接收图片流的参数名（每张应该不同）
 //        }
 //        List<MultipartBody.Part> parts = builder.build().parts();
-    //       return retrofitService.uploadListIMG(md5, userId, parts);
-    //  }
+//           return retrofitService.uploadListIMG(md5, userId, parts);
+//      }
 
     /**
      * 全部订单查询接口
@@ -674,13 +741,23 @@ public class NetApi {
     }
 
     /**
+     * 首页荣耀服务列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomeGloryMusicModel> postHomeGloryMusic(String md5) {
+        return retrofitService.postHomeGloryMusic(md5);
+    }
+
+    /**
      * 首页KTV列表
      *
      * @param md5
      * @param user_id
      * @return
      */
-    public Observable<HomeKTVRecyclerModel> postHomeKTVRecycler(String md5, String user_id) {
+    public Observable<HomeKTVModel> postHomeKTVRecycler(String md5, String user_id) {
         return retrofitService.postHomeKTVRecycler(md5, user_id);
     }
 
@@ -770,5 +847,410 @@ public class NetApi {
      */
     public Observable<HomeYachtDetailModel> postHomeYachtDetail(String md5, String yacht_id) {
         return retrofitService.postHomeYachtDetail(md5, yacht_id);
+    }
+
+    /**
+     * 飞机详情接口
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomeCopterDetailModel> postHomeCopterDetail(String md5) {
+        return retrofitService.postHomeCopterDetail(md5);
+    }
+
+    /**
+     * 首页荣耀服务列表详情点击
+     *
+     * @param md5
+     * @param server_id
+     * @return
+     */
+    public Observable<Object> postHomeGloryHorseDetail(String md5, String server_id) {
+        return retrofitService.postHomeGloryHorseDetail(md5, server_id);
+    }
+
+    /**
+     * 我的订单 点击确认收货，修改订单为待评价
+     *
+     * @param md5
+     * @param ORDERNUMBER
+     * @param HONOURUSER_ID
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<ResultModel> postMyOrderOk(String md5, String ORDERNUMBER, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postMyOrderOk(md5, ORDERNUMBER, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 订单中心酒吧全部订单查询
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @return
+     */
+    public Observable<OrderCenterBarRecyclerModel> postOrderCenterBarRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postOrderCenterBarRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 订单中心KTV全部订单查询
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<OrderCenterKTVRecyclerModel> postOrderCenterKTVRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postOrderCenterKTVRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 订单中心酒店全部订单查询
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<OrderCenterHotelRecyclerModel> postOrderCenterHotelRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postOrderCenterHotelRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 订单中心美食全部订单查询
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<OrderCenterFoodRecyclerModel> postOrderCenterFoodRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+        return retrofitService.postOrderCenterFoodRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
+    }
+
+    /**
+     * 尊购订单状态修改
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param ORDERNUMBER
+     * @param ORDERSTATUS
+     * @return
+     */
+    public Observable<ResultModel> postZgChange(String md5, String HONOURUSER_ID, String ORDERNUMBER, String ORDERSTATUS) {
+        return retrofitService.postZgChange(md5, HONOURUSER_ID, ORDERNUMBER, ORDERSTATUS);
+    }
+
+    /**
+     * 美食筛选
+     */
+    public Observable<HomeFoodModel> filterFoodList(Map<String, String> map) {
+        return retrofitService.filterFoodList(map);
+    }
+
+    /**
+     * 酒店筛选
+     *
+     * @param map
+     * @return
+     */
+    public Observable<HomeHotelModel> filterHotelList(Map<String, String> map) {
+        return retrofitService.filterHotelList(map);
+    }
+
+    /**
+     * KTV筛选
+     *
+     * @param map
+     * @return
+     */
+
+    public Observable<HomeKTVModel> filterKTVList(Map<String, String> map) {
+        return retrofitService.filterKTVList(map);
+    }
+
+    /**
+     * 酒吧筛选
+     *
+     * @param map
+     * @return
+     */
+    public Observable<HomeBarModel> filterBarList(Map<String, String> map) {
+        return retrofitService.filterBarList(map);
+    }
+
+    public Observable<LiveInfoListModel> pullLive(String appid) {
+        return retrofitService.pullLive(appid);
+    }
+
+    /**
+     * 首页荣耀杂志列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<HomeGloryMagazineModel> postHomeGloryMagazine(String md5) {
+        return retrofitService.postHomeGloryMagazine(md5);
+    }
+
+    /**
+     * 粉丝列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<AbMyFriendModel> myFollowList(String md5, String id) {
+        return retrofitService.myFollowList(md5, id);
+    }
+
+    /**
+     * 删除好友
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ResultModel> delFriend(String md5, String id, String delId) {
+        return retrofitService.delFriend(md5, id, delId);
+    }
+
+    /**
+     * 好友列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<AbMyFriendModel> myFriendList(String md5, String id) {
+        return retrofitService.myFriendsList(md5, id);
+    }
+
+    /**
+     * 添加好友
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ResultModel> addFriend(String md5, String id, String delId) {
+        return retrofitService.addFriends(md5, id, delId);
+    }
+
+    /**
+     * 尊购发现菜单选项
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<ZgFindTitleModel> postZgFindTiele(String md5) {
+        return retrofitService.postZgFindTiele(md5);
+    }
+
+    /**
+     * 尊购发现页面条目对应列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public Observable<ZgFindModel> postZgFind(String md5, String id) {
+        return retrofitService.postZgFind(md5, id);
+    }
+
+    /**
+     * 美食，酒吧，酒店，KTV品牌和筛选条件请求
+     *
+     * @param md5
+     * @param type
+     * @param sortName
+     * @return
+     */
+    public Observable<FoodHotelBarKTVDialogModel> postFoodHotelBarKTVDialog(String md5, String type, String sortName) {
+        return retrofitService.postFoodHotelBarKTVDialog(md5, type, sortName);
+    }
+
+    /**
+     * 我的页面，圈子中心接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<MyCircleModel> postCircleCenterRecycle(String md5, String user_id) {
+        return retrofitService.postCircleCenterRecycle(md5, user_id);
+    }
+
+    /**
+     * 圈子中心点赞接口
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param CIRCLE_ID
+     * @return
+     */
+    public Observable<ResultModel> postCircleCenterYeah(String md5, String HONOURUSER_ID, String CIRCLE_ID) {
+        return retrofitService.postCircleCenterYeah(md5, HONOURUSER_ID, CIRCLE_ID);
+    }
+
+    /**
+     * 圈子中心评论接口
+     *
+     * @param md5
+     * @param CIRCLE_ID
+     * @return
+     */
+    public Observable<CircleCenterCommentRecyclerModel> postCircleCenterCommentRecycler(String md5, String CIRCLE_ID) {
+        return retrofitService.postCircleCenterCommentRecycler(md5, CIRCLE_ID);
+    }
+
+    /**
+     * 设置个人资料修改
+     *
+     * @param map
+     * @return
+     */
+    public Observable<ResultModel> postUserInfoChange(String md5, String user_id, Map<String, String> map) {
+        return retrofitService.postUserInfoChange(md5, user_id, map);
+    }
+
+    /**
+     * 设置帐号与安全登录密码修改
+     *
+     * @param md5
+     * @param user_id
+     * @param passWord
+     * @return
+     */
+    public Observable<ResultModel> postSecurityPassWord(String md5, String user_id, String passWord, String OLDPASSWORD) {
+        return retrofitService.postSecurityPassWord(md5, user_id, passWord, OLDPASSWORD);
+    }
+
+    /**
+     * 设置个人资料接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<SettingUserInfoModel> postSettingUserInfo(String md5, String user_id) {
+        return retrofitService.postSettingUserInfo(md5, user_id);
+    }
+
+    /**
+     * 圈子中心评论接口
+     *
+     * @param md5
+     * @param user_id
+     * @param circle_id
+     * @param content
+     * @param reply_id
+     * @return
+     */
+    public Observable<ResultModel> postCircleCenterComment(String md5, String user_id, String circle_id, String content, String reply_id) {
+        return retrofitService.postCircleCenterComment(md5, user_id, circle_id, content, reply_id);
+    }
+
+    /**
+     * 电台列表
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<MusicDjModel> getMusicDjList(String md5) {
+        return retrofitService.getMusicDjList(md5);
+    }
+
+    /**
+     * 电台详情列表
+     *
+     * @param md5
+     * @param channelName
+     * @return
+     */
+    public Observable<MusicDetailListModel> getMusicDjSongList(String md5, String channelName) {
+        return retrofitService.getMusicDjSongList(md5, channelName);
+    }
+
+    /**
+     * 歌曲详情
+     *
+     * @param md5
+     * @param songId
+     * @return
+     */
+    public Observable<MusicSongDetailsModel> getSongDetails(String md5, String songId) {
+        return retrofitService.getMusicSongDetail(md5, songId);
+    }
+
+    /**
+     * 歌词
+     *
+     * @param md5
+     * @param songid
+     * @return
+     */
+    public Observable<MusicLrcModel> getMusicLry(String md5, String songid) {
+        return retrofitService.getMusicLry(md5, songid);
+    }
+
+    /**
+     * 音乐排行榜列表
+     *
+     * @param md5
+     * @param offset
+     * @param type
+     * @return
+     */
+    public Observable<MusicRankingModel> getRankingList(String md5, String offset, String type) {
+        return retrofitService.getRankingList(md5, offset, type);
+    }
+
+    /**
+     * 音乐排行榜(首页)
+     *
+     * @param md5
+     * @param offset
+     * @param type
+     * @return
+     */
+    public Observable<MusicRankAllModel> getMusicRanking(String md5, String offset, String type) {
+        return retrofitService.getMusicRanking(md5, offset, type);
+    }
+
+    /**
+     * 推荐
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<MusicRecommendModel> getMusicRecommendList(String md5) {
+        return retrofitService.getMusicRecommendList(md5);
+    }
+
+    /**
+     * 歌手列表
+     *
+     * @param md5
+     * @param offset
+     * @return
+     */
+    public Observable<MusicSingerModel> getMusicSingerList(String md5, String offset) {
+        return retrofitService.getMusicSingerList(md5, offset);
+    }
+
+    /**
+     * 歌手歌曲列表
+     *
+     * @param md5
+     * @param singerId
+     * @param offset
+     * @return
+     */
+    public Observable<MusicSingerSongsModel> getSingerSongs(String md5, String singerId, String offset) {
+        return retrofitService.getSingerSongs(md5, singerId, offset);
+
     }
 }

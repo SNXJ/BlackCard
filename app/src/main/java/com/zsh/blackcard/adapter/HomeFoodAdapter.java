@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.view.Star;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class HomeFoodAdapter extends BaseQuickAdapter<HomeFoodModel.PdBean, Base
     @Override
     protected void convert(BaseViewHolder helper, HomeFoodModel.PdBean item) {
         Star star = helper.getView(R.id.star);
-        star.setMark((float) item.getSHOPEVACOUNT());
+        star.setMark((float) item.getSHOPEVALUATE());
         helper.setText(R.id.tv_money, "￥" + item.getSHOPPRICE() + "/位");
         helper.setText(R.id.tv_address, item.getSHOPADDRESS());
         helper.setText(R.id.tv_comment, "(" + item.getSHOPEVACOUNT() + "条评价)");

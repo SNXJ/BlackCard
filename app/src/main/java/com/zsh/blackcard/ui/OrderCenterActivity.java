@@ -1,5 +1,6 @@
 package com.zsh.blackcard.ui;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -20,6 +21,7 @@ import com.zsh.blackcard.adapter.ZgOrderCenterAdapter;
 import com.zsh.blackcard.fragment.OrderNoZgFragment;
 import com.zsh.blackcard.fragment.OrderZgFragment;
 import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,15 @@ public class OrderCenterActivity extends BaseActivity implements BaseQuickAdapte
     private CustomPopWindow customPopWindow;
     private FragmentManager fragmentManager;
     private Fragment orderZgFragment, orderNoZgFragment;
+    private String searchTitle;
+
+    public String getSearchTitle() {
+        return searchTitle;
+    }
+
+    public void setSearchTitle(String searchTitle) {
+        this.searchTitle = searchTitle;
+    }
 
     @Override
     protected void initUI() {
@@ -64,7 +75,6 @@ public class OrderCenterActivity extends BaseActivity implements BaseQuickAdapte
 
     private void initDefaultPage() {
         orderZgFragment = new OrderZgFragment();
-        orderNoZgFragment = new OrderNoZgFragment();
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.zg_container, orderZgFragment);
@@ -135,11 +145,22 @@ public class OrderCenterActivity extends BaseActivity implements BaseQuickAdapte
         zg_my_order_title_tv.setClickable(true);
         zgmyback.setClickable(true);
         customPopWindow.dissmiss();
+        setSearchTitle(list.get(position));
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        if (position == 0) {
-            fragmentTransaction.replace(R.id.zg_container, orderZgFragment);
-        } else {
-            fragmentTransaction.replace(R.id.zg_container, orderNoZgFragment);
+        switch (position) {
+            case 0:
+                fragmentTransaction.replace(R.id.zg_container, orderZgFragment);
+                break;
+            default:
+                if (orderNoZgFragment == null) {
+                    orderNoZgFragment = new OrderNoZgFragment();
+                    fragmentTransaction.replace(R.id.zg_container, orderNoZgFragment);
+                } else {
+                    if (orderZgFragment.isAdded()) {
+                        fragmentTransaction.replace(R.id.zg_container, orderNoZgFragment);
+                    }
+                }
+                break;
         }
         fragmentTransaction.commit();
     }
