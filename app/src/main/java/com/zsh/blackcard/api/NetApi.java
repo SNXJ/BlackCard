@@ -1061,7 +1061,6 @@ public class NetApi {
     }
 
     /**
-
      * 美食，酒吧，酒店，KTV品牌和筛选条件请求
      *
      * @param md5
@@ -1152,7 +1151,9 @@ public class NetApi {
      */
     public Observable<ResultModel> postCircleCenterComment(String md5, String user_id, String circle_id, String content, String reply_id) {
         return retrofitService.postCircleCenterComment(md5, user_id, circle_id, content, reply_id);
-/**
+    }
+
+    /**
      * 电台列表
      *
      * @param md5
