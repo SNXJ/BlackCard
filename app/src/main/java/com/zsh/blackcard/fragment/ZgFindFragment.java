@@ -40,24 +40,30 @@ public class ZgFindFragment extends BaseFragment {
     @Override
     public void initDate(Bundle savedInstanceState) {
         CAIDAN_ID = getArguments().getString("id");
-//        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postZgFind(DataManager.getMd5Str("DISCOVERLIST"), CAIDAN_ID), new ResultListener<ZgFindModel>() {
-//            @Override
-//            public void responseSuccess(ZgFindModel obj) {
-//                if (obj.getResult().equals("01")) {
-//                    list.addAll(obj.getPd());
-//                    zgFindAdapter = new ZgFindAdapter(list);
-//                    zg_find_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-//                    zg_find_recycler.setAdapter(zgFindAdapter);
-//                    zg_find_recycler.addOnChildAttachStateChangeListener(new VideoLoad());
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCompleted() {
-//
-//            }
-//        });
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postZgFind(DataManager.getMd5Str("DISCOVERLIST"), CAIDAN_ID), new ResultListener<ZgFindModel>() {
+            @Override
+            public void responseSuccess(ZgFindModel obj) {
+                if (obj.getResult().equals("01")) {
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if(!obj.getPd().get(i).getSHOWVIDEO().equals("")){
+                            obj.getPd().get(i).setItemType(1);
+                        }else{
+                            obj.getPd().get(i).setItemType(2);
+                        }
+                    }
+                    list.addAll(obj.getPd());
+                    zgFindAdapter = new ZgFindAdapter(list);
+                    zg_find_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    zg_find_recycler.setAdapter(zgFindAdapter);
+                    zg_find_recycler.addOnChildAttachStateChangeListener(new VideoLoad());
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     @Override

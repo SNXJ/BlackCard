@@ -29,6 +29,7 @@ import com.zsh.blackcard.live.LiveOpenActivity;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
+import com.zsh.blackcard.ui.SbSendWeiBoActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
 import com.zsh.blackcard.untils.MyCalendar;
 import com.zsh.blackcard.untils.UIUtils;
@@ -176,7 +177,7 @@ public class PublicDialog {
                     case 1://开
                         break;
                     case 2:
-                        mContext.startActivity(new Intent(mContext, BlackWeiboActivity.class));
+                        mContext.startActivity(new Intent(mContext, SbSendWeiBoActivity.class));
                         break;
                     case 3:
                         mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));

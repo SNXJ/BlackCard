@@ -8,6 +8,7 @@
     android:paddingTop="@dimen/base8dp">
 
     <ImageView
+        android:scaleType="fitXY"
         android:id="@+id/zg_find_image_img"
         android:layout_width="@dimen/base115dp"
         android:layout_height="@dimen/base90dp"

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    tools:context="com.zsh.blackcard.ui.my.ChangeForResultActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base42dp"
+        android:background="#0C0C0C" />
+
+    <ImageView
+        android:scaleType="center"
+        android:id="@+id/back_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:src="@mipmap/back"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/change_for_result_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/recharge_text"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintLeft_toLeftOf="@+id/view"
+        app:layout_constraintRight_toRightOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/change_for_result_save_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/recharge_text"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintRight_toRightOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <EditText
+        android:id="@+id/change_for_result_et"
+        android:paddingLeft="@dimen/base10dp"
+        app:layout_constraintLeft_toLeftOf="@+id/view"
+        app:layout_constraintRight_toRightOf="@+id/view"
+        android:layout_margin="@dimen/base15dp"
+        android:background="@drawable/circle_center_comment_et"
+        android:textColor="@color/recharge_text"
+        android:textSize="14sp"
+        android:textColorHint="@color/recharge_text"
+        android:hint="请输入修改内容："
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base30dp" />
+
+</android.support.constraint.ConstraintLayout>
