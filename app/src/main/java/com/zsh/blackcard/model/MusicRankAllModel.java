@@ -36,6 +36,15 @@ public class MusicRankAllModel {
          * billboard : {"pic_s210":"http://business.cdn.qianqian.com/qianqian/pic/bos_client_29a7a75276f7435a289b36421a676719.jpg","pic_s640":"http://47.104.16.215:8088/musicimgs/billlistimgs/music_image_34@2x.png","pic_s444":"http://a.hiphotos.baidu.com/ting/pic/item/8d5494eef01f3a291bf6bec89b25bc315c607cfd.jpg","havemore":1,"billboard_no":"1902","update_date":"2017-12-10","billboard_type":"21","web_url":"http://music.baidu.com/top/oumei","name":"欧美金曲榜","billboard_songnum":"293","comment":"实时展现百度音乐最热门欧美歌曲排行","pic_s192":"http://c.hiphotos.baidu.com/ting/pic/item/b17eca8065380cd720e1228ba244ad34588281dd.jpg","pic_s260":"http://a.hiphotos.baidu.com/ting/pic/item/8b13632762d0f7035cb3feda0afa513d2697c5b7.jpg"}
          */
 
+        private String type;
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
         private int error_code;
         private BillboardBean billboard;
         private List<SongListBean> song_list;

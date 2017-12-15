@@ -1,14 +1,15 @@
-package com.zsh.blackcard.music;
+package com.zsh.blackcard.music.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
 
-import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 
 import java.util.ArrayList;
@@ -16,19 +17,15 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
- * Name: MusicLibraryActivity
+ * Name: MusicSingerFragment
  * Author: SNXJ
- * Date: 2017-12-07
+ * Date: 2017-12-13
  * Description:描述：
  */
-public class MusicLibraryActivity extends BaseActivity {
-    @BindView(R.id.title_back)
-    ImageView titleBack;
-    @BindView(R.id.title_tv)
-    TextView titleTv;
+public class MusicLibraryFragment extends BaseFragment {
+
     @BindView(R.id.music_main_tab)
     TabLayout musicMainTab;
     @BindView(R.id.music_mian_viewpage)
@@ -37,28 +34,24 @@ public class MusicLibraryActivity extends BaseActivity {
     private String[] title = {"推荐", "精选", "最热", "最新"};
 
     @Override
-    protected void initUI() {
-        setContentView(R.layout.music_library_activity);
-        ButterKnife.bind(this);
-        initData();
+    public View initView(LayoutInflater inflater) {
+        View view = View.inflate(getActivity(), R.layout.music_library2_activity, null);
+        ButterKnife.bind(getActivity());
+        return view;
     }
 
-    private void initData() {
+    @Override
+    public void initDate(Bundle savedInstanceState) {
         fragments.add(MusicRecommendFragment.newInstance(1));
         fragments.add(MusicReOtherFragment.newInstance(1));//精选
         fragments.add(MusicReOtherFragment.newInstance(25));//热歌
         fragments.add(MusicReOtherFragment.newInstance(1));//新歌
-        FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
-        musicMianViewpage.setOffscreenPageLimit(6);
+        MusicLibraryFragment.FragmentAdapter adapter = new MusicLibraryFragment.FragmentAdapter(getActivity().getSupportFragmentManager(), fragments);
+        musicMianViewpage.setOffscreenPageLimit(4);
         musicMianViewpage.setAdapter(adapter);
         musicMainTab.setupWithViewPager(musicMianViewpage);
-
     }
 
-    @OnClick(R.id.title_back)
-    public void onClick() {
-        finish();
-    }
 
     public class FragmentAdapter extends FragmentPagerAdapter {
 
@@ -84,5 +77,4 @@ public class MusicLibraryActivity extends BaseActivity {
             return title[position];
         }
     }
-
 }

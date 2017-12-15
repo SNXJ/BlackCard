@@ -1,161 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bj"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base205dp"
-        android:background="@mipmap/music_image_19">
-
-        <ImageView
-            android:id="@+id/im_back"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/base40dp"
-            android:paddingLeft="@dimen/base15dp"
-            android:src="@mipmap/back" />
-
-        <TextView
-            style="@style/text_"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base40dp"
-            android:gravity="center"
-            android:text="曲库"
-            android:textSize="17sp" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/base57dp"
+        android:orientation="vertical">
 
         <RelativeLayout
+
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base110dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/base15dp"
-            android:layout_marginLeft="@dimen/base7dp"
-            android:layout_marginRight="@dimen/base7dp">
+            android:layout_height="@dimen/base205dp">
 
             <ImageView
-                android:layout_width="@dimen/base120dp"
+                android:id="@+id/rl_top_bg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base205dp"
+                android:background="@mipmap/music_image_19" />
+
+            <ImageView
+                android:id="@+id/im_back"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/base40dp"
+                android:paddingLeft="@dimen/base15dp"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/text_"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base40dp"
+                android:gravity="center"
+                android:text="曲库"
+                android:textSize="17sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/base110dp"
-                android:src="@mipmap/music_image_1" />
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/base15dp"
+                android:layout_marginLeft="@dimen/base7dp"
+                android:layout_marginRight="@dimen/base7dp">
+
+                <ImageView
+                    android:id="@+id/im_top_bg"
+                    android:layout_width="@dimen/base120dp"
+                    android:layout_height="@dimen/base110dp"
+                    android:src="@mipmap/music_image_1" />
+
+                <TextView
+                    style="@style/text_"
+                    android:layout_width="@dimen/base170dp"
+                    android:layout_marginLeft="@dimen/base138dp"
+                    android:text="聆听一首打开你心情的乡村音乐" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/base25dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/base138dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/base25dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/music_like" />
+
+                        <TextView
+                            style="@style/text_"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="9.8万" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/base25dp"
+                        android:layout_marginLeft="@dimen/base18dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/music_discuss" />
+
+                        <TextView
+                            style="@style/text_"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="223" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/base25dp"
+                        android:layout_marginLeft="@dimen/base18dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/music_share" />
+
+                        <TextView
+                            style="@style/text_"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="分享" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/play_random"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base40dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/base12dp"
+                android:src="@mipmap/music_play" />
 
             <TextView
                 style="@style/text_"
-                android:layout_width="@dimen/base170dp"
-                android:layout_marginLeft="@dimen/base138dp"
-                android:text="聆听一首打开你心情的乡村音乐" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:gravity="center_vertical"
+                android:text="随机播放"
+                android:textSize="15sp" />
 
-            <LinearLayout
+
+        </LinearLayout>
+
+        <View style="@style/line" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/main_black"
+            android:descendantFocusability="blocksDescendants">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/base25dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="@dimen/base138dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base25dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/music_like" />
-
-                    <TextView
-                        style="@style/text_"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="9.8万" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base25dp"
-                    android:layout_marginLeft="@dimen/base18dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/music_discuss" />
-
-                    <TextView
-                        style="@style/text_"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="223" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base25dp"
-                    android:layout_marginLeft="@dimen/base18dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/music_share" />
-
-                    <TextView
-                        style="@style/text_"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="分享" />
-                </LinearLayout>
-
-
-            </LinearLayout>
+                android:layout_height="match_parent" />
         </RelativeLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base40dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base12dp"
-            android:src="@mipmap/music_play" />
-
-        <TextView
-            style="@style/text_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base8dp"
-            android:gravity="center_vertical"
-            android:text="随机播放"
-            android:textSize="15sp" />
-
-        <TextView
-            style="@style/text_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base6dp"
-            android:gravity="center_vertical"
-            android:text="分享"
-            android:textSize="12sp" />
     </LinearLayout>
 
-    <View style="@style/line" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <include
+        layout="@layout/include_play_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         />
-
-</LinearLayout>
+        android:layout_height="@dimen/base57dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom" />
+</RelativeLayout>

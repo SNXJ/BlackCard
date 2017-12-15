@@ -672,7 +672,7 @@ public interface RetrofitService {
     //电台列表
     @FormUrlEncoded
     @POST("appmusicin/getcategorylist?")
-    Observable<MusicDjModel> getMusicDjList(@Field("FKEY") String md5);
+    Observable<MusicDjModel> getMusicDjList(@Field("FKEY") String md5, @Field("cate_sname") String cate_name);
 
     //电台下的歌曲列表
     @FormUrlEncoded
@@ -712,7 +712,7 @@ public interface RetrofitService {
     //歌手
     @FormUrlEncoded
     @POST("appmusicin/gethotartist?")
-    Observable<MusicSingerModel> getMusicSingerList(@Field("FKEY") String md5, @Field("offset") String offset);
+    Observable<MusicSingerModel> getMusicSingerList(@Field("FKEY") String md5, @Field("offset") String offset, @Field("gender") String sexType, @Field("area") String areaType);
 
     //歌手所有歌曲
     @FormUrlEncoded

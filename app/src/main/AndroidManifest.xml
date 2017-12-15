@@ -78,6 +78,7 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -217,11 +218,8 @@
         <activity android:name=".ui.my.SecurityPayActivity" />
         <activity android:name=".ui.my.ChangeForResultActivity"></activity>
 
-        <activity android:name=".music.MusicLibraryActivity" />
         <activity android:name=".music.MusicDetailActivity" />
-        <activity android:name=".music.MusicRankingActivity" />
-        <activity android:name=".music.MusicDjActivity" />
-        <activity android:name=".music.MusicSingerActivity" />
+        <activity android:name=".music.MusicHomeActivity" />
 
         <service android:name=".music.service.PlayService" />
 

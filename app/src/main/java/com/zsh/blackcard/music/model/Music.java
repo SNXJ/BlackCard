@@ -13,6 +13,16 @@ public class Music implements Serializable {
     // [本地歌曲]歌曲id
     private long id;
 
+    public String getPic_small() {
+        return pic_small;
+    }
+
+    public void setPic_small(String pic_small) {
+        this.pic_small = pic_small;
+    }
+
+    private String pic_small;
+
     public String getSongId() {
         return SongId;
     }

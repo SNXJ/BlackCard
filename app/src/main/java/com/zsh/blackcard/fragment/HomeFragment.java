@@ -46,10 +46,7 @@ import com.zsh.blackcard.model.HomeNewModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
-import com.zsh.blackcard.music.MusicDjActivity;
-import com.zsh.blackcard.music.MusicLibraryActivity;
-import com.zsh.blackcard.music.MusicRankingActivity;
-import com.zsh.blackcard.music.MusicSingerActivity;
+import com.zsh.blackcard.music.MusicHomeActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
@@ -136,11 +133,14 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (hidden) {
-            locationClient.stop();
-        } else {
-            locationClient.start();
+        if (null != locationClient) {
+            if (hidden) {
+                locationClient.stop();
+            } else {
+                locationClient.start();
+            }
         }
+
     }
 
     //初始化定位方法
@@ -272,20 +272,22 @@ public class HomeFragment extends BaseFragment {
 
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-            switch (position) {
-                case 0:
-                    ActivityUtils.startActivity(getActivity(), MusicSingerActivity.class);
-                    break;
-                case 1:
-                    ActivityUtils.startActivity(getActivity(), MusicRankingActivity.class);
-                    break;
-                case 2:
-                    ActivityUtils.startActivity(getActivity(), MusicLibraryActivity.class);
-                    break;
-                case 3:
-                    ActivityUtils.startActivity(getActivity(), MusicDjActivity.class);
-                    break;
-            }
+
+            ActivityUtils.startActivityForData(getActivity(), MusicHomeActivity.class, position + "");
+//            switch (position) {
+//                case 0:
+//                    ActivityUtils.startActivity(getActivity(), MusicSingerActivity.class);
+//                    break;
+//                case 1:
+//                    ActivityUtils.startActivity(getActivity(), MusicRankingActivity.class);
+//                    break;
+//                case 2:
+//                    ActivityUtils.startActivity(getActivity(), MusicLibraryActivity.class);
+//                    break;
+//                case 3:
+//                    ActivityUtils.startActivity(getActivity(), MusicDjActivity.class);
+//                    break;
+//            }
 
         }
     }
@@ -563,9 +565,7 @@ public class HomeFragment extends BaseFragment {
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
             case R.id.home_top_pop:
-
                 PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
-
                 break;
             case R.id.home_search_linear:
                 ActivityUtils.startActivity(getActivity(), ZgSearchActivity.class);

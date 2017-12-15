@@ -37,7 +37,7 @@ public interface OnPlayerEventListener {
     /**
      * 更新定时停止播放时间
      */
-    void onTimer(long remain);
+//    void onTimer(long remain);
 
     void onMusicListUpdate();
 }

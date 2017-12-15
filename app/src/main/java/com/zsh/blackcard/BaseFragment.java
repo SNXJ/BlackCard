@@ -1,6 +1,8 @@
 package com.zsh.blackcard;
 
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.StatusBarColorUntil;
 
@@ -84,4 +87,16 @@ public abstract class BaseFragment extends Fragment {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    public Dialog dialog;
+
+    public Dialog showLoading(Context context) {
+        dialog = PublicDialog.loadingDialog((Activity) context);
+        return dialog;
+    }
+
+    public void dialogDismiss() {
+        if (null != dialog) {
+            dialog.dismiss();
+        }
+    }
 }
