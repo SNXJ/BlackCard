@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         lrc:lrcAnimationDuration="1000"
-        lrc:lrcCurrentTextColor="@color/bg_white"
+        lrc:lrcCurrentTextColor="@color/music_bar"
         lrc:lrcDividerHeight="10dp"
         lrc:lrcNormalTextColor="@color/bg_white"
         lrc:lrcPadding="40dp"

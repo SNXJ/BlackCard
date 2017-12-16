@@ -1,4 +1,4 @@
-package com.zsh.blackcard.music;
+package com.zsh.blackcard.music.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +14,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MusicRecommendModel;
+import com.zsh.blackcard.music.MusicDetailActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -46,17 +47,16 @@ public class MusicRecommendFragment extends BaseFragment {
     }
 
     RecyclerView recyclerView;
-    List<MusicRecommendModel.PdBean.ResultBean.ListBean> dataList = new ArrayList<>();
+    static List<MusicRecommendModel.PdBean.ResultBean.ListBean> dataList = new ArrayList<>();
     MusicRecommendAdapter adapter;
 
     @Override
     public View initView(LayoutInflater inflater) {
         View view = View.inflate(getActivity(), R.layout.music_recommend_fragment, null);
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_title);
-
-
         return view;
     }
+
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -70,7 +70,7 @@ public class MusicRecommendFragment extends BaseFragment {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getMusicRecommendList(DataManager.getMd5Str("SONGLIST")), new ResultListener<MusicRecommendModel>() {
             @Override
             public void responseSuccess(MusicRecommendModel obj) {
-                dataList = obj.getPd().getResult().getList();
+                dataList.addAll(obj.getPd().getResult().getList());
                 setData();
             }
 
@@ -84,14 +84,16 @@ public class MusicRecommendFragment extends BaseFragment {
     private void setData() {
         adapter = new MusicRecommendAdapter(dataList, mType);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
-        //  recyclerView.
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                MusicDetailActivity.setRecommendData(dataList);
-                ActivityUtils.startActivity(getActivity(), MusicDetailActivity.class);
-            }
-        });
+        adapter.setOnItemClickListener(onItemClickListener);
     }
+
+    BaseQuickAdapter.OnItemClickListener onItemClickListener = new BaseQuickAdapter.OnItemClickListener() {
+        @Override
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            MusicDetailActivity.setData((List<MusicRecommendModel.PdBean.ResultBean.ListBean>) adapter.getData(), position);
+            ActivityUtils.startActivity(getActivity(), MusicDetailActivity.class);
+        }
+    };
 }

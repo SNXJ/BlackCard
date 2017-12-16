@@ -1159,8 +1159,8 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<MusicDjModel> getMusicDjList(String md5) {
-        return retrofitService.getMusicDjList(md5);
+    public Observable<MusicDjModel> getMusicDjList(String md5, String cate_name) {
+        return retrofitService.getMusicDjList(md5, cate_name);
     }
 
     /**
@@ -1237,8 +1237,8 @@ public class NetApi {
      * @param offset
      * @return
      */
-    public Observable<MusicSingerModel> getMusicSingerList(String md5, String offset) {
-        return retrofitService.getMusicSingerList(md5, offset);
+    public Observable<MusicSingerModel> getMusicSingerList(String md5, String offset, String sexType, String areaType) {
+        return retrofitService.getMusicSingerList(md5, offset, sexType, areaType);
     }
 
     /**

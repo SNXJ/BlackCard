@@ -1,5 +1,6 @@
 package com.zsh.blackcard.music;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -42,6 +43,7 @@ import com.zsh.blackcard.music.untils.SystemUtils;
 import com.zsh.blackcard.music.widget.AlbumCoverView;
 import com.zsh.blackcard.music.widget.IndicatorLayout;
 import com.zsh.blackcard.untils.BitmapUtils;
+import com.zsh.blackcard.untils.FastBlur;
 import com.zsh.blackcard.untils.UIUtils;
 
 import java.io.File;
@@ -121,7 +123,7 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
         ilIndicator.create(mViewPagerContent.size());
         initPlayMode();
         onChangeImpl(getPlayService().getPlayingMusic());
-        getPlayService().setOnPlayEventListener(this);
+//        getPlayService().setOnPlayEventListener(this);
     }
 
     @Override
@@ -206,7 +208,6 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
         if (!isDraggingProgress) {
             sbProgress.setProgress(progress);
         }
-
         if (mLrcViewSingle.hasLrc()) {
             mLrcViewSingle.updateTime(progress);
             mLrcViewFull.updateTime(progress);
@@ -215,11 +216,10 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     public void onBufferingUpdate(int percent) {
+        if (percent < 1) {
+            percent = 1;
+        }
         sbProgress.setSecondaryProgress(sbProgress.getMax() * 100 / percent);
-    }
-
-    @Override
-    public void onTimer(long remain) {
     }
 
     @Override
@@ -360,6 +360,10 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
                 mode = PlayModeEnum.LOOP;
                 UIUtils.showToast("列表循环");
                 break;
+            default:
+                mode = PlayModeEnum.SINGLE;
+                UIUtils.showToast("单曲循环");
+                break;
         }
         Preferences.savePlayMode(mode.value());
         initPlayMode();
@@ -394,27 +398,32 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
                             msg.what = 0;
                             msg.obj = null;
                         } else {
-                            bitmap = ImageUtils.resizeImage(bitmap, ScreenUtils.getScreenWidth() / 2, ScreenUtils.getScreenWidth() / 2);
-                            bitmap = ImageUtils.createCircleImage(bitmap);
                             msg.what = 1;
                             msg.obj = bitmap;
                         }
                         myHandler.sendMessage(msg);
                     }
                 });
-
-
             }
-        }).start();
+        }).
+
+                start();
     }
 
+    @SuppressLint("HandlerLeak")
     private Handler myHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
-                    mAlbumCoverView.setCoverBitmap((Bitmap) msg.obj);
+                    Bitmap bitmap = (Bitmap) msg.obj;
+                    ivPlayingBg.setImageBitmap(new FastBlur().fastblur(bitmap, 30, ivPlayingBg));
+                    // ivPlayingBg.setImageBitmap(bitmap);
+                    bitmap = ImageUtils.resizeImage(bitmap, ScreenUtils.getScreenWidth() / 2, ScreenUtils.getScreenWidth() / 2);
+                    bitmap = ImageUtils.createCircleImage(bitmap);
+                    mAlbumCoverView.setCoverBitmap(bitmap);
                     break;
                 case 0:
+                    ivPlayingBg.setImageBitmap(null);
                     mAlbumCoverView.setCoverBitmap(null);
                     break;
             }
@@ -424,7 +433,10 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
 
 
     private void setLrc(final Music music) {
-        getLry(music.getSongId());
+
+        setLrcLabel(music.getSongLrc());
+        //TODO
+//        getLry(music.getSongId());
     }
 
     private void loadLrc(String path) {
@@ -435,8 +447,15 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
 
 
     private void setLrcLabel(String label) {
-        mLrcViewSingle.setLabel(label);
-        mLrcViewFull.setLabel(label);
+        if (null == label) {
+            mLrcViewSingle.setLabel("暂无歌词");
+            mLrcViewFull.setLabel("暂无歌词");
+            mLrcViewSingle.loadLrc("");
+            mLrcViewFull.loadLrc("");
+        } else {
+            mLrcViewSingle.loadLrc(label);
+            mLrcViewFull.loadLrc(label);
+        }
     }
 
     private String formatTime(long time) {
@@ -488,12 +507,18 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
         }
     }
 
-    private void getLry(String songId) {
+    private void getLry(final String songId) {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getMusicLry(DataManager.getMd5Str("LRY"), songId), new ResultListener<MusicLrcModel>() {
             @Override
             public void responseSuccess(MusicLrcModel obj) {
-                String lrc = obj.getPd().getLrcContent();
-                setLrcLabel(lrc);
+                if (null == obj) {
+                    setLrcLabel(null);
+                } else {
+                    setLrcLabel(null);
+                    String lrc = obj.getPd().getLrcContent();
+                    setLrcLabel(lrc);
+                }
+
             }
 
             @Override

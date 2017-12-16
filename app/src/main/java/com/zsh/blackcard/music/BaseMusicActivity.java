@@ -4,13 +4,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.music.service.PlayService;
 import com.zsh.blackcard.music.untils.AppCache;
+import com.zsh.blackcard.untils.LogUtils;
 
 /**
  * Name: BaseMusicActivity
@@ -19,7 +18,7 @@ import com.zsh.blackcard.music.untils.AppCache;
  * Description:描述：
  */
 public abstract class BaseMusicActivity extends BaseActivity {
-    protected Handler mHandler = new Handler(Looper.getMainLooper());
+    //    protected Handler mHandler = new Handler(Looper.getMainLooper());
     PlayService playService = null;
     PlayServiceConnection mPlayServiceConnection;
 
@@ -43,13 +42,14 @@ public abstract class BaseMusicActivity extends BaseActivity {
         return playService;
     }
 
-    private void checkService() {
+    public void checkService() {
         if (AppCache.getPlayService() == null) {
             bindService();
         }
     }
 
     private void bindService() {
+        LogUtils.i("++++++++++++++++++", "+++++++bindService++++++++++");
         Intent intent = new Intent();
         intent.setClass(this, PlayService.class);
         mPlayServiceConnection = new PlayServiceConnection();
@@ -62,7 +62,7 @@ public abstract class BaseMusicActivity extends BaseActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
             playService = ((PlayService.PlayBinder) service).getService();
             AppCache.setPlayService(playService);
-
+//            bindServerCompleted();
         }
 
         @Override
@@ -70,11 +70,19 @@ public abstract class BaseMusicActivity extends BaseActivity {
         }
     }
 
+//    public abstract void bindServerCompleted();
+
     @Override
     protected void onDestroy() {
+//        if (mPlayServiceConnection != null) {
+//            unbindService(mPlayServiceConnection);
+//        }
+        super.onDestroy();
+    }
+
+    public void destroyService() {
         if (mPlayServiceConnection != null) {
             unbindService(mPlayServiceConnection);
         }
-        super.onDestroy();
     }
 }

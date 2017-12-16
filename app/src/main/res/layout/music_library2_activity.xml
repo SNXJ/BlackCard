@@ -6,26 +6,21 @@
     android:background="@mipmap/bj"
     android:orientation="vertical">
 
+
+
     <android.support.design.widget.TabLayout
-        android:id="@+id/dj_tablayout"
+        android:id="@+id/music_main_tab"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base40dp"
+        android:layout_height="@dimen/base35dp"
         app:tabIndicatorColor="@android:color/transparent"
-        app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/bg_white"
         app:tabTextAppearance="@style/tab_music_main"
         app:tabTextColor="@color/ff92_text" />
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeLayout"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/music_mian_viewpage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/dj_recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:paddingLeft="@dimen/base5dp"
+        android:paddingRight="@dimen/base5dp" />
 </LinearLayout>
-

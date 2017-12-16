@@ -1,4 +1,4 @@
-package com.zsh.blackcard.music;
+package com.zsh.blackcard.music.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +14,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MusicRankingModel;
+import com.zsh.blackcard.music.MusicDetailActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -88,7 +89,8 @@ public class MusicReOtherFragment extends BaseFragment {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                MusicDetailActivity.setReOtherData(dataList);
+                MusicDetailActivity.reOtherDataList = dataList;
+                MusicDetailActivity.position = position;
                 ActivityUtils.startActivity(getActivity(), MusicDetailActivity.class);
             }
         });

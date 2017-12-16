@@ -23,6 +23,10 @@
         <TextView
             android:id="@+id/tv_name"
             style="@style/text_"
+            android:maxLength="10"
+
+            android:maxLines="1"
+            android:singleLine="true"
             android:text="歌手说"
             android:textSize="15sp" />
 
@@ -30,6 +34,9 @@
             android:id="@+id/tv_des"
             style="@style/text_"
             android:layout_marginTop="@dimen/base5dp"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:singleLine="true"
             android:text="当前热度为53.9万"
             android:textSize="11sp" />
 

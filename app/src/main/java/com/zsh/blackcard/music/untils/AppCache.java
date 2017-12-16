@@ -19,7 +19,7 @@ public class AppCache {
     private Context mContext;
     private PlayService mPlayService;
     // 本地歌曲列表
-    private final List<Music> mMusicList = new ArrayList<>();
+    private static List<Music> mMusicList = new ArrayList<>();
     // 歌单列表
 //    private final List<SongListInfo> mSongListInfos = new ArrayList<>();
     private final List<Activity> mActivityStack = new ArrayList<>();
@@ -43,12 +43,10 @@ public class AppCache {
 
     private void onInit(Application application) {
         mContext = application.getApplicationContext();
-//        ToastUtils.init(mContext);
         Preferences.init(mContext);
         ScreenUtils.init(mContext);
-//        CrashHandler.getInstance().init();
         CoverLoader.getInstance().init(mContext);
-        application.registerActivityLifecycleCallbacks(new ActivityLifecycle());
+//        application.registerActivityLifecycleCallbacks(new ActivityLifecycle());
     }
 
     public static Context getContext() {
@@ -65,6 +63,10 @@ public class AppCache {
 
     public static List<Music> getMusicList() {
         return getInstance().mMusicList;
+    }
+
+    public static void setMusicList(List<Music> listMusic) {
+        mMusicList = listMusic;
     }
 
 //    public static List<SongListInfo> getSongListInfos() {

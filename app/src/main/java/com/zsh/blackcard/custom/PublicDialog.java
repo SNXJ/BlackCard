@@ -27,7 +27,6 @@ import com.zsh.blackcard.listener.SelectDateListener;
 import com.zsh.blackcard.live.LiveAnchorDetails2;
 import com.zsh.blackcard.live.LiveOpenActivity;
 import com.zsh.blackcard.model.OrderDialogModel;
-import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.SbSendWeiBoActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
@@ -441,19 +440,38 @@ public class PublicDialog {
                 defaultJsonAsset, defaultData);
         mDialog.setAddress(defaultData, "");
         setWinLP(mDialog, context);
-
         mDialog.setAddresskListener(new SelsectTwoDialog.OnAddressCListener() {
             @Override
             public void onClick(String province, String city) {
                 if (listener != null) {
                     listener.actionListener(province, city);
+                    ;
                 }
             }
         });
     }
 
+    public static Dialog loadingDialog(final Activity mContext) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.loading_dialog, null);
+        final Dialog dialog = new Dialog(mContext, R.style.pub_loading_dialog);
+        dialog.setContentView(view);
+
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+        dialog.setCanceledOnTouchOutside(false);
+//        window.setWindowAnimations(R.style.dailog_anim_enterorout_window_up);
+        dialog.show();
+        WindowManager windowManager = mContext.getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+        lp.width = (int) (display.getWidth()); // 设置宽度
+        dialog.getWindow().setAttributes(lp);
+        return dialog;
+    }
+
     /**
-     * 把自定义布局设置到diaolog
+     * 把自定义布局设置到dialog
      *
      * @param view
      * @param mContext

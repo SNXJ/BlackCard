@@ -6,17 +6,6 @@
     android:background="@mipmap/bj"
     android:orientation="vertical">
 
-    <RelativeLayout style="@style/title_rl">
-
-        <ImageView
-            android:id="@+id/title_back"
-            style="@style/title_im_back" />
-
-        <TextView
-            android:id="@+id/title_tv"
-            style="@style/title_tv"
-            android:text="曲库" />
-    </RelativeLayout>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/music_main_tab"
@@ -27,10 +16,14 @@
         app:tabTextAppearance="@style/tab_music_main"
         app:tabTextColor="@color/ff92_text" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/music_mian_viewpage"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="@dimen/base5dp"
-        android:paddingRight="@dimen/base5dp" />
+        android:layout_height="match_parent"/>
+    <!--<android.support.v4.view.ViewPager-->
+    <!--android:id="@+id/music_mian_viewpage"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:paddingLeft="@dimen/base5dp"-->
+    <!--android:paddingRight="@dimen/base5dp" />-->
 </LinearLayout>
