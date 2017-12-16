@@ -124,6 +124,9 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         if (null != djData) {
             djData = null;
         }
+        if (null != mMusicList) {
+            mMusicList = null;
+        }
         super.onDestroy();
     }
 
@@ -135,23 +138,103 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         initData();
     }
 
+    private String[] dataType = new String[]{"SINGER0", "RANK1", "RECOMMEND2", "REOTHER3", "DJ4"};//
 
     private void initData() {
         showLoading(this);
-//        LogUtils.i("+++++++rankType+++++++", position + "+++++推荐+++++++" + recommendDataList.size());
+
         if (null != recommendDataList && recommendDataList.size() > 0) {
+            switchLoopData("2");
             setRecommendListData();
         } else if (null != djData) {
             initDjData();
         } else if (null != reOtherDataList && reOtherDataList.size() > 0) {
-            setReOtherData(1);
+            switchLoopData("3");
+            setReOtherData(3);
         } else if (null != SingerData) {
             getSingerSongData();
         } else if (null != rankType) {
             getRankDataByType();
         }
 
-        getMusicList();
+
+    }
+
+    private void switchLoopData(String type) {
+        LogUtils.i("++++++++++++++", "++++++++++++++++" + type);
+        switch (type) {
+            case "0":
+                getSingerMusicList();
+                break;
+            case "1":
+                getReOtherMusicList();
+                break;
+            case "2":
+                getReMusicList();
+                break;
+            case "3":
+                getReOtherMusicList();
+                break;
+            case "4":
+                getDjMusicList();
+                break;
+        }
+    }
+
+    private void getSingerMusicList() {
+        if (singerSongList == null) {
+            return;
+        }
+        for (int i = 0; i < singerSongList.size(); i++) {
+            Music music = getMusicbyId(singerSongList.get(i).getSong_id());
+            if (null != music) {
+                mMusicList.add(music);
+            }
+        }
+        LogUtils.i("++++++++++++", "++++++++singerSongList+++++++++++" + mMusicList.size());
+        AppCache.setMusicList(mMusicList);
+    }
+
+    private void getReMusicList() {
+        if (recommendDataList == null) {
+            return;
+        }
+        for (int i = 0; i < recommendDataList.size(); i++) {
+            Music music = getMusicbyId(recommendDataList.get(i).getSong_id());
+            if (null != music) {
+                mMusicList.add(music);
+            }
+        }
+        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+        AppCache.setMusicList(mMusicList);
+    }
+
+    private void getReOtherMusicList() {
+        if (reOtherDataList == null) {
+            return;
+        }
+        for (int i = 0; i < reOtherDataList.size(); i++) {
+            Music music = getMusicbyId(reOtherDataList.get(i).getSong_id());
+            if (null != music) {
+                mMusicList.add(music);
+            }
+        }
+        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+        AppCache.setMusicList(mMusicList);
+    }
+
+    private void getDjMusicList() {
+        if (listDjData == null) {
+            return;
+        }
+        for (int i = 0; i < listDjData.size(); i++) {
+            Music music = getMusicbyId(listDjData.get(i).getSongid());
+            if (null != music) {
+                mMusicList.add(music);
+            }
+        }
+        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+        AppCache.setMusicList(mMusicList);
     }
 
     private void getRankDataByType() {
@@ -161,7 +244,8 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
             public void responseSuccess(MusicRankingModel obj) {
                 reOtherDataList = obj.getPd().getSong_list();
                 //TODO
-                setReOtherData(2);
+                setReOtherData(1);
+                switchLoopData("1");
             }
 
             @Override
@@ -216,6 +300,9 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 // TODO没有数据
                 singerSongList = obj.getPd().getSonglist();
                 setSingerSongData();
+
+                switchLoopData("0");
+
             }
 
             @Override
@@ -232,7 +319,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         singerSongAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                getSongDetail(singerSongList.get(position).getSong_id());
+                getSongDetail(singerSongList.get(position).getSong_id(), position);
             }
         });
         singerSongAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
@@ -247,7 +334,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         djdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                getSongDetail(listDjData.get(position).getSongid());
+                getSongDetail(listDjData.get(position).getSongid(), position);
             }
         });
         djdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
@@ -262,7 +349,8 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         recommendAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                getSongDetail(recommendDataList.get(position).getSong_id());
+                getSongDetail(recommendDataList.get(position).getSong_id(), position);
+//                AppCache.getPlayService().play(mMusicList.get(position));
 
             }
         });
@@ -272,7 +360,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
 
     private void setReOtherData(int type) {
         LogUtils.i("+++++++rankType+++++++", "++++曲库++other+++++++" + type);
-        if (type == 2) {//排行榜
+        if (type == 1) {//排行榜
             setTopBg(rankImgUrl, rankStr);
         } else {
             setTopBg(reOtherDataList.get(position).getPic_big(), "曲库");
@@ -284,7 +372,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         reOtherAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                getSongDetail(reOtherDataList.get(position).getSong_id());
+                getSongDetail(reOtherDataList.get(position).getSong_id(), position);
 
             }
         });
@@ -294,29 +382,28 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
 
     private static List<Music> mMusicList = new ArrayList<>();
 
-    private void getMusicList() {
-        if (recommendDataList == null) {
-            return;
-        }
-//TODO
-        for (int i = 0; i < 10; i++) {
-            mMusicList.add(getMusicbyId(recommendDataList.get(i).getSong_id()));
-        }
-        AppCache.setMusicList(mMusicList);
-    }
 
     private Music getMusicbyId(final String songId) {
         final Music music = new Music();
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSongDetails(DataManager.getMd5Str("SONGPLAY"), songId), new ResultListener<MusicSongDetailsModel>() {
             @Override
             public void responseSuccess(MusicSongDetailsModel obj) {
+                if (null == obj) {
+                    return;
+                }
+                if (null == obj.getPd()) {
+                    return;
+                }
                 MusicSongDetailsModel.PdBean.BitrateBean musicData = obj.getPd().getBitrate();
                 MusicSongDetailsModel.PdBean.SonginfoBean songinfo = obj.getPd().getSonginfo();
-
+                if (null == musicData.getFile_link()) {
+                    return;
+                }
                 music.setSongId(songId);
                 music.setType(Music.Type.ONLINE);
                 music.setTitle(songinfo.getTitle());
                 music.setArtist(songinfo.getAuthor());
+                music.setSongLrc(songinfo.getLrclink().getLrcContent());
                 music.setAlbum(songinfo.getAlbum_title());
                 music.setPic_small(songinfo.getPic_small());
                 music.setCoverPath(songinfo.getPic_huge());
@@ -332,7 +419,13 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         return music;
     }
 
-    private void getSongDetail(final String songId) {
+    private void getSongDetail(final String songId, int position) {
+        if (null != mMusicList && position < mMusicList.size() - 1) {//TODO
+            if (songId.equals(mMusicList.get(position))) {
+                Preferences.savePlayMode(PlayModeEnum.LOOP.value());
+                AppCache.getPlayService().play(mMusicList.get(position));
+            }
+        }
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSongDetails(DataManager.getMd5Str("SONGPLAY"), songId), new ResultListener<MusicSongDetailsModel>() {
             @Override
             public void responseSuccess(MusicSongDetailsModel obj) {
@@ -343,11 +436,17 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 music.setType(Music.Type.ONLINE);
                 music.setTitle(songinfo.getTitle());
                 music.setArtist(songinfo.getAuthor());
+                music.setSongLrc(songinfo.getLrclink().getLrcContent());
                 music.setAlbum(songinfo.getAlbum_title());
                 music.setPic_small(songinfo.getPic_small());
                 music.setCoverPath(songinfo.getPic_huge());
                 music.setPath(musicData.getFile_link());
                 music.setDuration(musicData.getFile_duration() * 1000);
+                Preferences.savePlayMode(PlayModeEnum.LOOP.value());
+                if (null == musicData.getFile_link()) {
+                    UIUtils.showToast("歌曲解析错误");
+                    return;
+                }
                 AppCache.getPlayService().play(music);
                 UIUtils.showToast("开始播放");
                 //showPlayingFragment();
@@ -367,8 +466,12 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getMusicDjSongList(DataManager.getMd5Str("CANNELSONG"), djData.getCh_name()), new ResultListener<MusicDetailListModel>() {
             @Override
             public void responseSuccess(MusicDetailListModel obj) {
-                listDjData = obj.getPd().getResult().getSonglist();
-                setDjData();
+                if (null != obj && null != obj.getPd()) {
+                    listDjData = obj.getPd().getResult().getSonglist();
+                    setDjData();
+                    switchLoopData("4");
+                }
+
             }
 
             @Override
@@ -551,6 +654,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 break;
             case R.id.play_random:
                 Preferences.savePlayMode(PlayModeEnum.SHUFFLE.value());
+
                 if (null != mMusicList && mMusicList.size() > 0) {
                     AppCache.getPlayService().play(mMusicList.get(0));
                     showPlayingFragment();

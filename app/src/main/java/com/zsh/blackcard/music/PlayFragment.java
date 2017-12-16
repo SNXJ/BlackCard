@@ -44,7 +44,6 @@ import com.zsh.blackcard.music.widget.AlbumCoverView;
 import com.zsh.blackcard.music.widget.IndicatorLayout;
 import com.zsh.blackcard.untils.BitmapUtils;
 import com.zsh.blackcard.untils.FastBlur;
-import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.untils.UIUtils;
 
 import java.io.File;
@@ -217,7 +216,6 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     public void onBufferingUpdate(int percent) {
-        LogUtils.i("+++++", "++++onBufferingUpdate+++++++" + percent);
         if (percent < 1) {
             percent = 1;
         }
@@ -435,7 +433,10 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
 
 
     private void setLrc(final Music music) {
-        getLry(music.getSongId());
+
+        setLrcLabel(music.getSongLrc());
+        //TODO
+//        getLry(music.getSongId());
     }
 
     private void loadLrc(String path) {
