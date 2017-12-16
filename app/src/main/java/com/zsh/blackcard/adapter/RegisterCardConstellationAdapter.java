@@ -110,6 +110,11 @@ public class RegisterCardConstellationAdapter extends RecyclerView.Adapter<Regis
             @Override
             public void onClick(View v) {
 
+                //设置监听回调
+                if (registerConstellationOnItemClick != null) {
+                    registerConstellationOnItemClick.constellationOnItemClick(position);
+                }
+
                 for (int i = 0; i < 12; i++) {
                     isCheck.set(i, false);
                 }
@@ -117,11 +122,6 @@ public class RegisterCardConstellationAdapter extends RecyclerView.Adapter<Regis
                 isCheck.set(position, true);
 
                 notifyDataSetChanged();
-
-                //设置监听回调
-                if (registerConstellationOnItemClick != null) {
-                    registerConstellationOnItemClick.constellationOnItemClick(position);
-                }
 
             }
         });
@@ -144,5 +144,9 @@ public class RegisterCardConstellationAdapter extends RecyclerView.Adapter<Regis
             ButterKnife.bind(this, itemView);
             view = itemView;
         }
+    }
+
+    public boolean getSelectStatus(int position) {
+        return isCheck.get(position);
     }
 }

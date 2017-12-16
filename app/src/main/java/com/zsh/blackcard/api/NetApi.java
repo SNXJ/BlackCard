@@ -67,11 +67,15 @@ import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
 
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.MyPowerImageModel;
+import com.zsh.blackcard.model.MyPowerModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
+import com.zsh.blackcard.model.RegisterCardTypeModel;
+import com.zsh.blackcard.model.RegisterChangeNumberModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SettingUserInfoModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
@@ -572,7 +576,7 @@ public class NetApi {
      * @param listPath
      * @return
      */
-    public Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia) {
+    public Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
         //如果有图片上传，则加载body，如果没有上传图片则加载空body
         if (localMedia.size() != 0) {
             for (int i = 0; i < localMedia.size(); i++) {
@@ -586,7 +590,7 @@ public class NetApi {
             MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
             listPath.add(part);
         }
-        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, listPath);
+        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, listPath, type);
     }
 
     /**
@@ -1084,15 +1088,17 @@ public class NetApi {
     }
 
     /**
-     * 圈子中心点赞接口
+     * 圈子中心点赞和评论点赞接口
      *
      * @param md5
      * @param HONOURUSER_ID
-     * @param CIRCLE_ID
+     * @param circle_id
+     * @param commend_id
+     * @param statue
      * @return
      */
-    public Observable<ResultModel> postCircleCenterYeah(String md5, String HONOURUSER_ID, String CIRCLE_ID) {
-        return retrofitService.postCircleCenterYeah(md5, HONOURUSER_ID, CIRCLE_ID);
+    public Observable<ResultModel> postCircleCenterYeah(String md5, String HONOURUSER_ID, String circle_id, String commend_id, String statue) {
+        return retrofitService.postCircleCenterYeah(md5, HONOURUSER_ID, circle_id, commend_id, statue);
     }
 
     /**
@@ -1251,6 +1257,48 @@ public class NetApi {
      */
     public Observable<MusicSingerSongsModel> getSingerSongs(String md5, String singerId, String offset) {
         return retrofitService.getSingerSongs(md5, singerId, offset);
+    }
 
+    /**
+     * 能量值各能量接口
+     *
+     * @param md5
+     * @return
+     */
+    public Observable<MyPowerModel> postMyPower(String md5, String HONOURUSER_ID) {
+        return retrofitService.postMyPower(md5, HONOURUSER_ID);
+    }
+
+    /**
+     * 注册时，卡类型所对应的图片
+     *
+     * @param md5
+     * @param CARDTYPE_ID
+     * @return
+     */
+    public Observable<RegisterCardTypeModel> postRegisterCardType(String md5, String CARDTYPE_ID) {
+        return retrofitService.postRegisterCardType(md5, CARDTYPE_ID);
+    }
+
+    /**
+     * 注册时，手动选择号码功能
+     *
+     * @param md5
+     * @param CARDTYPE_ID
+     * @return
+     */
+    public Observable<RegisterChangeNumberModel> postRegisterChangeNumber(String md5, String CARDTYPE_ID) {
+        return retrofitService.postRegisterChangeNumber(md5, CARDTYPE_ID);
+    }
+
+    /**
+     * 能量值曲线图接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<MyPowerImageModel> postPowerImage(String md5, String user_id) {
+        return retrofitService.postPowerImage(md5, user_id);
     }
 }

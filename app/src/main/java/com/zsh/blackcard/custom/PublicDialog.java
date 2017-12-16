@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,10 +24,13 @@ import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.OrderDiaListenter;
+import com.zsh.blackcard.listener.SbNearChangeListener;
 import com.zsh.blackcard.listener.SelectDateListener;
 import com.zsh.blackcard.live.LiveAnchorDetails2;
 import com.zsh.blackcard.live.LiveOpenActivity;
 import com.zsh.blackcard.model.OrderDialogModel;
+import com.zsh.blackcard.model.SbNearChangeModel;
+import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.SbSendWeiBoActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
@@ -40,6 +44,7 @@ import com.zsh.blackcard.wheelview.SelsectOneDialog;
 import com.zsh.blackcard.wheelview.SelsectTwoDialog;
 
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Name: PublicDialog
@@ -307,6 +312,143 @@ public class PublicDialog {
 //                UIUtils.showToast("确定");
 //            }
 //        });
+    }
+
+    /**
+     * 尚播附近筛选主播弹窗
+     *
+     * @param context
+     * @param listImage
+     * @param sbNearChangeModel
+     * @param sbNearChangeListener
+     */
+    public static void sbChangeDialog(Activity context, final List<ImageView> listImage, final SbNearChangeModel sbNearChangeModel, final SbNearChangeListener sbNearChangeListener) {
+        View view = LayoutInflater.from(context).inflate(R.layout.sb_near_change, null);
+        TextView cancel_tv = (TextView) view.findViewById(R.id.sb_near_change_cancel_tv);
+        TextView sure_tv = (TextView) view.findViewById(R.id.sb_near_change_sure_tv);
+        final ImageView one_img = (ImageView) view.findViewById(R.id.one_img);
+        final ImageView two_img = (ImageView) view.findViewById(R.id.two_img);
+        final ImageView three_img = (ImageView) view.findViewById(R.id.three_img);
+        final ImageView four_img = (ImageView) view.findViewById(R.id.four_img);
+        final ImageView five_img = (ImageView) view.findViewById(R.id.five_img);
+        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radio_group);
+        RadioGroup radioGroupSex = (RadioGroup) view.findViewById(R.id.radio_group_sex);
+        listImage.clear();
+        listImage.add(one_img);
+        listImage.add(two_img);
+        listImage.add(three_img);
+        listImage.add(four_img);
+        listImage.add(five_img);
+        final Dialog dialog = showDialogView(view, context);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.black_rb:
+                        sbNearChangeModel.setType("黑微博");
+                        break;
+                    case R.id.open_rb:
+                        sbNearChangeModel.setType("开播呗");
+                        break;
+                    case R.id.small_rb:
+                        sbNearChangeModel.setType("小视频");
+                        break;
+                }
+            }
+        });
+
+        radioGroupSex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.all_rb:
+                        sbNearChangeModel.setSex("全部");
+                        break;
+                    case R.id.man_rb:
+                        sbNearChangeModel.setSex("男");
+                        break;
+                    case R.id.women_rb:
+                        sbNearChangeModel.setSex("女");
+                        break;
+                }
+            }
+        });
+
+
+        cancel_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sbNearChangeModel.setType(null);
+                sbNearChangeModel.setSex(null);
+                sbNearChangeModel.setTime(null);
+                dialog.dismiss();
+            }
+        });
+
+        sure_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (sbNearChangeListener != null) {
+                    sbNearChangeListener.onClick(sbNearChangeModel, dialog);
+                }
+            }
+        });
+
+        one_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sbNearChangeModel.setTime("0");
+                setImageResource(0, listImage);
+            }
+        });
+
+        two_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sbNearChangeModel.setTime("1");
+                setImageResource(1, listImage);
+            }
+        });
+
+        three_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sbNearChangeModel.setTime("2");
+                setImageResource(2, listImage);
+            }
+        });
+
+        four_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sbNearChangeModel.setTime("3");
+                setImageResource(3, listImage);
+            }
+        });
+
+        five_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sbNearChangeModel.setTime("4");
+                setImageResource(4, listImage);
+            }
+        });
+    }
+
+    /**
+     * 尚播筛选弹窗时间段选择
+     *
+     * @param index
+     * @param listImage
+     */
+    public static void setImageResource(int index, List<ImageView> listImage) {
+        for (int i = 0; i < listImage.size(); i++) {
+            if (i == index) {
+                listImage.get(i).setImageResource(R.drawable.sb_near_true);
+            } else {
+                listImage.get(i).setImageResource(R.drawable.sb_near_false);
+            }
+        }
     }
 
     /**

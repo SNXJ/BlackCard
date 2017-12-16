@@ -44,9 +44,12 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
         this.context = registerActivity;
         //初始化默认所有item未被选择
         for (int i = 0; i < 6; i++) {
-            isCheck.add(false);
+            if (i == 0) {
+                isCheck.add(true);
+            } else {
+                isCheck.add(false);
+            }
         }
-
     }
 
     @Override
@@ -91,6 +94,12 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
             @Override
             public void onClick(View v) {
 
+                //设置监听回调
+                if (registerCardOnItemClick != null) {
+                    registerCardOnItemClick.cardOnItemClick(position);
+                }
+
+                //此处先回调，在更新
                 for (int i = 0; i < 6; i++) {
                     isCheck.set(i, false);
                 }
@@ -99,10 +108,6 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
 
                 notifyDataSetChanged();
 
-                //设置监听回调
-                if (registerCardOnItemClick != null) {
-                    registerCardOnItemClick.cardOnItemClick(position);
-                }
 
             }
         });
@@ -125,5 +130,9 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
             ButterKnife.bind(this, itemView);
             view = itemView;
         }
+    }
+
+    public boolean getSelectStatus(int position) {
+        return isCheck.get(position);
     }
 }

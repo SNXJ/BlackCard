@@ -1,6 +1,7 @@
 package com.zsh.blackcard.fragment;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -47,6 +48,11 @@ import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.music.MusicHomeActivity;
+import com.zsh.blackcard.music.MusicDjActivity;
+import com.zsh.blackcard.music.MusicLibraryActivity;
+import com.zsh.blackcard.music.MusicRankingActivity;
+import com.zsh.blackcard.music.MusicSingerActivity;
+import com.zsh.blackcard.ui.LoginActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
@@ -565,6 +571,9 @@ public class HomeFragment extends BaseFragment {
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
             case R.id.home_top_pop:
+                ActivityUtils.startActivity(getActivity(), LoginActivity.class);
+//                PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
+
                 PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
                 break;
             case R.id.home_search_linear:
