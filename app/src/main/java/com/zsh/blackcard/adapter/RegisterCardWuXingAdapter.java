@@ -89,6 +89,11 @@ public class RegisterCardWuXingAdapter extends RecyclerView.Adapter<RegisterCard
             @Override
             public void onClick(View v) {
 
+                //设置监听回调
+                if (registerWuXingOnItemClick != null) {
+                    registerWuXingOnItemClick.wuXingOnItemClick(position);
+                }
+
                 for (int i = 0; i < 5; i++) {
                     isCheck.set(i, false);
                 }
@@ -96,12 +101,6 @@ public class RegisterCardWuXingAdapter extends RecyclerView.Adapter<RegisterCard
                 isCheck.set(position, true);
 
                 notifyDataSetChanged();
-
-                //设置监听回调
-                if (registerWuXingOnItemClick != null) {
-                    registerWuXingOnItemClick.wuXingOnItemClick(position);
-                }
-
             }
         });
     }
@@ -123,5 +122,9 @@ public class RegisterCardWuXingAdapter extends RecyclerView.Adapter<RegisterCard
             ButterKnife.bind(this, itemView);
             view = itemView;
         }
+    }
+
+    public boolean getSelectStatus(int position) {
+        return isCheck.get(position);
     }
 }

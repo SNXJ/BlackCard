@@ -18,6 +18,9 @@ import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -34,8 +37,6 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
     private CircleCenterRecyclerAdapter circleCenterRecyclerAdapter;
 
-    private ProgressDialog progressDialog;
-
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_circle_center);
@@ -45,9 +46,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
     private void iniData() {
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("请等待...");
-        progressDialog.show();
+        UIUtils.newProgressDialog(this).show();
 
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterRecycle(DataManager.getMd5Str("CIRCLELIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyCircleModel>() {
             @Override
@@ -70,7 +69,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
             @Override
             public void onCompleted() {
-                progressDialog.dismiss();
+                UIUtils.dismissProgressDialog();
             }
         });
 
@@ -94,7 +93,8 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
     }
 
     private void initYeah(String circle_id) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterYeah(DataManager.getMd5Str("DOTAGREE"), "d6a3779de8204dfd9359403f54f7d27c", circle_id), new ResultListener<ResultModel>() {
+
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterYeah(DataManager.getMd5Str("DOTAGREE"), "d6a3779de8204dfd9359403f54f7d27c", circle_id, "", "1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

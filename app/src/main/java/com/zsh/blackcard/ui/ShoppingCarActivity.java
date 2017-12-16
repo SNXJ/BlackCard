@@ -58,7 +58,9 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
                 shopping_car_recycler.setLayoutManager(new LinearLayoutManager(ShoppingCarActivity.this));
                 shopping_car_recycler.addItemDecoration(new SpacesItemDecoration(ShoppingCarActivity.this, SpacesItemDecoration.VERTICAL_LIST));
                 shopping_car_recycler.setAdapter(shoppingCarAdapter);
+                //侧滑删除会和普通的行布局点击时间发生点击事件冲突
                 shoppingCarAdapter.setOnItemChildClickListener(ShoppingCarActivity.this);
+                //此时把整个行布局的id绑定为子控件点击事件。
             }
 
             @Override
@@ -71,12 +73,23 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         switch (view.getId()) {
+            //侧滑点击
             case R.id.shopping_car_item_right_delete:
                 pdBeanList.remove(position);
                 UIUtils.showToast("删除成功");
                 shoppingCarAdapter.notifyItemRemoved(position);
                 shoppingCarAdapter.notifyItemRangeChanged(position, pdBeanList.size());
+                UIUtils.showToast("ASDaaaaaa");
+                break;
+                //整个行布局的RelativeLayout点击
+            case R.id.shopping_car_item_relative:
+                UIUtils.showToast("222222");
+                break;
+                //其他子控件点击
+            case R.id.shopping_car_item_cb:
+                UIUtils.showToast("1111111");
                 break;
         }
     }
+
 }

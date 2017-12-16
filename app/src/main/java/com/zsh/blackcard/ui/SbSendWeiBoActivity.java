@@ -93,7 +93,7 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
             pary.clear();
         }
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", "振华大宝贝儿", pary, localMedia), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", send_weiBo_et.getText().toString(), pary, localMedia,"1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

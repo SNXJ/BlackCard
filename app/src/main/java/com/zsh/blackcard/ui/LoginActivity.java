@@ -41,9 +41,8 @@ public class LoginActivity extends BaseActivity {
         switch (view.getId()) {
             //登录
             case R.id.login_btn:
-                ActivityUtils.startActivity(this, MainActivity.class);
-                finish();
-                // doLogin();
+                //登录
+                initLogin();
                 break;
             //在线申请
             case R.id.login_register_tv:
@@ -57,16 +56,20 @@ public class LoginActivity extends BaseActivity {
     }
 
     //登录方法
-    private void doLogin() {
+    private void initLogin() {
         if (TextUtils.isEmpty(login_user_et.getText().toString().trim()) || TextUtils.isEmpty(login_pass_et.getText().toString().trim())) {
             UIUtils.showToast("帐号或密码不能为空");
         } else {
-            DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postLoginCard(DataManager.getMd5Str("LOGIN"), login_user_et.getText().toString().trim(), DataManager.getMd5PassWord(login_pass_et.getText().toString().trim())), new ResultListener<LoginModel>() {
+            DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postLoginCard(DataManager.getMd5Str("LOGIN"), login_user_et.getText().toString().trim(), login_pass_et.getText().toString().trim()), new ResultListener<LoginModel>() {
                 @Override
                 public void responseSuccess(LoginModel obj) {
-
-                    if (obj.getResult().equals("04")) {
-                        UIUtils.showToast("帐号或密码错误");
+                    if (obj.getResult().equals("01")) {
+                        ActivityUtils.startActivity(LoginActivity.this, MainActivity.class);
+                        finish();
+                    } else if (obj.getResult().equals("06")) {
+                        UIUtils.showToast("密码错误");
+                    } else if (obj.getResult().equals("04")) {
+                        UIUtils.showToast("没有该卡号");
                     }
                 }
 

@@ -41,7 +41,7 @@ public class SecurityLoginActivity extends BaseActivity {
                 if (!TextUtils.isEmpty(activity_security_original_et.getText().toString()) && !TextUtils.isEmpty(activity_security_new_et.getText().toString()) && !TextUtils.isEmpty(activity_security_new_again_et.getText().toString()) && activity_security_new_et.getText().toString().equals(activity_security_new_again_et.getText().toString())) {
                     initChangePassWord();
                 } else {
-                    UIUtils.showToast("两次密码输入不一致");
+                    UIUtils.showToast("密码不能为空或输入错误");
                 }
                 break;
         }
@@ -54,6 +54,8 @@ public class SecurityLoginActivity extends BaseActivity {
                 if (obj.getResult().equals("01")) {
                     UIUtils.showToast("修改密码成功");
                     finish();
+                } else if (obj.getResult().equals("06")) {
+                    UIUtils.showToast("您的原始密码不正确");
                 }
             }
 

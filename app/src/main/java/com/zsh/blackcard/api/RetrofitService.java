@@ -62,11 +62,15 @@ import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
 
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.MyPowerImageModel;
+import com.zsh.blackcard.model.MyPowerModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
+import com.zsh.blackcard.model.RegisterCardTypeModel;
+import com.zsh.blackcard.model.RegisterChangeNumberModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SettingUserInfoModel;
@@ -365,7 +369,8 @@ public interface RetrofitService {
     Observable<ResultModel> postSendWeiBo(@Query("FKEY") String md5,
                                           @Query("HONOURUSER_ID") String HONOURUSER_ID,
                                           @Query("CONTENT") String CONTENT,
-                                          @Part List<MultipartBody.Part> fileList);
+                                          @Part List<MultipartBody.Part> fileList,
+                                          @Query("TYPE") String type);
 
     /**
      * 上传多张
@@ -631,7 +636,9 @@ public interface RetrofitService {
     @POST("appcirclein/dotAgree.do?")
     Observable<ResultModel> postCircleCenterYeah(@Field("FKEY") String md5,
                                                  @Field("HONOURUSER_ID") String HONOURUSER_ID,
-                                                 @Field("CIRCLE_ID") String CIRCLE_ID);
+                                                 @Field("CIRCLE_ID") String CIRCLE_ID,
+                                                 @Field("COMMENT_ID") String COMMENT_ID,
+                                                 @Field("STATUS") String status);
 
     //圈子中心获取评论接口
     @FormUrlEncoded
@@ -719,5 +726,28 @@ public interface RetrofitService {
     @POST("appmusicin/getsonglist?")
     Observable<MusicSingerSongsModel> getSingerSongs(@Field("FKEY") String md5, @Field("tinguid") String tinguid, @Field("offset") String offset);
 
+    //能量值各能量接口
+    @FormUrlEncoded
+    @POST("appengrgyin/energylist.do?")
+    Observable<MyPowerModel> postMyPower(@Field("FKEY") String md5,
+                                         @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //注册时，选择卡种类所对应的图片
+    @FormUrlEncoded
+    @POST("appbootpagein/getcardimgs?")
+    Observable<RegisterCardTypeModel> postRegisterCardType(@Field("FKEY") String md5,
+                                                           @Field("CARDTYPE_ID") String CARDTYPE_ID);
+
+    //注册时，选择卡号，手选功能接口
+    @FormUrlEncoded
+    @POST("appbootpagein/getcardnum?")
+    Observable<RegisterChangeNumberModel> postRegisterChangeNumber(@Field("FKEY") String md5,
+                                                                   @Field("CARDTYPE_ID") String CARDTYPE_ID);
+
+    //能量值曲线图接口
+    @FormUrlEncoded
+    @POST("appengrgyin/energyvaluemonth.do?")
+    Observable<MyPowerImageModel> postPowerImage(@Field("FKEY") String md5,
+                                                @Field("HONOURUSER_ID") String HONOURUSER_ID);
 }
 

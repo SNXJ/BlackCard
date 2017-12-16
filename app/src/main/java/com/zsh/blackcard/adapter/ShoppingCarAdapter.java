@@ -28,6 +28,10 @@ public class ShoppingCarAdapter extends BaseQuickAdapter<ShoppingCarModel.PdBean
         helper.setText(R.id.shopping_car_price_tv,"￥"+item.getPROPRICE());
         helper.setText(R.id.shopping_car_number_et,String.valueOf(item.getPRODUCTCOUNT()));
         Glide.with(mContext).load(item.getPROSHOWIMG()).into((ImageView) helper.getView(R.id.shopping_car_icon_img));
+        //侧滑删除绑定点击
         helper.addOnClickListener(R.id.shopping_car_item_right_delete);
+        //这是整个行布局的id绑定点击
+        helper.addOnClickListener(R.id.shopping_car_item_relative);
+        helper.addOnClickListener(R.id.shopping_car_item_cb);
     }
 }

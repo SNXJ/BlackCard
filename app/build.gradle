@@ -112,5 +112,7 @@ dependencies {
 
     //歌词
     compile 'me.wcy:lrcview:2.0.1'
+    //添加曲线图库
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
 }

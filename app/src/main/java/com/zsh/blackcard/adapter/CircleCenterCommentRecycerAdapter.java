@@ -39,15 +39,21 @@ public class CircleCenterCommentRecycerAdapter extends BaseMultiItemQuickAdapter
                 helper.setText(R.id.circle_center_comment_item_content_tv, item.getCOMCONTENT());
                 helper.setText(R.id.circle_center_comment_item_time_tv, item.getCOMMENTTIME().substring(0, 10));
                 helper.setText(R.id.circle_center_comment_item_name_tv, item.getCOMMENTNICKNAME());
+                helper.setText(R.id.circle_center_comment_item_up_number_tv,String.valueOf(item.getDotAgreeCount()));
+                helper.setText(R.id.circle_center_comment_item_down_number_tv,String.valueOf(item.getLossAgreeCount()));
                 break;
             case CircleCenterCommentRecyclerModel.PdBean.REPLY:
                 Glide.with(mContext).load(item.getPORTRAIT()).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(mContext))).into((ImageView) helper.getView(R.id.circle_center_comment_item_head_img));
                 helper.setText(R.id.circle_center_comment_item_content_tv, item.getCOMCONTENT());
                 helper.setText(R.id.circle_center_comment_item_time_tv, item.getCOMMENTTIME().substring(0, 10));
-                helper.setText(R.id.circle_center_comment_item_name_tv, item.getREPLYNICKNAME());
-                helper.setText(R.id.circle_center_comment_item_right_name_tv, item.getCOMMENTNICKNAME());
+                helper.setText(R.id.circle_center_comment_item_name_tv, item.getCOMMENTNICKNAME());
+                helper.setText(R.id.circle_center_comment_item_right_name_tv, item.getREPLYNICKNAME());
+                helper.setText(R.id.circle_center_comment_item_up_number_tv,String.valueOf(item.getDotAgreeCount()));
+                helper.setText(R.id.circle_center_comment_item_down_number_tv,String.valueOf(item.getLossAgreeCount()));
                 break;
         }
-
+        helper.addOnClickListener(R.id.circle_center_comment_reply_tv);
+        helper.addOnClickListener(R.id.circle_center_comment_item_up_img);
+        helper.addOnClickListener(R.id.circle_center_comment_item_down_img);
     }
 }

@@ -1,6 +1,7 @@
 package com.zsh.blackcard.untils;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.zsh.blackcard.BaseApplication;
 public class UIUtils {
     private static Toast mToast;
     private static AlertDialog dialog;
+    private static ProgressDialog progressDialog;
     /**
      * 防止重复点击
      */
@@ -182,5 +184,21 @@ public class UIUtils {
         }
         lastClickTime = time;
         return false;
+    }
+
+    /**
+     * 封装等待提示框
+     *
+     * @param context
+     * @return
+     */
+    public static ProgressDialog newProgressDialog(Context context) {
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("请稍等...");
+        return progressDialog;
+    }
+
+    public static void dismissProgressDialog() {
+        progressDialog.dismiss();
     }
 }

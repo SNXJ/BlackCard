@@ -95,6 +95,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 显示软键盘
+     *
+     * @param view
+     */
+    protected void showInputSoft(View view) {
+        view.setFocusable(true);
+        view.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+
     //权限
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
