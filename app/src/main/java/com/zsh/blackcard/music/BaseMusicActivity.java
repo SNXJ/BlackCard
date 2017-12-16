@@ -18,7 +18,7 @@ import com.zsh.blackcard.untils.LogUtils;
  * Description:描述：
  */
 public abstract class BaseMusicActivity extends BaseActivity {
-//    protected Handler mHandler = new Handler(Looper.getMainLooper());
+    //    protected Handler mHandler = new Handler(Looper.getMainLooper());
     PlayService playService = null;
     PlayServiceConnection mPlayServiceConnection;
 
@@ -62,7 +62,7 @@ public abstract class BaseMusicActivity extends BaseActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
             playService = ((PlayService.PlayBinder) service).getService();
             AppCache.setPlayService(playService);
-            bindServerCompleted();
+//            bindServerCompleted();
         }
 
         @Override
@@ -70,13 +70,19 @@ public abstract class BaseMusicActivity extends BaseActivity {
         }
     }
 
-    public abstract void bindServerCompleted();
+//    public abstract void bindServerCompleted();
 
     @Override
     protected void onDestroy() {
+//        if (mPlayServiceConnection != null) {
+//            unbindService(mPlayServiceConnection);
+//        }
+        super.onDestroy();
+    }
+
+    public void destroyService() {
         if (mPlayServiceConnection != null) {
             unbindService(mPlayServiceConnection);
         }
-        super.onDestroy();
     }
 }

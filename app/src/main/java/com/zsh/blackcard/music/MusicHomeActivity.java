@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
 
-import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.music.fragment.MusicDjFragment;
 import com.zsh.blackcard.music.fragment.MusicLibraryFragment;
@@ -23,7 +22,7 @@ import butterknife.OnClick;
  * Date: 2017-12-13
  * Description:音乐入口
  */
-public class MusicHomeActivity extends BaseActivity {
+public class MusicHomeActivity extends BaseMusicActivity {
     String type;
     @BindView(R.id.title_tv)
     TextView titleTv;
@@ -34,13 +33,19 @@ public class MusicHomeActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
 
+
     @Override
-    protected void initUI() {
+    protected void initView() {
         setContentView(R.layout.music_home_activity);
         ButterKnife.bind(this);
         type = getIntent().getStringExtra("data");
         initData();
     }
+
+//    @Override
+//    public void bindServerCompleted() {
+//
+//    }
 
     private void initData() {
         if (null == savedInstanceState) {
@@ -83,4 +88,9 @@ public class MusicHomeActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        destroyService();
+    }
 }

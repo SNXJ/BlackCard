@@ -135,6 +135,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     protected void initView() {
         setContentView(R.layout.music_details);
         ButterKnife.bind(this);
+        bindServerCompleted();
         initData();
     }
 
@@ -380,7 +381,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         dialogDismiss();
     }
 
-    private static List<Music> mMusicList = new ArrayList<>();
+    private List<Music> mMusicList = new ArrayList<>();
 
 
     private Music getMusicbyId(final String songId) {
@@ -481,7 +482,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         });
     }
 
-    @Override
+    //    @Override
     public void bindServerCompleted() {
         getPlayService().setOnPlayEventListener(this);
         onChangeImpl(getPlayService().getPlayingMusic());
