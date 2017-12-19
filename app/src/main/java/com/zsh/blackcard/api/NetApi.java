@@ -66,9 +66,12 @@ import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
 
+import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.MyPowerImageModel;
 import com.zsh.blackcard.model.MyPowerModel;
+import com.zsh.blackcard.model.MyTestMode;
+import com.zsh.blackcard.model.MyVipCenterModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
@@ -88,6 +91,8 @@ import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
@@ -1300,5 +1305,46 @@ public class NetApi {
      */
     public Observable<MyPowerImageModel> postPowerImage(String md5, String user_id) {
         return retrofitService.postPowerImage(md5, user_id);
+    }
+
+    /**
+     * 我的界面Vip中心接口
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<MyVipCenterModel> postMyVipCenter(String md5, String user_id) {
+        return retrofitService.postMyVipCenter(md5, user_id);
+    }
+
+    /**
+     * 订单中心评论订单接口
+     *
+     * @param md5
+     * @param PRODUCT_ID
+     * @param HONOURUSER_ID
+     * @param EVALUATECONTENT
+     * @param EVALUATECOINT
+     * @param ISSHOW
+     * @return
+     */
+    public Observable<ResultModel> postOrderCenterComment(String md5, String PRODUCT_ID, String HONOURUSER_ID, String EVALUATECONTENT, String EVALUATECOINT, String ISSHOW) {
+        return retrofitService.postOrderCenterComment(md5, PRODUCT_ID, HONOURUSER_ID, EVALUATECONTENT, EVALUATECOINT, ISSHOW);
+    }
+
+    /**
+     * 我的界面，获取头像、优惠券、黑咖币、能量值
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public Observable<MyDisBlackPowerModel> postDisBlackPower(String md5, String user_id) {
+        return retrofitService.postDisBlackPower(md5, user_id);
+    }
+
+    public Observable<String> ppp(String md5, String ppp) {
+        return retrofitService.ppp(md5, ppp);
     }
 }

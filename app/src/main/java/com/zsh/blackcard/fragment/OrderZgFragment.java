@@ -33,7 +33,7 @@ public class OrderZgFragment extends BaseFragment {
     @Override
     public View initView(LayoutInflater inflater) {
         View view = inflater.inflate(R.layout.order_zg_fragment, null);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -70,6 +70,7 @@ public class OrderZgFragment extends BaseFragment {
             case R.id.my_order_customer_rb:
                 ActivityUtils.startActivity(getActivity(), CusCenterChatActivity.class);
                 break;
+            //优惠券
             case R.id.my_order_discount_rb:
                 ActivityUtils.startActivity(getActivity(), DiscountCouponActivity.class);
                 break;

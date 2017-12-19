@@ -22,14 +22,15 @@
 
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/im_avatar"
             android:layout_width="@dimen/base50dp"
             android:layout_height="@dimen/base50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:src="@mipmap/my_headimg" />
+            android:layout_marginTop="@dimen/base15dp" />
 
         <TextView
+            android:id="@+id/my_nick_name_tv"
             style="@style/my_number_tv"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/base10dp"
@@ -48,12 +49,12 @@
 
                 <TextView
                     style="@style/my_number_tv"
-                    android:text="好友"
+                    android:text="优惠券"
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/my_dis_count_tv"
                     style="@style/my_number_tv"
-                    android:text="99"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -69,8 +70,8 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/my_black_count_tv"
                     style="@style/my_number_tv"
-                    android:text="99"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -88,8 +89,8 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/my_power_count_tv"
                     style="@style/my_number_tv"
-                    android:text="99"
                     android:textSize="18sp" />
 
             </LinearLayout>

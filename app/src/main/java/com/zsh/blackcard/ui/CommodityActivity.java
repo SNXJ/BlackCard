@@ -68,6 +68,7 @@ public class CommodityActivity extends BaseActivity implements BaseQuickAdapter.
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        //跳转至商品详情页面
         ActivityUtils.startActivityForData(this,CommodityDetailBannerActivity.class,((ZgShopAreaModel.PdBean)adapter.getData().get(position)).getPRODUCT_ID());
     }
 }

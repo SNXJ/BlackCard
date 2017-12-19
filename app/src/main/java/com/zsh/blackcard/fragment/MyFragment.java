@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -19,10 +20,12 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.ChooseImageDialog;
 import com.zsh.blackcard.custom.GlideCircleTransform;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.ui.BlackCurrencyActivity;
 import com.zsh.blackcard.ui.CircleCenterActivity;
 import com.zsh.blackcard.ui.CusCenterChatActivity;
+import com.zsh.blackcard.ui.DiscountCouponActivity;
 import com.zsh.blackcard.ui.HouseCenterActivity;
 import com.zsh.blackcard.ui.HuoDongActivity;
 import com.zsh.blackcard.ui.MyFriendActivity;
@@ -51,10 +54,34 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
     @BindView(R.id.im_avatar)
     ImageView imAvatar;
+    @BindView(R.id.my_nick_name_tv)
+    TextView my_nick_name_tv;
+    @BindView(R.id.my_dis_count_tv)
+    TextView my_dis_count_tv;
+    @BindView(R.id.my_black_count_tv)
+    TextView my_black_count_tv;
+    @BindView(R.id.my_power_count_tv)
+    TextView my_power_count_tv;
 
     @Override
     public void initDate(Bundle savedInstanceState) {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postDisBlackPower(DataManager.getMd5Str("MYCOUBLACKENERGY"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyDisBlackPowerModel>() {
+            @Override
+            public void responseSuccess(MyDisBlackPowerModel obj) {
+                if(obj.getResult().equals("01")){
+                    my_nick_name_tv.setText(obj.getMy().getNICKNAME());
+                    my_dis_count_tv.setText(String.valueOf(obj.getMy().getCOUPON()));
+                    my_black_count_tv.setText(String.valueOf(obj.getMy().getBLACKCOIN()));
+                    my_power_count_tv.setText(String.valueOf(obj.getMy().getENERGY()));
+                    Glide.with(getActivity()).load(obj.getMy().getPORTRAIT()).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(getActivity()))).into(imAvatar);
+                }
+            }
 
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     @Override
@@ -68,6 +95,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     @OnClick({R.id.my_vip_center_relative, R.id.my_house_center_relative, R.id.my_circle_center_relative, R.id.my_huodong_center_relative, R.id.my_shop_center_relative, R.id.my_customer_center_relative, R.id.my_wallet_center_relative, R.id.my_game_center_relative, R.id.my_order_center_relative, R.id.my_setting_center_relative, R.id.my_friend_linear, R.id.my_black_linear, R.id.my_power_linear})
     public void onClick(View view) {
         switch (view.getId()) {
+            //会员中心
             case R.id.my_vip_center_relative:
                 ActivityUtils.startActivity(getActivity(), VipCenterActivity.class);
                 break;
@@ -94,6 +122,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_game_center_relative:
                 ActivityUtils.startActivity(getActivity(), GameCenterActivity.class);
                 break;
+            //订单中心
             case R.id.my_order_center_relative:
                 ActivityUtils.startActivity(getActivity(), OrderCenterActivity.class);
                 break;
@@ -101,7 +130,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 ActivityUtils.startActivity(getActivity(), MySettingActivity.class);
                 break;
             case R.id.my_friend_linear:
-                ActivityUtils.startActivity(getActivity(), MyFriendActivity.class);
+                ActivityUtils.startActivity(getActivity(), DiscountCouponActivity.class);
                 break;
             case R.id.my_black_linear:
                 ActivityUtils.startActivity(getActivity(), BlackCurrencyActivity.class);

@@ -61,9 +61,12 @@ import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
 
+import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.MyPowerImageModel;
 import com.zsh.blackcard.model.MyPowerModel;
+import com.zsh.blackcard.model.MyTestMode;
+import com.zsh.blackcard.model.MyVipCenterModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
@@ -84,6 +87,8 @@ import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
+
+import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Map;
@@ -748,6 +753,34 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appengrgyin/energyvaluemonth.do?")
     Observable<MyPowerImageModel> postPowerImage(@Field("FKEY") String md5,
-                                                @Field("HONOURUSER_ID") String HONOURUSER_ID);
+                                                 @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //我的界面Vip中心接口
+    @FormUrlEncoded
+    @POST("appuserin/getmemberinfo.do?")
+    Observable<MyVipCenterModel> postMyVipCenter(@Field("FKEY") String md5,
+                                                 @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //订单中心评论接口
+    @FormUrlEncoded
+    @POST("appshipin/sproductaddeva.do?")
+    Observable<ResultModel> postOrderCenterComment(@Field("FKEY") String md5,
+                                                   @Field("PRODUCT_ID") String PRODUCT_ID,
+                                                   @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                                   @Field("EVALUATECONTENT") String EVALUATECONTENT,
+                                                   @Field("EVALUATECOINT") String EVALUATECOINT,
+                                                   @Field("ISSHOW") String ISSHOW);
+
+    //我的界面获取头像、优惠券、黑咖币、能量值
+    @FormUrlEncoded
+    @POST("appuserin/getmycoublackenergy.do?")
+    Observable<MyDisBlackPowerModel> postDisBlackPower(@Field("FKEY") String md5,
+                                                       @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //商品详情接口
+    @FormUrlEncoded
+    @POST("appshipin/shipdetails.do?")
+    Observable<String> ppp(@Field("FKEY") String md5,
+                               @Field("PRODUCT_ID") String PRODUCT_ID);
 }
 

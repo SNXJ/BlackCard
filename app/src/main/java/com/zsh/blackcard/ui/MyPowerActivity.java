@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -105,6 +106,10 @@ public class MyPowerActivity extends BaseActivity {
     protected void initUI() {
         setContentView(R.layout.activity_my_power);
         ButterKnife.bind(this);
+
+        my_power_lineChart.setNoDataText("正在加载...");
+        my_power_lineChart.invalidate();
+
         //请求所有分值接口
         initDate();
         //请求能量曲线图接口
@@ -122,7 +127,7 @@ public class MyPowerActivity extends BaseActivity {
                         ayyayXStr[i] = obj.getPd().get(i).getMonths();
                     }
 
-                    LineDataSet dataSet = new LineDataSet(entryList, "分值");
+                    LineDataSet dataSet = new LineDataSet(entryList, "");
                     //设置线条下部为填充
                     dataSet.setDrawFilled(true);
                     //设置线条下部面积为渐变色
@@ -170,6 +175,8 @@ public class MyPowerActivity extends BaseActivity {
                     yAxisRight.enableGridDashedLine(15f, 10f, 0);
 
                     my_power_lineChart.setData(lineData);
+                    Legend legend = my_power_lineChart.getLegend();
+                    legend.setFormSize(0);
                     //不绘制图表右下角描述文字
                     my_power_lineChart.setDescription(null);
                     //禁止所有手势
