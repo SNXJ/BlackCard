@@ -81,7 +81,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
     //点击tab
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-
         if (tab.getText().toString().equals("全部")) {
             postMyAppointOrder();
         } else if (tab.getText().toString().equals("待付款")) {
@@ -93,8 +92,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
         } else if (tab.getText().toString().equals("退款售后")) {
             postMyAppointOrder("0040004");
         }
-
-
     }
 
     /**
@@ -126,8 +123,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                 } else {
                     pdBeanList.clear();
                 }
-
-
                 loadRecycler();
             }
 
@@ -184,8 +179,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                 } else {
                     pdBeanList.clear();
                 }
-
-
                 loadRecycler();
             }
 
@@ -218,8 +211,23 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
             case R.id.my_order_ok_tv:
                 initOk(my_order_tabLayout.getSelectedTabPosition(), ((MyOrderModel.PdBean) adapter.getData().get(position)).getORDERNUMBER());
                 break;
+            //评价按钮
+            case R.id.my_order_comment_tv:
+                //跳转至评论页面
+//                ActivityUtils.startActivityForData(this,MyOrderCenterEditActivity.class,((MyOrderModel.PdBean)adapter.getData().get(position)).getPRODUCT_ID());
+                Intent intent = new Intent(this, MyOrderCenterEditActivity.class);
+                intent.putExtra("data", ((MyOrderModel.PdBean) adapter.getData().get(position)).getPRODUCT_ID());
+                startActivityForResult(intent, 0);
+                break;
         }
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            postMyAppointOrder("0040003");
+        }
     }
 
     private void initOk(final int selectedTabPosition, String order_number) {

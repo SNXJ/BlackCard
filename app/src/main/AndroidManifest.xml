@@ -220,6 +220,7 @@
 
         <activity android:name=".music.MusicDetailActivity" />
         <activity android:name=".music.MusicHomeActivity" />
+        <activity android:name=".ui.MyOrderCenterEditActivity"/>
 
         <service android:name=".music.service.PlayService" />
 

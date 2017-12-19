@@ -91,5 +91,4 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
                 break;
         }
     }
-
 }

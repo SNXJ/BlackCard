@@ -17,6 +17,13 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.MyTestMode;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +79,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                     commodity_detail_banner_scrollview.smoothScrollTo(0, detail_height);
                     break;
                 case 2:
-                    commodity_detail_banner_scrollview.smoothScrollTo(0,comment_height);
+                    commodity_detail_banner_scrollview.smoothScrollTo(0, comment_height);
                     break;
             }
             return false;
@@ -90,7 +97,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         //获取整个商品区的底部距离顶端的距离
         shop_height = commodity_detail_table.getBottom() - rgHeight;
         //获取商品详情距离顶部的距离
-        detail_bottom_height = commodity_detail_three_img.getBottom()-rgHeight;
+        detail_bottom_height = commodity_detail_three_img.getBottom() - rgHeight;
         detail_height = commodity_detail_one_img.getTop() - rgHeight;
         //获取商品评论距离顶部的距离
         comment_height = commodity_detail_comment_relative.getTop() - rgHeight;
@@ -101,7 +108,18 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         setContentView(R.layout.activity_commodity_detail_banner);
         ButterKnife.bind(this);
 
+        //请求数据
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).ppp(DataManager.getMd5Str("SHIPDT"), "388354150699630592"), new ResultListener<String>() {
+            @Override
+            public void responseSuccess(String obj) {
 
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
 
         listImage.add(R.mipmap.shopping_image_1);
         listImage.add(R.mipmap.shopping_image_1);
@@ -113,7 +131,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         commodity_detail_banner.setImages(listImage);
         commodity_detail_banner.isAutoPlay(false);
         commodity_detail_banner.start();
-        commodity_detail_banner_scrollview.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) this);
+        commodity_detail_banner_scrollview.setOnScrollChangeListener(this);
     }
 
     public class MyImageLoader extends ImageLoader {
@@ -126,7 +144,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     }
 
     //商品，详情，评论点击。此处针对RadioButton点击采用OnClick监听。实现多次点击同一按钮依然可以响应事件。
-    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb,R.id.blackwb_back})
+    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb, R.id.blackwb_back})
     public void radioButtonOnClick(View view) {
         switch (view.getId()) {
             case R.id.commodity_detail_banner_left_rb:
