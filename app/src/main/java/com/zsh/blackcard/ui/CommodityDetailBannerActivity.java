@@ -5,32 +5,43 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.CommodityDetailCommentAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.MyTestMode;
+import com.zsh.blackcard.model.CommodityDetailModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.ResponseBody;
 
 /**
  * Created by kkkkk on 2017/11/17.
@@ -38,8 +49,6 @@ import butterknife.OnClick;
  */
 
 public class CommodityDetailBannerActivity extends BaseActivity implements NestedScrollView.OnScrollChangeListener {
-
-    private List<Integer> listImage = new ArrayList<>();
 
     @BindView(R.id.commodity_detail_banner_scrollview)
     NestedScrollView commodity_detail_banner_scrollview;
@@ -57,12 +66,18 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     Banner commodity_detail_banner;
     @BindView(R.id.commodity_detail_table)
     TableLayout commodity_detail_table;
+    @BindView(R.id.commodity_detail_comment_recycler)
+    RecyclerView commodity_detail_comment_recycler;
+    private CommodityDetailCommentAdapter commodityDetailCommentAdapter;
+
     @BindView(R.id.commodity_detail_one_img)
     ImageView commodity_detail_one_img;
-    @BindView(R.id.commodity_detail_comment_relative)
-    RelativeLayout commodity_detail_comment_relative;
     @BindView(R.id.commodity_detail_three_img)
     ImageView commodity_detail_three_img;
+    @BindView(R.id.commodity_detail_type_tv)
+    TextView commodity_detail_type_tv;
+    @BindView(R.id.commodity_detail_price_tv)
+    TextView commodity_detail_price_tv;
 
     int rgHeight;
     int commodity_detail_banner_height;
@@ -86,33 +101,62 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         }
     });
 
-    //计算滑动距离
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        //获取commodity_detail_banner_rg高度
-        rgHeight = commodity_detail_banner_rg.getHeight();
-        //获取banner与title的差高度
-        commodity_detail_banner_height = commodity_detail_banner.getHeight() - rgHeight;
-        //获取整个商品区的底部距离顶端的距离
-        shop_height = commodity_detail_table.getBottom() - rgHeight;
-        //获取商品详情距离顶部的距离
-        detail_bottom_height = commodity_detail_three_img.getBottom() - rgHeight;
-        detail_height = commodity_detail_one_img.getTop() - rgHeight;
-        //获取商品评论距离顶部的距离
-        comment_height = commodity_detail_comment_relative.getTop() - rgHeight;
-    }
-
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_commodity_detail_banner);
         ButterKnife.bind(this);
-
+        final Gson gson = new Gson();
         //请求数据
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).ppp(DataManager.getMd5Str("SHIPDT"), "388354150699630592"), new ResultListener<String>() {
-            @Override
-            public void responseSuccess(String obj) {
+        initData(gson);
+    }
 
+    private void initData(final Gson gson) {
+        commodity_detail_comment_recycler.setNestedScrollingEnabled(false);
+        //请求数据
+        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).commodityDteail(DataManager.getMd5Str("SHIPDT"), "388354150699630592"), new ResultListener<ResponseBody>() {
+            @Override
+            public void responseSuccess(ResponseBody obj) {
+                try {
+                    String string = obj.string();
+                    //先把str转换为bean类
+                    CommodityDetailModel commodityDetailModel = gson.fromJson(string, CommodityDetailModel.class);
+                    //添加banner图片轮播
+                    commodity_detail_banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+                    commodity_detail_banner.setIndicatorGravity(BannerConfig.CENTER);
+                    commodity_detail_banner.setImageLoader(new MyImageLoader());
+                    commodity_detail_banner.setImages(commodityDetailModel.getPd().getPRODUCTIMG());
+                    commodity_detail_banner.isAutoPlay(false);
+                    commodity_detail_banner.start();
+                    commodity_detail_banner_scrollview.setOnScrollChangeListener(CommodityDetailBannerActivity.this);
+                    //设置标题
+                    commodity_detail_type_tv.setText(commodityDetailModel.getPd().getPROTITLE());
+                    //设置价钱
+                    commodity_detail_price_tv.setText("￥" + commodityDetailModel.getPd().getPROPRICE());
+                    //把图片详情转换
+                    JSONObject jsonObject = new JSONObject(string);
+                    JSONObject proproperty = jsonObject.getJSONObject("pd");
+                    //把jsonStr转换为Map
+                    Map mapDetail = JSON.parseObject(proproperty.getJSONObject("PROPROPERTY").toString());
+                    //遍历所有key和value
+                    for (Object objTable : mapDetail.keySet()) {
+                        View view = LayoutInflater.from(CommodityDetailBannerActivity.this).inflate(R.layout.activity_commodity_detail_item, null);
+                        TextView left_tv = (TextView) view.findViewById(R.id.activity_commodity_detail_item_left_tv);
+                        TextView right_tv = (TextView) view.findViewById(R.id.activity_commodity_detail_item_right_tv);
+                        left_tv.setText(objTable.toString());
+                        right_tv.setText(mapDetail.get(objTable).toString());
+                        commodity_detail_table.addView(view);
+                    }
+                    //加载评论区域
+                    commodityDetailCommentAdapter = new CommodityDetailCommentAdapter(R.layout.activity_commodity_detail_comment_item, commodityDetailModel.getEvaList());
+                    commodity_detail_comment_recycler.setLayoutManager(new LinearLayoutManager(CommodityDetailBannerActivity.this));
+                    commodity_detail_comment_recycler.setAdapter(commodityDetailCommentAdapter);
+                    //计算滑动距离
+                    initDistance();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -120,26 +164,34 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
 
             }
         });
+    }
 
-        listImage.add(R.mipmap.shopping_image_1);
-        listImage.add(R.mipmap.shopping_image_1);
-        listImage.add(R.mipmap.shopping_image_1);
+    private void initDistance() {
+        //获取commodity_detail_banner_rg高度
+        rgHeight = commodity_detail_banner_rg.getHeight();
+        //获取banner与title的差高度
+        commodity_detail_banner_height = commodity_detail_banner.getHeight() - rgHeight;
+        //测量动态变化后的tableLayout高度
+        int height = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        commodity_detail_table.measure(height, 0);
 
-        commodity_detail_banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-        commodity_detail_banner.setIndicatorGravity(BannerConfig.CENTER);
-        commodity_detail_banner.setImageLoader(new MyImageLoader());
-        commodity_detail_banner.setImages(listImage);
-        commodity_detail_banner.isAutoPlay(false);
-        commodity_detail_banner.start();
-        commodity_detail_banner_scrollview.setOnScrollChangeListener(this);
+        //获取整个商品区的底部距离顶端的距离
+        shop_height = commodity_detail_table.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
+
+        //获取商品详情距离顶部的距离
+        detail_bottom_height = commodity_detail_three_img.getBottom() + commodity_detail_table.getMeasuredHeight() - rgHeight;
+        //详情区的顶部坐标
+        detail_height = commodity_detail_one_img.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
+        //获取商品评论距离顶部的距离
+        comment_height = commodity_detail_comment_recycler.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
     }
 
     public class MyImageLoader extends ImageLoader {
 
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-            imageView.setScaleType(ImageView.ScaleType.CENTER);
-            imageView.setImageResource((Integer) path);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            Glide.with(context).load(path).into(imageView);
         }
     }
 

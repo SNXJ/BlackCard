@@ -4,9 +4,10 @@ import java.util.List;
 
 /**
  * Created by kkkkk on 2017/12/19.
+ * 商品详情类
  */
 
-public class MyTestMode {
+public class CommodityDetailModel {
 
     /**
      * result : 01

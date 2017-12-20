@@ -433,12 +433,13 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/register_number_zixuan_price_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@+id/register_number_zixuan_tv"
-                        android:text="自选仅需+20元选号费"
+                        android:text="(自选仅需+20元选号费)"
                         android:textColor="#FF929292"
                         android:textSize="11sp" />
 

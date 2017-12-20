@@ -70,7 +70,6 @@ import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.MyPowerImageModel;
 import com.zsh.blackcard.model.MyPowerModel;
-import com.zsh.blackcard.model.MyTestMode;
 import com.zsh.blackcard.model.MyVipCenterModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
@@ -87,12 +86,10 @@ import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgFindModel;
 import com.zsh.blackcard.model.ZgFindTitleModel;
-import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
+import com.zsh.blackcard.model.ZgPersonalTailorDatailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
-
-import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
@@ -101,6 +98,7 @@ import java.util.Map;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import rx.Observable;
 
 /**
@@ -501,7 +499,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<ZgPersonalTailorDetailModel> postZgPersonalTailorDetail(String md5, String id) {
+    public Observable<ZgPersonalTailorDatailModel> postZgPersonalTailorDetail(String md5, String id) {
         return retrofitService.postZgPersonalTailorDetail(md5, id);
     }
 
@@ -1344,7 +1342,14 @@ public class NetApi {
         return retrofitService.postDisBlackPower(md5, user_id);
     }
 
-    public Observable<String> ppp(String md5, String ppp) {
-        return retrofitService.ppp(md5, ppp);
+    /**
+     * 商品详情页面接口
+     *
+     * @param md5
+     * @param PRODUCT_ID
+     * @return
+     */
+    public Observable<ResponseBody> commodityDteail(String md5, String PRODUCT_ID) {
+        return retrofitService.commodityDteail(md5, PRODUCT_ID);
     }
 }

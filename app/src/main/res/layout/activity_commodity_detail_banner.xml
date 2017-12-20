@@ -36,17 +36,17 @@
     </RelativeLayout>
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_above="@+id/commodity_detail_bottom"
         android:id="@+id/commodity_detail_banner_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/commodity_detail_bottom"
         android:layout_below="@+id/commodity_detail_banner_title">
 
         <RelativeLayout
-            android:paddingBottom="@dimen/base10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#101010">
+            android:background="#101010"
+            android:paddingBottom="@dimen/base10dp">
 
             <com.youth.banner.Banner
                 android:id="@+id/commodity_detail_banner"
@@ -63,7 +63,6 @@
                 android:layout_below="@+id/commodity_detail_banner"
                 android:layout_marginLeft="@dimen/base15dp"
                 android:layout_marginTop="@dimen/base5dp"
-                android:text="卡地亚Cartier伦敦SOLO手表 石英男表W6701005"
                 android:textColor="@color/recharge_text"
                 android:textSize="12sp" />
 
@@ -74,7 +73,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/commodity_detail_type_tv"
                 android:layout_marginRight="@dimen/base15dp"
-                android:text="￥41999"
                 android:textColor="@color/recharge_text"
                 android:textSize="12sp" />
 
@@ -95,7 +93,7 @@
                 android:id="@+id/commodity_detail_color_type_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/commodity_detail_news_tv"
+                android:layout_below="@+id/commodity_detail_type_tv"
                 android:layout_marginLeft="@dimen/base15dp"
                 android:layout_marginTop="@dimen/base16dp"
                 android:text="颜色分类"
@@ -205,150 +203,6 @@
                 android:orientation="vertical"
                 android:showDividers="middle|beginning|end">
 
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base40dp"
-                    android:divider="@drawable/dommodity_detial_table_width"
-                    android:showDividers="middle">
-
-                    <TextView
-                        android:layout_width="@dimen/base125dp"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="产地"
-                        android:textColor="@color/recharge_text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="瑞士"
-                        android:textColor="@color/recharge_text" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base40dp"
-                    android:divider="@drawable/dommodity_detial_table_width"
-                    android:showDividers="middle">
-
-                    <TextView
-                        android:layout_width="@dimen/base125dp"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="表径"
-                        android:textColor="@color/recharge_text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="42mm"
-                        android:textColor="@color/recharge_text" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base40dp"
-                    android:divider="@drawable/dommodity_detial_table_width"
-                    android:showDividers="middle">
-
-                    <TextView
-                        android:layout_width="@dimen/base125dp"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="表带材质"
-                        android:textColor="@color/recharge_text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="真皮"
-                        android:textColor="@color/recharge_text" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base40dp"
-                    android:divider="@drawable/dommodity_detial_table_width"
-                    android:showDividers="middle">
-
-                    <TextView
-                        android:layout_width="@dimen/base125dp"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="保修"
-                        android:textColor="@color/recharge_text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="全国联保"
-                        android:textColor="@color/recharge_text" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base40dp"
-                    android:divider="@drawable/dommodity_detial_table_width"
-                    android:showDividers="middle">
-
-                    <TextView
-                        android:layout_width="@dimen/base125dp"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="防水"
-                        android:textColor="@color/recharge_text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="日常生活防水"
-                        android:textColor="@color/recharge_text" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/base40dp"
-                    android:divider="@drawable/dommodity_detial_table_width"
-                    android:showDividers="middle">
-
-                    <TextView
-                        android:layout_width="@dimen/base125dp"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="适用人群"
-                        android:textColor="@color/recharge_text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/base40dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/base25dp"
-                        android:text="男士"
-                        android:textColor="@color/recharge_text" />
-
-                </TableRow>
-
             </TableLayout>
 
             <ImageView
@@ -383,109 +237,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/commodity_detail_two_img"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:src="@mipmap/goods_image_152" />
 
-            <RelativeLayout
-                android:id="@+id/commodity_detail_comment_relative"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/base40dp"
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="@dimen/base10dp"
+                android:id="@+id/commodity_detail_comment_recycler"
                 android:layout_below="@+id/commodity_detail_three_img"
-                android:layout_marginTop="@dimen/base10dp"
-                android:paddingLeft="@dimen/base15dp"
-                android:paddingRight="@dimen/base15dp">
-
-                <ImageView
-                    android:id="@+id/commodity_detail_comment_head_img"
-                    android:layout_width="@dimen/base40dp"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/my_headimg" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/base10dp"
-                    android:layout_marginTop="@dimen/base3dp"
-                    android:layout_toRightOf="@+id/commodity_detail_comment_head_img"
-                    android:text="柯南也要为我哭泣"
-                    android:textColor="@color/recharge_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="@dimen/base3dp"
-                    android:layout_marginLeft="@dimen/base10dp"
-                    android:layout_toRightOf="@+id/commodity_detail_comment_head_img"
-                    android:text="2017-10-11"
-                    android:textColor="@color/recharge_text"
-                    android:textSize="11sp" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/commodity_detail_comment_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/commodity_detail_comment_relative"
-                android:layout_marginLeft="@dimen/base15dp"
-                android:layout_marginRight="@dimen/base15dp"
-                android:layout_marginTop="@dimen/base14dp"
-                android:text="#之前就来过这里，环境很不错，作为我来讲对这种牛排其实是一点都不感冒[撇嘴]，朋友的盛情邀请实在是不好意思拒绝，索性就来瞧瞧，不来不知道，吃过之后给我留下不错的印象，这次来也是带几个朋友来，给他们各种吹嘘这里的好东西多好之类的！！还好吃过之后大家都没有失望的表情。。。总之以后回多多光临的，页希望大家来哦.朋友的盛情邀请实在是不好意思拒绝，索性就来瞧瞧，不来不知道，吃过之后给我留下不错的印象，这次来也是带几个朋友来，给他们各种吹嘘这里的好东西多好之类的！！还好吃过之后大家都没有失望的表情。。。总之以后回多多光临的，页希望大家来哦.#之前就来过这里，环境很不错，作为我来讲对这种牛排其实是一点都不感冒[撇嘴]，朋友的盛情邀请实在是不好意思拒绝，索性就来瞧瞧，不来不知道，吃过之后给我留下不错的印象，这次来也是带几个朋友来，给他们各种吹嘘这里的好东西多好之类的！！还好吃过之后大家都没有失望的表情。。。总之以后回多多光临的，页希望大家来哦.朋友的盛情邀请实在是不好意思拒绝，索性就来瞧瞧，不来不知道，吃过之后给我留下不错的印象，这次来也是带几个朋友来，给他们各种吹嘘这里的好东西多好之类的！！还好吃过之后大家都没有失望的表情。。。总之以后回多多光临的，页希望大家来哦"
-                android:textColor="@color/recharge_text"
-                android:textSize="11sp" />
-
-            <RelativeLayout
-                android:id="@+id/commodity_detail_comment_relative_1"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/base40dp"
-                android:layout_below="@+id/commodity_detail_comment_tv"
-                android:layout_marginTop="@dimen/base10dp"
-                android:paddingLeft="@dimen/base15dp"
-                android:paddingRight="@dimen/base15dp">
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/commodity_detail_comment_head_img_1"
-                    android:layout_width="@dimen/base40dp"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/my_headimg" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/base10dp"
-                    android:layout_marginTop="@dimen/base3dp"
-                    android:layout_toRightOf="@+id/commodity_detail_comment_head_img_1"
-                    android:text="柯南也要为我哭泣"
-                    android:textColor="@color/recharge_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="@dimen/base3dp"
-                    android:layout_marginLeft="@dimen/base10dp"
-                    android:layout_toRightOf="@+id/commodity_detail_comment_head_img_1"
-                    android:text="2017-10-11"
-                    android:textColor="@color/recharge_text"
-                    android:textSize="11sp" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/commodity_detail_comment_tv_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/commodity_detail_comment_relative_1"
-                android:layout_marginLeft="@dimen/base15dp"
-                android:layout_marginRight="@dimen/base15dp"
-                android:layout_marginTop="@dimen/base14dp"
-                android:text="#之前就来过这里，环境很不错，作为我来讲对这种牛排其实是一点都不感冒[撇嘴]，朋友的盛情邀请实在是不好意思拒绝，索性就来瞧瞧，不来不知道，吃过之后给我留下不错的印象，这次来也是带几个朋友来，给他们各种吹嘘这里的好东西多好之类的！！还好吃过之后大家都没有失望的表情。。。总之以后回多多光临的，页希望大家来哦.朋友的盛情邀请实在是不好意思拒绝，索性就来瞧瞧，不来不知道，吃过之后给我留下不错的印象，这次来也是带几个朋友来，给他们各种吹嘘这里的好东西多好之类的！！还好吃过之后大家都没有失望的表情。。。总之以后回多多光临的，页希望大家来哦.#之前就来过这里，环境很不错，作为我来讲对这种牛排其实是一点都不感冒[撇嘴]，朋友的盛情邀请实在是不好意思拒绝，索性就来瞧瞧，不来不知道，吃过之后给我留下不错的印象，这次来也是带几个朋友来，给他们各种吹嘘这里的好东西多好之类的！！还好吃过之后大家都没有失望的表情。。。总之以后回多多光临的，页希望大家来哦.朋友的盛情邀请实在是不好意思拒绝，索性就来瞧瞧，不来不知道，吃过之后给我留下不错的印象，这次来也是带几个朋友来，给他们各种吹嘘这里的好东西多好之类的！！还好吃过之后大家都没有失望的表情。。。总之以后回多多光临的，页希望大家来哦"
-                android:textColor="@color/recharge_text"
-                android:textSize="11sp" />
-
+            </android.support.v7.widget.RecyclerView>
 
         </RelativeLayout>
 
@@ -493,10 +255,10 @@
 
 
     <RadioGroup
-        android:layout_below="@+id/commodity_detail_banner_title"
         android:id="@+id/commodity_detail_banner_rg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base35dp"
+        android:layout_below="@+id/commodity_detail_banner_title"
         android:background="@color/transparent"
         android:orientation="horizontal">
 

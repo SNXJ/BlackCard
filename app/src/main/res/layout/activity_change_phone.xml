@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj">
+
+    <RelativeLayout
+        android:id="@+id/one"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base42dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:scaleType="center"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/my_settng_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="更改手机号码"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/two"
+        android:layout_below="@+id/one"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="当前手机号"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/activity_change_phone_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base100dp"
+            android:textColor="@color/recharge_text"
+            android:textColorHint="#FF454545"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/four"
+        android:layout_below="@+id/two"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="新手机号"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/activity_change_new_phone_tv"
+            android:layout_width="@dimen/base150dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base100dp"
+            android:background="@null"
+            android:inputType="phone"
+            android:hint="请输入新手机号"
+            android:textColor="@color/recharge_text"
+            android:textColorHint="#FF454545"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/activity_remember_send_tv"
+            android:paddingBottom="@dimen/base5dp"
+            android:paddingTop="@dimen/base5dp"
+            android:paddingRight="@dimen/base10dp"
+            android:paddingLeft="@dimen/base10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_toRightOf="@+id/activity_change_new_phone_tv"
+            android:background="@drawable/my_order_cancle_bg"
+            android:gravity="center"
+            android:text="发送验证码"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/four"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="验证码"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/activity_change_code_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base100dp"
+            android:background="@null"
+            android:digits="1234567890"
+            android:hint="请输入验证码"
+            android:textColor="@color/recharge_text"
+            android:textColorHint="#FF454545"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/activity_change_next_tv"
+        android:background="#FF0B0B0B"
+        android:textColor="@color/recharge_text"
+        android:text="下一步"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base49dp" />
+
+</RelativeLayout>

@@ -208,7 +208,6 @@
         <activity android:name=".live.SingleAnchorPlayActivity" />
         <activity android:name=".ui.home.HomeScannerActivity" />
         <activity android:name=".ui.home.HomeScannerWebViewAvyivity" />
-
         <activity android:name=".ui.SbSendWeiBoActivity" />
         <activity android:name=".ui.CircleCenterCommentActivity" />
         <activity android:name=".ui.my.UserInfoActivity" />
@@ -216,11 +215,10 @@
         <activity android:name=".ui.my.SecurityActivity" />
         <activity android:name=".ui.my.SecurityLoginActivity" />
         <activity android:name=".ui.my.SecurityPayActivity" />
-        <activity android:name=".ui.my.ChangeForResultActivity"></activity>
-
+        <activity android:name=".ui.my.ChangeForResultActivity" />
         <activity android:name=".music.MusicDetailActivity" />
         <activity android:name=".music.MusicHomeActivity" />
-        <activity android:name=".ui.MyOrderCenterEditActivity"/>
+        <activity android:name=".ui.MyOrderCenterEditActivity" />
 
         <service android:name=".music.service.PlayService" />
 
@@ -235,6 +233,8 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".ui.RememberPassWordActivity" />
+        <activity android:name=".ui.my.ChangePhoneActivity"></activity>
     </application>
 
 </manifest>
