@@ -219,6 +219,7 @@
         <activity android:name=".music.MusicDetailActivity" />
         <activity android:name=".music.MusicHomeActivity" />
         <activity android:name=".ui.MyOrderCenterEditActivity" />
+        <activity android:name=".live.AbSearchActivity" />
 
         <service android:name=".music.service.PlayService" />
 
@@ -232,7 +233,6 @@
                 <action android:name="STATUS_BAR_ACTIONS" />
             </intent-filter>
         </receiver>
-
         <activity android:name=".ui.RememberPassWordActivity" />
         <activity android:name=".ui.my.ChangePhoneActivity"></activity>
     </application>

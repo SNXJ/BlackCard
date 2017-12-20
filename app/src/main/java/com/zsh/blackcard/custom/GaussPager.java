@@ -11,6 +11,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -28,7 +32,6 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.untils.FastBlur;
 
 /**
-
  * Author: SNXJ
  * Date: 2017-11-18
  * Description:  top 毛玻璃渐变 Tab 悬停：
@@ -154,6 +157,34 @@ public class GaussPager extends LinearLayout {
 
                         ListView lv = (ListView) mInnerScrollView;
                         View c = lv.getChildAt(lv.getFirstVisiblePosition());
+                        // 如果topView没有隐藏
+                        // 或sc的listView在顶部 && topView隐藏 && 下拉，则拦截
+
+                        if (!isTopHidden || //
+                                (c != null //
+                                        && c.getTop() == 0//
+                                        && isTopHidden && dy > 0)) {
+
+                            initVelocityTrackerIfNotExists();
+                            mVelocityTracker.addMovement(ev);
+                            mLastY = y;
+                            return true;
+                        }
+                    } else if (mInnerScrollView instanceof RecyclerView) {
+
+                        RecyclerView rv = (RecyclerView) mInnerScrollView;
+                        RecyclerView.LayoutManager llm = rv.getLayoutManager();
+                        View c;
+                        if (llm instanceof StaggeredGridLayoutManager) {
+                            int[] firstVisibleItems = null;
+                            firstVisibleItems = ((StaggeredGridLayoutManager) llm).findFirstVisibleItemPositions(firstVisibleItems);
+                            c = rv.getChildAt(firstVisibleItems[0]);
+                        } else if (llm instanceof GridLayoutManager) {
+                            c = rv.getChildAt(((GridLayoutManager) llm).findFirstVisibleItemPosition());
+                        } else {
+                            c = rv.getChildAt(((LinearLayoutManager) llm).findFirstVisibleItemPosition());
+                        }
+
                         // 如果topView没有隐藏
                         // 或sc的listView在顶部 && topView隐藏 && 下拉，则拦截
 

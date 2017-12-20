@@ -2,8 +2,6 @@ package com.zsh.blackcard.ui;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +11,7 @@ import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.PublicFragmentAdapter;
 import com.zsh.blackcard.fragment.TicketSearchFragment;
 
 import java.util.ArrayList;
@@ -70,7 +69,7 @@ public class TicketSearchActivity extends BaseActivity {
             fragments.add(new TicketSearchFragment().newInstance(1));
         }
 
-        FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
+        PublicFragmentAdapter adapter = new PublicFragmentAdapter(getSupportFragmentManager(), fragments, title);
         viewpager.setAdapter(adapter);
         viewpager.setOffscreenPageLimit(6);
 
@@ -134,29 +133,5 @@ public class TicketSearchActivity extends BaseActivity {
         finish();
     }
 
-    public class FragmentAdapter extends FragmentPagerAdapter {
 
-        //private String[] title = {"one", "two", "three", "four"};
-        private List<Fragment> fragmentList;
-
-        public FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
-            super(fm);
-            this.fragmentList = fragmentList;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragmentList.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return title[position];
-        }
-    }
 }

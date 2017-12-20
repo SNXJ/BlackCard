@@ -1,14 +1,10 @@
-package com.zsh.blackcard.fragment.sbfragment;
+package com.zsh.blackcard.fragment.Abfragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.zsh.blackcard.BaseFragment;
@@ -30,7 +26,7 @@ import butterknife.OnClick;
  * 尚播的附近
  */
 
-public class NearbyFragment extends BaseFragment {
+public class AbNearbyFragment extends BaseFragment {
 
     @BindView(R.id.sb_change_linear)
     RelativeLayout sb_change_linear;

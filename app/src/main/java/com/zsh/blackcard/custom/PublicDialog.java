@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -30,7 +31,6 @@ import com.zsh.blackcard.live.LiveAnchorDetails2;
 import com.zsh.blackcard.live.LiveOpenActivity;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.SbNearChangeModel;
-import com.zsh.blackcard.ui.BlackWeiboActivity;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.SbSendWeiBoActivity;
 import com.zsh.blackcard.untils.DisplayUtil;
@@ -164,7 +164,7 @@ public class PublicDialog {
      *
      * @param mContext
      */
-    public static void openLiveDialog(final Activity mContext) {
+    public static void openLiveDialog(final Activity mContext, final RadioButton rb_sb2) {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.activity_live_main, null);
         final Dialog dialog = showDialogView(view, mContext);
@@ -174,6 +174,7 @@ public class PublicDialog {
         radialView.setOnListener(new ItemClickListener() {
             @Override
             public void itemClick(int postion) {
+                rb_sb2.setChecked(true);
                 switch (postion) {
                     case 0:
                         dialog.dismiss();

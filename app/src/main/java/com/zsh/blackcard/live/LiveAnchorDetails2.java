@@ -1,5 +1,6 @@
 package com.zsh.blackcard.live;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -7,12 +8,15 @@ import android.widget.RelativeLayout;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.custom.ViewPagerIndicator;
+import com.zsh.blackcard.adapter.PublicFragmentAdapter;
 import com.zsh.blackcard.fragment.live.LiveAnchorDetailWeiBoFragment;
-import com.zsh.blackcard.listener.ItemClickListener;
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.untils.TabLayoutUntil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Name: LiveAnchorDetails
@@ -24,72 +28,31 @@ public class LiveAnchorDetails2 extends BaseActivity {
     @BindView(R.id.id_stickynavlayout_topview)
     RelativeLayout idStickynavlayoutTopview;
 
-    ViewPagerIndicator mIndicator;
+    @BindView(R.id.id_stickynavlayout_indicator)
+    TabLayout tab;
+    @BindView(R.id.id_stickynavlayout_viewpager)
     ViewPager mViewPager;
     private String[] mTitles = new String[]{"黑微博", "小视频", "资料"};
-    private LiveAnchorDetailWeiBoFragment[] mFragments = new LiveAnchorDetailWeiBoFragment[mTitles.length];
-
+    private List<Fragment> fragments = new ArrayList<>();
     private FragmentPagerAdapter mAdapter;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.live_anchor2_details);
-        mIndicator = (ViewPagerIndicator) findViewById(R.id.id_stickynavlayout_indicator);
+        ButterKnife.bind(this);
         mViewPager = (ViewPager) findViewById(R.id.id_stickynavlayout_viewpager);
-
         initDatas();
-        initEvents();
-        mIndicator.setItemOnClick(new ItemClickListener() {
-            @Override
-            public void itemClick(int position) {
-                LogUtils.i("++++++++++", "++++++++position+++++" + position);
-                mViewPager.setCurrentItem(position);
-            }
-        });
-
-    }
-
-    private void initEvents() {
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-            }
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset,
-                                       int positionOffsetPixels) {
-                mIndicator.scroll(position, positionOffset);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
     }
 
     private void initDatas() {
-        mIndicator.setTitles(mTitles);
-
         for (int i = 0; i < mTitles.length; i++) {
-            mFragments[i] = LiveAnchorDetailWeiBoFragment.newInstance(mTitles[i]);
+            fragments.add(LiveAnchorDetailWeiBoFragment.newInstance(mTitles[i]));
         }
-        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public int getCount() {
-                return mTitles.length;
-            }
-
-            @Override
-            public Fragment getItem(int position) {
-                return mFragments[position];
-            }
-
-        };
-
-        mViewPager.setAdapter(mAdapter);
-        mViewPager.setCurrentItem(0);
+        PublicFragmentAdapter adapter = new PublicFragmentAdapter(getSupportFragmentManager(), fragments, mTitles);
+        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setAdapter(adapter);
+        tab.setupWithViewPager(mViewPager);
+        TabLayoutUntil.setTabIndicator(tab, 30, 30);
     }
 
 
