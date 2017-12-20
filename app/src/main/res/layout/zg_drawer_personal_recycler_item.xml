@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/main_black"
-    android:paddingBottom="@dimen/base5dp">
+    android:layout_height="wrap_content">
 
     <ImageView
+        android:scaleType="fitXY"
         android:id="@+id/zg_drawer_personal_recycler_img"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base175dp" />

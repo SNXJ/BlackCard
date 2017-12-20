@@ -65,7 +65,6 @@ import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.MyPowerImageModel;
 import com.zsh.blackcard.model.MyPowerModel;
-import com.zsh.blackcard.model.MyTestMode;
 import com.zsh.blackcard.model.MyVipCenterModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
@@ -83,17 +82,16 @@ import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgFindModel;
 import com.zsh.blackcard.model.ZgFindTitleModel;
-import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
+import com.zsh.blackcard.model.ZgPersonalTailorDatailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
-
-import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -341,8 +339,8 @@ public interface RetrofitService {
 
     //尊购侧滑页面私人定制详情
     @FormUrlEncoded
-    @POST("apppersonalin/personaldet?")
-    Observable<ZgPersonalTailorDetailModel> postZgPersonalTailorDetail(@Field("FKEY") String md5,
+    @POST("apppersonalin/personaldet.do?")
+    Observable<ZgPersonalTailorDatailModel> postZgPersonalTailorDetail(@Field("FKEY") String md5,
                                                                        @Field("PERSONAL_ID") String id);
 
     //炫购收藏列表页面
@@ -780,7 +778,7 @@ public interface RetrofitService {
     //商品详情接口
     @FormUrlEncoded
     @POST("appshipin/shipdetails.do?")
-    Observable<String> ppp(@Field("FKEY") String md5,
-                               @Field("PRODUCT_ID") String PRODUCT_ID);
+    Observable<ResponseBody> commodityDteail(@Field("FKEY") String md5,
+                             @Field("PRODUCT_ID") String PRODUCT_ID);
 }
 

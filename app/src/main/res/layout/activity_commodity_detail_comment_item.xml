@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/commodity_detail_comment_relative"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:layout_below="@+id/commodity_detail_three_img"
+        android:layout_marginTop="@dimen/base10dp"
+        android:paddingLeft="@dimen/base15dp"
+        android:paddingRight="@dimen/base15dp">
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/commodity_detail_comment_head_img"
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/commodity_detail_nick_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_marginTop="@dimen/base3dp"
+            android:layout_toRightOf="@+id/commodity_detail_comment_head_img"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/commodity_detail_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base3dp"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_toRightOf="@+id/commodity_detail_comment_head_img"
+            android:textColor="@color/recharge_text"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/commodity_detail_comment_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/commodity_detail_comment_relative"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base14dp"
+        android:textColor="@color/recharge_text"
+        android:textSize="11sp" />
+
+
+</RelativeLayout>

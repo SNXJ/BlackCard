@@ -43,6 +43,7 @@ public class CircleCenterRecyclerAdapter extends BaseMultiItemQuickAdapter<MyCir
             case MyCircleModel.PdBean.YES:
                 helper.setText(R.id.circle_center_item_title, item.getCONTENT());
                 helper.setText(R.id.circle_center_item_time, item.getPUBLISHTIME());
+                helper.setText(R.id.circle_center_item_yeah_tv, item.getDotAgreeCount()+"赞");
                 helper.setText(R.id.circle_center_item_comment_tv, item.getCommentCount() + "评论");
                 String[] split = item.getSHOWIMAGES().split(",");
                 for (int i = 0; i < split.length; i++) {
@@ -65,6 +66,7 @@ public class CircleCenterRecyclerAdapter extends BaseMultiItemQuickAdapter<MyCir
             case MyCircleModel.PdBean.NO:
                 helper.setText(R.id.circle_center_item_title, item.getCONTENT());
                 helper.setText(R.id.circle_center_item_time, item.getPUBLISHTIME());
+                helper.setText(R.id.circle_center_item_yeah_tv, item.getDotAgreeCount()+"赞");
                 helper.setText(R.id.circle_center_item_comment_tv, item.getCommentCount() + "评论");
                 break;
         }

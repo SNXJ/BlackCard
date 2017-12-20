@@ -98,6 +98,7 @@ public class UserInfoActivity extends BaseActivity {
                     my_setting_info_nick_tv.setText(obj.getUser().getNICKNAME());
                     my_setting_info_name_tv.setText(obj.getUser().getREALNAME());
                     my_setting_info_sex_tv.setText(obj.getUser().getSEX());
+                    my_setting_info_phone_tv.setText(obj.getUser().getPHONE());
                 }
             }
 
@@ -131,6 +132,7 @@ public class UserInfoActivity extends BaseActivity {
                 break;
             //修改电话
             case R.id.my_setting_info_phone_relative:
+                ActivityUtils.startActivityForData(this, ChangePhoneActivity.class, my_setting_info_phone_tv.getText().toString());
                 break;
             //修改QQ
             case R.id.my_setting_info_qq_relative:

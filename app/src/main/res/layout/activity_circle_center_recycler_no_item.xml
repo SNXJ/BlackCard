@@ -70,11 +70,11 @@
             android:src="@mipmap/blog_icon_1" />
 
         <TextView
+            android:id="@+id/circle_center_item_yeah_tv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/base3dp"
             android:gravity="center"
-            android:text="赞"
             android:textColor="@color/recharge_text"
             android:textSize="14sp" />
 
