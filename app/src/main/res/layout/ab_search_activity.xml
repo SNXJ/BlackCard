@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        android:background="@color/main_black">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base30dp"
+            android:layout_marginRight="@dimen/base60dp"
+            android:background="@drawable/sb_search_bg">
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/base28dp"
+                android:background="@drawable/sb_search_bg"
+                android:drawableLeft="@mipmap/home_nav_search"
+                android:drawablePadding="@dimen/base8dp"
+                android:hint="搜索"
+                android:maxLength="15"
+                android:paddingLeft="@dimen/base15dp"
+                android:singleLine="true"
+                android:textColor="#FF929292"
+                android:textColorHint="#FF929292"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/text_"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:text="取消"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <TextView
+        style="@style/text_"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base20dp"
+        android:text="历时搜索"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/history_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base10dp" />
+
+    <TextView
+        style="@style/text_"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base20dp"
+        android:text="热门搜索"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hot_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base10dp" />
+
+</LinearLayout>

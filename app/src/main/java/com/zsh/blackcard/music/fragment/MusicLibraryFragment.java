@@ -3,14 +3,13 @@ package com.zsh.blackcard.music.fragment;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.PublicFragmentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,35 +45,9 @@ public class MusicLibraryFragment extends BaseFragment {
         fragments.add(MusicReOtherFragment.newInstance(1));//精选
         fragments.add(MusicReOtherFragment.newInstance(25));//热歌
         fragments.add(MusicReOtherFragment.newInstance(1));//新歌
-        MusicLibraryFragment.FragmentAdapter adapter = new MusicLibraryFragment.FragmentAdapter(getActivity().getSupportFragmentManager(), fragments);
+        PublicFragmentAdapter adapter = new PublicFragmentAdapter(getActivity().getSupportFragmentManager(), fragments, title);
         musicMianViewpage.setOffscreenPageLimit(4);
         musicMianViewpage.setAdapter(adapter);
         musicMainTab.setupWithViewPager(musicMianViewpage);
-    }
-
-
-    public class FragmentAdapter extends FragmentPagerAdapter {
-
-        private List<Fragment> fragmentList;
-
-        public FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
-            super(fm);
-            this.fragmentList = fragmentList;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragmentList.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return title[position];
-        }
     }
 }
