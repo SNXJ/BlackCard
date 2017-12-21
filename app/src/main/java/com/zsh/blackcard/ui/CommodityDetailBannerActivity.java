@@ -25,6 +25,7 @@ import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.CommodityDetailCommentAdapter;
+import com.zsh.blackcard.adapter.CommodityDetailImgRecyclerAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
@@ -68,12 +69,11 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     TableLayout commodity_detail_table;
     @BindView(R.id.commodity_detail_comment_recycler)
     RecyclerView commodity_detail_comment_recycler;
+    @BindView(R.id.commodity_detail_recycler)
+    RecyclerView commodity_detail_recycler;
     private CommodityDetailCommentAdapter commodityDetailCommentAdapter;
+    private CommodityDetailImgRecyclerAdapter commodityDetailImgRecyclerAdapter;
 
-    @BindView(R.id.commodity_detail_one_img)
-    ImageView commodity_detail_one_img;
-    @BindView(R.id.commodity_detail_three_img)
-    ImageView commodity_detail_three_img;
     @BindView(R.id.commodity_detail_type_tv)
     TextView commodity_detail_type_tv;
     @BindView(R.id.commodity_detail_price_tv)
@@ -112,6 +112,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
 
     private void initData(final Gson gson) {
         commodity_detail_comment_recycler.setNestedScrollingEnabled(false);
+        commodity_detail_recycler.setNestedScrollingEnabled(false);
         //请求数据
         DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).commodityDteail(DataManager.getMd5Str("SHIPDT"), "388354150699630592"), new ResultListener<ResponseBody>() {
             @Override
@@ -132,6 +133,11 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                     commodity_detail_type_tv.setText(commodityDetailModel.getPd().getPROTITLE());
                     //设置价钱
                     commodity_detail_price_tv.setText("￥" + commodityDetailModel.getPd().getPROPRICE());
+                    commodity_detail_banner_right_rb.setText("评论("+commodityDetailModel.getPd().getEVALUATECOUNT()+")");
+                    commodityDetailImgRecyclerAdapter = new CommodityDetailImgRecyclerAdapter(R.layout.activity_commodity_detail_img_recycler, commodityDetailModel.getDetail());
+                    commodity_detail_recycler.setLayoutManager(new LinearLayoutManager(CommodityDetailBannerActivity.this));
+                    commodity_detail_recycler.setAdapter(commodityDetailImgRecyclerAdapter);
+
                     //把图片详情转换
                     JSONObject jsonObject = new JSONObject(string);
                     JSONObject proproperty = jsonObject.getJSONObject("pd");
@@ -174,16 +180,16 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         //测量动态变化后的tableLayout高度
         int height = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         commodity_detail_table.measure(height, 0);
-
+        commodity_detail_recycler.measure(height, 0);
         //获取整个商品区的底部距离顶端的距离
         shop_height = commodity_detail_table.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
 
         //获取商品详情距离顶部的距离
-        detail_bottom_height = commodity_detail_three_img.getBottom() + commodity_detail_table.getMeasuredHeight() - rgHeight;
+        detail_bottom_height = commodity_detail_recycler.getTop() + commodity_detail_table.getMeasuredHeight() + commodity_detail_recycler.getMeasuredHeight() - rgHeight;
         //详情区的顶部坐标
-        detail_height = commodity_detail_one_img.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
+        detail_height = commodity_detail_recycler.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
         //获取商品评论距离顶部的距离
-        comment_height = commodity_detail_comment_recycler.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
+        comment_height = commodity_detail_comment_recycler.getTop() + commodity_detail_table.getMeasuredHeight() + commodity_detail_recycler.getMeasuredHeight() - rgHeight;
     }
 
     public class MyImageLoader extends ImageLoader {

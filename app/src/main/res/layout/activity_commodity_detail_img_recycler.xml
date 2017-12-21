@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_marginTop="@dimen/base10dp"
+        android:scaleType="fitXY"
+        android:id="@+id/commodity_detail_one_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/goods_image_150" />
+
+    <TextView
+        android:id="@+id/commodity_detail_one_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base5dp"
+        android:textColor="@color/recharge_text"
+        android:textSize="12sp" />
+
+</LinearLayout>
