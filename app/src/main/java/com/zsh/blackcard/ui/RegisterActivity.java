@@ -1,7 +1,6 @@
 package com.zsh.blackcard.ui;
 
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
@@ -263,7 +261,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
 
     //请求自选号码所有列表随机号码
     private void initChangeNumber(final String i) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postRegisterChangeNumber(DataManager.getMd5Str("CARDNUM"), i), new ResultListener<RegisterChangeNumberModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postRegisterChangeNumber(DataManager.getMd5Str("CARDNUM"), i), new ResultListener<RegisterChangeNumberModel>() {
             @Override
             public void responseSuccess(RegisterChangeNumberModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -560,7 +558,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
 
         UIUtils.newProgressDialog(this).show();
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postRegisterCardType(DataManager.getMd5Str("CARDIMGS"), cardType), new ResultListener<RegisterCardTypeModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postRegisterCardType(DataManager.getMd5Str("CARDIMGS"), cardType), new ResultListener<RegisterCardTypeModel>() {
             @Override
             public void responseSuccess(RegisterCardTypeModel obj) {
                 registerViewPagerAdapter = null;

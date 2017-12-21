@@ -40,7 +40,7 @@ public class VipCenterActivity extends BaseActivity {
     }
 
     private void initDate() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyVipCenter(DataManager.getMd5Str("MEMBERINFO"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyVipCenterModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyVipCenter(DataManager.getMd5Str("MEMBERINFO"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyVipCenterModel>() {
             @Override
             public void responseSuccess(MyVipCenterModel obj) {
                 if (obj.getResult().equals("01")) {

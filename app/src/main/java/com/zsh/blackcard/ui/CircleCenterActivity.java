@@ -1,6 +1,5 @@
 package com.zsh.blackcard.ui;
 
-import android.app.ProgressDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -17,9 +16,6 @@ import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,7 +44,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
         UIUtils.newProgressDialog(this).show();
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterRecycle(DataManager.getMd5Str("CIRCLELIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyCircleModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterRecycle(DataManager.getMd5Str("CIRCLELIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyCircleModel>() {
             @Override
             public void responseSuccess(MyCircleModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -94,7 +90,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
     private void initYeah(String circle_id) {
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterYeah(DataManager.getMd5Str("DOTAGREE"), "d6a3779de8204dfd9359403f54f7d27c", circle_id, "", "1"), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterYeah(DataManager.getMd5Str("DOTAGREE"), "d6a3779de8204dfd9359403f54f7d27c", circle_id, "", "1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

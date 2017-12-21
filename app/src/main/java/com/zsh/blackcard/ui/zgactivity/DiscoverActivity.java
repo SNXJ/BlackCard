@@ -5,9 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.widget.CompoundButton;
 
-import com.bumptech.glide.Glide;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.api.DataManager;
@@ -21,11 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
-import cn.jzvd.JZUserActionStandard;
-import cn.jzvd.JZVideoPlayer;
-import cn.jzvd.JZVideoPlayerStandard;
 
 /**
  * Name: DiscoverActivity
@@ -54,7 +48,7 @@ public class DiscoverActivity extends BaseActivity implements TabLayout.OnTabSel
     private void initData() {
         fragmentManager = getSupportFragmentManager();
         //初始化title请求
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postZgFindTiele(DataManager.getMd5Str("CAIDAN")), new ResultListener<ZgFindTitleModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postZgFindTiele(DataManager.getMd5Str("CAIDAN")), new ResultListener<ZgFindTitleModel>() {
             @Override
             public void responseSuccess(ZgFindTitleModel obj) {
                 if (obj.getResult().equals("01")) {

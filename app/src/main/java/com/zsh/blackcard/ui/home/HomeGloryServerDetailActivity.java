@@ -54,7 +54,7 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
     }
 
     private void initHorse(final String data, final String title) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeGloryHorseDetail(DataManager.getMd5Str("SERVERDETAIL"), title), new ResultListener<Object>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeGloryHorseDetail(DataManager.getMd5Str("SERVERDETAIL"), title), new ResultListener<Object>() {
             @Override
             public void responseSuccess(Object obj) {
                 Gson gson = new Gson();

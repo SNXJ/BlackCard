@@ -2,7 +2,6 @@ package com.zsh.blackcard.ui;
 
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
@@ -68,7 +67,7 @@ public class MyOrderCenterEditActivity extends BaseActivity {
 
     private void initComment() {
         if (!TextUtils.isEmpty(et_comment.getText().toString().trim())) {
-            DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterComment(DataManager.getMd5Str("SPRODUCTADDEVA"), data, "d6a3779de8204dfd9359403f54f7d27c", et_comment.getText().toString(), "", ISSHOW), new ResultListener<ResultModel>() {
+            DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterComment(DataManager.getMd5Str("SPRODUCTADDEVA"), data, "d6a3779de8204dfd9359403f54f7d27c", et_comment.getText().toString(), "", ISSHOW), new ResultListener<ResultModel>() {
                 @Override
                 public void responseSuccess(ResultModel obj) {
                     if (obj.getResult().equals("01")) {

@@ -39,7 +39,7 @@ public class LiveAnchorListActivity extends BaseActivity {
 
 
     protected void init() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).pullLive(""), new ResultListener<LiveInfoListModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.pullLive(""), new ResultListener<LiveInfoListModel>() {
             @Override
             public void responseSuccess(final LiveInfoListModel obj) {
                 List<LiveInfoListModel.DataBean.RoomListBean> list = obj.getData().getRoom_list();

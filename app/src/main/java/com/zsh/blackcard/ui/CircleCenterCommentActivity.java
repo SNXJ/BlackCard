@@ -58,7 +58,7 @@ public class CircleCenterCommentActivity extends BaseActivity implements BaseQui
 
         UIUtils.newProgressDialog(this).show();
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterCommentRecycler(DataManager.getMd5Str("COMMENTLIST"), data), new ResultListener<CircleCenterCommentRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterCommentRecycler(DataManager.getMd5Str("COMMENTLIST"), data), new ResultListener<CircleCenterCommentRecyclerModel>() {
             @Override
             public void responseSuccess(CircleCenterCommentRecyclerModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -117,7 +117,7 @@ public class CircleCenterCommentActivity extends BaseActivity implements BaseQui
 
     //评论+回复功能
     private void initComment(String data, final String reply_id) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterComment(DataManager.getMd5Str("COMMENTADD"), "388279486010884099", data, circle_center_comment_content_et.getText().toString(), reply_id), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterComment(DataManager.getMd5Str("COMMENTADD"), "388279486010884099", data, circle_center_comment_content_et.getText().toString(), reply_id), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -153,7 +153,7 @@ public class CircleCenterCommentActivity extends BaseActivity implements BaseQui
 
     private void initYeah(String comment_id, String status) {
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterYeah(DataManager.getMd5Str("DOTAGREE"), "d6a3779de8204dfd9359403f54f7d27c", "", comment_id, status), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterYeah(DataManager.getMd5Str("DOTAGREE"), "d6a3779de8204dfd9359403f54f7d27c", "", comment_id, status), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

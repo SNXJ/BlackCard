@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -35,8 +34,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -114,7 +111,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         commodity_detail_comment_recycler.setNestedScrollingEnabled(false);
         commodity_detail_recycler.setNestedScrollingEnabled(false);
         //请求数据
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).commodityDteail(DataManager.getMd5Str("SHIPDT"), "388354150699630592"), new ResultListener<ResponseBody>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.commodityDteail(DataManager.getMd5Str("SHIPDT"), "388354150699630592"), new ResultListener<ResponseBody>() {
             @Override
             public void responseSuccess(ResponseBody obj) {
                 try {

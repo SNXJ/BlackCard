@@ -121,7 +121,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postKTVDetail(DataManager.getMd5Str("KTVSYN"), id), new ResultListener<HomeKTVDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postKTVDetail(DataManager.getMd5Str("KTVSYN"), id), new ResultListener<HomeKTVDetailModel>() {
             @Override
             public void responseSuccess(HomeKTVDetailModel obj) {
                 ktvData = obj.getPd();
@@ -170,7 +170,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
     };
 
     private void initRV() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHTKDetailList(DataManager.getMd5Str("KTVDETAIL"), id), new ResultListener<HomeKTVDetailItemModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHTKDetailList(DataManager.getMd5Str("KTVDETAIL"), id), new ResultListener<HomeKTVDetailItemModel>() {
             @Override
             public void responseSuccess(HomeKTVDetailItemModel obj) {
 
@@ -222,7 +222,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
     }
 
     private void initMoreRV() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postKTVDetailMoreList(DataManager.getMd5Str("SORTKTVRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<KTVDetailsMoreListModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postKTVDetailMoreList(DataManager.getMd5Str("SORTKTVRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<KTVDetailsMoreListModel>() {
             @Override
             public void responseSuccess(KTVDetailsMoreListModel obj) {
                 List<KTVDetailsMoreListModel.PdBean> dataList = obj.getPd();
@@ -299,7 +299,7 @@ public class HomeKTVDetailActivity extends BaseActivity {
         map.put("ORDERROOMEND", orderData.getDj_check_out());//离开
         map.put("KTVDETAIL_ID", orderData.getDj_item_id());//类型
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postKTVOrder(map), new ResultListener<OrderResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postKTVOrder(map), new ResultListener<OrderResultModel>() {
             @Override
             public void responseSuccess(OrderResultModel obj) {
                 if ("01".equals(obj.getResult())) {

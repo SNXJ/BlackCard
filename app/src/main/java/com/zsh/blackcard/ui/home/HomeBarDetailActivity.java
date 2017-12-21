@@ -107,7 +107,7 @@ public class HomeBarDetailActivity extends BaseActivity {
     }
 
     private void initRV() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postBarDetailList(DataManager.getMd5Str("BARDETAIL"), id), new ResultListener<BardetailsItemModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postBarDetailList(DataManager.getMd5Str("BARDETAIL"), id), new ResultListener<BardetailsItemModel>() {
             @Override
             public void responseSuccess(BardetailsItemModel obj) {
                 List<BardetailsItemModel.PdBean> dataList = obj.getPd();
@@ -139,7 +139,7 @@ public class HomeBarDetailActivity extends BaseActivity {
     }
 
     private void initMoreRV() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postBarDetailMoreList(DataManager.getMd5Str("SORTBARRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<BarDetailsMoreListModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postBarDetailMoreList(DataManager.getMd5Str("SORTBARRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<BarDetailsMoreListModel>() {
             @Override
             public void responseSuccess(BarDetailsMoreListModel obj) {
                 List<BarDetailsMoreListModel.PdBean> dataList = obj.getPd();
@@ -216,7 +216,7 @@ public class HomeBarDetailActivity extends BaseActivity {
         map.put("ORDERROOMEND", orderData.getDj_check_out());//离开
         map.put("BARDETAIL_ID", orderData.getDj_item_id());//id
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postBarOrder(map), new ResultListener<OrderResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postBarOrder(map), new ResultListener<OrderResultModel>() {
             @Override
             public void responseSuccess(OrderResultModel obj) {
                 if ("01".equals(obj.getResult())) {
@@ -291,7 +291,7 @@ public class HomeBarDetailActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postBarDetail(DataManager.getMd5Str("BARSYN"), id), new ResultListener<BarDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postBarDetail(DataManager.getMd5Str("BARSYN"), id), new ResultListener<BarDetailModel>() {
             @Override
             public void responseSuccess(BarDetailModel obj) {
                 barData = obj.getPd();

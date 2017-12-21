@@ -3,10 +3,8 @@ package com.zsh.blackcard.ui;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.luck.picture.lib.PictureSelector;
@@ -20,18 +18,14 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.untils.UIUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 
 /**
  * Created by kkkkk on 2017/12/7.
@@ -93,7 +87,7 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
             pary.clear();
         }
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", send_weiBo_et.getText().toString(), pary, localMedia,"1"), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", send_weiBo_et.getText().toString(), pary, localMedia,"1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

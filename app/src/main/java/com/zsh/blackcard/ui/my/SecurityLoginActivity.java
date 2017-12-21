@@ -48,7 +48,7 @@ public class SecurityLoginActivity extends BaseActivity {
     }
 
     private void initChangePassWord() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postSecurityPassWord(DataManager.getMd5Str("UPDUSERPASSWORD"), "d6a3779de8204dfd9359403f54f7d27c", activity_security_new_et.getText().toString().trim(), activity_security_original_et.getText().toString().trim()), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postSecurityPassWord(DataManager.getMd5Str("UPDUSERPASSWORD"), "d6a3779de8204dfd9359403f54f7d27c", activity_security_new_et.getText().toString().trim(), activity_security_original_et.getText().toString().trim()), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

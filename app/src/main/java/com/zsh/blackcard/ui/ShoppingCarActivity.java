@@ -3,10 +3,8 @@ package com.zsh.blackcard.ui;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.ShoppingCarAdapter;
@@ -50,7 +48,7 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
 
     private void initData() {
         //加载购物车列表
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postShoppingCar(DataManager.getMd5Str("SHOPPINGCART"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<ShoppingCarModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postShoppingCar(DataManager.getMd5Str("SHOPPINGCART"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<ShoppingCarModel>() {
             @Override
             public void responseSuccess(ShoppingCarModel obj) {
                 pdBeanList.addAll(obj.getPd());

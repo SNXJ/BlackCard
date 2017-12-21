@@ -508,7 +508,7 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
     }
 
     private void getLry(final String songId) {
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getMusicLry(DataManager.getMd5Str("LRY"), songId), new ResultListener<MusicLrcModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getMusicLry(DataManager.getMd5Str("LRY"), songId), new ResultListener<MusicLrcModel>() {
             @Override
             public void responseSuccess(MusicLrcModel obj) {
                 if (null == obj) {

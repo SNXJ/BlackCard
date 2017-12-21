@@ -12,9 +12,6 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -39,7 +36,7 @@ public class CollectionActivity extends BaseActivity {
     }
 
     private void initDate() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCollection(DataManager.getMd5Str("SHIPCOL"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<CollectionModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCollection(DataManager.getMd5Str("SHIPCOL"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<CollectionModel>() {
             @Override
             public void responseSuccess(CollectionModel obj) {
                 adapter = new CollectionAdapter(R.layout.my_order_collection_item,obj.getPd());

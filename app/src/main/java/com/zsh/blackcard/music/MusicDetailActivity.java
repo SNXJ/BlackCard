@@ -240,7 +240,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
 
     private void getRankDataByType() {
         LogUtils.i("+++++++rankType+++++++", "++++++排行榜+++++++");
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getRankingList(DataManager.getMd5Str("BILLLIST"), "1", rankType + ""), new ResultListener<MusicRankingModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getRankingList(DataManager.getMd5Str("BILLLIST"), "1", rankType + ""), new ResultListener<MusicRankingModel>() {
             @Override
             public void responseSuccess(MusicRankingModel obj) {
                 reOtherDataList = obj.getPd().getSong_list();
@@ -295,7 +295,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
 
     private void getSingerSongData() {
         setTopBg(SingerData.getAvatar_middle(), "歌手");
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSingerSongs(DataManager.getMd5Str("SONGLIST"), SingerData.getTing_uid(), "1"), new ResultListener<MusicSingerSongsModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getSingerSongs(DataManager.getMd5Str("SONGLIST"), SingerData.getTing_uid(), "1"), new ResultListener<MusicSingerSongsModel>() {
             @Override
             public void responseSuccess(MusicSingerSongsModel obj) {
                 // TODO没有数据
@@ -386,7 +386,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
 
     private Music getMusicbyId(final String songId) {
         final Music music = new Music();
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSongDetails(DataManager.getMd5Str("SONGPLAY"), songId), new ResultListener<MusicSongDetailsModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getSongDetails(DataManager.getMd5Str("SONGPLAY"), songId), new ResultListener<MusicSongDetailsModel>() {
             @Override
             public void responseSuccess(MusicSongDetailsModel obj) {
                 if (null == obj) {
@@ -427,7 +427,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 AppCache.getPlayService().play(mMusicList.get(position));
             }
         }
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getSongDetails(DataManager.getMd5Str("SONGPLAY"), songId), new ResultListener<MusicSongDetailsModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getSongDetails(DataManager.getMd5Str("SONGPLAY"), songId), new ResultListener<MusicSongDetailsModel>() {
             @Override
             public void responseSuccess(MusicSongDetailsModel obj) {
                 MusicSongDetailsModel.PdBean.BitrateBean musicData = obj.getPd().getBitrate();
@@ -464,7 +464,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
 
     private void initDjData() {
         setTopBg(djData.getThumb(), "电台");
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).getMusicDjSongList(DataManager.getMd5Str("CANNELSONG"), djData.getCh_name()), new ResultListener<MusicDetailListModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getMusicDjSongList(DataManager.getMd5Str("CANNELSONG"), djData.getCh_name()), new ResultListener<MusicDetailListModel>() {
             @Override
             public void responseSuccess(MusicDetailListModel obj) {
                 if (null != obj && null != obj.getPd()) {

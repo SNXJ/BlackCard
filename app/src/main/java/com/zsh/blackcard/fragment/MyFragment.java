@@ -28,7 +28,6 @@ import com.zsh.blackcard.ui.CusCenterChatActivity;
 import com.zsh.blackcard.ui.DiscountCouponActivity;
 import com.zsh.blackcard.ui.HouseCenterActivity;
 import com.zsh.blackcard.ui.HuoDongActivity;
-import com.zsh.blackcard.ui.MyFriendActivity;
 import com.zsh.blackcard.ui.MyPowerActivity;
 import com.zsh.blackcard.ui.MySettingActivity;
 import com.zsh.blackcard.ui.OrderCenterActivity;
@@ -65,7 +64,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void initDate(Bundle savedInstanceState) {
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postDisBlackPower(DataManager.getMd5Str("MYCOUBLACKENERGY"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyDisBlackPowerModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postDisBlackPower(DataManager.getMd5Str("MYCOUBLACKENERGY"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyDisBlackPowerModel>() {
             @Override
             public void responseSuccess(MyDisBlackPowerModel obj) {
                 if(obj.getResult().equals("01")){
@@ -188,7 +187,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void upAvatar(final String imgPath) {
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, imgPath), new ResultListener<ResultModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, imgPath), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 Glide.with(MyFragment.this).

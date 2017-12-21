@@ -144,7 +144,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
 
     //美食全部订单查询
     private void postFoodAllOrder() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterFoodRecycler(DataManager.getMd5Str("ALLFOODORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterFoodRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterFoodRecycler(DataManager.getMd5Str("ALLFOODORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterFoodRecyclerModel>() {
             @Override
             public void responseSuccess(OrderCenterFoodRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -178,7 +178,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
 
     //美食指定订单查询
     private void postFoodAllOrder(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterFoodRecycler(DataManager.getMd5Str("ALLFOODORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterFoodRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterFoodRecycler(DataManager.getMd5Str("ALLFOODORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterFoodRecyclerModel>() {
             @Override
             public void responseSuccess(OrderCenterFoodRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -225,7 +225,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
 
     //查询酒店全部订单
     private void postHotelAllOrder() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterHotelRecycler(DataManager.getMd5Str("ALLHOTELORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterHotelRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterHotelRecycler(DataManager.getMd5Str("ALLHOTELORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterHotelRecyclerModel>() {
             @Override
             public void responseSuccess(OrderCenterHotelRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -259,7 +259,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
 
     //查询酒店指定条件订单
     private void postHotelAllOrder(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterHotelRecycler(DataManager.getMd5Str("ALLHOTELORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterHotelRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterHotelRecycler(DataManager.getMd5Str("ALLHOTELORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterHotelRecyclerModel>() {
             @Override
             public void responseSuccess(OrderCenterHotelRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -305,7 +305,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
 
     //加载KTV的接口
     private void postKTVAllOrder() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterKTVRecycler(DataManager.getMd5Str("ALLKTVORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterKTVRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterKTVRecycler(DataManager.getMd5Str("ALLKTVORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterKTVRecyclerModel>() {
             @Override
             public void responseSuccess(OrderCenterKTVRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -339,7 +339,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
 
     //KTV指定条件查询
     private void postKTVAllOrder(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterKTVRecycler(DataManager.getMd5Str("ALLKTVORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterKTVRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterKTVRecycler(DataManager.getMd5Str("ALLKTVORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterKTVRecyclerModel>() {
             @Override
             public void responseSuccess(OrderCenterKTVRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -445,7 +445,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
      */
     private void postBarAllOrder() {
         //当为全部时，不同调用select，默认自动加载全部订单
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterBarRecycler(DataManager.getMd5Str("ALLBARORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterBarRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterBarRecycler(DataManager.getMd5Str("ALLBARORDER"), "d6a3779de8204dfd9359403f54f7d27c", ""), new ResultListener<OrderCenterBarRecyclerModel>() {
             @Override
             public void responseSuccess(OrderCenterBarRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -500,7 +500,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
      * @param state
      */
     private void postBarAllOrder(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postOrderCenterBarRecycler(DataManager.getMd5Str("ALLBARORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterBarRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postOrderCenterBarRecycler(DataManager.getMd5Str("ALLBARORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<OrderCenterBarRecyclerModel>() {
             @Override
             public void responseSuccess(OrderCenterBarRecyclerModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -543,7 +543,7 @@ public class MyOrderOtherActivity extends BaseActivity implements TabLayout.OnTa
     }
 
     private void initOk(final int selectedTabPosition, int position, String order_id) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_id, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_id, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (selectedTabPosition == 0) {

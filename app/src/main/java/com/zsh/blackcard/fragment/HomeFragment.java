@@ -1,7 +1,6 @@
 package com.zsh.blackcard.fragment;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -380,7 +379,7 @@ public class HomeFragment extends BaseFragment {
         home_top_tvs.setOutAnimation(getActivity(), R.anim.leave_top);
 
         //请求头条滚动文字
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeTitleNews(DataManager.getMd5Str("NEWSLIST")), new ResultListener<HomeTitleNewsModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postHomeTitleNews(DataManager.getMd5Str("NEWSLIST")), new ResultListener<HomeTitleNewsModel>() {
             @Override
             public void responseSuccess(HomeTitleNewsModel obj) {
                 homeTitleNewsModel = obj;
@@ -396,7 +395,7 @@ public class HomeFragment extends BaseFragment {
 
 
         //初始化头条列表 2.4.6.8酒吧 三亚国际饭店 麦乐迪KTV
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePage(DataManager.getMd5Str("COMMEND")), new ResultListener<HomeTopModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postHomePage(DataManager.getMd5Str("COMMEND")), new ResultListener<HomeTopModel>() {
             @Override
             public void responseSuccess(HomeTopModel obj) {
                 System.out.println(obj);
@@ -427,7 +426,7 @@ public class HomeFragment extends BaseFragment {
         });
 
         //初始化荣耀服务列表
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryServer(DataManager.getMd5Str("SERVER")), new ResultListener<HomeGloryServerModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postHomeGloryServer(DataManager.getMd5Str("SERVER")), new ResultListener<HomeGloryServerModel>() {
             @Override
             public void responseSuccess(HomeGloryServerModel obj) {
                 for (int i = 0; i < obj.getPd().size(); i++) {
@@ -457,7 +456,7 @@ public class HomeFragment extends BaseFragment {
         });
 
         //初始化汇聚玩趴图片接口
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomePlay(DataManager.getMd5Str("PARTY")), new ResultListener<HomePlayModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postHomePlay(DataManager.getMd5Str("PARTY")), new ResultListener<HomePlayModel>() {
             @Override
             public void responseSuccess(HomePlayModel obj) {
                 Glide.with(getActivity()).load(obj.getPd().getPARTYIMG()).into(home_play_img);
@@ -470,7 +469,7 @@ public class HomeFragment extends BaseFragment {
         });
 
         //初始化荣耀杂志列表
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryMagazine(DataManager.getMd5Str("MAGAZINE")), new ResultListener<HomeGloryMagazineModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postHomeGloryMagazine(DataManager.getMd5Str("MAGAZINE")), new ResultListener<HomeGloryMagazineModel>() {
             @Override
             public void responseSuccess(HomeGloryMagazineModel obj) {
                 for (int i = 0; i < obj.getPd().size(); i++) {
@@ -498,7 +497,7 @@ public class HomeFragment extends BaseFragment {
         });
 
         //初始化荣耀音乐
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postHomeGloryMusic(DataManager.getMd5Str("MUSICLIST")), new ResultListener<HomeGloryMusicModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postHomeGloryMusic(DataManager.getMd5Str("MUSICLIST")), new ResultListener<HomeGloryMusicModel>() {
             @Override
             public void responseSuccess(HomeGloryMusicModel obj) {
                 for (int i = 0; i < obj.getPd().size(); i++) {
