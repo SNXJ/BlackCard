@@ -29,10 +29,27 @@ public class EatDrinkRecyclerAdapter extends BaseQuickAdapter<EatDrinkRecyclerMo
         helper.setText(R.id.hj_child_recycler_people_number_tv, "人数：" + item.getCONVERGEPER());
         helper.setText(R.id.hj_child_recycler_type_tv, "方式：" + item.getCONVERGETYPE());
         helper.setText(R.id.hj_child_recycler_title_tv, item.getCONVERGETITLE());
-        Glide.with(mContext).load(item.getCONVERGEIMGS().get(0)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_one_img));
-        Glide.with(mContext).load(item.getCONVERGEIMGS().get(1)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_two_img));
-        Glide.with(mContext).load(item.getCONVERGEIMGS().get(2)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_three_img));
-        Glide.with(mContext).load(item.getCONVERGEIMGS().get(3)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_four_img));
+        if (!item.getDistance().equals("0")) {
+            helper.setText(R.id.hj_child_recycler_item_age, item.getDistance().substring(0, item.getDistance().indexOf(".")) + "Km    " + item.getAge() + "岁");
+        } else {
+            helper.setText(R.id.hj_child_recycler_item_age, item.getDistance() + "Km    " + item.getAge() + "岁");
+        }
+
+//        if (item.getCONVERGEIMGS().size() == 1) {
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(0)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_one_img));
+//        } else if (item.getCONVERGEIMGS().size() == 2) {
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(0)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_one_img));
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(1)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_two_img));
+//        } else if (item.getCONVERGEIMGS().size() == 3) {
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(0)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_one_img));
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(1)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_two_img));
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(2)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_three_img));
+//        } else {
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(0)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_one_img));
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(1)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_two_img));
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(2)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_three_img));
+//            Glide.with(mContext).load(item.getCONVERGEIMGS().get(3)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_four_img));
+//        }
         helper.addOnClickListener(R.id.hj_child_recycler_linear);
         helper.addOnClickListener(R.id.tv_add_friend);
     }

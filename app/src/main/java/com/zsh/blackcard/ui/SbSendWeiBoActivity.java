@@ -77,7 +77,6 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
     private void initSendWeiBo(final List<LocalMedia> localMedia) {
         //获取图片集合最后一个元素，如果是占位符则移除，否则就上传
         if (localMedia.get(localMedia.size() - 1).getPath() == null) {
-            System.out.println("移除===@@@@");
             localMedia.remove(localMedia.size() - 1);
         }
 
@@ -87,7 +86,7 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
             pary.clear();
         }
 
-        DataManager.getInstance(this).RequestHttp(NetApi.postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", send_weiBo_et.getText().toString(), pary, localMedia,"1"), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", send_weiBo_et.getText().toString(), pary, localMedia, "1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -129,6 +128,15 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
                         .maxSelectNum(4)
                         .forResult(PictureConfig.CHOOSE_REQUEST);
             }
+        }
+
+        //当图片选择满4张时，再次点击item则为编辑选择图片
+        if (localMedia.size() == 4 && localMedia.get(3).getPath() != null) {
+            PictureSelector.create(SbSendWeiBoActivity.this)
+                    .openGallery(PictureMimeType.ofImage())
+                    .maxSelectNum(4)
+                    .selectionMedia(localMedia)
+                    .forResult(PictureConfig.CHOOSE_REQUEST);
         }
     }
 

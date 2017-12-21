@@ -217,6 +217,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                 handler.sendEmptyMessage(1);
                 break;
             case R.id.commodity_detail_banner_right_rb:
+                commodity_detail_banner_right_rb.setChecked(true);
                 commodity_detail_banner_left_rb.setTextColor(Color.parseColor("#FF929292"));
                 commodity_detail_banner_center_rb.setTextColor(Color.parseColor("#FF929292"));
                 commodity_detail_banner_right_rb.setTextColor(Color.parseColor("#FFF29E19"));
