@@ -12,12 +12,14 @@ public class CommodityDetailModel {
     /**
      * result : 01
      * evaList : [{"NICKNAME":"******","EVALUATECONTENT":"包包本不错哦","PORTRAIT":"http://47.104.16.215:8088/userportrait/e6765efb97a84e60b9f381247a2a448b.jpg","PRODUCTEVALUATE_ID":"392331613750427648","EVALUATECOINT":4.7,"PRODUCT_ID":"388354150699630592","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","EVALUATEDATE":"2017-12-18"},{"NICKNAME":"******","EVALUATECONTENT":"包包是我买过最好的","PORTRAIT":"http://47.104.16.215:8088/userportrait/e3e8b2119dfa4a1c85abfa7e3eef7a98.jpg","PRODUCTEVALUATE_ID":"392332120623677440","EVALUATECOINT":5,"PRODUCT_ID":"388354150699630592","HONOURUSER_ID":"388279486010884100","EVALUATEDATE":"2017-12-18"},{"NICKNAME":"******","EVALUATECONTENT":"包包是我买过最好的","PORTRAIT":"http://47.104.16.215:8088/userportrait/e3e8b2119dfa4a1c85abfa7e3eef7a98.jpg","PRODUCTEVALUATE_ID":"392358479349678080","EVALUATECOINT":0,"PRODUCT_ID":"388354150699630592","HONOURUSER_ID":"388279486010884100","EVALUATEDATE":"2017-12-18"}]
-     * pd : {"BRAND_ID":"a34d1f14a4b7481e8284ad4ba97a496b","PROEVALUATE":3.2,"PRODETAILSIMG":["http://47.104.16.215:8088/productimgs/prodetimgs/goods_image_113@2x.png","http://47.104.16.215:8088/productimgs/prodetimgs/goods_image_113@3x.png"],"PRODUCTIMG":["http://47.104.16.215:8088/productimgs/productimg/f3d5140931344d2e9f4e6644ae2c4efc.png","http://47.104.16.215:8088/productimgs/productimg/75a3ef3d2a624d70b68e1cb827b0ba95.png","http://47.104.16.215:8088/productimgs/productimg/4e6d7c575b9b4a86a045b83bab9d786d.png"],"PROPROPERTY":{"产地":"瑞士","防水":"日常生活防水","表带材质":"真皮","保修":"全国联保","表径":"42mm"},"PROTITLE":"Gucci/古奇 黑色虎头马刺扣链条手提包","PROPRICE":5688,"PRODETAILSINT":"古驰-1921年创立于意大利佛罗伦萨，是全球卓越的奢华精品品牌之一。以其卓越的品质和精湛的意大利工艺闻名于世，旗下精品包括皮件、鞋履、香氛、珠宝和腕表","PROCOLOR":"#000000","EVALUATECOUNT":3,"PRODUCT_ID":"388354150699630592","PROBRAND":"手提包"}
+     * pd : {"BRAND_ID":"a34d1f14a4b7481e8284ad4ba97a496b","PROEVALUATE":3.2,"PRODETAILSIMG":"http://47.104.16.215:8088/productimgs/prodetimgs/goods_image_113@2x.png,http://47.104.16.215:8088/productimgs/prodetimgs/goods_image_113@3x.png","PRODUCTIMG":["http://47.104.16.215:8088/productimgs/productimg/f3d5140931344d2e9f4e6644ae2c4efc.png","http://47.104.16.215:8088/productimgs/productimg/75a3ef3d2a624d70b68e1cb827b0ba95.png","http://47.104.16.215:8088/productimgs/productimg/4e6d7c575b9b4a86a045b83bab9d786d.png"],"PROPROPERTY":{"产地":"瑞士","防水":"日常生活防水","表带材质":"真皮","保修":"全国联保","表径":"42mm"},"PROTITLE":"Gucci/古奇 黑色虎头马刺扣链条手提包","PROPRICE":5688,"PRODETAILSINT":"古驰-1921年创立于意大利佛罗伦萨，是全球卓越的奢华精品品牌之一。以其卓越的品质和精湛的意大利工艺闻名于世，旗下精品包括皮件、鞋履、香氛、珠宝和腕表","PROCOLOR":"#000000","EVALUATECOUNT":3,"PRODUCT_ID":"388354150699630592","PROBRAND":"手提包"}
+     * detail : [{"SHOWIMG":"http://47.104.16.215:8088/productimgs/productsingleimgs/349acf0597ba450b8d3a1693b9c60f89.png","CONTENT":"古驰-1921年创立于意大利佛罗伦萨，是全球卓越的奢华精品品牌之一。以其卓越的品质和精湛的意大利工艺闻名于世，旗下精品包括皮件、鞋履、香氛、珠宝和腕表"},{"SHOWIMG":"http://47.104.16.215:8088/productimgs/productsingleimgs/e54e3f072139409193f8ba2e12799137.png","CONTENT":"暂无"},{"SHOWIMG":"http://47.104.16.215:8088/productimgs/productsingleimgs/9187a08966794115bfe8e867316003e8.png","CONTENT":"暂无"}]
      */
 
     private String result;
     private PdBean pd;
     private List<EvaListBean> evaList;
+    private List<DetailBean> detail;
 
     public String getResult() {
         return result;
@@ -43,11 +45,19 @@ public class CommodityDetailModel {
         this.evaList = evaList;
     }
 
+    public List<DetailBean> getDetail() {
+        return detail;
+    }
+
+    public void setDetail(List<DetailBean> detail) {
+        this.detail = detail;
+    }
+
     public static class PdBean {
         /**
          * BRAND_ID : a34d1f14a4b7481e8284ad4ba97a496b
          * PROEVALUATE : 3.2
-         * PRODETAILSIMG : ["http://47.104.16.215:8088/productimgs/prodetimgs/goods_image_113@2x.png","http://47.104.16.215:8088/productimgs/prodetimgs/goods_image_113@3x.png"]
+         * PRODETAILSIMG : http://47.104.16.215:8088/productimgs/prodetimgs/goods_image_113@2x.png,http://47.104.16.215:8088/productimgs/prodetimgs/goods_image_113@3x.png
          * PRODUCTIMG : ["http://47.104.16.215:8088/productimgs/productimg/f3d5140931344d2e9f4e6644ae2c4efc.png","http://47.104.16.215:8088/productimgs/productimg/75a3ef3d2a624d70b68e1cb827b0ba95.png","http://47.104.16.215:8088/productimgs/productimg/4e6d7c575b9b4a86a045b83bab9d786d.png"]
          * PROPROPERTY : {"产地":"瑞士","防水":"日常生活防水","表带材质":"真皮","保修":"全国联保","表径":"42mm"}
          * PROTITLE : Gucci/古奇 黑色虎头马刺扣链条手提包
@@ -61,6 +71,7 @@ public class CommodityDetailModel {
 
         private String BRAND_ID;
         private double PROEVALUATE;
+        private String PRODETAILSIMG;
         private PROPROPERTYBean PROPROPERTY;
         private String PROTITLE;
         private int PROPRICE;
@@ -69,7 +80,6 @@ public class CommodityDetailModel {
         private int EVALUATECOUNT;
         private String PRODUCT_ID;
         private String PROBRAND;
-        private List<String> PRODETAILSIMG;
         private List<String> PRODUCTIMG;
 
         public String getBRAND_ID() {
@@ -86,6 +96,14 @@ public class CommodityDetailModel {
 
         public void setPROEVALUATE(double PROEVALUATE) {
             this.PROEVALUATE = PROEVALUATE;
+        }
+
+        public String getPRODETAILSIMG() {
+            return PRODETAILSIMG;
+        }
+
+        public void setPRODETAILSIMG(String PRODETAILSIMG) {
+            this.PRODETAILSIMG = PRODETAILSIMG;
         }
 
         public PROPROPERTYBean getPROPROPERTY() {
@@ -152,14 +170,6 @@ public class CommodityDetailModel {
             this.PROBRAND = PROBRAND;
         }
 
-        public List<String> getPRODETAILSIMG() {
-            return PRODETAILSIMG;
-        }
-
-        public void setPRODETAILSIMG(List<String> PRODETAILSIMG) {
-            this.PRODETAILSIMG = PRODETAILSIMG;
-        }
-
         public List<String> getPRODUCTIMG() {
             return PRODUCTIMG;
         }
@@ -169,7 +179,59 @@ public class CommodityDetailModel {
         }
 
         public static class PROPROPERTYBean {
+            /**
+             * 产地 : 瑞士
+             * 防水 : 日常生活防水
+             * 表带材质 : 真皮
+             * 保修 : 全国联保
+             * 表径 : 42mm
+             */
 
+            private String 产地;
+            private String 防水;
+            private String 表带材质;
+            private String 保修;
+            private String 表径;
+
+            public String get产地() {
+                return 产地;
+            }
+
+            public void set产地(String 产地) {
+                this.产地 = 产地;
+            }
+
+            public String get防水() {
+                return 防水;
+            }
+
+            public void set防水(String 防水) {
+                this.防水 = 防水;
+            }
+
+            public String get表带材质() {
+                return 表带材质;
+            }
+
+            public void set表带材质(String 表带材质) {
+                this.表带材质 = 表带材质;
+            }
+
+            public String get保修() {
+                return 保修;
+            }
+
+            public void set保修(String 保修) {
+                this.保修 = 保修;
+            }
+
+            public String get表径() {
+                return 表径;
+            }
+
+            public void set表径(String 表径) {
+                this.表径 = 表径;
+            }
         }
     }
 
@@ -256,6 +318,32 @@ public class CommodityDetailModel {
 
         public void setEVALUATEDATE(String EVALUATEDATE) {
             this.EVALUATEDATE = EVALUATEDATE;
+        }
+    }
+
+    public static class DetailBean {
+        /**
+         * SHOWIMG : http://47.104.16.215:8088/productimgs/productsingleimgs/349acf0597ba450b8d3a1693b9c60f89.png
+         * CONTENT : 古驰-1921年创立于意大利佛罗伦萨，是全球卓越的奢华精品品牌之一。以其卓越的品质和精湛的意大利工艺闻名于世，旗下精品包括皮件、鞋履、香氛、珠宝和腕表
+         */
+
+        private String SHOWIMG;
+        private String CONTENT;
+
+        public String getSHOWIMG() {
+            return SHOWIMG;
+        }
+
+        public void setSHOWIMG(String SHOWIMG) {
+            this.SHOWIMG = SHOWIMG;
+        }
+
+        public String getCONTENT() {
+            return CONTENT;
+        }
+
+        public void setCONTENT(String CONTENT) {
+            this.CONTENT = CONTENT;
         }
     }
 }

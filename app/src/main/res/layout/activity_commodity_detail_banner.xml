@@ -205,45 +205,19 @@
 
             </TableLayout>
 
-            <ImageView
-                android:id="@+id/commodity_detail_one_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/commodity_detail_recycler"
                 android:layout_below="@+id/commodity_detail_table"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/goods_image_150" />
-
-            <TextView
-                android:id="@+id/commodity_detail_one_tv"
-                android:layout_width="@dimen/base335dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/commodity_detail_one_img"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/base5dp"
-                android:text="古驰-1921年创立于意大利佛罗伦萨，是全球卓越的奢华精品品牌之一。以其卓越的品质和精湛的意大利工艺闻名于世，旗下精品包括皮件、鞋履、香氛、珠宝和腕表"
-                android:textColor="@color/recharge_text"
-                android:textSize="12sp" />
-
-            <ImageView
-                android:id="@+id/commodity_detail_two_img"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/commodity_detail_one_tv"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/goods_image_151" />
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/commodity_detail_three_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/commodity_detail_two_img"
-                android:layout_marginTop="@dimen/base10dp"
-                android:src="@mipmap/goods_image_152" />
+            </android.support.v7.widget.RecyclerView>
+
 
             <android.support.v7.widget.RecyclerView
                 android:layout_marginTop="@dimen/base10dp"
                 android:id="@+id/commodity_detail_comment_recycler"
-                android:layout_below="@+id/commodity_detail_three_img"
+                android:layout_below="@+id/commodity_detail_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
