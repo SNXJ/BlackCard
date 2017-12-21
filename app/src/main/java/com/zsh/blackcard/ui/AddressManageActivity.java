@@ -60,7 +60,7 @@ public class AddressManageActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postAddressManage(DataManager.getMd5Str("SHIPADR"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<AddressManageModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postAddressManage(DataManager.getMd5Str("SHIPADR"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<AddressManageModel>() {
             @Override
             public void responseSuccess(AddressManageModel obj) {
                 dataList = obj.getPd();
@@ -110,7 +110,7 @@ public class AddressManageActivity extends BaseActivity {
     }
 
     private void delData(String id, final int position) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).delAddress(DataManager.getMd5Str("SHIPADR"), id), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.delAddress(DataManager.getMd5Str("SHIPADR"), id), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if ("01".equals(obj.getResult())) {

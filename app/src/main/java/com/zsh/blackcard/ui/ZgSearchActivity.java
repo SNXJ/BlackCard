@@ -3,9 +3,6 @@ package com.zsh.blackcard.ui;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -71,7 +68,7 @@ public class ZgSearchActivity extends BaseActivity implements TextView.OnEditorA
     }
 
     private void initSearch() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postZgSearch(DataManager.getMd5Str("SHIPDIMQ"), "d6a3779de8204dfd9359403f54f7d27c", zg_search_et.getText().toString().trim()), new ResultListener<ZgSearchModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postZgSearch(DataManager.getMd5Str("SHIPDIMQ"), "d6a3779de8204dfd9359403f54f7d27c", zg_search_et.getText().toString().trim()), new ResultListener<ZgSearchModel>() {
             @Override
             public void responseSuccess(ZgSearchModel obj) {
                 if (zgSearchAdapter == null) {

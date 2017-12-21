@@ -54,7 +54,7 @@ public class HomeMoreActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(HomeMoreActivity.this).RequestHttp(NetApi.getInstance(HomeMoreActivity.this).postHomePrivilege(DataManager.getMd5Str("PRIVILIST")), new ResultListener<HomePrivilegeModel>() {
+        DataManager.getInstance(HomeMoreActivity.this).RequestHttp(NetApi.postHomePrivilege(DataManager.getMd5Str("PRIVILIST")), new ResultListener<HomePrivilegeModel>() {
             @Override
             public void responseSuccess(HomePrivilegeModel obj) {
                 homeTypeMoreAdapter = new HomeTypeMoreAdapter(R.layout.home_type_recycler_item, obj.getPd());

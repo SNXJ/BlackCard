@@ -99,7 +99,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
      */
     private void postMyAppointOrder() {
         //当为全部时，不同调用select，默认自动加载全部订单
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyAllOrder(DataManager.getMd5Str("ALLORDER"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyOrderModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyAllOrder(DataManager.getMd5Str("ALLORDER"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyOrderModel>() {
             @Override
             public void responseSuccess(MyOrderModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -155,7 +155,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
      * @param state
      */
     private void postMyAppointOrder(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyAppointOrder(DataManager.getMd5Str("CONORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<MyOrderModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyAppointOrder(DataManager.getMd5Str("CONORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<MyOrderModel>() {
             @Override
             public void responseSuccess(MyOrderModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -231,7 +231,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
     }
 
     private void initOk(final int selectedTabPosition, String order_number) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_number, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_number, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (selectedTabPosition == 0) {

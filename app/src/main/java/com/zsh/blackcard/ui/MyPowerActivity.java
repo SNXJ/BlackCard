@@ -1,25 +1,19 @@
 package com.zsh.blackcard.ui;
 
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.LargeValueFormatter;
-import com.github.mikephil.charting.renderer.YAxisRenderer;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.MyPowerRecyclerAdapter;
@@ -117,7 +111,7 @@ public class MyPowerActivity extends BaseActivity {
     }
 
     private void initLineChart() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postPowerImage(DataManager.getMd5Str("ENERGYVALUEMONTH"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyPowerImageModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postPowerImage(DataManager.getMd5Str("ENERGYVALUEMONTH"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyPowerImageModel>() {
             @Override
             public void responseSuccess(MyPowerImageModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -193,7 +187,7 @@ public class MyPowerActivity extends BaseActivity {
     }
 
     private void initDate() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyPower(DataManager.getMd5Str("ENERGYLIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyPowerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyPower(DataManager.getMd5Str("ENERGYLIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyPowerModel>() {
             @Override
             public void responseSuccess(MyPowerModel obj) {
                 if (obj.getResult().equals("01")) {

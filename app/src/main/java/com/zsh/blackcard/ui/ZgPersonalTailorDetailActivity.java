@@ -39,7 +39,7 @@ public class ZgPersonalTailorDetailActivity extends BaseActivity {
 
     private void initData() {
         String data = getIntent().getStringExtra("data");
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postZgPersonalTailorDetail(DataManager.getMd5Str("PERSONALDET"), data), new ResultListener<ZgPersonalTailorDatailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postZgPersonalTailorDetail(DataManager.getMd5Str("PERSONALDET"), data), new ResultListener<ZgPersonalTailorDatailModel>() {
             @Override
             public void responseSuccess(ZgPersonalTailorDatailModel obj) {
                 if (obj.getResult().equals("01")) {

@@ -58,7 +58,7 @@ public class GoodsCategoryActivity extends BaseActivity implements BaseQuickAdap
 
     private void initData() {
         //商品分类左边列表
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCategoryLeft(DataManager.getMd5Str("SHIPBR")), new ResultListener<CategoryLeftModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCategoryLeft(DataManager.getMd5Str("SHIPBR")), new ResultListener<CategoryLeftModel>() {
             @Override
             public void responseSuccess(CategoryLeftModel obj) {
                 categoryLeftAdapter = new CategoryLeftAdapter(R.layout.category_left_item, obj.getPd());
@@ -80,7 +80,7 @@ public class GoodsCategoryActivity extends BaseActivity implements BaseQuickAdap
 
     //加载右边列表的适配器
     private void initRecyclerRight(String brand_id) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCategoryRight(DataManager.getMd5Str("SHIPBRIC"), brand_id), new ResultListener<CategoryRightModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCategoryRight(DataManager.getMd5Str("SHIPBRIC"), brand_id), new ResultListener<CategoryRightModel>() {
             @Override
             public void responseSuccess(CategoryRightModel obj) {
                 if(pdBeanList != null){

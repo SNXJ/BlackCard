@@ -109,7 +109,7 @@ public class MusicSingerFragment extends BaseFragment {
 
     private void getSingerList(String sexType, String areaType) {
         showLoading(getActivity());
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getMusicSingerList(DataManager.getMd5Str("HOTARTIST"), "1", sexType, areaType), new ResultListener<MusicSingerModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getMusicSingerList(DataManager.getMd5Str("HOTARTIST"), "1", sexType, areaType), new ResultListener<MusicSingerModel>() {
             @Override
             public void responseSuccess(MusicSingerModel obj) {
                 if (null != obj && "01".equals(obj.getResult())) {

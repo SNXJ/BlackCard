@@ -68,7 +68,7 @@ public class MusicReOtherFragment extends BaseFragment {
     }
 
     private void initData() {
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getRankingList(DataManager.getMd5Str("BILLLIST"), "1", mType + ""), new ResultListener<MusicRankingModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getRankingList(DataManager.getMd5Str("BILLLIST"), "1", mType + ""), new ResultListener<MusicRankingModel>() {
             @Override
             public void responseSuccess(MusicRankingModel obj) {
                 dataList = obj.getPd().getSong_list();

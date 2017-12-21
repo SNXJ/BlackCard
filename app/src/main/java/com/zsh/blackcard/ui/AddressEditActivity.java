@@ -1,8 +1,6 @@
 package com.zsh.blackcard.ui;
 
 import android.graphics.Color;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -208,7 +206,7 @@ public class AddressEditActivity extends BaseActivity {
     }
 
     private void saveData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addressAdd(map), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.addressAdd(map), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if ("01".equals(obj.getResult())) {
@@ -227,7 +225,7 @@ public class AddressEditActivity extends BaseActivity {
     }
 
     private void editData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addressEdit(map), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.addressEdit(map), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if ("01".equals(obj.getResult())) {

@@ -23,7 +23,7 @@ public class HomeEquestrianActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).privilegePart(DataManager.getMd5Str("PRIVIDET"), privilege_id), new ResultListener<HomePrivilegeModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.privilegePart(DataManager.getMd5Str("PRIVIDET"), privilege_id), new ResultListener<HomePrivilegeModel>() {
             @Override
             public void responseSuccess(HomePrivilegeModel obj) {
 //                homeTypeAdapter = new HomeTypeMoreAdapter(R.layout.home_type_recycler_item, obj.getPd());

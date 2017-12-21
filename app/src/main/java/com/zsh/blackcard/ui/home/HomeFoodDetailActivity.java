@@ -103,7 +103,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetail(DataManager.getMd5Str("SFOODSYN"), id), new ResultListener<FoodDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postFoodDetail(DataManager.getMd5Str("SFOODSYN"), id), new ResultListener<FoodDetailModel>() {
             @Override
             public void responseSuccess(FoodDetailModel obj) {
                 foodData = obj.getPd();
@@ -119,7 +119,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
 
     //套餐列表
     private void initRV() {//TODO
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailList(DataManager.getMd5Str("FOODDETAIL"), id), new ResultListener<HomeFoodDetailPackageModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postFoodDetailList(DataManager.getMd5Str("FOODDETAIL"), id), new ResultListener<HomeFoodDetailPackageModel>() {
             @Override
             public void responseSuccess(HomeFoodDetailPackageModel obj) {
 
@@ -150,7 +150,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
     }
 
     private void initMoreRV() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodDetailMoreList(DataManager.getMd5Str("SORTFOODRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<FoodDetailsMoreListModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postFoodDetailMoreList(DataManager.getMd5Str("SORTFOODRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<FoodDetailsMoreListModel>() {
             @Override
             public void responseSuccess(FoodDetailsMoreListModel obj) {
                 List<FoodDetailsMoreListModel.PdBean> dataList = obj.getPd();
@@ -227,7 +227,7 @@ public class HomeFoodDetailActivity extends BaseActivity {
         // map.put("ORDERDAYS", days + "");//天数
         map.put("HOTELDETAIL_ID", orderData.getDj_item_name());//类型
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelOrder(map), new ResultListener<OrderResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHotelOrder(map), new ResultListener<OrderResultModel>() {
             @Override
             public void responseSuccess(OrderResultModel obj) {
                 orderData.setDj_return_id(obj.getORDERNUMBER());

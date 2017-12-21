@@ -115,7 +115,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     }
 
     private void initRV() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelDetailList(DataManager.getMd5Str("HOTELDETAIL"), id), new ResultListener<HoteldetailsItemModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHotelDetailList(DataManager.getMd5Str("HOTELDETAIL"), id), new ResultListener<HoteldetailsItemModel>() {
             @Override
             public void responseSuccess(HoteldetailsItemModel obj) {
 
@@ -147,7 +147,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     }
 
     private void initMoreRV() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelDetailMoreList(DataManager.getMd5Str("SORTHOTELRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<HotelDetailsMoreListModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHotelDetailMoreList(DataManager.getMd5Str("SORTHOTELRAND"), BaseApplication.HONOURUSER_ID), new ResultListener<HotelDetailsMoreListModel>() {
             @Override
             public void responseSuccess(HotelDetailsMoreListModel obj) {
                 List<HotelDetailsMoreListModel.PdBean> dataList = obj.getPd();
@@ -224,7 +224,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
         map.put("ORDERDAYS", days + "");//天数
         map.put("HOTELDETAIL_ID", orderData.getDj_item_name());//类型
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelOrder(map), new ResultListener<OrderResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHotelOrder(map), new ResultListener<OrderResultModel>() {
             @Override
             public void responseSuccess(OrderResultModel obj) {
                 orderData.setDj_return_id(obj.getORDERNUMBER());
@@ -285,7 +285,7 @@ public class HomeHotelDetailActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHotelDetail(DataManager.getMd5Str("HOTELSYN"), id), new ResultListener<HotelDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHotelDetail(DataManager.getMd5Str("HOTELSYN"), id), new ResultListener<HotelDetailModel>() {
             @Override
             public void responseSuccess(HotelDetailModel obj) {
                 hotelData = obj.getPd();

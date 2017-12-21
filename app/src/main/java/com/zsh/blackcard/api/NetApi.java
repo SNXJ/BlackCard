@@ -1,7 +1,5 @@
 package com.zsh.blackcard.api;
 
-import android.content.Context;
-
 import com.luck.picture.lib.entity.LocalMedia;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.custom.HomeTypeConstant;
@@ -53,9 +51,6 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
-
-import com.zsh.blackcard.model.MyCircleModel;
-
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -65,7 +60,7 @@ import com.zsh.blackcard.model.MusicRecommendModel;
 import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
-
+import com.zsh.blackcard.model.MyCircleModel;
 import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.MyPowerImageModel;
@@ -106,18 +101,7 @@ import rx.Observable;
  * @Date 2017/11/6
  * @Describe *
  */
-public class NetApi {
-    private static RetrofitService retrofitService;
-    private static NetApi netApi;
-
-    public static NetApi getInstance(Context context) {
-        retrofitService = RetrofitUtils.getInstance(context).getService();
-        if (netApi == null) {
-            netApi = new NetApi();
-        }
-        return netApi;
-    }
-
+public  class NetApi extends DataManager {
     /**
      * 卡号密码登录
      *
@@ -125,7 +109,7 @@ public class NetApi {
      * @param passWord 密码
      * @return
      */
-    public Observable<LoginModel> postLoginCard(String md5, String cardNo, String passWord) {
+    public  static Observable<LoginModel> postLoginCard(String md5, String cardNo, String passWord) {
         return retrofitService.postLoginCard(md5, cardNo, passWord);
     }
 
@@ -135,7 +119,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomeTopModel> postHomePage(String md5) {
+    public static Observable<HomeTopModel> postHomePage(String md5) {
         return retrofitService.postHomePage(md5);
     }
 
@@ -146,7 +130,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<ZgShopAreaModel> postShopArea(String md5, String id) {
+    public static Observable<ZgShopAreaModel> postShopArea(String md5, String id) {
         return retrofitService.postShopArea(md5, id);
     }
 
@@ -156,7 +140,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomeTitleNewsModel> postHomeTitleNews(String md5) {
+    public static Observable<HomeTitleNewsModel> postHomeTitleNews(String md5) {
         return retrofitService.postHomeTitleNews(md5);
     }
 
@@ -167,7 +151,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<HomeTitleNewsDetailModel> postHomeTitleNewsDetail(String md5, String id) {
+    public static Observable<HomeTitleNewsDetailModel> postHomeTitleNewsDetail(String md5, String id) {
         return retrofitService.postHomeTitleNewsDetail(md5, id);
     }
 
@@ -177,7 +161,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HjRecyclerModel> postHjRecycler(String md5) {
+    public static Observable<HjRecyclerModel> postHjRecycler(String md5) {
         return retrofitService.postHjRecycler(md5);
     }
 
@@ -187,7 +171,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomeFoodModel> postHomeFoodList(String md5) {
+    public static Observable<HomeFoodModel> postHomeFoodList(String md5) {
         return retrofitService.postHomeFoodList(md5, BaseApplication.HONOURUSER_ID);
     }
 
@@ -198,7 +182,7 @@ public class NetApi {
      * @param
      * @return
      */
-    public Observable<HomeHotelModel> postHomeHotelList(String md5) {
+    public static Observable<HomeHotelModel> postHomeHotelList(String md5) {
         return retrofitService.postHomeHotelList(md5, BaseApplication.HONOURUSER_ID);
     }
 
@@ -209,7 +193,7 @@ public class NetApi {
      * @param
      * @return
      */
-    public Observable<HomeBarModel> postHomeBarList(String md5) {
+    public static Observable<HomeBarModel> postHomeBarList(String md5) {
         return retrofitService.postHomeBarlList(md5, BaseApplication.HONOURUSER_ID);
     }
 
@@ -220,7 +204,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailModel> postFoodDetail(String md5, String id) {
+    public static Observable<FoodDetailModel> postFoodDetail(String md5, String id) {
         return retrofitService.postFoodDetail(md5, id);
     }
 
@@ -231,7 +215,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<HotelDetailModel> postHotelDetail(String md5, String id) {
+    public static Observable<HotelDetailModel> postHotelDetail(String md5, String id) {
         return retrofitService.postHotelDetail(md5, id);
     }
 
@@ -242,7 +226,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<BarDetailModel> postBarDetail(String md5, String id) {
+    public static Observable<BarDetailModel> postBarDetail(String md5, String id) {
         return retrofitService.postBarDetail(md5, id);
     }
 
@@ -253,7 +237,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<BardetailsItemModel> postBarDetailList(String md5, String id) {
+    public static Observable<BardetailsItemModel> postBarDetailList(String md5, String id) {
         return retrofitService.postBarDetailList(md5, id);
     }
 
@@ -263,7 +247,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<CommentModel> postCommentList(String id, String type) {
+    public static Observable<CommentModel> postCommentList(String id, String type) {
 
         switch (type) {
             case HomeTypeConstant.MORE_TYPE_HOTEL:
@@ -285,7 +269,7 @@ public class NetApi {
      *
      * @return
      */
-    public Observable<CommentAddModel> postAddComment(Map<String, String> map, String type) {
+    public static Observable<CommentAddModel> postAddComment(Map<String, String> map, String type) {
         switch (type) {
             case HomeTypeConstant.MORE_TYPE_HOTEL:
                 return retrofitService.addHotelComment(map);
@@ -306,7 +290,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<HomeKTVDetailModel> postKTVDetail(String md5, String id) {
+    public static Observable<HomeKTVDetailModel> postKTVDetail(String md5, String id) {
         return retrofitService.postKTVDetail(md5, id);
     }
 
@@ -317,7 +301,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<HomeKTVDetailItemModel> postHTKDetailList(String md5, String id) {
+    public static Observable<HomeKTVDetailItemModel> postHTKDetailList(String md5, String id) {
         return retrofitService.postKTVDetailList(md5, id);
     }
 
@@ -329,7 +313,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<HoteldetailsItemModel> postHotelDetailList(String md5, String id) {
+    public static Observable<HoteldetailsItemModel> postHotelDetailList(String md5, String id) {
         return retrofitService.postHotelDetailList(md5, id);
     }
 
@@ -340,7 +324,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<HomeFoodDetailPackageModel> postFoodDetailList(String md5, String id) {
+    public static Observable<HomeFoodDetailPackageModel> postFoodDetailList(String md5, String id) {
         return retrofitService.postFoodDetailList(md5, id);
     }
 
@@ -351,7 +335,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<FoodDetailsMoreListModel> postFoodDetailMoreList(String md5, String id) {
+    public static Observable<FoodDetailsMoreListModel> postFoodDetailMoreList(String md5, String id) {
         return retrofitService.postFoodDetailMoreList(md5, id);
     }
 
@@ -362,7 +346,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<HotelDetailsMoreListModel> postHotelDetailMoreList(String md5, String id) {
+    public static Observable<HotelDetailsMoreListModel> postHotelDetailMoreList(String md5, String id) {
         return retrofitService.postHotelDetailMoreList(md5, id);
     }
 
@@ -373,7 +357,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<KTVDetailsMoreListModel> postKTVDetailMoreList(String md5, String id) {
+    public static Observable<KTVDetailsMoreListModel> postKTVDetailMoreList(String md5, String id) {
         return retrofitService.postKTVDetailMoreList(md5, id);
     }
 
@@ -384,7 +368,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<BarDetailsMoreListModel> postBarDetailMoreList(String md5, String id) {
+    public static Observable<BarDetailsMoreListModel> postBarDetailMoreList(String md5, String id) {
         return retrofitService.postBarDetailMoreList(md5, id);
     }
 
@@ -394,7 +378,7 @@ public class NetApi {
      * @param map
      * @return
      */
-    public Observable<TrainModel> postTrain(Map<String, String> map) {
+    public static Observable<TrainModel> postTrain(Map<String, String> map) {
         return retrofitService.postTrain(map);
     }
 
@@ -404,7 +388,7 @@ public class NetApi {
      * @param map
      * @return
      */
-    public Observable<OrderResultModel> postHotelOrder(Map<String, String> map) {
+    public static Observable<OrderResultModel> postHotelOrder(Map<String, String> map) {
         return retrofitService.hotelOrder(map);
     }
 
@@ -414,7 +398,7 @@ public class NetApi {
      * @param map
      * @return
      */
-    public Observable<OrderResultModel> postKTVOrder(Map<String, String> map) {
+    public static Observable<OrderResultModel> postKTVOrder(Map<String, String> map) {
         return retrofitService.KTVOrder(map);
     }
 
@@ -424,7 +408,7 @@ public class NetApi {
      * @param map
      * @return
      */
-    public Observable<OrderResultModel> postBarOrder(Map<String, String> map) {
+    public static Observable<OrderResultModel> postBarOrder(Map<String, String> map) {
         return retrofitService.BarOrder(map);
     }
 
@@ -437,7 +421,7 @@ public class NetApi {
      * @param STATUS
      * @return
      */
-    public Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(String md5, String HONOURUSER_ID, String CONVERGE_ID, String STATUS) {
+    public static Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(String md5, String HONOURUSER_ID, String CONVERGE_ID, String STATUS) {
         return retrofitService.postEatDrinkRecycler(md5, HONOURUSER_ID, CONVERGE_ID, STATUS);
     }
 
@@ -448,7 +432,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<EatDrinkDetailModel> postHjRecyclerItemDetail(String md5, String id) {
+    public static Observable<EatDrinkDetailModel> postHjRecyclerItemDetail(String md5, String id) {
         return retrofitService.postHjRecyclerItemDetail(md5, id);
     }
 
@@ -458,7 +442,7 @@ public class NetApi {
      * @param map
      * @return
      */
-    public Observable<HjReleaseModel> postHjRelease(Map<String, String> map) {
+    public static Observable<HjReleaseModel> postHjRelease(Map<String, String> map) {
         return retrofitService.postHjRelease(map);
     }
 
@@ -468,7 +452,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomePrivilegeModel> postHomePrivilege(String md5) {
+    public static Observable<HomePrivilegeModel> postHomePrivilege(String md5) {
         return retrofitService.postHomePrivilege(md5);
     }
 
@@ -478,7 +462,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomePrivilegeModel> privilegePart(String md5, String id) {
+    public static Observable<HomePrivilegeModel> privilegePart(String md5, String id) {
         return retrofitService.privilegePart(md5, id);
     }
 
@@ -488,7 +472,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<ZgPersonalTailorModel> postZgPersonalTailorModel(String md5) {
+    public static Observable<ZgPersonalTailorModel> postZgPersonalTailorModel(String md5) {
         return retrofitService.postZgPersonalTailorModel(md5);
     }
 
@@ -499,7 +483,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<ZgPersonalTailorDatailModel> postZgPersonalTailorDetail(String md5, String id) {
+    public static Observable<ZgPersonalTailorDatailModel> postZgPersonalTailorDetail(String md5, String id) {
         return retrofitService.postZgPersonalTailorDetail(md5, id);
     }
 
@@ -510,7 +494,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<CollectionModel> postCollection(String md5, String id) {
+    public static Observable<CollectionModel> postCollection(String md5, String id) {
         return retrofitService.postCollection(md5, id);
     }
 
@@ -521,7 +505,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<AddressManageModel> postAddressManage(String md5, String id) {
+    public static Observable<AddressManageModel> postAddressManage(String md5, String id) {
         return retrofitService.postAddressManage(md5, id);
     }
 
@@ -532,7 +516,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<ResultModel> delAddress(String md5, String id) {
+    public static Observable<ResultModel> delAddress(String md5, String id) {
         return retrofitService.delAddress(md5, id);
     }
 
@@ -541,7 +525,7 @@ public class NetApi {
      *
      * @return
      */
-    public Observable<ResultModel> addressAdd(Map<String, String> map) {
+    public static Observable<ResultModel> addressAdd(Map<String, String> map) {
         return retrofitService.addressAdd(map);
     }
 
@@ -550,7 +534,7 @@ public class NetApi {
      *
      * @return
      */
-    public Observable<ResultModel> addressEdit(Map<String, String> map) {
+    public static Observable<ResultModel> addressEdit(Map<String, String> map) {
         return retrofitService.addressEdit(map);
     }
 
@@ -562,11 +546,11 @@ public class NetApi {
      * @param imgPath
      * @return
      */
-    public Observable<ResultModel> upHeadIMG(String md5, String userId, String imgPath) {
+    public static Observable<ResultModel> upHeadIMG(String md5, String userId, String imgPath) {
         return retrofitService.uploadHead(md5, userId, DataManager.getMultiPart(DataManager.getMultBuilder(DataManager.initMultBuilder(), imgPath, "showfile")));
     }
 
-//    public Observable<ResultModel> postSendWeiBo(String md5, String HONOURUSER_ID, String CONTENT, String imgPath) {
+//    public static Observable<ResultModel> postSendWeiBo(String md5, String HONOURUSER_ID, String CONTENT, String imgPath) {
 //        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, DataManager.getMultiPart(DataManager.getMultBuilder(DataManager.initMultBuilder(),imgPath,"SHOWIMAGES")));
 //    }
 
@@ -579,7 +563,7 @@ public class NetApi {
      * @param listPath
      * @return
      */
-    public Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
+    public static Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
         //如果有图片上传，则加载body，如果没有上传图片则加载空body
         if (localMedia.size() != 0) {
             for (int i = 0; i < localMedia.size(); i++) {
@@ -604,7 +588,7 @@ public class NetApi {
      * @param imgPathList
      * @return
      */
-    public Observable<ResultModel> upLoadListIMG(String md5, String userId, List<String> imgPathList) {
+    public static Observable<ResultModel> upLoadListIMG(String md5, String userId, List<String> imgPathList) {
         MultipartBody.Builder builder;
         builder = DataManager.initMultBuilder();
         for (int i = 0; i < imgPathList.size(); i++) {
@@ -614,7 +598,7 @@ public class NetApi {
     }
 
 
-//       public Observable<ResultModel> upLoadListIMG2(String md5, String userId, List<String> pathList) {
+//       public static Observable<ResultModel> upLoadListIMG2(String md5, String userId, List<String> pathList) {
 //        MultipartBody.Builder builder = new MultipartBody.Builder()
 //                .setType(MultipartBody.FORM);//表单类型
 //        //多张图片
@@ -635,7 +619,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<MyOrderModel> postMyAllOrder(String md5, String id) {
+    public static Observable<MyOrderModel> postMyAllOrder(String md5, String id) {
         return retrofitService.postMyAllOrder(md5, id);
     }
 
@@ -647,7 +631,7 @@ public class NetApi {
      * @param state
      * @return
      */
-    public Observable<MyOrderModel> postMyAppointOrder(String md5, String id, String state) {
+    public static Observable<MyOrderModel> postMyAppointOrder(String md5, String id, String state) {
         return retrofitService.postMyAppointOrder(md5, id, state);
     }
 
@@ -657,7 +641,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<CategoryLeftModel> postCategoryLeft(String md5) {
+    public static Observable<CategoryLeftModel> postCategoryLeft(String md5) {
         return retrofitService.postCategoryLeft(md5);
     }
 
@@ -668,7 +652,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<CategoryRightModel> postCategoryRight(String md5, String id) {
+    public static Observable<CategoryRightModel> postCategoryRight(String md5, String id) {
         return retrofitService.postCategoryRight(md5, id);
     }
 
@@ -678,7 +662,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<WelcomeModel> postWelcome(String md5) {
+    public static Observable<WelcomeModel> postWelcome(String md5) {
         return retrofitService.postWelcome(md5);
     }
 
@@ -689,7 +673,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<ShoppingCarModel> postShoppingCar(String md5, String id) {
+    public static Observable<ShoppingCarModel> postShoppingCar(String md5, String id) {
         return retrofitService.postShoppingCar(md5, id);
     }
 
@@ -701,7 +685,7 @@ public class NetApi {
      * @param HONOURUSER_ID
      * @return
      */
-    public Observable<ResultModel> postShoppingCarDelete(String md5, String PRODUCT_ID, String HONOURUSER_ID) {
+    public static Observable<ResultModel> postShoppingCarDelete(String md5, String PRODUCT_ID, String HONOURUSER_ID) {
         return retrofitService.postShoppingCarDelete(md5, PRODUCT_ID, HONOURUSER_ID);
     }
 
@@ -711,7 +695,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<ZgBannerModel> postZgBanner(String md5) {
+    public static Observable<ZgBannerModel> postZgBanner(String md5) {
         return retrofitService.postZgBanner(md5);
     }
 
@@ -723,7 +707,7 @@ public class NetApi {
      * @param KEYWORDS
      * @return
      */
-    public Observable<ZgSearchModel> postZgSearch(String md5, String HONOURUSER_ID, String KEYWORDS) {
+    public static Observable<ZgSearchModel> postZgSearch(String md5, String HONOURUSER_ID, String KEYWORDS) {
         return retrofitService.postZgSearch(md5, HONOURUSER_ID, KEYWORDS);
     }
 
@@ -733,7 +717,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomePlayModel> postHomePlay(String md5) {
+    public static Observable<HomePlayModel> postHomePlay(String md5) {
         return retrofitService.postHomePlay(md5);
     }
 
@@ -743,7 +727,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomeGloryServerModel> postHomeGloryServer(String md5) {
+    public static Observable<HomeGloryServerModel> postHomeGloryServer(String md5) {
         return retrofitService.postHomeGloryServer(md5);
     }
 
@@ -753,7 +737,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomeGloryMusicModel> postHomeGloryMusic(String md5) {
+    public static Observable<HomeGloryMusicModel> postHomeGloryMusic(String md5) {
         return retrofitService.postHomeGloryMusic(md5);
     }
 
@@ -764,7 +748,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<HomeKTVModel> postHomeKTVRecycler(String md5, String user_id) {
+    public static Observable<HomeKTVModel> postHomeKTVRecycler(String md5, String user_id) {
         return retrofitService.postHomeKTVRecycler(md5, user_id);
     }
 
@@ -775,7 +759,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<HomeGolfRecyclerModel> postHomeGolfRecycler(String md5, String user_id) {
+    public static Observable<HomeGolfRecyclerModel> postHomeGolfRecycler(String md5, String user_id) {
         return retrofitService.postHomeGolfRecycler(md5, user_id);
     }
 
@@ -786,7 +770,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<HomeHorseRecyclerModel> postHomeHorseRecycler(String md5, String user_id) {
+    public static Observable<HomeHorseRecyclerModel> postHomeHorseRecycler(String md5, String user_id) {
         return retrofitService.postHomeHorseRecycler(md5, user_id);
     }
 
@@ -797,7 +781,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<HomeCarRecyclerModel> postHomeCarRecycler(String md5, String user_id) {
+    public static Observable<HomeCarRecyclerModel> postHomeCarRecycler(String md5, String user_id) {
         return retrofitService.postHomeCarRecycler(md5, user_id);
     }
 
@@ -808,7 +792,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<HomeYachtRecyclerModel> postHomeYachtRecycler(String md5, String user_id) {
+    public static Observable<HomeYachtRecyclerModel> postHomeYachtRecycler(String md5, String user_id) {
         return retrofitService.postHomeYachtRecycler(md5, user_id);
     }
 
@@ -819,7 +803,7 @@ public class NetApi {
      * @param golf_id
      * @return
      */
-    public Observable<HomeGolfDetailModel> postHomeGolfDetail(String md5, String golf_id) {
+    public static Observable<HomeGolfDetailModel> postHomeGolfDetail(String md5, String golf_id) {
         return retrofitService.postHomeGolfDetail(md5, golf_id);
     }
 
@@ -830,7 +814,7 @@ public class NetApi {
      * @param horse_id
      * @return
      */
-    public Observable<HomeHorseDetailModel> postHomeHorseDetail(String md5, String horse_id) {
+    public static Observable<HomeHorseDetailModel> postHomeHorseDetail(String md5, String horse_id) {
         return retrofitService.postHomeHorseDetail(md5, horse_id);
     }
 
@@ -841,7 +825,7 @@ public class NetApi {
      * @param car_id
      * @return
      */
-    public Observable<HomeCarDetailModel> postHomeCarDetail(String md5, String car_id) {
+    public static Observable<HomeCarDetailModel> postHomeCarDetail(String md5, String car_id) {
         return retrofitService.postHomeCarDetail(md5, car_id);
     }
 
@@ -852,7 +836,7 @@ public class NetApi {
      * @param yacht_id
      * @return
      */
-    public Observable<HomeYachtDetailModel> postHomeYachtDetail(String md5, String yacht_id) {
+    public static Observable<HomeYachtDetailModel> postHomeYachtDetail(String md5, String yacht_id) {
         return retrofitService.postHomeYachtDetail(md5, yacht_id);
     }
 
@@ -862,7 +846,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomeCopterDetailModel> postHomeCopterDetail(String md5) {
+    public static Observable<HomeCopterDetailModel> postHomeCopterDetail(String md5) {
         return retrofitService.postHomeCopterDetail(md5);
     }
 
@@ -873,7 +857,7 @@ public class NetApi {
      * @param server_id
      * @return
      */
-    public Observable<Object> postHomeGloryHorseDetail(String md5, String server_id) {
+    public static Observable<Object> postHomeGloryHorseDetail(String md5, String server_id) {
         return retrofitService.postHomeGloryHorseDetail(md5, server_id);
     }
 
@@ -886,7 +870,7 @@ public class NetApi {
      * @param ORDERSTATUS
      * @return
      */
-    public Observable<ResultModel> postMyOrderOk(String md5, String ORDERNUMBER, String HONOURUSER_ID, String ORDERSTATUS) {
+    public static Observable<ResultModel> postMyOrderOk(String md5, String ORDERNUMBER, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postMyOrderOk(md5, ORDERNUMBER, HONOURUSER_ID, ORDERSTATUS);
     }
 
@@ -897,7 +881,7 @@ public class NetApi {
      * @param HONOURUSER_ID
      * @return
      */
-    public Observable<OrderCenterBarRecyclerModel> postOrderCenterBarRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+    public static Observable<OrderCenterBarRecyclerModel> postOrderCenterBarRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postOrderCenterBarRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
     }
 
@@ -909,7 +893,7 @@ public class NetApi {
      * @param ORDERSTATUS
      * @return
      */
-    public Observable<OrderCenterKTVRecyclerModel> postOrderCenterKTVRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+    public static Observable<OrderCenterKTVRecyclerModel> postOrderCenterKTVRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postOrderCenterKTVRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
     }
 
@@ -921,7 +905,7 @@ public class NetApi {
      * @param ORDERSTATUS
      * @return
      */
-    public Observable<OrderCenterHotelRecyclerModel> postOrderCenterHotelRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+    public static Observable<OrderCenterHotelRecyclerModel> postOrderCenterHotelRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postOrderCenterHotelRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
     }
 
@@ -933,7 +917,7 @@ public class NetApi {
      * @param ORDERSTATUS
      * @return
      */
-    public Observable<OrderCenterFoodRecyclerModel> postOrderCenterFoodRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
+    public static Observable<OrderCenterFoodRecyclerModel> postOrderCenterFoodRecycler(String md5, String HONOURUSER_ID, String ORDERSTATUS) {
         return retrofitService.postOrderCenterFoodRecycler(md5, HONOURUSER_ID, ORDERSTATUS);
     }
 
@@ -946,14 +930,14 @@ public class NetApi {
      * @param ORDERSTATUS
      * @return
      */
-    public Observable<ResultModel> postZgChange(String md5, String HONOURUSER_ID, String ORDERNUMBER, String ORDERSTATUS) {
+    public static Observable<ResultModel> postZgChange(String md5, String HONOURUSER_ID, String ORDERNUMBER, String ORDERSTATUS) {
         return retrofitService.postZgChange(md5, HONOURUSER_ID, ORDERNUMBER, ORDERSTATUS);
     }
 
     /**
      * 美食筛选
      */
-    public Observable<HomeFoodModel> filterFoodList(Map<String, String> map) {
+    public static Observable<HomeFoodModel> filterFoodList(Map<String, String> map) {
         return retrofitService.filterFoodList(map);
     }
 
@@ -963,7 +947,7 @@ public class NetApi {
      * @param map
      * @return
      */
-    public Observable<HomeHotelModel> filterHotelList(Map<String, String> map) {
+    public static Observable<HomeHotelModel> filterHotelList(Map<String, String> map) {
         return retrofitService.filterHotelList(map);
     }
 
@@ -974,7 +958,7 @@ public class NetApi {
      * @return
      */
 
-    public Observable<HomeKTVModel> filterKTVList(Map<String, String> map) {
+    public static Observable<HomeKTVModel> filterKTVList(Map<String, String> map) {
         return retrofitService.filterKTVList(map);
     }
 
@@ -984,11 +968,11 @@ public class NetApi {
      * @param map
      * @return
      */
-    public Observable<HomeBarModel> filterBarList(Map<String, String> map) {
+    public static Observable<HomeBarModel> filterBarList(Map<String, String> map) {
         return retrofitService.filterBarList(map);
     }
 
-    public Observable<LiveInfoListModel> pullLive(String appid) {
+    public static Observable<LiveInfoListModel> pullLive(String appid) {
         return retrofitService.pullLive(appid);
     }
 
@@ -998,7 +982,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<HomeGloryMagazineModel> postHomeGloryMagazine(String md5) {
+    public static Observable<HomeGloryMagazineModel> postHomeGloryMagazine(String md5) {
         return retrofitService.postHomeGloryMagazine(md5);
     }
 
@@ -1009,7 +993,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<AbMyFriendModel> myFollowList(String md5, String id) {
+    public static Observable<AbMyFriendModel> myFollowList(String md5, String id) {
         return retrofitService.myFollowList(md5, id);
     }
 
@@ -1020,7 +1004,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<ResultModel> delFriend(String md5, String id, String delId) {
+    public static Observable<ResultModel> delFriend(String md5, String id, String delId) {
         return retrofitService.delFriend(md5, id, delId);
     }
 
@@ -1031,7 +1015,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<AbMyFriendModel> myFriendList(String md5, String id) {
+    public static Observable<AbMyFriendModel> myFriendList(String md5, String id) {
         return retrofitService.myFriendsList(md5, id);
     }
 
@@ -1042,7 +1026,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<ResultModel> addFriend(String md5, String id, String delId) {
+    public static Observable<ResultModel> addFriend(String md5, String id, String delId) {
         return retrofitService.addFriends(md5, id, delId);
     }
 
@@ -1052,7 +1036,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<ZgFindTitleModel> postZgFindTiele(String md5) {
+    public static Observable<ZgFindTitleModel> postZgFindTiele(String md5) {
         return retrofitService.postZgFindTiele(md5);
     }
 
@@ -1063,7 +1047,7 @@ public class NetApi {
      * @param id
      * @return
      */
-    public Observable<ZgFindModel> postZgFind(String md5, String id) {
+    public static Observable<ZgFindModel> postZgFind(String md5, String id) {
         return retrofitService.postZgFind(md5, id);
     }
 
@@ -1075,7 +1059,7 @@ public class NetApi {
      * @param sortName
      * @return
      */
-    public Observable<FoodHotelBarKTVDialogModel> postFoodHotelBarKTVDialog(String md5, String type, String sortName) {
+    public static Observable<FoodHotelBarKTVDialogModel> postFoodHotelBarKTVDialog(String md5, String type, String sortName) {
         return retrofitService.postFoodHotelBarKTVDialog(md5, type, sortName);
     }
 
@@ -1086,7 +1070,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<MyCircleModel> postCircleCenterRecycle(String md5, String user_id) {
+    public static Observable<MyCircleModel> postCircleCenterRecycle(String md5, String user_id) {
         return retrofitService.postCircleCenterRecycle(md5, user_id);
     }
 
@@ -1100,7 +1084,7 @@ public class NetApi {
      * @param statue
      * @return
      */
-    public Observable<ResultModel> postCircleCenterYeah(String md5, String HONOURUSER_ID, String circle_id, String commend_id, String statue) {
+    public static Observable<ResultModel> postCircleCenterYeah(String md5, String HONOURUSER_ID, String circle_id, String commend_id, String statue) {
         return retrofitService.postCircleCenterYeah(md5, HONOURUSER_ID, circle_id, commend_id, statue);
     }
 
@@ -1111,7 +1095,7 @@ public class NetApi {
      * @param CIRCLE_ID
      * @return
      */
-    public Observable<CircleCenterCommentRecyclerModel> postCircleCenterCommentRecycler(String md5, String CIRCLE_ID) {
+    public static Observable<CircleCenterCommentRecyclerModel> postCircleCenterCommentRecycler(String md5, String CIRCLE_ID) {
         return retrofitService.postCircleCenterCommentRecycler(md5, CIRCLE_ID);
     }
 
@@ -1121,7 +1105,7 @@ public class NetApi {
      * @param map
      * @return
      */
-    public Observable<ResultModel> postUserInfoChange(String md5, String user_id, Map<String, String> map) {
+    public static Observable<ResultModel> postUserInfoChange(String md5, String user_id, Map<String, String> map) {
         return retrofitService.postUserInfoChange(md5, user_id, map);
     }
 
@@ -1133,7 +1117,7 @@ public class NetApi {
      * @param passWord
      * @return
      */
-    public Observable<ResultModel> postSecurityPassWord(String md5, String user_id, String passWord, String OLDPASSWORD) {
+    public static Observable<ResultModel> postSecurityPassWord(String md5, String user_id, String passWord, String OLDPASSWORD) {
         return retrofitService.postSecurityPassWord(md5, user_id, passWord, OLDPASSWORD);
     }
 
@@ -1144,7 +1128,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<SettingUserInfoModel> postSettingUserInfo(String md5, String user_id) {
+    public static Observable<SettingUserInfoModel> postSettingUserInfo(String md5, String user_id) {
         return retrofitService.postSettingUserInfo(md5, user_id);
     }
 
@@ -1158,7 +1142,7 @@ public class NetApi {
      * @param reply_id
      * @return
      */
-    public Observable<ResultModel> postCircleCenterComment(String md5, String user_id, String circle_id, String content, String reply_id) {
+    public static Observable<ResultModel> postCircleCenterComment(String md5, String user_id, String circle_id, String content, String reply_id) {
         return retrofitService.postCircleCenterComment(md5, user_id, circle_id, content, reply_id);
     }
 
@@ -1168,7 +1152,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<MusicDjModel> getMusicDjList(String md5, String cate_name) {
+    public static Observable<MusicDjModel> getMusicDjList(String md5, String cate_name) {
         return retrofitService.getMusicDjList(md5, cate_name);
     }
 
@@ -1179,7 +1163,7 @@ public class NetApi {
      * @param channelName
      * @return
      */
-    public Observable<MusicDetailListModel> getMusicDjSongList(String md5, String channelName) {
+    public static Observable<MusicDetailListModel> getMusicDjSongList(String md5, String channelName) {
         return retrofitService.getMusicDjSongList(md5, channelName);
     }
 
@@ -1190,7 +1174,7 @@ public class NetApi {
      * @param songId
      * @return
      */
-    public Observable<MusicSongDetailsModel> getSongDetails(String md5, String songId) {
+    public static Observable<MusicSongDetailsModel> getSongDetails(String md5, String songId) {
         return retrofitService.getMusicSongDetail(md5, songId);
     }
 
@@ -1201,7 +1185,7 @@ public class NetApi {
      * @param songid
      * @return
      */
-    public Observable<MusicLrcModel> getMusicLry(String md5, String songid) {
+    public static Observable<MusicLrcModel> getMusicLry(String md5, String songid) {
         return retrofitService.getMusicLry(md5, songid);
     }
 
@@ -1213,7 +1197,7 @@ public class NetApi {
      * @param type
      * @return
      */
-    public Observable<MusicRankingModel> getRankingList(String md5, String offset, String type) {
+    public static Observable<MusicRankingModel> getRankingList(String md5, String offset, String type) {
         return retrofitService.getRankingList(md5, offset, type);
     }
 
@@ -1225,7 +1209,7 @@ public class NetApi {
      * @param type
      * @return
      */
-    public Observable<MusicRankAllModel> getMusicRanking(String md5, String offset, String type) {
+    public static Observable<MusicRankAllModel> getMusicRanking(String md5, String offset, String type) {
         return retrofitService.getMusicRanking(md5, offset, type);
     }
 
@@ -1235,7 +1219,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<MusicRecommendModel> getMusicRecommendList(String md5) {
+    public static Observable<MusicRecommendModel> getMusicRecommendList(String md5) {
         return retrofitService.getMusicRecommendList(md5);
     }
 
@@ -1246,7 +1230,7 @@ public class NetApi {
      * @param offset
      * @return
      */
-    public Observable<MusicSingerModel> getMusicSingerList(String md5, String offset, String sexType, String areaType) {
+    public static Observable<MusicSingerModel> getMusicSingerList(String md5, String offset, String sexType, String areaType) {
         return retrofitService.getMusicSingerList(md5, offset, sexType, areaType);
     }
 
@@ -1258,7 +1242,7 @@ public class NetApi {
      * @param offset
      * @return
      */
-    public Observable<MusicSingerSongsModel> getSingerSongs(String md5, String singerId, String offset) {
+    public static Observable<MusicSingerSongsModel> getSingerSongs(String md5, String singerId, String offset) {
         return retrofitService.getSingerSongs(md5, singerId, offset);
     }
 
@@ -1268,7 +1252,7 @@ public class NetApi {
      * @param md5
      * @return
      */
-    public Observable<MyPowerModel> postMyPower(String md5, String HONOURUSER_ID) {
+    public static Observable<MyPowerModel> postMyPower(String md5, String HONOURUSER_ID) {
         return retrofitService.postMyPower(md5, HONOURUSER_ID);
     }
 
@@ -1279,7 +1263,7 @@ public class NetApi {
      * @param CARDTYPE_ID
      * @return
      */
-    public Observable<RegisterCardTypeModel> postRegisterCardType(String md5, String CARDTYPE_ID) {
+    public static Observable<RegisterCardTypeModel> postRegisterCardType(String md5, String CARDTYPE_ID) {
         return retrofitService.postRegisterCardType(md5, CARDTYPE_ID);
     }
 
@@ -1290,7 +1274,7 @@ public class NetApi {
      * @param CARDTYPE_ID
      * @return
      */
-    public Observable<RegisterChangeNumberModel> postRegisterChangeNumber(String md5, String CARDTYPE_ID) {
+    public static Observable<RegisterChangeNumberModel> postRegisterChangeNumber(String md5, String CARDTYPE_ID) {
         return retrofitService.postRegisterChangeNumber(md5, CARDTYPE_ID);
     }
 
@@ -1301,7 +1285,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<MyPowerImageModel> postPowerImage(String md5, String user_id) {
+    public static Observable<MyPowerImageModel> postPowerImage(String md5, String user_id) {
         return retrofitService.postPowerImage(md5, user_id);
     }
 
@@ -1312,7 +1296,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<MyVipCenterModel> postMyVipCenter(String md5, String user_id) {
+    public static Observable<MyVipCenterModel> postMyVipCenter(String md5, String user_id) {
         return retrofitService.postMyVipCenter(md5, user_id);
     }
 
@@ -1327,7 +1311,7 @@ public class NetApi {
      * @param ISSHOW
      * @return
      */
-    public Observable<ResultModel> postOrderCenterComment(String md5, String PRODUCT_ID, String HONOURUSER_ID, String EVALUATECONTENT, String EVALUATECOINT, String ISSHOW) {
+    public static Observable<ResultModel> postOrderCenterComment(String md5, String PRODUCT_ID, String HONOURUSER_ID, String EVALUATECONTENT, String EVALUATECOINT, String ISSHOW) {
         return retrofitService.postOrderCenterComment(md5, PRODUCT_ID, HONOURUSER_ID, EVALUATECONTENT, EVALUATECOINT, ISSHOW);
     }
 
@@ -1338,7 +1322,7 @@ public class NetApi {
      * @param user_id
      * @return
      */
-    public Observable<MyDisBlackPowerModel> postDisBlackPower(String md5, String user_id) {
+    public static Observable<MyDisBlackPowerModel> postDisBlackPower(String md5, String user_id) {
         return retrofitService.postDisBlackPower(md5, user_id);
     }
 
@@ -1349,7 +1333,7 @@ public class NetApi {
      * @param PRODUCT_ID
      * @return
      */
-    public Observable<ResponseBody> commodityDteail(String md5, String PRODUCT_ID) {
+    public static Observable<ResponseBody> commodityDteail(String md5, String PRODUCT_ID) {
         return retrofitService.commodityDteail(md5, PRODUCT_ID);
     }
 }

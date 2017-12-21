@@ -11,7 +11,6 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
-import com.zsh.blackcard.untils.UIUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,7 +56,7 @@ public class HomeTopNewsDetailActivity extends BaseActivity {
 
     private void initData() {
         String data = getIntent().getStringExtra("data");
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeTitleNewsDetail(DataManager.getMd5Str("NEWSDET"), data), new ResultListener<HomeTitleNewsDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeTitleNewsDetail(DataManager.getMd5Str("NEWSDET"), data), new ResultListener<HomeTitleNewsDetailModel>() {
             @Override
             public void responseSuccess(HomeTitleNewsDetailModel obj) {
                 //根据返回字段是否为空，自动设置相对应的控件是否隐藏

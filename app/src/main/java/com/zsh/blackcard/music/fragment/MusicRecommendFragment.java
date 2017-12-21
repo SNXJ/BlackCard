@@ -67,7 +67,7 @@ public class MusicRecommendFragment extends BaseFragment {
     }
 
     private void initData() {
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getMusicRecommendList(DataManager.getMd5Str("SONGLIST")), new ResultListener<MusicRecommendModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getMusicRecommendList(DataManager.getMd5Str("SONGLIST")), new ResultListener<MusicRecommendModel>() {
             @Override
             public void responseSuccess(MusicRecommendModel obj) {
                 dataList.addAll(obj.getPd().getResult().getList());

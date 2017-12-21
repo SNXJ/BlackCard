@@ -76,7 +76,7 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
     private void initData() {
         //获取欢迎引导页轮播图片
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postWelcome(DataManager.getMd5Str("BOOTPAGELIST")), new ResultListener<WelcomeModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postWelcome(DataManager.getMd5Str("BOOTPAGELIST")), new ResultListener<WelcomeModel>() {
             @Override
             public void responseSuccess(WelcomeModel obj) {
                 //循环遍历图片添加进集合

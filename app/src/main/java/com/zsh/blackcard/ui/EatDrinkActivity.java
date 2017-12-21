@@ -88,7 +88,7 @@ public class EatDrinkActivity extends BaseActivity {
         hj_recycler_detail_title.setText(title);
 
         //初始化指定汇聚下所有聚会列表
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "", data, ""), new ResultListener<EatDrinkRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "", data, ""), new ResultListener<EatDrinkRecyclerModel>() {
             @Override
             public void responseSuccess(EatDrinkRecyclerModel obj) {
                 if (eatDrinkRecyclerAdapter == null) {
@@ -107,7 +107,7 @@ public class EatDrinkActivity extends BaseActivity {
     }
 
     private void addFriend(String addId) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addFriend(DataManager.getMd5Str("FRIENDADD"), BaseApplication.getHonouruserId(), addId), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.addFriend(DataManager.getMd5Str("FRIENDADD"), BaseApplication.getHonouruserId(), addId), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 //TODO 修改状态

@@ -60,7 +60,7 @@ public class HomeTrainActivity extends BaseActivity {
 
     private void initData() {
 
-//        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postTrain(map), new ResultListener<TrainModel>() {
+//        DataManager.getInstance(this).RequestHttp(NetApi.postTrain(map), new ResultListener<TrainModel>() {
 //            @Override
 //            public void responseSuccess(TrainModel obj) {
 //

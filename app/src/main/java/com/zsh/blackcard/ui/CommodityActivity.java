@@ -43,7 +43,7 @@ public class CommodityActivity extends BaseActivity implements BaseQuickAdapter.
         String data = getIntent().getStringExtra("data");
         String title = getIntent().getStringExtra("title");
         commodity_title_tv.setText(title);
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postShopArea(DataManager.getMd5Str("SHIPPRE"), data), new ResultListener<ZgShopAreaModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postShopArea(DataManager.getMd5Str("SHIPPRE"), data), new ResultListener<ZgShopAreaModel>() {
             @Override
             public void responseSuccess(ZgShopAreaModel obj) {
                 adapter = new ZgCommodityAdapter(R.layout.zg_commodity_recycler_item,obj.getPd());

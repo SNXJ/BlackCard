@@ -148,7 +148,7 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
      */
     private void releaseBtn() {
         if (!TextUtils.isEmpty(hj_eat_set_startTime_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_endTime_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_price_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_type_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_people_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_sex_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_year_tv.getText().toString()) && !TextUtils.isEmpty(hj_eat_set_detail_tv.getText().toString())) {
-            DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHjRelease(map), new ResultListener<HjReleaseModel>() {
+            DataManager.getInstance(this).RequestHttp(NetApi.postHjRelease(map), new ResultListener<HjReleaseModel>() {
                 @Override
                 public void responseSuccess(HjReleaseModel obj) {
                     UIUtils.showToast("发布成功");

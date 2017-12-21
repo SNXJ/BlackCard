@@ -75,7 +75,7 @@ public class HomePublicDetailActivity extends BaseActivity {
     }
 
     private void initCopter() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeCopterDetail(DataManager.getMd5Str("HORSEDETAIL")), new ResultListener<HomeCopterDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeCopterDetail(DataManager.getMd5Str("HORSEDETAIL")), new ResultListener<HomeCopterDetailModel>() {
             @Override
             public void responseSuccess(HomeCopterDetailModel obj) {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getPLANEDETIMGS().get(0)).into(home_public_detail_one_img);
@@ -96,7 +96,7 @@ public class HomePublicDetailActivity extends BaseActivity {
     }
 
     private void initDataYacht(String title) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeYachtDetail(DataManager.getMd5Str("YACHTDETAIL"), title), new ResultListener<HomeYachtDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeYachtDetail(DataManager.getMd5Str("YACHTDETAIL"), title), new ResultListener<HomeYachtDetailModel>() {
             @Override
             public void responseSuccess(HomeYachtDetailModel obj) {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getYACHTDETIMGS().get(0)).into(home_public_detail_one_img);
@@ -117,7 +117,7 @@ public class HomePublicDetailActivity extends BaseActivity {
     }
 
     private void initDataCar(String title) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeCarDetail(DataManager.getMd5Str("LUXCARDETAIL"), title), new ResultListener<HomeCarDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeCarDetail(DataManager.getMd5Str("LUXCARDETAIL"), title), new ResultListener<HomeCarDetailModel>() {
             @Override
             public void responseSuccess(HomeCarDetailModel obj) {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getLUXCARDETIMGS().get(0)).into(home_public_detail_one_img);
@@ -138,7 +138,7 @@ public class HomePublicDetailActivity extends BaseActivity {
     }
 
     private void initDataHorse(String title) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeHorseDetail(DataManager.getMd5Str("HORSEDETAIL"), title), new ResultListener<HomeHorseDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeHorseDetail(DataManager.getMd5Str("HORSEDETAIL"), title), new ResultListener<HomeHorseDetailModel>() {
             @Override
             public void responseSuccess(HomeHorseDetailModel obj) {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getHORSEDETIMGS().get(0)).into(home_public_detail_one_img);
@@ -159,7 +159,7 @@ public class HomePublicDetailActivity extends BaseActivity {
     }
 
     private void initDataGolf(String title) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeGolfDetail(DataManager.getMd5Str("GOLFDETAIL"), title), new ResultListener<HomeGolfDetailModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeGolfDetail(DataManager.getMd5Str("GOLFDETAIL"), title), new ResultListener<HomeGolfDetailModel>() {
             @Override
             public void responseSuccess(HomeGolfDetailModel obj) {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getGOLFDETIMGS().get(0)).into(home_public_detail_one_img);

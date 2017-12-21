@@ -110,7 +110,7 @@ public class MusicDjFragment extends BaseFragment {
 
     private void initData() {
         showLoading(getActivity());
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getMusicDjList(DataManager.getMd5Str("CATELIST"), cate_name), new ResultListener<MusicDjModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getMusicDjList(DataManager.getMd5Str("CATELIST"), cate_name), new ResultListener<MusicDjModel>() {
             @Override
             public void responseSuccess(MusicDjModel obj) {
                 dataList = obj.getPd().getResult().getChannellist();
