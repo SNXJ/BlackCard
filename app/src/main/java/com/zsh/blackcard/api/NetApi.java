@@ -101,7 +101,7 @@ import rx.Observable;
  * @Date 2017/11/6
  * @Describe *
  */
-public  class NetApi extends DataManager {
+public class NetApi extends DataManager {
     /**
      * 卡号密码登录
      *
@@ -109,7 +109,7 @@ public  class NetApi extends DataManager {
      * @param passWord 密码
      * @return
      */
-    public  static Observable<LoginModel> postLoginCard(String md5, String cardNo, String passWord) {
+    public static Observable<LoginModel> postLoginCard(String md5, String cardNo, String passWord) {
         return retrofitService.postLoginCard(md5, cardNo, passWord);
     }
 
@@ -442,8 +442,20 @@ public  class NetApi extends DataManager {
      * @param map
      * @return
      */
-    public static Observable<HjReleaseModel> postHjRelease(Map<String, String> map) {
-        return retrofitService.postHjRelease(map);
+    public static Observable<HjReleaseModel> postHjRelease(Map<String, String> map, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia) {
+        if (localMedia.size() != 0) {
+            for (int i = 0; i < localMedia.size(); i++) {
+                File file = new File(localMedia.get(i).getPath());
+                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", file.getName(), imageBody);
+                listPath.add(part);
+            }
+        } else {
+            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+            MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
+            listPath.add(part);
+        }
+        return retrofitService.postHjRelease(map,listPath);
     }
 
     /**

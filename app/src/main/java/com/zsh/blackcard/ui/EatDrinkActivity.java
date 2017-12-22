@@ -88,7 +88,7 @@ public class EatDrinkActivity extends BaseActivity {
         hj_recycler_detail_title.setText(title);
 
         //初始化指定汇聚下所有聚会列表
-        DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "", data, ""), new ResultListener<EatDrinkRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "388279486010884096", data, ""), new ResultListener<EatDrinkRecyclerModel>() {
             @Override
             public void responseSuccess(EatDrinkRecyclerModel obj) {
                 if (eatDrinkRecyclerAdapter == null) {

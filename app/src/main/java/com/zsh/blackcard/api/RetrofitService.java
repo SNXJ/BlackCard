@@ -316,12 +316,6 @@ public interface RetrofitService {
     @GET("appuserin/useredishipadr?")
     Observable<ResultModel> addressEdit(@QueryMap Map<String, String> map);
 
-
-    //发布聚会
-    @FormUrlEncoded
-    @POST("appconvergein/adddetailparty?")
-    Observable<HjReleaseModel> postHjRelease(@FieldMap Map<String, String> map);
-
     //首页特权
     @FormUrlEncoded
     @POST("apphomein/privilegelist?")
@@ -349,7 +343,6 @@ public interface RetrofitService {
     Observable<CollectionModel> postCollection(@Field("FKEY") String md5,
                                                @Field("HONOURUSER_ID") String id);
 
-
     /**
      * 上传头像
      */
@@ -374,6 +367,12 @@ public interface RetrofitService {
                                           @Query("CONTENT") String CONTENT,
                                           @Part List<MultipartBody.Part> fileList,
                                           @Query("TYPE") String type);
+
+    //发布聚会
+    @Multipart
+    @POST("appconvergein/adddetailparty?")
+    Observable<HjReleaseModel> postHjRelease(@QueryMap Map<String, String> map,
+                                             @Part List<MultipartBody.Part> fileList);
 
     /**
      * 上传多张
@@ -779,6 +778,6 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appshipin/shipdetails.do?")
     Observable<ResponseBody> commodityDteail(@Field("FKEY") String md5,
-                             @Field("PRODUCT_ID") String PRODUCT_ID);
+                                             @Field("PRODUCT_ID") String PRODUCT_ID);
 }
 

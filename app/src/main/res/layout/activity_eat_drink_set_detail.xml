@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:background="@mipmap/bj">
 
     <RelativeLayout
@@ -13,7 +15,7 @@
         <ImageView
             android:id="@+id/blackwb_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/back" />
@@ -81,15 +83,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/detail_relative"
         android:layout_marginLeft="@dimen/base25dp"
-        android:text="最多支持4张图片上传，点击删除图片"
+        android:text="最多支持4张图片上传"
         android:textColor="#FF454545" />
 
-    <ImageView
-        android:layout_marginTop="@dimen/base5dp"
-        android:layout_marginLeft="@dimen/base25dp"
+    <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/detail_tv"
-        android:src="@mipmap/detail_group_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/send_weiBo_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base5dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <!--<ImageView-->
+        <!--android:layout_marginTop="@dimen/base5dp"-->
+        <!--android:layout_marginLeft="@dimen/base25dp"-->
+        <!--android:layout_below="@+id/detail_tv"-->
+        <!--android:src="@mipmap/detail_group_2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
 
 </RelativeLayout>

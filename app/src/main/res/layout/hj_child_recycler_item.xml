@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/base10dp"
             android:layout_toRightOf="@+id/hj_child_recycler_head_img"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:orientation="vertical">
 
             <RadioButton
@@ -35,10 +35,10 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/hj_child_recycler_item_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base6dp"
-                android:text="1.7km 19岁魔蝎座"
                 android:textColor="@color/recharge_text"
                 android:textSize="11sp" />
         </LinearLayout>

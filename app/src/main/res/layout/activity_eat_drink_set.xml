@@ -323,7 +323,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:visibility="invisible"
+            android:text="内容暂未编辑"
             android:id="@+id/hj_eat_set_detail_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
