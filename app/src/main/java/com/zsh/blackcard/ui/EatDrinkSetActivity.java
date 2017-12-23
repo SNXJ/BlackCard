@@ -78,7 +78,7 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
 
     private void initData() {
         String data = getIntent().getStringExtra("data");
-        map.put("FKEY", "99999843c9c12ce8e1f36edd25087f68");
+        map.put("FKEY", DataManager.getMd5Str("DETAILADD"));
         map.put("CONVERGE_ID", data);
         map.put("HONOURUSER_ID", "d6a3779de8204dfd9359403f54f7d27c");
         map.put("CONVERGETITLE", "");
@@ -186,6 +186,7 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
                 @Override
                 public void responseSuccess(HjReleaseModel obj) {
                     UIUtils.showToast("发布成功");
+                    finish();
                 }
 
                 @Override

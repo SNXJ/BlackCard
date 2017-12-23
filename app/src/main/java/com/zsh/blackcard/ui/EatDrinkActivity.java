@@ -92,7 +92,14 @@ public class EatDrinkActivity extends BaseActivity {
             @Override
             public void responseSuccess(EatDrinkRecyclerModel obj) {
                 if (eatDrinkRecyclerAdapter == null) {
-                    eatDrinkRecyclerAdapter = new EatDrinkRecyclerAdapter(R.layout.hj_child_recycler_item, obj.getPd());
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if(obj.getPd().get(i).getCONVERGEIMGS().size() != 0){
+                            obj.getPd().get(i).setItemType(1);
+                        }else{
+                            obj.getPd().get(i).setItemType(2);
+                        }
+                    }
+                    eatDrinkRecyclerAdapter = new EatDrinkRecyclerAdapter(obj.getPd());
                     eat_drink_recycler.setLayoutManager(new LinearLayoutManager(EatDrinkActivity.this));
                     eat_drink_recycler.setAdapter(eatDrinkRecyclerAdapter);
                     eatDrinkRecyclerAdapter.setOnItemChildClickListener(new HjChildRecyclerOnItemClick());
