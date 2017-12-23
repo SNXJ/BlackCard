@@ -72,6 +72,15 @@ public class HuoDongActivity extends BaseActivity {
             @Override
             public void responseSuccess(EatDrinkRecyclerModel obj) {
                 if (obj.getResult().equals("01")) {
+
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        if (obj.getPd().get(i).getCONVERGEIMGS().size() != 0) {
+                            obj.getPd().get(i).setItemType(1);
+                        } else {
+                            obj.getPd().get(i).setItemType(2);
+                        }
+                    }
+
                     pdBeans.clear();
                     pdBeans.addAll(obj.getPd());
                 } else {
@@ -80,7 +89,8 @@ public class HuoDongActivity extends BaseActivity {
 
 
                 if (eatDrinkRecyclerAdapter == null) {
-                    eatDrinkRecyclerAdapter = new EatDrinkRecyclerAdapter(R.layout.hj_child_recycler_item, pdBeans);
+
+                    eatDrinkRecyclerAdapter = new EatDrinkRecyclerAdapter(pdBeans);
                     my_huodong_recyclerView.setLayoutManager(new LinearLayoutManager(HuoDongActivity.this));
                     my_huodong_recyclerView.addItemDecoration(new SpacesItemDecoration(HuoDongActivity.this, SpacesItemDecoration.VERTICAL_LIST));
                     my_huodong_recyclerView.setAdapter(eatDrinkRecyclerAdapter);
