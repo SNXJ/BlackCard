@@ -84,6 +84,8 @@ public class EatDrinkDetailActivity extends BaseActivity {
     RelativeLayout hjEatSetDetailRelative;
     @BindView(R.id.hj_eat_detail_release_btn)
     Button hjEatDetailReleaseBtn;
+    @BindView(R.id.eat_drink_detail_title_tv)
+    TextView eat_drink_detail_title_tv;
 
     private EatDrinkDetailModel eatDrinkDetaildata;
 
@@ -108,6 +110,8 @@ public class EatDrinkDetailActivity extends BaseActivity {
 
     private void initDate() {
         String data = getIntent().getStringExtra("data");
+        String title = getIntent().getStringExtra("title");
+        eat_drink_detail_title_tv.setText(title);
         DataManager.getInstance(this).RequestHttp(NetApi.postHjRecyclerItemDetail(DataManager.getMd5Str("DETAILID"), data), new ResultListener<EatDrinkDetailModel>() {
             @Override
             public void responseSuccess(EatDrinkDetailModel obj) {

@@ -49,6 +49,8 @@ public class HjFragment extends BaseFragment {
     public void initDate(Bundle savedInstanceState) {
         hj_recycler.setNestedScrollingEnabled(false);
 
+        showLoading(getActivity());
+
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.postHjRecycler(DataManager.getMd5Str("CONVERGELIST")), new ResultListener<HjRecyclerModel>() {
             @Override
             public void responseSuccess(HjRecyclerModel obj) {
@@ -60,7 +62,7 @@ public class HjFragment extends BaseFragment {
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
     }

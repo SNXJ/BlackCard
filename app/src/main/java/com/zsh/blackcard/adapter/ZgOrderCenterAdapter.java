@@ -22,7 +22,7 @@ public class ZgOrderCenterAdapter extends BaseQuickAdapter<String, BaseViewHolde
     public ZgOrderCenterAdapter(int layoutResId, @Nullable List<String> data) {
         super(layoutResId, data);
         //初始化列表选择事项
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < data.size(); i++) {
             if (i == 0) {
                 list.add(true);
             } else {
@@ -45,7 +45,7 @@ public class ZgOrderCenterAdapter extends BaseQuickAdapter<String, BaseViewHolde
     }
 
     public void initSelect(int position) {
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < list.size(); i++) {
             if (i == position) {
                 list.set(position, true);
             } else {

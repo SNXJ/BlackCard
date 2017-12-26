@@ -2,6 +2,7 @@ package com.zsh.blackcard.api;
 
 import com.zsh.blackcard.model.AbMyFriendModel;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.AdvertisementModel;
 import com.zsh.blackcard.model.BarDetailModel;
 import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
@@ -13,6 +14,7 @@ import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
+import com.zsh.blackcard.model.EatDrinkSearchModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
@@ -153,7 +155,8 @@ public interface RetrofitService {
     Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(@Field("FKEY") String md5,
                                                            @Field("HONOURUSER_ID") String HONOURUSER_ID,
                                                            @Field("CONVERGE_ID") String CONVERGE_ID,
-                                                           @Field("STATUS") String STATUS);
+                                                           @Field("STATUS") String STATUS,
+                                                           @Field("CONVERGESORT_ID") String CONVERGESORT_ID);
 
     //首页美食
     @FormUrlEncoded
@@ -779,5 +782,17 @@ public interface RetrofitService {
     @POST("appshipin/shipdetails.do?")
     Observable<ResponseBody> commodityDteail(@Field("FKEY") String md5,
                                              @Field("PRODUCT_ID") String PRODUCT_ID);
+
+    //根据广告栏位置查询广告
+    @FormUrlEncoded
+    @POST("appadvertismentin/advertiselist.do?")
+    Observable<AdvertisementModel> postAdvertisement(@Field("FKEY") String md5,
+                                                     @Field("AD_POSITION") String AD_POSITION);
+
+    //吃喝玩乐获取查询条件
+    @FormUrlEncoded
+    @POST("appconvergein/getconvergesort.do?")
+    Observable<EatDrinkSearchModel> postEatDrinkSearch(@Field("FKEY") String md5,
+                                                       @Field("CONVERGE_ID") String CONVERGE_ID);
 }
 
