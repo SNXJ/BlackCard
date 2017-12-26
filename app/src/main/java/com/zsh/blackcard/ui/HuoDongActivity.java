@@ -68,7 +68,7 @@ public class HuoDongActivity extends BaseActivity {
 
     //加载列表
     private void initHttp(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "d6a3779de8204dfd9359403f54f7d27c", "", state), new ResultListener<EatDrinkRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "d6a3779de8204dfd9359403f54f7d27c", "", state,""), new ResultListener<EatDrinkRecyclerModel>() {
             @Override
             public void responseSuccess(EatDrinkRecyclerModel obj) {
                 if (obj.getResult().equals("01")) {

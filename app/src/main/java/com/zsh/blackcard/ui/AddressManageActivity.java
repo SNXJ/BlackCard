@@ -32,8 +32,6 @@ import butterknife.OnClick;
  */
 
 public class AddressManageActivity extends BaseActivity {
-
-
     @BindView(R.id.im_back)
     ImageView imBack;
     @BindView(R.id.title_tv)
@@ -72,9 +70,7 @@ public class AddressManageActivity extends BaseActivity {
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                         switch (view.getId()) {
                             case R.id.cb_set:
-
                                 setRbStatus(view, position);
-
                                 break;
                             case R.id.rb_edit:
                                 ActivityUtils.startActivityForSerializable(AddressManageActivity.this, AddressEditActivity.class, dataList.get(position));
@@ -84,7 +80,6 @@ public class AddressManageActivity extends BaseActivity {
                                 break;
 
                         }
-
                     }
                 });
             }
@@ -97,9 +92,7 @@ public class AddressManageActivity extends BaseActivity {
     }
 
     private void setRbStatus(View view, int position) {
-
         CheckBox cb = (CheckBox) view;
-
 //        if (cb.isChecked()) {
 //            cb.setChecked(false);
 //        } else {
@@ -118,7 +111,6 @@ public class AddressManageActivity extends BaseActivity {
                     if (null != adapter) {
                         dataList.remove(position);
                         adapter.notifyDataSetChanged();
-
                     }
                 } else {
                     UIUtils.showToast("删除失败");

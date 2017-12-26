@@ -65,23 +65,10 @@ public class EatDrinkSetDetailActivity extends BaseActivity implements BaseQuick
         }
     }
 
-    @Override
-    public void onBackPressed() {
-
-        if (localMedia.get(localMedia.size() - 1).getPath() == null) {
-            localMedia.remove(localMedia.size() - 1);
-        }
-
-        Intent intent = new Intent();
-        intent.putExtra("title", eat_drink_set_detail_title_et.getText().toString());
-        intent.putExtra("content", eat_drink_set_detail_content_et.getText().toString());
-        setResult(0, intent);
-        finish();
-    }
-
-    @OnClick(R.id.blackwb_back)
-    public void onClick() {
-
+    /**
+     * 关闭当前界面处理返回图片结果
+     */
+    private void initFinish() {
         if (localMedia.get(localMedia.size() - 1).getPath() == null) {
             localMedia.remove(localMedia.size() - 1);
         }
@@ -92,6 +79,16 @@ public class EatDrinkSetDetailActivity extends BaseActivity implements BaseQuick
         intent.putExtra("list", (Serializable) localMedia);
         setResult(0, intent);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        initFinish();
+    }
+
+    @OnClick(R.id.blackwb_back)
+    public void onClick() {
+        initFinish();
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.model.AbMyFriendModel;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.AdvertisementModel;
 import com.zsh.blackcard.model.BarDetailModel;
 import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
@@ -16,6 +17,7 @@ import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
+import com.zsh.blackcard.model.EatDrinkSearchModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
@@ -421,8 +423,8 @@ public class NetApi extends DataManager {
      * @param STATUS
      * @return
      */
-    public static Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(String md5, String HONOURUSER_ID, String CONVERGE_ID, String STATUS) {
-        return retrofitService.postEatDrinkRecycler(md5, HONOURUSER_ID, CONVERGE_ID, STATUS);
+    public static Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(String md5, String HONOURUSER_ID, String CONVERGE_ID, String STATUS, String CONVERGESORT_ID) {
+        return retrofitService.postEatDrinkRecycler(md5, HONOURUSER_ID, CONVERGE_ID, STATUS, CONVERGESORT_ID);
     }
 
     /**
@@ -455,7 +457,7 @@ public class NetApi extends DataManager {
             MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
             listPath.add(part);
         }
-        return retrofitService.postHjRelease(map,listPath);
+        return retrofitService.postHjRelease(map, listPath);
     }
 
     /**
@@ -1347,5 +1349,27 @@ public class NetApi extends DataManager {
      */
     public static Observable<ResponseBody> commodityDteail(String md5, String PRODUCT_ID) {
         return retrofitService.commodityDteail(md5, PRODUCT_ID);
+    }
+
+    /**
+     * 汇聚吃喝玩乐广告位置
+     *
+     * @param md5
+     * @param AD_POSITION
+     * @return
+     */
+    public static Observable<AdvertisementModel> postAdvertisement(String md5, String AD_POSITION) {
+        return retrofitService.postAdvertisement(md5, AD_POSITION);
+    }
+
+    /**
+     * 汇聚吃喝玩乐获取条件查询
+     *
+     * @param md5
+     * @param CONVERGE_ID
+     * @return
+     */
+    public static Observable<EatDrinkSearchModel> postEatDrinkSearch(String md5, String CONVERGE_ID) {
+        return retrofitService.postEatDrinkSearch(md5, CONVERGE_ID);
     }
 }

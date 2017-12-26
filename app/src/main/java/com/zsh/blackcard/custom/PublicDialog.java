@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -604,6 +605,30 @@ public class PublicDialog {
         window.setGravity(Gravity.CENTER);
         dialog.setCanceledOnTouchOutside(false);
 //        window.setWindowAnimations(R.style.dailog_anim_enterorout_window_up);
+
+        //此方法，解决弹出的虚拟按键，会把布局底部向上顶问题
+        dialog.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        dialog.getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+            @Override
+            public void onSystemUiVisibilityChange(int visibility) {
+                int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                        //布局位于状态栏下方
+                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                        //全屏
+                        View.SYSTEM_UI_FLAG_FULLSCREEN |
+                        //隐藏导航栏
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+                if (Build.VERSION.SDK_INT >= 19) {
+                    uiOptions |= 0x00001000;
+                } else {
+                    uiOptions |= View.SYSTEM_UI_FLAG_LOW_PROFILE;
+                }
+                dialog.getWindow().getDecorView().setSystemUiVisibility(uiOptions);
+            }
+        });
+
+
         dialog.show();
         WindowManager windowManager = mContext.getWindowManager();
         Display display = windowManager.getDefaultDisplay();

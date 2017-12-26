@@ -63,11 +63,16 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
     //详情
     @BindView(R.id.hj_eat_set_detail_tv)
     TextView hj_eat_set_detail_tv;
+    //活动所属类型
+    @BindView(R.id.hj_eat_set_sort_tv)
+    TextView hj_eat_set_sort_tv;
 
     private Map<String, String> map = new HashMap<>();
     private List<MultipartBody.Part> pary;
     private boolean isOk = false;
     private List<LocalMedia> localMedia = new ArrayList<>();
+    private List<String> search = new ArrayList<>();
+    private List<String> searchId = new ArrayList<>();
 
     @Override
     protected void initUI() {
@@ -78,6 +83,8 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
 
     private void initData() {
         String data = getIntent().getStringExtra("data");
+        search = (List<String>) getIntent().getSerializableExtra("listOne");
+        searchId = (List<String>) getIntent().getSerializableExtra("listTwo");
         map.put("FKEY", DataManager.getMd5Str("DETAILADD"));
         map.put("CONVERGE_ID", data);
         map.put("HONOURUSER_ID", "d6a3779de8204dfd9359403f54f7d27c");
@@ -92,9 +99,10 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
         map.put("PRICEMIN", "");
         map.put("ENDTIME", "");
         map.put("STARTTIME", "");
+        map.put("CONVERGESORT_ID", "");
     }
 
-    @OnClick({R.id.blackwb_back, R.id.hj_eat_set_startTime_relative, R.id.hj_eat_set_endTime_relative, R.id.hj_eat_set_price_relative, R.id.hj_eat_set_type_relative, R.id.hj_eat_set_people_relative, R.id.hj_eat_set_sex_relative, R.id.hj_eat_set_year_relative, R.id.hj_eat_set_detail_relative, R.id.hj_eat_set_release_btn})
+    @OnClick({R.id.blackwb_back, R.id.hj_eat_set_startTime_relative, R.id.hj_eat_set_endTime_relative, R.id.hj_eat_set_price_relative, R.id.hj_eat_set_type_relative, R.id.hj_eat_set_people_relative, R.id.hj_eat_set_sex_relative, R.id.hj_eat_set_year_relative, R.id.hj_eat_set_detail_relative, R.id.hj_eat_set_release_btn, R.id.hj_eat_set_sort_relative})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.blackwb_back:
@@ -133,6 +141,10 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
                 Intent intent = new Intent(this, EatDrinkSetDetailActivity.class);
                 intent.putExtra("list", (Serializable) localMedia);
                 startActivityForResult(intent, 0);
+                break;
+            //活动所属类型
+            case R.id.hj_eat_set_sort_relative:
+                showSort(hj_eat_set_sort_tv);
                 break;
             //发布
             case R.id.hj_eat_set_release_btn:
@@ -198,6 +210,31 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
             UIUtils.showToast("请编辑全部聚会内容");
         }
     }
+
+    /**
+     * 活动类型选择器
+     *
+     * @param hj_eat_set_sort_tv
+     */
+    private void showSort(final TextView hj_eat_set_sort_tv) {
+
+        OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
+
+                hj_eat_set_sort_tv.setText(search.get(options1));
+                map.put("CONVERGESORT_ID", searchId.get(options1));
+            }
+        })
+                .setSubmitColor(Color.GRAY)
+                .setCancelColor(Color.GRAY)
+                .setTitleBgColor(Color.WHITE)
+                .setDividerColor(Color.WHITE)
+                .build();
+        pvOptions.setNPicker(search, null, null);
+        pvOptions.show();
+    }
+
 
     /**
      * 年龄选择器
