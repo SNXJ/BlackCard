@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base60dp">
+
+    <ImageView
+        android:layout_marginLeft="@dimen/base15dp"
+        android:src="@mipmap/subject_image_1"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/base50dp"
+        android:layout_height="@dimen/base50dp" />
+
+
+
+    <TextView
+        android:id="@+id/tv_topic"
+        android:textSize="14sp"
+       style="@style/text_"
+        android:layout_marginLeft="@dimen/base80dp"
+        android:layout_marginTop="@dimen/base10dp"
+        android:text="#新年倒计时#"/>
+    <TextView
+        android:textSize="12sp"
+        style="@style/text_"
+        android:layout_marginLeft="@dimen/base80dp"
+        android:layout_marginBottom="@dimen/base5dp"
+        android:layout_alignParentBottom="true"
+        android:text="新的一年哈哈哈哈"/>
+    <TextView
+        style="@style/text_"
+        android:textSize="12sp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base15dp"
+        android:layout_alignParentRight="true"
+        android:text="#话题"/>
+
+</RelativeLayout>

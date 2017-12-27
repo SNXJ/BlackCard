@@ -41,25 +41,75 @@
             android:textSize="12sp" />
     </RelativeLayout>
 
-    <EditText
+    <!--<EditText-->
+        <!--android:visibility="gone"-->
+        <!--android:layout_below="@+id/hj_eat_set_title"-->
+        <!--android:id="@+id/send_weiBo_et"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/base178dp"-->
+        <!--android:layout_margin="@dimen/base15dp"-->
+        <!--android:background="@drawable/edit_text"-->
+        <!--android:gravity="start"-->
+        <!--android:hint="请输入内容"-->
+        <!--android:padding="@dimen/base10dp"-->
+        <!--android:textColor="@color/recharge_text"-->
+        <!--android:textColorHint="@color/recharge_text"-->
+        <!--android:textSize="15sp" />-->
+    <RelativeLayout
         android:layout_below="@+id/hj_eat_set_title"
-        android:id="@+id/send_weiBo_et"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base178dp"
-        android:layout_margin="@dimen/base15dp"
-        android:background="@drawable/edit_text"
-        android:gravity="start"
-        android:hint="请输入内容"
-        android:padding="@dimen/base10dp"
-        android:textColor="@color/recharge_text"
-        android:textColorHint="@color/recharge_text"
-        android:textSize="15sp" />
+        android:id="@+id/detail_relative"
+        android:layout_width="@dimen/base345dp"
+        android:layout_height="@dimen/base188dp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/base37dp"
+        android:background="#181818"
+        android:paddingBottom="@dimen/base10dp"
+        android:paddingTop="@dimen/base10dp">
+
+        <TextView
+            android:id="@+id/topic_weiBo_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base30dp"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_marginRight="@dimen/base10dp"
+            android:background="@null"
+           android:text="#话题#"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/select_hint"
+            android:textColorHint="@color/select_hint"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/detail_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/topic_weiBo_tv"
+            android:background="#1B1B1B" />
+
+        <EditText
+            android:id="@+id/send_weiBo_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/detail_view"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_marginRight="@dimen/base10dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="请输入内容"
+            android:textColor="#FF454545"
+            android:textColorHint="#FF454545" />
+
+    </RelativeLayout>
 
     <TextView
+        android:layout_marginTop="@dimen/base10dp"
         android:id="@+id/detail_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/send_weiBo_et"
+        android:layout_below="@+id/detail_relative"
         android:layout_marginLeft="@dimen/base15dp"
         android:text="最多支持4张图片上传"
         android:textColor="@color/recharge_text" />
@@ -71,8 +121,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/base15dp"
         android:layout_marginRight="@dimen/base15dp"
-        android:layout_marginTop="@dimen/base15dp">
+        android:layout_marginTop="@dimen/base15dp"/>
 
-    </android.support.v7.widget.RecyclerView>
+
 
 </RelativeLayout>

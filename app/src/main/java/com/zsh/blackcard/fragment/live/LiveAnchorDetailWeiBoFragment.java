@@ -41,16 +41,7 @@ public class LiveAnchorDetailWeiBoFragment extends BaseFragment {
         list.add("");
         list.add("");
         list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
+
         LiveAncherWeiBoFragmentAdapter adapter = new LiveAncherWeiBoFragmentAdapter(list);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        android:background="@color/main_black"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="@dimen/base28dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base10dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_search_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/base16dp"
+                android:src="@mipmap/home_nav_search" />
+
+            <EditText
+                android:id="@+id/et_topic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="话题"
+                android:textColor="@color/et_hint"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColorHint="@color/et_hint"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_cancle"
+            style="@style/text_"
+            android:layout_marginRight="@dimen/base15dp"
+            android:text="取消"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>
