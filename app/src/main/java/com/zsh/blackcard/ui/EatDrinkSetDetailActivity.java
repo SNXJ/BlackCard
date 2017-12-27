@@ -14,10 +14,8 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.SendWeiBoAdapter;
-import com.zsh.blackcard.untils.LogUtils;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

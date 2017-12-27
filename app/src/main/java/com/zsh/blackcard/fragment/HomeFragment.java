@@ -63,9 +63,9 @@ import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.LogUtils;
-import com.zsh.blackcard.untils.MPermissionUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.LogUtils;
+import com.zsh.blackcard.utils.MPermissionUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 import org.greenrobot.eventbus.EventBus;

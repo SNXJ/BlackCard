@@ -1,6 +1,5 @@
 package com.zsh.blackcard.ui;
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.ImageView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.MyFriendAdapter;
-import com.zsh.blackcard.untils.ActivityUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 /**

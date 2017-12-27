@@ -10,9 +10,7 @@ import android.widget.ImageView;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.ui.CusCenterActivity;
 import com.zsh.blackcard.ui.CusCenterChatActivity;
-import com.zsh.blackcard.ui.HouseCenterActivity;
-import com.zsh.blackcard.ui.MyFriendActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 /**
  * Created by kkkkk on 2017/11/10.

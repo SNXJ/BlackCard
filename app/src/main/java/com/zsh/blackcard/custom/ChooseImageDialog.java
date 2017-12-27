@@ -7,13 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.ui.SbSendWeiBoActivity;
-import com.zsh.blackcard.untils.CameraAndFileUtils;
-import com.zsh.blackcard.untils.PhotoUntils;
+import com.zsh.blackcard.utils.CameraAndFileUtils;
 
 /**
  * Name: ChooseImageDialog

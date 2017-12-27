@@ -8,8 +8,8 @@ import android.os.IBinder;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.music.service.PlayService;
-import com.zsh.blackcard.music.untils.AppCache;
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.music.utils.AppCache;
+import com.zsh.blackcard.utils.LogUtils;
 
 /**
  * Name: BaseMusicActivity

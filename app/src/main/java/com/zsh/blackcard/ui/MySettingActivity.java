@@ -7,7 +7,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.ui.my.NotificationActivity;
 import com.zsh.blackcard.ui.my.SecurityActivity;
 import com.zsh.blackcard.ui.my.UserInfoActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

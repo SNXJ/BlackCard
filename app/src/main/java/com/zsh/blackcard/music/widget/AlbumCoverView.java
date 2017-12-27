@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.music.untils.CoverLoader;
-import com.zsh.blackcard.music.untils.ImageUtils;
+import com.zsh.blackcard.music.utils.CoverLoader;
+import com.zsh.blackcard.music.utils.ImageUtils;
 
 
 /**

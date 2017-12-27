@@ -10,7 +10,7 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.PublicFragmentAdapter;
 import com.zsh.blackcard.fragment.live.LiveAnchorDetailWeiBoFragment;
-import com.zsh.blackcard.untils.TabLayoutUntil;
+import com.zsh.blackcard.utils.TabLayoutUntil;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -13,9 +13,9 @@ import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.live.zego.ZegoApiManager;
-import com.zsh.blackcard.music.untils.AppCache;
-import com.zsh.blackcard.untils.PackageUtils;
-import com.zsh.blackcard.untils.SharedPreferencesUtils;
+import com.zsh.blackcard.music.utils.AppCache;
+import com.zsh.blackcard.utils.PackageUtils;
+import com.zsh.blackcard.utils.SharedPreferencesUtils;
 
 /**
  * @Author snxj .

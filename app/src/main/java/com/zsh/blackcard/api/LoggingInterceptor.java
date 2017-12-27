@@ -1,7 +1,7 @@
 package com.zsh.blackcard.api;
 
 
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.utils.LogUtils;
 
 import java.io.IOException;
 

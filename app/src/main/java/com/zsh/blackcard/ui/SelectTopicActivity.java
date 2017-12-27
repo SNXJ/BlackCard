@@ -1,6 +1,5 @@
 package com.zsh.blackcard.ui;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -14,7 +13,6 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.SelectTopicAdapter;
 import com.zsh.blackcard.listener.DateListener;
-import com.zsh.blackcard.untils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;

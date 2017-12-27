@@ -11,10 +11,10 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.zsh.blackcard.music.model.Music;
-import com.zsh.blackcard.music.untils.Actions;
-import com.zsh.blackcard.music.untils.AppCache;
-import com.zsh.blackcard.music.untils.PlayModeEnum;
-import com.zsh.blackcard.music.untils.Preferences;
+import com.zsh.blackcard.music.utils.Actions;
+import com.zsh.blackcard.music.utils.AppCache;
+import com.zsh.blackcard.music.utils.PlayModeEnum;
+import com.zsh.blackcard.music.utils.Preferences;
 
 import java.io.IOException;
 import java.util.Random;

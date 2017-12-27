@@ -17,7 +17,7 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.CityEventModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.ui.EatDrinkActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 import org.greenrobot.eventbus.EventBus;

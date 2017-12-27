@@ -1,6 +1,5 @@
 package com.zsh.blackcard.ui;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -20,8 +19,6 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.ZgOrderCenterAdapter;
 import com.zsh.blackcard.fragment.OrderNoZgFragment;
 import com.zsh.blackcard.fragment.OrderZgFragment;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;

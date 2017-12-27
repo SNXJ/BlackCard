@@ -23,7 +23,7 @@ import com.zsh.blackcard.custom.MyValueFormatter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MyPowerImageModel;
 import com.zsh.blackcard.model.MyPowerModel;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.view.WalletTextView;
 
 import java.util.ArrayList;
