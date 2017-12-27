@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.model.RegisterChangeNumberModel;
 import com.zsh.blackcard.ui.RegisterActivity;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
 
     private Context context;
     private List<Boolean> isCheck = new ArrayList<>();
+    private List<RegisterChangeNumberModel.PdBean> pd;
 
     private RegisterVipOnItemClick registerVipOnItemClick;
 
@@ -36,17 +38,18 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
         void vipOnItemClick(int position);
     }
 
-    public RegisterCardVipAdapter(RegisterActivity registerActivity) {
+    public RegisterCardVipAdapter(RegisterActivity registerActivity, List<RegisterChangeNumberModel.PdBean> pd) {
         this.context = registerActivity;
+        this.pd = pd;
         //初始化默认所有item未被选择
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < pd.size(); i++) {
             isCheck.add(false);
         }
     }
 
-    public void initSelect(){
-        for (int i = 0; i < 8; i++) {
-            isCheck.set(i,false);
+    public void initSelect() {
+        for (int i = 0; i < pd.size(); i++) {
+            isCheck.set(i, false);
         }
     }
 
@@ -58,7 +61,7 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.register_card_tv.setText("1035686866");
+        holder.register_card_tv.setText(pd.get(position).getCARDNUM());
 
         //根据状态给item设置背景色
         if (isCheck.get(position)) {
@@ -73,7 +76,7 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
             @Override
             public void onClick(View v) {
 
-                for (int i = 0; i < 8; i++) {
+                for (int i = 0; i < pd.size(); i++) {
                     isCheck.set(i, false);
                 }
 
@@ -92,7 +95,7 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
 
     @Override
     public int getItemCount() {
-        return 8;
+        return pd.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -107,5 +110,21 @@ public class RegisterCardVipAdapter extends RecyclerView.Adapter<RegisterCardVip
             ButterKnife.bind(this, itemView);
             view = itemView;
         }
+    }
+
+    //供外部点击item获取当前选择卡号
+    public String getItemData(int position){
+        return  pd.get(position).getCARDNUM();
+    }
+
+    //清空数据，并且刷新
+    public void clearAndRefresh(List<RegisterChangeNumberModel.PdBean> pd) {
+        for (int i = 0; i < pd.size(); i++) {
+            isCheck.set(i, false);
+        }
+
+        this.pd.clear();
+        this.pd.addAll(pd);
+        notifyDataSetChanged();
     }
 }

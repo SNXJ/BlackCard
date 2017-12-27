@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.ZgPersonalTailorAdapter;
@@ -46,7 +45,7 @@ public class PersonalActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postZgPersonalTailorModel(DataManager.getMd5Str("PERSONAL")), new ResultListener<ZgPersonalTailorModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postZgPersonalTailorModel(DataManager.getMd5Str("PERSONAL")), new ResultListener<ZgPersonalTailorModel>() {
             @Override
             public void responseSuccess(ZgPersonalTailorModel obj) {
                 zgPersonalTailorAdapter = new ZgPersonalTailorAdapter(R.layout.zg_drawer_personal_recycler_item,obj.getPd());

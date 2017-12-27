@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
-import com.bigkoo.pickerview.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
@@ -30,7 +29,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -90,7 +88,7 @@ public class UserInfoActivity extends BaseActivity {
 
     //获取个人信息
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postSettingUserInfo(DataManager.getMd5Str("GETUSERINFO"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<SettingUserInfoModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postSettingUserInfo(DataManager.getMd5Str("GETUSERINFO"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<SettingUserInfoModel>() {
             @Override
             public void responseSuccess(SettingUserInfoModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -98,6 +96,7 @@ public class UserInfoActivity extends BaseActivity {
                     my_setting_info_nick_tv.setText(obj.getUser().getNICKNAME());
                     my_setting_info_name_tv.setText(obj.getUser().getREALNAME());
                     my_setting_info_sex_tv.setText(obj.getUser().getSEX());
+                    my_setting_info_phone_tv.setText(obj.getUser().getPHONE());
                 }
             }
 
@@ -131,6 +130,7 @@ public class UserInfoActivity extends BaseActivity {
                 break;
             //修改电话
             case R.id.my_setting_info_phone_relative:
+                ActivityUtils.startActivityForData(this, ChangePhoneActivity.class, my_setting_info_phone_tv.getText().toString());
                 break;
             //修改QQ
             case R.id.my_setting_info_qq_relative:
@@ -188,7 +188,7 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     private void initChangeInfo(Map<String, String> map) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postUserInfoChange(DataManager.getMd5Str("UPDPERSONALINFO"), "d6a3779de8204dfd9359403f54f7d27c", map), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postUserInfoChange(DataManager.getMd5Str("UPDPERSONALINFO"), "d6a3779de8204dfd9359403f54f7d27c", map), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

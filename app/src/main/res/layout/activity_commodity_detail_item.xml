@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/activity_commodity_detail_item_left_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="@dimen/base125dp"
+        android:layout_height="@dimen/base40dp"
+        android:paddingLeft="@dimen/base25dp"
+        android:gravity="left|center"
+        android:text="产地"
+        android:textColor="@color/recharge_text" />
+
+    <View
+        app:layout_constraintLeft_toRightOf="@+id/activity_commodity_detail_item_left_tv"
+        android:id="@+id/view"
+        android:background="#FF1D1D1D"
+        android:layout_width="1dp"
+        android:layout_height="@dimen/base40dp"/>
+
+    <TextView
+        android:paddingLeft="@dimen/base25dp"
+        android:gravity="left|center"
+        android:id="@+id/activity_commodity_detail_item_right_tv"
+        app:layout_constraintLeft_toRightOf="@+id/view"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/base40dp"
+        android:text="瑞士"
+        android:textColor="@color/recharge_text" />
+
+</android.support.constraint.ConstraintLayout>

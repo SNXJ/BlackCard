@@ -3,10 +3,8 @@ package com.zsh.blackcard.ui;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.ShoppingCarAdapter;
@@ -50,7 +48,7 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
 
     private void initData() {
         //加载购物车列表
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postShoppingCar(DataManager.getMd5Str("SHOPPINGCART"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<ShoppingCarModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postShoppingCar(DataManager.getMd5Str("SHOPPINGCART"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<ShoppingCarModel>() {
             @Override
             public void responseSuccess(ShoppingCarModel obj) {
                 pdBeanList.addAll(obj.getPd());
@@ -58,7 +56,9 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
                 shopping_car_recycler.setLayoutManager(new LinearLayoutManager(ShoppingCarActivity.this));
                 shopping_car_recycler.addItemDecoration(new SpacesItemDecoration(ShoppingCarActivity.this, SpacesItemDecoration.VERTICAL_LIST));
                 shopping_car_recycler.setAdapter(shoppingCarAdapter);
+                //侧滑删除会和普通的行布局点击时间发生点击事件冲突
                 shoppingCarAdapter.setOnItemChildClickListener(ShoppingCarActivity.this);
+                //此时把整个行布局的id绑定为子控件点击事件。
             }
 
             @Override
@@ -71,11 +71,21 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         switch (view.getId()) {
+            //侧滑点击
             case R.id.shopping_car_item_right_delete:
                 pdBeanList.remove(position);
                 UIUtils.showToast("删除成功");
                 shoppingCarAdapter.notifyItemRemoved(position);
                 shoppingCarAdapter.notifyItemRangeChanged(position, pdBeanList.size());
+                UIUtils.showToast("ASDaaaaaa");
+                break;
+                //整个行布局的RelativeLayout点击
+            case R.id.shopping_car_item_relative:
+                UIUtils.showToast("222222");
+                break;
+                //其他子控件点击
+            case R.id.shopping_car_item_cb:
+                UIUtils.showToast("1111111");
                 break;
         }
     }

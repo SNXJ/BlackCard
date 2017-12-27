@@ -3,21 +3,29 @@ package com.zsh.blackcard.ui;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.PublicFragmentAdapter;
 import com.zsh.blackcard.custom.PublicDialog;
-import com.zsh.blackcard.fragment.sbfragment.NearbyFragment;
-import com.zsh.blackcard.fragment.sbfragment.RdFragment;
-import com.zsh.blackcard.fragment.sbfragment.TypeFragment;
+import com.zsh.blackcard.fragment.Abfragment.AbNearbyFragment;
+import com.zsh.blackcard.fragment.Abfragment.AbReComFragmemt;
+import com.zsh.blackcard.fragment.Abfragment.AbTypeFragment;
+import com.zsh.blackcard.live.AbSearchActivity;
+import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.untils.TabLayoutUntil;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -26,35 +34,24 @@ import butterknife.OnClick;
  */
 
 public class SbActivity extends BaseActivity implements View.OnClickListener {
-    private RadioButton rb_sbhome;
-    private RadioButton rb_sb2;
-    private RadioButton live_btn;
-    private RadioButton rb_sbmy;
-    private RadioButton rb_recommend;
-    private RadioButton rb_nearby;
-    private RadioButton rb_type;
-    private ViewPager sbvp;
+    @BindView(R.id.sb_vp)
+    ViewPager sbVp;
+    @BindView(R.id.radio_btn_sb2)
+    RadioButton radioBtnSb2;
+    @BindView(R.id.live_btn)
+    RadioButton liveBtn;
+    @BindView(R.id.radio_btn_sbmy)
+    RadioButton radioBtnSbmy;
+    @BindView(R.id.sb_home_back)
+    ImageView sbHomeBack;
+    @BindView(R.id.im_search)
+    ImageView imSearch;
+    @BindView(R.id.ab_tab_layout)
+    TabLayout abTabLayout;
+    private List<Fragment> fragments = new ArrayList<>();
+
     private int defaultPage = 0;
-
-    /**
-     * /**
-     * 从尚播界面会去主页面时，通过传值确定首页选中相对应的页面。
-     */
-    @OnClick(R.id.sb_home_back)
-    public void onClick() {
-        Intent intent = new Intent();
-        intent.putExtra("default", defaultPage);
-        setResult(1, intent);
-        finish();
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent();
-        intent.putExtra("default", defaultPage);
-        setResult(1, intent);
-        finish();
-    }
+    private String[] title = {"推荐", "附近", "分类"};
 
     @Override
     protected void initUI() {
@@ -63,112 +60,28 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
         //获取从哪个MainActivity传递过来的数值标识
         defaultPage = getIntent().getIntExtra("default", 0);
         //网络请求判断
-        Httpclient();
-        sbfindId();
-        // VeiwPager添加适配器
-        addAdapter();
-        // ViewPager滑动监听事件
-        sbvp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        rb_recommend.setChecked(true);
-                        rb_nearby.setChecked(false);
-                        rb_type.setChecked(false);
-                        break;
+//        Httpclient();
+        initDate();
+    }
 
-                    case 1:
-                        rb_recommend.setChecked(false);
-                        rb_type.setChecked(false);
-                        rb_nearby.setChecked(true);
-                        break;
-
-                    case 2:
-                        rb_recommend.setChecked(false);
-                        rb_nearby.setChecked(false);
-                        rb_type.setChecked(true);
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
-
-        // button按钮的监听
-        rb_recommend.setOnClickListener(this);
-        rb_nearby.setOnClickListener(this);
-        rb_type.setOnClickListener(this);
+    public void initDate() {
+        fragments.add(new AbReComFragmemt());
+        fragments.add(new AbNearbyFragment());
+        fragments.add(new AbTypeFragment());
+        PublicFragmentAdapter adapter = new PublicFragmentAdapter(getSupportFragmentManager(), fragments, title);
+        sbVp.setOffscreenPageLimit(4);
+        sbVp.setAdapter(adapter);
+        abTabLayout.setupWithViewPager(sbVp);
+        TabLayoutUntil.setTabIndicator(abTabLayout, 40, 40);
     }
 
 
-    private void addAdapter() {
-        sbvp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-
-            @Override
-            public int getCount() {
-                return 3;
-            }
-
-            @Override
-            public Fragment getItem(int position) {
-                Fragment fragment = null;
-                switch (position) {
-                    case 0:
-                        fragment = new RdFragment();
-                        break;
-
-                    case 1:
-                        fragment = new NearbyFragment();
-                        break;
-
-                    case 2:
-                        fragment = new TypeFragment();
-                        break;
-                }
-                return fragment;
-            }
-        });
+    @Override
+    protected void onResume() {
+        super.onResume();
+        radioBtnSb2.setChecked(true);
     }
 
-    private void sbfindId() {
-        rb_sb2 = (RadioButton) findViewById(R.id.radio_btn_sb2);
-        live_btn = (RadioButton) findViewById(R.id.live_btn);
-        rb_sbmy = (RadioButton) findViewById(R.id.radio_btn_sbmy);
-        rb_recommend = (RadioButton) findViewById(R.id.sb_recommend_tv);
-        rb_nearby = (RadioButton) findViewById(R.id.sb_nearby_tv);
-        rb_type = (RadioButton) findViewById(R.id.sb_type_tv);
-        sbvp = (ViewPager) findViewById(R.id.sb_vp);
-        rb_sb2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent sbmyintent = new Intent(SbActivity.this, LiveRankActivity.class);
-//                startActivity(sbmyintent);
-            }
-        });
-        rb_sbmy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sbmyintent = new Intent(SbActivity.this, SbMyActivity.class);
-                startActivity(sbmyintent);
-
-            }
-        });
-        live_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PublicDialog.openLiveDialog(SbActivity.this);
-                //  startActivity(new Intent(SbActivity.this, SingleAnchorActivity.class));//弹窗
-                // startActivity(new Intent(SbActivity.this, LiveOpenActivity.class));
-            }
-        });
-    }
 
     private void Httpclient() {
         //获取链接管理器
@@ -198,21 +111,42 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.sb_recommend_tv:
-                sbvp.setCurrentItem(0);
-                break;
 
-            case R.id.sb_nearby_tv:
-                sbvp.setCurrentItem(1);
+    @OnClick({R.id.sb_home_back, R.id.im_search, R.id.radio_btn_sb2, R.id.live_btn, R.id.radio_btn_sbmy})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.sb_home_back:
+                backIntent();
                 break;
-
-            case R.id.sb_type_tv:
-                sbvp.setCurrentItem(2);
+            case R.id.im_search:
+                ActivityUtils.startActivity(this, AbSearchActivity.class);
+                break;
+            case R.id.radio_btn_sb2:
+                break;
+            case R.id.live_btn:
+                PublicDialog.openLiveDialog(SbActivity.this, radioBtnSb2);
+                break;
+            case R.id.radio_btn_sbmy:
+                Intent sbmyintent = new Intent(SbActivity.this, SbMyActivity.class);
+                startActivity(sbmyintent);
                 break;
         }
+    }
+
+    /**
+     * /**
+     * 从尚播界面会去主页面时，通过传值确定首页选中相对应的页面。
+     */
+    private void backIntent() {
+        Intent intent = new Intent();
+        intent.putExtra("default", defaultPage);
+        setResult(1, intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        backIntent();
     }
 
 }

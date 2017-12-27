@@ -23,7 +23,10 @@
                 android:src="@mipmap/back" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/eat_drink_detail_title_tv"
+                android:drawablePadding="@dimen/base5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="吃喝玩乐"
@@ -332,8 +335,7 @@
                 android:id="@+id/hj_eat_detail_detail_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/hj_eat_detail_details_tv"
-                android:layout_marginLeft="@dimen/base15dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/base15dp"
                 android:layout_marginTop="@dimen/base10dp"
                 android:textColor="@color/recharge_text"

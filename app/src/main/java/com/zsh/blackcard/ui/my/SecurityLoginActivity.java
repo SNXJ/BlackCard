@@ -41,19 +41,21 @@ public class SecurityLoginActivity extends BaseActivity {
                 if (!TextUtils.isEmpty(activity_security_original_et.getText().toString()) && !TextUtils.isEmpty(activity_security_new_et.getText().toString()) && !TextUtils.isEmpty(activity_security_new_again_et.getText().toString()) && activity_security_new_et.getText().toString().equals(activity_security_new_again_et.getText().toString())) {
                     initChangePassWord();
                 } else {
-                    UIUtils.showToast("两次密码输入不一致");
+                    UIUtils.showToast("密码不能为空或输入错误");
                 }
                 break;
         }
     }
 
     private void initChangePassWord() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postSecurityPassWord(DataManager.getMd5Str("UPDUSERPASSWORD"), "d6a3779de8204dfd9359403f54f7d27c", activity_security_new_et.getText().toString().trim(), activity_security_original_et.getText().toString().trim()), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postSecurityPassWord(DataManager.getMd5Str("UPDUSERPASSWORD"), "d6a3779de8204dfd9359403f54f7d27c", activity_security_new_et.getText().toString().trim(), activity_security_original_et.getText().toString().trim()), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {
                     UIUtils.showToast("修改密码成功");
                     finish();
+                } else if (obj.getResult().equals("06")) {
+                    UIUtils.showToast("您的原始密码不正确");
                 }
             }
 

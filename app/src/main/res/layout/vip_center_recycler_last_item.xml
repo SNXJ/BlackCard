@@ -4,27 +4,28 @@
     android:layout_height="85dp">
 
     <ImageView
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="15dp"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="@dimen/base10dp"
+        android:layout_marginRight="@dimen/base15dp"
         android:layout_gravity="center"
         android:src="@mipmap/member_image_3"
-        android:layout_width="145dp"
-        android:layout_height="85dp" />
+        android:layout_width="@dimen/base145dp"
+        android:layout_height="@dimen/base85dp" />
 
     <TextView
-        android:layout_marginTop="15dp"
+        android:id="@+id/vip_center_name_tv"
+        android:layout_marginTop="@dimen/base15dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#FF929292"
-        android:text="升级礼包"
         android:textSize="12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_marginTop="44.5dp"
+        android:id="@+id/vip_center_power_tv"
+        android:layout_marginTop="@dimen/base44dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#FF929292"
-        android:text="能量值500以上"
         android:textSize="10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -98,13 +98,13 @@
     </RelativeLayout>
 
     <TextView
-    android:id="@+id/shopping_car_item_right_delete"
-    android:layout_width="@dimen/base90dp"
-    android:layout_height="match_parent"
-    android:background="#141414"
-    android:gravity="center"
-    android:text="删除"
-    android:textColor="@color/recharge_text"
-    android:textSize="15sp" />
+        android:id="@+id/shopping_car_item_right_delete"
+        android:layout_width="@dimen/base90dp"
+        android:layout_height="match_parent"
+        android:background="#141414"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@color/recharge_text"
+        android:textSize="15sp" />
 
 </com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

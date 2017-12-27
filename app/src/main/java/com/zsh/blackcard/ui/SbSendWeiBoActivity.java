@@ -3,10 +3,9 @@ package com.zsh.blackcard.ui;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.luck.picture.lib.PictureSelector;
@@ -18,20 +17,18 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.SendWeiBoAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.untils.ActivityUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 
 /**
  * Created by kkkkk on 2017/12/7.
@@ -42,6 +39,8 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
 
     @BindView(R.id.send_weiBo_et)
     EditText send_weiBo_et;
+    @BindView(R.id.topic_weiBo_tv)
+    TextView topic_weiBo_tv;
 
     @BindView(R.id.send_weiBo_recycler)
     RecyclerView send_weiBo_recycler;
@@ -66,11 +65,15 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
         sendWeiBoAdapter.setOnItemClickListener(this);
     }
 
-    @OnClick({R.id.blackwb_back, R.id.send_weiBo_tv})
+    @OnClick({R.id.blackwb_back, R.id.send_weiBo_tv, R.id.topic_weiBo_tv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.blackwb_back:
                 finish();
+                break;
+            case R.id.topic_weiBo_tv:
+                ActivityUtils.startActivity(SbSendWeiBoActivity.this, SelectTopicActivity.class);
+                SelectTopicActivity.setListener(listener);
                 break;
             //发布微博
             case R.id.send_weiBo_tv:
@@ -79,11 +82,19 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
         }
     }
 
+    DateListener listener = new DateListener() {
+        @Override
+        public void dateListener(String data) {
+            if (null != data) {
+                topic_weiBo_tv.setText(data);
+            }
+        }
+    };
+
     //发送黑微博
     private void initSendWeiBo(final List<LocalMedia> localMedia) {
         //获取图片集合最后一个元素，如果是占位符则移除，否则就上传
         if (localMedia.get(localMedia.size() - 1).getPath() == null) {
-            System.out.println("移除===@@@@");
             localMedia.remove(localMedia.size() - 1);
         }
 
@@ -93,7 +104,7 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
             pary.clear();
         }
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", "振华大宝贝儿", pary, localMedia), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", send_weiBo_et.getText().toString(), pary, localMedia, "1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -135,6 +146,15 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
                         .maxSelectNum(4)
                         .forResult(PictureConfig.CHOOSE_REQUEST);
             }
+        }
+
+        //当图片选择满4张时，再次点击item则为编辑选择图片
+        if (localMedia.size() == 4 && localMedia.get(3).getPath() != null) {
+            PictureSelector.create(SbSendWeiBoActivity.this)
+                    .openGallery(PictureMimeType.ofImage())
+                    .maxSelectNum(4)
+                    .selectionMedia(localMedia)
+                    .forResult(PictureConfig.CHOOSE_REQUEST);
         }
     }
 

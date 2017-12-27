@@ -6,21 +6,25 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/eat_drink_relative"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
+            android:layout_width="@dimen/base11dp"
+            android:layout_height="@dimen/base18dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/back" />
 
         <TextView
+            android:drawablePadding="@dimen/base5dp"
+            android:drawableRight="@mipmap/hotel_btn_1"
+            android:layout_centerHorizontal="true"
             android:id="@+id/hj_recycler_detail_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
             android:textColor="@color/recharge_text"
@@ -28,23 +32,43 @@
             android:textStyle="bold" />
 
         <TextView
-            android:gravity="center"
             android:id="@+id/hj_eat_set"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:gravity="center"
             android:text="去发布"
             android:textColor="#929292"
             android:textSize="12sp" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/eat_drink_recycler"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.youth.banner.Banner
+                android:id="@+id/eat_drink_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base160dp">
+
+            </com.youth.banner.Banner>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/eat_drink_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

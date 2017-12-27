@@ -81,7 +81,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
     //点击tab
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-
         if (tab.getText().toString().equals("全部")) {
             postMyAppointOrder();
         } else if (tab.getText().toString().equals("待付款")) {
@@ -93,8 +92,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
         } else if (tab.getText().toString().equals("退款售后")) {
             postMyAppointOrder("0040004");
         }
-
-
     }
 
     /**
@@ -102,7 +99,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
      */
     private void postMyAppointOrder() {
         //当为全部时，不同调用select，默认自动加载全部订单
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyAllOrder(DataManager.getMd5Str("ALLORDER"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyOrderModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyAllOrder(DataManager.getMd5Str("ALLORDER"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyOrderModel>() {
             @Override
             public void responseSuccess(MyOrderModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -126,8 +123,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                 } else {
                     pdBeanList.clear();
                 }
-
-
                 loadRecycler();
             }
 
@@ -160,7 +155,7 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
      * @param state
      */
     private void postMyAppointOrder(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyAppointOrder(DataManager.getMd5Str("CONORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<MyOrderModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyAppointOrder(DataManager.getMd5Str("CONORDER"), "d6a3779de8204dfd9359403f54f7d27c", state), new ResultListener<MyOrderModel>() {
             @Override
             public void responseSuccess(MyOrderModel obj) {
                 //如果有数据则遍历，给不同的数据添加不同的布局。如果没有数据，则清空数据集合
@@ -184,8 +179,6 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
                 } else {
                     pdBeanList.clear();
                 }
-
-
                 loadRecycler();
             }
 
@@ -218,12 +211,27 @@ public class MyOrderActivity extends BaseActivity implements TabLayout.OnTabSele
             case R.id.my_order_ok_tv:
                 initOk(my_order_tabLayout.getSelectedTabPosition(), ((MyOrderModel.PdBean) adapter.getData().get(position)).getORDERNUMBER());
                 break;
+            //评价按钮
+            case R.id.my_order_comment_tv:
+                //跳转至评论页面
+//                ActivityUtils.startActivityForData(this,MyOrderCenterEditActivity.class,((MyOrderModel.PdBean)adapter.getData().get(position)).getPRODUCT_ID());
+                Intent intent = new Intent(this, MyOrderCenterEditActivity.class);
+                intent.putExtra("data", ((MyOrderModel.PdBean) adapter.getData().get(position)).getPRODUCT_ID());
+                startActivityForResult(intent, 0);
+                break;
         }
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            postMyAppointOrder("0040003");
+        }
     }
 
     private void initOk(final int selectedTabPosition, String order_number) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_number, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postMyOrderOk(DataManager.getMd5Str("SHIPORDERUPD"), order_number, "d6a3779de8204dfd9359403f54f7d27c", "0040003"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (selectedTabPosition == 0) {

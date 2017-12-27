@@ -12,6 +12,25 @@ public class Music implements Serializable {
     private Type type;
     // [本地歌曲]歌曲id
     private long id;
+    private String songLrc;
+
+    public String getSongLrc() {
+        return songLrc;
+    }
+
+    public void setSongLrc(String songLrc) {
+        this.songLrc = songLrc;
+    }
+
+    public String getPic_small() {
+        return pic_small;
+    }
+
+    public void setPic_small(String pic_small) {
+        this.pic_small = pic_small;
+    }
+
+    private String pic_small;
 
     public String getSongId() {
         return SongId;

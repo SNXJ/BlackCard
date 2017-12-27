@@ -5,18 +5,6 @@
     android:background="@mipmap/bj"
     android:orientation="vertical">
 
-    <RelativeLayout style="@style/title_rl">
-
-        <ImageView
-            android:id="@+id/title_back"
-            style="@style/title_im_back" />
-
-        <TextView
-            android:id="@+id/title_tv"
-            style="@style/title_tv"
-            android:text="排行榜" />
-    </RelativeLayout>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

@@ -37,5 +37,6 @@ public class MyOrderCenterAdapter extends BaseMultiItemQuickAdapter<MyOrderModel
         helper.setText(R.id.my_order_title_tv, item.getPROTITLE());
         helper.addOnClickListener(R.id.my_order_pay_tv);
         helper.addOnClickListener(R.id.my_order_ok_tv);
+        helper.addOnClickListener(R.id.my_order_comment_tv);
     }
 }

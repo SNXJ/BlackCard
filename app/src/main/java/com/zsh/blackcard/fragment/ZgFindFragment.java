@@ -40,7 +40,7 @@ public class ZgFindFragment extends BaseFragment {
     @Override
     public void initDate(Bundle savedInstanceState) {
         CAIDAN_ID = getArguments().getString("id");
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postZgFind(DataManager.getMd5Str("DISCOVERLIST"), CAIDAN_ID), new ResultListener<ZgFindModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postZgFind(DataManager.getMd5Str("DISCOVERLIST"), CAIDAN_ID), new ResultListener<ZgFindModel>() {
             @Override
             public void responseSuccess(ZgFindModel obj) {
                 if (obj.getResult().equals("01")) {

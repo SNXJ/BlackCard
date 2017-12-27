@@ -67,7 +67,7 @@ public class CommentActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCommentList(id, type), new ResultListener<CommentModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCommentList(id, type), new ResultListener<CommentModel>() {
             @Override
             public void responseSuccess(CommentModel obj) {
                 dataList = obj.getPd();

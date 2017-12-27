@@ -16,15 +16,11 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.HomeCarDetailModel;
 import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
-import com.zsh.blackcard.model.HomeHorseDetailModel;
 import com.zsh.blackcard.model.HomeHorseRecyclerModel;
-import com.zsh.blackcard.model.HomeYachtDetailModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
 import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import butterknife.BindView;
@@ -89,7 +85,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     }
 
     private void initGolf() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeGolfRecycler(DataManager.getMd5Str("SORTHIGHGOLF"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeGolfRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeGolfRecycler(DataManager.getMd5Str("SORTHIGHGOLF"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeGolfRecyclerModel>() {
             @Override
             public void responseSuccess(HomeGolfRecyclerModel obj) {
                 homeGolfRecyclerAdapter = new HomeGolfRecyclerAdapter(R.layout.home_public_recycler_item, obj.getPd());
@@ -105,7 +101,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     }
 
     private void initYacht() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeYachtRecycler(DataManager.getMd5Str("SORTHIGHYACHT"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeYachtRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeYachtRecycler(DataManager.getMd5Str("SORTHIGHYACHT"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeYachtRecyclerModel>() {
             @Override
             public void responseSuccess(HomeYachtRecyclerModel obj) {
                 homeYachtRecyclerAdapter = new HomeYachtRecyclerAdapter(R.layout.home_public_recycler_item, obj.getPd());
@@ -121,7 +117,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     }
 
     private void initCar() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeCarRecycler(DataManager.getMd5Str("SORTHIGHLUXCAR"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeCarRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeCarRecycler(DataManager.getMd5Str("SORTHIGHLUXCAR"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeCarRecyclerModel>() {
             @Override
             public void responseSuccess(HomeCarRecyclerModel obj) {
                 homeCarRecyclerAdapter = new HomeCarRecyclerAdapter(R.layout.home_public_recycler_item, obj.getPd());
@@ -137,7 +133,7 @@ public class HomePublicRecyclerActivity extends BaseActivity implements BaseQuic
     }
 
     private void initHorse() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeHorseRecycler(DataManager.getMd5Str("SORTHIGHHORSE"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeHorseRecyclerModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeHorseRecycler(DataManager.getMd5Str("SORTHIGHHORSE"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeHorseRecyclerModel>() {
             @Override
             public void responseSuccess(HomeHorseRecyclerModel obj) {
                 homeHorseRecyclerAdapter = new HomeHorseRecyclerAdapter(R.layout.home_public_recycler_item, obj.getPd());

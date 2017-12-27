@@ -22,6 +22,7 @@ import java.util.List;
 public class AbMyFriendListAdapter extends BaseQuickAdapter<AbMyFriendModel.PdBean, BaseViewHolder> {
     public AbMyFriendListAdapter(@Nullable List<AbMyFriendModel.PdBean> data) {
         super(R.layout.ab_my_follow_item, data);
+
     }
 
     @Override

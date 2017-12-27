@@ -2,6 +2,7 @@ package com.zsh.blackcard.api;
 
 import com.zsh.blackcard.model.AbMyFriendModel;
 import com.zsh.blackcard.model.AddressManageModel;
+import com.zsh.blackcard.model.AdvertisementModel;
 import com.zsh.blackcard.model.BarDetailModel;
 import com.zsh.blackcard.model.BarDetailsMoreListModel;
 import com.zsh.blackcard.model.BardetailsItemModel;
@@ -13,6 +14,7 @@ import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
+import com.zsh.blackcard.model.EatDrinkSearchModel;
 import com.zsh.blackcard.model.FoodDetailModel;
 import com.zsh.blackcard.model.FoodDetailsMoreListModel;
 import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
@@ -61,12 +63,18 @@ import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
 
+import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.MyOrderModel;
+import com.zsh.blackcard.model.MyPowerImageModel;
+import com.zsh.blackcard.model.MyPowerModel;
+import com.zsh.blackcard.model.MyVipCenterModel;
 import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
 import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
 import com.zsh.blackcard.model.OrderResultModel;
+import com.zsh.blackcard.model.RegisterCardTypeModel;
+import com.zsh.blackcard.model.RegisterChangeNumberModel;
 import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SettingUserInfoModel;
@@ -76,7 +84,7 @@ import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgFindModel;
 import com.zsh.blackcard.model.ZgFindTitleModel;
-import com.zsh.blackcard.model.ZgPersonalTailorDetailModel;
+import com.zsh.blackcard.model.ZgPersonalTailorDatailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
 import com.zsh.blackcard.model.ZgShopAreaModel;
@@ -85,6 +93,7 @@ import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -146,7 +155,8 @@ public interface RetrofitService {
     Observable<EatDrinkRecyclerModel> postEatDrinkRecycler(@Field("FKEY") String md5,
                                                            @Field("HONOURUSER_ID") String HONOURUSER_ID,
                                                            @Field("CONVERGE_ID") String CONVERGE_ID,
-                                                           @Field("STATUS") String STATUS);
+                                                           @Field("STATUS") String STATUS,
+                                                           @Field("CONVERGESORT_ID") String CONVERGESORT_ID);
 
     //首页美食
     @FormUrlEncoded
@@ -309,12 +319,6 @@ public interface RetrofitService {
     @GET("appuserin/useredishipadr?")
     Observable<ResultModel> addressEdit(@QueryMap Map<String, String> map);
 
-
-    //发布聚会
-    @FormUrlEncoded
-    @POST("appconvergein/adddetailparty?")
-    Observable<HjReleaseModel> postHjRelease(@FieldMap Map<String, String> map);
-
     //首页特权
     @FormUrlEncoded
     @POST("apphomein/privilegelist?")
@@ -332,8 +336,8 @@ public interface RetrofitService {
 
     //尊购侧滑页面私人定制详情
     @FormUrlEncoded
-    @POST("apppersonalin/personaldet?")
-    Observable<ZgPersonalTailorDetailModel> postZgPersonalTailorDetail(@Field("FKEY") String md5,
+    @POST("apppersonalin/personaldet.do?")
+    Observable<ZgPersonalTailorDatailModel> postZgPersonalTailorDetail(@Field("FKEY") String md5,
                                                                        @Field("PERSONAL_ID") String id);
 
     //炫购收藏列表页面
@@ -341,7 +345,6 @@ public interface RetrofitService {
     @POST("appshipin/shipcollect?")
     Observable<CollectionModel> postCollection(@Field("FKEY") String md5,
                                                @Field("HONOURUSER_ID") String id);
-
 
     /**
      * 上传头像
@@ -365,7 +368,14 @@ public interface RetrofitService {
     Observable<ResultModel> postSendWeiBo(@Query("FKEY") String md5,
                                           @Query("HONOURUSER_ID") String HONOURUSER_ID,
                                           @Query("CONTENT") String CONTENT,
-                                          @Part List<MultipartBody.Part> fileList);
+                                          @Part List<MultipartBody.Part> fileList,
+                                          @Query("TYPE") String type);
+
+    //发布聚会
+    @Multipart
+    @POST("appconvergein/adddetailparty?")
+    Observable<HjReleaseModel> postHjRelease(@QueryMap Map<String, String> map,
+                                             @Part List<MultipartBody.Part> fileList);
 
     /**
      * 上传多张
@@ -631,7 +641,9 @@ public interface RetrofitService {
     @POST("appcirclein/dotAgree.do?")
     Observable<ResultModel> postCircleCenterYeah(@Field("FKEY") String md5,
                                                  @Field("HONOURUSER_ID") String HONOURUSER_ID,
-                                                 @Field("CIRCLE_ID") String CIRCLE_ID);
+                                                 @Field("CIRCLE_ID") String CIRCLE_ID,
+                                                 @Field("COMMENT_ID") String COMMENT_ID,
+                                                 @Field("STATUS") String status);
 
     //圈子中心获取评论接口
     @FormUrlEncoded
@@ -672,7 +684,7 @@ public interface RetrofitService {
     //电台列表
     @FormUrlEncoded
     @POST("appmusicin/getcategorylist?")
-    Observable<MusicDjModel> getMusicDjList(@Field("FKEY") String md5);
+    Observable<MusicDjModel> getMusicDjList(@Field("FKEY") String md5, @Field("cate_sname") String cate_name);
 
     //电台下的歌曲列表
     @FormUrlEncoded
@@ -712,12 +724,75 @@ public interface RetrofitService {
     //歌手
     @FormUrlEncoded
     @POST("appmusicin/gethotartist?")
-    Observable<MusicSingerModel> getMusicSingerList(@Field("FKEY") String md5, @Field("offset") String offset);
+    Observable<MusicSingerModel> getMusicSingerList(@Field("FKEY") String md5, @Field("offset") String offset, @Field("gender") String sexType, @Field("area") String areaType);
 
     //歌手所有歌曲
     @FormUrlEncoded
     @POST("appmusicin/getsonglist?")
     Observable<MusicSingerSongsModel> getSingerSongs(@Field("FKEY") String md5, @Field("tinguid") String tinguid, @Field("offset") String offset);
 
+    //能量值各能量接口
+    @FormUrlEncoded
+    @POST("appengrgyin/energylist.do?")
+    Observable<MyPowerModel> postMyPower(@Field("FKEY") String md5,
+                                         @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //注册时，选择卡种类所对应的图片
+    @FormUrlEncoded
+    @POST("appbootpagein/getcardimgs?")
+    Observable<RegisterCardTypeModel> postRegisterCardType(@Field("FKEY") String md5,
+                                                           @Field("CARDTYPE_ID") String CARDTYPE_ID);
+
+    //注册时，选择卡号，手选功能接口
+    @FormUrlEncoded
+    @POST("appbootpagein/getcardnum?")
+    Observable<RegisterChangeNumberModel> postRegisterChangeNumber(@Field("FKEY") String md5,
+                                                                   @Field("CARDTYPE_ID") String CARDTYPE_ID);
+
+    //能量值曲线图接口
+    @FormUrlEncoded
+    @POST("appengrgyin/energyvaluemonth.do?")
+    Observable<MyPowerImageModel> postPowerImage(@Field("FKEY") String md5,
+                                                 @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //我的界面Vip中心接口
+    @FormUrlEncoded
+    @POST("appuserin/getmemberinfo.do?")
+    Observable<MyVipCenterModel> postMyVipCenter(@Field("FKEY") String md5,
+                                                 @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //订单中心评论接口
+    @FormUrlEncoded
+    @POST("appshipin/sproductaddeva.do?")
+    Observable<ResultModel> postOrderCenterComment(@Field("FKEY") String md5,
+                                                   @Field("PRODUCT_ID") String PRODUCT_ID,
+                                                   @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                                   @Field("EVALUATECONTENT") String EVALUATECONTENT,
+                                                   @Field("EVALUATECOINT") String EVALUATECOINT,
+                                                   @Field("ISSHOW") String ISSHOW);
+
+    //我的界面获取头像、优惠券、黑咖币、能量值
+    @FormUrlEncoded
+    @POST("appuserin/getmycoublackenergy.do?")
+    Observable<MyDisBlackPowerModel> postDisBlackPower(@Field("FKEY") String md5,
+                                                       @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //商品详情接口
+    @FormUrlEncoded
+    @POST("appshipin/shipdetails.do?")
+    Observable<ResponseBody> commodityDteail(@Field("FKEY") String md5,
+                                             @Field("PRODUCT_ID") String PRODUCT_ID);
+
+    //根据广告栏位置查询广告
+    @FormUrlEncoded
+    @POST("appadvertismentin/advertiselist.do?")
+    Observable<AdvertisementModel> postAdvertisement(@Field("FKEY") String md5,
+                                                     @Field("AD_POSITION") String AD_POSITION);
+
+    //吃喝玩乐获取查询条件
+    @FormUrlEncoded
+    @POST("appconvergein/getconvergesort.do?")
+    Observable<EatDrinkSearchModel> postEatDrinkSearch(@Field("FKEY") String md5,
+                                                       @Field("CONVERGE_ID") String CONVERGE_ID);
 }
 

@@ -59,7 +59,7 @@ public class AbMyFriendActivity extends BaseActivity {
 
     private void initFriendData() {
         titleTv.setText("我的关注");
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).myFriendList(DataManager.getMd5Str("FLIST"), BaseApplication.getHonouruserId()), new ResultListener<AbMyFriendModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.myFriendList(DataManager.getMd5Str("FLIST"), BaseApplication.getHonouruserId()), new ResultListener<AbMyFriendModel>() {
             @Override
             public void responseSuccess(AbMyFriendModel obj) {
                 dataList = obj.getPd();
@@ -80,7 +80,7 @@ public class AbMyFriendActivity extends BaseActivity {
 
     private void initFollowData() {
         titleTv.setText("关注我的");
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).myFollowList(DataManager.getMd5Str("REFLIST"), BaseApplication.getHonouruserId()), new ResultListener<AbMyFriendModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.myFollowList(DataManager.getMd5Str("REFLIST"), BaseApplication.getHonouruserId()), new ResultListener<AbMyFriendModel>() {
             @Override
             public void responseSuccess(AbMyFriendModel obj) {
                 dataList = obj.getPd();
@@ -110,7 +110,7 @@ public class AbMyFriendActivity extends BaseActivity {
     };
 
     private void removeItem(final int position) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).delFriend(DataManager.getMd5Str("FRIENDDEL"), BaseApplication.getHonouruserId(), dataList.get(position).getHONOURUSER_ID()), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.delFriend(DataManager.getMd5Str("FRIENDDEL"), BaseApplication.getHonouruserId(), dataList.get(position).getHONOURUSER_ID()), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if ("01".equals(obj.getResult())) {

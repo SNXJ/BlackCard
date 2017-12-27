@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         lrc:lrcAnimationDuration="1000"
-        lrc:lrcCurrentTextColor="@color/bg_white"
+        lrc:lrcCurrentTextColor="@color/music_bar"
         lrc:lrcDividerHeight="24dp"
         lrc:lrcNormalTextColor="#80FFFFFF"
         lrc:lrcPadding="40dp"

@@ -89,7 +89,7 @@ public class CommentEditActivity extends BaseActivity {
         map.put("EVALUATECOINT", String.valueOf(starNum));//星星
         map.put("ISSHOW", rbShow.isChecked() ? "1" : "0");//星星
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postAddComment(map, type), new ResultListener<CommentAddModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postAddComment(map, type), new ResultListener<CommentAddModel>() {
             @Override
             public void responseSuccess(CommentAddModel obj) {
                 if ("01".equals(obj.getResult())) {

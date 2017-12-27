@@ -32,8 +32,6 @@ import butterknife.OnClick;
  */
 
 public class AddressManageActivity extends BaseActivity {
-
-
     @BindView(R.id.im_back)
     ImageView imBack;
     @BindView(R.id.title_tv)
@@ -60,7 +58,7 @@ public class AddressManageActivity extends BaseActivity {
     }
 
     private void initData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postAddressManage(DataManager.getMd5Str("SHIPADR"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<AddressManageModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postAddressManage(DataManager.getMd5Str("SHIPADR"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<AddressManageModel>() {
             @Override
             public void responseSuccess(AddressManageModel obj) {
                 dataList = obj.getPd();
@@ -72,9 +70,7 @@ public class AddressManageActivity extends BaseActivity {
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                         switch (view.getId()) {
                             case R.id.cb_set:
-
                                 setRbStatus(view, position);
-
                                 break;
                             case R.id.rb_edit:
                                 ActivityUtils.startActivityForSerializable(AddressManageActivity.this, AddressEditActivity.class, dataList.get(position));
@@ -84,7 +80,6 @@ public class AddressManageActivity extends BaseActivity {
                                 break;
 
                         }
-
                     }
                 });
             }
@@ -97,9 +92,7 @@ public class AddressManageActivity extends BaseActivity {
     }
 
     private void setRbStatus(View view, int position) {
-
         CheckBox cb = (CheckBox) view;
-
 //        if (cb.isChecked()) {
 //            cb.setChecked(false);
 //        } else {
@@ -110,7 +103,7 @@ public class AddressManageActivity extends BaseActivity {
     }
 
     private void delData(String id, final int position) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).delAddress(DataManager.getMd5Str("SHIPADR"), id), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.delAddress(DataManager.getMd5Str("SHIPADR"), id), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if ("01".equals(obj.getResult())) {
@@ -118,7 +111,6 @@ public class AddressManageActivity extends BaseActivity {
                     if (null != adapter) {
                         dataList.remove(position);
                         adapter.notifyDataSetChanged();
-
                     }
                 } else {
                     UIUtils.showToast("删除失败");

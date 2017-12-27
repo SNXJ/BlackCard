@@ -18,9 +18,10 @@
             android:text="发表评价" />
 
         <TextView
+            android:gravity="center"
             android:id="@+id/tv_submmit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/base20dp"
@@ -88,27 +89,19 @@
 
     </LinearLayout>
 
-    <RadioGroup
+    <CheckBox
+        android:id="@+id/cb_show"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <CheckBox
-            android:id="@+id/cb_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:layout_marginTop="@dimen/base15dp"
-            android:background="@null"
-            android:button="@null"
-            android:drawableLeft="@drawable/takecircle_select"
-            android:drawablePadding="@dimen/base5dp"
-            android:text="匿名评价"
-            android:textColor="#929292"
-            android:textSize="11sp" />
-
-
-    </RadioGroup>
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base15dp"
+        android:background="@null"
+        android:button="@null"
+        android:drawableLeft="@drawable/takecircle_select"
+        android:drawablePadding="@dimen/base5dp"
+        android:text="匿名评价"
+        android:textColor="#929292"
+        android:textSize="11sp" />
 
 </LinearLayout>

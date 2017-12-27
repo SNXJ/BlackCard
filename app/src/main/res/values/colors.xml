@@ -28,6 +28,8 @@
     <color name="bg_org">#F29E19</color>
     <color name="select_hint">#FF454545</color>
     <color name="select_tab_text">#cccccc</color>
+    <color name="music_bar">#A61CE7</color>
+    <color name="ff1A1A">#ff1A1A1A</color>
 
     <!--date-->
     <color name="fffd_text">#FFFD5739</color>

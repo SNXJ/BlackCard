@@ -136,7 +136,6 @@ public class PlayService extends Service implements MediaPlayer.OnCompletionList
             if (mListener != null) {
                 mListener.onChange(music);
             }
-//            Notifier.showPlay(music);
             mMediaSessionManager.updateMetaData(mPlayingMusic);
             mMediaSessionManager.updatePlaybackState();
         } catch (IOException e) {

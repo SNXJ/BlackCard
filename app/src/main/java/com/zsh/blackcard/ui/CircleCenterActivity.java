@@ -1,6 +1,5 @@
 package com.zsh.blackcard.ui;
 
-import android.app.ProgressDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -34,8 +33,6 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
     private CircleCenterRecyclerAdapter circleCenterRecyclerAdapter;
 
-    private ProgressDialog progressDialog;
-
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_circle_center);
@@ -45,11 +42,9 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
     private void iniData() {
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("请等待...");
-        progressDialog.show();
+        UIUtils.newProgressDialog(this).show();
 
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterRecycle(DataManager.getMd5Str("CIRCLELIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyCircleModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterRecycle(DataManager.getMd5Str("CIRCLELIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyCircleModel>() {
             @Override
             public void responseSuccess(MyCircleModel obj) {
                 if (obj.getResult().equals("01")) {
@@ -70,7 +65,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
             @Override
             public void onCompleted() {
-                progressDialog.dismiss();
+                UIUtils.dismissProgressDialog();
             }
         });
 
@@ -94,7 +89,8 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
     }
 
     private void initYeah(String circle_id) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postCircleCenterYeah(DataManager.getMd5Str("DOTAGREE"), "d6a3779de8204dfd9359403f54f7d27c", circle_id), new ResultListener<ResultModel>() {
+
+        DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterYeah(DataManager.getMd5Str("DOTAGREE"), "d6a3779de8204dfd9359403f54f7d27c", circle_id, "", "1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

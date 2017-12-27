@@ -84,6 +84,8 @@ public class EatDrinkDetailActivity extends BaseActivity {
     RelativeLayout hjEatSetDetailRelative;
     @BindView(R.id.hj_eat_detail_release_btn)
     Button hjEatDetailReleaseBtn;
+    @BindView(R.id.eat_drink_detail_title_tv)
+    TextView eat_drink_detail_title_tv;
 
     private EatDrinkDetailModel eatDrinkDetaildata;
 
@@ -108,7 +110,9 @@ public class EatDrinkDetailActivity extends BaseActivity {
 
     private void initDate() {
         String data = getIntent().getStringExtra("data");
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHjRecyclerItemDetail(DataManager.getMd5Str("DETAILID"), data), new ResultListener<EatDrinkDetailModel>() {
+        String title = getIntent().getStringExtra("title");
+        eat_drink_detail_title_tv.setText(title);
+        DataManager.getInstance(this).RequestHttp(NetApi.postHjRecyclerItemDetail(DataManager.getMd5Str("DETAILID"), data), new ResultListener<EatDrinkDetailModel>() {
             @Override
             public void responseSuccess(EatDrinkDetailModel obj) {
                 eatDrinkDetaildata = obj;
@@ -144,7 +148,7 @@ public class EatDrinkDetailActivity extends BaseActivity {
     }
 
     private void addFriend(String addId) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).addFriend(DataManager.getMd5Str("FRIENDADD"), BaseApplication.getHonouruserId(), addId), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.addFriend(DataManager.getMd5Str("FRIENDADD"), BaseApplication.getHonouruserId(), addId), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 UIUtils.showToast("添加成功");

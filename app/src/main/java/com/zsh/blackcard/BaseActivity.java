@@ -1,6 +1,7 @@
 package com.zsh.blackcard;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.untils.MPermissionUtils;
 import com.zsh.blackcard.untils.MyActivityManager;
 import com.zsh.blackcard.untils.StatusBarColorUntil;
@@ -30,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private boolean okAppBarLayout;
     private boolean isExit;
     private long exitTime = 0;
+    public Dialog dialog;
 
     public static Activity getForegroundActivity() {
         return mForegroundActivity;
@@ -92,6 +95,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 显示软键盘
+     *
+     * @param view
+     */
+    protected void showInputSoft(View view) {
+        view.setFocusable(true);
+        view.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+
     //权限
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -110,6 +126,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // EventBus.getDefault().unregister(this);
+        dialogDismiss();
+    }
+
+    public Dialog showLoading(Context context) {
+        dialog = PublicDialog.loadingDialog((Activity) context);
+        return dialog;
+    }
+
+    public void dialogDismiss() {
+        if (null != dialog) {
+            dialog.dismiss();
+        }
     }
 }

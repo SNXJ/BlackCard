@@ -47,19 +47,21 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
     private void initData() {
         //获取碎片管理器
         fragmentManager = getSupportFragmentManager();
-        frg_home = new HomeFragment();
-        frg_zg = new SlidingFragment();
-        frg_hj = new HjFragment();
-        frg_my = new MyFragment();
-
 
         // 默认加载第一个碎片页面
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.main_container, frg_home);
-        fragmentTransaction.commit();
-        frg_replace = frg_home;
+        if (null == savedInstanceState) {
+            frg_home = new HomeFragment();
+            frg_zg = new SlidingFragment();
+            frg_hj = new HjFragment();
+            frg_my = new MyFragment();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.main_container, frg_home);
+            fragmentTransaction.commit();
+            frg_replace = frg_home;
+        }
 
     }
+
 
     //定制号码选择控制
     @OnCheckedChanged({R.id.radio_btn_home, R.id.radio_btn_zg, R.id.radio_btn_sb, R.id.radio_btn_hj, R.id.radio_btn_my})

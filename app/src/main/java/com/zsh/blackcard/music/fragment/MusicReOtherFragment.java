@@ -1,4 +1,4 @@
-package com.zsh.blackcard.music;
+package com.zsh.blackcard.music.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,11 +9,12 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.adapter.MusicRecommendAdapter;
+import com.zsh.blackcard.adapter.MusicReOtherAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.MusicRecommendModel;
+import com.zsh.blackcard.model.MusicRankingModel;
+import com.zsh.blackcard.music.MusicDetailActivity;
 import com.zsh.blackcard.untils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import java.util.List;
  * Date: 2017-11-21
  * Description:描述：
  */
-public class MusicRecommendFragment extends BaseFragment {
+public class MusicReOtherFragment extends BaseFragment {
     public static final String TYPE = "TYPE";
     private int mType = 0;
 
@@ -37,8 +38,8 @@ public class MusicRecommendFragment extends BaseFragment {
         }
     }
 
-    public static MusicRecommendFragment newInstance(int type) {
-        MusicRecommendFragment fragment = new MusicRecommendFragment();
+    public static MusicReOtherFragment newInstance(int type) {
+        MusicReOtherFragment fragment = new MusicReOtherFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(TYPE, type);
         fragment.setArguments(bundle);
@@ -46,8 +47,8 @@ public class MusicRecommendFragment extends BaseFragment {
     }
 
     RecyclerView recyclerView;
-    List<MusicRecommendModel.PdBean.ResultBean.ListBean> dataList = new ArrayList<>();
-    MusicRecommendAdapter adapter;
+    List<MusicRankingModel.PdBean.SongListBean> dataList = new ArrayList<>();
+    MusicReOtherAdapter adapter;
 
     @Override
     public View initView(LayoutInflater inflater) {
@@ -67,10 +68,10 @@ public class MusicRecommendFragment extends BaseFragment {
     }
 
     private void initData() {
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).getMusicRecommendList(DataManager.getMd5Str("SONGLIST")), new ResultListener<MusicRecommendModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getRankingList(DataManager.getMd5Str("BILLLIST"), "1", mType + ""), new ResultListener<MusicRankingModel>() {
             @Override
-            public void responseSuccess(MusicRecommendModel obj) {
-                dataList = obj.getPd().getResult().getList();
+            public void responseSuccess(MusicRankingModel obj) {
+                dataList = obj.getPd().getSong_list();
                 setData();
             }
 
@@ -82,14 +83,14 @@ public class MusicRecommendFragment extends BaseFragment {
     }
 
     private void setData() {
-        adapter = new MusicRecommendAdapter(dataList, mType);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        adapter = new MusicReOtherAdapter(dataList);
         recyclerView.setAdapter(adapter);
-        //  recyclerView.
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                MusicDetailActivity.setRecommendData(dataList);
+                MusicDetailActivity.reOtherDataList = dataList;
+                MusicDetailActivity.position = position;
                 ActivityUtils.startActivity(getActivity(), MusicDetailActivity.class);
             }
         });

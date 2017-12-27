@@ -30,7 +30,6 @@ import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +95,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     }
 
     private void initKTVData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeKTVRecycler(DataManager.getMd5Str("SORTKTV"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeKTVModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeKTVRecycler(DataManager.getMd5Str("SORTKTV"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeKTVModel>() {
             @Override
             public void responseSuccess(HomeKTVModel obj) {
                 notifyKTVAdapter(obj);
@@ -111,7 +110,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     }
 
     private void initBarData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeBarList(DataManager.getMd5Str("SORTBAR")), new ResultListener<HomeBarModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeBarList(DataManager.getMd5Str("SORTBAR")), new ResultListener<HomeBarModel>() {
             @Override
             public void responseSuccess(HomeBarModel obj) {
                 notifyBarAdapter(obj);
@@ -126,7 +125,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     }
 
     private void initHotelData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeHotelList(DataManager.getMd5Str("SORTHOTEL")), new ResultListener<HomeHotelModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeHotelList(DataManager.getMd5Str("SORTHOTEL")), new ResultListener<HomeHotelModel>() {
             @Override
             public void responseSuccess(HomeHotelModel obj) {
                 notifyHotelAdapter(obj);
@@ -149,7 +148,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         map.put("SEQUENCE", str2);
         map.put("BRAND", str3);
         map.put("STYLE", str4);
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).filterFoodList(map), new ResultListener<HomeFoodModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.filterFoodList(map), new ResultListener<HomeFoodModel>() {
             @Override
             public void responseSuccess(HomeFoodModel obj) {
                 notifyFoodAdapter(obj);
@@ -170,7 +169,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         map.put("SEQUENCE", str2);
         map.put("BRAND", str3);
         map.put("STYLE", str4);
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).filterHotelList(map), new ResultListener<HomeHotelModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.filterHotelList(map), new ResultListener<HomeHotelModel>() {
             @Override
             public void responseSuccess(HomeHotelModel obj) {
                 notifyHotelAdapter(obj);
@@ -191,7 +190,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         map.put("SEQUENCE", str2);
         map.put("BRAND", str3);
         map.put("STYLE", str4);
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).filterKTVList(map), new ResultListener<HomeKTVModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.filterKTVList(map), new ResultListener<HomeKTVModel>() {
             @Override
             public void responseSuccess(HomeKTVModel obj) {
                 notifyKTVAdapter(obj);
@@ -233,7 +232,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         map.put("SEQUENCE", str2);
         map.put("BRAND", str3);
         map.put("STYLE", str4);
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).filterBarList(map), new ResultListener<HomeBarModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.filterBarList(map), new ResultListener<HomeBarModel>() {
             @Override
             public void responseSuccess(HomeBarModel obj) {
                 notifyBarAdapter(obj);
@@ -305,7 +304,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
 
 
     private void initFoodData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postHomeFoodList(DataManager.getMd5Str("SORTFOOD")), new ResultListener<HomeFoodModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeFoodList(DataManager.getMd5Str("SORTFOOD")), new ResultListener<HomeFoodModel>() {
             @Override
             public void responseSuccess(HomeFoodModel obj) {
                 notifyFoodAdapter(obj);
@@ -415,7 +414,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     }
 
     private void searchBrandAndScreen(final String type, String sortName) {
-        DataManager.getInstance(this).RequestHttp(NetApi.getInstance(this).postFoodHotelBarKTVDialog(DataManager.getMd5Str("BRANDLIST"), type, sortName), new ResultListener<FoodHotelBarKTVDialogModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postFoodHotelBarKTVDialog(DataManager.getMd5Str("BRANDLIST"), type, sortName), new ResultListener<FoodHotelBarKTVDialogModel>() {
             @Override
             public void responseSuccess(FoodHotelBarKTVDialogModel obj) {
                 brandDialog(obj.getPd(), type);

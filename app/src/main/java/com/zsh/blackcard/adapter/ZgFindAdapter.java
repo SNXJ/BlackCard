@@ -1,5 +1,8 @@
 package com.zsh.blackcard.adapter;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
@@ -34,12 +37,15 @@ public class ZgFindAdapter extends BaseMultiItemQuickAdapter<ZgFindModel.PdBean,
             case ZgFindModel.PdBean.VIDEO:
                 helper.setText(R.id.zg_find_video_title, item.getTITLE());
                 helper.setText(R.id.zg_find_video_number, item.getPAGEVIEWS() + "万人浏览");
-                ((JZVideoPlayerStandard)helper.getView(R.id.zg_find_video)).setUp(item.getSHOWVIDEO(),JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL,"");
+                ((JZVideoPlayerStandard) helper.getView(R.id.zg_find_video)).setUp(item.getSHOWVIDEO(), JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "");
+                ImageView thumbImageView = ((JZVideoPlayerStandard) helper.getView(R.id.zg_find_video)).thumbImageView;
+                thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                Glide.with(mContext).load(item.getVIDEOBACKIMAGE()).into(thumbImageView);
                 break;
             case ZgFindModel.PdBean.IMAGE:
-                helper.setText(R.id.zg_find_image_title,item.getTITLE());
-                helper.setText(R.id.zg_find_image_number,item.getPAGEVIEWS());
-//                Glide.with(mContext).load(item.get)
+                helper.setText(R.id.zg_find_image_title, item.getTITLE());
+                helper.setText(R.id.zg_find_image_number, String.valueOf(item.getPAGEVIEWS()));
+                Glide.with(mContext).load(item.getVIDEOBACKIMAGE()).into((ImageView) helper.getView(R.id.zg_find_image_img));
                 break;
         }
     }

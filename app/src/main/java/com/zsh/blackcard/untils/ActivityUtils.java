@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Activity工具类
@@ -61,6 +62,24 @@ public class ActivityUtils {
                                             String data) {
         Intent intent = new Intent(activity, cls);
         intent.putExtra("data", data);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 传递集合
+     *
+     * @param activity
+     * @param cls
+     * @param data
+     * @param search
+     * @param searchId
+     */
+    public static void startActivityForDataList(Activity activity, Class<?> cls,
+                                                String data, List<String> search, List<String> searchId) {
+        Intent intent = new Intent(activity, cls);
+        intent.putExtra("data", data);
+        intent.putExtra("listOne", (Serializable) search);
+        intent.putExtra("listTwo", (Serializable) searchId);
         activity.startActivity(intent);
     }
 

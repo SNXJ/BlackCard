@@ -152,7 +152,7 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
 
     //初始化banner轮播区
     private void initBanner() {
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getInstance(getActivity()).postZgBanner(DataManager.getMd5Str("SCAROUSELFIGURE")), new ResultListener<ZgBannerModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postZgBanner(DataManager.getMd5Str("SCAROUSELFIGURE")), new ResultListener<ZgBannerModel>() {
             @Override
             public void responseSuccess(ZgBannerModel obj) {
                 //向集合添加图片网址
