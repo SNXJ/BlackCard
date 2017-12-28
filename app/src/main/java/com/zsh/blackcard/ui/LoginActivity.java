@@ -50,7 +50,7 @@ public class LoginActivity extends BaseActivity {
                 break;
             //忘记密码
             case R.id.login_forget_tv:
-
+                ActivityUtils.startActivity(this,RememberPassWordActivity.class);
                 break;
         }
     }

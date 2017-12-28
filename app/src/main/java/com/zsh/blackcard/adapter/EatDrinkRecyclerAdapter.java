@@ -44,7 +44,7 @@ public class EatDrinkRecyclerAdapter extends BaseMultiItemQuickAdapter<EatDrinkR
         helper.setText(R.id.hj_child_recycler_people_number_tv, "人数：" + item.getCONVERGEPER());
         helper.setText(R.id.hj_child_recycler_type_tv, "方式：" + item.getCONVERGETYPE());
         helper.setText(R.id.hj_child_recycler_title_tv, item.getCONVERGETITLE());
-        helper.addOnClickListener(R.id.hj_child_recycler_linear);
+        helper.addOnClickListener(R.id.hj_child_recycler_item_linear);
         helper.addOnClickListener(R.id.tv_add_friend);
         if (item.getCONVERGEIMGS().size() == 1) {
             Glide.with(mContext).load(item.getCONVERGEIMGS().get(0)).into((ImageView) helper.getView(R.id.hj_child_recycler_item_one_img));

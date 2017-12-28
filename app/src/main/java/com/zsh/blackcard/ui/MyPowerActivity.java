@@ -104,13 +104,14 @@ public class MyPowerActivity extends BaseActivity {
         my_power_lineChart.setNoDataText("正在加载...");
         my_power_lineChart.invalidate();
 
-        //请求所有分值接口
-        initDate();
         //请求能量曲线图接口
         initLineChart();
     }
 
     private void initLineChart() {
+
+        showLoading(this);
+
         DataManager.getInstance(this).RequestHttp(NetApi.postPowerImage(DataManager.getMd5Str("ENERGYVALUEMONTH"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyPowerImageModel>() {
             @Override
             public void responseSuccess(MyPowerImageModel obj) {
@@ -176,6 +177,9 @@ public class MyPowerActivity extends BaseActivity {
                     //禁止所有手势
                     my_power_lineChart.setTouchEnabled(false);
                     my_power_lineChart.invalidate();
+
+                    //请求所有分值接口
+                    initDate();
                 }
             }
 
@@ -226,7 +230,7 @@ public class MyPowerActivity extends BaseActivity {
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
     }

@@ -309,7 +309,6 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
                                 registerCardGloryAdapter.clearAndRefresh(obj.getPd());
                                 cardNumber = "";
                             }
-
                             break;
                         case "5":
                             if (registerCardSuperOneAdapter == null) {
