@@ -26,7 +26,7 @@ import butterknife.OnClick;
  * Name: SelectTopicActivity
  * Author: Shing
  * Date: 17/12/26 上午10:50
- * Description: ..
+ * Description: 选择话题
  */
 
 public class SelectTopicActivity extends BaseActivity implements TextWatcher {
@@ -48,10 +48,10 @@ public class SelectTopicActivity extends BaseActivity implements TextWatcher {
 
     private void initData() {
 
-        list.add("#新年快乐哈哈#");
-        list.add("#新年快乐哈哈#");
-        list.add("#新年快乐哈哈#");
-        list.add("#新年快乐哈哈#");
+        list.add("#新年倒计时#");
+        list.add("#新年倒计时#");
+        list.add("#新年倒计时#");
+        list.add("#新年倒计时#");
         list.add("#新年快乐哈哈#");
 
 

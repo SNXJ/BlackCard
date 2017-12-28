@@ -54,6 +54,56 @@ import java.util.List;
  * Description: 公共弹窗
  */
 public class PublicDialog {
+
+
+    public static void ShareDialog(final Activity mContext) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.share_dialog_layout, null);
+        final Dialog dialog = showDialogView(view, mContext);
+        view.findViewById(R.id.WX_circle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.WX).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.QQ).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.QQ_ZONE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.SINA).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.COPY).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+
+
+    }
+
+
+
     /**
      * 订单弹窗
      *
@@ -296,7 +346,7 @@ public class PublicDialog {
         //设置默认获取焦点
         popWinShare.setFocusable(true);
         //以某个控件的x和y的偏移量位置开始显示窗口
-        popWinShare.showAsDropDown(im, 0, DisplayUtil.dip2px(context, 6));
+        popWinShare.showAsDropDown(im, -200, DisplayUtil.dip2px(context, 6));
         //如果窗口存在，则更新
         popWinShare.update();
 
@@ -669,4 +719,6 @@ public class PublicDialog {
         lp.width = (int) (display.getWidth()); // 设置宽度
         dialog.getWindow().setAttributes(lp);
     }
+
+
 }

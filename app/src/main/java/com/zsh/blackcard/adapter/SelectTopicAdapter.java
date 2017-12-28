@@ -25,6 +25,7 @@ public class SelectTopicAdapter extends BaseQuickAdapter<String,BaseViewHolder> 
     protected void convert(BaseViewHolder helper, String item) {
 
             helper.setText(R.id.tv_topic,item);
+            helper.setText(R.id.tv_img_,item.substring(1,2));
 
     }
 }

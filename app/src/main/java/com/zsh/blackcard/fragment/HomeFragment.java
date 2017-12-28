@@ -47,7 +47,6 @@ import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.music.MusicHomeActivity;
-import com.zsh.blackcard.ui.LoginActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
@@ -566,7 +565,7 @@ public class HomeFragment extends BaseFragment {
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
             case R.id.home_top_pop:
-                ActivityUtils.startActivity(getActivity(), LoginActivity.class);
+//                ActivityUtils.startActivity(getActivity(), LoginActivity.class);
 //                PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
 
                 PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
@@ -605,7 +604,7 @@ public class HomeFragment extends BaseFragment {
 
     private void requestCAMERA() {
         String[] PERMISSIONS_STORAGE = {
-                Manifest.permission.CAMERA,
+                Manifest.permission.CAMERA
         };
         MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
                 , new MPermissionUtils.OnPermissionListener() {

@@ -10,8 +10,12 @@
         <item name="android:listDivider">@drawable/divider</item>
 
     </style>
+    <style name="FullTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
 
-
+        <item name="android:windowFullscreen">true</item>
+    </style>
     <!-- 总title-->
     <style name="btn_buttom">
         <item name="android:background">@color/bg_button</item>

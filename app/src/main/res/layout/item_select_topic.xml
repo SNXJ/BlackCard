@@ -3,9 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/base60dp">
 
-    <ImageView
+    <TextView
+        android:id="@+id/tv_img_"
+        android:gravity="center"
+       style="@style/text_"
+        android:text="新"
+        android:textSize="22sp"
         android:layout_marginLeft="@dimen/base15dp"
-        android:src="@mipmap/subject_image_1"
+        android:background="#F29E19"
         android:layout_centerVertical="true"
         android:layout_width="@dimen/base50dp"
         android:layout_height="@dimen/base50dp" />

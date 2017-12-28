@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhouyou on 2016/11/17.
+ *
  * Class desc:
  * <p>
  * 6.0 运行时权限处理工具类。

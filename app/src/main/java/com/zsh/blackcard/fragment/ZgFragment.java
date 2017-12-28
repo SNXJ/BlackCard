@@ -1,5 +1,6 @@
 package com.zsh.blackcard.fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,6 +27,7 @@ import com.zsh.blackcard.ui.CommodityActivity;
 import com.zsh.blackcard.ui.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.MPermissionUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;
@@ -71,9 +73,28 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
                 ActivityUtils.startActivity(getActivity(), ZgSearchActivity.class);
                 break;
             case R.id.im_scanner:
-                ActivityUtils.startActivity(getActivity(), HomeScannerActivity.class);
+                requestCAMERA();
+//                ActivityUtils.startActivity(getActivity(), HomeScannerActivity.class);
                 break;
         }
+    }
+    private void requestCAMERA() {
+        String[] PERMISSIONS_STORAGE = {
+                Manifest.permission.CAMERA
+        };
+        MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
+                , new MPermissionUtils.OnPermissionListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        ActivityUtils.startActivity(getActivity(), HomeScannerActivity.class);
+                    }
+
+                    @Override
+                    public void onPermissionDenied() {
+                        MPermissionUtils.showTipsDialog(getActivity());
+                    }
+                });
+
     }
 
     //商品列表点击事件
