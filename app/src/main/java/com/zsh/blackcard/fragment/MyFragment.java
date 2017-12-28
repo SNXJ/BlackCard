@@ -64,10 +64,12 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void initDate(Bundle savedInstanceState) {
+        showLoading(getActivity());
+
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.postDisBlackPower(DataManager.getMd5Str("MYCOUBLACKENERGY"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyDisBlackPowerModel>() {
             @Override
             public void responseSuccess(MyDisBlackPowerModel obj) {
-                if(obj.getResult().equals("01")){
+                if (obj.getResult().equals("01")) {
                     my_nick_name_tv.setText(obj.getMy().getNICKNAME());
                     my_dis_count_tv.setText(String.valueOf(obj.getMy().getCOUPON()));
                     my_black_count_tv.setText(String.valueOf(obj.getMy().getBLACKCOIN()));
@@ -78,7 +80,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
     }
@@ -134,6 +136,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_black_linear:
                 ActivityUtils.startActivity(getActivity(), BlackCurrencyActivity.class);
                 break;
+            //能量值
             case R.id.my_power_linear:
                 ActivityUtils.startActivity(getActivity(), MyPowerActivity.class);
                 break;

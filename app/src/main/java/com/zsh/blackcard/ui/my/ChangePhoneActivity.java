@@ -27,13 +27,16 @@ public class ChangePhoneActivity extends BaseActivity {
         activity_change_phone_tv.setText(data);
     }
 
-    @OnClick({R.id.blackwb_back, R.id.activity_change_next_tv})
+    @OnClick({R.id.blackwb_back, R.id.activity_change_next_tv,R.id.activity_remember_send_tv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.blackwb_back:
                 finish();
                 break;
             case R.id.activity_change_next_tv:
+                break;
+            case R.id.activity_remember_send_tv:
+
                 break;
         }
     }

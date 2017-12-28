@@ -9,7 +9,6 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.untils.UIUtils;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
