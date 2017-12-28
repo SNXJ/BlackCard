@@ -17,9 +17,6 @@ android {
     }
     repositories {
         maven { url "https://jitpack.io" }
-        maven {
-            url "http://mvn.mob.com/android"
-        }
     }
     buildTypes {
         release {
