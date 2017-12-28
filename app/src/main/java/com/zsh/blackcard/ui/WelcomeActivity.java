@@ -16,7 +16,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.WelcomeModel;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.view.ZoomOutPageTransformer;
 
 import java.util.ArrayList;

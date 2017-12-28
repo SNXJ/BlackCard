@@ -21,7 +21,7 @@ import com.zsh.blackcard.ui.ShoppingCarActivity;
 import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
 import com.zsh.blackcard.ui.zgactivity.GoodsCategoryActivity;
 import com.zsh.blackcard.ui.zgactivity.PersonalActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;

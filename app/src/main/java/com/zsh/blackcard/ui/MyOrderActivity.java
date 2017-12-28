@@ -17,8 +17,8 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;

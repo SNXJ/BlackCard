@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.utils.LogUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;

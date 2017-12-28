@@ -2,7 +2,6 @@ package com.zsh.blackcard.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +15,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HjReleaseModel;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

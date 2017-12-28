@@ -29,7 +29,7 @@ import com.zsh.blackcard.model.HomeBarModel;
 import com.zsh.blackcard.model.HomeFoodModel;
 import com.zsh.blackcard.model.HomeHotelModel;
 import com.zsh.blackcard.model.HomeKTVModel;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;

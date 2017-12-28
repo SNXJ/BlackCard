@@ -12,7 +12,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.SbNearChangeListener;
 import com.zsh.blackcard.model.SbNearChangeModel;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;

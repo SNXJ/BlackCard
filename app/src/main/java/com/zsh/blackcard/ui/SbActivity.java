@@ -19,8 +19,8 @@ import com.zsh.blackcard.fragment.Abfragment.AbNearbyFragment;
 import com.zsh.blackcard.fragment.Abfragment.AbReComFragmemt;
 import com.zsh.blackcard.fragment.Abfragment.AbTypeFragment;
 import com.zsh.blackcard.live.AbSearchActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.TabLayoutUntil;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.TabLayoutUntil;
 
 import java.util.ArrayList;
 import java.util.List;

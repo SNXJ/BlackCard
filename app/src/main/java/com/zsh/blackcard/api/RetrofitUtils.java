@@ -3,7 +3,7 @@ package com.zsh.blackcard.api;
 import android.content.Context;
 
 import com.google.gson.GsonBuilder;
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.utils.LogUtils;
 
 import java.util.concurrent.TimeUnit;
 

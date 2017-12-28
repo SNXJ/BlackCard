@@ -36,9 +36,9 @@ import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.MyCalendar;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.MyCalendar;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;

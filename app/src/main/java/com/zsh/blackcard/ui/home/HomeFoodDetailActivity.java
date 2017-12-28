@@ -33,7 +33,7 @@ import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.OrderResultModel;
 import com.zsh.blackcard.ui.OrderPayActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.List;
 import java.util.Map;

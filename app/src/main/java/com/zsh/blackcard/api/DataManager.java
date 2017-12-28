@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.untils.LogUtils;
-import com.zsh.blackcard.untils.Md5Untils;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.LogUtils;
+import com.zsh.blackcard.utils.Md5Utils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -58,11 +58,11 @@ public class DataManager {
 
     public static String getMd5Str(String fn) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
-        return Md5Untils.md5(fn + sdf.format(new Date()) + FH);
+        return Md5Utils.md5(fn + sdf.format(new Date()) + FH);
     }
 
     public static String getMd5PassWord(String passWord) {
-        return Md5Untils.md5(passWord);
+        return Md5Utils.md5(passWord);
     }
 
     /**

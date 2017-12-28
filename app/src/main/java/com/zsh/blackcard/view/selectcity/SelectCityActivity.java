@@ -29,8 +29,8 @@ import android.widget.TextView;
 
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.model.CityEventModel;
-import com.zsh.blackcard.untils.LogUtils;
-import com.zsh.blackcard.untils.StatusBarColorUntil;
+import com.zsh.blackcard.utils.LogUtils;
+import com.zsh.blackcard.utils.StatusBarColorUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -110,7 +110,7 @@ public class SelectCityActivity extends Activity implements OnScrollListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        StatusBarColorUntil.setStatusBarColor(this);
+        StatusBarColorUtil.setStatusBarColor(this);
         setContentView(R.layout.activity_select_city);
 
         allCity = getIntent().getStringExtra("allCity");

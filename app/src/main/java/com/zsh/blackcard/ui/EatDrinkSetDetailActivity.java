@@ -16,7 +16,6 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.SendWeiBoAdapter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -128,7 +127,8 @@ public class EatDrinkSetDetailActivity extends BaseActivity implements BaseQuick
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println(resultCode + "====" + requestCode);
+
+
         //在相册界面点击确定后，显示选择的照片
         if (resultCode == RESULT_OK) {
             switch (requestCode) {

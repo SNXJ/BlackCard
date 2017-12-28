@@ -15,7 +15,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MusicRankAllModel;
 import com.zsh.blackcard.music.MusicDetailActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -17,7 +17,7 @@ import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HomePrivilegeModel;
 import com.zsh.blackcard.ui.zgactivity.PersonalActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

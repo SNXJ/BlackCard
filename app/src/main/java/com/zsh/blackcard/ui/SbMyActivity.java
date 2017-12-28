@@ -15,7 +15,7 @@ import com.zsh.blackcard.live.AbMySettingActivity;
 import com.zsh.blackcard.live.AbMySignActivity;
 import com.zsh.blackcard.live.AbMyTaskActivity;
 import com.zsh.blackcard.live.LiveRankActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

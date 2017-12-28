@@ -17,7 +17,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.CircleCenterCommentRecyclerModel;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;

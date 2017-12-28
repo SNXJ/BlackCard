@@ -34,9 +34,9 @@ import com.zsh.blackcard.ui.OrderCenterActivity;
 import com.zsh.blackcard.ui.VipCenterActivity;
 import com.zsh.blackcard.ui.WalletCenterActivity;
 import com.zsh.blackcard.ui.zgactivity.GameCenterActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.MPermissionUtils;
-import com.zsh.blackcard.untils.PhotoUntils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.MPermissionUtils;
+import com.zsh.blackcard.utils.PhotoUtils;
 
 import java.util.List;
 
@@ -174,13 +174,13 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
         switch (requestCode) {
-            case PhotoUntils.GET_IMAGE_FROM_PHONE://相册
+            case PhotoUtils.GET_IMAGE_FROM_PHONE://相册
                 //如果没有选择图片，则不进行裁剪
                 if (!selectList.isEmpty()) {
                     upAvatar(selectList.get(0).getPath());
                 }
                 break;
-            case PhotoUntils.GET_IMAGE_BY_CAMERA://照相机
+            case PhotoUtils.GET_IMAGE_BY_CAMERA://照相机
                 //如果打开相机没有拍照，则不进行裁剪
                 if (!selectList.isEmpty()) {
                     upAvatar(selectList.get(0).getPath());

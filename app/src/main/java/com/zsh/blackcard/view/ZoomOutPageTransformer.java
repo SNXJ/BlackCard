@@ -11,7 +11,7 @@ public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
 
     @Override
     public void transformPage(View view, float position) {
-        float scaleFactor = Math.max(0.5f, 1 - Math.abs(position));
+        float scaleFactor = Math.max(0.8f, 1 - Math.abs(position));
         if (position <= 0) {
             view.setTranslationX(position);
             view.setScaleX(scaleFactor);

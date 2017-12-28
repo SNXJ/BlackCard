@@ -29,7 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.untils.FastBlur;
+import com.zsh.blackcard.utils.FastBlur;
 
 /**
  * Author: SNXJ

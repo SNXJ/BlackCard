@@ -20,7 +20,7 @@ import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeGolfRecyclerModel;
 import com.zsh.blackcard.model.HomeHorseRecyclerModel;
 import com.zsh.blackcard.model.HomeYachtRecyclerModel;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import butterknife.BindView;

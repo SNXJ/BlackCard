@@ -1,7 +1,5 @@
 package com.zsh.blackcard.adapter;
 
-import android.graphics.Bitmap;
-import android.text.format.DateUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -9,13 +7,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.model.MyCircleModel;
-import com.zsh.blackcard.untils.BitmapUtils;
-import com.zsh.blackcard.untils.StringUtils;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**

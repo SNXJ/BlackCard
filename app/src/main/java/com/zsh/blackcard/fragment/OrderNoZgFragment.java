@@ -1,34 +1,17 @@
 package com.zsh.blackcard.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CompoundButton;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.api.DataManager;
-import com.zsh.blackcard.api.NetApi;
-import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
-import com.zsh.blackcard.ui.AddressManageActivity;
-import com.zsh.blackcard.ui.CollectionActivity;
-import com.zsh.blackcard.ui.CusCenterChatActivity;
-import com.zsh.blackcard.ui.DiscountCouponActivity;
-import com.zsh.blackcard.ui.ExChangeActivity;
-import com.zsh.blackcard.ui.IntegralActivity;
-import com.zsh.blackcard.ui.MyOrderActivity;
 import com.zsh.blackcard.ui.MyOrderOtherActivity;
 import com.zsh.blackcard.ui.OrderCenterActivity;
-import com.zsh.blackcard.ui.SbActivity;
-import com.zsh.blackcard.ui.VipCenterActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import butterknife.ButterKnife;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 /**

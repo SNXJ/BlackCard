@@ -75,10 +75,10 @@
             android:value="x44CZgW2VKxstNTFqe6zTYpgU5BbXr6r" />
 
         <activity
-            android:name=".ui.WelcomeActivity"
+            android:name=".ui.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden"
             android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
@@ -221,6 +221,9 @@
         <activity android:name=".music.MusicHomeActivity" />
         <activity android:name=".ui.MyOrderCenterEditActivity" />
         <activity android:name=".live.AbSearchActivity" />
+        <activity android:name=".ui.SelectTopicActivity" />
+
+
 
         <service android:name=".music.service.PlayService" />
 

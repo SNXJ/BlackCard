@@ -14,7 +14,7 @@ import com.zsh.blackcard.ui.ExChangeActivity;
 import com.zsh.blackcard.ui.IntegralActivity;
 import com.zsh.blackcard.ui.MyOrderActivity;
 import com.zsh.blackcard.ui.VipCenterActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

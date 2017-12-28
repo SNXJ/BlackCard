@@ -13,9 +13,9 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.zsh.blackcard.custom.PublicDialog;
-import com.zsh.blackcard.untils.MPermissionUtils;
-import com.zsh.blackcard.untils.MyActivityManager;
-import com.zsh.blackcard.untils.StatusBarColorUntil;
+import com.zsh.blackcard.utils.MPermissionUtils;
+import com.zsh.blackcard.utils.MyActivityManager;
+import com.zsh.blackcard.utils.StatusBarColorUtil;
 
 import butterknife.ButterKnife;
 
@@ -56,7 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         WindowManager.LayoutParams params = window.getAttributes();
         params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE;
         window.setAttributes(params);
-        StatusBarColorUntil.setStatusBarColor(this);
+        StatusBarColorUtil.setStatusBarColor(this);
         initUI();
         ButterKnife.bind(this);
         //   EventBus.getDefault().register(this);
