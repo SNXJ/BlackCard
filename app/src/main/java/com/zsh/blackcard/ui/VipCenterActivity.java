@@ -40,6 +40,9 @@ public class VipCenterActivity extends BaseActivity {
     }
 
     private void initDate() {
+
+        showLoading(this);
+
         DataManager.getInstance(this).RequestHttp(NetApi.postMyVipCenter(DataManager.getMd5Str("MEMBERINFO"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyVipCenterModel>() {
             @Override
             public void responseSuccess(MyVipCenterModel obj) {
@@ -54,7 +57,6 @@ public class VipCenterActivity extends BaseActivity {
                             obj.getList().get(i).setItemType(2);
                         }
                     }
-
                     vipCenterAdapter = new VipCenterAdapter(obj.getList());
                     my_vip_center_recycler.setLayoutManager(new LinearLayoutManager(VipCenterActivity.this, LinearLayoutManager.HORIZONTAL, false));
                     my_vip_center_recycler.setAdapter(vipCenterAdapter);
@@ -63,13 +65,9 @@ public class VipCenterActivity extends BaseActivity {
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
-
-
-//        vipCenterAdapter = new VipCenterAdapter(this);
-//        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
     }
 
     @OnClick(R.id.blackwb_back)

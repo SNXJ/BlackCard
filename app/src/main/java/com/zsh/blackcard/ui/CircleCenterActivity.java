@@ -42,7 +42,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
     private void iniData() {
 
-        UIUtils.newProgressDialog(this).show();
+        showLoading(this);
 
         DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterRecycle(DataManager.getMd5Str("CIRCLELIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyCircleModel>() {
             @Override
@@ -65,7 +65,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
             @Override
             public void onCompleted() {
-                UIUtils.dismissProgressDialog();
+                dialogDismiss();
             }
         });
 

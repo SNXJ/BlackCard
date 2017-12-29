@@ -47,7 +47,7 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('/Users/apple/Desktop/work/BlackCard/debug.keystore')
+            storeFile file('../debug.keystore')
             storePassword "android"
             keyAlias "android"
             keyPassword "android"

@@ -56,7 +56,7 @@
             <com.youth.banner.Banner
                 android:id="@+id/eat_drink_banner"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/base160dp">
+                android:layout_height="@dimen/base120dp">
 
             </com.youth.banner.Banner>
 

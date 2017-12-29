@@ -68,11 +68,13 @@ public class HuoDongActivity extends BaseActivity {
 
     //加载列表
     private void initHttp(String state) {
-        DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "d6a3779de8204dfd9359403f54f7d27c", "", state,""), new ResultListener<EatDrinkRecyclerModel>() {
+        showLoading(this);
+
+        DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "d6a3779de8204dfd9359403f54f7d27c", "", state, ""), new ResultListener<EatDrinkRecyclerModel>() {
             @Override
             public void responseSuccess(EatDrinkRecyclerModel obj) {
                 if (obj.getResult().equals("01")) {
-
+                    //根据数据分别加载有图片视图和无图片视图
                     for (int i = 0; i < obj.getPd().size(); i++) {
                         if (obj.getPd().get(i).getCONVERGEIMGS().size() != 0) {
                             obj.getPd().get(i).setItemType(1);
@@ -80,16 +82,13 @@ public class HuoDongActivity extends BaseActivity {
                             obj.getPd().get(i).setItemType(2);
                         }
                     }
-
                     pdBeans.clear();
                     pdBeans.addAll(obj.getPd());
                 } else {
                     pdBeans.clear();
                 }
 
-
                 if (eatDrinkRecyclerAdapter == null) {
-
                     eatDrinkRecyclerAdapter = new EatDrinkRecyclerAdapter(pdBeans);
                     my_huodong_recyclerView.setLayoutManager(new LinearLayoutManager(HuoDongActivity.this));
                     my_huodong_recyclerView.addItemDecoration(new SpacesItemDecoration(HuoDongActivity.this, SpacesItemDecoration.VERTICAL_LIST));
@@ -101,7 +100,7 @@ public class HuoDongActivity extends BaseActivity {
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
     }
