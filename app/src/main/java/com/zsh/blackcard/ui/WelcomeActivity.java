@@ -1,6 +1,7 @@
 package com.zsh.blackcard.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.ShareUtil;
 import com.zsh.blackcard.view.ZoomOutPageTransformer;
 
 import java.util.ArrayList;
@@ -57,6 +59,9 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
             case R.id.welcome_register_btn:
                 ActivityUtils.startActivity(this, RegisterActivity.class);
 
+//                ShareUtil.deauShare();
+//            PublicDialog.ShareDialog(WelcomeActivity.this);
+
                 break;
             //会籍登录
             case R.id.welcome_login_btn:
@@ -72,6 +77,18 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
         initData();
+
+        ShareUtil.initShare(this);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        ShareUtil.onUmActivityResult(requestCode,resultCode,data);
+
     }
 
     private void initData() {
