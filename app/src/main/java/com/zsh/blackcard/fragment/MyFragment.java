@@ -100,6 +100,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_vip_center_relative:
                 ActivityUtils.startActivity(getActivity(), VipCenterActivity.class);
                 break;
+            //管家中心
             case R.id.my_house_center_relative:
                 ActivityUtils.startActivity(getActivity(), HouseCenterActivity.class);
                 break;
@@ -111,15 +112,19 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_huodong_center_relative:
                 ActivityUtils.startActivity(getActivity(), HuoDongActivity.class);
                 break;
+            //购物中心
             case R.id.my_shop_center_relative:
 //                ActivityUtils.startActivity(getActivity(), );
                 break;
+            //客服中心
             case R.id.my_customer_center_relative:
                 ActivityUtils.startActivity(getActivity(), CusCenterChatActivity.class);
                 break;
+            //钱包中心
             case R.id.my_wallet_center_relative:
                 ActivityUtils.startActivity(getActivity(), WalletCenterActivity.class);
                 break;
+            //游戏中心
             case R.id.my_game_center_relative:
                 ActivityUtils.startActivity(getActivity(), GameCenterActivity.class);
                 break;
@@ -127,12 +132,15 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_order_center_relative:
                 ActivityUtils.startActivity(getActivity(), OrderCenterActivity.class);
                 break;
+            //设置
             case R.id.my_setting_center_relative:
                 ActivityUtils.startActivity(getActivity(), MySettingActivity.class);
                 break;
+            //优惠券
             case R.id.my_friend_linear:
                 ActivityUtils.startActivity(getActivity(), DiscountCouponActivity.class);
                 break;
+            //黑咖币
             case R.id.my_black_linear:
                 ActivityUtils.startActivity(getActivity(), BlackCurrencyActivity.class);
                 break;
@@ -189,6 +197,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
+    //上传头像
     private void upAvatar(final String imgPath) {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, imgPath), new ResultListener<ResultModel>() {
             @Override
@@ -196,7 +205,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 Glide.with(MyFragment.this).
                         load(imgPath).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(getActivity())))
                         .into(imAvatar);
-                System.out.println("上传成功");
             }
 
             @Override

@@ -15,6 +15,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.CategoryLeftModel;
 import com.zsh.blackcard.model.CategoryRightModel;
+import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;
@@ -51,12 +52,26 @@ public class GoodsCategoryActivity extends BaseActivity implements BaseQuickAdap
         initData();
     }
 
-    @OnClick(R.id.back_img)
-    public void onClick(){
-        finish();
+    @OnClick({R.id.back_img,R.id.search_one_rb,R.id.search_two_rb,R.id.search_three_br})
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.search_one_rb:
+                UIUtils.showToast("点击了1");
+                break;
+            case R.id.search_two_rb:
+                UIUtils.showToast("点击了2");
+                break;
+            case R.id.search_three_br:
+                UIUtils.showToast("点击了3");
+                break;
+            case R.id.back_img:
+                finish();
+                break;
+        }
     }
 
     private void initData() {
+        goods_category_recycler_right.setNestedScrollingEnabled(false);
         //商品分类左边列表
         DataManager.getInstance(this).RequestHttp(NetApi.postCategoryLeft(DataManager.getMd5Str("SHIPBR")), new ResultListener<CategoryLeftModel>() {
             @Override
@@ -66,7 +81,6 @@ public class GoodsCategoryActivity extends BaseActivity implements BaseQuickAdap
                 goods_category_recycler_left.addItemDecoration(new SpacesItemDecoration(GoodsCategoryActivity.this, SpacesItemDecoration.VERTICAL_LIST));
                 goods_category_recycler_left.setAdapter(categoryLeftAdapter);
                 categoryLeftAdapter.setOnItemClickListener(GoodsCategoryActivity.this);
-
                 //如果左边列表加载成功，则默认加载列表中的第一个子列表
                 initRecyclerRight(obj.getPd().get(0).getBRAND_ID());
             }
@@ -91,11 +105,10 @@ public class GoodsCategoryActivity extends BaseActivity implements BaseQuickAdap
                 if (categoryRightAdapter != null) {
                     categoryRightAdapter.notifyDataSetChanged();
                 } else {
-                    categoryRightAdapter = new CategoryRightAdapter(R.layout.category_right_item, pdBeanList);
-                    goods_category_recycler_right.setLayoutManager(new GridLayoutManager(GoodsCategoryActivity.this, 3));
+                    categoryRightAdapter = new CategoryRightAdapter(R.layout.category_right_item_new, pdBeanList);
+                    goods_category_recycler_right.setLayoutManager(new LinearLayoutManager(GoodsCategoryActivity.this));
                     goods_category_recycler_right.setAdapter(categoryRightAdapter);
                 }
-
             }
 
             @Override

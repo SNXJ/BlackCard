@@ -26,7 +26,7 @@ public class CategoryRightAdapter extends BaseQuickAdapter<CategoryRightModel.Pd
 
     @Override
     protected void convert(BaseViewHolder helper, CategoryRightModel.PdBean item) {
-        helper.setText(R.id.category_right_tv,item.getBRANDNAME());
-        Glide.with(mContext).load(item.getICONIMGS()).into((ImageView) helper.getView(R.id.category_right_img));
+//        helper.setText(R.id.category_right_tv,item.getBRANDNAME());
+//        Glide.with(mContext).load(item.getICONIMGS()).into((ImageView) helper.getView(R.id.category_right_img));
     }
 }

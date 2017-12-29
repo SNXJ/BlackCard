@@ -166,7 +166,11 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
             String title = data.getStringExtra("title");
             String content = data.getStringExtra("content");
             localMedia = (List<LocalMedia>) data.getSerializableExtra("list");
-            hj_eat_set_detail_tv.setText("内容已编辑");
+            if (title.trim().equals("") && content.trim().equals("")) {
+                hj_eat_set_detail_tv.setText("标题或内容未编辑");
+            }else{
+                hj_eat_set_detail_tv.setText("已编辑");
+            }
             map.put("CONVERGEDET", content);
             map.put("CONVERGETITLE", title);
         }

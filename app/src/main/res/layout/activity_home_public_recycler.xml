@@ -15,12 +15,32 @@
             style="@style/title_tv" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler"
+    <android.support.v4.widget.NestedScrollView
+        android:background="#000000"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#000000">
+        android:layout_height="match_parent">
+        
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <com.youth.banner.Banner
+                android:id="@+id/activity_home_public_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base120dp">
 
-    </android.support.v7.widget.RecyclerView>
+            </com.youth.banner.Banner>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+            
+        </LinearLayout>
+        
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

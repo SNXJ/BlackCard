@@ -88,6 +88,8 @@ public class UserInfoActivity extends BaseActivity {
 
     //获取个人信息
     private void initData() {
+        showLoading(this);
+
         DataManager.getInstance(this).RequestHttp(NetApi.postSettingUserInfo(DataManager.getMd5Str("GETUSERINFO"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<SettingUserInfoModel>() {
             @Override
             public void responseSuccess(SettingUserInfoModel obj) {
@@ -102,7 +104,7 @@ public class UserInfoActivity extends BaseActivity {
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
     }
