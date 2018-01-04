@@ -7,12 +7,44 @@ import android.os.Bundle;
 import android.provider.Settings;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Activity工具类
  */
 public class ActivityUtils {
+
+    public static List<Activity> list = new ArrayList<>();
+
+    /**
+     * 添加Activity管理栈
+     *
+     * @param activity
+     */
+    public static void addActivity(Activity activity) {
+        list.add(activity);
+    }
+
+    /**
+     * 移除Activity管理栈
+     *
+     * @param activity
+     */
+    public static void removeActivity(Activity activity) {
+        list.remove(activity);
+    }
+
+    /**
+     * 清空所有Activity
+     */
+    public static void finishActivity() {
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).finish();
+        }
+        list.clear();
+    }
+
     /**
      * 启动一个Activity并关闭当前Activity
      *

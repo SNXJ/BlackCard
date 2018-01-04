@@ -11,6 +11,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.UIUtils;
 
 import butterknife.BindView;
@@ -34,9 +35,10 @@ public class LoginActivity extends BaseActivity {
     protected void initUI() {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        ActivityUtils.addActivity(this);
     }
 
-    @OnClick({R.id.login_btn, R.id.login_register_tv, R.id.login_forget_tv})
+    @OnClick({R.id.login_btn, R.id.login_register_tv, R.id.login_forget_tv,R.id.zgmyback})
     public void onClick(View view) {
         switch (view.getId()) {
             //登录
@@ -52,20 +54,36 @@ public class LoginActivity extends BaseActivity {
             case R.id.login_forget_tv:
                 ActivityUtils.startActivity(this,RememberPassWordActivity.class);
                 break;
+            case R.id.zgmyback:
+                //从Activity管理栈移除当前Activity
+                ActivityUtils.removeActivity(this);
+                //关闭当前页面
+                finish();
+                break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //从Activity管理栈移除当前Activity
+        ActivityUtils.removeActivity(this);
+        //关闭当前页面
+        finish();
     }
 
     //登录方法
     private void initLogin() {
+        //打印加密结果，测试用。
+        LogUtils.i("======",DataManager.getMd5PassWord(login_pass_et.getText().toString().trim()));
         if (TextUtils.isEmpty(login_user_et.getText().toString().trim()) || TextUtils.isEmpty(login_pass_et.getText().toString().trim())) {
             UIUtils.showToast("帐号或密码不能为空");
         } else {
-            DataManager.getInstance(this).RequestHttp(NetApi.postLoginCard(DataManager.getMd5Str("LOGIN"), login_user_et.getText().toString().trim(), login_pass_et.getText().toString().trim()), new ResultListener<LoginModel>() {
+            DataManager.getInstance(this).RequestHttp(NetApi.postLoginCard(DataManager.getMd5Str("LOGIN"), login_user_et.getText().toString().trim(), DataManager.getMd5PassWord(login_pass_et.getText().toString().trim())), new ResultListener<LoginModel>() {
                 @Override
                 public void responseSuccess(LoginModel obj) {
                     if (obj.getResult().equals("01")) {
                         ActivityUtils.startActivity(LoginActivity.this, MainActivity.class);
-                        finish();
+                        ActivityUtils.finishActivity();
                     } else if (obj.getResult().equals("06")) {
                         UIUtils.showToast("密码错误");
                     } else if (obj.getResult().equals("04")) {

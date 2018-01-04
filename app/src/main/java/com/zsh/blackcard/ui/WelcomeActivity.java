@@ -58,15 +58,12 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
             //在线申请
             case R.id.welcome_register_btn:
                 ActivityUtils.startActivity(this, RegisterActivity.class);
-
 //                ShareUtil.deauShare();
 //            PublicDialog.ShareDialog(WelcomeActivity.this);
-
                 break;
             //会籍登录
             case R.id.welcome_login_btn:
                 ActivityUtils.startActivity(this, LoginActivity.class);
-                finish();
                 break;
         }
     }
@@ -76,8 +73,9 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     protected void initUI() {
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
+        //把当前Activity添加到管理栈
+        ActivityUtils.addActivity(this);
         initData();
-
         ShareUtil.initShare(this);
     }
 
@@ -85,10 +83,7 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-
-        ShareUtil.onUmActivityResult(requestCode,resultCode,data);
-
+        ShareUtil.onUmActivityResult(requestCode, resultCode, data);
     }
 
     private void initData() {

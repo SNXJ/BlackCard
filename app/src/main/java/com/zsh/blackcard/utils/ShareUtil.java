@@ -41,7 +41,6 @@ public class ShareUtil {
 
     public static void initShare(Context thisContext) {
         context = thisContext;
-
     }
 
     /**

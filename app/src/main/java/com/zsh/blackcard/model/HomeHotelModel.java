@@ -12,10 +12,12 @@ public class HomeHotelModel {
 
     /**
      * result : 01
-     * pd : [{"HOTELEVALUATE":2.8,"HOTELADDRESS":"北京市, 北京市, 东城区, 建国门内大街, 26","HOTELPRICE":123,"SHOWIMAGES":"http://47.104.16.215:8088/\nsortimgs/sorthotelimgs/sorthotelshowimgs/f849b0edd3264537992a11fd9b093e81.png","HOTELNAMES":"如家酒店","HOTELLATITUDE":"39.913672","HOTELLONGITUDE":"116.427934","HOTELDETAILSIMGS":",http://47.104.16.215:8088/\nsortimgs/sorthotelimgs/20171113175658128b05b1-42e4-4228-a3b9-bb5d112ff7f7.jpg,http://47.104.16.215:8088/\nsortimgs/sorthotelimgs/2017111317571523e9bc5c-fc7c-443d-9bc7-fe8f687bded7.jpg","HOTELPHONE":"010-12345678","SORTHOTEL_ID":"53443f6feed94a1bbce17a65e63dae28","HOTELEVACOUNT":5}]
+     * ad : [{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/0683dfe5f3914319bbb2793ec2315dae.png","AD_POSITION":"0","RELATED_ID":"1","CLICK_COUNT":0,"SORT_ORDER":1,"LINK_URL":"","ADVERTISEMENT_ID":"396314154756997120","NAME":""},{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/fefc9bbcadca494da30ee15fb8e2ff47.png","AD_POSITION":"0","RELATED_ID":"1","CLICK_COUNT":0,"SORT_ORDER":2,"LINK_URL":"","ADVERTISEMENT_ID":"396314339067297792","NAME":""},{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/eb1a09e9000346e0899c15e0e553d60b.png","AD_POSITION":"0","RELATED_ID":"1","CLICK_COUNT":0,"SORT_ORDER":3,"LINK_URL":"","ADVERTISEMENT_ID":"396314588510945280","NAME":""}]
+     * pd : [{"HOTELEVALUATE":2.8,"HOTELADDRESS":"北京市 北京市 东城区 朝阳门内大街 283号","HOTELPRICE":111,"SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sorthotelimgs/sorthotelshowimgs/eb835e3bba61461296aa88b443c3da43.png","HOTELNAMES":"如家快捷酒店(东四店)","distance":"10.068085026706724","SORTHOTEL_ID":"385471958017376256","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","HOTELEVACOUNT":1},{"HOTELEVALUATE":0.8,"HOTELADDRESS":"北京市 北京市 朝阳区 建国路 99号99-15三层","HOTELPRICE":123,"SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sorthotelimgs/sorthotelshowimgs/38ef1785007b46ea833b4f9603d31e28.png","HOTELNAMES":"锦江之星(国贸店)","distance":"5.051110587790447","SORTHOTEL_ID":"385472115253444608","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","HOTELEVACOUNT":1},{"HOTELEVALUATE":2.8,"HOTELADDRESS":"北京市 北京市 西城区 西黄城根南街 45号院-9号楼","HOTELPRICE":298,"SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sorthotelimgs/sorthotelshowimgs/8881d2f0170f42bfb00ea52aaa140787.png","HOTELNAMES":"7天连锁酒店(灵境胡同店)","distance":"14.645734140760268","SORTHOTEL_ID":"385472311504928768","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","HOTELEVACOUNT":2}]
      */
 
     private String result;
+    private List<AdBean> ad;
     private List<PdBean> pd;
 
     public String getResult() {
@@ -26,6 +28,14 @@ public class HomeHotelModel {
         this.result = result;
     }
 
+    public List<AdBean> getAd() {
+        return ad;
+    }
+
+    public void setAd(List<AdBean> ad) {
+        this.ad = ad;
+    }
+
     public List<PdBean> getPd() {
         return pd;
     }
@@ -34,22 +44,103 @@ public class HomeHotelModel {
         this.pd = pd;
     }
 
+    public static class AdBean {
+        /**
+         * SHOWIMG : http://47.104.16.215:8088/advertisementimgs/0683dfe5f3914319bbb2793ec2315dae.png
+         * AD_POSITION : 0
+         * RELATED_ID : 1
+         * CLICK_COUNT : 0
+         * SORT_ORDER : 1
+         * LINK_URL :
+         * ADVERTISEMENT_ID : 396314154756997120
+         * NAME :
+         */
+
+        private String SHOWIMG;
+        private String AD_POSITION;
+        private String RELATED_ID;
+        private int CLICK_COUNT;
+        private int SORT_ORDER;
+        private String LINK_URL;
+        private String ADVERTISEMENT_ID;
+        private String NAME;
+
+        public String getSHOWIMG() {
+            return SHOWIMG;
+        }
+
+        public void setSHOWIMG(String SHOWIMG) {
+            this.SHOWIMG = SHOWIMG;
+        }
+
+        public String getAD_POSITION() {
+            return AD_POSITION;
+        }
+
+        public void setAD_POSITION(String AD_POSITION) {
+            this.AD_POSITION = AD_POSITION;
+        }
+
+        public String getRELATED_ID() {
+            return RELATED_ID;
+        }
+
+        public void setRELATED_ID(String RELATED_ID) {
+            this.RELATED_ID = RELATED_ID;
+        }
+
+        public int getCLICK_COUNT() {
+            return CLICK_COUNT;
+        }
+
+        public void setCLICK_COUNT(int CLICK_COUNT) {
+            this.CLICK_COUNT = CLICK_COUNT;
+        }
+
+        public int getSORT_ORDER() {
+            return SORT_ORDER;
+        }
+
+        public void setSORT_ORDER(int SORT_ORDER) {
+            this.SORT_ORDER = SORT_ORDER;
+        }
+
+        public String getLINK_URL() {
+            return LINK_URL;
+        }
+
+        public void setLINK_URL(String LINK_URL) {
+            this.LINK_URL = LINK_URL;
+        }
+
+        public String getADVERTISEMENT_ID() {
+            return ADVERTISEMENT_ID;
+        }
+
+        public void setADVERTISEMENT_ID(String ADVERTISEMENT_ID) {
+            this.ADVERTISEMENT_ID = ADVERTISEMENT_ID;
+        }
+
+        public String getNAME() {
+            return NAME;
+        }
+
+        public void setNAME(String NAME) {
+            this.NAME = NAME;
+        }
+    }
+
     public static class PdBean {
         /**
          * HOTELEVALUATE : 2.8
-         * HOTELADDRESS : 北京市, 北京市, 东城区, 建国门内大街, 26
-         * HOTELPRICE : 123
-         * SHOWIMAGES : http://47.104.16.215:8088/
-         sortimgs/sorthotelimgs/sorthotelshowimgs/f849b0edd3264537992a11fd9b093e81.png
-         * HOTELNAMES : 如家酒店
-         * HOTELLATITUDE : 39.913672
-         * HOTELLONGITUDE : 116.427934
-         * HOTELDETAILSIMGS : ,http://47.104.16.215:8088/
-         sortimgs/sorthotelimgs/20171113175658128b05b1-42e4-4228-a3b9-bb5d112ff7f7.jpg,http://47.104.16.215:8088/
-         sortimgs/sorthotelimgs/2017111317571523e9bc5c-fc7c-443d-9bc7-fe8f687bded7.jpg
-         * HOTELPHONE : 010-12345678
-         * SORTHOTEL_ID : 53443f6feed94a1bbce17a65e63dae28
-         * HOTELEVACOUNT : 5
+         * HOTELADDRESS : 北京市 北京市 东城区 朝阳门内大街 283号
+         * HOTELPRICE : 111
+         * SHOWIMAGES : http://47.104.16.215:8088/sortimgs/sorthotelimgs/sorthotelshowimgs/eb835e3bba61461296aa88b443c3da43.png
+         * HOTELNAMES : 如家快捷酒店(东四店)
+         * distance : 10.068085026706724
+         * SORTHOTEL_ID : 385471958017376256
+         * HONOURUSER_ID : d6a3779de8204dfd9359403f54f7d27c
+         * HOTELEVACOUNT : 1
          */
 
         private double HOTELEVALUATE;
@@ -57,11 +148,9 @@ public class HomeHotelModel {
         private int HOTELPRICE;
         private String SHOWIMAGES;
         private String HOTELNAMES;
-        private String HOTELLATITUDE;
-        private String HOTELLONGITUDE;
-        private String HOTELDETAILSIMGS;
-        private String HOTELPHONE;
+        private String distance;
         private String SORTHOTEL_ID;
+        private String HONOURUSER_ID;
         private int HOTELEVACOUNT;
 
         public double getHOTELEVALUATE() {
@@ -104,36 +193,12 @@ public class HomeHotelModel {
             this.HOTELNAMES = HOTELNAMES;
         }
 
-        public String getHOTELLATITUDE() {
-            return HOTELLATITUDE;
+        public String getDistance() {
+            return distance;
         }
 
-        public void setHOTELLATITUDE(String HOTELLATITUDE) {
-            this.HOTELLATITUDE = HOTELLATITUDE;
-        }
-
-        public String getHOTELLONGITUDE() {
-            return HOTELLONGITUDE;
-        }
-
-        public void setHOTELLONGITUDE(String HOTELLONGITUDE) {
-            this.HOTELLONGITUDE = HOTELLONGITUDE;
-        }
-
-        public String getHOTELDETAILSIMGS() {
-            return HOTELDETAILSIMGS;
-        }
-
-        public void setHOTELDETAILSIMGS(String HOTELDETAILSIMGS) {
-            this.HOTELDETAILSIMGS = HOTELDETAILSIMGS;
-        }
-
-        public String getHOTELPHONE() {
-            return HOTELPHONE;
-        }
-
-        public void setHOTELPHONE(String HOTELPHONE) {
-            this.HOTELPHONE = HOTELPHONE;
+        public void setDistance(String distance) {
+            this.distance = distance;
         }
 
         public String getSORTHOTEL_ID() {
@@ -142,6 +207,14 @@ public class HomeHotelModel {
 
         public void setSORTHOTEL_ID(String SORTHOTEL_ID) {
             this.SORTHOTEL_ID = SORTHOTEL_ID;
+        }
+
+        public String getHONOURUSER_ID() {
+            return HONOURUSER_ID;
+        }
+
+        public void setHONOURUSER_ID(String HONOURUSER_ID) {
+            this.HONOURUSER_ID = HONOURUSER_ID;
         }
 
         public int getHOTELEVACOUNT() {
