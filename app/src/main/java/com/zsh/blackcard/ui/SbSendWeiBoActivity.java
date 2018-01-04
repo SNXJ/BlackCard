@@ -13,14 +13,18 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.SendWeiBoAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
-import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.listener.TopicListener;
 import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.model.TopicListModel;
 import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.StringUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,21 +82,49 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
             //发布微博
             case R.id.send_weiBo_tv:
                 initSendWeiBo(localMedia);
+
                 break;
         }
     }
 
-    DateListener listener = new DateListener() {
+    TopicListModel.PdBean TopicData = new TopicListModel.PdBean();
+    TopicListener listener = new TopicListener() {
         @Override
-        public void dateListener(String data) {
+        public void dateListener(TopicListModel.PdBean data) {
             if (null != data) {
-                topic_weiBo_tv.setText(data);
+                TopicData = data;
+                topic_weiBo_tv.setText("#" + data.getTITLE() + "#");
             }
         }
     };
 
+    /**
+     * 单独请求添加话题接口
+     */
+    private void addTopic() {
+
+        DataManager.getInstance(this).RequestHttp(NetApi.addTopic(DataManager.getMd5Str("TOPICADD"), BaseApplication.getHonouruserId(), TopicData.getTITLE()), new ResultListener<TopicListModel>() {
+            @Override
+            public void responseSuccess(TopicListModel obj) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+    }
+
     //发送黑微博
     private void initSendWeiBo(final List<LocalMedia> localMedia) {
+
+        if(StringUtils.isEmpty(send_weiBo_et.getText().toString())){
+            UIUtils.showToast("请输入内容");
+            return;
+        }
+
         //获取图片集合最后一个元素，如果是占位符则移除，否则就上传
         if (localMedia.get(localMedia.size() - 1).getPath() == null) {
             localMedia.remove(localMedia.size() - 1);
@@ -104,7 +136,11 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
             pary.clear();
         }
 
-        DataManager.getInstance(this).RequestHttp(NetApi.postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c", send_weiBo_et.getText().toString(), pary, localMedia, "1"), new ResultListener<ResultModel>() {
+        //新创建的才请求(话题可以为空)
+        if(!StringUtils.isEmpty(TopicData.getTITLE()) && StringUtils.isEmpty(TopicData.getTOPIC_ID())){
+            addTopic();
+        }
+        DataManager.getInstance(this).RequestHttp(NetApi.postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c",send_weiBo_et.getText().toString(), TopicData.getTOPIC_ID(), TopicData.getTITLE(), pary, localMedia, "1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {
