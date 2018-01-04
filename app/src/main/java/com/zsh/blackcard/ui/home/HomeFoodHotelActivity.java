@@ -1,5 +1,6 @@
 package com.zsh.blackcard.ui.home;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +11,11 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
 import com.bigkoo.pickerview.OptionsPickerView;
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
@@ -58,18 +63,17 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     RecyclerView recyclerView;
     @BindView(R.id.rl_hotel_empty)
     RelativeLayout rl_empty;
+    @BindView(R.id.banner)
+    Banner banner;
 
-
-    private List<HomeFoodModel.PdBean> foodList = new ArrayList<>();
     private HomeFoodAdapter foodAdapter;
-    private List<HomeHotelModel.PdBean> hotelList = new ArrayList<>();
-    private List<HomeBarModel.PdBean> barList = new ArrayList<>();
     private HomeHotelAdapter hotelAdapter;
     private HomeBarAdapter barAdapter;
-    private List<HomeKTVModel.PdBean> ktvList = new ArrayList<>();
     private HomeKTVAdapter ktvAdapter;
     private String type;
     private List<String> searchList = new ArrayList<>();
+    private List<String> listBanner = new ArrayList<>();
+    private List<String> listTitle = new ArrayList<>();
 
     @Override
     protected void initUI() {
@@ -77,7 +81,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         ButterKnife.bind(this);
         type = getIntent().getStringExtra("data");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        recyclerView.setNestedScrollingEnabled(false);
         switch (type) {
             case HomeTypeConstant.MORE_TYPE_FOOD:
                 initFoodData();
@@ -98,6 +102,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         DataManager.getInstance(this).RequestHttp(NetApi.postHomeKTVRecycler(DataManager.getMd5Str("SORTKTV"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeKTVModel>() {
             @Override
             public void responseSuccess(HomeKTVModel obj) {
+                initKTVBanner(obj);
                 notifyKTVAdapter(obj);
 
             }
@@ -113,6 +118,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         DataManager.getInstance(this).RequestHttp(NetApi.postHomeBarList(DataManager.getMd5Str("SORTBAR")), new ResultListener<HomeBarModel>() {
             @Override
             public void responseSuccess(HomeBarModel obj) {
+                initBarBanner(obj);
                 notifyBarAdapter(obj);
 
             }
@@ -128,6 +134,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         DataManager.getInstance(this).RequestHttp(NetApi.postHomeHotelList(DataManager.getMd5Str("SORTHOTEL")), new ResultListener<HomeHotelModel>() {
             @Override
             public void responseSuccess(HomeHotelModel obj) {
+                initHotelBanner(obj);
                 notifyHotelAdapter(obj);
             }
 
@@ -204,13 +211,11 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
 
     }
 
-    private void notifyKTVAdapter(HomeKTVModel obj) {
-        ktvList.clear();
-        ktvList.addAll(obj.getPd());
+    private void notifyKTVAdapter(final HomeKTVModel obj) {
         if (null != ktvAdapter) {
             ktvAdapter.notifyDataSetChanged();
         } else {
-            ktvAdapter = new HomeKTVAdapter(ktvList, HomeFoodHotelActivity.this);
+            ktvAdapter = new HomeKTVAdapter(obj.getPd(), HomeFoodHotelActivity.this);
             recyclerView.setAdapter(ktvAdapter);
         }
 
@@ -219,7 +224,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         ktvAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeKTVDetailActivity.class, ktvList.get(position).getSORTKTV_ID());
+                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeKTVDetailActivity.class, obj.getPd().get(position).getSORTKTV_ID());
             }
         });
     }
@@ -246,67 +251,117 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
 
     }
 
-    private void notifyBarAdapter(HomeBarModel obj) {
-        barList.clear();
-        barList.addAll(obj.getPd());
+    private void notifyBarAdapter(final HomeBarModel obj) {
         if (null != barAdapter) {
             barAdapter.notifyDataSetChanged();
         } else {
-            barAdapter = new HomeBarAdapter(barList, HomeFoodHotelActivity.this);
+            barAdapter = new HomeBarAdapter(obj.getPd(), HomeFoodHotelActivity.this);
             recyclerView.setAdapter(barAdapter);
         }
         barAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
         barAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeBarDetailActivity.class, barList.get(position).getSORTBAR_ID());
+                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeBarDetailActivity.class, obj.getPd().get(position).getSORTBAR_ID());
             }
         });
     }
 
-    private void notifyHotelAdapter(HomeHotelModel obj) {
-        hotelList.clear();
-        hotelList.addAll(obj.getPd());
+    private void notifyHotelAdapter(final HomeHotelModel obj) {
         if (null != hotelAdapter) {
             hotelAdapter.notifyDataSetChanged();
         } else {
-            hotelAdapter = new HomeHotelAdapter(hotelList, HomeFoodHotelActivity.this);
+            hotelAdapter = new HomeHotelAdapter(obj.getPd(), HomeFoodHotelActivity.this);
             recyclerView.setAdapter(hotelAdapter);
         }
         hotelAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
         hotelAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeHotelDetailActivity.class, hotelList.get(position).getSORTHOTEL_ID());
+                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeHotelDetailActivity.class, obj.getPd().get(position).getSORTHOTEL_ID());
             }
         });
     }
 
     //美食加载
-    private void notifyFoodAdapter(HomeFoodModel obj) {
-        foodList.clear();
-        foodList.addAll(obj.getPd());
+    private void notifyFoodAdapter(final HomeFoodModel obj) {
         if (null != foodAdapter) {
             foodAdapter.notifyDataSetChanged();
         } else {
-            foodAdapter = new HomeFoodAdapter(foodList, HomeFoodHotelActivity.this);
+            foodAdapter = new HomeFoodAdapter(obj.getPd(), HomeFoodHotelActivity.this);
             recyclerView.setAdapter(foodAdapter);
         }
         foodAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
         foodAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeFoodDetailActivity.class, foodList.get(position).getSORTFOOD_ID());
+                ActivityUtils.startActivityForData(HomeFoodHotelActivity.this, HomeFoodDetailActivity.class, obj.getPd().get(position).getSORTFOOD_ID());
             }
         });
-
     }
 
+    private void initBanner(List<String> listBanner,List<String> listTitle){
+        banner.setImages(listBanner);
+        banner.setImageLoader(new HomeFoodHotelActivity.MyImageLoader());
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+        banner.setIndicatorGravity(BannerConfig.CENTER);
+        banner.isAutoPlay(true);
+        banner.setDelayTime(3000);
+        banner.setBannerTitles(listTitle);
+        banner.start();
+    }
 
+    private void initKTVBanner(HomeKTVModel obj) {
+        //加载头部广告banner
+        for (int i = 0; i < obj.getAd().size(); i++) {
+            listBanner.add(obj.getAd().get(i).getSHOWIMG());
+            listTitle.add(obj.getAd().get(i).getNAME());
+        }
+        initBanner(listBanner,listTitle);
+    }
+
+    private void initBarBanner(HomeBarModel obj) {
+        //加载头部广告banner
+        for (int i = 0; i < obj.getAd().size(); i++) {
+            listBanner.add(obj.getAd().get(i).getSHOWIMG());
+            listTitle.add(obj.getAd().get(i).getNAME());
+        }
+        initBanner(listBanner,listTitle);
+    }
+
+    private void initHotelBanner(HomeHotelModel obj) {
+        //加载头部广告banner
+        for (int i = 0; i < obj.getAd().size(); i++) {
+            listBanner.add(obj.getAd().get(i).getSHOWIMG());
+            listTitle.add(obj.getAd().get(i).getNAME());
+        }
+        initBanner(listBanner,listTitle);
+    }
+
+    private void initFoodBanner(HomeFoodModel obj) {
+        //加载头部广告banner
+        for (int i = 0; i < obj.getAd().size(); i++) {
+            listBanner.add(obj.getAd().get(i).getSHOWIMG());
+            listTitle.add(obj.getAd().get(i).getNAME());
+        }
+        initBanner(listBanner,listTitle);
+    }
+
+    //banner加载图片类
+    private class MyImageLoader extends ImageLoader {
+
+        @Override
+        public void displayImage(Context context, Object path, ImageView imageView) {
+            Glide.with(HomeFoodHotelActivity.this).load(path).into(imageView);
+        }
+    }
+
+    //加载美食列表
     private void initFoodData() {
         DataManager.getInstance(this).RequestHttp(NetApi.postHomeFoodList(DataManager.getMd5Str("SORTFOOD")), new ResultListener<HomeFoodModel>() {
             @Override
             public void responseSuccess(HomeFoodModel obj) {
+                initFoodBanner(obj);
                 notifyFoodAdapter(obj);
             }
 
@@ -384,7 +439,6 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                 filterHotelData(str1, str2, "", "");
                 break;
             case HomeTypeConstant.MORE_TYPE_BAR:
-
                 filterBarData(str1, str2, "", "");
                 break;
             case HomeTypeConstant.MORE_TYPE_KTV:
@@ -497,6 +551,4 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
                 break;
         }
     }
-
-
 }

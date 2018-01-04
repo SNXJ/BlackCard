@@ -50,9 +50,6 @@ public class CollectionActivity extends BaseActivity {
 
             }
         });
-
-
-
     }
 
     @OnClick(R.id.zgmyback)

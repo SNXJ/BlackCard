@@ -181,7 +181,6 @@ public class AddressEditActivity extends BaseActivity {
         etAddresDetail.setText(initData.getADDRESS());
     }
 
-
     Map<String, String> map = new TreeMap<>();
 
     private void getDataPutMap() {
@@ -264,6 +263,4 @@ public class AddressEditActivity extends BaseActivity {
 //            }
 //        });
     }
-
-
 }

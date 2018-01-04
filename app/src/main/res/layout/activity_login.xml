@@ -4,9 +4,22 @@
     android:layout_height="match_parent"
     android:background="@mipmap/login_bg"
     android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:paddingLeft="@dimen/base30dp"
-    android:paddingRight="@dimen/base30dp">
+    android:focusableInTouchMode="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/zgmyback"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:scaleType="center"
+            android:src="@mipmap/back" />
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/login_icon_img"
@@ -27,6 +40,8 @@
         android:hint="请输入您的黑卡卡号"
         android:inputType="number"
         android:maxLines="1"
+        android:layout_marginLeft="@dimen/base30dp"
+        android:layout_marginRight="@dimen/base30dp"
         android:textColor="@color/recharge_text"
         android:textColorHint="#FF454545"
         android:textSize="14sp" />
@@ -36,9 +51,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/base1dp"
         android:layout_below="@+id/login_user_et"
-        android:background="@color/divider" />
+        android:background="@color/divider"
+        android:layout_marginLeft="@dimen/base30dp"
+        android:layout_marginRight="@dimen/base30dp" />
 
     <EditText
+        android:inputType="textPassword"
         android:id="@+id/login_pass_et"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base40dp"
@@ -48,6 +66,8 @@
         android:digits="123456asd"
         android:hint="请输入您的密码"
         android:maxLines="1"
+        android:layout_marginLeft="@dimen/base30dp"
+        android:layout_marginRight="@dimen/base30dp"
         android:textColor="@color/recharge_text"
         android:textColorHint="#FF454545"
         android:textSize="14sp" />
@@ -57,9 +77,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/base1dp"
         android:layout_below="@+id/login_pass_et"
-        android:background="@color/divider" />
+        android:background="@color/divider"
+        android:layout_marginLeft="@dimen/base30dp"
+        android:layout_marginRight="@dimen/base30dp" />
 
     <Button
+        android:layout_marginLeft="@dimen/base30dp"
+        android:layout_marginRight="@dimen/base30dp"
         android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base40dp"
@@ -70,6 +94,8 @@
         android:textColor="#FFFFFFFF" />
 
     <TextView
+        android:layout_marginLeft="@dimen/base30dp"
+        android:layout_marginRight="@dimen/base30dp"
         android:id="@+id/login_register_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,6 +105,8 @@
         android:textColor="#FF929292" />
 
     <TextView
+        android:layout_marginLeft="@dimen/base30dp"
+        android:layout_marginRight="@dimen/base30dp"
         android:id="@+id/login_forget_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
