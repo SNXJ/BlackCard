@@ -63,7 +63,6 @@
         android:layout_below="@+id/login_user_v"
         android:layout_marginTop="@dimen/base5dp"
         android:background="@null"
-        android:digits="123456asd"
         android:hint="请输入您的密码"
         android:maxLines="1"
         android:layout_marginLeft="@dimen/base30dp"
