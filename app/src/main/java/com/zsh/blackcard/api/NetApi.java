@@ -78,6 +78,7 @@ import com.zsh.blackcard.model.RegisterChangeNumberModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SettingUserInfoModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
+import com.zsh.blackcard.model.TopicListModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
@@ -577,7 +578,7 @@ public class NetApi extends DataManager {
      * @param listPath
      * @return
      */
-    public static Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
+    public static Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID,String CONTENT ,String TOPIC_ID,String TITLE, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
         //如果有图片上传，则加载body，如果没有上传图片则加载空body
         if (localMedia.size() != 0) {
             for (int i = 0; i < localMedia.size(); i++) {
@@ -591,7 +592,7 @@ public class NetApi extends DataManager {
             MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
             listPath.add(part);
         }
-        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, listPath, type);
+        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT,TOPIC_ID,TITLE, listPath, type);
     }
 
     /**
@@ -1384,5 +1385,26 @@ public class NetApi extends DataManager {
      */
     public static Observable<EatDrinkSearchModel> postEatDrinkSearch(String md5, String CONVERGE_ID) {
         return retrofitService.postEatDrinkSearch(md5, CONVERGE_ID);
+    }
+
+    /**
+     * 获取话题列表
+     * @param md5
+     * @param title
+     * @return
+     */
+    public static Observable<TopicListModel> getTopicList(String md5, String title) {
+        return retrofitService.getTopicList(md5, title);
+    }
+
+    /**
+     * 添加话题
+     * @param md5
+     * @param userID
+     * @param title
+     * @return
+     */
+    public static Observable<TopicListModel> addTopic(String md5, String userID,String title) {
+        return retrofitService.addTopic(md5,userID, title);
     }
 }

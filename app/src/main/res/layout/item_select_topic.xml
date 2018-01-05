@@ -14,10 +14,7 @@
         android:layout_centerVertical="true"
         android:layout_width="@dimen/base50dp"
         android:layout_height="@dimen/base50dp" />
-
-
-
-    <TextView
+ <TextView
         android:id="@+id/tv_topic"
         android:textSize="14sp"
        style="@style/text_"
@@ -25,6 +22,7 @@
         android:layout_marginTop="@dimen/base10dp"
         android:text="#新年倒计时#"/>
     <TextView
+        android:id="@+id/tv_des"
         android:textSize="12sp"
         style="@style/text_"
         android:layout_marginLeft="@dimen/base80dp"

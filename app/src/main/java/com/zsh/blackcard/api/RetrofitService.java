@@ -50,9 +50,6 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
-
-import com.zsh.blackcard.model.MyCircleModel;
-
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -62,7 +59,7 @@ import com.zsh.blackcard.model.MusicRecommendModel;
 import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
-
+import com.zsh.blackcard.model.MyCircleModel;
 import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.MyPowerImageModel;
@@ -79,6 +76,7 @@ import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SettingUserInfoModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
+import com.zsh.blackcard.model.TopicListModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
@@ -368,6 +366,8 @@ public interface RetrofitService {
     Observable<ResultModel> postSendWeiBo(@Query("FKEY") String md5,
                                           @Query("HONOURUSER_ID") String HONOURUSER_ID,
                                           @Query("CONTENT") String CONTENT,
+                                          @Query("TOPIC_ID") String TOPIC_ID,
+                                          @Query("TITLE") String TITLE,
                                           @Part List<MultipartBody.Part> fileList,
                                           @Query("TYPE") String type);
 
@@ -801,6 +801,15 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appconvergein/getconvergesort.do?")
     Observable<EatDrinkSearchModel> postEatDrinkSearch(@Field("FKEY") String md5,
-                                                       @Field("CONVERGE_ID") String CONVERGE_ID);
+
+                                                      @Field("CONVERGE_ID") String CONVERGE_ID);
+    //话题列表模糊查询
+    @FormUrlEncoded
+    @POST("appcirclein/gettopiclist.do?")
+    Observable<TopicListModel>  getTopicList(@Field("FKEY") String md5, @Field("TITLE") String title);
+    //添加话题单独接口
+    @FormUrlEncoded
+    @POST("appcirclein/addtopic.do?")
+    Observable<TopicListModel>  addTopic(@Field("FKEY") String md5,@Field("HONOURUSER_ID") String userId,@Field("TITLE") String title);
 }
 
