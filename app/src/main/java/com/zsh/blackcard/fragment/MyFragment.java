@@ -22,6 +22,7 @@ import com.zsh.blackcard.custom.GlideCircleTransform;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.music.MusicHomeActivity;
 import com.zsh.blackcard.ui.BlackCurrencyActivity;
 import com.zsh.blackcard.ui.CircleCenterActivity;
 import com.zsh.blackcard.ui.CusCenterChatActivity;
@@ -93,7 +94,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         return view;
     }
 
-    @OnClick({R.id.my_vip_center_relative, R.id.my_house_center_relative, R.id.my_circle_center_relative, R.id.my_huodong_center_relative, R.id.my_shop_center_relative, R.id.my_customer_center_relative, R.id.my_wallet_center_relative, R.id.my_game_center_relative, R.id.my_order_center_relative, R.id.my_setting_center_relative, R.id.my_friend_linear, R.id.my_black_linear, R.id.my_power_linear})
+    @OnClick({R.id.my_vip_center_relative, R.id.my_house_center_relative, R.id.my_circle_center_relative, R.id.my_huodong_center_relative, R.id.my_shop_center_relative, R.id.my_customer_center_relative, R.id.my_wallet_center_relative, R.id.my_game_center_relative, R.id.my_order_center_relative, R.id.my_setting_center_relative, R.id.my_friend_linear, R.id.my_black_linear, R.id.my_power_linear, R.id.my_order_music_relative})
     public void onClick(View view) {
         switch (view.getId()) {
             //会员中心
@@ -131,6 +132,10 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             //订单中心
             case R.id.my_order_center_relative:
                 ActivityUtils.startActivity(getActivity(), OrderCenterActivity.class);
+                break;
+            //音乐中心
+            case R.id.my_order_music_relative:
+                ActivityUtils.startActivityForData(getActivity(), MusicHomeActivity.class,"2");
                 break;
             //设置
             case R.id.my_setting_center_relative:

@@ -44,19 +44,23 @@ public class OrderZgFragment extends BaseFragment {
             case R.id.zgmy_tv_dingdan:
                 ActivityUtils.startActivityForData(getActivity(), MyOrderActivity.class, "1");
                 break;
-            //待支付
+            //待付款
             case R.id.my_order_pay_rb:
                 ActivityUtils.startActivityForData(getActivity(), MyOrderActivity.class, "2");
                 break;
+            //待收货
             case R.id.my_order_receipt_rb:
                 ActivityUtils.startActivityForData(getActivity(), MyOrderActivity.class, "3");
                 break;
+            //待评价
             case R.id.my_order_comment_rb:
                 ActivityUtils.startActivityForData(getActivity(), MyOrderActivity.class, "4");
                 break;
+            //售后
             case R.id.my_order_service_rb:
                 ActivityUtils.startActivityForData(getActivity(), MyOrderActivity.class, "5");
                 break;
+            //会员中心
             case R.id.my_order_vip_rb:
                 ActivityUtils.startActivity(getActivity(), VipCenterActivity.class);
                 break;
@@ -64,9 +68,11 @@ public class OrderZgFragment extends BaseFragment {
             case R.id.my_order_collection_rb:
                 ActivityUtils.startActivity(getActivity(), CollectionActivity.class);
                 break;
+            //地址管理
             case R.id.my_order_address_rb:
                 ActivityUtils.startActivity(getActivity(), AddressManageActivity.class);
                 break;
+            //客服中心
             case R.id.my_order_customer_rb:
                 ActivityUtils.startActivity(getActivity(), CusCenterChatActivity.class);
                 break;
@@ -74,9 +80,11 @@ public class OrderZgFragment extends BaseFragment {
             case R.id.my_order_discount_rb:
                 ActivityUtils.startActivity(getActivity(), DiscountCouponActivity.class);
                 break;
+            //积分
             case R.id.my_order_integral_rb:
                 ActivityUtils.startActivity(getActivity(), IntegralActivity.class);
                 break;
+            //礼品
             case R.id.my_order_gift_rb:
                 ActivityUtils.startActivity(getActivity(), ExChangeActivity.class);
                 break;

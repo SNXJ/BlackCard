@@ -53,6 +53,7 @@ import com.zsh.blackcard.ui.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
+import com.zsh.blackcard.ui.home.HomeGloryMagazineActivity;
 import com.zsh.blackcard.ui.home.HomeGloryServerDetailActivity;
 import com.zsh.blackcard.ui.home.HomeHotelDetailActivity;
 import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
@@ -62,6 +63,7 @@ import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
+import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.MPermissionUtils;
@@ -83,7 +85,7 @@ import butterknife.OnClick;
  * Created by admin on 2017/10/11.
  */
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener {
 
 
     private String[] titles = new String[]{
@@ -179,8 +181,8 @@ public class HomeFragment extends BaseFragment {
                 case 3:
                     topGoDetails(HomeHotelDetailActivity.class, adapter, position);
                     break;
-                case 4://游艇
-                    // ActivityUtils.startActivityForData(getActivity(), HomeHotelDetailActivity.class, ((HomeTopModel.PdBean) adapter.getData().get(position)).getSORT_ID());
+                case 4:
+                    topGoDetails(HomeHotelDetailActivity.class, adapter, position);
                     break;
             }
         }
@@ -300,10 +302,12 @@ public class HomeFragment extends BaseFragment {
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             switch (position) {
-                case 0: //美食
+                //美食
+                case 0:
                     ActivityUtils.startActivityForData(getActivity(), HomeFoodHotelActivity.class, HomeTypeConstant.MORE_TYPE_FOOD);
                     break;
-                case 1://酒店
+                //酒店
+                case 1:
                     ActivityUtils.startActivityForData(getActivity(), HomeFoodHotelActivity.class, HomeTypeConstant.MORE_TYPE_HOTEL);
                     break;
                 //火车票
@@ -345,6 +349,27 @@ public class HomeFragment extends BaseFragment {
         sendMainActivity = (SendMainActivity) getActivity();
     }
 
+    //荣耀杂志点击事件
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        switch (position) {
+            case 0:
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "0", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                break;
+            case 1:
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "1", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                break;
+            case 2:
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "2", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                break;
+            case 3:
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "3", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                break;
+            case 4:
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "4", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                break;
+        }
+    }
 
     @Override
     public void initDate(Bundle savedInstanceState) {
@@ -486,6 +511,7 @@ public class HomeFragment extends BaseFragment {
                     home_glory_magazine_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                     home_glory_magazine_recycler.setAdapter(homeGloryMagazineAdapter);
                     home_glory_magazine_recycler.setNestedScrollingEnabled(false);
+                    homeGloryMagazineAdapter.setOnItemClickListener(HomeFragment.this);
                 }
             }
 
@@ -538,18 +564,20 @@ public class HomeFragment extends BaseFragment {
     //title头条新闻标题点击事件
     @OnClick(R.id.home_top_tvs)
     public void titleNewsOnClick() {
-        switch (mSwitcherCount) {
-            case 0:
-                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(homeTitleNewsModel.getPd().size() - 1).getNEWS_ID());
-                break;
-            case 1:
-                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(mSwitcherCount - 1).getNEWS_ID());
-                break;
-            case 2:
-                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(mSwitcherCount - 1).getNEWS_ID());
-                break;
-
-        }
+        //根据不同的新闻标题id，加载不同的页面详情
+//        switch (mSwitcherCount) {
+//            case 0:
+//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(homeTitleNewsModel.getPd().size() - 1).getNEWS_ID());
+//                break;
+//            case 1:
+//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(mSwitcherCount - 1).getNEWS_ID());
+//                break;
+//            case 2:
+//                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(mSwitcherCount - 1).getNEWS_ID());
+//                break;
+        //暂时跳转至发现页面
+        ActivityUtils.startActivity(getActivity(), DiscoverActivity.class);
+//        }
     }
 
     //普通控件的onClick事件

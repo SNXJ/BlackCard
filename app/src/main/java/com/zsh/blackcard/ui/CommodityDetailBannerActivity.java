@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -29,6 +30,8 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.CommodityDetailModel;
+import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.utils.UIUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,10 +53,8 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
 
     @BindView(R.id.commodity_detail_banner_scrollview)
     NestedScrollView commodity_detail_banner_scrollview;
-
     @BindView(R.id.commodity_detail_banner_rg)
     RadioGroup commodity_detail_banner_rg;
-
     @BindView(R.id.commodity_detail_banner_left_rb)
     RadioButton commodity_detail_banner_left_rb;
     @BindView(R.id.commodity_detail_banner_center_rb)
@@ -68,6 +69,8 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     RecyclerView commodity_detail_comment_recycler;
     @BindView(R.id.commodity_detail_recycler)
     RecyclerView commodity_detail_recycler;
+    @BindView(R.id.commodity_detail_number_et)
+    EditText commodity_detail_number_et;
     private CommodityDetailCommentAdapter commodityDetailCommentAdapter;
     private CommodityDetailImgRecyclerAdapter commodityDetailImgRecyclerAdapter;
 
@@ -79,6 +82,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     int rgHeight;
     int commodity_detail_banner_height;
     int shop_height, detail_height, comment_height, detail_bottom_height;
+    private String product_id = "";
 
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -102,6 +106,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     protected void initUI() {
         setContentView(R.layout.activity_commodity_detail_banner);
         ButterKnife.bind(this);
+        product_id = getIntent().getStringExtra("data");
         final Gson gson = new Gson();
         //请求数据
         initData(gson);
@@ -111,7 +116,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         commodity_detail_comment_recycler.setNestedScrollingEnabled(false);
         commodity_detail_recycler.setNestedScrollingEnabled(false);
         //请求数据
-        DataManager.getInstance(this).RequestHttp(NetApi.commodityDteail(DataManager.getMd5Str("SHIPDT"), "388354150699630592"), new ResultListener<ResponseBody>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.commodityDteail(DataManager.getMd5Str("SHIPDT"), product_id), new ResultListener<ResponseBody>() {
             @Override
             public void responseSuccess(ResponseBody obj) {
                 try {
@@ -130,7 +135,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                     commodity_detail_type_tv.setText(commodityDetailModel.getPd().getPROTITLE());
                     //设置价钱
                     commodity_detail_price_tv.setText("￥" + commodityDetailModel.getPd().getPROPRICE());
-                    commodity_detail_banner_right_rb.setText("评论("+commodityDetailModel.getPd().getEVALUATECOUNT()+")");
+                    commodity_detail_banner_right_rb.setText("评论(" + commodityDetailModel.getPd().getEVALUATECOUNT() + ")");
                     commodityDetailImgRecyclerAdapter = new CommodityDetailImgRecyclerAdapter(R.layout.activity_commodity_detail_img_recycler, commodityDetailModel.getDetail());
                     commodity_detail_recycler.setLayoutManager(new LinearLayoutManager(CommodityDetailBannerActivity.this));
                     commodity_detail_recycler.setAdapter(commodityDetailImgRecyclerAdapter);
@@ -199,7 +204,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     }
 
     //商品，详情，评论点击。此处针对RadioButton点击采用OnClick监听。实现多次点击同一按钮依然可以响应事件。
-    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb, R.id.blackwb_back})
+    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb, R.id.blackwb_back, R.id.commodity_detail_add_car_btn})
     public void radioButtonOnClick(View view) {
         switch (view.getId()) {
             case R.id.commodity_detail_banner_left_rb:
@@ -223,11 +228,34 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                 commodity_detail_banner_right_rb.setTextColor(Color.parseColor("#FFF29E19"));
                 handler.sendEmptyMessage(2);
                 break;
+            case R.id.commodity_detail_add_car_btn:
+                initAddCar();
+                break;
             case R.id.blackwb_back:
                 finish();
                 break;
 
         }
+    }
+
+    //添加购物车
+    private void initAddCar() {
+        showLoading(this);
+        DataManager.getInstance(this).RequestHttp(NetApi.postShoppingCarAdd(DataManager.getMd5Str("SHIPCARTADD"), product_id, "d6a3779de8204dfd9359403f54f7d27c", commodity_detail_number_et.getText().toString().trim()), new ResultListener<ResultModel>() {
+            @Override
+            public void responseSuccess(ResultModel obj) {
+                if (obj.getResult().equals("01")) {
+                    UIUtils.showToast("添加商品成功");
+                } else {
+                    UIUtils.showToast("添加商品失败");
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+                dialogDismiss();
+            }
+        });
     }
 
     //滑动监听

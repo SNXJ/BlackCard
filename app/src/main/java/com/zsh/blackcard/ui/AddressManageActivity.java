@@ -1,5 +1,6 @@
 package com.zsh.blackcard.ui;
 
+import android.location.Address;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -31,7 +32,7 @@ import butterknife.OnClick;
  * 收获地址管理
  */
 
-public class AddressManageActivity extends BaseActivity {
+public class AddressManageActivity extends BaseActivity implements BaseQuickAdapter.OnItemChildClickListener {
     @BindView(R.id.im_back)
     ImageView imBack;
     @BindView(R.id.title_tv)
@@ -41,14 +42,12 @@ public class AddressManageActivity extends BaseActivity {
     @BindView(R.id.btn_add)
     Button btnAdd;
 
-    List<AddressManageModel.PdBean> dataList = new ArrayList<>();
     private AddressManageAdapter adapter;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_adress_manage);
         ButterKnife.bind(this);
-
     }
 
     @Override
@@ -61,27 +60,19 @@ public class AddressManageActivity extends BaseActivity {
         DataManager.getInstance(this).RequestHttp(NetApi.postAddressManage(DataManager.getMd5Str("SHIPADR"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<AddressManageModel>() {
             @Override
             public void responseSuccess(AddressManageModel obj) {
-                dataList = obj.getPd();
-                recyclerView.setLayoutManager(new LinearLayoutManager(AddressManageActivity.this));
-                adapter = new AddressManageAdapter(dataList);
-                recyclerView.setAdapter(adapter);
-                adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-                    @Override
-                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                        switch (view.getId()) {
-                            case R.id.cb_set:
-                                setRbStatus(view, position);
-                                break;
-                            case R.id.rb_edit:
-                                ActivityUtils.startActivityForSerializable(AddressManageActivity.this, AddressEditActivity.class, dataList.get(position));
-                                break;
-                            case R.id.rb_del:
-                                delData(dataList.get(position).getADDRESS_ID(), position);
-                                break;
-
-                        }
+                if (obj.getResult().equals("01")) {
+                    if (adapter == null) {
+                        adapter = new AddressManageAdapter(obj.getPd());
+                        recyclerView.setLayoutManager(new LinearLayoutManager(AddressManageActivity.this));
+                        recyclerView.setAdapter(adapter);
+                        adapter.setOnItemChildClickListener(AddressManageActivity.this);
+                    } else {
+                        adapter.getData().clear();
+                        adapter.getData().addAll(obj.getPd());
+                        adapter.initBoolean(obj.getPd().size());
+                        adapter.notifyDataSetChanged();
                     }
-                });
+                }
             }
 
             @Override
@@ -91,17 +82,6 @@ public class AddressManageActivity extends BaseActivity {
         });
     }
 
-    private void setRbStatus(View view, int position) {
-        CheckBox cb = (CheckBox) view;
-//        if (cb.isChecked()) {
-//            cb.setChecked(false);
-//        } else {
-//            cb.setChecked(true);
-//        }
-        //TODO 修改实体类字段状态
-        adapter.notifyDataSetChanged();
-    }
-
     private void delData(String id, final int position) {
         DataManager.getInstance(this).RequestHttp(NetApi.delAddress(DataManager.getMd5Str("SHIPADR"), id), new ResultListener<ResultModel>() {
             @Override
@@ -109,7 +89,7 @@ public class AddressManageActivity extends BaseActivity {
                 if ("01".equals(obj.getResult())) {
                     UIUtils.showToast("删除成功");
                     if (null != adapter) {
-                        dataList.remove(position);
+                        adapter.getData().remove(position);
                         adapter.notifyDataSetChanged();
                     }
                 } else {
@@ -132,6 +112,26 @@ public class AddressManageActivity extends BaseActivity {
                 break;
             case R.id.btn_add:
                 ActivityUtils.startActivity(AddressManageActivity.this, AddressEditActivity.class);
+                break;
+        }
+    }
+
+    @Override
+    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+        switch (view.getId()) {
+            case R.id.cb_set:
+                if (((CheckBox) view).isChecked()) {
+                    this.adapter.initSelect(position, true);
+                } else {
+                    this.adapter.initSelect(position, false);
+                }
+                this.adapter.notifyDataSetChanged();
+                break;
+            case R.id.rb_edit:
+                ActivityUtils.startActivityForSerializable(AddressManageActivity.this, AddressEditActivity.class, ((AddressManageAdapter) adapter).getData().get(position));
+                break;
+            case R.id.rb_del:
+                delData(((AddressManageAdapter) adapter).getData().get(position).getADDRESS_ID(), position);
                 break;
         }
     }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/rl_top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base205dp" />
+
+    <ImageView
+        android:id="@+id/im_back"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/base40dp"
+        android:paddingLeft="@dimen/base15dp"
+        android:src="@mipmap/back" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/text_"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/base40dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="荣耀杂志"
+        android:textSize="17sp" />
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/head_img"
+        android:layout_marginLeft="@dimen/base8dp"
+        android:layout_marginTop="@dimen/base20dp"
+        android:layout_below="@+id/im_back"
+        android:layout_width="@dimen/base120dp"
+        android:layout_height="@dimen/base140dp" />
+
+    <TextView
+        android:id="@+id/title_tip_tv"
+        android:textSize="14sp"
+        android:textColor="@color/recharge_text"
+        android:layout_marginTop="@dimen/base36dp"
+        android:layout_marginRight="@dimen/base8dp"
+        android:layout_marginLeft="@dimen/base8dp"
+        android:layout_alignTop="@+id/head_img"
+        android:layout_toRightOf="@+id/head_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/content_tv"
+        android:textSize="14sp"
+        android:textColor="@color/recharge_text"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base30dp"
+        android:layout_below="@+id/rl_top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/title_tv"
+        android:textSize="15sp"
+        android:textColor="@color/recharge_text"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base20dp"
+        android:layout_below="@+id/content_tv"
+        android:text="相关推荐"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/base15dp"
+        android:layout_below="@+id/title_tv"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/img_one"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_marginLeft="@dimen/base8dp"
+            android:layout_marginRight="@dimen/base4dp"
+            android:id="@+id/img_two"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_marginRight="@dimen/base8dp"
+            android:layout_marginLeft="@dimen/base4dp"
+            android:id="@+id/img_three"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/img_four"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>
