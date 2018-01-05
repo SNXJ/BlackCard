@@ -22,13 +22,14 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/btn_add"
         android:layout_below="@+id/rl">
-
 
     </android.support.v7.widget.RecyclerView>
 
 
     <Button
+        android:layout_alignParentBottom="true"
         android:id="@+id/btn_add"
         style="@style/btn_buttom"
         android:text="添加新地址" />

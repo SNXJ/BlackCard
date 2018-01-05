@@ -52,6 +52,7 @@
             android:orientation="horizontal">
 
             <CheckBox
+                android:id="@+id/shopping_checkBox"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/base19dp"
@@ -65,21 +66,23 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/shopping_money_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="总计：￥49200"
+                android:text="总计：￥0"
                 android:textColor="@color/recharge_text"
                 android:textSize="15sp" />
 
         </LinearLayout>
 
         <Button
+            android:id="@+id/shopping_num_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#141414"
             android:gravity="center"
-            android:text="去结算(3)"
+            android:text="去结算"
             android:textColor="@color/recharge_text"
             android:textSize="17sp" />
 

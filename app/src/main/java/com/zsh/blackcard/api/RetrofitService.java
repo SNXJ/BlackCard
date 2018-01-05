@@ -429,6 +429,14 @@ public interface RetrofitService {
                                                   @Field("PRODUCT_ID") String PRODUCT_ID,
                                                   @Field("HONOURUSER_ID") String HONOURUSER_ID);
 
+    //添加商品到购物车
+    @FormUrlEncoded
+    @POST("apporderin/shoppingcartadd?")
+    Observable<ResultModel> postShoppingCarAdd(@Field("FKEY") String md5,
+                                               @Field("PRODUCT_ID") String PRODUCT_ID,
+                                               @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                               @Field("PRODUCTCOUNT") String PRODUCTCOUNT);
+
     //尊购界面banner轮播图
     @FormUrlEncoded
     @POST("appshipin/scarouselfigure?")

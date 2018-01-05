@@ -704,6 +704,19 @@ public class NetApi extends DataManager {
     }
 
     /**
+     * 添加商品到购物车
+     *
+     * @param md5
+     * @param PRODUCT_ID
+     * @param HONOURUSER_ID
+     * @param PRODUCTCOUNT
+     * @return
+     */
+    public static Observable<ResultModel> postShoppingCarAdd(String md5, String PRODUCT_ID, String HONOURUSER_ID, String PRODUCTCOUNT) {
+        return retrofitService.postShoppingCarAdd(md5, PRODUCT_ID, HONOURUSER_ID, PRODUCTCOUNT);
+    }
+
+    /**
      * 获取尊购页面轮播图
      *
      * @param md5

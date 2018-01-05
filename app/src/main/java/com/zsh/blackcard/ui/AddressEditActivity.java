@@ -241,26 +241,4 @@ public class AddressEditActivity extends BaseActivity {
             }
         });
     }
-
-    private void takeOnClick() {
-
-//        llAddress.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ChangeAddressPopwindow mChangeAddressPopwindow = new ChangeAddressPopwindow(AddressEditActivity.this);
-//                mChangeAddressPopwindow.setAddress("广东", "深圳", "福田区");
-//                mChangeAddressPopwindow.showAtLocation(llAddress, Gravity.BOTTOM, 0, 0);
-//                mChangeAddressPopwindow.setAddresskListener(new ChangeAddressPopwindow.OnAddressCListener() {
-//                    @Override
-//                    public void onClick(String province, String city, String area) {
-//                        // TODO Auto-generated method stub
-//                        Toast.makeText(AddressEditActivity.this,
-//                                province + "-" + city + "-" + area,
-//                                Toast.LENGTH_LONG).show();
-//                        tvAddress.setText(province + city + area);
-//                    }
-//                });
-//            }
-//        });
-    }
 }

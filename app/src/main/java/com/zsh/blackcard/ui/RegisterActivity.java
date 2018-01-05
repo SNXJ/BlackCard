@@ -568,7 +568,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
     //请求卡类型对应的图片轮播
     private void initRegisterCardType(String cardType) {
 
-        UIUtils.newProgressDialog(this).show();
+        showLoading(this);
 
         DataManager.getInstance(this).RequestHttp(NetApi.postRegisterCardType(DataManager.getMd5Str("CARDIMGS"), cardType), new ResultListener<RegisterCardTypeModel>() {
             @Override
@@ -625,7 +625,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
 
             @Override
             public void onCompleted() {
-                UIUtils.dismissProgressDialog();
+                dialogDismiss();
             }
         });
     }
