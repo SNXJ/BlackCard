@@ -354,19 +354,19 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         switch (position) {
             case 0:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "0", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "0", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
                 break;
             case 1:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "1", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "1", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
                 break;
             case 2:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "2", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "2", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
                 break;
             case 3:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "3", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "3", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
                 break;
             case 4:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "4", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getICONIMGS());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "4", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
                 break;
         }
     }
