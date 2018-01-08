@@ -24,7 +24,7 @@
             style="@style/main_radio_button"
             android:checked="true"
             android:drawableTop="@drawable/home_select"
-            android:text="R黑卡" />
+            android:text="RYHK" />
 
         <RadioButton
             android:id="@+id/radio_btn_zg"

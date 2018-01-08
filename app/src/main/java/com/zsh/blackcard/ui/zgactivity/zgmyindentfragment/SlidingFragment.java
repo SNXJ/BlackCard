@@ -61,6 +61,7 @@ public class SlidingFragment extends BaseFragment {
         list.add("购物车");
         list.add("炫购");
         list.add("私人定制");
+        list.add("分享赚钱");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.sliding_left_lv_item, list);
         left_drawer.setAdapter(adapter);

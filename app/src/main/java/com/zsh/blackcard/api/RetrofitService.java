@@ -240,7 +240,6 @@ public interface RetrofitService {
     //Food评论列表
     @FormUrlEncoded
     @POST("appsfoodin/foodevalist?")
-//FOODEVA
     Observable<CommentModel> postFoodCommentList(@Field("FKEY") String md5, @Field("SORTFOOD_ID") String id);
 
     //KTV评论列表
@@ -260,7 +259,6 @@ public interface RetrofitService {
 
     //添加Food评论
     @GET("appsfoodin/sfoodaddeva?")
-//SFOODADDEVA
     Observable<CommentAddModel> addFoodComment(@QueryMap Map<String, String> map);
 
     //添加KTV评论
@@ -468,10 +466,18 @@ public interface RetrofitService {
     @POST("apphomein/partyimg.do?")
     Observable<HomePlayModel> postHomePlay(@Field("FKEY") String md5);
 
-    //首页荣耀服务图片接口
+    //首页荣耀服务图片集合接口
     @FormUrlEncoded
     @POST("appserverin/server.do?")
     Observable<HomeGloryServerModel> postHomeGloryServer(@Field("FKEY") String md5);
+
+
+    //荣耀服务列表详情点击
+    @FormUrlEncoded
+    @POST("appserverin/serverdetaillist.do?")
+    Observable<Object> postHomeGloryHorseDetail(@Field("FKEY") String md5,
+                                                @Field("SERVER_ID") String SERVER_ID,
+                                                @Field("SHOPTYPE") String SHOPTYPE);
 
     //首页荣耀音乐
     @FormUrlEncoded
@@ -537,11 +543,6 @@ public interface RetrofitService {
     @POST("appserverin/planedetail.do?")
     Observable<HomeCopterDetailModel> postHomeCopterDetail(@Field("FKEY") String md5);
 
-    //荣耀服务列表详情点击
-    @FormUrlEncoded
-    @POST("appserverin/serverdetaillist.do?")
-    Observable<Object> postHomeGloryHorseDetail(@Field("FKEY") String md5,
-                                                @Field("SERVER_ID") String SERVER_ID);
 
     //订单中心确认收货按钮接口
     @FormUrlEncoded

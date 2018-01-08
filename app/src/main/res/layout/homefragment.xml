@@ -139,15 +139,15 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/home_play_img"
+        <com.youth.banner.Banner
+            android:id="@+id/home_play_banner"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base95dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="@dimen/base15dp"
             android:layout_marginRight="@dimen/base15dp">
 
-        </ImageView>
+        </com.youth.banner.Banner>
 
         <TextView
             android:layout_width="wrap_content"

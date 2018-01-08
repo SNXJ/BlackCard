@@ -3,310 +3,321 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:background="#0C0C0C">
 
-        <ImageView
-            android:id="@+id/blackwb_back"
-            android:layout_marginLeft="15.45dp"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
-            android:src="@mipmap/back"
-            android:layout_centerVertical="true"/>
-        <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#929292"
-            android:textSize="17sp"
-            android:text="定制频道"
-            android:textStyle="bold"
-            android:gravity="center"/>
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:orientation="vertical"
-        android:background="@mipmap/personal_image_1">
+            android:layout_height="@dimen/base43dp"
+            android:background="#0C0C0C">
 
-        <TextView
-            android:layout_marginTop="62.5dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="英国皇家绅士品牌"
-            android:textSize="17sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GIEVES·HAWKES"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="查看更多"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/shape_zg_enter"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:orientation="vertical"
-        android:background="@mipmap/personal_image_2">
+            <ImageView
+                android:id="@+id/blackwb_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:src="@mipmap/back" />
 
-        <TextView
-            android:layout_marginTop="62.5dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="记录时间节点的仪式"
-            android:textSize="17sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CITIZEN"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="查看更多"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/shape_zg_enter"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:orientation="vertical"
-        android:background="@mipmap/personal_image_3">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="定制频道"
+                android:textColor="#929292"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-        <TextView
-            android:layout_marginTop="62.5dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="定制你的专属旅程"
-            android:textSize="17sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TRAVELID"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="查看更多"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/shape_zg_enter"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:orientation="vertical"
-        android:background="@mipmap/personal_image_4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base175dp"
+            android:background="@mipmap/personal_image_1"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_marginTop="62.5dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="记录你的美好回忆"
-            android:textSize="17sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ANDREW"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="查看更多"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/shape_zg_enter"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:orientation="vertical"
-        android:background="@mipmap/personal_image_5">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base62dp"
+                android:text="英国皇家绅士品牌"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
 
-        <TextView
-            android:layout_marginTop="62.5dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="高尔夫定制线路"
-            android:textSize="17sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WOKEE"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="查看更多"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/shape_zg_enter"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:orientation="vertical"
-        android:background="@mipmap/personal_image_6">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="GIEVES·HAWKES"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
 
-        <TextView
-            android:layout_marginTop="62.5dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="情感定制 轻奢首饰"
-            android:textSize="17sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LABORON"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="查看更多"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/shape_zg_enter"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:orientation="vertical"
-        android:background="@mipmap/personal_image_7">
+            <TextView
+                android:layout_width="@dimen/base80dp"
+                android:layout_height="@dimen/base20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:background="@drawable/shape_zg_enter"
+                android:gravity="center"
+                android:text="查看更多"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
 
-        <TextView
-            android:layout_marginTop="62.5dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="新东方美学"
-            android:textSize="17sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CICI"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="查看更多"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/shape_zg_enter"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:orientation="vertical"
-        android:background="@mipmap/personal_image_8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:background="@mipmap/personal_image_2"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_marginTop="62.5dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="风雅生活，璞素之美"
-            android:textSize="17sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="璞素"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            />
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:text="查看更多"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/shape_zg_enter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base62dp"
+                android:text="记录时间节点的仪式"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="CITIZEN"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="@dimen/base80dp"
+                android:layout_height="@dimen/base20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:background="@drawable/shape_zg_enter"
+                android:gravity="center"
+                android:text="查看更多"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base175dp"
+            android:background="@mipmap/personal_image_3"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base62dp"
+                android:text="定制你的专属旅程"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="TRAVELID"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="@dimen/base80dp"
+                android:layout_height="@dimen/base20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:background="@drawable/shape_zg_enter"
+                android:gravity="center"
+                android:text="查看更多"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base175dp"
+            android:background="@mipmap/personal_image_4"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base62dp"
+                android:text="记录你的美好回忆"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="ANDREW"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="@dimen/base80dp"
+                android:layout_height="@dimen/base20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:background="@drawable/shape_zg_enter"
+                android:gravity="center"
+                android:text="查看更多"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base175dp"
+            android:background="@mipmap/personal_image_5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base62dp"
+                android:text="高尔夫定制线路"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="WOKEE"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="@dimen/base80dp"
+                android:layout_height="@dimen/base20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:background="@drawable/shape_zg_enter"
+                android:gravity="center"
+                android:text="查看更多"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base175dp"
+            android:background="@mipmap/personal_image_6"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base62dp"
+                android:text="情感定制 轻奢首饰"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="LABORON"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="@dimen/base80dp"
+                android:layout_height="@dimen/base20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:background="@drawable/shape_zg_enter"
+                android:gravity="center"
+                android:text="查看更多"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base175dp"
+            android:background="@mipmap/personal_image_7"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base62dp"
+                android:text="新东方美学"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="CICI"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="@dimen/base80dp"
+                android:layout_height="@dimen/base20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:background="@drawable/shape_zg_enter"
+                android:gravity="center"
+                android:text="查看更多"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base175dp"
+            android:background="@mipmap/personal_image_8"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base62dp"
+                android:text="风雅生活，璞素之美"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:text="璞素"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="@dimen/base80dp"
+                android:layout_height="@dimen/base20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/base10dp"
+                android:background="@drawable/shape_zg_enter"
+                android:gravity="center"
+                android:text="查看更多"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </ScrollView>
