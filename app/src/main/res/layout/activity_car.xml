@@ -16,27 +16,27 @@
 
             <ImageView
                 android:id="@+id/blackwb_back"
-                android:layout_width="11dp"
-                android:layout_height="18.6dp"
-                android:layout_marginLeft="15.45dp"
-                android:layout_marginTop="11dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:layout_marginTop="@dimen/base11dp"
                 android:src="@mipmap/back" />
 
         </RelativeLayout>
 
         <TextView
-            android:layout_width="345dp"
-            android:layout_height="36dp"
+            android:layout_width="@dimen/base345dp"
+            android:layout_height="@dimen/base36dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/base10dp"
             android:text="保时捷首日免费体验权，72小时内，101个名额，仅供荣耀黑卡持卡人专享。荣耀黑卡为您重塑18岁的梦"
             android:textColor="#929292"
             android:textSize="12sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:layout_marginTop="15dp">
+            android:layout_height="@dimen/base240dp"
+            android:layout_marginTop="@dimen/base15dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -46,8 +46,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="42.5dp"
+                android:layout_marginLeft="@dimen/base45dp"
+                android:layout_marginTop="@dimen/base42dp"
                 android:text="我这么努力"
                 android:textColor="#929292"
                 android:textSize="24sp" />
@@ -55,8 +55,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="81.5dp"
+                android:layout_marginLeft="@dimen/base45dp"
+                android:layout_marginTop="@dimen/base80dp"
                 android:text="不为"
                 android:textColor="#929292"
                 android:textSize="24sp" />
@@ -64,17 +64,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="120.5dp"
+                android:layout_marginLeft="@dimen/base45dp"
+                android:layout_marginTop="@dimen/base120dp"
                 android:text="征服世界"
                 android:textColor="#929292"
                 android:textSize="24sp" />
 
             <TextView
-                android:layout_width="117dp"
+                android:layout_width="@dimen/base117dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="48.5dp"
-                android:layout_marginTop="169.5dp"
+                android:layout_marginLeft="@dimen/base48dp"
+                android:layout_marginTop="@dimen/base170dp"
                 android:text="只为了在最好的年纪就享受最好的一切"
                 android:textColor="#929292"
                 android:textSize="12sp" />
@@ -82,7 +82,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="@dimen/base240dp"
             android:layout_marginTop="15dp">
 
             <ImageView
@@ -94,8 +94,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="47dp"
-                android:layout_marginTop="42.5dp"
+                android:layout_marginRight="@dimen/base47dp"
+                android:layout_marginTop="@dimen/base42dp"
                 android:text="没人在意你是不是老同学"
                 android:textColor="#929292"
                 android:textSize="24sp" />
@@ -104,8 +104,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="47dp"
-                android:layout_marginTop="81.5dp"
+                android:layout_marginRight="@dimen/base47dp"
+                android:layout_marginTop="@dimen/base82dp"
                 android:text="他们只是关心我的"
                 android:textColor="#929292"
                 android:textSize="24sp" />
@@ -114,18 +114,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="47dp"
-                android:layout_marginTop="120.5dp"
+                android:layout_marginRight="@dimen/base47dp"
+                android:layout_marginTop="@dimen/base120dp"
                 android:text="保时捷"
                 android:textColor="#929292"
                 android:textSize="24sp" />
 
             <TextView
-                android:layout_width="137.5dp"
+                android:layout_width="@dimen/base138dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="47dp"
-                android:layout_marginTop="169.5dp"
+                android:layout_marginRight="@dimen/base47dp"
+                android:layout_marginTop="@dimen/base170dp"
                 android:text="当年追不上的高中班花居然暗示我送她回家？"
                 android:textColor="#929292"
                 android:textSize="12sp" />
@@ -135,16 +135,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base20dp"
             android:text="保时捷，荣耀黑卡专供"
             android:textColor="#929292"
             android:textSize="15sp" />
 
         <TextView
-            android:layout_width="345dp"
+            android:layout_width="@dimen/base345dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/base15dp"
             android:text="保时捷911是由德国斯图加特市的保时捷公司所生产的跑车。由费迪南德·亚历山大·保时捷（Ferdinand Alexander Porsche）所设计的作品。"
             android:textColor="#929292"
             android:textSize="12sp" />
@@ -153,42 +153,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/base20dp"
             android:text="注意事项"
             android:textColor="#929292"
             android:textSize="15sp" />
 
         <TextView
-            android:layout_width="345dp"
+            android:layout_width="@dimen/base345dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="@dimen/base11dp"
             android:text="1、用300元保证300万：【中国人保】为荣耀黑卡持卡人、特地推出三款豪车租赁险种。无忧出行从此开始：用均价300元保险，轻松保障三百万豪车"
             android:textColor="#929292"
             android:textSize="12sp" />
 
         <TextView
-            android:layout_width="345dp"
+            android:layout_width="@dimen/base345dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/base10dp"
             android:text="2、预订时间：持卡人需要至少提前48小时预定"
             android:textColor="#929292"
             android:textSize="12sp" />
 
         <TextView
-            android:layout_width="345dp"
+            android:layout_width="@dimen/base345dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/base10dp"
             android:text="3、关于定金：用户线上支付的￥2000定金，将全数抵扣 租金"
             android:textColor="#929292"
             android:textSize="12sp" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginTop="94dp"
+            android:layout_height="@dimen/base49dp"
+            android:layout_marginTop="@dimen/base94dp"
             android:background="#0B0B0B"
             android:gravity="center"
             android:text="召唤管家"

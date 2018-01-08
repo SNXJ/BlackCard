@@ -28,16 +28,6 @@
             android:layout_marginTop="@dimen/base50dp"
             android:background="@mipmap/ic_launcher" />
 
-        <TextView
-            android:id="@+id/tv_zg_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/base30dp"
-            android:layout_marginTop="@dimen/base20dp"
-            android:text="请点击登录"
-            android:textColor="@color/ff92_text"
-            android:textSize="17sp" />
-
         <ListView
             android:id="@+id/left_drawer"
             android:layout_width="match_parent"

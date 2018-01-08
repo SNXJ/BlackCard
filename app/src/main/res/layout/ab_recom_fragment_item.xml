@@ -34,7 +34,7 @@
         <TextView
             style="@style/text_"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="@dimen/base5dp"
             android:text="545"
             android:textSize="12sp" />
     </LinearLayout>

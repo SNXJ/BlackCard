@@ -761,7 +761,7 @@ public class NetApi extends DataManager {
     }
 
     /**
-     * 首页荣耀服务列表
+     * 首页荣耀音乐列表
      *
      * @param md5
      * @return
@@ -886,8 +886,8 @@ public class NetApi extends DataManager {
      * @param server_id
      * @return
      */
-    public static Observable<Object> postHomeGloryHorseDetail(String md5, String server_id) {
-        return retrofitService.postHomeGloryHorseDetail(md5, server_id);
+    public static Observable<Object> postHomeGloryHorseDetail(String md5, String server_id, String SHOPTYPE) {
+        return retrofitService.postHomeGloryHorseDetail(md5, server_id, SHOPTYPE);
     }
 
     /**

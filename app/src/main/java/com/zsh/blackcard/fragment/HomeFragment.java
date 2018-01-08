@@ -24,6 +24,10 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.loader.ImageLoader;
 import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
@@ -61,12 +65,12 @@ import com.zsh.blackcard.ui.home.HomeMoreActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
-import com.zsh.blackcard.ui.home.HomeTopNewsDetailActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.MPermissionUtils;
+import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -90,6 +94,9 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     private String[] titles = new String[]{
             "美食", "酒店", "火车票", "机票", "马术", "游艇", "豪车", "更多"};
+
+    //汇聚玩趴banner图片集合
+    private List<String> listBanner = new ArrayList<>();
 
     private Integer[] images = {
             R.mipmap.home_food,
@@ -212,8 +219,8 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @BindView(R.id.home_glory_magazine_recycler)
     RecyclerView home_glory_magazine_recycler;
     //汇聚玩趴图片
-    @BindView(R.id.home_play_img)
-    ImageView home_play_img;
+    @BindView(R.id.home_play_banner)
+    Banner home_play_banner;
     //荣耀音乐
     @BindView(R.id.home_glory_music_recycler)
     RecyclerView homeGloryMusicRecycler;
@@ -256,17 +263,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-            switch (((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSORTHIGH_ID()) {
-                case "383990553504645120":
-                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383990553504645120", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
-                    break;
-                case "383995103208800256":
-                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383995103208800256", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
-                    break;
-                case "383994744717443072":
-                    ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, "383994744717443072", ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
-                    break;
-            }
+            ActivityUtils.startActivityForData(getActivity(), HomeGloryServerDetailActivity.class, ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSHOPTYPE(), ((HomeGloryServerModel.PdBean) adapter.getData().get(position)).getSERVER_ID());
         }
     }
 
@@ -354,19 +351,19 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         switch (position) {
             case 0:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "0", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "0", ((HomeGloryMagazineModel.PdBean) adapter.getData().get(position)).getSHOWIMG());
                 break;
             case 1:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "1", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "1", ((HomeGloryMagazineModel.PdBean) adapter.getData().get(position)).getSHOWIMG());
                 break;
             case 2:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "2", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "2", ((HomeGloryMagazineModel.PdBean) adapter.getData().get(position)).getSHOWIMG());
                 break;
             case 3:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "3", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "3", ((HomeGloryMagazineModel.PdBean) adapter.getData().get(position)).getSHOWIMG());
                 break;
             case 4:
-                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "4", ((HomeGloryMagazineModel.PdBean)adapter.getData().get(position)).getSHOWIMG());
+                ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "4", ((HomeGloryMagazineModel.PdBean) adapter.getData().get(position)).getSHOWIMG());
                 break;
         }
     }
@@ -483,7 +480,21 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.postHomePlay(DataManager.getMd5Str("PARTY")), new ResultListener<HomePlayModel>() {
             @Override
             public void responseSuccess(HomePlayModel obj) {
-                Glide.with(getActivity()).load(obj.getPd().getPARTYIMG()).into(home_play_img);
+                if (obj.getResult().equals("01")) {
+
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        listBanner.add(obj.getPd().get(i).getPARTYIMG());
+                    }
+
+                    home_play_banner.setOnBannerListener(new MyPlayBanner());
+                    home_play_banner.setImages(listBanner);
+                    home_play_banner.setImageLoader(new MyImageLoader());
+                    home_play_banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+                    home_play_banner.setIndicatorGravity(BannerConfig.CENTER);
+                    home_play_banner.isAutoPlay(true);
+                    home_play_banner.setDelayTime(3000);
+                    home_play_banner.start();
+                }
             }
 
             @Override
@@ -552,12 +563,30 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         });
     }
 
+    private class MyPlayBanner implements OnBannerListener {
+
+        @Override
+        public void OnBannerClick(int position) {
+            if (sendMainActivity != null) {
+                sendMainActivity.goIntent();
+            }
+        }
+    }
+
+    //banner加载图片类
+    private class MyImageLoader extends ImageLoader {
+
+        @Override
+        public void displayImage(Context context, Object path, ImageView imageView) {
+            Glide.with(getActivity()).load(path).into(imageView);
+        }
+    }
+
     @Override
     public View initView(LayoutInflater inflater) {
         View view = View.inflate(getActivity(), R.layout.homefragment, null);
         ButterKnife.bind(this, view);
         EventBus.getDefault().register(this);
-
         return view;
     }
 
@@ -581,14 +610,12 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     }
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_play_img, R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear})
+    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.home_play_img:
-                if (sendMainActivity != null) {
-                    sendMainActivity.goIntent();
-                }
-                break;
+//            case R.id.home_play_img:
+//
+//                break;
             case R.id.rb_city_home:
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
