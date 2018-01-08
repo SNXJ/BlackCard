@@ -77,6 +77,7 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
                 if (!shoppingCarAdapter.numBtn()) {
                     UIUtils.showToast("请最少选取一个商品");
                 } else {
+
                     UIUtils.showToast("结算功能暂未开发");
                 }
                 break;

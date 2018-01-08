@@ -204,9 +204,10 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     }
 
     //商品，详情，评论点击。此处针对RadioButton点击采用OnClick监听。实现多次点击同一按钮依然可以响应事件。
-    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb, R.id.blackwb_back, R.id.commodity_detail_add_car_btn})
+    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb, R.id.blackwb_back, R.id.commodity_detail_add_car_btn,R.id.commodity_detail_collection_img})
     public void radioButtonOnClick(View view) {
         switch (view.getId()) {
+            //商品radioButton
             case R.id.commodity_detail_banner_left_rb:
                 commodity_detail_banner_left_rb.setChecked(true);
                 commodity_detail_banner_left_rb.setTextColor(Color.parseColor("#FFF29E19"));
@@ -214,6 +215,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                 commodity_detail_banner_right_rb.setTextColor(Color.parseColor("#FF929292"));
                 handler.sendEmptyMessage(0);
                 break;
+            //详情radioButton
             case R.id.commodity_detail_banner_center_rb:
                 commodity_detail_banner_center_rb.setChecked(true);
                 commodity_detail_banner_left_rb.setTextColor(Color.parseColor("#FF929292"));
@@ -221,6 +223,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                 commodity_detail_banner_right_rb.setTextColor(Color.parseColor("#FF929292"));
                 handler.sendEmptyMessage(1);
                 break;
+            //评论radioButton
             case R.id.commodity_detail_banner_right_rb:
                 commodity_detail_banner_right_rb.setChecked(true);
                 commodity_detail_banner_left_rb.setTextColor(Color.parseColor("#FF929292"));
@@ -228,14 +231,41 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                 commodity_detail_banner_right_rb.setTextColor(Color.parseColor("#FFF29E19"));
                 handler.sendEmptyMessage(2);
                 break;
+            //添加到购物车
             case R.id.commodity_detail_add_car_btn:
+                //添加都购物车
                 initAddCar();
                 break;
+            //收藏按钮
+            case R.id.commodity_detail_collection_img:
+                //添加到选购收藏列表
+                initAddCollection();
+                break;
+            //退出按钮
             case R.id.blackwb_back:
                 finish();
                 break;
 
         }
+    }
+
+    //添加商品到选购收藏列表
+    private void initAddCollection() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postAddCollection(DataManager.getMd5Str("SHIPCOLADD"), "d6a3779de8204dfd9359403f54f7d27c", product_id), new ResultListener<ResultModel>() {
+            @Override
+            public void responseSuccess(ResultModel obj) {
+                if (obj.getResult().equals("01")) {
+                    UIUtils.showToast("收藏成功");
+                } else {
+                    UIUtils.showToast("收藏失败");
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     //添加购物车

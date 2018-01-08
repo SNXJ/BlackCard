@@ -32,6 +32,6 @@ public class HomeGloryMagazineAdapter extends BaseMultiItemQuickAdapter<HomeGlor
 
     @Override
     protected void convert(BaseViewHolder helper, HomeGloryMagazineModel.PdBean item) {
-        Glide.with(mContext).load(item.getICONIMGS()).into((ImageView) helper.getView(R.id.home_glory_magazine_recycler_item_img));
+        Glide.with(mContext).load(item.getSHOWIMG()).into((ImageView) helper.getView(R.id.home_glory_magazine_recycler_item_img));
     }
 }

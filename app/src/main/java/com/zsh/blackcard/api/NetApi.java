@@ -29,6 +29,7 @@ import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMagazineDetailModel;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
@@ -578,7 +579,7 @@ public class NetApi extends DataManager {
      * @param listPath
      * @return
      */
-    public static Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID,String CONTENT ,String TOPIC_ID,String TITLE, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
+    public static Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, String TOPIC_ID, String TITLE, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
         //如果有图片上传，则加载body，如果没有上传图片则加载空body
         if (localMedia.size() != 0) {
             for (int i = 0; i < localMedia.size(); i++) {
@@ -592,7 +593,7 @@ public class NetApi extends DataManager {
             MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
             listPath.add(part);
         }
-        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT,TOPIC_ID,TITLE, listPath, type);
+        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, TOPIC_ID, TITLE, listPath, type);
     }
 
     /**
@@ -1389,6 +1390,7 @@ public class NetApi extends DataManager {
 
     /**
      * 获取话题列表
+     *
      * @param md5
      * @param title
      * @return
@@ -1399,12 +1401,48 @@ public class NetApi extends DataManager {
 
     /**
      * 添加话题
+     *
      * @param md5
      * @param userID
      * @param title
      * @return
      */
-    public static Observable<TopicListModel> addTopic(String md5, String userID,String title) {
-        return retrofitService.addTopic(md5,userID, title);
+    public static Observable<TopicListModel> addTopic(String md5, String userID, String title) {
+        return retrofitService.addTopic(md5, userID, title);
+    }
+
+    /**
+     * 荣耀杂志详情接口
+     *
+     * @param md5
+     * @param MAGAZINE_ID
+     * @param MAGAZINETYPE
+     * @return
+     */
+    public static Observable<HomeGloryMagazineDetailModel> postHomeGloryMagazineDetail(String md5, String MAGAZINE_ID, String MAGAZINETYPE) {
+        return retrofitService.postHomeGloryMagazineDetail(md5, MAGAZINE_ID, MAGAZINETYPE);
+    }
+
+    /**
+     * 添加商品到选购收藏列表
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param PRODUCT_ID
+     * @return
+     */
+    public static Observable<ResultModel> postAddCollection(String md5, String HONOURUSER_ID, String PRODUCT_ID) {
+        return retrofitService.postAddCollection(md5, HONOURUSER_ID, PRODUCT_ID);
+    }
+
+    /**
+     * 从选购收藏删除商品
+     *
+     * @param md5
+     * @param COLLECT_ID
+     * @return
+     */
+    public static Observable<ResultModel> postDelCollection(String md5, String COLLECT_ID) {
+        return retrofitService.postDelCollection(md5, COLLECT_ID);
     }
 }

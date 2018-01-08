@@ -26,6 +26,7 @@ import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMagazineDetailModel;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
@@ -343,6 +344,19 @@ public interface RetrofitService {
     @POST("appshipin/shipcollect?")
     Observable<CollectionModel> postCollection(@Field("FKEY") String md5,
                                                @Field("HONOURUSER_ID") String id);
+
+    //添加商品到选购收藏列表
+    @FormUrlEncoded
+    @POST("appshipin/shipcollectadd?")
+    Observable<ResultModel> postAddCollection(@Field("FKEY") String md5,
+                                              @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                              @Field("PRODUCT_ID") String PRODUCT_ID);
+
+    //从选购收藏删除商品
+    @FormUrlEncoded
+    @POST("appshipin/shipcollectdel?")
+    Observable<ResultModel> postDelCollection(@Field("FKEY") String md5,
+                                              @Field("COLLECT_ID") String COLLECT_ID);
 
     /**
      * 上传头像
@@ -802,14 +816,23 @@ public interface RetrofitService {
     @POST("appconvergein/getconvergesort.do?")
     Observable<EatDrinkSearchModel> postEatDrinkSearch(@Field("FKEY") String md5,
 
-                                                      @Field("CONVERGE_ID") String CONVERGE_ID);
+                                                       @Field("CONVERGE_ID") String CONVERGE_ID);
+
     //话题列表模糊查询
     @FormUrlEncoded
     @POST("appcirclein/gettopiclist.do?")
-    Observable<TopicListModel>  getTopicList(@Field("FKEY") String md5, @Field("TITLE") String title);
+    Observable<TopicListModel> getTopicList(@Field("FKEY") String md5, @Field("TITLE") String title);
+
     //添加话题单独接口
     @FormUrlEncoded
     @POST("appcirclein/addtopic.do?")
-    Observable<TopicListModel>  addTopic(@Field("FKEY") String md5,@Field("HONOURUSER_ID") String userId,@Field("TITLE") String title);
+    Observable<TopicListModel> addTopic(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String userId, @Field("TITLE") String title);
+
+    //荣耀杂志详情接口
+    @FormUrlEncoded
+    @POST("apphomein/magazineone?")
+    Observable<HomeGloryMagazineDetailModel> postHomeGloryMagazineDetail(@Field("FKEY") String md5,
+                                                                         @Field("MAGAZINE_ID") String MAGAZINE_ID,
+                                                                         @Field("MAGAZINETYPE") String MAGAZINETYPE);
 }
 
