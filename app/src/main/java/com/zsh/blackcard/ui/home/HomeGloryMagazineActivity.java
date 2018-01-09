@@ -1,13 +1,17 @@
 package com.zsh.blackcard.ui.home;
 
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.utils.FastBlur;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -30,20 +34,20 @@ public class HomeGloryMagazineActivity extends BaseActivity {
     @BindView(R.id.content_tv)
     TextView content_tv;
 
-//    @SuppressLint("HandlerLeak")
-//    private Handler handler = new Handler(){
-//        @Override
-//        public void handleMessage(Message msg) {
-//            super.handleMessage(msg);
-//            switch (msg.what) {
-//                case 1:
-//                    Bitmap bitmap = (Bitmap) msg.obj;
-//                    rl_top_bg.setImageBitmap(new FastBlur().fastblur(bitmap, 50, rl_top_bg));
-//                    head_img.setImageBitmap(bitmap);
-//                    break;
-//            }
-//        }
-//    };
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    Bitmap bitmap = (Bitmap) msg.obj;
+                    rl_top_bg.setImageBitmap(new FastBlur().fastblur(bitmap, 50, rl_top_bg));
+                    head_img.setImageBitmap(bitmap);
+                    break;
+            }
+        }
+    };
 
 
     @OnClick(R.id.im_back)

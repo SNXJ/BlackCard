@@ -346,7 +346,7 @@ public class PublicDialog {
         //设置默认获取焦点
         popWinShare.setFocusable(true);
         //以某个控件的x和y的偏移量位置开始显示窗口
-        popWinShare.showAsDropDown(im, -200, DisplayUtil.dip2px(context, 6));
+        popWinShare.showAsDropDown(im, 0, 0);
         //如果窗口存在，则更新
         popWinShare.update();
 

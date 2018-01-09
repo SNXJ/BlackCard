@@ -662,17 +662,6 @@ public class NetApi extends DataManager {
     }
 
     /**
-     * 商品分类右边列表
-     *
-     * @param md5
-     * @param id
-     * @return
-     */
-    public static Observable<CategoryRightModel> postCategoryRight(String md5, String id) {
-        return retrofitService.postCategoryRight(md5, id);
-    }
-
-    /**
      * 获取欢迎引导页的轮播图片
      *
      * @param md5
@@ -1444,5 +1433,17 @@ public class NetApi extends DataManager {
      */
     public static Observable<ResultModel> postDelCollection(String md5, String COLLECT_ID) {
         return retrofitService.postDelCollection(md5, COLLECT_ID);
+    }
+
+
+    /**
+     * 商品分类右边列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public static Observable<CategoryRightModel> postCategoryRight(String md5, String id, String BRANDICON_ID) {
+        return retrofitService.postCategoryRight(md5, id, BRANDICON_ID);
     }
 }

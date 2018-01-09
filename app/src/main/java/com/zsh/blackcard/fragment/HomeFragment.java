@@ -1,18 +1,32 @@
 package com.zsh.blackcard.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -68,6 +82,8 @@ import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.BitmapUtils;
+import com.zsh.blackcard.utils.FastBlur;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.MPermissionUtils;
 import com.zsh.blackcard.utils.UIUtils;
@@ -81,6 +97,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -622,7 +639,6 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             case R.id.home_top_pop:
 //                ActivityUtils.startActivity(getActivity(), LoginActivity.class);
 //                PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
-
                 PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
                 break;
             case R.id.home_search_linear:

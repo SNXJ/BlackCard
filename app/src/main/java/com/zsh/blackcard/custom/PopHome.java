@@ -1,14 +1,19 @@
 package com.zsh.blackcard.custom;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.ItemClickListener;
+import com.zsh.blackcard.utils.BitmapUtils;
+import com.zsh.blackcard.utils.FastBlur;
 
 /**
  * Name: PopHome
@@ -56,13 +61,13 @@ public class PopHome extends PopupWindow {
         });
         setContentView(mainView);
         //设置宽度
-        setWidth(RelativeLayout.LayoutParams.WRAP_CONTENT);
+        setWidth(RelativeLayout.LayoutParams.MATCH_PARENT);
         //设置高度
-        setHeight(RelativeLayout.LayoutParams.WRAP_CONTENT);
+        setHeight(RelativeLayout.LayoutParams.MATCH_PARENT);
         //设置显示隐藏动画
         setAnimationStyle(R.style.home_pop_anim);
         //设置背景透明
-        setBackgroundDrawable(new ColorDrawable(80));
+//        setBackgroundDrawable(new ColorDrawable(80));
 
     }
 }

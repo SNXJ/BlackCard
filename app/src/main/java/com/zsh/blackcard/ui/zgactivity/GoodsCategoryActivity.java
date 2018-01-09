@@ -94,7 +94,7 @@ public class GoodsCategoryActivity extends BaseActivity implements BaseQuickAdap
 
     //加载右边列表的适配器
     private void initRecyclerRight(String brand_id) {
-        DataManager.getInstance(this).RequestHttp(NetApi.postCategoryRight(DataManager.getMd5Str("SHIPBRIC"), brand_id), new ResultListener<CategoryRightModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postCategoryRight(DataManager.getMd5Str("SHIPBRIC"), brand_id,""), new ResultListener<CategoryRightModel>() {
             @Override
             public void responseSuccess(CategoryRightModel obj) {
                 if(pdBeanList != null){

@@ -57,7 +57,7 @@ public class SlidingFragment extends BaseFragment {
         //填充侧滑列表数据
         list = new ArrayList<String>();
         list.add("商品分类");
-        list.add("发现");
+        list.add("头条");
         list.add("购物车");
         list.add("炫购");
         list.add("私人定制");
