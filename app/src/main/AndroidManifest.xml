@@ -43,14 +43,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-      <activity
+        <activity
             android:name=".ui.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.WelcomeActivity"
-            android:theme="@style/FullTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden|adjustPan">
+            android:theme="@style/FullTheme"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,7 +64,8 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="x44CZgW2VKxstNTFqe6zTYpgU5BbXr6r" />
-       <service
+
+        <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
@@ -86,14 +87,14 @@
         <!--友盟分享-->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="561cae6ae0f55abd990035bf"/>
+            android:value="561cae6ae0f55abd990035bf" />
         <!--新浪分享-->
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -140,15 +141,13 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
         <activity
             android:name="com.alipay.sdk.app.H5AuthActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
 
 
         <activity android:name=".ui.BlackWeiboActivity" />
@@ -178,9 +177,9 @@
         <activity android:name=".ui.BlackCurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
-        <activity android:name=".ui.LoginActivity"
-            android:theme="@style/FullTheme"
-            />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/FullTheme" />
         <activity android:name=".live.SingleAnchorActivity" />
         <activity android:name=".ui.home.HomeTrainActivity" />
         <activity
@@ -236,9 +235,9 @@
         <activity android:name=".live.LiveOpenActivity" />
         <activity android:name=".ui.MyOrderActivity" />
         <activity android:name=".ui.CollectionActivity" />
-        <activity android:name=".live.LiveAnchorDetails2"
-            android:theme="@style/FullTheme"
-            />
+        <activity
+            android:name=".live.LiveAnchorDetails2"
+            android:theme="@style/FullTheme" />
         <activity android:name=".live.VideoDetailsActivity" />
         <activity android:name=".live.VideoIngActivity" />
         <activity android:name=".live.AbMySettingActivity" />
@@ -288,6 +287,9 @@
         <activity android:name=".wxapi.WXEntryActivity" />
         <activity android:name=".wxapi.WXPayEntryActivity" />
         <activity android:name=".ui.home.HomeGloryMagazineActivity"></activity>
+        <activity
+            android:name=".live.LivingRoomActivity"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
