@@ -15,7 +15,19 @@
         <TextView
             android:id="@+id/title_tv"
             style="@style/title_tv"
-            android:text="发现" />
+            android:text="头条" />
+
+        <TextView
+            android:textSize="14sp"
+            android:id="@+id/my_tip_send_tv"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/recharge_text"
+            android:text="发布"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
     <!--4个padding解决文字无法平分大小问题-->

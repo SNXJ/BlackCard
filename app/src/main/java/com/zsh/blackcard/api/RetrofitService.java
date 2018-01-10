@@ -417,12 +417,6 @@ public interface RetrofitService {
     @POST("appshipin/shipbrandlist?")
     Observable<CategoryLeftModel> postCategoryLeft(@Field("FKEY") String md5);
 
-    //商品分类右边列表
-    @FormUrlEncoded
-    @POST("appshipin/shipbrandiconlist?")
-    Observable<CategoryRightModel> postCategoryRight(@Field("FKEY") String md5,
-                                                     @Field("BRAND_ID") String id);
-
     //获取欢迎引导页的滚动图片数据
     @FormUrlEncoded
     @POST("appbootpagein/bootpagelist?")
@@ -835,5 +829,12 @@ public interface RetrofitService {
     Observable<HomeGloryMagazineDetailModel> postHomeGloryMagazineDetail(@Field("FKEY") String md5,
                                                                          @Field("MAGAZINE_ID") String MAGAZINE_ID,
                                                                          @Field("MAGAZINETYPE") String MAGAZINETYPE);
+
+    //商品分类右边列表
+    @FormUrlEncoded
+    @POST("shipbusinesslist.do?")
+    Observable<CategoryRightModel> postCategoryRight(@Field("FKEY") String md5,
+                                                     @Field("BRAND_ID") String id,
+                                                     @Field("BRANDICON_ID") String BRANDICON_ID);
 }
 

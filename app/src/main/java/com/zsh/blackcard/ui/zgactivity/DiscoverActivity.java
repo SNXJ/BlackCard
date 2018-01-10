@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
@@ -20,6 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jzvd.JZVideoPlayer;
 
 /**
  * Name: DiscoverActivity
@@ -63,7 +65,7 @@ public class DiscoverActivity extends BaseActivity implements TabLayout.OnTabSel
                     Bundle bundle = new Bundle();
                     bundle.putString("id", obj.getPd().get(0).getCAIDAN_ID());
                     zgFindFragment.setArguments(bundle);
-                    fragmentList.add(0,zgFindFragment);
+                    fragmentList.add(0, zgFindFragment);
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.discover_container, fragmentList.get(0));
                     fragmentTransaction.commit();
@@ -87,15 +89,23 @@ public class DiscoverActivity extends BaseActivity implements TabLayout.OnTabSel
 
     @Override
     public void onBackPressed() {
-//        if (JZVideoPlayer.backPress()) {
-//            return;
-//        }
-//        super.onBackPressed();
+        if (JZVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
     }
 
-    @OnClick(R.id.title_back)
-    public void onClick() {
-        finish();
+    @OnClick({R.id.title_back, R.id.my_tip_send_tv})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.title_back:
+                finish();
+                break;
+            //点击发布头条
+            case R.id.my_tip_send_tv:
+
+                break;
+        }
     }
 
     @Override

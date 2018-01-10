@@ -33,7 +33,7 @@ public class HomeTopAdapter extends BaseMultiItemQuickAdapter<HomeTopModel.PdBea
         addItemType(HomeTopModel.PdBean.LEFT, R.layout.home_top_recycler_first_item);
         addItemType(HomeTopModel.PdBean.CENTER, R.layout.home_top_recycler_item);
         addItemType(HomeTopModel.PdBean.RIGHT, R.layout.home_top_recycler_last_item);
-    }
+     }
 
     @Override
     protected void convert(BaseViewHolder helper, HomeTopModel.PdBean item) {

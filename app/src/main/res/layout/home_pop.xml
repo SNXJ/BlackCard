@@ -1,120 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="@dimen/base170dp"
-    android:background="@mipmap/pop_home"
-    android:orientation="vertical"
-    android:paddingRight="@dimen/base10dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#77333333">
 
-    <RelativeLayout
-        android:id="@+id/rl_sao"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base40dp"
-        android:layout_marginTop="@dimen/base10dp">
+    <LinearLayout
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/base170dp"
+        android:background="@mipmap/pop_home"
+        android:orientation="vertical"
+        android:paddingRight="@dimen/base10dp">
 
-        <ImageView
-            android:scaleType="fitXY"
-            android:id="@+id/im_pop_sao"
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="@dimen/base30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base6dp"
-            android:src="@mipmap/popup_icon_1" />
+        <RelativeLayout
+            android:id="@+id/rl_sao"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base40dp"
+            android:layout_marginTop="@dimen/base10dp">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base8dp"
-            android:layout_toRightOf="@+id/im_pop_sao"
-            android:text="扫一扫"
-            android:textColor="@color/ff92_text"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_msg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base40dp">
-
-        <ImageView
-            android:scaleType="fitXY"
-            android:id="@+id/im_pop_msg"
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="@dimen/base30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base6dp"
-            android:src="@mipmap/popup_icon_2" />
+            <ImageView
+                android:id="@+id/im_pop_sao"
+                android:layout_width="@dimen/base30dp"
+                android:layout_height="@dimen/base30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base6dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/popup_icon_1" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base8dp"
-            android:layout_toRightOf="@+id/im_pop_msg"
-            android:text="消息中心"
-            android:textColor="@color/ff92_text"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:layout_toRightOf="@+id/im_pop_sao"
+                android:text="扫一扫"
+                android:textColor="@color/ff92_text"
+                android:textSize="16sp" />
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rl_sys_msg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base40dp">
+        <RelativeLayout
+            android:id="@+id/rl_msg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base40dp">
 
-        <ImageView
-            android:scaleType="fitXY"
-            android:id="@+id/im_pop_sys_msg"
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="@dimen/base30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base6dp"
-            android:src="@mipmap/popup_icon_3" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base8dp"
-            android:layout_toRightOf="@+id/im_pop_sys_msg"
-            android:text="系统通知"
-            android:textColor="@color/ff92_text"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_vip"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base40dp"
-        android:layout_marginBottom="@dimen/base8dp">
-
-        <ImageView
-            android:scaleType="fitXY"
-            android:id="@+id/im_pop_vip"
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="@dimen/base30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base6dp"
-            android:src="@mipmap/popup_icon_4" />
+            <ImageView
+                android:id="@+id/im_pop_msg"
+                android:layout_width="@dimen/base30dp"
+                android:layout_height="@dimen/base30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base6dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/popup_icon_2" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base8dp"
-            android:layout_toRightOf="@+id/im_pop_vip"
-            android:text="解锁特权"
-            android:textColor="@color/ff92_text"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:layout_toRightOf="@+id/im_pop_msg"
+                android:text="消息中心"
+                android:textColor="@color/ff92_text"
+                android:textSize="16sp" />
 
-    </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_sys_msg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base40dp">
+
+            <ImageView
+                android:id="@+id/im_pop_sys_msg"
+                android:layout_width="@dimen/base30dp"
+                android:layout_height="@dimen/base30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base6dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/popup_icon_3" />
 
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:layout_toRightOf="@+id/im_pop_sys_msg"
+                android:text="系统通知"
+                android:textColor="@color/ff92_text"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_vip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base40dp"
+            android:layout_marginBottom="@dimen/base8dp">
+
+            <ImageView
+                android:id="@+id/im_pop_vip"
+                android:layout_width="@dimen/base30dp"
+                android:layout_height="@dimen/base30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base6dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/popup_icon_4" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base8dp"
+                android:layout_toRightOf="@+id/im_pop_vip"
+                android:text="解锁特权"
+                android:textColor="@color/ff92_text"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
