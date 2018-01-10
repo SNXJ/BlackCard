@@ -3,108 +3,108 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp">
+    android:paddingBottom="@dimen/base15dp"
+    android:paddingTop="@dimen/base15dp">
 
     <TextView
-        android:layout_marginLeft="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
         android:text="麦乐迪KTV嗨起来"
         android:textColor="#FF929292"
         android:textSize="14sp" />
 
 
     <LinearLayout
-        android:layout_marginTop="13dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_width="match_parent"
-        android:layout_height="82.5dp">
+        android:layout_height="@dimen/base82dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base13dp">
 
         <ImageView
-            android:layout_marginRight="4dp"
-            android:scaleType="fitXY"
             android:layout_width="0dp"
+            android:layout_height="@dimen/base82dp"
+            android:layout_marginRight="@dimen/base4dp"
             android:layout_weight="1"
-            android:layout_height="82.5dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/home_image_3" />
 
         <ImageView
-            android:layout_marginRight="2dp"
-            android:scaleType="fitXY"
             android:layout_width="0dp"
+            android:layout_height="@dimen/base82dp"
+            android:layout_marginRight="@dimen/base2dp"
             android:layout_weight="1"
-            android:layout_height="82.5dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/home_image_1" />
 
         <ImageView
-            android:layout_marginLeft="2dp"
-            android:scaleType="fitXY"
             android:layout_width="0dp"
+            android:layout_height="@dimen/base82dp"
+            android:layout_marginLeft="@dimen/base2dp"
             android:layout_weight="1"
-            android:layout_height="82.5dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/home_image_2" />
 
         <ImageView
-            android:layout_marginLeft="4dp"
-            android:scaleType="fitXY"
             android:layout_width="0dp"
+            android:layout_height="@dimen/base82dp"
+            android:layout_marginLeft="@dimen/base4dp"
             android:layout_weight="1"
-            android:layout_height="82.5dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/home_image_4" />
 
     </LinearLayout>
 
     <RelativeLayout
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:layout_marginTop="17dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base17dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/base15dp"
+        android:paddingRight="@dimen/base15dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:textColor="#FF929292"
-            android:textSize="12sp"
             android:text="开始时间：2017年10月1日"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="#FF929292"
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_alignParentRight="true"
-            android:textColor="#FF929292"
-            android:textSize="12sp"
-            android:text="开始时间：2017年10月1日"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="开始时间：2017年10月1日"
+            android:textColor="#FF929292"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:layout_marginTop="9dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base9dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/base15dp"
+        android:paddingRight="@dimen/base15dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:textColor="#FF929292"
-            android:textSize="12sp"
             android:text="人数：一对一"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="#FF929292"
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_alignParentRight="true"
-            android:textColor="#FF929292"
-            android:textSize="12sp"
-            android:text="方式：AA互动趴"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="方式：AA互动趴"
+            android:textColor="#FF929292"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 

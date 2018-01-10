@@ -15,6 +15,11 @@ import java.util.List;
  */
 
 public class ZgSearchAdapter extends BaseQuickAdapter<ZgSearchModel.PdBean, BaseViewHolder> {
+
+    public ZgSearchAdapter(int layoutResId) {
+        super(layoutResId);
+    }
+
     public ZgSearchAdapter(int layoutResId, @Nullable List<ZgSearchModel.PdBean> data) {
         super(layoutResId, data);
     }

@@ -5,10 +5,10 @@
     android:background="#77333333">
 
     <LinearLayout
-        android:layout_marginRight="@dimen/base15dp"
-        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/base170dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/base15dp"
         android:background="@mipmap/pop_home"
         android:orientation="vertical"
         android:paddingRight="@dimen/base10dp">
@@ -27,7 +27,6 @@
                 android:layout_marginLeft="@dimen/base6dp"
                 android:scaleType="fitXY"
                 android:src="@mipmap/popup_icon_1" />
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,7 +54,6 @@
                 android:scaleType="fitXY"
                 android:src="@mipmap/popup_icon_2" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,7 +79,6 @@
                 android:layout_marginLeft="@dimen/base6dp"
                 android:scaleType="fitXY"
                 android:src="@mipmap/popup_icon_3" />
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,7 +107,6 @@
                 android:scaleType="fitXY"
                 android:src="@mipmap/popup_icon_4" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,6 +120,5 @@
         </RelativeLayout>
 
     </LinearLayout>
-
 
 </RelativeLayout>

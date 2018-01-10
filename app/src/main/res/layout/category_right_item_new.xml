@@ -6,33 +6,33 @@
     android:paddingBottom="@dimen/base10dp">
 
     <ImageView
-        android:id="@+id/category_right_img"
+        android:id="@+id/category_right_head_img"
         android:layout_width="@dimen/base35dp"
         android:layout_height="@dimen/base35dp" />
 
     <TextView
+        android:id="@+id/category_right_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/category_right_img"
+        android:layout_alignTop="@+id/category_right_head_img"
         android:layout_marginLeft="@dimen/base10dp"
-        android:layout_toRightOf="@+id/category_right_img"
-        android:text="梵香居"
+        android:layout_toRightOf="@+id/category_right_head_img"
         android:textColor="@color/recharge_text"
         android:textSize="12sp" />
 
     <TextView
+        android:id="@+id/category_right_count_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/category_right_img"
+        android:layout_alignBottom="@+id/category_right_head_img"
         android:layout_marginLeft="@dimen/base10dp"
-        android:layout_toRightOf="@+id/category_right_img"
-        android:text="共10件宝贝"
+        android:layout_toRightOf="@+id/category_right_head_img"
         android:textColor="@color/recharge_text"
         android:textSize="11sp" />
 
     <LinearLayout
         android:layout_marginTop="@dimen/base15dp"
-        android:layout_below="@+id/category_right_img"
+        android:layout_below="@+id/category_right_head_img"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base55dp">

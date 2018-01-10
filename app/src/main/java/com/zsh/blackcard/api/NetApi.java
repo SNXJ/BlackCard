@@ -43,6 +43,7 @@ import com.zsh.blackcard.model.HomeKTVDetailModel;
 import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
+import com.zsh.blackcard.model.HomeSearchHotModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
@@ -1445,5 +1446,15 @@ public class NetApi extends DataManager {
      */
     public static Observable<CategoryRightModel> postCategoryRight(String md5, String id, String BRANDICON_ID) {
         return retrofitService.postCategoryRight(md5, id, BRANDICON_ID);
+    }
+
+    /**
+     * 首页搜索页面热门搜索和推荐
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<HomeSearchHotModel> postHomeSearchHot(String md5, String PARENT_ID) {
+        return retrofitService.postHomeSearchHot(md5,PARENT_ID);
     }
 }

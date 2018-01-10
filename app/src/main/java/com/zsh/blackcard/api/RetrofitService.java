@@ -40,6 +40,7 @@ import com.zsh.blackcard.model.HomeKTVDetailModel;
 import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
+import com.zsh.blackcard.model.HomeSearchHotModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
@@ -832,9 +833,15 @@ public interface RetrofitService {
 
     //商品分类右边列表
     @FormUrlEncoded
-    @POST("shipbusinesslist.do?")
+    @POST("appshipin/shipbusinesslist.do?")
     Observable<CategoryRightModel> postCategoryRight(@Field("FKEY") String md5,
                                                      @Field("BRAND_ID") String id,
                                                      @Field("BRANDICON_ID") String BRANDICON_ID);
+
+    //首页搜索热门搜索和推荐
+    @FormUrlEncoded
+    @POST("apphomein/searchlist.do?")
+    Observable<HomeSearchHotModel> postHomeSearchHot(@Field("FKEY") String md5,
+                                                     @Field("PARENT_ID") String PARENT_ID);
 }
 

@@ -8,7 +8,7 @@
         android:id="@+id/glorysever_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/base10dp"
         android:src="@mipmap/home_image_5" />
 
 </LinearLayout>

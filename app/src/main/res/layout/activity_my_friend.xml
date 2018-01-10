@@ -7,14 +7,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_marginLeft="15.45dp"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base18dp"
             android:src="@mipmap/back"
             android:layout_centerVertical="true"/>
 

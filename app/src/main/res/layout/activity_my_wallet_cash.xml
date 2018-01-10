@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bj"
@@ -8,15 +7,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/back" />
 
         <TextView
@@ -30,49 +29,49 @@
     </RelativeLayout>
 
     <TextView
-        android:textColor="#929292"
-        android:layout_marginTop="12.5dp"
-        android:layout_marginLeft="14dp"
-        android:text="提现金额"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base14dp"
+        android:layout_marginTop="@dimen/base12dp"
+        android:text="提现金额"
+        android:textColor="#929292" />
 
     <EditText
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginLeft="14dp"
-        android:textColorHint="#929292"
-        android:textColor="#929292"
-        android:hint="￥"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base14dp"
+        android:layout_marginRight="@dimen/base14dp"
+        android:layout_marginTop="@dimen/base10dp"
+        android:hint="￥"
+        android:textColor="#929292"
+        android:textColorHint="#929292" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="12.5dp"
+        android:layout_marginLeft="@dimen/base14dp"
+        android:layout_marginTop="@dimen/base12dp"
         android:text="提现方式"
         android:textColor="#929292"
         android:textSize="14sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_height="@dimen/base20dp"
+        android:layout_marginTop="@dimen/base20dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/wechat" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="@dimen/base50dp"
             android:text="微信支付"
             android:textColor="#929292"
             android:textSize="15sp" />
@@ -82,8 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="@dimen/base50dp"
+            android:layout_marginRight="@dimen/base15dp"
             android:background="@drawable/paybtn_select"
             android:button="@null"
             android:checked="true" />
@@ -91,20 +90,20 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_height="@dimen/base20dp"
+        android:layout_marginTop="@dimen/base20dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/alipay" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="@dimen/base50dp"
             android:text="支付宝支付"
             android:textColor="#929292"
             android:textSize="15sp" />
@@ -114,8 +113,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="@dimen/base50dp"
+            android:layout_marginRight="@dimen/base15dp"
             android:background="@drawable/paybtn_select"
             android:button="@null" />
     </RelativeLayout>

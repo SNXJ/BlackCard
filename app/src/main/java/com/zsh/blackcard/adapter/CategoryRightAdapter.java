@@ -26,7 +26,12 @@ public class CategoryRightAdapter extends BaseQuickAdapter<CategoryRightModel.Pd
 
     @Override
     protected void convert(BaseViewHolder helper, CategoryRightModel.PdBean item) {
-//        helper.setText(R.id.category_right_tv,item.getBRANDNAME());
-//        Glide.with(mContext).load(item.getICONIMGS()).into((ImageView) helper.getView(R.id.category_right_img));
+        helper.setText(R.id.category_right_name_tv,item.getSHOPNAME());
+        helper.setText(R.id.category_right_count_tv,"共"+item.getPRODUCT_COUNT()+"件宝贝");
+        Glide.with(mContext).load(item.getSHOWIMG()).into((ImageView) helper.getView(R.id.category_right_head_img));
+        Glide.with(mContext).load(item.getPRODUCTIMGS().get(0)).into((ImageView) helper.getView(R.id.category_right_one_img));
+        Glide.with(mContext).load(item.getPRODUCTIMGS().get(1)).into((ImageView) helper.getView(R.id.category_right_two_img));
+        Glide.with(mContext).load(item.getPRODUCTIMGS().get(2)).into((ImageView) helper.getView(R.id.category_right_three_img));
+        Glide.with(mContext).load(item.getPRODUCTIMGS().get(3)).into((ImageView) helper.getView(R.id.category_right_four_img));
     }
 }

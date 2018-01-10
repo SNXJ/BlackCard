@@ -4,47 +4,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/login_bg">
-<RelativeLayout
-    android:layout_marginTop="@dimen/base60dp"
-    android:id="@+id/rl_banner"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/base400dp">
 
-    <com.youth.banner.Banner
-        android:layout_alignParentTop="true"
-        android:id="@+id/welcome_banner"
+    <RelativeLayout
+        android:id="@+id/rl_banner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base400dp"
-        app:image_scale_type="center_inside"
-        app:is_auto_play="false">
+        android:layout_marginTop="@dimen/base60dp">
 
-    </com.youth.banner.Banner>
+        <com.youth.banner.Banner
+            android:id="@+id/welcome_banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base400dp"
+            android:layout_alignParentTop="true"
+            app:image_scale_type="center_inside"
+            app:is_auto_play="false">
 
-    <TextView
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        style="@style/text_"
-        android:layout_marginBottom="@dimen/base50dp"
-        android:text="荣耀黑卡"
-        />
-    <TextView
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/base20dp"
-        style="@style/text_"
-        android:text="Honour Centurion Card"
-        />
+        </com.youth.banner.Banner>
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/base50dp"
+            android:text="荣耀黑卡" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/base20dp"
+            android:text="Honour Centurion Card" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
 
 
     <Button
-        android:layout_marginBottom="@dimen/base38dp"
         android:id="@+id/welcome_register_btn"
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/base38dp"
         android:layout_marginLeft="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="在线申请"
@@ -52,12 +52,12 @@
         android:textSize="12sp" />
 
     <Button
-        android:layout_marginBottom="@dimen/base38dp"
         android:id="@+id/welcome_login_btn"
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/base38dp"
         android:layout_marginRight="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="会籍登录"
@@ -65,11 +65,11 @@
         android:textSize="12sp" />
 
     <LinearLayout
-        android:layout_marginTop="@dimen/base10dp"
-        android:layout_below="@+id/rl_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_banner"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/base10dp"
         android:orientation="horizontal">
 
         <ImageView

@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/base45dp"
         android:background="#EEEEEE">
 
         <View
@@ -24,10 +24,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="@dimen/base20dp" />
 
         <TextView
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/base20dp"
             android:gravity="center"
             android:id="@+id/tv_finish"
             android:layout_width="wrap_content"

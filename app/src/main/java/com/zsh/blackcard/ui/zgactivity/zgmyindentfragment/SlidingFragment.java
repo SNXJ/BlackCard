@@ -55,7 +55,7 @@ public class SlidingFragment extends BaseFragment {
         fragmentTransaction.commit();
 
         //填充侧滑列表数据
-        list = new ArrayList<String>();
+        list = new ArrayList<>();
         list.add("商品分类");
         list.add("头条");
         list.add("购物车");

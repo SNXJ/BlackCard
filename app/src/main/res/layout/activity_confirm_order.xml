@@ -147,7 +147,7 @@
             android:layout_height="@dimen/base15dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="86.5dp"
+            android:layout_marginLeft="@dimen/base86dp"
             android:layout_marginRight="15dp"
             stepper:max="20"
             stepper:min="0"
@@ -173,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="32dp"
+            android:layout_marginRight="@dimen/base32dp"
             android:text="无可用"
             android:textColor="#929292"
             android:textSize="12sp" />
