@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/base40dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="@dimen/base20dp"
+        android:layout_height="@dimen/base20dp"
+        android:src="@mipmap/blog_image_1" />
+
+
+    <TextView
+        android:id="@+id/tv_chat_text"
+        style="@style/text_"
+        android:layout_marginLeft="@dimen/base20dp"
+
+        android:text="hahahhahahahhahhhh" />
+</LinearLayout>

@@ -50,7 +50,9 @@
             android:name=".ui.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/FullTheme"
-            android:windowSoftInputMode="stateHidden|adjustPan">
+
+            android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -88,7 +90,9 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="561cae6ae0f55abd990035bf" />
-        <!-- 新浪分享 -->
+
+        <!--新浪分享-->
+
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -142,6 +146,7 @@
             android:exported="false"
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+
         <activity android:name=".ui.BlackWeiboActivity" />
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.AddressEditActivity" />
@@ -277,10 +282,17 @@
         <activity android:name=".ui.my.ChangePhoneActivity" />
         <activity android:name=".wxapi.WXEntryActivity" />
         <activity android:name=".wxapi.WXPayEntryActivity" />
-        <activity android:name=".ui.home.HomeGloryMagazineActivity" />
+
+    
         <activity android:name=".ui.zgactivity.ZgSearchResultActivity" />
         <activity android:name=".ui.home.HomeSearchActivity" />
         <activity android:name=".ui.HjSearchActivity" />
+
+        <activity android:name=".ui.home.HomeGloryMagazineActivity"></activity>
+        <activity
+            android:name=".live.LivingRoomActivity"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

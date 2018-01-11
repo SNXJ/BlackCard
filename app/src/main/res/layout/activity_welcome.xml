@@ -8,32 +8,30 @@
     <RelativeLayout
         android:id="@+id/rl_banner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base400dp"
-        android:layout_marginTop="@dimen/base60dp">
 
-        <com.youth.banner.Banner
-            android:id="@+id/welcome_banner"
+        android:layout_height="@dimen/base430dp"
+        android:layout_marginTop="@dimen/base70dp">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base400dp"
-            android:layout_alignParentTop="true"
-            app:image_scale_type="center_inside"
-            app:is_auto_play="false">
-
-        </com.youth.banner.Banner>
-
-        <TextView
-            style="@style/text_"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/base50dp"
-            android:text="荣耀黑卡" />
+            android:layout_height="@dimen/base440dp"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             style="@style/text_"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/base20dp"
+            android:text="荣耀黑卡" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:text="Honour Centurion Card" />
+
 
 
     </RelativeLayout>
@@ -44,7 +42,9 @@
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/base38dp"
+
+        android:layout_marginBottom="@dimen/base46dp"
+
         android:layout_marginLeft="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="在线申请"
@@ -57,45 +57,63 @@
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/base38dp"
+
+        android:layout_marginBottom="@dimen/base46dp"
+
         android:layout_marginRight="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="会籍登录"
         android:textColor="#FFFFFFFF"
         android:textSize="12sp" />
 
-    <LinearLayout
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_banner"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/base10dp"
+
+        android:layout_marginTop="@dimen/base20dp"
+
         android:orientation="horizontal">
 
-        <ImageView
+        <RadioButton
+            android:clickable="false"
+            android:button="@null"
+            android:checked="true"
+
+            android:background="@drawable/welcoome_rb_selector"
             android:id="@+id/img_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/circle_true" />
+            />
 
-        <ImageView
+        <RadioButton
+            android:clickable="false"
+            android:button="@null"
             android:id="@+id/img_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/circle_false" />
+            android:background="@drawable/welcoome_rb_selector" />
 
-        <ImageView
+        <RadioButton
+            android:clickable="false"
+            android:button="@null"
             android:id="@+id/img_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/circle_false" />
+            android:background="@drawable/welcoome_rb_selector" />
 
-        <ImageView
+        <RadioButton
+            android:clickable="false"
+            android:button="@null"
             android:id="@+id/img_four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/circle_false" />
+            android:background="@drawable/welcoome_rb_selector" />
 
-    </LinearLayout>
+    </RadioGroup>
 
 </RelativeLayout>
