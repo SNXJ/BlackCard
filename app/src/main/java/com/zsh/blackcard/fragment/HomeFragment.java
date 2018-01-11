@@ -39,6 +39,7 @@ import com.zsh.blackcard.adapter.HomeTypeAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
+import com.zsh.blackcard.custom.NewTopDialog;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.ResultListener;
@@ -54,6 +55,7 @@ import com.zsh.blackcard.music.MusicHomeActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.MsgSysCenterActivity;
 import com.zsh.blackcard.ui.home.HomeSearchActivity;
+import com.zsh.blackcard.ui.home.HomeTipView;
 import com.zsh.blackcard.ui.zgactivity.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
@@ -176,20 +178,17 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-            switch (position) {
-                case 0://
+            switch (((HomeTopModel.PdBean)adapter.getData().get(position)).getSHOPTYPE()) {
+                case "酒吧"://
                     topGoDetails(HomeBarDetailActivity.class, adapter, position);
                     break;
-                case 1:
+                case "美食":
                     topGoDetails(HomeFoodDetailActivity.class, adapter, position);
                     break;
-                case 2:
+                case "KTV":
                     topGoDetails(HomeKTVDetailActivity.class, adapter, position);
                     break;
-                case 3:
-                    topGoDetails(HomeHotelDetailActivity.class, adapter, position);
-                    break;
-                case 4:
+                case "酒店":
                     topGoDetails(HomeHotelDetailActivity.class, adapter, position);
                     break;
             }
@@ -612,8 +611,10 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //        }
     }
 
+    private HomeTipView topDialog;
+
     //普通控件的onClick事件
-    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear,R.id.home_glory_magazine_rl})
+    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear, R.id.home_glory_magazine_rl})
     public void onClick(View view) {
         switch (view.getId()) {
 //            case R.id.home_play_img:
@@ -623,9 +624,12 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
             case R.id.home_top_pop:
-//                ActivityUtils.startActivity(getActivity(), LoginActivity.class);
 //                PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
-                PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
+                if (topDialog == null) {
+                    topDialog = new HomeTipView();
+                }
+                topDialog.show(getFragmentManager(), "Show", view);
+                topDialog.setOnHomeTipItemClick(topPopItemListener);
                 break;
             //搜索界面
             case R.id.home_search_linear:
@@ -643,10 +647,10 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
     }
 
-    private ItemClickListener topPopItemListener = new ItemClickListener() {
+    private HomeTipView.OnHomeTipItemClick topPopItemListener = new HomeTipView.OnHomeTipItemClick() {
         @Override
-        public void itemClick(int postion) {
-            switch (postion) {
+        public void homeTipItemClick(int position) {
+            switch (position) {
                 case 0:
                     requestCAMERA();
                     break;
