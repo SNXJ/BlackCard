@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/main_black"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="@mipmap/bj"
+    android:layout_height="match_parent">
     <RelativeLayout style="@style/title_rl">
 
         <ImageView
@@ -14,11 +13,12 @@
         <TextView
             android:id="@+id/title_tv"
             style="@style/title_tv"
-            android:text="我的关注" />
-    </RelativeLayout>
+            android:text="发现" />
 
+
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

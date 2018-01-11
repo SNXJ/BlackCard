@@ -21,6 +21,7 @@ import com.zsh.blackcard.ui.ShoppingCarActivity;
 import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
 import com.zsh.blackcard.ui.zgactivity.GoodsCategoryActivity;
 import com.zsh.blackcard.ui.zgactivity.PersonalActivity;
+import com.zsh.blackcard.ui.zgactivity.ShareProfitActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class SlidingFragment extends BaseFragment {
         //填充侧滑列表数据
         list = new ArrayList<>();
         list.add("商品分类");
-        list.add("头条");
+        list.add("发现");
         list.add("购物车");
         list.add("炫购");
         list.add("私人定制");
@@ -116,6 +117,9 @@ public class SlidingFragment extends BaseFragment {
                 break;
             case 4://私人定制
                 startActivity(new Intent(getActivity(), PersonalActivity.class));
+                break;
+            case 5://分享赚钱
+                startActivity(new Intent(getActivity(), ShareProfitActivity.class));
                 break;
 
         }

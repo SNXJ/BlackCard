@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,7 +33,6 @@ import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.SbNearChangeModel;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.SbSendWeiBoActivity;
-import com.zsh.blackcard.utils.DisplayUtil;
 import com.zsh.blackcard.utils.MyCalendar;
 import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.datepickter.DPMode;
@@ -55,8 +53,16 @@ import java.util.List;
  */
 public class PublicDialog {
 
+    public static void sendNewsDialog(Context mContext,View rootView) {
+        NewTopDialog topDialog = new NewTopDialog();
+//        topDialog.show(mContext.getSupportFragmentManager(), "Show", rootView);
+        View topView = LayoutInflater.from(mContext).inflate(
+                topDialog.getContentLayoutId(), null);
 
-    public static void ShareDialog(final Activity mContext) {
+    }
+
+
+    public static void shareDialog(final Activity mContext) {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.share_dialog_layout, null);
         final Dialog dialog = showDialogView(view, mContext);
@@ -98,10 +104,7 @@ public class PublicDialog {
         });
 
 
-
-
     }
-
 
 
     /**
@@ -718,6 +721,7 @@ public class PublicDialog {
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
         lp.width = (int) (display.getWidth()); // 设置宽度
         dialog.getWindow().setAttributes(lp);
+
     }
 
 
