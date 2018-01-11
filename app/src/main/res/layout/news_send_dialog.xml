@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base50dp"
+    android:gravity="center_vertical"
+    android:background="@color/main_black"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_text"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/base50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/base25dp"
+            android:layout_height="@dimen/base25dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/first_icon_1" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/base5dp"
+            android:text="文字"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_img"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/base25dp"
+            android:layout_height="@dimen/base25dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/first_icon_2" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/base5dp"
+            android:text="图片"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_video"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/base25dp"
+            android:layout_height="@dimen/base25dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/first_icon_3" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/base5dp"
+            android:text="视频"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

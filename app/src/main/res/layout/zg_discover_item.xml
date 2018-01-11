@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/base15dp"
+    android:layout_marginLeft="@dimen/base15dp"
+    android:layout_marginRight="@dimen/base15dp"
+    android:layout_marginBottom="@dimen/base5dp"
+    android:layout_height="wrap_content">
+    
+    <ImageView
+        android:id="@+id/im"
+        android:layout_width="match_parent"
+        android:src="@mipmap/find_image_1"
+        android:layout_height="@dimen/base140dp" />
+
+    <TextView
+        style="@style/text_"
+        android:text="中国年饮中国茶，清静雅和福禄康逸"
+        android:layout_marginTop="@dimen/base15dp"
+        android:textSize="15sp"
+        />
+    <TextView
+        style="@style/text_"
+        android:text="¥299"
+        android:layout_marginTop="@dimen/base10dp"
+        android:textSize="12sp"
+        />
+
+</LinearLayout>

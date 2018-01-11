@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <RelativeLayout style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="分享收益" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg_1"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_marginLeft="@dimen/base20dp"
+            android:layout_marginRight="@dimen/base20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/base44dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base50dp"
+            android:src="@mipmap/font" />
+
+
+        <Button
+
+            android:id="@+id/bt_share"
+            android:layout_width="@dimen/base190dp"
+            android:layout_height="@dimen/base44dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base76dp"
+            android:background="@drawable/btn_yellow_solid"
+            android:text="立即分享"
+            android:textColor="#B15308"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            style="@style/text_"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base14dp"
+
+            android:text="成功邀请5人"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/base292dp"
+            android:layout_height="@dimen/base250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base50dp"
+            android:background="@mipmap/head">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="@dimen/base228dp"
+                android:layout_height="@dimen/base138dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/base40dp"
+                android:layout_marginLeft="@dimen/base4dp" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

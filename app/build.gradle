@@ -8,8 +8,8 @@ android {
         applicationId "com.zsh.blackcard"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.0.5"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -174,5 +174,7 @@ dependencies {
     compile 'com.github.SNXJ:ScaleBanner:0.0.4'
 
     compile 'tyrant:heartlayout:1.0.1'
+    compile 'com.github.SNXJ:TopDialog:v0.1'
+
 
 }

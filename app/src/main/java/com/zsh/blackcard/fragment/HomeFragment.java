@@ -63,11 +63,12 @@ import com.zsh.blackcard.ui.home.HomeGloryServerDetailActivity;
 import com.zsh.blackcard.ui.home.HomeHotelDetailActivity;
 import com.zsh.blackcard.ui.home.HomeKTVDetailActivity;
 import com.zsh.blackcard.ui.home.HomeMoreActivity;
+import com.zsh.blackcard.ui.home.HomeNewsActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
-import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
+import com.zsh.blackcard.ui.home.MainGloryMagazineActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.MPermissionUtils;
@@ -349,6 +350,8 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     //荣耀杂志点击事件
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        //TODO
+
         switch (position) {
             case 0:
                 ActivityUtils.startActivityForData(getActivity(), HomeGloryMagazineActivity.class, "0", ((HomeGloryMagazineModel.PdBean) adapter.getData().get(position)).getSHOWIMG());
@@ -605,12 +608,12 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 //                ActivityUtils.startActivityForData(getActivity(), HomeTopNewsDetailActivity.class, homeTitleNewsModel.getPd().get(mSwitcherCount - 1).getNEWS_ID());
 //                break;
         //暂时跳转至发现页面
-        ActivityUtils.startActivity(getActivity(), DiscoverActivity.class);
+        ActivityUtils.startActivity(getActivity(), HomeNewsActivity.class);
 //        }
     }
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear})
+    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear,R.id.home_glory_magazine_rl})
     public void onClick(View view) {
         switch (view.getId()) {
 //            case R.id.home_play_img:
@@ -627,6 +630,9 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             //搜索界面
             case R.id.home_search_linear:
                 ActivityUtils.startActivity(getActivity(), HomeSearchActivity.class);
+                break;
+            case R.id.home_glory_magazine_rl://杂志
+                ActivityUtils.startActivity(getActivity(), MainGloryMagazineActivity.class);
                 break;
         }
     }
