@@ -7,15 +7,15 @@
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/back" />
 
         <TextView
@@ -30,128 +30,128 @@
 
     <LinearLayout
         android:id="@+id/line1"
-        android:layout_marginTop="15dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/base40dp"
         android:layout_below="@+id/relative"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/base15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/base15dp">
 
         <ImageView
-            android:src="@mipmap/my_headimg"
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
+            android:src="@mipmap/my_headimg" />
 
         <TextView
-            android:padding="5dp"
-            android:gravity="center"
-            android:background="@drawable/shape_chat_tv"
-            android:textColor="@color/divider"
-            android:layout_marginLeft="10dp"
-            android:text="您好，请问有什么可以帮助您？"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_chat_tv"
+            android:gravity="center"
+            android:padding="@dimen/base5dp"
+            android:text="您好，请问有什么可以帮助您？"
+            android:textColor="@color/divider" />
 
     </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/relative2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:layout_below="@+id/line1"
         android:layout_marginTop="15dp"
         android:gravity="center_vertical"
-        android:paddingRight="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/line1">
+        android:paddingRight="@dimen/base15dp">
 
         <ImageView
             android:id="@+id/img_me"
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/my_headimg"
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
+            android:src="@mipmap/my_headimg" />
 
         <TextView
-            android:layout_toLeftOf="@+id/img_me"
-            android:padding="5dp"
-            android:gravity="center"
-            android:background="@drawable/shape_chat_tv"
-            android:textColor="@color/divider"
-            android:layout_marginRight="10dp"
-            android:text="您好，我的提现什么时候到账"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/base10dp"
+            android:layout_toLeftOf="@+id/img_me"
+            android:background="@drawable/shape_chat_tv"
+            android:gravity="center"
+            android:padding="@dimen/base5dp"
+            android:text="您好，我的提现什么时候到账"
+            android:textColor="@color/divider" />
 
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="15dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/base40dp"
         android:layout_below="@+id/relative2"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/base15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/base15dp">
 
         <ImageView
-            android:src="@mipmap/my_headimg"
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
+            android:src="@mipmap/my_headimg" />
 
         <TextView
-            android:padding="5dp"
-            android:gravity="center"
-            android:background="@drawable/shape_chat_tv"
-            android:textColor="@color/divider"
-            android:layout_marginLeft="10dp"
-            android:text="需要1—2个工作日，请耐心等待"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:background="@drawable/shape_chat_tv"
+            android:gravity="center"
+            android:padding="@dimen/base5dp"
+            android:text="需要1—2个工作日，请耐心等待"
+            android:textColor="@color/divider" />
 
     </LinearLayout>
 
     <RelativeLayout
-        android:paddingRight="15dp"
-        android:paddingLeft="15dp"
-        android:background="#FF181818"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="@dimen/base45dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FF181818"
+        android:paddingLeft="@dimen/base15dp"
+        android:paddingRight="@dimen/base15dp">
 
         <ImageView
             android:id="@+id/img_video"
-            android:src="@mipmap/chat_icon_1"
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/chat_icon_1" />
 
         <ImageView
             android:id="@+id/img_add"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/chat_icon_3"
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/chat_icon_3" />
 
         <ImageView
             android:id="@+id/img_xiao"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/img_add"
-            android:src="@mipmap/chat_icon_2"
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base10dp"
+            android:layout_toLeftOf="@+id/img_add"
+            android:src="@mipmap/chat_icon_2" />
 
         <EditText
-            android:background="@drawable/shape_chat_ed"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignBottom="@+id/img_video"
             android:layout_alignTop="@+id/img_video"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:layout_marginRight="@dimen/base10dp"
             android:layout_toLeftOf="@+id/img_xiao"
             android:layout_toRightOf="@+id/img_video"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:background="@drawable/shape_chat_ed" />
 
     </RelativeLayout>
 

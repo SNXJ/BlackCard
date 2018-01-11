@@ -24,7 +24,7 @@ import com.zsh.blackcard.listener.ZGSlidingListener;
 import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgShopModel;
 import com.zsh.blackcard.ui.CommodityActivity;
-import com.zsh.blackcard.ui.ZgSearchActivity;
+import com.zsh.blackcard.ui.zgactivity.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.utils.MPermissionUtils;

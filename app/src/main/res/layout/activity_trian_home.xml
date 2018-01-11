@@ -153,8 +153,7 @@
 
     <Button
         android:id="@+id/btn_search"
-      style="@style/btn_buttom"
-        android:text="开始搜索"
-        />
+        style="@style/btn_buttom"
+        android:text="开始搜索" />
 </RelativeLayout>
 

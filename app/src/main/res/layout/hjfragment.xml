@@ -9,20 +9,20 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="@color/main_black">
+            android:layout_height="@dimen/base43dp"
+            android:background="@color/main_black"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <RadioButton
                 android:id="@+id/rb_hj_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="@dimen/base15dp"
                 android:button="@null"
-                android:drawablePadding="4dp"
+                android:drawablePadding="@dimen/base4dp"
                 android:drawableRight="@mipmap/home_nav_more"
                 android:gravity="center"
                 android:text="三亚"
@@ -30,8 +30,9 @@
                 android:textSize="14sp" />
 
             <LinearLayout
-                android:layout_width="230dp"
-                android:layout_height="28dp"
+                android:id="@+id/hj_linear_search"
+                android:layout_width="@dimen/base230dp"
+                android:layout_height="@dimen/base28dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/buttonshape"
@@ -42,20 +43,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="@dimen/base16dp"
                     android:src="@mipmap/home_nav_search" />
 
-                <EditText
+                <TextView
                     android:id="@+id/et_search"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="7.65dp"
+                    android:layout_marginLeft="@dimen/base8dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="搜索"
-                    android:singleLine="true"
-                    android:textColorHint="#8E8E93"
+                    android:text="搜索"
+                    android:textColor="@color/recharge_text"
                     android:textSize="14sp" />
             </LinearLayout>
         </RelativeLayout>

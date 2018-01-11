@@ -78,6 +78,9 @@ public class LoginActivity extends BaseActivity {
         if (TextUtils.isEmpty(login_user_et.getText().toString().trim()) || TextUtils.isEmpty(login_pass_et.getText().toString().trim())) {
             UIUtils.showToast("帐号或密码不能为空");
         } else {
+
+            showLoading(this);
+
             DataManager.getInstance(this).RequestHttp(NetApi.postLoginCard(DataManager.getMd5Str("LOGIN"), login_user_et.getText().toString().trim(), DataManager.getMd5PassWord(login_pass_et.getText().toString().trim())), new ResultListener<LoginModel>() {
                 @Override
                 public void responseSuccess(LoginModel obj) {
@@ -93,7 +96,7 @@ public class LoginActivity extends BaseActivity {
 
                 @Override
                 public void onCompleted() {
-
+                    dialogDismiss();
                 }
             });
         }

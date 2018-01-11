@@ -173,7 +173,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:paddingLeft="@dimen/base4dp"
-
                     android:text="餐饮"
                     android:textColor="@color/title_text"
                     android:textSize="11sp" />

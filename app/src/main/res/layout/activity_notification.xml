@@ -16,7 +16,7 @@
             android:layout_width="@dimen/base30dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:scaleType="center"
             android:src="@mipmap/back" />
 

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="@dimen/base10dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/base10dp">
 
     <TextView
-        android:textColor="@color/recharge_text"
+        android:layout_marginLeft="@dimen/base30dp"
         android:id="@+id/zg_search_item_tv"
-        android:textSize="15sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/recharge_text"
+        android:textSize="15sp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -14,7 +14,7 @@
             android:layout_width="@dimen/base11dp"
             android:layout_height="@dimen/base18dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/back" />
 
         <TextView

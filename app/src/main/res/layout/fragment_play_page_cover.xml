@@ -17,11 +17,11 @@
     <me.wcy.lrcview.LrcView
         android:id="@+id/lrc_view_single"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="@dimen/base20dp"
         lrc:lrcAnimationDuration="1000"
         lrc:lrcCurrentTextColor="@color/music_bar"
-        lrc:lrcDividerHeight="10dp"
+        lrc:lrcDividerHeight="@dimen/base10dp"
         lrc:lrcNormalTextColor="@color/bg_white"
-        lrc:lrcPadding="40dp"
+        lrc:lrcPadding="@dimen/base40dp"
         lrc:lrcTextSize="16sp" />
 </LinearLayout>

@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/base10dp"
         android:orientation="vertical">
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="@dimen/base15dp"
             android:layout_marginTop="@dimen/base25dp"
             android:text="23公里"
             android:textColor="#929292"
@@ -92,7 +92,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="@dimen/base5dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="@dimen/base15dp"
             android:text="￥499"
             android:textColor="#929292"
             android:textSize="11sp" />

@@ -14,9 +14,9 @@
         android:layout_marginTop="10dp"
         lrc:lrcAnimationDuration="1000"
         lrc:lrcCurrentTextColor="@color/music_bar"
-        lrc:lrcDividerHeight="24dp"
+        lrc:lrcDividerHeight="@dimen/base24dp"
         lrc:lrcNormalTextColor="#80FFFFFF"
-        lrc:lrcPadding="40dp"
+        lrc:lrcPadding="@dimen/base40dp"
         lrc:lrcTextSize="16sp"
         lrc:lrcTimelineColor="#80FFFFFF"
         lrc:lrcTimelineTextColor="#CCFFFFFF" />

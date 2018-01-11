@@ -2,57 +2,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#000000">
+    android:background="#000000"
+    android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_marginLeft="15.45dp"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
-            android:src="@mipmap/back"
-            android:layout_centerVertical="true"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="物流详情"
             android:textColor="#929292"
             android:textSize="17sp"
-            android:text="物流详情"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:layout_height="@dimen/base55dp"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="订单编号：6783202399802"
-            android:textColor="#929292"
-            android:textSize="10sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="12.5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base12dp"
+            android:text="订单编号：6783202399802"
+            android:textColor="#929292"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base12dp"
             android:text="预计送达：2017-10-10"
             android:textColor="#929292"
-            android:textSize="10sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="12.5dp"/>
+            android:textSize="10sp" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/base1dp"
         android:background="#1D1D1D"></View>
 
 </LinearLayout>

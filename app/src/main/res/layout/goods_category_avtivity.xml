@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="@dimen/base16dp"
                 android:src="@mipmap/home_nav_search" />
 
             <EditText
@@ -52,6 +52,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/goods_category_relative"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -70,7 +71,6 @@
 
             <RadioButton
                 android:padding="@dimen/base13dp"
-                android:drawableRight="@mipmap/hotel_btn_1"
                 android:button="@null"
                 android:id="@+id/search_one_rb"
                 android:gravity="center"
@@ -83,7 +83,6 @@
 
             <RadioButton
                 android:padding="@dimen/base13dp"
-                android:drawableRight="@mipmap/hotel_btn_1"
                 android:button="@null"
                 android:id="@+id/search_two_rb"
                 android:gravity="center"

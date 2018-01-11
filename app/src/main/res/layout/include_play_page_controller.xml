@@ -26,8 +26,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:maxHeight="2dp"
-            android:minHeight="2dp"
+            android:maxHeight="@dimen/base2dp"
+            android:minHeight="@dimen/base2dp"
             android:progressDrawable="@drawable/seek_bar_progress_style"
             android:thumb="@mipmap/ic_seek_bar_progress_btn" />
 
