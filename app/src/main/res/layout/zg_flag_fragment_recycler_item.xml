@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/base10dp"
+    android:paddingBottom="@dimen/base5dp"
+    android:paddingLeft="@dimen/base15dp"
+    android:paddingRight="@dimen/base15dp">
+
+    <ImageView
+        android:id="@+id/zg_flag_fragment_recycler_item_big_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base175dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/flagship_image_1" />
+
+
+    <ImageView
+        android:id="@+id/zg_flag_fragment_recycler_item_small_img"
+        android:layout_width="@dimen/base35dp"
+        android:layout_height="@dimen/base35dp"
+        android:layout_marginTop="@dimen/base10dp"
+        android:src="@mipmap/flagship_image_5"
+        app:layout_constraintTop_toBottomOf="@+id/zg_flag_fragment_recycler_item_big_img" />
+
+    <TextView
+        android:textSize="12sp"
+        android:layout_marginLeft="@dimen/base10dp"
+        app:layout_constraintLeft_toRightOf="@+id/zg_flag_fragment_recycler_item_small_img"
+        app:layout_constraintTop_toTopOf="@+id/zg_flag_fragment_recycler_item_small_img"
+        android:id="@+id/zg_flag_fragment_recycler_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="劳力士旗舰店"
+        android:textColor="@color/recharge_text" />
+
+    <TextView
+        android:textSize="11sp"
+        android:layout_marginLeft="@dimen/base10dp"
+        app:layout_constraintLeft_toRightOf="@+id/zg_flag_fragment_recycler_item_small_img"
+        app:layout_constraintBottom_toBottomOf="@+id/zg_flag_fragment_recycler_item_small_img"
+        android:id="@+id/zg_flag_fragment_recycler_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="共10件宝贝"
+        android:textColor="@color/recharge_text" />
+
+</android.support.constraint.ConstraintLayout>

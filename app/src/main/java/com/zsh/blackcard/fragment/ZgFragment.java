@@ -1,6 +1,5 @@
 package com.zsh.blackcard.fragment;
 
-import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,14 +19,11 @@ import com.zsh.blackcard.adapter.ZgShopAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.listener.ZGSlidingListener;
 import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgShopModel;
 import com.zsh.blackcard.ui.CommodityActivity;
-import com.zsh.blackcard.ui.zgactivity.ZgSearchActivity;
-import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
-import com.zsh.blackcard.utils.MPermissionUtils;
+import com.zsh.blackcard.utils.BannerUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import java.util.ArrayList;
@@ -35,10 +31,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by admin on 2017/10/20.
+ * 尊购首页
  */
 
 public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemClickListener {
@@ -54,48 +50,6 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
     private List<ZgShopModel> list = new ArrayList<>();
     //设置轮播区图片集合
     private List<String> bannerList = new ArrayList<>();
-
-    public void setZgSlidingListener(ZGSlidingListener zgSlidingListener) {
-        this.zgSlidingListener = zgSlidingListener;
-    }
-
-    private ZGSlidingListener zgSlidingListener;
-
-
-    //普通按钮点击事件
-    @OnClick({R.id.zg_myleftimg, R.id.zg_title_search_linear, R.id.im_scanner})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.zg_myleftimg:
-                zgSlidingListener.onMeauClick();
-                break;
-            case R.id.zg_title_search_linear:
-                ActivityUtils.startActivity(getActivity(), ZgSearchActivity.class);
-                break;
-            case R.id.im_scanner:
-                requestCAMERA();
-//                ActivityUtils.startActivity(getActivity(), HomeScannerActivity.class);
-                break;
-        }
-    }
-    private void requestCAMERA() {
-        String[] PERMISSIONS_STORAGE = {
-                Manifest.permission.CAMERA
-        };
-        MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
-                , new MPermissionUtils.OnPermissionListener() {
-                    @Override
-                    public void onPermissionGranted() {
-                        ActivityUtils.startActivity(getActivity(), HomeScannerActivity.class);
-                    }
-
-                    @Override
-                    public void onPermissionDenied() {
-                        MPermissionUtils.showTipsDialog(getActivity());
-                    }
-                });
-
-    }
 
     //商品列表点击事件
     @Override
@@ -132,15 +86,6 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
         }
     }
 
-    //banner加载图片类
-    private class MyImageLoader extends ImageLoader {
-
-        @Override
-        public void displayImage(Context context, Object path, ImageView imageView) {
-            Glide.with(getActivity()).load(path).into(imageView);
-        }
-    }
-
     @Override
     public void initDate(Bundle savedInstanceState) {
         //初始化轮播
@@ -170,7 +115,6 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
         }
     }
 
-
     //初始化banner轮播区
     private void initBanner() {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.postZgBanner(DataManager.getMd5Str("SCAROUSELFIGURE")), new ResultListener<ZgBannerModel>() {
@@ -180,13 +124,8 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
                 for (int i = 0; i < obj.getPd().getSHOWIMAGES().size(); i++) {
                     bannerList.add(obj.getPd().getSHOWIMAGES().get(i));
                 }
-                zg_banner.setImages(bannerList);
-                zg_banner.setImageLoader(new MyImageLoader());
-                zg_banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-                zg_banner.setIndicatorGravity(BannerConfig.CENTER);
-                zg_banner.isAutoPlay(true);
-                zg_banner.setDelayTime(3000);
-                zg_banner.start();
+                //banner加载
+                BannerUtils.bannerNoImg(zg_banner,bannerList,3000);
             }
 
             @Override
@@ -197,13 +136,10 @@ public class ZgFragment extends BaseFragment implements BaseQuickAdapter.OnItemC
 
     }
 
-
     @Override
     public View initView(LayoutInflater inflater) {
         view = View.inflate(getActivity(), R.layout.zgfragment, null);
         ButterKnife.bind(this, view);
         return view;
     }
-
-
 }
