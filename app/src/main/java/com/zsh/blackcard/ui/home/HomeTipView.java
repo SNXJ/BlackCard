@@ -27,7 +27,6 @@ public class HomeTipView extends BottomTopDialogFragment {
         void homeTipItemClick(int position);
     }
 
-
     @Override
     public void bindContent(ViewGroup viewGroup) {
         viewGroup.findViewById(R.id.rl_sao).setOnClickListener(new View.OnClickListener() {

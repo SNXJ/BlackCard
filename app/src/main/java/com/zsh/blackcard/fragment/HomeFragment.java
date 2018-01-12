@@ -635,7 +635,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             case R.id.home_glory_magazine_rl://杂志
                 ActivityUtils.startActivity(getActivity(), MainGloryMagazineActivity.class);
                 break;
-            case R.id.home_music_rl://杂志
+            case R.id.home_music_rl://音乐
                 ActivityUtils.startActivity(getActivity(), MainMusicActivity.class);
                 break;
         }
@@ -644,7 +644,6 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(CityEventModel event) {
         rb_city_home.setText(event.getCity());
-
     }
 
     private HomeTipView.OnHomeTipItemClick topPopItemListener = new HomeTipView.OnHomeTipItemClick() {
@@ -703,7 +702,6 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                         MPermissionUtils.showTipsDialog(getActivity());
                     }
                 });
-
     }
 
     @Override

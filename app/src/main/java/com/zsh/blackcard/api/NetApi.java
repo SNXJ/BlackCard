@@ -55,6 +55,7 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.model.MainGloryMagazineModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -1455,6 +1456,16 @@ public class NetApi extends DataManager {
      * @return
      */
     public static Observable<HomeSearchHotModel> postHomeSearchHot(String md5, String PARENT_ID) {
-        return retrofitService.postHomeSearchHot(md5,PARENT_ID);
+        return retrofitService.postHomeSearchHot(md5, PARENT_ID);
+    }
+
+    /**
+     * 首页荣耀杂志更多界面
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<MainGloryMagazineModel> postMainGloryMagazine(String md5, String MENU_ID) {
+        return retrofitService.postMainGloryMagazine(md5, MENU_ID);
     }
 }

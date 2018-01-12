@@ -34,6 +34,7 @@ import com.zsh.blackcard.ui.MySettingActivity;
 import com.zsh.blackcard.ui.OrderCenterActivity;
 import com.zsh.blackcard.ui.VipCenterActivity;
 import com.zsh.blackcard.ui.WalletCenterActivity;
+import com.zsh.blackcard.ui.my.MySettedActivity;
 import com.zsh.blackcard.ui.zgactivity.GameCenterActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.utils.MPermissionUtils;
@@ -94,7 +95,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         return view;
     }
 
-    @OnClick({R.id.my_vip_center_relative, R.id.my_house_center_relative, R.id.my_circle_center_relative, R.id.my_huodong_center_relative, R.id.my_shop_center_relative, R.id.my_customer_center_relative, R.id.my_wallet_center_relative, R.id.my_game_center_relative, R.id.my_order_center_relative, R.id.my_setting_center_relative, R.id.my_friend_linear, R.id.my_black_linear, R.id.my_power_linear, R.id.my_order_music_relative})
+    @OnClick({R.id.my_vip_center_relative, R.id.my_house_center_relative, R.id.my_circle_center_relative, R.id.my_huodong_center_relative, R.id.my_shop_center_relative, R.id.my_customer_center_relative, R.id.my_wallet_center_relative, R.id.my_game_center_relative, R.id.my_order_center_relative, R.id.my_setting_center_relative, R.id.my_friend_linear, R.id.my_black_linear, R.id.my_power_linear, R.id.my_music_center_relative, R.id.my_settled_relative})
     public void onClick(View view) {
         switch (view.getId()) {
             //会员中心
@@ -134,8 +135,12 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 ActivityUtils.startActivity(getActivity(), OrderCenterActivity.class);
                 break;
             //音乐中心
-            case R.id.my_order_music_relative:
-                ActivityUtils.startActivityForData(getActivity(), MusicHomeActivity.class,"2");
+            case R.id.my_music_center_relative:
+                ActivityUtils.startActivityForData(getActivity(), MusicHomeActivity.class, "2");
+                break;
+            //我要入驻
+            case R.id.my_settled_relative:
+                ActivityUtils.startActivity(getActivity(),MySettedActivity.class);
                 break;
             //设置
             case R.id.my_setting_center_relative:

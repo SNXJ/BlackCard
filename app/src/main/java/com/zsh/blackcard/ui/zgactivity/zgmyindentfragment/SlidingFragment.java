@@ -14,7 +14,6 @@ import android.widget.ListView;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.fragment.ZgFragment;
 import com.zsh.blackcard.fragment.zgfragment.ZgAllFragment;
 import com.zsh.blackcard.listener.ZGSlidingListener;
 import com.zsh.blackcard.ui.CollectionActivity;

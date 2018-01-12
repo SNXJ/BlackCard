@@ -20,16 +20,16 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <!--Umeng分享-->
+    <!-- Umeng分享 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <!--即构科技-->
+    <!-- 即构科技 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--即构科技-->
+    <!-- 即构科技 -->
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -45,12 +45,11 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/FullTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden"
-
+            android:theme="@style/FullTheme"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -85,11 +84,11 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-        <!--友盟分享-->
+        <!-- 友盟分享 -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="561cae6ae0f55abd990035bf" />
-        <!--新浪分享-->
+        <!-- 新浪分享 -->
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -100,9 +99,7 @@
             android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
             android:launchMode="singleTask"
@@ -112,14 +109,12 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-        <!--QQ分享-->
+        <!-- QQ分享 -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
             android:noHistory="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -128,29 +123,25 @@
 
                 <data android:scheme="tencent100424468" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!--alipay-->
+        <!-- alipay -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name="com.alipay.sdk.app.H5AuthActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
-
-
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".ui.BlackWeiboActivity" />
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.AddressEditActivity" />
@@ -165,7 +156,6 @@
         <activity android:name=".ui.LogisticsDetailsActivity" />
         <activity android:name=".ui.IntegralbillsActivity" />
         <activity android:name=".ui.DiscountCouponActivity" />
-
         <activity android:name=".ui.DiscountExchangeActivity" />
         <activity android:name=".ui.CommonPassengerActivity" />
         <activity android:name=".ui.EatDrinkActivity" />
@@ -287,13 +277,10 @@
         <activity android:name=".ui.my.ChangePhoneActivity" />
         <activity android:name=".wxapi.WXEntryActivity" />
         <activity android:name=".wxapi.WXPayEntryActivity" />
-
-
         <activity android:name=".ui.zgactivity.ZgSearchResultActivity" />
         <activity android:name=".ui.home.HomeSearchActivity" />
         <activity android:name=".ui.HjSearchActivity" />
-
-        <activity android:name=".ui.home.HomeGloryMagazineActivity"/>
+        <activity android:name=".ui.home.HomeGloryMagazineActivity" />
         <activity
             android:name=".live.LivingRoomActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -301,7 +288,7 @@
         <activity android:name=".ui.home.MainGloryMagazineActivity" />
         <activity android:name=".ui.zgactivity.DiscoverActivity" />
         <activity android:name=".ui.home.MainMusicActivity" />
-
+        <activity android:name=".ui.my.MySettedActivity"></activity>
     </application>
 
 </manifest>
