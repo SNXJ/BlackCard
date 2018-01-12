@@ -9,15 +9,15 @@
         android:id="@+id/rl_banner"
         android:layout_width="match_parent"
 
-        android:layout_height="@dimen/base430dp"
-        android:layout_marginTop="@dimen/base70dp">
+        android:layout_height="@dimen/base420dp"
+        android:layout_marginTop="@dimen/base50dp">
 
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base440dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_height="@dimen/base420dp"
+            />
 
         <TextView
             style="@style/text_"
@@ -80,6 +80,7 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:visibility="gone"
             android:clickable="false"
             android:button="@null"
             android:checked="true"
@@ -91,6 +92,7 @@
             />
 
         <RadioButton
+            android:visibility="gone"
             android:clickable="false"
             android:button="@null"
             android:id="@+id/img_two"
@@ -99,6 +101,7 @@
             android:background="@drawable/welcoome_rb_selector" />
 
         <RadioButton
+            android:visibility="gone"
             android:clickable="false"
             android:button="@null"
             android:id="@+id/img_three"
@@ -107,6 +110,7 @@
             android:background="@drawable/welcoome_rb_selector" />
 
         <RadioButton
+            android:visibility="gone"
             android:clickable="false"
             android:button="@null"
             android:id="@+id/img_four"

@@ -26,8 +26,6 @@ import com.zsh.blackcard.adapter.HomeKTVAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
-import com.zsh.blackcard.custom.PublicDialog;
-import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
 import com.zsh.blackcard.model.HomeBarModel;
@@ -300,7 +298,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
         });
     }
 
-    private void initBanner(List<String> listBanner,List<String> listTitle){
+    private void initBanner(List<String> listBanner, List<String> listTitle) {
         banner.setImages(listBanner);
         banner.setImageLoader(new HomeFoodHotelActivity.MyImageLoader());
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
@@ -317,7 +315,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
             listBanner.add(obj.getAd().get(i).getSHOWIMG());
             listTitle.add(obj.getAd().get(i).getNAME());
         }
-        initBanner(listBanner,listTitle);
+        initBanner(listBanner, listTitle);
     }
 
     private void initBarBanner(HomeBarModel obj) {
@@ -326,7 +324,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
             listBanner.add(obj.getAd().get(i).getSHOWIMG());
             listTitle.add(obj.getAd().get(i).getNAME());
         }
-        initBanner(listBanner,listTitle);
+        initBanner(listBanner, listTitle);
     }
 
     private void initHotelBanner(HomeHotelModel obj) {
@@ -335,7 +333,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
             listBanner.add(obj.getAd().get(i).getSHOWIMG());
             listTitle.add(obj.getAd().get(i).getNAME());
         }
-        initBanner(listBanner,listTitle);
+        initBanner(listBanner, listTitle);
     }
 
     private void initFoodBanner(HomeFoodModel obj) {
@@ -344,7 +342,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
             listBanner.add(obj.getAd().get(i).getSHOWIMG());
             listTitle.add(obj.getAd().get(i).getNAME());
         }
-        initBanner(listBanner,listTitle);
+        initBanner(listBanner, listTitle);
     }
 
     //banner加载图片类
@@ -393,41 +391,91 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
 
 
     private void filterSort() {
-        //推荐。距离由近到远。评分由高到低 。价格由高到低。价格由低到高
-        //TODO
-        PublicDialog.selectOneDialog(this, "foodSort.json", "推荐",
 
-                new FilterListener() {
-                    @Override
-                    public void resultListener(String str) {
-                        String str1 = "";
-                        String str2 = "";
-                        switch (str) {
-                            case "推荐":
+        final List<String> sortList = new ArrayList<>();        //推荐。距离由近到远。评分由高到低 。价格由高到低。价格由低到高
 
-                                break;
-                            case "距离由近到远"://BAREVALUATE
-                                str1 = "";
-                                str2 = "";
-                                break;
-                            case "评分由高到低":
-                                str1 = "SHOPEVALUATE";
-                                str2 = "DESC";
-                                break;
-                            case "价格由高到低":
-                                str1 = "SHOPPRICE";
-                                str2 = "DESC";
-                                break;
-                            case "价格由低到高":
-                                str1 = "SHOPPRICE";
-                                str2 = "ASC";
-                                break;
+        sortList.add("推荐");
+        sortList.add("距离由近到远");
+        sortList.add("评分由高到低");
+        sortList.add("价格由高到低");
+        sortList.add("价格由低到高");
 
-                        }
-                        filterData(str1, str2);
+//        //TODO
+//        PublicDialog.selectOneDialog(this, "foodSort.json", "推荐",
+//
+//                new FilterListener() {
+//                    @Override
+//                    public void resultListener(String str) {
+//                        String str1 = "";
+//                        String str2 = "";
+//                        switch (str) {
+//                            case "推荐":
+//
+//                                break;
+//                            case "距离由近到远"://BAREVALUATE
+//                                str1 = "";
+//                                str2 = "";
+//                                break;
+//                            case "评分由高到低":
+//                                str1 = "SHOPEVALUATE";
+//                                str2 = "DESC";
+//                                break;
+//                            case "价格由高到低":
+//                                str1 = "SHOPPRICE";
+//                                str2 = "DESC";
+//                                break;
+//                            case "价格由低到高":
+//                                str1 = "SHOPPRICE";
+//                                str2 = "ASC";
+//                                break;
+//
+//                        }
+//                        filterData(str1, str2);
+//
+//                    }
+//                });
 
-                    }
-                });
+        OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
+                String str1 = "";
+                String str2 = "";
+                switch ((sortList.get(options1))) {
+                    case "推荐":
+
+                        break;
+                    case "距离由近到远"://BAREVALUATE
+                        str1 = "";
+                        str2 = "";
+                        break;
+                    case "评分由高到低":
+                        str1 = "SHOPEVALUATE";
+                        str2 = "DESC";
+                        break;
+                    case "价格由高到低":
+                        str1 = "SHOPPRICE";
+                        str2 = "DESC";
+                        break;
+                    case "价格由低到高":
+                        str1 = "SHOPPRICE";
+                        str2 = "ASC";
+                        break;
+
+                }
+                filterData(str1, str2);
+
+
+            }
+        })
+                .setSubmitColor(Color.GRAY)
+                .setCancelColor(Color.GRAY)
+                .setTitleBgColor(Color.WHITE)
+                .setDividerColor(Color.WHITE)
+                .setContentTextSize(16)
+                .setLineSpacingMultiplier(2f)
+                .build();
+        pvOptions.setNPicker(sortList, null, null);
+        pvOptions.show();
     }
 
     private void filterData(String str1, String str2) {

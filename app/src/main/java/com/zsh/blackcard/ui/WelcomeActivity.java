@@ -3,6 +3,7 @@ package com.zsh.blackcard.ui;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -94,6 +95,7 @@ public class WelcomeActivity extends BaseActivity {
                     mRecyclerView.setAdapter(new WelcomeAdapter(mList));
                     mRecyclerView.setLayoutManager(scaleLayoutManager);
                     initLayoutManger();
+                    initdot();
                 }
             }
 
@@ -125,8 +127,7 @@ public class WelcomeActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
 
-                RadioButton rb = (RadioButton) radio_group.getChildAt(position);
-                rb.setChecked(true);
+                radio_group.check(position);
 
             }
 
@@ -137,6 +138,21 @@ public class WelcomeActivity extends BaseActivity {
         });
 
 
+    }
+
+    private void initdot() {
+        for (int i = 0; i < mList.size(); i++) {
+            RadioButton rb = new RadioButton(this);
+            RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = DisplayUtil.dip2px(this, 5);
+            rb.setWidth(DisplayUtil.dip2px(this, 5));
+            rb.setHeight(DisplayUtil.dip2px(this, 5));
+            rb.setButtonDrawable(null);
+            rb.setBackgroundResource(R.drawable.welcoome_rb_selector);
+            rb.setChecked(i == 0 ? true : false);
+            rb.setId(i);
+            radio_group.addView(rb, params);
+        }
     }
 
 }

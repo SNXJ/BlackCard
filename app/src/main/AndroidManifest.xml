@@ -44,11 +44,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.zsh.blackcard.ui.WelcomeActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/FullTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden"
 
             android:windowSoftInputMode="adjustResize">
@@ -293,13 +293,14 @@
         <activity android:name=".ui.home.HomeSearchActivity" />
         <activity android:name=".ui.HjSearchActivity" />
 
-        <activity android:name=".ui.home.HomeGloryMagazineActivity"></activity>
+        <activity android:name=".ui.home.HomeGloryMagazineActivity"/>
         <activity
             android:name=".live.LivingRoomActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.zgactivity.ShareProfitActivity" />
         <activity android:name=".ui.home.MainGloryMagazineActivity" />
         <activity android:name=".ui.zgactivity.DiscoverActivity" />
+        <activity android:name=".ui.home.MainMusicActivity" />
 
     </application>
 

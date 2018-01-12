@@ -112,15 +112,34 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <TextView
+
+        <RelativeLayout
+            android:id="@+id/home_server_rl"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/base46dp"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:gravity="center"
-            android:text="荣耀服务"
-            android:textColor="@color/recharge_text"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/base46dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:gravity="center"
+                android:text="荣耀服务"
+                android:textColor="@color/recharge_text"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:src="@mipmap/next" />
+
+        </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_glory_service_recycler"
@@ -129,15 +148,33 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <TextView
+
+        <RelativeLayout
+            android:id="@+id/home_play_rl"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/base46dp"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:gravity="center"
-            android:text="汇聚玩趴"
-            android:textColor="@color/recharge_text"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/base46dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:gravity="center"
+                android:text="汇聚玩趴"
+                android:textColor="@color/recharge_text"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:src="@mipmap/next" />
+
+        </RelativeLayout>
 
         <com.youth.banner.Banner
             android:id="@+id/home_play_banner"
@@ -184,15 +221,42 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <TextView
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="@dimen/base46dp"-->
+        <!--android:layout_marginLeft="@dimen/base15dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="荣耀音乐"-->
+        <!--android:textColor="@color/recharge_text"-->
+        <!--android:textSize="15sp"-->
+        <!--android:textStyle="bold" />-->
+
+        <RelativeLayout
+            android:id="@+id/home_music_rl"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/base46dp"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:gravity="center"
-            android:text="荣耀音乐"
-            android:textColor="@color/recharge_text"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/base46dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:gravity="center"
+                android:text="荣耀音乐"
+                android:textColor="@color/recharge_text"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:src="@mipmap/next" />
+
+        </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_glory_music_recycler"
