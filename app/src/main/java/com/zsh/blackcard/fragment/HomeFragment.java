@@ -39,9 +39,6 @@ import com.zsh.blackcard.adapter.HomeTypeAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.HomeTypeConstant;
-import com.zsh.blackcard.custom.NewTopDialog;
-import com.zsh.blackcard.custom.PublicDialog;
-import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.CityEventModel;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
@@ -54,9 +51,6 @@ import com.zsh.blackcard.model.HomeTopModel;
 import com.zsh.blackcard.music.MusicHomeActivity;
 import com.zsh.blackcard.ui.MsgCenterActivity;
 import com.zsh.blackcard.ui.MsgSysCenterActivity;
-import com.zsh.blackcard.ui.home.HomeSearchActivity;
-import com.zsh.blackcard.ui.home.HomeTipView;
-import com.zsh.blackcard.ui.zgactivity.ZgSearchActivity;
 import com.zsh.blackcard.ui.home.HomeBarDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodDetailActivity;
 import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
@@ -69,8 +63,11 @@ import com.zsh.blackcard.ui.home.HomeNewsActivity;
 import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
+import com.zsh.blackcard.ui.home.HomeSearchActivity;
+import com.zsh.blackcard.ui.home.HomeTipView;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.ui.home.MainGloryMagazineActivity;
+import com.zsh.blackcard.ui.home.MainMusicActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.MPermissionUtils;
@@ -614,7 +611,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     private HomeTipView topDialog;
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear, R.id.home_glory_magazine_rl})
+    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear, R.id.home_glory_magazine_rl,R.id.home_music_rl})
     public void onClick(View view) {
         switch (view.getId()) {
 //            case R.id.home_play_img:
@@ -637,6 +634,9 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 break;
             case R.id.home_glory_magazine_rl://杂志
                 ActivityUtils.startActivity(getActivity(), MainGloryMagazineActivity.class);
+                break;
+            case R.id.home_music_rl://杂志
+                ActivityUtils.startActivity(getActivity(), MainMusicActivity.class);
                 break;
         }
     }
