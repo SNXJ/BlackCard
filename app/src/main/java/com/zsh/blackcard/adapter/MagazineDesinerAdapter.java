@@ -1,10 +1,13 @@
 package com.zsh.blackcard.adapter;
 
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.model.MainGloryMagazineModel;
 
 import java.util.List;
 
@@ -17,12 +20,13 @@ import java.util.List;
  */
 
 public class MagazineDesinerAdapter extends BaseQuickAdapter<Integer, BaseViewHolder> {
-    public MagazineDesinerAdapter(@Nullable List<Integer> data) {
-        super(R.layout.magazine_desiner_item, data);
+
+    public MagazineDesinerAdapter(int layoutResId, @Nullable List<Integer> data) {
+        super(layoutResId, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, Integer item) {
-        helper.getView(R.id.im).setBackgroundResource(item);
+        Glide.with(mContext).load(item).into((ImageView) helper.getView(R.id.im));
     }
 }

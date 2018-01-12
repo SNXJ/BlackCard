@@ -18,6 +18,7 @@ import com.zsh.blackcard.model.HomeYachtDetailModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by kkkkk on 2017/11/30.
@@ -136,5 +137,10 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
 
             }
         });
+    }
+
+    @OnClick(R.id.title_back)
+    public void onClick(){
+        finish();
     }
 }

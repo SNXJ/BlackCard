@@ -65,6 +65,9 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
     //活动所属类型
     @BindView(R.id.hj_eat_set_sort_tv)
     TextView hj_eat_set_sort_tv;
+    //发布活动标题
+    @BindView(R.id.activity_eat_drink_set_title_tv)
+    TextView activity_eat_drink_set_title_tv;
 
     private Map<String, String> map = new HashMap<>();
     private List<MultipartBody.Part> pary;
@@ -82,6 +85,8 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
 
     private void initData() {
         String data = getIntent().getStringExtra("data");
+        String title = getIntent().getStringExtra("title");
+        activity_eat_drink_set_title_tv.setText(title);
         search = (List<String>) getIntent().getSerializableExtra("listOne");
         searchId = (List<String>) getIntent().getSerializableExtra("listTwo");
         map.put("FKEY", DataManager.getMd5Str("DETAILADD"));

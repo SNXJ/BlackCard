@@ -1,4 +1,4 @@
-package com.zsh.blackcard.fragment;
+package com.zsh.blackcard.fragment.zgfragment;
 
 import android.content.Context;
 import android.os.Bundle;

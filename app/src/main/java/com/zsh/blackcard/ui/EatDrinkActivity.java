@@ -110,13 +110,13 @@ public class EatDrinkActivity extends BaseActivity implements BaseQuickAdapter.O
                 break;
             case R.id.hj_eat_set:
                 //跳转至去发布
-                ActivityUtils.startActivityForDataList(this, EatDrinkSetActivity.class, data, listSearch, listSearchId);
+                ActivityUtils.startActivityForDataList(this, EatDrinkSetActivity.class, data, title, listSearch, listSearchId);
                 break;
             case R.id.hj_recycler_detail_title:
                 //第一次弹出popWindow肯定为空，直接显示
-                if(customPopWindow == null){
+                if (customPopWindow == null) {
                     showPopWindow(viewPop);
-                }else{
+                } else {
                     //下次点击pop判断他是否在显示，如果在显示，则点击title关闭pop，否则则显示pop
                     if (customPopWindow.getPopupWindow().isShowing()) {
                         hj_recycler_detail_title.setClickable(true);

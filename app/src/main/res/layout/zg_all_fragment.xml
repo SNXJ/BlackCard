@@ -67,7 +67,7 @@
         android:layout_height="@dimen/base35dp"
         android:background="#101010"
         app:tabIndicatorHeight="0dp"
-        app:tabMode="fixed"
+        app:tabMode="scrollable"
         app:tabPaddingBottom="-1dp"
         app:tabPaddingEnd="-1dp"
         app:tabPaddingStart="-1dp"

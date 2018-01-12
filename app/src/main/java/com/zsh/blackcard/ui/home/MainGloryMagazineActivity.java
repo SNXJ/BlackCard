@@ -16,7 +16,12 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.MagazineDesinerAdapter;
 import com.zsh.blackcard.adapter.MagazineListAdapter;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.MyImageLoader;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.MainGloryMagazineModel;
+import com.zsh.blackcard.utils.BannerUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +53,9 @@ public class MainGloryMagazineActivity extends BaseActivity implements TabLayout
     RecyclerView designerRecyclerView;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    private String[] tab = new String[]{"推荐", "科技", "吃喝", "心灵", "时尚", "运动", "摄影"};
-    private List<Integer> bannerList = new ArrayList<>();
-
-    private List<Integer> designerList = new ArrayList<>();
-    private List<Integer> rvList = new ArrayList<>();
-
+    private List<String> bannerList = new ArrayList<>();
+    private List<Integer> asd = new ArrayList<>();
+    private List<Integer> menu_id = new ArrayList<>();
     private MagazineDesinerAdapter magazineDesinerAdapter;
 
     private MagazineListAdapter magazineListAdapter;
@@ -62,82 +64,63 @@ public class MainGloryMagazineActivity extends BaseActivity implements TabLayout
     protected void initUI() {
         setContentView(R.layout.main_glory_magazine_activity);
         ButterKnife.bind(this);
-        inintData();
+        initData();
     }
 
-    private void inintData() {
-
-        initTab();
-        initBanner();
-        initDesinerRV();
-        initMagazineRV();
-
-
+    private void initData() {
+        //请求网络
+        initHttp();
     }
 
-    private void initMagazineRV() {
-        rvList.add(R.mipmap.magazine_image_71);
-        rvList.add(R.mipmap.magazine_image_72);
-        rvList.add(R.mipmap.magazine_image_73);
-        rvList.add(R.mipmap.magazine_image_74);
-        rvList.add(R.mipmap.magazine_image_75);
-        rvList.add(R.mipmap.magazine_image_76);
-        rvList.add(R.mipmap.magazine_image_77);
-        rvList.add(R.mipmap.magazine_image_78);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        magazineListAdapter = new MagazineListAdapter(rvList);
-        recyclerView.setAdapter(magazineListAdapter);
-        magazineListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+    //请求网络
+    private void initHttp() {
+        showLoading(this);
+
+        DataManager.getInstance(this).RequestHttp(NetApi.postMainGloryMagazine(DataManager.getMd5Str("LISTSUBMENU"), "213"), new ResultListener<MainGloryMagazineModel>() {
             @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                ActivityUtils.startActivity(this,HomeGloryMagazineActivity.class);
+            public void responseSuccess(MainGloryMagazineModel obj) {
+                if (obj.getResult().equals("01")) {
+                    //遍历TabLayout数量
+                    for (int i = 0; i < obj.getPd().size(); i++) {
+                        TabLayout.Tab tab = tabLayout.newTab();
+                        tab.setText(obj.getPd().get(i).getMENU_NAME());
+                        tabLayout.addTab(tab);
+                        menu_id.add(obj.getPd().get(i).getMENU_ID());
+                    }
+                    //添加tab点击事件
+                    tabLayout.addOnTabSelectedListener(MainGloryMagazineActivity.this);
+                    //遍历banner广告数量
+                    for (int i = 0; i < obj.getAds().size(); i++) {
+                        bannerList.add(obj.getAds().get(i).getSHOWIMG());
+                    }
+                    //加载banner
+                    BannerUtils.bannerNoImg(banner, bannerList, 3000);
+                    //加载设计师列表(此处为假数据)
+                    asd.add(R.mipmap.magazine_image_66);
+                    asd.add(R.mipmap.magazine_image_67);
+                    asd.add(R.mipmap.magazine_image_68);
+                    asd.add(R.mipmap.magazine_image_69);
+                    asd.add(R.mipmap.magazine_image_66);
+                    asd.add(R.mipmap.magazine_image_67);
+                    asd.add(R.mipmap.magazine_image_68);
+                    asd.add(R.mipmap.magazine_image_69);
+
+                    magazineDesinerAdapter = new MagazineDesinerAdapter(R.layout.magazine_desiner_item, asd);
+                    designerRecyclerView.setLayoutManager(new LinearLayoutManager(MainGloryMagazineActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                    designerRecyclerView.setAdapter(magazineDesinerAdapter);
+                    //加载杂志列表
+                    magazineListAdapter = new MagazineListAdapter(R.layout.magazine_magazine_item, obj.getMagazines());
+                    recyclerView.setLayoutManager(new GridLayoutManager(MainGloryMagazineActivity.this, 2));
+                    recyclerView.setAdapter(magazineListAdapter);
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+                dialogDismiss();
             }
         });
-
     }
-
-    private void initDesinerRV() {
-        designerList.add(R.mipmap.magazine_image_66);
-        designerList.add(R.mipmap.magazine_image_67);
-        designerList.add(R.mipmap.magazine_image_68);
-        designerList.add(R.mipmap.magazine_image_69);
-//        designerList.add(R.mipmap.magazine_image_70);
-        designerList.add(R.mipmap.magazine_image_66);
-        designerList.add(R.mipmap.magazine_image_67);
-        designerList.add(R.mipmap.magazine_image_68);
-        designerList.add(R.mipmap.magazine_image_69);
-//        designerList.add(R.mipmap.magazine_image_70);
-
-        designerRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        magazineDesinerAdapter = new MagazineDesinerAdapter(designerList);
-//        recyclerView.addItemDecoration(new SpaceItemDecoration(30));
-        designerRecyclerView.setAdapter(magazineDesinerAdapter);
-
-
-    }
-
-    private void initBanner() {
-
-        bannerList.add(R.mipmap.magazine_banner_11);
-        bannerList.add(R.mipmap.magazine_banner_11);
-        bannerList.add(R.mipmap.magazine_banner_11);
-
-        banner.setImages(bannerList);
-        banner.setImageLoader(new MyImageLoader());
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-        banner.setIndicatorGravity(BannerConfig.CENTER);
-        banner.isAutoPlay(true);
-        banner.setDelayTime(3000);
-        banner.start();
-    }
-
-    private void initTab() {
-        for (int i = 0; i < tab.length; i++) {
-            tabLayout.addTab(tabLayout.newTab().setText(tab[i]));
-        }
-        tabLayout.addOnTabSelectedListener(this);
-    }
-
 
     @OnClick({R.id.title_back, R.id.designer_join})
     public void onViewClicked(View view) {
@@ -153,7 +136,29 @@ public class MainGloryMagazineActivity extends BaseActivity implements TabLayout
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         //TODO tab.getPosition();
+        initHttpOther(menu_id.get(tab.getPosition()));
+    }
 
+    //请求其他Tab
+    private void initHttpOther(Integer integer) {
+        showLoading(this);
+
+        DataManager.getInstance(this).RequestHttp(NetApi.postMainGloryMagazine(DataManager.getMd5Str("LISTSUBMENU"), String.valueOf(integer)), new ResultListener<MainGloryMagazineModel>() {
+            @Override
+            public void responseSuccess(MainGloryMagazineModel obj) {
+                if (obj.getResult().equals("01")) {
+                    //加载杂志列表
+                    magazineListAdapter.getData().clear();
+                    magazineListAdapter.getData().addAll(obj.getMagazines());
+                    magazineListAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+                dialogDismiss();
+            }
+        });
     }
 
     @Override

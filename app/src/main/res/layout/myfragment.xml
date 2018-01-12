@@ -269,7 +269,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/my_order_music_relative"
+            android:id="@+id/my_music_center_relative"
             style="@style/my_center_relative">
 
             <ImageView
@@ -279,6 +279,25 @@
             <TextView
                 style="@style/my_center_tip_tv"
                 android:text="音乐中心" />
+
+            <ImageView
+                style="@style/my_center_right_img"
+                android:src="@mipmap/more" />
+
+            <View style="@style/my_center_view" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_settled_relative"
+            style="@style/my_center_relative">
+
+            <ImageView
+                style="@style/my_center_left_img"
+                android:src="@mipmap/settled" />
+
+            <TextView
+                style="@style/my_center_tip_tv"
+                android:text="我要入驻" />
 
             <ImageView
                 style="@style/my_center_right_img"

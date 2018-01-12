@@ -22,15 +22,32 @@ public class BannerUtils {
      *
      * @param banner    轮播控件
      * @param listImg   轮播图片集合
-     * @param position  轮播时间
+     * @param time  轮播时间
      */
-    public static void bannerNoImg(Banner banner, List<String> listImg, int position) {
+    public static void bannerNoImg(Banner banner, List<String> listImg, int time) {
         banner.setImages(listImg);
         banner.setImageLoader(new MyImageLoader());
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         banner.setIndicatorGravity(BannerConfig.CENTER);
         banner.isAutoPlay(true);
-        banner.setDelayTime(position);
+        banner.setDelayTime(time);
+        banner.start();
+    }
+
+    /**
+     * 此方法为没有banner文字描述类型，适合使用已有的资源文件，如需要请，自行封装
+     *
+     * @param banner    轮播控件
+     * @param listImg   轮播图片集合
+     * @param time  轮播时间
+     */
+    public static void bannerIntNoImg(Banner banner, List<Integer> listImg, int time) {
+        banner.setImages(listImg);
+        banner.setImageLoader(new MyImageLoader());
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+        banner.setIndicatorGravity(BannerConfig.CENTER);
+        banner.isAutoPlay(true);
+        banner.setDelayTime(time);
         banner.start();
     }
 

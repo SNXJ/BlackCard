@@ -8,10 +8,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.fragment.ZgFragment;
 import com.zsh.blackcard.listener.ZGSlidingListener;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.ui.zgactivity.ZgSearchActivity;
@@ -21,6 +22,7 @@ import com.zsh.blackcard.utils.MPermissionUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * Created by ZCY on 2018/1/11.
@@ -30,6 +32,7 @@ public class ZgAllFragment extends BaseFragment {
 
     @BindView(R.id.zg_all_tab_layout)
     TabLayout zg_all_tab_layout;
+    Unbinder unbinder;
 
     public void setZgSlidingListener(ZGSlidingListener zgSlidingListener) {
         this.zgSlidingListener = zgSlidingListener;
@@ -68,6 +71,20 @@ public class ZgAllFragment extends BaseFragment {
             fragmentTransaction.hide(frg_replace).add(R.id.zg_all_container, fragment).commit();
         }
         frg_replace = fragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     //TabLayout的点击事件

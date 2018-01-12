@@ -52,6 +52,7 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.model.MainGloryMagazineModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -843,5 +844,10 @@ public interface RetrofitService {
     @POST("apphomein/searchlist.do?")
     Observable<HomeSearchHotModel> postHomeSearchHot(@Field("FKEY") String md5,
                                                      @Field("PARENT_ID") String PARENT_ID);
-}
 
+    //首页荣耀杂志更多界面
+    @FormUrlEncoded
+    @POST("appmagazinein/getlistsubmenu.do?")
+    Observable<MainGloryMagazineModel> postMainGloryMagazine(@Field("FKEY") String md5,
+                                                             @Field("MENU_ID") String MENU_ID);
+}

@@ -103,13 +103,15 @@ public class ActivityUtils {
      * @param activity
      * @param cls
      * @param data
+     * @param title
      * @param search
      * @param searchId
      */
     public static void startActivityForDataList(Activity activity, Class<?> cls,
-                                                String data, List<String> search, List<String> searchId) {
+                                                String data,String title, List<String> search, List<String> searchId) {
         Intent intent = new Intent(activity, cls);
         intent.putExtra("data", data);
+        intent.putExtra("title", title);
         intent.putExtra("listOne", (Serializable) search);
         intent.putExtra("listTwo", (Serializable) searchId);
         activity.startActivity(intent);

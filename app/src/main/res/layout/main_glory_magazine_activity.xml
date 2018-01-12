@@ -6,106 +6,105 @@
     android:background="@mipmap/bj"
     android:orientation="vertical">
 
+    <RelativeLayout style="@style/title_rl">
 
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
 
-        <RelativeLayout style="@style/title_rl">
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="荣耀杂志" />
+    </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/title_back"
-                style="@style/title_im_back" />
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base35dp"
+        android:background="#101010"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="scrollable"
+        app:tabPaddingBottom="-1dp"
+        app:tabPaddingEnd="-1dp"
+        app:tabPaddingStart="-1dp"
+        app:tabPaddingTop="-1dp"
+        app:tabSelectedTextColor="@color/bg_org"
+        app:tabTextColor="@color/recharge_text">
 
-            <TextView
-                android:id="@+id/title_tv"
-                style="@style/title_tv"
-                android:text="荣耀杂志" />
-        </RelativeLayout>
+    </android.support.design.widget.TabLayout>
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base35dp"
-            app:tabIndicatorColor="@android:color/transparent"
-            app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/bg_white"
-            app:tabTextAppearance="@style/tab_music_main"
-            app:tabTextColor="@color/ff92_text" />
-
-
-        <android.support.v4.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base120dp">
+
+            </com.youth.banner.Banner>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/base130dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:orientation="vertical">
 
-                <com.youth.banner.Banner
-                    android:id="@+id/banner"
+                <RelativeLayout
+                    android:id="@+id/designer_join"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/base120dp">
+                    android:layout_height="@dimen/base35dp"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        style="@style/text_"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/base15dp"
+                        android:text="设计师"
+                        android:textSize="15sp" />
 
-                </com.youth.banner.Banner>
+                    <TextView
+                        style="@style/text_"
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/base130dp"
-                    android:layout_marginTop="@dimen/base10dp"
-                    android:orientation="vertical">
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/base15dp"
+                        android:text="入驻"
+                        android:textSize="12sp" />
 
-                    <RelativeLayout
-                        android:id="@+id/designer_join"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/base35dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/text_"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/base15dp"
-                            android:text="设计师"
-                            android:textSize="15sp" />
-
-                        <TextView
-                            style="@style/text_"
-
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="@dimen/base15dp"
-                            android:text="入驻"
-                            android:textSize="12sp" />
-
-                    </RelativeLayout>
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/designer_recyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingTop="@dimen/base10dp" />
-
-
-                </LinearLayout>
-
-                <TextView
-
-                    style="@style/text_"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/base15dp"
-                    android:layout_marginTop="@dimen/base5dp"
-                    android:text="杂志"
-                    android:textSize="15sp" />
+                </RelativeLayout>
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/designer_recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="@dimen/base5dp"
-                    android:layout_marginTop="@dimen/base15dp" />
+                    android:nestedScrollingEnabled="false"
+                    android:paddingTop="@dimen/base10dp" />
+
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
 
+            <TextView
+                style="@style/text_"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="杂志"
+                android:textSize="15sp" />
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/base5dp"
+                android:layout_marginTop="@dimen/base15dp"
+                android:nestedScrollingEnabled="false" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

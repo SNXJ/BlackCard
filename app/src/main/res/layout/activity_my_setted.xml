@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context="com.zsh.blackcard.ui.my.MySettedActivity">
+
+    <RelativeLayout
+        android:id="@+id/hj_eat_set_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp"
+        android:background="#0C0C0C">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/activity_eat_drink_set_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="我要入驻"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/one_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/one_img"
+                    android:text="美食商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/two_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/two_img"
+                    android:text="酒店商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/three"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/three_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/three_img"
+                    android:text="马术商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/four"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/four_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/four_img"
+                    android:text="游艇商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/five"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/five_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/five_img"
+                    android:text="豪车商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/six"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/six_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:src="@mipmap/settled_icon_6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/six_img"
+                    android:text="高尔夫商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/seven"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/seven_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_7" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/seven_img"
+                    android:text="飞机商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/eight"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/eight_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_8" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/eight_img"
+                    android:text="高端品鉴商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/nine"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/nine_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_9" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/nine_img"
+                    android:text="娱乐商家入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ten"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/ten_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_10" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/ten_img"
+                    android:text="金融机构入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/elven"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/elven_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_11" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/elven_img"
+                    android:text="自媒体入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/twelve"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/twelve_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/settled_icon_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/twelve_img"
+                    android:text="音乐入驻"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
