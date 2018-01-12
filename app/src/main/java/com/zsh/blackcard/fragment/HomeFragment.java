@@ -64,6 +64,7 @@ import com.zsh.blackcard.ui.home.HomePlaneActivity;
 import com.zsh.blackcard.ui.home.HomePublicRecyclerActivity;
 import com.zsh.blackcard.ui.home.HomeScannerActivity;
 import com.zsh.blackcard.ui.home.HomeSearchActivity;
+import com.zsh.blackcard.ui.home.HomeTipView;
 import com.zsh.blackcard.ui.home.HomeTrainActivity;
 import com.zsh.blackcard.ui.home.MainGloryMagazineActivity;
 import com.zsh.blackcard.ui.home.MainMusicActivity;
