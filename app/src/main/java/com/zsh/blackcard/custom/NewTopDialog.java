@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import com.shing.topdialoglibrary.BottomTopDialogFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.utils.LogUtils;
 
 
 /**
@@ -25,8 +24,9 @@ public class NewTopDialog extends BottomTopDialogFragment {
         viewGroup.findViewById(R.id.ll_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogUtils.i("++++++++++","++++++++点击++++++");
                 dismiss();
+
+
             }
         });
 

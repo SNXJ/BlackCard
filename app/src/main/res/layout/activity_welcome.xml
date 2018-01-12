@@ -79,44 +79,7 @@
 
         android:orientation="horizontal">
 
-        <RadioButton
-            android:visibility="gone"
-            android:clickable="false"
-            android:button="@null"
-            android:checked="true"
 
-            android:background="@drawable/welcoome_rb_selector"
-            android:id="@+id/img_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-        <RadioButton
-            android:visibility="gone"
-            android:clickable="false"
-            android:button="@null"
-            android:id="@+id/img_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/welcoome_rb_selector" />
-
-        <RadioButton
-            android:visibility="gone"
-            android:clickable="false"
-            android:button="@null"
-            android:id="@+id/img_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/welcoome_rb_selector" />
-
-        <RadioButton
-            android:visibility="gone"
-            android:clickable="false"
-            android:button="@null"
-            android:id="@+id/img_four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/welcoome_rb_selector" />
 
     </RadioGroup>
 

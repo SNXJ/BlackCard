@@ -144,7 +144,7 @@ public class WelcomeActivity extends BaseActivity {
         for (int i = 0; i < mList.size(); i++) {
             RadioButton rb = new RadioButton(this);
             RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.leftMargin = DisplayUtil.dip2px(this, 5);
+            params.leftMargin = DisplayUtil.dip2px(this, 0);
             rb.setWidth(DisplayUtil.dip2px(this, 5));
             rb.setHeight(DisplayUtil.dip2px(this, 5));
             rb.setButtonDrawable(null);
