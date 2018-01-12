@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/zg_special_frg_recycler_item_big_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base165dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/cabinet_image_1" />
+
+        <TextView
+            android:id="@+id/zg_special_frg_recycler_item_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base12dp"
+            android:layout_marginRight="@dimen/base12dp"
+            android:layout_marginTop="@dimen/base15dp"
+            android:text="3月1日-3月15日期间，环球黑卡携手GUCCI旗舰店、BURBERRY旗舰店，用户购买旗舰店任何商品，在线购买将获得3%返点，线上下单到店自提顾客返5%！详情请咨询在线客服"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/zg_special_frg_recycler_item_special_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/base12dp"
+            android:layout_marginRight="@dimen/base12dp"
+            android:layout_marginTop="@dimen/base25dp"
+            android:text="GUCCI旗舰店"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="@dimen/base3dp"
+            android:layout_marginRight="@dimen/base3dp"
+            android:id="@+id/zg_special_frg_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base15dp"
+            android:nestedScrollingEnabled="false">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

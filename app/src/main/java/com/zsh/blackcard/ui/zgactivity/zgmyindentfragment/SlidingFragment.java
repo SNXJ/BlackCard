@@ -15,6 +15,7 @@ import android.widget.ListView;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.fragment.ZgFragment;
+import com.zsh.blackcard.fragment.zgfragment.ZgAllFragment;
 import com.zsh.blackcard.listener.ZGSlidingListener;
 import com.zsh.blackcard.ui.CollectionActivity;
 import com.zsh.blackcard.ui.ShoppingCarActivity;
@@ -50,9 +51,9 @@ public class SlidingFragment extends BaseFragment {
         //添加默认主界面
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        ZgFragment zgFragment = new ZgFragment();
-        zgFragment.setZgSlidingListener(zglistener);
-        fragmentTransaction.replace(R.id.drawerLayout_frame, zgFragment);
+        ZgAllFragment zgAllFragment = new ZgAllFragment();
+        zgAllFragment.setZgSlidingListener(zglistener);
+        fragmentTransaction.replace(R.id.drawerLayout_frame, zgAllFragment);
         fragmentTransaction.commit();
 
         //填充侧滑列表数据
