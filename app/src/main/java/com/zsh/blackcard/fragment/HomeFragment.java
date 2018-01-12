@@ -611,7 +611,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     private HomeTipView topDialog;
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear, R.id.home_glory_magazine_rl})
+    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear, R.id.home_glory_magazine_rl,R.id.home_music_rl})
     public void onClick(View view) {
         switch (view.getId()) {
 //            case R.id.home_play_img:
