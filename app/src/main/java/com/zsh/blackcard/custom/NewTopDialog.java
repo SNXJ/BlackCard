@@ -19,14 +19,46 @@ import com.zsh.blackcard.R;
 public class NewTopDialog extends BottomTopDialogFragment {
 
     View belowView ;
+
+    public interface OnSelectSend{
+        void selectSend(int position);
+    }
+
+    private OnSelectSend onSelectSend;
+
+    public void setOnSelectSend(OnSelectSend onSelectSend) {
+        this.onSelectSend = onSelectSend;
+    }
+
     @Override
     public void bindContent(ViewGroup viewGroup) {
+        //文字发布
         viewGroup.findViewById(R.id.ll_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
+                if(onSelectSend != null){
+                    onSelectSend.selectSend(0);
+                }
+            }
+        });
 
+        //图片发布
+        viewGroup.findViewById(R.id.ll_img).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(onSelectSend != null){
+                    onSelectSend.selectSend(0);
+                }
+            }
+        });
 
+        //视频发布
+        viewGroup.findViewById(R.id.ll_video).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(onSelectSend != null){
+                    onSelectSend.selectSend(0);
+                }
             }
         });
 

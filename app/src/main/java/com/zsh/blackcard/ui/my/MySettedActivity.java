@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,30 +25,39 @@ public class MySettedActivity extends BaseActivity {
         switch (view.getId()) {
             //美食商家入驻
             case R.id.one:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //酒店商家入驻
             case R.id.two:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //马术商家入驻
             case R.id.three:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //游艇商家入驻
             case R.id.four:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //豪车商家入驻
             case R.id.five:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //高尔夫商家入驻
             case R.id.six:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //飞机商家入驻
             case R.id.seven:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //高端品鉴商家入驻
             case R.id.eight:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //娱乐商家入驻
             case R.id.nine:
+                ActivityUtils.startActivity(this,MySettedBusinessActivity.class);
                 break;
             //金融机构入驻
             case R.id.ten:

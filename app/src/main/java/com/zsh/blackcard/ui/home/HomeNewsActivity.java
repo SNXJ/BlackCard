@@ -30,7 +30,7 @@ import cn.jzvd.JZVideoPlayer;
  * Date: 2017-11-12
  * Description:描述：
  */
-public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSelectedListener {
+public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, NewTopDialog.OnSelectSend {
 
     @BindView(R.id.my_order_other_tabLayout)
     TabLayout my_order_other_tabLayout;
@@ -104,10 +104,23 @@ public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSel
                 break;
             //点击发布头条
             case R.id.my_tip_send_tv:
-
 //                PublicDialog.sendNewsDialog(this);
                 NewTopDialog topDialog = new NewTopDialog();
                 topDialog.show(getSupportFragmentManager(), "Show", view);
+                topDialog.setOnSelectSend(HomeNewsActivity.this);
+                break;
+        }
+    }
+
+    //点击发布文字，图片，视频监听。0为文字，1为图片，2为视频
+    @Override
+    public void selectSend(int position) {
+        switch (position) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
                 break;
         }
     }
