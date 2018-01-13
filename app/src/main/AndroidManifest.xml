@@ -48,7 +48,6 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.WelcomeActivity"
-            android:theme="@style/FullTheme"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/FullTheme"
             android:windowSoftInputMode="adjustResize">
@@ -100,7 +99,7 @@
             android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
             android:launchMode="singleTask"
@@ -289,7 +288,10 @@
         <activity android:name=".ui.home.MainGloryMagazineActivity" />
         <activity android:name=".ui.zgactivity.DiscoverActivity" />
         <activity android:name=".ui.home.MainMusicActivity" />
-        <activity android:name=".ui.my.MySettedActivity"></activity>
+        <activity android:name=".ui.my.MySettedActivity" />
+        <activity android:name=".ui.my.MySettedBusinessActivity" />
+        <activity android:name=".ui.my.MySettedBusinessSubmitActivity" />
+        <activity android:name=".ui.my.MySettedBusinessPhotoActivity"></activity>
     </application>
 
 </manifest>

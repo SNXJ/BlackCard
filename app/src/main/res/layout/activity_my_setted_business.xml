@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.zsh.blackcard.ui.my.MySettedBusinessActivity">
+
+    <RelativeLayout
+        android:id="@+id/hj_eat_set_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp"
+        android:background="#0C0C0C"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/activity_eat_drink_set_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="我要入驻"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_one"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        app:layout_constraintTop_toBottomOf="@+id/hj_eat_set_title">
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="门店名称"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/name_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_toRightOf="@+id/name_tv"
+            android:background="@null"
+            android:hint="若有分店，请具体到分店名"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/recharge_text"
+            android:textColorHint="#FF454545"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_two"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        app:layout_constraintTop_toBottomOf="@+id/relative_one">
+
+        <TextView
+            android:id="@+id/address_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="门店地址"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/address_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_toLeftOf="@+id/img"
+            android:layout_toRightOf="@+id/address_tv"
+            android:background="@null"
+            android:hint="请选择"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/recharge_text"
+            android:textColorHint="#FF454545"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@mipmap/more" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_three"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        app:layout_constraintTop_toBottomOf="@+id/relative_two">
+
+        <TextView
+            android:id="@+id/detail_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="详细地址"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/detail_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_toRightOf="@+id/detail_tv"
+            android:background="@null"
+            android:hint="请输入"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/recharge_text"
+            android:textColorHint="#FF454545"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_four"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base44dp"
+        app:layout_constraintTop_toBottomOf="@+id/relative_three">
+
+        <TextView
+            android:id="@+id/phone_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="门店电话"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/phone_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_toRightOf="@+id/phone_tv"
+            android:background="@null"
+            android:hint="填写座机/手机，座机需加区号"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/recharge_text"
+            android:textColorHint="#FF454545"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base49dp"
+        android:background="#FF0B0B0B"
+        android:text="确认创建"
+        android:textColor="@color/recharge_text"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
