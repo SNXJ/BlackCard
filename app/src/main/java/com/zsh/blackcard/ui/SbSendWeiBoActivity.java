@@ -82,7 +82,6 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
             //发布微博
             case R.id.send_weiBo_tv:
                 initSendWeiBo(localMedia);
-
                 break;
         }
     }
