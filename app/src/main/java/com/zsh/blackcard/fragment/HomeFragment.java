@@ -621,7 +621,6 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
                 ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
                 break;
             case R.id.home_top_pop:
-//                PublicDialog.homeTopPop(getActivity(), home_top_pop, topPopItemListener);
                 if (topDialog == null) {
                     topDialog = new HomeTipView();
                 }

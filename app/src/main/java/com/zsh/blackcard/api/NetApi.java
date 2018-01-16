@@ -1468,4 +1468,43 @@ public class NetApi extends DataManager {
     public static Observable<MainGloryMagazineModel> postMainGloryMagazine(String md5, String MENU_ID) {
         return retrofitService.postMainGloryMagazine(md5, MENU_ID);
     }
+
+    /**
+     * 首页新闻头条发布新闻接口
+     *
+     * @param md5
+     * @param title
+     * @param user_id
+     * @param DIS_TYPE
+     * @param listPath
+     * @param localMedia
+     * @return
+     */
+    public static Observable<ResultModel> postHomeNewsSend(String md5, String title, String user_id, String DIS_TYPE, String CAIDAN_ID, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String video) {
+        if (video.equals("3")) {
+            if (localMedia.size() != 0) {
+                for (int i = 0; i < localMedia.size(); i++) {
+                    File file = new File(localMedia.get(i).getPath());
+                    RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                    MultipartBody.Part part = MultipartBody.Part.createFormData("showfile", file.getName(), imageBody);
+                    listPath.add(part);
+                }
+            }
+        } else {
+            if (localMedia.size() != 0) {
+                for (int i = 0; i < localMedia.size(); i++) {
+                    File file = new File(localMedia.get(i).getPath());
+                    RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                    MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", file.getName(), imageBody);
+                    listPath.add(part);
+                }
+            } else {
+                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+                MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
+                listPath.add(part);
+            }
+        }
+
+        return retrofitService.postHomeNewsSend(md5, title, user_id, DIS_TYPE, CAIDAN_ID, listPath);
+    }
 }

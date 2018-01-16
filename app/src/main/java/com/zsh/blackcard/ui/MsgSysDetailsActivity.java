@@ -12,12 +12,11 @@ import com.zsh.blackcard.R;
  * Description:消息中心
  */
 public class MsgSysDetailsActivity extends BaseActivity {
+
     RelativeLayout rl_sys_msg;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.msg_sys_details_activity);
-
-
     }
 }

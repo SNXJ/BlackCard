@@ -229,7 +229,6 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
-
                 hj_eat_set_sort_tv.setText(search.get(options1));
                 map.put("CONVERGESORT_ID", searchId.get(options1));
             }

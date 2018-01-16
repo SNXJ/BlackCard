@@ -108,12 +108,30 @@ public class ActivityUtils {
      * @param searchId
      */
     public static void startActivityForDataList(Activity activity, Class<?> cls,
-                                                String data,String title, List<String> search, List<String> searchId) {
+                                                String data, String title, List<String> search, List<String> searchId) {
         Intent intent = new Intent(activity, cls);
         intent.putExtra("data", data);
         intent.putExtra("title", title);
         intent.putExtra("listOne", (Serializable) search);
         intent.putExtra("listTwo", (Serializable) searchId);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 传递两个集合加一个标识
+     *
+     * @param activity
+     * @param cls
+     * @param data
+     * @param titleId
+     * @param title
+     */
+    public static void startActivityForDataLists(Activity activity, Class<?> cls,
+                                                 String data, List<String> titleId, List<String> title) {
+        Intent intent = new Intent(activity, cls);
+        intent.putExtra("data", data);
+        intent.putExtra("listOne", (Serializable) titleId);
+        intent.putExtra("listTwo", (Serializable) title);
         activity.startActivity(intent);
     }
 

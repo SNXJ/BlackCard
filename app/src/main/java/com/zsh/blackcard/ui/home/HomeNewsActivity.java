@@ -15,7 +15,9 @@ import com.zsh.blackcard.custom.NewTopDialog;
 import com.zsh.blackcard.fragment.ZgFindFragment;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ZgFindTitleModel;
+import com.zsh.blackcard.utils.ActivityUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,10 +38,10 @@ public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSel
     TabLayout my_order_other_tabLayout;
 
     private List<String> titleList = new ArrayList<>();
+    private List<String> titList = new ArrayList<>();
     private List<Fragment> fragmentList;
     private Fragment fragmentReplace;
     private FragmentManager fragmentManager;
-    private boolean isOk = false;
 
     @Override
     protected void initUI() {
@@ -60,6 +62,7 @@ public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSel
                         my_order_other_tabLayout.addTab(my_order_other_tabLayout.newTab().setText(obj.getPd().get(i).getNAME()));
                         //相对应的列表id集合
                         titleList.add(obj.getPd().get(i).getCAIDAN_ID());
+                        titList.add(obj.getPd().get(i).getNAME());
                         fragmentList.add(fragmentReplace);
                     }
                     ZgFindFragment zgFindFragment = new ZgFindFragment();
@@ -85,7 +88,7 @@ public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSel
     @Override
     protected void onPause() {
         super.onPause();
-//        JZVideoPlayer.releaseAllVideos();
+        JZVideoPlayer.releaseAllVideos();
     }
 
     @Override
@@ -117,10 +120,13 @@ public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSel
     public void selectSend(int position) {
         switch (position) {
             case 0:
+                ActivityUtils.startActivityForDataLists(this, HomeNewsSendActivity.class, "1", titList, titleList);
                 break;
             case 1:
+                ActivityUtils.startActivityForDataLists(this, HomeNewsSendActivity.class, "2", titList, titleList);
                 break;
             case 2:
+                ActivityUtils.startActivityForDataLists(this, HomeNewsSendActivity.class, "3", titList, titleList);
                 break;
         }
     }
