@@ -46,7 +46,7 @@ public class RetrofitUtils {
         if (LogUtils.LOG_LEVEL > 0) {
             builder.addInterceptor(new LoggingInterceptor());
         }
-        builder.connectTimeout(10, TimeUnit.SECONDS);//
+        builder.connectTimeout(15, TimeUnit.SECONDS);//
         OkHttpClient okHttpClient = builder.build();
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(DataManager.BASE_URL)

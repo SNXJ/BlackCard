@@ -45,17 +45,21 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
         <activity
             android:name=".ui.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/FullTheme"
             android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data
@@ -291,7 +295,8 @@
         <activity android:name=".ui.my.MySettedActivity" />
         <activity android:name=".ui.my.MySettedBusinessActivity" />
         <activity android:name=".ui.my.MySettedBusinessSubmitActivity" />
-        <activity android:name=".ui.my.MySettedBusinessPhotoActivity"></activity>
+        <activity android:name=".ui.my.MySettedBusinessPhotoActivity" />
+        <activity android:name=".ui.home.HomeNewsSendActivity" />
     </application>
 
 </manifest>

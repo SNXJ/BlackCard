@@ -35,7 +35,6 @@ public class ZgFindFragment extends BaseFragment {
     RecyclerView zg_find_recycler;
 
     private ZgFindAdapter zgFindAdapter;
-    private List<ZgFindModel.PdBean> list = new ArrayList<>();
 
     @Override
     public void initDate(Bundle savedInstanceState) {
@@ -43,19 +42,26 @@ public class ZgFindFragment extends BaseFragment {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.postZgFind(DataManager.getMd5Str("DISCOVERLIST"), CAIDAN_ID), new ResultListener<ZgFindModel>() {
             @Override
             public void responseSuccess(ZgFindModel obj) {
-                if (obj.getResult().equals("01")) {
-                    for (int i = 0; i < obj.getPd().size(); i++) {
-                        if(!obj.getPd().get(i).getSHOWVIDEO().equals("")){
-                            obj.getPd().get(i).setItemType(1);
-                        }else{
-                            obj.getPd().get(i).setItemType(2);
+                try {
+                    if (obj.getResult().equals("01")) {
+                        for (int i = 0; i < obj.getPd().size(); i++) {
+                            if (obj.getPd().get(i).getDIS_TYPE().equals("2001")) {
+                                obj.getPd().get(i).setItemType(2001);
+                            } else if (obj.getPd().get(i).getDIS_TYPE().equals("2002")) {
+                                obj.getPd().get(i).setItemType(2002);
+                            } else if (obj.getPd().get(i).getDIS_TYPE().equals("2003")) {
+                                obj.getPd().get(i).setItemType(2003);
+                            } else {
+                                obj.getPd().get(i).setItemType(2004);
+                            }
                         }
+                        zgFindAdapter = new ZgFindAdapter(obj.getPd());
+                        zg_find_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+                        zg_find_recycler.setAdapter(zgFindAdapter);
+                        zg_find_recycler.addOnChildAttachStateChangeListener(new VideoLoad());
                     }
-                    list.addAll(obj.getPd());
-                    zgFindAdapter = new ZgFindAdapter(list);
-                    zg_find_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    zg_find_recycler.setAdapter(zgFindAdapter);
-                    zg_find_recycler.addOnChildAttachStateChangeListener(new VideoLoad());
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 

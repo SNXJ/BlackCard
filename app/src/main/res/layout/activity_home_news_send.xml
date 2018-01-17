@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.zsh.blackcard.ui.home.HomeNewsSendActivity">
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        style="@style/title_rl">
+
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="发布" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hj_eat_set_sort_relative"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:layout_below="@+id/relative">
+
+        <TextView
+            android:id="@+id/type_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="发布类型"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/hj_eat_set_sort_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base38dp"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:src="@mipmap/more" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hj_eat_set_sort_relative"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base15dp"
+        android:background="#181818"
+        android:hint="请输入发布标题"
+        android:maxLength="30"
+        android:padding="@dimen/base10dp"
+        android:textColor="@color/recharge_text"
+        android:textColorHint="@color/recharge_text"
+        android:textSize="14sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/base15dp"
+        android:layout_below="@+id/title"
+        android:layout_marginRight="@dimen/base15dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base49dp"
+        android:layout_alignParentBottom="true"
+        android:background="#0C0C0C"
+        android:text="立即发布"
+        android:textColor="@color/recharge_text" />
+
+</RelativeLayout>

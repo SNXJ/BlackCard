@@ -28,7 +28,9 @@ public class ZgFindAdapter extends BaseMultiItemQuickAdapter<ZgFindModel.PdBean,
     public ZgFindAdapter(List<ZgFindModel.PdBean> data) {
         super(data);
         addItemType(ZgFindModel.PdBean.VIDEO, R.layout.zg_find_video_item);
-        addItemType(ZgFindModel.PdBean.IMAGE, R.layout.zg_find_image_item);
+        addItemType(ZgFindModel.PdBean.IMAGE_ONE, R.layout.zg_find_image_one_item);
+        addItemType(ZgFindModel.PdBean.IMAGE_THREE, R.layout.zg_find_image_three_item);
+        addItemType(ZgFindModel.PdBean.TEXT, R.layout.zg_find_text_item);
     }
 
     @Override
@@ -40,12 +42,25 @@ public class ZgFindAdapter extends BaseMultiItemQuickAdapter<ZgFindModel.PdBean,
                 ((JZVideoPlayerStandard) helper.getView(R.id.zg_find_video)).setUp(item.getSHOWVIDEO(), JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "");
                 ImageView thumbImageView = ((JZVideoPlayerStandard) helper.getView(R.id.zg_find_video)).thumbImageView;
                 thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                Glide.with(mContext).load(item.getVIDEOBACKIMAGE()).into(thumbImageView);
+                if (item.getVIDEOBACKIMAGE().size() != 0) {
+                    Glide.with(mContext).load(item.getVIDEOBACKIMAGE().get(0)).into(thumbImageView);
+                }
                 break;
-            case ZgFindModel.PdBean.IMAGE:
+            case ZgFindModel.PdBean.IMAGE_ONE:
                 helper.setText(R.id.zg_find_image_title, item.getTITLE());
-                helper.setText(R.id.zg_find_image_number, String.valueOf(item.getPAGEVIEWS()));
-                Glide.with(mContext).load(item.getVIDEOBACKIMAGE()).into((ImageView) helper.getView(R.id.zg_find_image_img));
+                helper.setText(R.id.zg_find_image_number, item.getPAGEVIEWS() + "万人浏览");
+                Glide.with(mContext).load(item.getVIDEOBACKIMAGE().get(0)).into((ImageView) helper.getView(R.id.zg_find_image_img));
+                break;
+            case ZgFindModel.PdBean.IMAGE_THREE:
+                helper.setText(R.id.zg_find_image_title, item.getTITLE());
+                helper.setText(R.id.zg_find_image_number, item.getPAGEVIEWS() + "万人浏览");
+                Glide.with(mContext).load(item.getVIDEOBACKIMAGE().get(0)).into((ImageView) helper.getView(R.id.img_one));
+                Glide.with(mContext).load(item.getVIDEOBACKIMAGE().get(1)).into((ImageView) helper.getView(R.id.img_two));
+                Glide.with(mContext).load(item.getVIDEOBACKIMAGE().get(2)).into((ImageView) helper.getView(R.id.img_three));
+                break;
+            case ZgFindModel.PdBean.TEXT:
+                helper.setText(R.id.zg_find_image_title, item.getTITLE());
+                helper.setText(R.id.zg_find_image_number, item.getPAGEVIEWS() + "万人浏览");
                 break;
         }
     }

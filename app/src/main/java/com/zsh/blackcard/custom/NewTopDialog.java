@@ -47,7 +47,7 @@ public class NewTopDialog extends BottomTopDialogFragment {
             @Override
             public void onClick(View view) {
                 if(onSelectSend != null){
-                    onSelectSend.selectSend(0);
+                    onSelectSend.selectSend(1);
                 }
             }
         });
@@ -57,7 +57,7 @@ public class NewTopDialog extends BottomTopDialogFragment {
             @Override
             public void onClick(View view) {
                 if(onSelectSend != null){
-                    onSelectSend.selectSend(0);
+                    onSelectSend.selectSend(2);
                 }
             }
         });

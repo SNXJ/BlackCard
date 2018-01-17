@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base11dp"
         android:layout_toLeftOf="@+id/zg_find_image_img"
-        android:text="asdsdfsdf"
         android:textSize="14sp" />
 
     <TextView
@@ -36,7 +35,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base11dp"
-        android:text="asdsdfsdf"
         android:textSize="11sp" />
 
 </RelativeLayout>

@@ -127,8 +127,6 @@ public class EatDrinkSetDetailActivity extends BaseActivity implements BaseQuick
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-
         //在相册界面点击确定后，显示选择的照片
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
@@ -143,6 +141,7 @@ public class EatDrinkSetDetailActivity extends BaseActivity implements BaseQuick
                     }
                     //刷新适配器
                     sendWeiBoAdapter.notifyDataSetChanged();
+                    break;
             }
             //如果点击了取消或返回键
         } else if (resultCode == RESULT_CANCELED) {

@@ -850,4 +850,14 @@ public interface RetrofitService {
     @POST("appmagazinein/getlistsubmenu.do?")
     Observable<MainGloryMagazineModel> postMainGloryMagazine(@Field("FKEY") String md5,
                                                              @Field("MENU_ID") String MENU_ID);
+
+    //首页新闻头条发布新闻接口(不包含视频)
+    @Multipart
+    @POST("appdiscoverin/addselfmediaad.do?")
+    Observable<ResultModel> postHomeNewsSend(@Query("FKEY") String md5,
+                                             @Query("TITLE") String title,
+                                             @Query("HONOURUSER_ID") String user_id,
+                                             @Query("DIS_TYPE") String DIS_TYPE,
+                                             @Query("CAIDAN_ID") String CAIDAN_ID,
+                                             @Part List<MultipartBody.Part> fileList);
 }

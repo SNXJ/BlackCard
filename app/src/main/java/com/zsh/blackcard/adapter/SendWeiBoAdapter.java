@@ -31,7 +31,6 @@ public class SendWeiBoAdapter extends BaseQuickAdapter<LocalMedia, BaseViewHolde
             helper.setImageResource(R.id.send_weibo_recycler_item_img, R.mipmap.detail_group_2);
         } else {
             Glide.with(mContext).load(item.getPath()).into((ImageView) helper.getView(R.id.send_weibo_recycler_item_img));
-            System.out.println();
         }
     }
 }
