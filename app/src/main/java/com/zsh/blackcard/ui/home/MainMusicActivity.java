@@ -62,7 +62,6 @@ public class MainMusicActivity extends BaseActivity {
         tempImgList.add("");
         tempImgList.add("");
 
-
         initTopBanner();
         initSongRV();
         initSongLibRV();
@@ -73,12 +72,9 @@ public class MainMusicActivity extends BaseActivity {
     }
 
     private void initDjRV() {
-
         DJOneRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         MusicSongAdapter adapter = new MusicSongAdapter(R.layout.music_main_dj_item, tempImgList);//TODO  最后布局变化
         DJOneRecyclerView.setAdapter(adapter);
-
-
     }
 
     private void initRankRV() {

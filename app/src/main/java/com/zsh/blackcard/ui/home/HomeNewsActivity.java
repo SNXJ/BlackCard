@@ -17,7 +17,6 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ZgFindTitleModel;
 import com.zsh.blackcard.utils.ActivityUtils;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,6 +98,16 @@ public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSel
         super.onBackPressed();
     }
 
+    private NewTopDialog topDialog;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(topDialog != null){
+            topDialog.dismiss();
+        }
+    }
+
     @OnClick({R.id.title_back, R.id.my_tip_send_tv})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -108,7 +117,9 @@ public class HomeNewsActivity extends BaseActivity implements TabLayout.OnTabSel
             //点击发布头条
             case R.id.my_tip_send_tv:
 //                PublicDialog.sendNewsDialog(this);
-                NewTopDialog topDialog = new NewTopDialog();
+                if (topDialog == null) {
+                    topDialog = new NewTopDialog();
+                }
                 topDialog.show(getSupportFragmentManager(), "Show", view);
                 topDialog.setOnSelectSend(HomeNewsActivity.this);
                 break;

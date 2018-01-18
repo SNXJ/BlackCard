@@ -1,7 +1,10 @@
 package com.zsh.blackcard.ui.home;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.MediaMetadataRetriever;
+import android.os.Environment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -25,6 +28,10 @@ import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.ui.EatDrinkSetDetailActivity;
 import com.zsh.blackcard.utils.UIUtils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,7 +126,7 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
                 }
             }
 
-            DataManager.getInstance(this).RequestHttp(NetApi.postHomeNewsSend(DataManager.getMd5Str("SELFMEDIAADD"), title.getText().toString().trim(), "d6a3779de8204dfd9359403f54f7d27c", size, type, list, localMedia, "2"), new ResultListener<ResultModel>() {
+            DataManager.getInstance(this).RequestHttp(NetApi.postHomeNewsSend(DataManager.getMd5Str("SELFMEDIAADD"), title.getText().toString().trim(), "d6a3779de8204dfd9359403f54f7d27c", size, type, list, localMedia, "2", videoPath), new ResultListener<ResultModel>() {
                 @Override
                 public void responseSuccess(ResultModel obj) {
                     if (obj.getResult().equals("01")) {
@@ -142,7 +149,7 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
     private void initVideo() {
         if (!TextUtils.isEmpty(title.getText().toString().trim()) && type != null && localMedia.get(0).getPath() != null) {
             showLoading(this);
-            DataManager.getInstance(this).RequestHttp(NetApi.postHomeNewsSend(DataManager.getMd5Str("SELFMEDIAADD"), title.getText().toString().trim(), "d6a3779de8204dfd9359403f54f7d27c", "2001", type, list, localMedia, "3"), new ResultListener<ResultModel>() {
+            DataManager.getInstance(this).RequestHttp(NetApi.postHomeNewsSend(DataManager.getMd5Str("SELFMEDIAADD"), title.getText().toString().trim(), "d6a3779de8204dfd9359403f54f7d27c", "2001", type, list, localMedia, "3", videoPath), new ResultListener<ResultModel>() {
                 @Override
                 public void responseSuccess(ResultModel obj) {
                     if (obj.getResult().equals("01")) {
@@ -161,6 +168,7 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
         }
     }
 
+    //选择发布类型
     private void sendType() {
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
@@ -182,7 +190,7 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
     private void initTextSend() {
         if (!TextUtils.isEmpty(title.getText().toString().trim()) && type != null) {
             showLoading(this);
-            DataManager.getInstance(this).RequestHttp(NetApi.postHomeNewsSend(DataManager.getMd5Str("SELFMEDIAADD"), title.getText().toString().trim(), "d6a3779de8204dfd9359403f54f7d27c", "2002", type, list, localMedia, "1"), new ResultListener<ResultModel>() {
+            DataManager.getInstance(this).RequestHttp(NetApi.postHomeNewsSend(DataManager.getMd5Str("SELFMEDIAADD"), title.getText().toString().trim(), "d6a3779de8204dfd9359403f54f7d27c", "2002", type, list, localMedia, "1", videoPath), new ResultListener<ResultModel>() {
                 @Override
                 public void responseSuccess(ResultModel obj) {
                     if (obj.getResult().equals("01")) {
@@ -239,7 +247,7 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
                 //打开视频选择
                 PictureSelector.create(HomeNewsSendActivity.this)
                         .openGallery(PictureMimeType.ofVideo())
-                        .maxSelectNum(1)
+                        .selectionMode(PictureConfig.SINGLE)
                         .previewVideo(true)
                         .compress(true)
                         .forResult(PictureConfig.CHOOSE_REQUEST);
@@ -285,9 +293,49 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
                         this.localMedia.clear();
                         this.localMedia.addAll(localMedia);
                         sendWeiBoAdapter.notifyDataSetChanged();
+                        boolean isSave = initSuoLueTu(localMedia.get(0).getPath());
+                        if (isSave) {
+                            UIUtils.showToast("生成缩略图成功");
+                        } else {
+                            UIUtils.showToast("生成缩略图失败");
+                        }
                         break;
                 }
             }
+        }
+    }
+
+    private String videoPath = "";
+
+    //保存缩略图
+    private boolean initSuoLueTu(String path) {
+        MediaMetadataRetriever media = new MediaMetadataRetriever();
+        media.setDataSource(path);
+        Bitmap bitmap = media.getFrameAtTime();
+
+        File file = new File(Environment.getExternalStorageDirectory() + "/image");
+        if (file.exists()) {
+            file.delete();
+        }
+        file.mkdir();
+        File suoluetu = new File(file, "suoluetu.jpg");
+        if (suoluetu.exists()) {
+            suoluetu.delete();
+        }
+        try {
+            suoluetu.createNewFile();
+            suoluetu.getName();
+            FileOutputStream fos = new FileOutputStream(suoluetu);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            //设置缩略图路径
+            videoPath = suoluetu.getPath();
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            return true;
         }
     }
 }
