@@ -1480,15 +1480,18 @@ public class NetApi extends DataManager {
      * @param localMedia
      * @return
      */
-    public static Observable<ResultModel> postHomeNewsSend(String md5, String title, String user_id, String DIS_TYPE, String CAIDAN_ID, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String video) {
+    public static Observable<ResultModel> postHomeNewsSend(String md5, String title, String user_id, String DIS_TYPE, String CAIDAN_ID, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String video, String videoPath) {
         if (video.equals("3")) {
             if (localMedia.size() != 0) {
-                for (int i = 0; i < localMedia.size(); i++) {
-                    File file = new File(localMedia.get(i).getPath());
-                    RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                    MultipartBody.Part part = MultipartBody.Part.createFormData("showfile", file.getName(), imageBody);
-                    listPath.add(part);
-                }
+                File file = new File(localMedia.get(0).getPath());
+                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                MultipartBody.Part part = MultipartBody.Part.createFormData("showfile", file.getName(), imageBody);
+                listPath.add(part);
+
+                File file1 = new File(videoPath);
+                RequestBody imageBody1 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
+                MultipartBody.Part part1 = MultipartBody.Part.createFormData("fileList", "suoluetu.jpg", imageBody1);
+                listPath.add(part1);
             }
         } else {
             if (localMedia.size() != 0) {
