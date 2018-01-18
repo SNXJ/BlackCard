@@ -36,7 +36,7 @@ public class NewTopDialog extends BottomTopDialogFragment {
         viewGroup.findViewById(R.id.ll_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(onSelectSend != null){
+                if (onSelectSend != null) {
                     onSelectSend.selectSend(0);
                 }
             }
