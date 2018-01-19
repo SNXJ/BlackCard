@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.aliLive.AliLiveRoomActivity;
 import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ItemClickListener;
@@ -28,7 +29,6 @@ import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.SbNearChangeListener;
 import com.zsh.blackcard.listener.SelectDateListener;
 import com.zsh.blackcard.live.LiveAnchorDetails2;
-import com.zsh.blackcard.live.LiveOpenActivity;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.SbNearChangeModel;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
@@ -53,7 +53,7 @@ import java.util.List;
  */
 public class PublicDialog {
 
-    public static void sendNewsDialog(Context mContext,View rootView) {
+    public static void sendNewsDialog(Context mContext, View rootView) {
         NewTopDialog topDialog = new NewTopDialog();
 //        topDialog.show(mContext.getSupportFragmentManager(), "Show", rootView);
         View topView = LayoutInflater.from(mContext).inflate(
@@ -239,7 +239,8 @@ public class PublicDialog {
                         mContext.startActivity(new Intent(mContext, SbSendWeiBoActivity.class));
                         break;
                     case 3:
-                        mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));
+//                        mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));
+                        mContext.startActivity(new Intent(mContext, AliLiveRoomActivity.class));
                         break;
                     case 4:
 //                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));

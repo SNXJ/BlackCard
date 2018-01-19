@@ -8,8 +8,8 @@ android {
         applicationId "com.zsh.blackcard"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 6
+        versionName "1.0.6"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -135,6 +135,7 @@ dependencies {
 
     //添加视频播放第三方
     implementation 'cn.jzvd:jiaozivideoplayer:6.2.1'
+
     //添加流式布局，根据内容自动换行
     implementation 'cn.lankton:flowlayout:3.1.0'
 
@@ -167,14 +168,8 @@ dependencies {
 
     //aipay
     implementation files('libs/alipaySdk-20170922.jar')
-
-
-
-
     compile 'com.github.SNXJ:ScaleBanner:0.0.4'
-
     compile 'tyrant:heartlayout:1.0.1'
     compile 'com.github.SNXJ:TopDialog:v0.1'
-
-
+    implementation files('libs/live-pusher-3.2.0.jar')
 }

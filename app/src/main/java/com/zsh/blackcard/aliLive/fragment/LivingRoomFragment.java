@@ -1,12 +1,14 @@
-package com.zsh.blackcard.live.fragment;
+package com.zsh.blackcard.aliLive.fragment;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -15,10 +17,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alivc.live.pusher.AlivcLivePusher;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.LiveChatAdapter;
 import com.zsh.blackcard.adapter.LiveViewerAdapter;
+import com.zsh.blackcard.aliLive.AliLiveRoomActivity;
 import com.zsh.blackcard.custom.KeyboardStatusDetector;
 import com.zsh.blackcard.model.LiveChatModel;
 import com.zsh.blackcard.utils.CharUtils;
@@ -27,6 +31,8 @@ import com.zsh.blackcard.view.GiftItemView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -79,6 +85,35 @@ public class LivingRoomFragment extends BaseFragment {
     private LiveViewerAdapter viewerAdapter;
     private LiveChatAdapter liveChatAdapter;
 
+    private static final String URL_KEY = "url_key";
+    private static final String ASYNC_KEY = "async_key";
+    private static final String AUDIO_ONLY_KEY = "audio_only_key";
+    private static final String VIDEO_ONLY_KEY = "video_only_key";
+    private static final String QUALITY_MODE_KEY = "quality_mode_key";
+    private static final String CAMERA_ID = "camera_id";
+    private static final String FLASH_ON = "flash_on";
+    private final long REFRESH_INTERVAL = 2000;
+    private AlivcLivePusher mAlivcLivePusher = null;
+    private String mPushUrl = null;
+    private SurfaceView mSurfaceView = null;
+    private boolean mAsync = false;
+
+    private boolean mAudio = false;
+    private boolean mVideoOnly = false;
+    private boolean isPushing = false;
+    private Handler mHandler = new Handler();
+
+    private AliLiveRoomActivity.PauseState mStateListener = null;
+    private int mCameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+    private boolean isFlash = false;
+
+    private boolean flashState = true;
+
+    private int mQualityMode = 0;
+
+    private ExecutorService mSingleThreadPool = Executors.newSingleThreadExecutor();
+
+//    private MusicDialog mMusicDialog = null; 背景音乐
 
     private Random mRandom;
 
@@ -86,6 +121,19 @@ public class LivingRoomFragment extends BaseFragment {
     List<Integer> viewList = new ArrayList<>();
     List<LiveChatModel> chatList = new ArrayList<>();
 
+    public static LivingRoomFragment newInstance(String url, boolean async, boolean mAudio, boolean mVideoOnly, int cameraId, boolean isFlash, int mode) {
+        LivingRoomFragment livePushFragment = new LivingRoomFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(URL_KEY, url);
+        bundle.putBoolean(ASYNC_KEY, async);
+        bundle.putBoolean(AUDIO_ONLY_KEY, mAudio);
+        bundle.putBoolean(VIDEO_ONLY_KEY, mVideoOnly);
+        bundle.putInt(QUALITY_MODE_KEY, mode);
+        bundle.putInt(CAMERA_ID, cameraId);
+        bundle.putBoolean(FLASH_ON, isFlash);
+        livePushFragment.setArguments(bundle);
+        return livePushFragment;
+    }
 
     @Override
     public void initDate(Bundle savedInstanceState) {
@@ -192,6 +240,18 @@ public class LivingRoomFragment extends BaseFragment {
         }
     };
 
+    public void setAlivcLivePusher(AlivcLivePusher alivcLivePusher) {
+        this.mAlivcLivePusher = alivcLivePusher;
+    }
+
+    public void setStateListener(AliLiveRoomActivity.PauseState listener) {
+        this.mStateListener = listener;
+    }
+
+    public void setSurfaceView(SurfaceView surfaceView) {
+        this.mSurfaceView = surfaceView;
+    }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -201,7 +261,7 @@ public class LivingRoomFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        heartHandler.postDelayed(heartRunnable, 2000);
+        heartHandler.postDelayed(heartRunnable, 1000);
     }
 
     private int randomColor() {

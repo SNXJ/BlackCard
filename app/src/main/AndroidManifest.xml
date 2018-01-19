@@ -53,7 +53,6 @@
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/FullTheme"
             android:windowSoftInputMode="adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -295,8 +294,11 @@
         <activity android:name=".ui.my.MySettedActivity" />
         <activity android:name=".ui.my.MySettedBusinessActivity" />
         <activity android:name=".ui.my.MySettedBusinessSubmitActivity" />
+        <activity android:name=".ui.my.MySettedBusinessPhotoActivity"></activity>
+        <activity android:name=".aliLive.AliLiveRoomActivity" />
         <activity android:name=".ui.my.MySettedBusinessPhotoActivity" />
         <activity android:name=".ui.home.HomeNewsSendActivity" />
+        <activity android:name=".aliLive.AliLiveOpenActivity" />
     </application>
 
 </manifest>

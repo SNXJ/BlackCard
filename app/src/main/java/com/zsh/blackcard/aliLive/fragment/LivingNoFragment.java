@@ -1,4 +1,4 @@
-package com.zsh.blackcard.live.fragment;
+package com.zsh.blackcard.aliLive.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
