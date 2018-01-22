@@ -35,7 +35,7 @@ public abstract class BaseMusicActivity extends BaseActivity {
     }
 
     public PlayService getPlayService() {
-        PlayService playService = AppCache.getPlayService();
+        playService = AppCache.getPlayService();
         if (playService == null) {
             throw new NullPointerException("play service is null");
         }

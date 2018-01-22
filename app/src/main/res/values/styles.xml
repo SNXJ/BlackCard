@@ -38,7 +38,7 @@
         <item name="android:textColor">@color/ff92_text</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <!-- 总title back-->
@@ -76,6 +76,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
     <!--时间选择-->
     <style name="date_style" parent="@android:style/Theme.Dialog">
         <item name="android:windowFullscreen">true</item>

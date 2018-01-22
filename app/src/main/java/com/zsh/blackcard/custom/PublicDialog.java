@@ -722,8 +722,37 @@ public class PublicDialog {
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
         lp.width = (int) (display.getWidth()); // 设置宽度
         dialog.getWindow().setAttributes(lp);
-
     }
 
+    /**
+     * 把自定义商家入驻引导页布局设置到dialog
+     *
+     * @param view
+     * @param mContext
+     * @return
+     */
+    public static Dialog showDialogViews(View view, final Activity mContext) {
+        final Dialog dialog = new Dialog(mContext, R.style.pub_loading_dialog);
+        dialog.setContentView(view);
+        setWinLPs(dialog, mContext);
+        return dialog;
+    }
 
+    /**
+     * 设置dialog 属性
+     *
+     * @param dialog
+     * @param mContext
+     */
+    private static void setWinLPs(Dialog dialog, Activity mContext) {
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+        window.setWindowAnimations(R.style.dailog_anim_enterorout_window_up);
+        dialog.show();
+        WindowManager windowManager = mContext.getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+        lp.width = (display.getWidth()); // 设置宽度
+        dialog.getWindow().setAttributes(lp);
+    }
 }

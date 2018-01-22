@@ -56,6 +56,11 @@ import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MainGloryMagazineModel;
+import com.zsh.blackcard.model.MainGloryMusicDJModel;
+import com.zsh.blackcard.model.MainGloryMusicLibDetailModel;
+import com.zsh.blackcard.model.MainGloryMusicLibModel;
+import com.zsh.blackcard.model.MainGloryMusicSongModel;
+import com.zsh.blackcard.model.MainMusicGloryModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -1509,5 +1514,57 @@ public class NetApi extends DataManager {
         }
 
         return retrofitService.postHomeNewsSend(md5, title, user_id, DIS_TYPE, CAIDAN_ID, listPath);
+    }
+
+    /**
+     * 荣耀音乐头部广告和歌手推荐
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<MainMusicGloryModel> postMainGloryMusic(String md5) {
+        return retrofitService.postMainGloryMusic(md5);
+    }
+
+    /**
+     * 荣耀音乐电台接口
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<MainGloryMusicDJModel> postMainGloryMusicDJ(String md5) {
+        return retrofitService.postMainGloryMusicDJ(md5);
+    }
+
+    /**
+     * 荣耀音乐曲库推荐接口
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<MainGloryMusicLibModel> postMainGloryMusicLib(String md5) {
+        return retrofitService.postMainGloryMusicLib(md5);
+    }
+
+    /**
+     * 荣耀音乐歌曲推荐接口
+     *
+     * @param md5
+     * @param offset
+     * @return
+     */
+    public static Observable<MainGloryMusicSongModel> postMainGloryMusicSong(String md5, String offset) {
+        return retrofitService.postMainGloryMusicSong(md5, offset);
+    }
+
+    /**
+     * 荣耀音乐曲库二级接口
+     *
+     * @param md5
+     * @param album_id
+     * @return
+     */
+    public static Observable<MainGloryMusicLibDetailModel> postMainGloryMusicLibDetail(String md5, String album_id) {
+        return retrofitService.postMainGloryMusicLibDetail(md5, album_id);
     }
 }
