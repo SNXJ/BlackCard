@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bj"
@@ -45,11 +44,11 @@
 
 
             <android.support.v7.widget.RecyclerView
-
                 android:id="@+id/songList_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base160dp"
-                android:layout_marginTop="@dimen/base20dp" />
+                android:layout_marginTop="@dimen/base20dp"
+                android:nestedScrollingEnabled="false" />
 
 
             <TextView
@@ -66,7 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base120dp"
                 android:layout_marginRight="@dimen/base5dp"
-                android:layout_marginTop="@dimen/base15dp" />
+                android:layout_marginTop="@dimen/base15dp"
+                android:nestedScrollingEnabled="false" />
 
             <TextView
                 style="@style/text_"
@@ -95,14 +95,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base110dp"
                 android:layout_marginRight="@dimen/base5dp"
-                android:layout_marginTop="@dimen/base15dp" />
+                android:layout_marginTop="@dimen/base15dp"
+                android:nestedScrollingEnabled="false" />
 
             <TextView
                 style="@style/text_"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/base15dp"
                 android:layout_marginTop="@dimen/base20dp"
-                android:text="榜单推荐"
+                android:text="电台推荐"
                 android:textSize="15sp" />
 
             <android.support.v7.widget.RecyclerView
@@ -110,7 +111,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/base5dp"
-                android:layout_marginTop="@dimen/base15dp" />
+                android:layout_marginTop="@dimen/base15dp"
+                android:nestedScrollingEnabled="false" />
 
 
         </LinearLayout>

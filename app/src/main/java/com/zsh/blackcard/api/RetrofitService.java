@@ -53,6 +53,11 @@ import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MainGloryMagazineModel;
+import com.zsh.blackcard.model.MainGloryMusicDJModel;
+import com.zsh.blackcard.model.MainGloryMusicLibDetailModel;
+import com.zsh.blackcard.model.MainGloryMusicLibModel;
+import com.zsh.blackcard.model.MainGloryMusicSongModel;
+import com.zsh.blackcard.model.MainMusicGloryModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -860,4 +865,31 @@ public interface RetrofitService {
                                              @Query("DIS_TYPE") String DIS_TYPE,
                                              @Query("CAIDAN_ID") String CAIDAN_ID,
                                              @Part List<MultipartBody.Part> fileList);
+
+    //荣耀音乐头部广告和歌手推荐
+    @FormUrlEncoded
+    @POST("appmusicin/getsongrecommend?")
+    Observable<MainMusicGloryModel> postMainGloryMusic(@Field("FKEY") String md5);
+
+    //荣耀音乐电台接口
+    @FormUrlEncoded
+    @POST("appmusicin/getradiostationlist?")
+    Observable<MainGloryMusicDJModel> postMainGloryMusicDJ(@Field("FKEY") String md5);
+
+    //荣耀曲库推荐接口
+    @FormUrlEncoded
+    @POST("appmusicin/getmusiclibrary?")
+    Observable<MainGloryMusicLibModel> postMainGloryMusicLib(@Field("FKEY") String md5);
+
+    //荣耀音乐歌单推荐接口
+    @FormUrlEncoded
+    @POST("appmusicin/getsongsrecommend?")
+    Observable<MainGloryMusicSongModel> postMainGloryMusicSong(@Field("FKEY") String md5,
+                                                               @Field("offset") String offset);
+
+    //荣耀音乐曲库详情接口
+    @FormUrlEncoded
+    @POST("appmusicin/getalbuminfo?")
+    Observable<MainGloryMusicLibDetailModel> postMainGloryMusicLibDetail(@Field("FKEY") String md5,
+                                                                         @Field("album_id") String album_id);
 }

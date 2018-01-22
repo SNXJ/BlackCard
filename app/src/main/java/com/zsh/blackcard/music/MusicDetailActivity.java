@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.MainGloryMusicSongListAdapter;
 import com.zsh.blackcard.adapter.MusicDetailDjAdapter;
 import com.zsh.blackcard.adapter.MusicDetailReOtherAdapter;
 import com.zsh.blackcard.adapter.MusicDetailRecommendAdapter;
@@ -23,6 +24,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.BitmapListener;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.MainGloryMusicSongModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicRankingModel;
@@ -82,6 +84,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     private MusicSingerSongAdapter singerSongAdapter;
     private MusicDetailRecommendAdapter recommendAdapter;
     private MusicDetailReOtherAdapter reOtherAdapter;
+    private MainGloryMusicSongListAdapter mainGloryMusicSongListAdapter;
     List<MusicDetailListModel.PdBean.ResultBean.SonglistBean> listDjData = new ArrayList<>();
     private boolean isPlayFragmentShow = false;
 
@@ -94,10 +97,21 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     public static List<MusicRankingModel.PdBean.SongListBean> reOtherDataList = new ArrayList<>();
     private List<MusicSingerSongsModel.PdBean.SonglistBean> singerSongList = new ArrayList<>();
     public static MusicSingerModel.PdBean.ArtistBean SingerData = null;
+    public static List<MainGloryMusicSongModel.SongRecommendBean.SongListBean> song_lists = null;
+    //歌手推荐
+    public static String TING_ID = null;
+    //电台
+    public static String DT_NAME = null;
+    //曲库推荐
+    public static String ALBUM_ID = null;
 
     public static void setData(List<MusicRecommendModel.PdBean.ResultBean.ListBean> recommendDataList2, int pos) {
         recommendDataList = recommendDataList2;
         position = pos;
+    }
+
+    public static void setDataSong(List<MainGloryMusicSongModel.SongRecommendBean.SongListBean> song_list, int position){
+        song_lists = song_list;
     }
 
     @Override
@@ -127,6 +141,15 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         if (null != mMusicList) {
             mMusicList = null;
         }
+        if (null != TING_ID) {
+            TING_ID = null;
+        }
+        if (null != DT_NAME) {
+            DT_NAME = null;
+        }
+        if(null != song_lists){
+            song_lists = null;
+        }
         super.onDestroy();
     }
 
@@ -148,17 +171,41 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
             switchLoopData("2");
             setRecommendListData();
         } else if (null != djData) {
-            initDjData();
+            //从Home页面加载电台列表
+            initDjData(djData.getCate_name());
         } else if (null != reOtherDataList && reOtherDataList.size() > 0) {
             switchLoopData("3");
             setReOtherData(3);
         } else if (null != SingerData) {
-            getSingerSongData();
+            //从Home页面加载歌手列表页面
+            getSingerSongData(SingerData.getTing_uid());
         } else if (null != rankType) {
             getRankDataByType();
+        } else if (null != TING_ID) {
+            //从荣耀音乐界面加载歌手详情页面
+            getSingerSongData(TING_ID);
+        } else if (null != DT_NAME) {
+            //从荣耀音乐界面加载电台详情页面
+            initDjData(DT_NAME);
+        }else if(null != song_lists){
+            //从荣耀音乐界面加载歌单推荐详情页面
+            initSongDetail();
         }
+    }
 
-
+    //加载歌单推荐详情
+    private void initSongDetail() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mainGloryMusicSongListAdapter = new MainGloryMusicSongListAdapter(R.layout.music_details_item,song_lists);
+        recyclerView.setAdapter(mainGloryMusicSongListAdapter);
+        mainGloryMusicSongListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                getSongDetail(song_lists.get(position).getSong_id(), position);
+            }
+        });
+        mainGloryMusicSongListAdapter.setEmptyView(R.layout.home_hotel_empty_layout, recyclerView);
+        dialogDismiss();
     }
 
     private void switchLoopData(String type) {
@@ -293,9 +340,9 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         }
     };
 
-    private void getSingerSongData() {
-        setTopBg(SingerData.getAvatar_middle(), "歌手");
-        DataManager.getInstance(this).RequestHttp(NetApi.getSingerSongs(DataManager.getMd5Str("SONGLIST"), SingerData.getTing_uid(), "1"), new ResultListener<MusicSingerSongsModel>() {
+    private void getSingerSongData(String ting_id) {
+        setTopBg("", "歌手");
+        DataManager.getInstance(this).RequestHttp(NetApi.getSingerSongs(DataManager.getMd5Str("SONGLIST"), ting_id, "1"), new ResultListener<MusicSingerSongsModel>() {
             @Override
             public void responseSuccess(MusicSingerSongsModel obj) {
                 // TODO没有数据
@@ -462,9 +509,10 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         });
     }
 
-    private void initDjData() {
-        setTopBg(djData.getThumb(), "电台");
-        DataManager.getInstance(this).RequestHttp(NetApi.getMusicDjSongList(DataManager.getMd5Str("CANNELSONG"), djData.getCh_name()), new ResultListener<MusicDetailListModel>() {
+    private void initDjData(String name) {
+        //djData.getThumb()
+        setTopBg("", "电台");
+        DataManager.getInstance(this).RequestHttp(NetApi.getMusicDjSongList(DataManager.getMd5Str("CANNELSONG"), name), new ResultListener<MusicDetailListModel>() {
             @Override
             public void responseSuccess(MusicDetailListModel obj) {
                 if (null != obj && null != obj.getPd()) {

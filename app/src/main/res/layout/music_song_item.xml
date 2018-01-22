@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/img"
         android:scaleType="centerCrop"
         android:src="@mipmap/magazine_image_72"
         android:layout_width="@dimen/base120dp"
@@ -13,12 +14,12 @@
 
 
     <TextView
+        android:id="@+id/tv"
         style="@style/text_"
         android:maxLines="2"
         android:lineSpacingExtra="@dimen/base4dp"
         android:padding="@dimen/base5dp"
         android:text="聆听一首打开你心情的乡村音乐"
-
         />
 
 </LinearLayout>
