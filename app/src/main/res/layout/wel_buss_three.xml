@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textSize="12sp"
         android:id="@+id/tv_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

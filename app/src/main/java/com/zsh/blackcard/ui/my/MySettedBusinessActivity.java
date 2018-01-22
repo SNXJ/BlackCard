@@ -55,10 +55,9 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
     protected void initUI() {
         setContentView(R.layout.activity_my_setted_business);
         ButterKnife.bind(this);
-
-        //检测是否需要弹出引导页
+        //检测是否需要弹出引导页(目前为每次都弹出)
         initWelCome();
-
+        //初始化页面数据
         initData();
     }
 

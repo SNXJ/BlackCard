@@ -752,9 +752,7 @@ public class PublicDialog {
         WindowManager windowManager = mContext.getWindowManager();
         Display display = windowManager.getDefaultDisplay();
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-        lp.width = (int) (display.getWidth()); // 设置宽度
+        lp.width = (display.getWidth()); // 设置宽度
         dialog.getWindow().setAttributes(lp);
     }
-
-
 }

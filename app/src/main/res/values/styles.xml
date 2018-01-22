@@ -76,6 +76,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
     <!--时间选择-->
     <style name="date_style" parent="@android:style/Theme.Dialog">
         <item name="android:windowFullscreen">true</item>
