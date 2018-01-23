@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.utils.LogUtils;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // 类没有实例化,是不能用作父类构造器的参数,必须声明为静态

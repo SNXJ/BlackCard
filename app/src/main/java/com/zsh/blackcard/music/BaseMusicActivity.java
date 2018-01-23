@@ -8,8 +8,8 @@ import android.os.IBinder;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.music.service.PlayService;
-import com.zsh.blackcard.music.untils.AppCache;
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.music.utils.AppCache;
+import com.zsh.blackcard.utils.LogUtils;
 
 /**
  * Name: BaseMusicActivity
@@ -35,7 +35,7 @@ public abstract class BaseMusicActivity extends BaseActivity {
     }
 
     public PlayService getPlayService() {
-        PlayService playService = AppCache.getPlayService();
+        playService = AppCache.getPlayService();
         if (playService == null) {
             throw new NullPointerException("play service is null");
         }

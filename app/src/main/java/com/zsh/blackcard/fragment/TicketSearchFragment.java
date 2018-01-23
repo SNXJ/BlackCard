@@ -12,7 +12,7 @@ import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.TicketSearchAdapter;
 import com.zsh.blackcard.model.TicketSearchModel;
 import com.zsh.blackcard.ui.TicketSeatActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;

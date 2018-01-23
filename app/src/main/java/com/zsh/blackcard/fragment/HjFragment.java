@@ -17,7 +17,8 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.CityEventModel;
 import com.zsh.blackcard.model.HjRecyclerModel;
 import com.zsh.blackcard.ui.EatDrinkActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.ui.HjSearchActivity;
+import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.view.selectcity.SelectCityActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -40,8 +41,6 @@ public class HjFragment extends BaseFragment {
     RecyclerView hj_recycler;
     @BindView(R.id.rb_hj_city)
     RadioButton rbHjCity;
-    Unbinder unbinder;
-
 
     private HjRecyclerAdapter hjRecyclerAdapter;
 
@@ -82,9 +81,16 @@ public class HjFragment extends BaseFragment {
     }
 
 
-    @OnClick(R.id.rb_hj_city)
-    public void onClick() {
-        ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
+    @OnClick({R.id.rb_hj_city, R.id.hj_linear_search})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rb_hj_city:
+                ActivityUtils.startActivity(getActivity(), SelectCityActivity.class);
+                break;
+            case R.id.hj_linear_search:
+                ActivityUtils.startActivity(getActivity(), HjSearchActivity.class);
+                break;
+        }
     }
 
 

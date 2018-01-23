@@ -11,11 +11,15 @@ public class CategoryRightModel {
 
     /**
      * result : 01
-     * pd : [{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"卡地亚","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/a9611f14b49d499193126117b4a77315.png","BRANDICON_ID":"383388690547736576"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"宝玑","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/88ec475b047443a4a78f268d8ba0017e.png","BRANDICON_ID":"383389237329788928"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"范思哲","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/cf10319ed81a472ca9112f1a550c73a8.png","BRANDICON_ID":"383389518478180352"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"Marc Jacobs","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/6dc436f403124921b885930d0d8cb700.png","BRANDICON_ID":"383389684346126336"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"赛琳时装","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/e236e9c9c8e0414dae6ffa25c3cd5e88.png","BRANDICON_ID":"383389885379117056"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"阿玛尼","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/60c693bde46c4ddb90e988a896fe9d85.png","BRANDICON_ID":"383389941339521024"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"MiuMiu","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/8ff248f52f25412ea1790c549e8a7d8f.png","BRANDICON_ID":"383390013385080832"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"普拉达","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/15338689c07a4ea3a89648bf4480cc12.png","BRANDICON_ID":"383390068275937280"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"芬迪","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/b7dcc9e48c414eb389ceb4e8e0d0d701.png","BRANDICON_ID":"383390114983706624"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"迪奥","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/7fa2f23732cd4610b8d05ec7b19f12f3.png","BRANDICON_ID":"383390169580961792"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"托德斯","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/c84e012d0bca473e908567697bac746c.png","BRANDICON_ID":"383390224438263808"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"欧米伽","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/cd7421ecfbdc4baea968e599b83c6948.png","BRANDICON_ID":"383390272324632576"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"路易威登","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/593093ce33a042b2aceb4bfe6e19e9a3.png","BRANDICON_ID":"383390340930863104"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"香奈儿","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/cd79e397e740477cab46ef87f2eae42b.png","BRANDICON_ID":"383391098665435136"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"施华洛世奇水晶","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/879ca1e48f9349ef822c82723edcc38b.png","BRANDICON_ID":"383391502157479936"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"劳力士","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/f2e6411afe1c4b75968c5fe209b50c65.png","BRANDICON_ID":"383391571384467456"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"天梭腕表","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/345211d0ea5d4f2198931caee8ad5e26.png","BRANDICON_ID":"383391618746548224"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"古驰","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/ef52a04792cd4b05a74f3aa54654949d.png","BRANDICON_ID":"383391662413447168"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"瑞士梅花腕表","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/0111b084ebfc4e238b4fe25c88830b08.png","BRANDICON_ID":"383391783746273280"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"瑞士百年灵","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/4ca41eeeac914c59b112c24498510c9b.png","BRANDICON_ID":"383391843301195776"},{"BRAND_ID":"0e6184d78b374cfd8e97f9da5e34a835","BRANDNAME":"西铁城腕表","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/e4e0e40b160d4f89b0bb849dda0599c9.png","BRANDICON_ID":"383391896187174912"}]
+     * pd : [{"BUSINESS_ID":"400316598327443456","SHOWIMG":"http://47.104.16.215:8088/businessimgs/bc4f1439ce6c4b6cb1e4526b3d83120a.png","PRODUCTIMGS":["http://47.104.16.215:8088/businessimgs/productimgs/6735bd3e4abf4a53afadb011c6179c46.png","http://47.104.16.215:8088/businessimgs/productimgs/eb35a4436c2c4368b2cb99d8961362a6.png","http://47.104.16.215:8088/businessimgs/productimgs/113b1d941015407a88887bd9f3877919.png","http://47.104.16.215:8088/businessimgs/productimgs/90c20159ea044b878b5a85c0cf786c9f.png"],"SHOPNAME":"劳力士旗舰店","PRODUCT_COUNT":0},{"BUSINESS_ID":"400316520984477696","SHOWIMG":"http://47.104.16.215:8088/businessimgs/c2d6bcf2345945279bc449e8e36171e2.png","PRODUCTIMGS":["http://47.104.16.215:8088/businessimgs/productimgs/1b4fa45ea4e24cc7b56c832421244e91.png","http://47.104.16.215:8088/businessimgs/productimgs/0fe4b3d20865405eb7d8174c439ea064.png","http://47.104.16.215:8088/businessimgs/productimgs/2c4dd96d716d420ca6721a8f6f7f0891.png","http://47.104.16.215:8088/businessimgs/productimgs/f2ca1f634710444fbc0bd3aec528f1d0.png"],"SHOPNAME":"美度旗舰店","PRODUCT_COUNT":0},{"BUSINESS_ID":"400316351064834048","SHOWIMG":"http://47.104.16.215:8088/businessimgs/34f119eec8224378b5a5852c1f52dedc.png","PRODUCTIMGS":["http://47.104.16.215:8088/businessimgs/productimgs/f749c260ffc24f8ba8137e857936816f.png","http://47.104.16.215:8088/businessimgs/productimgs/4dc939feb55543709977e4bcd50c6e8d.png","http://47.104.16.215:8088/businessimgs/productimgs/8406226e537844a2879fe316735ffb45.png","http://47.104.16.215:8088/businessimgs/productimgs/960aafdcea3c4e8694af67e05422bf77.png"],"SHOPNAME":"欧米茄旗舰店","PRODUCT_COUNT":0},{"BUSINESS_ID":"400312771570302976","SHOWIMG":"http://47.104.16.215:8088/businessimgs/9aecd15a1f064c60bb00e672d95ce900.png","PRODUCTIMGS":["http://47.104.16.215:8088/businessimgs/productimgs/4770877df12444409ff080dad845f2e0.png","http://47.104.16.215:8088/businessimgs/productimgs/4d4a23bd1df64d52a0751a3fcfc68bf7.png","http://47.104.16.215:8088/businessimgs/productimgs/2b8adf8bb631479dafcca73e872487d2.png","http://47.104.16.215:8088/businessimgs/productimgs/497cb86588d64abcb8d369a6e3835cfe.png"],"SHOPNAME":"浪琴旗舰店","PRODUCT_COUNT":0}]
+     * adList : [{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/09730357bc874cf99cd1686fa1c90532.png","AD_POSITION":"","RELATED_ID":"1b4ed4c57ef04933b97e8def48fc423a","CLICK_COUNT":0,"SORT_ORDER":1,"LINK_URL":"","ADVERTISEMENT_ID":"400649418644127744","NAME":""},{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/7d92996d810649ee9f2bae3eb7044da8.png","AD_POSITION":"","RELATED_ID":"1b4ed4c57ef04933b97e8def48fc423a","CLICK_COUNT":0,"SORT_ORDER":2,"LINK_URL":"","ADVERTISEMENT_ID":"400649534809571328","NAME":""},{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/f46a98144f8f47f3893315c954edc6e3.png","AD_POSITION":"","RELATED_ID":"1b4ed4c57ef04933b97e8def48fc423a","CLICK_COUNT":0,"SORT_ORDER":3,"LINK_URL":"","ADVERTISEMENT_ID":"400649635573530624","NAME":""}]
+     * brandIconList : [{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"天梭","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/949660e6138a4013976dff601e76a09d.png","BRANDICON_ID":"383548125043752960"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"浪琴","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/10198468165b4e05b7103c822ccafc2d.png","BRANDICON_ID":"383548171650859008"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"宝玑","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/86956e49315f409eab3ed955b4cde0eb.png","BRANDICON_ID":"383548214432759808"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"积家","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/04b19696302547b3aedca9a7f13eb1b5.png","BRANDICON_ID":"383548285031284736"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"万国","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/7358a1df093b4230bd86c62eefc8ade7.png","BRANDICON_ID":"383548356233789440"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"ck","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/ee0fd5e8e53648a5a5600070ebcb5e28.png","BRANDICON_ID":"383548398151663616"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"雷达","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/35bc0b90cc214c8b8730c2e95c23df17.png","BRANDICON_ID":"383548559741419520"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"爱彼","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/94aea0347bc84a25b404647b5d5a9850.png","BRANDICON_ID":"383548607954944000"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"昆仑","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/3082cdbb28db4d9bb5aa03759b8c5e37.png","BRANDICON_ID":"383548671641255936"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"汉密尔顿","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/bb39eca1b8c84efca2682f00aff29661.png","BRANDICON_ID":"383548753853808640"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"真力时","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/101788c97f2740b4ac6fdacab5a00d6b.png","BRANDICON_ID":"383548827908440064"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"豪雅","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/1d841adfc21746549186d5689918e6e8.png","BRANDICON_ID":"383548896925712384"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"西铁城","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/39fbbbed823c49c396dc91e3e516a086.png","BRANDICON_ID":"383549064861450240"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"欧米伽","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/c28d18081fda4c4c95ca5d58cd841a55.png","BRANDICON_ID":"383549137112530944"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"苹果","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/f7cb3817bcc14b5a8da77ff5e6831e7d.png","BRANDICON_ID":"383549195090395136"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"美度","ICONIMGS":"","BRANDICON_ID":"400312546583642112"},{"BRAND_ID":"1b4ed4c57ef04933b97e8def48fc423a","BRANDNAME":"劳力士","ICONIMGS":"","BRANDICON_ID":"400312607912755200"}]
      */
 
     private String result;
     private List<PdBean> pd;
+    private List<AdListBean> adList;
+    private List<BrandIconListBean> brandIconList;
 
     public String getResult() {
         return result;
@@ -33,12 +37,170 @@ public class CategoryRightModel {
         this.pd = pd;
     }
 
+    public List<AdListBean> getAdList() {
+        return adList;
+    }
+
+    public void setAdList(List<AdListBean> adList) {
+        this.adList = adList;
+    }
+
+    public List<BrandIconListBean> getBrandIconList() {
+        return brandIconList;
+    }
+
+    public void setBrandIconList(List<BrandIconListBean> brandIconList) {
+        this.brandIconList = brandIconList;
+    }
+
     public static class PdBean {
         /**
-         * BRAND_ID : 0e6184d78b374cfd8e97f9da5e34a835
-         * BRANDNAME : 卡地亚
-         * ICONIMGS : http://47.104.16.215:8088/productimgs/brandiconimgs/a9611f14b49d499193126117b4a77315.png
-         * BRANDICON_ID : 383388690547736576
+         * BUSINESS_ID : 400316598327443456
+         * SHOWIMG : http://47.104.16.215:8088/businessimgs/bc4f1439ce6c4b6cb1e4526b3d83120a.png
+         * PRODUCTIMGS : ["http://47.104.16.215:8088/businessimgs/productimgs/6735bd3e4abf4a53afadb011c6179c46.png","http://47.104.16.215:8088/businessimgs/productimgs/eb35a4436c2c4368b2cb99d8961362a6.png","http://47.104.16.215:8088/businessimgs/productimgs/113b1d941015407a88887bd9f3877919.png","http://47.104.16.215:8088/businessimgs/productimgs/90c20159ea044b878b5a85c0cf786c9f.png"]
+         * SHOPNAME : 劳力士旗舰店
+         * PRODUCT_COUNT : 0
+         */
+
+        private String BUSINESS_ID;
+        private String SHOWIMG;
+        private String SHOPNAME;
+        private int PRODUCT_COUNT;
+        private List<String> PRODUCTIMGS;
+
+        public String getBUSINESS_ID() {
+            return BUSINESS_ID;
+        }
+
+        public void setBUSINESS_ID(String BUSINESS_ID) {
+            this.BUSINESS_ID = BUSINESS_ID;
+        }
+
+        public String getSHOWIMG() {
+            return SHOWIMG;
+        }
+
+        public void setSHOWIMG(String SHOWIMG) {
+            this.SHOWIMG = SHOWIMG;
+        }
+
+        public String getSHOPNAME() {
+            return SHOPNAME;
+        }
+
+        public void setSHOPNAME(String SHOPNAME) {
+            this.SHOPNAME = SHOPNAME;
+        }
+
+        public int getPRODUCT_COUNT() {
+            return PRODUCT_COUNT;
+        }
+
+        public void setPRODUCT_COUNT(int PRODUCT_COUNT) {
+            this.PRODUCT_COUNT = PRODUCT_COUNT;
+        }
+
+        public List<String> getPRODUCTIMGS() {
+            return PRODUCTIMGS;
+        }
+
+        public void setPRODUCTIMGS(List<String> PRODUCTIMGS) {
+            this.PRODUCTIMGS = PRODUCTIMGS;
+        }
+    }
+
+    public static class AdListBean {
+        /**
+         * SHOWIMG : http://47.104.16.215:8088/advertisementimgs/09730357bc874cf99cd1686fa1c90532.png
+         * AD_POSITION :
+         * RELATED_ID : 1b4ed4c57ef04933b97e8def48fc423a
+         * CLICK_COUNT : 0
+         * SORT_ORDER : 1
+         * LINK_URL :
+         * ADVERTISEMENT_ID : 400649418644127744
+         * NAME :
+         */
+
+        private String SHOWIMG;
+        private String AD_POSITION;
+        private String RELATED_ID;
+        private int CLICK_COUNT;
+        private int SORT_ORDER;
+        private String LINK_URL;
+        private String ADVERTISEMENT_ID;
+        private String NAME;
+
+        public String getSHOWIMG() {
+            return SHOWIMG;
+        }
+
+        public void setSHOWIMG(String SHOWIMG) {
+            this.SHOWIMG = SHOWIMG;
+        }
+
+        public String getAD_POSITION() {
+            return AD_POSITION;
+        }
+
+        public void setAD_POSITION(String AD_POSITION) {
+            this.AD_POSITION = AD_POSITION;
+        }
+
+        public String getRELATED_ID() {
+            return RELATED_ID;
+        }
+
+        public void setRELATED_ID(String RELATED_ID) {
+            this.RELATED_ID = RELATED_ID;
+        }
+
+        public int getCLICK_COUNT() {
+            return CLICK_COUNT;
+        }
+
+        public void setCLICK_COUNT(int CLICK_COUNT) {
+            this.CLICK_COUNT = CLICK_COUNT;
+        }
+
+        public int getSORT_ORDER() {
+            return SORT_ORDER;
+        }
+
+        public void setSORT_ORDER(int SORT_ORDER) {
+            this.SORT_ORDER = SORT_ORDER;
+        }
+
+        public String getLINK_URL() {
+            return LINK_URL;
+        }
+
+        public void setLINK_URL(String LINK_URL) {
+            this.LINK_URL = LINK_URL;
+        }
+
+        public String getADVERTISEMENT_ID() {
+            return ADVERTISEMENT_ID;
+        }
+
+        public void setADVERTISEMENT_ID(String ADVERTISEMENT_ID) {
+            this.ADVERTISEMENT_ID = ADVERTISEMENT_ID;
+        }
+
+        public String getNAME() {
+            return NAME;
+        }
+
+        public void setNAME(String NAME) {
+            this.NAME = NAME;
+        }
+    }
+
+    public static class BrandIconListBean {
+        /**
+         * BRAND_ID : 1b4ed4c57ef04933b97e8def48fc423a
+         * BRANDNAME : 天梭
+         * ICONIMGS : http://47.104.16.215:8088/productimgs/brandiconimgs/949660e6138a4013976dff601e76a09d.png
+         * BRANDICON_ID : 383548125043752960
          */
 
         private String BRAND_ID;

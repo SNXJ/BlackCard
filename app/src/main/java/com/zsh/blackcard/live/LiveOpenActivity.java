@@ -26,8 +26,8 @@ import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.live.zego.SystemUtil;
 import com.zsh.blackcard.live.zego.ZegoApiManager;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.LogUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;

@@ -31,7 +31,8 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.RegisterCardTypeModel;
 import com.zsh.blackcard.model.RegisterChangeNumberModel;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -148,6 +149,8 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
     protected void initUI() {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+        //向Activity管理栈添加当前Activity
+        ActivityUtils.addActivity(this);
         initDate();
     }
 
@@ -309,7 +312,6 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
                                 registerCardGloryAdapter.clearAndRefresh(obj.getPd());
                                 cardNumber = "";
                             }
-
                             break;
                         case "5":
                             if (registerCardSuperOneAdapter == null) {
@@ -390,12 +392,22 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
 //        }
 //    }
 
+
+    @Override
+    public void onBackPressed() {
+        //移除当前Activity管理栈
+        ActivityUtils.removeActivity(this);
+        finish();
+    }
+
     //控制收货地址，号码选择框的关闭和开启
     @OnClick({R.id.blackwb_back, R.id.register_address_relative, R.id.register_number_relative, R.id.register_customer_relative, R.id.register_pay_relative, R.id.register_submit_btn,
             R.id.register_number_one_random_tv, R.id.register_number_two_random_tv, R.id.register_number_three_random_tv, R.id.register_number_four_random_tv, R.id.register_number_five_random_tv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.blackwb_back:
+                //移除当前Activity管理栈
+                ActivityUtils.removeActivity(this);
                 finish();
                 break;
             case R.id.register_address_relative:
@@ -404,7 +416,6 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
                 } else {
                     register_address_linear.setVisibility(View.VISIBLE);
                 }
-
                 break;
             case R.id.register_number_relative:
                 if (register_number_linear.getVisibility() == View.VISIBLE) {
@@ -428,7 +439,8 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
                 }
                 break;
             case R.id.register_submit_btn:
-
+                //清空之前的所有栈
+                ActivityUtils.finishActivity();
                 break;
             case R.id.register_number_one_random_tv:
                 initChangeNumber("1");
@@ -556,7 +568,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
     //请求卡类型对应的图片轮播
     private void initRegisterCardType(String cardType) {
 
-        UIUtils.newProgressDialog(this).show();
+        showLoading(this);
 
         DataManager.getInstance(this).RequestHttp(NetApi.postRegisterCardType(DataManager.getMd5Str("CARDIMGS"), cardType), new ResultListener<RegisterCardTypeModel>() {
             @Override
@@ -613,7 +625,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
 
             @Override
             public void onCompleted() {
-                UIUtils.dismissProgressDialog();
+                dialogDismiss();
             }
         });
     }
@@ -953,6 +965,4 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
         registerCardGloryAdapter.initSelect();
         registerCardGloryAdapter.notifyDataSetChanged();
     }
-
-
 }

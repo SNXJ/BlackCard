@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/main_black"
     android:gravity="center"
-    android:textColor="@color/recharge_text"
     android:text="暂时没有新数据"
+    android:textColor="@color/recharge_text"
     android:textSize="18sp">
 
 </TextView>

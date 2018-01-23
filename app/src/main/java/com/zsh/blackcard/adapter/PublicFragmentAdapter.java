@@ -34,7 +34,8 @@ public class PublicFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mTitles[position];
+
+        return null==mTitles?(super.getPageTitle(position)):mTitles[position];
     }
 }
 

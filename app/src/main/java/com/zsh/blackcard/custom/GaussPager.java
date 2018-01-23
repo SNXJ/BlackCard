@@ -29,7 +29,8 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.untils.FastBlur;
+import com.zsh.blackcard.utils.FastBlur;
+import com.zsh.blackcard.utils.LogUtils;
 
 /**
  * Author: SNXJ
@@ -187,11 +188,12 @@ public class GaussPager extends LinearLayout {
 
                         // 如果topView没有隐藏
                         // 或sc的listView在顶部 && topView隐藏 && 下拉，则拦截
-
+                        LogUtils.i("","++++++++dy++++++++"+dy);
                         if (!isTopHidden || //
                                 (c != null //
                                         && c.getTop() == 0//
                                         && isTopHidden && dy > 0)) {
+                            LogUtils.i("","++++++++里dy++++++++"+dy);
 
                             initVelocityTrackerIfNotExists();
                             mVelocityTracker.addMovement(ev);

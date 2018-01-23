@@ -6,8 +6,8 @@ import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 
 import com.zsh.blackcard.music.model.Music;
-import com.zsh.blackcard.music.untils.AppCache;
-import com.zsh.blackcard.music.untils.CoverLoader;
+import com.zsh.blackcard.music.utils.AppCache;
+import com.zsh.blackcard.music.utils.CoverLoader;
 
 public class MediaSessionManager {
     private static final String TAG = "MediaSessionManager";

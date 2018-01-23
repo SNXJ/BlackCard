@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.ui.zgactivity.BlackSurplusActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 /**
  * Created by kkkkk on 2017/11/10.

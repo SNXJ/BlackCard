@@ -7,15 +7,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/back" />
 
         <TextView
@@ -29,34 +29,34 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:paddingTop="57.5dp"
-        android:paddingLeft="19.5dp"
-        android:paddingRight="19.5dp"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="@mipmap/game_image_1">
+        android:layout_height="@dimen/base350dp"
+        android:background="@mipmap/game_image_1"
+        android:paddingLeft="@dimen/base20dp"
+        android:paddingRight="@dimen/base20dp"
+        android:paddingTop="@dimen/base58dp">
 
         <ImageView
             android:id="@+id/my_game_center_dzpk_img"
-            android:src="@mipmap/game_image_2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@mipmap/game_image_2" />
 
         <ImageView
             android:id="@+id/my_game_center_hlby_img"
-            android:layout_marginTop="30.5dp"
-            android:layout_below="@+id/my_game_center_dzpk_img"
-            android:src="@mipmap/game_image_4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/my_game_center_dzpk_img"
+            android:layout_marginTop="@dimen/base30dp"
+            android:src="@mipmap/game_image_4" />
 
         <ImageView
             android:id="@+id/my_game_center_yyl_img"
-            android:layout_marginTop="28.5dp"
-            android:layout_below="@+id/my_game_center_hlby_img"
-            android:src="@mipmap/game_image_6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/my_game_center_hlby_img"
+            android:layout_marginTop="@dimen/base28dp"
+            android:src="@mipmap/game_image_6" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -67,18 +67,18 @@
             android:src="@mipmap/game_image_3" />
 
         <ImageView
-            android:layout_alignTop="@+id/my_game_center_hlby_img"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/game_image_5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/my_game_center_hlby_img"
+            android:src="@mipmap/game_image_5" />
 
         <ImageView
-            android:layout_alignTop="@+id/my_game_center_yyl_img"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/game_image_7"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/my_game_center_yyl_img"
+            android:src="@mipmap/game_image_7" />
 
     </RelativeLayout>
 

@@ -1,33 +1,22 @@
 package com.zsh.blackcard.ui;
 
-import android.view.View;
-import android.widget.ImageView;
-
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class BlackCurrencyActivity extends BaseActivity implements View.OnClickListener {
 
-    private ImageView back_img;
+public class BlackCurrencyActivity extends BaseActivity  {
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_blackcoffeecurrency);
-        initFindId();
-        initOnClick();
+        ButterKnife.bind(this);
     }
 
-    private void initOnClick() {
-        back_img.setOnClickListener(this);
-    }
-
-    private void initFindId() {
-        back_img = (ImageView) findViewById(R.id.blackwb_back);
-    }
-
-    @Override
-    public void onClick(View v) {
+    @OnClick(R.id.blackwb_back)
+    public void onClick(){
         finish();
     }
 }

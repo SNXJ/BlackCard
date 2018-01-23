@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_white"
+    android:orientation="vertical"
+
+    android:padding="@dimen/base18dp">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/WX_circle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/base44dp"
+                android:layout_height="@dimen/base44dp"
+                android:src="@mipmap/share_icon_1" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="朋友圈"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/WX"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/base44dp"
+                android:layout_height="@dimen/base44dp"
+                android:src="@mipmap/share_icon_2" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="微信"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/QQ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/base44dp"
+                android:layout_height="@dimen/base44dp"
+                android:src="@mipmap/share_icon_3" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="QQ"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/QQ_ZONE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/base44dp"
+                android:layout_height="@dimen/base44dp"
+                android:src="@mipmap/share_icon_4" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="QQ空间"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/SINA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/base44dp"
+                android:layout_height="@dimen/base44dp"
+                android:src="@mipmap/share_icon_5" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="微博"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/COPY"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/base44dp"
+                android:layout_height="@dimen/base44dp"
+                android:src="@mipmap/share_icon_6" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="复制链接"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="@dimen/base44dp"
+                android:layout_height="@dimen/base44dp"
+                android:src="@mipmap/share_icon_3" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="QQ"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="@dimen/base44dp"
+                android:layout_height="@dimen/base44dp"
+                android:src="@mipmap/share_icon_4" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginTop="@dimen/base5dp"
+                android:text="QQ空间"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

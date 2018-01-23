@@ -10,9 +10,10 @@ import java.util.List;
  */
 
 public class HomeGloryMagazineModel {
+
     /**
      * result : 01
-     * pd : [{"BRAND_ID":"195f038a5e984ef18ea53d142586cc66","BRANDNAME":"Lines Review","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/ad3a4ee07eea413abe85b7dec9295d87.png","BRANDICON_ID":"385374723871080448"},{"BRAND_ID":"195f038a5e984ef18ea53d142586cc66","BRANDNAME":"名汇FAMOUS","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/406c49ee33a64988b0043d905e4a7567.png","BRANDICON_ID":"385374479468986368"},{"BRAND_ID":"195f038a5e984ef18ea53d142586cc66","BRANDNAME":"The New Criterion","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/c9e7eea787714ea48f58fd1613439d88.png","BRANDICON_ID":"386097751957438464"},{"BRAND_ID":"195f038a5e984ef18ea53d142586cc66","BRANDNAME":"FHM男人帮","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/2bbd1ae65f6a46af939900882f0fb801.png","BRANDICON_ID":"386097854562697216"},{"BRAND_ID":"195f038a5e984ef18ea53d142586cc66","BRANDNAME":"Cosmopolitan","ICONIMGS":"http://47.104.16.215:8088/productimgs/brandiconimgs/e0e9a77b63d44a0ea7e26d330b633380.png","BRANDICON_ID":"385374622742216704"}]
+     * pd : [{"SHOWIMG":"http://47.104.16.215:8088/magazineimgs/7515cb9ba6d24191b2f5ac60fbced045.png","MAGAZINETYPE":"1","MAGAZINE_ID":"398896682013556736"},{"SHOWIMG":"http://47.104.16.215:8088/magazineimgs/7b87346fffdb4a788b9275576f553fe0.png","MAGAZINETYPE":"2","MAGAZINE_ID":"398899978195435520"},{"SHOWIMG":"http://47.104.16.215:8088/magazineimgs/06d2beaf75f74aa0951c055fed14bca3.png","MAGAZINETYPE":"3","MAGAZINE_ID":"398900270395817984"},{"SHOWIMG":"http://47.104.16.215:8088/magazineimgs/55b11f56310a48e68bb988cde2e006d0.png","MAGAZINETYPE":"3","MAGAZINE_ID":"398907579100561408"},{"SHOWIMG":"http://47.104.16.215:8088/magazineimgs/81164fee225a4183b129884586dbc6cd.png","MAGAZINETYPE":"3","MAGAZINE_ID":"398907654493175808"}]
      */
 
     private String result;
@@ -36,47 +37,37 @@ public class HomeGloryMagazineModel {
 
     public static class PdBean implements MultiItemEntity {
         /**
-         * BRAND_ID : 195f038a5e984ef18ea53d142586cc66
-         * BRANDNAME : Lines Review
-         * ICONIMGS : http://47.104.16.215:8088/productimgs/brandiconimgs/ad3a4ee07eea413abe85b7dec9295d87.png
-         * BRANDICON_ID : 385374723871080448
+         * SHOWIMG : http://47.104.16.215:8088/magazineimgs/7515cb9ba6d24191b2f5ac60fbced045.png
+         * MAGAZINETYPE : 1
+         * MAGAZINE_ID : 398896682013556736
          */
 
-        private String BRAND_ID;
-        private String BRANDNAME;
-        private String ICONIMGS;
-        private String BRANDICON_ID;
+        private String SHOWIMG;
+        private String MAGAZINETYPE;
+        private String MAGAZINE_ID;
 
-        public String getBRAND_ID() {
-            return BRAND_ID;
+        public String getSHOWIMG() {
+            return SHOWIMG;
         }
 
-        public void setBRAND_ID(String BRAND_ID) {
-            this.BRAND_ID = BRAND_ID;
+        public void setSHOWIMG(String SHOWIMG) {
+            this.SHOWIMG = SHOWIMG;
         }
 
-        public String getBRANDNAME() {
-            return BRANDNAME;
+        public String getMAGAZINETYPE() {
+            return MAGAZINETYPE;
         }
 
-        public void setBRANDNAME(String BRANDNAME) {
-            this.BRANDNAME = BRANDNAME;
+        public void setMAGAZINETYPE(String MAGAZINETYPE) {
+            this.MAGAZINETYPE = MAGAZINETYPE;
         }
 
-        public String getICONIMGS() {
-            return ICONIMGS;
+        public String getMAGAZINE_ID() {
+            return MAGAZINE_ID;
         }
 
-        public void setICONIMGS(String ICONIMGS) {
-            this.ICONIMGS = ICONIMGS;
-        }
-
-        public String getBRANDICON_ID() {
-            return BRANDICON_ID;
-        }
-
-        public void setBRANDICON_ID(String BRANDICON_ID) {
-            this.BRANDICON_ID = BRANDICON_ID;
+        public void setMAGAZINE_ID(String MAGAZINE_ID) {
+            this.MAGAZINE_ID = MAGAZINE_ID;
         }
 
         public static final int LEFT = 1;
@@ -95,3 +86,5 @@ public class HomeGloryMagazineModel {
         }
     }
 }
+
+

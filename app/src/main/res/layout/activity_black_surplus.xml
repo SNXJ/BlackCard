@@ -11,10 +11,10 @@
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/back" />
 
         <TextView
@@ -28,7 +28,7 @@
     </RelativeLayout>
 
     <TextView
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/base30dp"
         android:textColor="#FF929292"
         android:layout_gravity="center_horizontal"
         android:text="最高额度（元）"
@@ -38,7 +38,7 @@
 
     <TextView
         android:textSize="32sp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/base30dp"
         android:textColor="#FF929292"
         android:layout_gravity="center_horizontal"
         android:text="100,000.00"
@@ -48,11 +48,11 @@
     <Button
         android:textSize="17sp"
         android:textColor="#FF929292"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="@dimen/base45dp"
         android:background="@drawable/shape_black_surplus_btn"
         android:text="激活额度"
         android:layout_gravity="center_horizontal"
-        android:layout_width="140dp"
-        android:layout_height="35dp" />
+        android:layout_width="@dimen/base140dp"
+        android:layout_height="@dimen/base35dp" />
     
 </LinearLayout>

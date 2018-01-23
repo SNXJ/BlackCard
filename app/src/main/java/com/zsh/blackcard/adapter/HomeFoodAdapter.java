@@ -8,7 +8,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.model.HomeFoodModel;
-import com.zsh.blackcard.untils.LogUtils;
 import com.zsh.blackcard.view.Star;
 
 import java.util.List;

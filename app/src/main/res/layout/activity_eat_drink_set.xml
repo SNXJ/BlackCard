@@ -19,19 +19,60 @@
             android:src="@mipmap/back" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/activity_eat_drink_set_title_tv"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="吃喝玩乐"
             android:textColor="@color/recharge_text"
             android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hj_eat_set_sort_relative"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:layout_below="@+id/hj_eat_set_title">
+
+        <TextView
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="活动类型"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/hj_eat_set_sort_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base38dp"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/more" />
+
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base1dp"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/hj_eat_set_startTime_relative"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base40dp"
-        android:layout_below="@+id/hj_eat_set_title">
+        android:layout_below="@+id/hj_eat_set_sort_relative">
 
         <TextView
             android:layout_marginLeft="@dimen/base15dp"
@@ -323,48 +364,8 @@
             android:textSize="14sp" />
 
         <TextView
-            android:text="内容暂未编辑"
+            android:text="标题或内容未编辑"
             android:id="@+id/hj_eat_set_detail_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/base38dp"
-            android:textColor="@color/recharge_text"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:layout_marginRight="@dimen/base15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/more" />
-
-        <View
-            android:layout_alignParentBottom="true"
-            android:background="@color/divider"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base1dp"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/hj_eat_set_sort_relative"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base40dp"
-        android:layout_below="@+id/hj_eat_set_detail_relative">
-
-        <TextView
-            android:layout_marginLeft="@dimen/base15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="活动类型"
-            android:textColor="@color/recharge_text"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/hj_eat_set_sort_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

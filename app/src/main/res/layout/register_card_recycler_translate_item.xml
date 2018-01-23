@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:paddingBottom="7dp"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
-    android:paddingTop="7dp">
+    android:paddingBottom="@dimen/base7dp"
+    android:paddingLeft="@dimen/base5dp"
+    android:paddingRight="@dimen/base5dp"
+    android:paddingTop="@dimen/base7dp">
 
 
     <TextView
         android:id="@+id/register_card_tv"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/base100dp"
+        android:layout_height="@dimen/base30dp"
         android:gravity="center"
         android:textColor="#FF929292"
         android:textSize="15sp" />

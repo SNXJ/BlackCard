@@ -10,8 +10,12 @@
         <item name="android:listDivider">@drawable/divider</item>
 
     </style>
+    <style name="FullTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
 
-
+        <item name="android:windowFullscreen">true</item>
+    </style>
     <!-- 总title-->
     <style name="btn_buttom">
         <item name="android:background">@color/bg_button</item>
@@ -34,20 +38,21 @@
         <item name="android:textColor">@color/ff92_text</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <!-- 总title back-->
     <style name="title_im_back">
         <item name="android:src">@mipmap/back</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:paddingLeft">@dimen/base15dp</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
     <!-- 总title tv-->
     <style name="title_tv">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textColor">@color/title_text</item>
         <item name="android:textSize">17sp</item>
@@ -71,6 +76,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
     <!--时间选择-->
     <style name="date_style" parent="@android:style/Theme.Dialog">
         <item name="android:windowFullscreen">true</item>

@@ -3,90 +3,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_black"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
-        <RelativeLayout style="@style/title_rl">
+    <RelativeLayout style="@style/title_rl">
 
-            <ImageView
-                android:id="@+id/title_back"
-                style="@style/title_im_back" />
+        <ImageView
+            android:id="@+id/title_back"
+            style="@style/title_im_back" />
 
-            <TextView
-                android:id="@+id/title_tv"
-                style="@style/title_tv"
-                android:text="打赏金额" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/title_tv"
+            android:text="打赏金额" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base103dp">
+
+        <TextView
+            android:layout_width="@dimen/base62dp"
+            android:layout_height="@dimen/base20dp"
+            android:layout_marginLeft="@dimen/base35dp"
+            android:layout_marginTop="@dimen/base22dp"
+            android:background="@mipmap/reward_unselect"
+            android:gravity="center"
+            android:text="5元"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="@dimen/base62dp"
+            android:layout_height="@dimen/base20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/base35dp"
+            android:layout_marginTop="@dimen/base22dp"
+            android:background="@mipmap/reward_unselect"
+            android:gravity="center"
+            android:text="10元"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="@dimen/base62dp"
+            android:layout_height="@dimen/base20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/base35dp"
+            android:layout_marginRight="@dimen/base35dp"
+            android:layout_marginTop="@dimen/base22dp"
+            android:background="@mipmap/reward_unselect"
+            android:gravity="center"
+            android:text="30元"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="@dimen/base62dp"
+            android:layout_height="@dimen/base20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base22dp"
+            android:layout_marginLeft="@dimen/base35dp"
+            android:layout_marginRight="@dimen/base35dp"
+            android:layout_marginTop="@dimen/base22dp"
+            android:background="@mipmap/reward_unselect"
+            android:gravity="center"
+            android:text="50元"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="@dimen/base62dp"
+            android:layout_height="@dimen/base20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/base22dp"
+            android:layout_marginLeft="@dimen/base35dp"
+            android:layout_marginRight="@dimen/base35dp"
+            android:layout_marginTop="@dimen/base22dp"
+            android:background="@mipmap/reward_unselect"
+            android:gravity="center"
+            android:text="100元"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
 
 
+    </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base103dp">
-             <TextView
-                 android:gravity="center"
-                 android:background="@mipmap/reward_unselect"
-                 android:layout_marginLeft="@dimen/base35dp"
-                 android:layout_marginTop="@dimen/base22dp"
-                 android:layout_width="@dimen/base62dp"
-                 android:text="5元"
-                 android:textSize="15sp"
-                 android:textColor="@color/recharge_text"
-                android:layout_height="@dimen/base20dp" />
-            <TextView
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:background="@mipmap/reward_unselect"
-                android:layout_marginLeft="@dimen/base35dp"
-                android:layout_marginTop="@dimen/base22dp"
-                android:layout_width="@dimen/base62dp"
-                android:text="10元"
-                android:textSize="15sp"
-                android:textColor="@color/recharge_text"
-                android:layout_height="@dimen/base20dp" />
-            <TextView
-               android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/base35dp"
-                android:gravity="center"
-                android:background="@mipmap/reward_unselect"
-                android:layout_marginLeft="@dimen/base35dp"
-                android:layout_marginTop="@dimen/base22dp"
-                android:layout_width="@dimen/base62dp"
-                android:text="30元"
-                android:textSize="15sp"
-                android:textColor="@color/recharge_text"
-                android:layout_height="@dimen/base20dp" />
-
-            <TextView
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/base22dp"
-                android:layout_marginRight="@dimen/base35dp"
-                android:gravity="center"
-                android:background="@mipmap/reward_unselect"
-                android:layout_marginLeft="@dimen/base35dp"
-                android:layout_marginTop="@dimen/base22dp"
-                android:layout_width="@dimen/base62dp"
-                android:text="50元"
-                android:textSize="15sp"
-                android:textColor="@color/recharge_text"
-                android:layout_height="@dimen/base20dp" />
-            <TextView
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/base22dp"
-                android:layout_marginRight="@dimen/base35dp"
-                android:gravity="center"
-                android:background="@mipmap/reward_unselect"
-                android:layout_marginLeft="@dimen/base35dp"
-                android:layout_marginTop="@dimen/base22dp"
-                android:layout_width="@dimen/base62dp"
-                android:text="100元"
-                android:textSize="15sp"
-                android:textColor="@color/recharge_text"
-                android:layout_height="@dimen/base20dp" />
-
-
-        </RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,120 +96,116 @@
         android:layout_marginTop="@dimen/base19dp"
         android:text="支付方式"
         android:textColor="@color/recharge_text"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/base40dp">
 
         <ImageView
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base15dp"
             android:layout_width="@dimen/base20dp"
             android:layout_height="@dimen/base20dp"
-            android:src="@mipmap/wechat_1"
-            />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/wechat_1" />
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/base50dp"
             android:layout_marginTop="@dimen/base14dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="微信支付"
             android:textColor="@color/recharge_text"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
 
         <CheckBox
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base15dp"
+            style="@style/plane_check_box"
             android:layout_width="@dimen/base18dp"
             android:layout_height="@dimen/base18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
             android:text=""
-            style="@style/plane_check_box"
             android:textColor="@color/recharge_text"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
     </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/base40dp">
 
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/base15dp"
-                android:layout_width="@dimen/base20dp"
-                android:layout_height="@dimen/base20dp"
-                android:src="@mipmap/alipay_1"
-                />
-            <TextView
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/base50dp"
-                android:layout_marginTop="@dimen/base14dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="支付宝支付"
-                android:textColor="@color/recharge_text"
-                android:textSize="15sp"
-                />
-
-            <CheckBox
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/base15dp"
-                android:layout_width="@dimen/base18dp"
-                android:layout_height="@dimen/base18dp"
-                android:text=""
-                style="@style/plane_check_box"
-                android:textColor="@color/recharge_text"
-                android:textSize="15sp"
-                />
-        </RelativeLayout>
     <RelativeLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base60dp">
+        android:layout_height="@dimen/base40dp">
 
         <ImageView
+            android:layout_width="@dimen/base20dp"
+            android:layout_height="@dimen/base20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/base15dp"
-            android:layout_marginTop="@dimen/base16dp"
-            android:layout_marginBottom="@dimen/base14dp"
-            android:layout_width="@dimen/base32dp"
-            android:layout_height="@dimen/base32dp"
-            android:src="@mipmap/wechat_1"
-            />
-        <TextView
-            android:layout_marginLeft="@dimen/base57dp"
-            android:layout_marginTop="@dimen/base14dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="微信支付"
-            android:textColor="@color/recharge_text"
-            android:textSize="14sp"
-            />
-        <TextView
-            android:layout_marginLeft="@dimen/base57dp"
-            android:layout_marginTop="@dimen/base34dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2017年9月9日"
-            android:textColor="@color/recharge_text"
-            android:textSize="11sp"
-            />
+            android:src="@mipmap/alipay_1" />
 
         <TextView
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-999元"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base50dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:text="支付宝支付"
             android:textColor="@color/recharge_text"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
+
+        <CheckBox
+            style="@style/plane_check_box"
+            android:layout_width="@dimen/base18dp"
+            android:layout_height="@dimen/base18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:text=""
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
     </RelativeLayout>
 
-    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base60dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/base32dp"
+            android:layout_height="@dimen/base32dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/base14dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base16dp"
+            android:src="@mipmap/wechat_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base57dp"
+            android:layout_marginTop="@dimen/base14dp"
+            android:text="微信支付"
+            android:textColor="@color/recharge_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base57dp"
+            android:layout_marginTop="@dimen/base34dp"
+            android:text="2017年9月9日"
+            android:textColor="@color/recharge_text"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:text="-999元"
+            android:textColor="@color/recharge_text"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</LinearLayout>
 

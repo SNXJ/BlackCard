@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -14,171 +16,183 @@
 
             <ImageView
                 android:id="@+id/blackwb_back"
-                android:layout_marginTop="11dp"
-                android:layout_marginLeft="15.45dp"
-                android:layout_width="11dp"
-                android:layout_height="18.6dp"
-                android:src="@mipmap/back"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:layout_marginTop="@dimen/base11dp"
+                android:src="@mipmap/back" />
         </RelativeLayout>
 
         <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="345dp"
-            android:layout_height="36dp"
-            android:text="2017年夏季诺唯真喜悦号正式首航！为您提供真正的海上头等舱体验"
+            android:layout_width="@dimen/base345dp"
+            android:layout_height="@dimen/base36dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="2017年夏季诺唯真喜悦号正式首航！为您提供真正的海上头等舱体验"
             android:textColor="#929292"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
+
         <RelativeLayout
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="240dp">
+            android:layout_height="@dimen/base240dp"
+            android:layout_marginTop="@dimen/base15dp">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ship_image_2"/>
+                android:src="@mipmap/ship_image_2" />
 
             <TextView
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="42.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base45dp"
+                android:layout_marginTop="@dimen/base42dp"
                 android:text="海上头等舱"
-                android:textSize="24sp"
-                android:textColor="#929292"/>
+                android:textColor="#929292"
+                android:textSize="24sp" />
+
             <TextView
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="81.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base45dp"
+                android:layout_marginTop="@dimen/base82dp"
                 android:text="让海"
-                android:textSize="24sp"
-                android:textColor="#929292"/>
+                android:textColor="#929292"
+                android:textSize="24sp" />
+
             <TextView
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="120.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base45dp"
+                android:layout_marginTop="@dimen/base120dp"
                 android:text="有家的感觉"
-                android:textSize="24sp"
-                android:textColor="#929292"/>
+                android:textColor="#929292"
+                android:textSize="24sp" />
+
             <TextView
-                android:layout_marginTop="169.5dp"
-                android:layout_marginLeft="48.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base48dp"
+                android:layout_marginTop="@dimen/base170dp"
                 android:text="游艇是一种高雅而时尚的生活方式"
-                android:textSize="12sp"
-                android:textColor="#929292"/>
+                android:textColor="#929292"
+                android:textSize="12sp" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="240dp">
+            android:layout_height="@dimen/base240dp"
+            android:layout_marginTop="@dimen/base15dp">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ship_image_3"/>
+                android:src="@mipmap/ship_image_3" />
 
             <TextView
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="47dp"
-                android:layout_marginTop="42.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base47dp"
+                android:layout_marginTop="@dimen/base42dp"
                 android:text="居游艇之中"
-                android:textSize="24sp"
-                android:textColor="#929292"/>
-            <TextView
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="47dp"
-                android:layout_marginTop="81.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="居潮流之上"
-                android:textSize="24sp"
-                android:textColor="#929292"/>
-            <TextView
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="47dp"
-                android:layout_marginTop="120.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="水相伴，心飞扬"
-                android:textSize="24sp"
                 android:textColor="#929292"
-                android:id="@+id/textView" />
+                android:textSize="24sp" />
 
             <TextView
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="47dp"
-                android:layout_marginTop="169.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base47dp"
+                android:layout_marginTop="@dimen/base82dp"
+                android:text="居潮流之上"
+                android:textColor="#929292"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base47dp"
+                android:layout_marginTop="@dimen/base120dp"
+                android:text="水相伴，心飞扬"
+                android:textColor="#929292"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/base47dp"
+                android:layout_marginTop="@dimen/base170dp"
                 android:text="水面上漂浮的顶级豪宅"
-                android:textSize="12sp"
-                android:textColor="#929292"/>
+                android:textColor="#929292"
+                android:textSize="12sp" />
         </RelativeLayout>
 
         <TextView
-            android:layout_marginTop="20dp"
-            android:textColor="#929292"
-            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base20dp"
             android:text="豪华游艇，荣耀黑卡专供"
-            android:layout_gravity="center_horizontal"/>
+            android:textColor="#929292"
+            android:textSize="15sp" />
 
         <TextView
-            android:layout_marginTop="15dp"
-            android:textColor="#929292"
-            android:textSize="12sp"
-            android:layout_width="345dp"
+            android:layout_width="@dimen/base345dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base15dp"
             android:text="取自世界各地的美味佳肴：专业母语服务：另您的假期更加精彩！虐为真悦号由诺唯真游轮公司设计，是以德国工艺专为中国市场打造的新型豪华游轮。"
-            android:layout_gravity="center_horizontal"/>
+            android:textColor="#929292"
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_marginTop="20dp"
-            android:textColor="#929292"
-            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base20dp"
             android:text="注意事项"
-            android:layout_gravity="center_horizontal"/>
-        <TextView
-            android:layout_marginTop="11dp"
             android:textColor="#929292"
-            android:textSize="12sp"
-            android:layout_width="345dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="@dimen/base345dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base11dp"
             android:text="1、用300元保证300万：【中国人保】为荣耀黑卡持卡人、特地推出三款豪车租赁险种。无忧出行从此开始：用均价300元保险，轻松保障三百万豪车"
-            android:layout_gravity="center_horizontal"/>
-        <TextView
-            android:layout_marginTop="10dp"
             android:textColor="#929292"
-            android:textSize="12sp"
+            android:textSize="12sp" />
+
+        <TextView
             android:layout_width="345dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:text="2、预订时间：持卡人需要至少提前48小时预定"
-            android:layout_gravity="center_horizontal"/>
-        <TextView
-            android:layout_marginTop="10dp"
             android:textColor="#929292"
-            android:textSize="12sp"
-            android:layout_width="345dp"
-            android:layout_height="wrap_content"
-            android:text="3、关于定金：用户线上支付的￥2000定金，将全数抵扣 租金"
-            android:layout_gravity="center_horizontal"/>
+            android:textSize="12sp" />
+
         <TextView
-            android:background="#0B0B0B"
-            android:layout_marginTop="94dp"
+            android:layout_width="@dimen/base345dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="3、关于定金：用户线上支付的￥2000定金，将全数抵扣 租金"
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="@dimen/base49dp"
+            android:layout_marginTop="@dimen/base94dp"
+            android:background="#0B0B0B"
+            android:gravity="center"
             android:text="召唤管家"
             android:textColor="#929292"
-            android:gravity="center"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
     </LinearLayout>
 </ScrollView>

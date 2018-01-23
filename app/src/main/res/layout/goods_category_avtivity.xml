@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="@dimen/base16dp"
                 android:src="@mipmap/home_nav_search" />
 
             <EditText
@@ -51,10 +51,10 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/goods_category_relative"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/goods_category_recycler_left"
@@ -62,13 +62,84 @@
             android:layout_height="match_parent"
             android:background="#000000" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/goods_category_recycler_right"
+        <RadioGroup
+            android:id="@+id/goods_rg"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@+id/goods_category_recycler_left"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base43dp">
+
+            <RadioButton
+                android:padding="@dimen/base13dp"
+                android:button="@null"
+                android:id="@+id/search_one_rb"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textColor="@color/recharge_text"
+                android:text="综合排序"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <RadioButton
+                android:padding="@dimen/base13dp"
+                android:button="@null"
+                android:id="@+id/search_two_rb"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textColor="@color/recharge_text"
+                android:text="销量优先"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <RadioButton
+                android:paddingLeft="@dimen/base24dp"
+                android:paddingRight="@dimen/base24dp"
+                android:drawableRight="@mipmap/hotel_btn_1"
+                android:button="@null"
+                android:id="@+id/search_three_br"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textColor="@color/recharge_text"
+                android:text="筛选"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+        </RadioGroup>
+        
+        <android.support.v4.widget.NestedScrollView
+            android:layout_below="@+id/goods_rg"
+            android:layout_toRightOf="@+id/goods_category_recycler_left"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    </LinearLayout>
+                <com.youth.banner.Banner
+                    android:id="@+id/goods_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/base120dp">
+
+                </com.youth.banner.Banner>
+
+                <android.support.v7.widget.RecyclerView
+                    android:paddingLeft="@dimen/base10dp"
+                    android:paddingRight="@dimen/base10dp"
+                    android:id="@+id/goods_category_recycler_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </RelativeLayout>
 
 </LinearLayout>

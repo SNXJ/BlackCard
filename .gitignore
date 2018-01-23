@@ -48,6 +48,7 @@ captures/
 
 # Keystore files
 *.jks
+*.keystore
 
 .idea
 test.tmp

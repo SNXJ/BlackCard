@@ -14,7 +14,7 @@
             android:layout_width="@dimen/base11dp"
             android:layout_height="@dimen/base18dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15.45dp"
+            android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/back" />
 
         <TextView
@@ -291,6 +291,7 @@
                 android:src="@mipmap/goods_icon_3" />
 
             <ImageView
+                android:id="@+id/commodity_detail_collection_img"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -306,6 +307,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/commodity_detail_add_car_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

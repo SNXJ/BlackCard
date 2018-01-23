@@ -10,7 +10,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,7 +48,7 @@ public class SecurityLoginActivity extends BaseActivity {
     }
 
     private void initChangePassWord() {
-        DataManager.getInstance(this).RequestHttp(NetApi.postSecurityPassWord(DataManager.getMd5Str("UPDUSERPASSWORD"), "d6a3779de8204dfd9359403f54f7d27c", activity_security_new_et.getText().toString().trim(), activity_security_original_et.getText().toString().trim()), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postSecurityPassWord(DataManager.getMd5Str("UPDUSERPASSWORD"), "d6a3779de8204dfd9359403f54f7d27c", DataManager.getMd5PassWord(activity_security_new_et.getText().toString().trim()), DataManager.getMd5PassWord(activity_security_original_et.getText().toString().trim())), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {

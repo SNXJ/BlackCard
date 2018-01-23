@@ -4,47 +4,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/login_bg">
-<RelativeLayout
-    android:layout_marginTop="@dimen/base60dp"
-    android:id="@+id/rl_banner"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/base400dp">
 
-    <com.youth.banner.Banner
-        android:layout_alignParentTop="true"
-        android:id="@+id/welcome_banner"
+    <RelativeLayout
+        android:id="@+id/rl_banner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base400dp"
-        app:image_scale_type="center_inside"
-        app:is_auto_play="false">
 
-    </com.youth.banner.Banner>
-
-    <TextView
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        style="@style/text_"
-        android:layout_marginBottom="@dimen/base50dp"
-        android:text="荣耀黑卡"
-        />
-    <TextView
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/base20dp"
-        style="@style/text_"
-        android:text="Honour Centurion Card"
-        />
+        android:layout_height="@dimen/base420dp"
+        android:layout_marginTop="@dimen/base50dp">
 
 
-</RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base420dp"
+            />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/base20dp"
+            android:text="荣耀黑卡" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Honour Centurion Card" />
+
+
+
+    </RelativeLayout>
 
 
     <Button
-        android:layout_marginBottom="@dimen/base38dp"
         android:id="@+id/welcome_register_btn"
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="@dimen/base46dp"
+
         android:layout_marginLeft="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="在线申请"
@@ -52,50 +52,35 @@
         android:textSize="12sp" />
 
     <Button
-        android:layout_marginBottom="@dimen/base38dp"
         android:id="@+id/welcome_login_btn"
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+
+        android:layout_marginBottom="@dimen/base46dp"
+
         android:layout_marginRight="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="会籍登录"
         android:textColor="#FFFFFFFF"
         android:textSize="12sp" />
 
-    <LinearLayout
-        android:layout_marginTop="@dimen/base10dp"
-        android:layout_below="@+id/rl_banner"
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_banner"
         android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="@dimen/base20dp"
+
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/img_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/circle_true" />
 
-        <ImageView
-            android:id="@+id/img_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/circle_false" />
 
-        <ImageView
-            android:id="@+id/img_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/circle_false" />
-
-        <ImageView
-            android:id="@+id/img_four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/circle_false" />
-
-    </LinearLayout>
+    </RadioGroup>
 
 </RelativeLayout>

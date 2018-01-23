@@ -19,9 +19,9 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.JsonBean;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SettingUserInfoModel;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.GetJsonUtils;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.GetJsonUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import org.json.JSONArray;
 
@@ -88,6 +88,8 @@ public class UserInfoActivity extends BaseActivity {
 
     //获取个人信息
     private void initData() {
+        showLoading(this);
+
         DataManager.getInstance(this).RequestHttp(NetApi.postSettingUserInfo(DataManager.getMd5Str("GETUSERINFO"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<SettingUserInfoModel>() {
             @Override
             public void responseSuccess(SettingUserInfoModel obj) {
@@ -102,7 +104,7 @@ public class UserInfoActivity extends BaseActivity {
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
     }

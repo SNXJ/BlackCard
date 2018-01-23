@@ -20,39 +20,16 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <!-- 这个权限用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- 这个权限用于访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <!-- 用于读取手机当前的状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 访问网络，网络定位需要上网 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- SD卡读取权限，用户写入离线定位数据 -->
-    //即构科技
-    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- Umeng分享 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 即构科技 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    //Bugly
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    //即构科技
+    <!-- 即构科技 -->
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -66,26 +43,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+        <activity
+            android:name=".ui.WelcomeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/FullTheme"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
         <meta-data
             android:name="BUGLY_APP_CHANNEL"
             android:value="DEV" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="x44CZgW2VKxstNTFqe6zTYpgU5BbXr6r" />
-
-        <activity
-            android:name=".ui.MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".ui.WelcomeActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden|adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <service
             android:name="com.baidu.location.f"
@@ -106,7 +87,64 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+        <!-- 友盟分享 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="561cae6ae0f55abd990035bf" />
+        <!-- 新浪分享 -->
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- QQ分享 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- alipay -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".ui.BlackWeiboActivity" />
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.AddressEditActivity" />
@@ -121,7 +159,6 @@
         <activity android:name=".ui.LogisticsDetailsActivity" />
         <activity android:name=".ui.IntegralbillsActivity" />
         <activity android:name=".ui.DiscountCouponActivity" />
-        <activity android:name=".ui.ShoppingDetailsActivity" />
         <activity android:name=".ui.DiscountExchangeActivity" />
         <activity android:name=".ui.CommonPassengerActivity" />
         <activity android:name=".ui.EatDrinkActivity" />
@@ -134,7 +171,9 @@
         <activity android:name=".ui.BlackCurrencyActivity" />
         <activity android:name=".ui.SbSetActivity" />
         <activity android:name=".ui.zgactivity.ZgHomeActivity" />
-        <activity android:name=".ui.LoginActivity" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/FullTheme" />
         <activity android:name=".live.SingleAnchorActivity" />
         <activity android:name=".ui.home.HomeTrainActivity" />
         <activity
@@ -166,7 +205,7 @@
         <activity android:name=".ui.EatDrinkDetailActivity" />
         <activity android:name=".ui.zgactivity.GoodsCategoryActivity" />
         <activity
-            android:name=".ui.zgactivity.DiscoverActivity"
+            android:name=".ui.home.HomeNewsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.zgactivity.PersonalActivity" />
@@ -190,7 +229,9 @@
         <activity android:name=".live.LiveOpenActivity" />
         <activity android:name=".ui.MyOrderActivity" />
         <activity android:name=".ui.CollectionActivity" />
-        <activity android:name=".live.LiveAnchorDetails2" />
+        <activity
+            android:name=".live.LiveAnchorDetails2"
+            android:theme="@style/FullTheme" />
         <activity android:name=".live.VideoDetailsActivity" />
         <activity android:name=".live.VideoIngActivity" />
         <activity android:name=".live.AbMySettingActivity" />
@@ -198,7 +239,7 @@
         <activity android:name=".ui.EatDrinkSetDetailActivity" />
         <activity android:name=".ui.OrderPayActivity" />
         <activity android:name=".ui.ZgPersonalTailorDetailActivity" />
-        <activity android:name=".ui.ZgSearchActivity" />
+        <activity android:name=".ui.zgactivity.ZgSearchActivity" />
         <activity android:name=".ui.home.HomeBarDetailActivity" />
         <activity android:name=".ui.home.HomePublicRecyclerActivity" />
         <activity android:name=".ui.home.HomePublicDetailActivity" />
@@ -222,8 +263,6 @@
         <activity android:name=".live.AbSearchActivity" />
         <activity android:name=".ui.SelectTopicActivity" />
 
-
-
         <service android:name=".music.service.PlayService" />
 
         <receiver android:name=".music.receiver.RemoteControlReceiver">
@@ -239,6 +278,27 @@
 
         <activity android:name=".ui.RememberPassWordActivity" />
         <activity android:name=".ui.my.ChangePhoneActivity" />
+        <activity android:name=".wxapi.WXEntryActivity" />
+        <activity android:name=".wxapi.WXPayEntryActivity" />
+        <activity android:name=".ui.zgactivity.ZgSearchResultActivity" />
+        <activity android:name=".ui.home.HomeSearchActivity" />
+        <activity android:name=".ui.HjSearchActivity" />
+        <activity android:name=".ui.home.HomeGloryMagazineActivity" />
+        <activity
+            android:name=".live.LivingRoomActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.zgactivity.ShareProfitActivity" />
+        <activity android:name=".ui.home.MainGloryMagazineActivity" />
+        <activity android:name=".ui.zgactivity.DiscoverActivity" />
+        <activity android:name=".ui.home.MainMusicActivity" />
+        <activity android:name=".ui.my.MySettedActivity" />
+        <activity android:name=".ui.my.MySettedBusinessActivity" />
+        <activity android:name=".ui.my.MySettedBusinessSubmitActivity" />
+        <activity android:name=".ui.my.MySettedBusinessPhotoActivity"></activity>
+        <activity android:name=".aliLive.AliLiveRoomActivity" />
+        <activity android:name=".ui.my.MySettedBusinessPhotoActivity" />
+        <activity android:name=".ui.home.HomeNewsSendActivity" />
+        <activity android:name=".aliLive.AliLiveOpenActivity" />
     </application>
 
 </manifest>

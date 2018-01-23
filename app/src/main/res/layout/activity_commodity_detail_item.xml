@@ -18,7 +18,7 @@
         app:layout_constraintLeft_toRightOf="@+id/activity_commodity_detail_item_left_tv"
         android:id="@+id/view"
         android:background="#FF1D1D1D"
-        android:layout_width="1dp"
+        android:layout_width="@dimen/base1dp"
         android:layout_height="@dimen/base40dp"/>
 
     <TextView

@@ -19,7 +19,7 @@
                 android:src="@mipmap/live_image_1"/>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -29,11 +29,11 @@
                     android:text="夏天在我手中"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="14dp"/>
+                    android:layout_marginLeft="@dimen/base14dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="49dp"
+                    android:layout_marginLeft="@dimen/base49dp"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/live_love_normal"/>
                 <TextView
@@ -42,16 +42,16 @@
                     android:text="545"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/base5dp"/>
             </LinearLayout>
             <ImageView
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/base20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/live_image_3"/>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -61,11 +61,11 @@
                     android:text="流沙"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="14dp"/>
+                    android:layout_marginLeft="@dimen/base14dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="98dp"
+                    android:layout_marginLeft="@dimen/base98dp"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/live_love_normal"/>
                 <TextView
@@ -74,7 +74,7 @@
                     android:text="234"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/base5dp"/>
             </LinearLayout>
             <ImageView
                 android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                 android:src="@mipmap/live_image_5"/>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -92,11 +92,11 @@
                     android:text="绅士"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="14dp"/>
+                    android:layout_marginLeft="@dimen/base14dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="98dp"
+                    android:layout_marginLeft="@dimen/base98dp"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/live_love_normal"/>
                 <TextView
@@ -105,7 +105,7 @@
                     android:text="234"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/base5dp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -121,7 +121,7 @@
                 android:src="@mipmap/live_image_2"/>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -131,11 +131,11 @@
                     android:text="忘记时间的钟"
                     android:textColor="#929292"
                     android:textSize="12sp"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="@dimen/base20dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="49dp"
+                    android:layout_marginLeft="@dimen/base49dp"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/live_love_normal"/>
                 <TextView
@@ -144,7 +144,7 @@
                     android:text="234"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/base5dp"/>
             </LinearLayout>
             <ImageView
                 android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
                 android:src="@mipmap/live_image_4"/>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -162,11 +162,11 @@
                     android:text="夏天"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="14dp"/>
+                    android:layout_marginLeft="@dimen/base14dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="98dp"
+                    android:layout_marginLeft="@dimen/base98dp"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/live_love_normal"/>
                 <TextView
@@ -175,7 +175,7 @@
                     android:text="24"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/base5dp"/>
             </LinearLayout>
             <ImageView
                 android:layout_width="wrap_content"
@@ -183,7 +183,7 @@
                 android:src="@mipmap/live_image_6"/>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/base10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -193,11 +193,11 @@
                     android:text="模特"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="14dp"/>
+                    android:layout_marginLeft="@dimen/base14dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="98dp"
+                    android:layout_marginLeft="@dimen/base98dp"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/live_love_normal"/>
                 <TextView
@@ -206,7 +206,7 @@
                     android:text="23"
                     android:textColor="#ffffff"
                     android:textSize="12sp"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="@dimen/base5dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -1,16 +1,19 @@
 package com.zsh.blackcard.ui;
 
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alipay.sdk.app.PayTask;
 import com.bumptech.glide.Glide;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.model.OrderDialogModel;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,7 +53,7 @@ public class OrderPayActivity extends BaseActivity {
     protected void initUI() {
         setContentView(R.layout.order_pay_activity);
         ButterKnife.bind(this);
-         data = (OrderDialogModel) getIntent().getSerializableExtra("Serializable");
+        data = (OrderDialogModel) getIntent().getSerializableExtra("Serializable");
         tvName.setText(data.getDj_item_name());
         tvTime.setText(data.getDj_item_des());
         tvDes.setText(data.getDj_item_date());
@@ -73,10 +76,44 @@ public class OrderPayActivity extends BaseActivity {
                 break;
             case R.id.cb_ali_pay:
                 cbWxPay.setChecked(false);
+                //服务器拼接订单
                 break;
 
         }
     }
+
+
+    private void alipay() {
+        final String orderInfo = "";   // 订单信息
+
+        Runnable payRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+                PayTask alipay = new PayTask(OrderPayActivity.this);
+
+                String result = alipay.payV2(orderInfo, true).toString();
+
+                Message msg = new Message();
+//                msg.what = SDK_PAY_FLAG;
+                msg.obj = result;
+                mHandler.sendMessage(msg);
+            }
+        };
+        // 必须异步调用
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
+    }
+
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+//           Result result = new Result((String) msg.obj);
+//            Toast.makeText(this, result.getResult(),
+//                    Toast.LENGTH_LONG).show();
+        }
+
+        ;
+    };
 
 
 }

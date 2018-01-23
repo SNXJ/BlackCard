@@ -1,23 +1,26 @@
 package com.zsh.blackcard.ui;
 
-import android.content.Context;
-import android.support.v4.view.ViewPager;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
-import com.bumptech.glide.Glide;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.loader.ImageLoader;
+import com.shing.scalelibrary.CenterSnapHelper;
+import com.shing.scalelibrary.ScaleLayoutManager;
+import com.shing.scalelibrary.ViewPagerLayoutManager;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.adapter.WelcomeAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.WelcomeModel;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.view.ZoomOutPageTransformer;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.DisplayUtil;
+import com.zsh.blackcard.utils.ShareUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +33,10 @@ import butterknife.OnClick;
  * Created by kkkkk on 2017/11/14.
  */
 
-public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
+public class WelcomeActivity extends BaseActivity {
 
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
     //引导页图片集合
     private List<String> listImage = new ArrayList<>();
 
@@ -39,16 +44,10 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     Button welcome_now_btn;
     @BindView(R.id.welcome_login_btn)
     Button welcome_login_btn;
-    @BindView(R.id.welcome_banner)
-    Banner welcome_banner;
-    @BindView(R.id.img_one)
-    ImageView img_one;
-    @BindView(R.id.img_two)
-    ImageView img_two;
-    @BindView(R.id.img_three)
-    ImageView img_three;
-    @BindView(R.id.img_four)
-    ImageView img_four;
+
+    @BindView(R.id.radio_group)
+    RadioGroup radio_group;
+
 
     @OnClick({R.id.welcome_register_btn, R.id.welcome_login_btn})
     public void btnOnClick(View view) {
@@ -56,12 +55,12 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
             //在线申请
             case R.id.welcome_register_btn:
                 ActivityUtils.startActivity(this, RegisterActivity.class);
-
+//                ShareUtil.deauShare();
+//            PublicDialog.ShareDialog(WelcomeActivity.this);
                 break;
             //会籍登录
             case R.id.welcome_login_btn:
                 ActivityUtils.startActivity(this, LoginActivity.class);
-                finish();
                 break;
         }
     }
@@ -71,7 +70,17 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     protected void initUI() {
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
+        //把当前Activity添加到管理栈
+        ActivityUtils.addActivity(this);
         initData();
+        ShareUtil.initShare(this);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ShareUtil.onUmActivityResult(requestCode, resultCode, data);
     }
 
     private void initData() {
@@ -79,17 +88,15 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
         DataManager.getInstance(this).RequestHttp(NetApi.postWelcome(DataManager.getMd5Str("BOOTPAGELIST")), new ResultListener<WelcomeModel>() {
             @Override
             public void responseSuccess(WelcomeModel obj) {
-                //循环遍历图片添加进集合
-                for (int i = 0; i < obj.getPd().size(); i++) {
-                    listImage.add(obj.getPd().get(i).getSHOWIMG());
+                if (null != obj && "01".equals(obj.getResult())) {
+                    mList = obj.getPd();
+
+                    scaleLayoutManager = new ScaleLayoutManager(WelcomeActivity.this, DisplayUtil.dip2px(WelcomeActivity.this, 10));
+                    mRecyclerView.setAdapter(new WelcomeAdapter(mList));
+                    mRecyclerView.setLayoutManager(scaleLayoutManager);
+                    initLayoutManger();
+                    initdot();
                 }
-                welcome_banner.setImageLoader(new MyImageLoader());
-                welcome_banner.setImages(listImage);
-                welcome_banner.setBannerStyle(BannerConfig.NOT_INDICATOR);
-                //使用自定义动画
-                welcome_banner.setPageTransformer(false, new ZoomOutPageTransformer());
-                welcome_banner.start();
-                welcome_banner.setOnPageChangeListener(WelcomeActivity.this);
             }
 
             @Override
@@ -97,51 +104,55 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
             }
         });
+    }
+
+    List<WelcomeModel.PdBean> mList = new ArrayList<>();
+    private ScaleLayoutManager scaleLayoutManager;
+
+    private void initLayoutManger() {
+
+//        scaleLayoutManager.setMaxVisibleItemCount(1);
+        scaleLayoutManager.setItemSpace(100);
+        scaleLayoutManager.setCenterScale(1.2f);
+//        scaleLayoutManager.setMoveSpeed(1.0f);//速率
+        scaleLayoutManager.setOrientation(ViewPagerLayoutManager.HORIZONTAL);
+//        scaleLayoutManager.setMaxAlpha(1.0f);//透明度
+//        scaleLayoutManager.setMinAlpha(1.0f);
+        scaleLayoutManager.setReverseLayout(false);//翻转
+        scaleLayoutManager.setInfinite(false);//无限轮播
+        CenterSnapHelper centerSnapHelper = new CenterSnapHelper();
+        centerSnapHelper.attachToRecyclerView(mRecyclerView);//是否居中  null不控制//需要在setLayoutManager（）之后设置
+
+        scaleLayoutManager.setOnPageChangeListener(new ViewPagerLayoutManager.OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+
+                radio_group.check(position);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
 
     }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        clear();
-        switch (position) {
-            case 0:
-                img_one.setImageResource(R.mipmap.circle_true);
-                break;
-            case 1:
-                img_two.setImageResource(R.mipmap.circle_true);
-                break;
-            case 2:
-                img_three.setImageResource(R.mipmap.circle_true);
-                break;
-            case 3:
-                img_four.setImageResource(R.mipmap.circle_true);
-                break;
+    private void initdot() {
+        for (int i = 0; i < mList.size(); i++) {
+            RadioButton rb = new RadioButton(this);
+            RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = DisplayUtil.dip2px(this, 0);
+            rb.setWidth(DisplayUtil.dip2px(this, 5));
+            rb.setHeight(DisplayUtil.dip2px(this, 5));
+            rb.setButtonDrawable(null);
+            rb.setBackgroundResource(R.drawable.welcoome_rb_selector);
+            rb.setChecked(i == 0 ? true : false);
+            rb.setId(i);
+            radio_group.addView(rb, params);
         }
     }
 
-    private void clear() {
-        img_one.setImageResource(R.mipmap.circle_false);
-        img_two.setImageResource(R.mipmap.circle_false);
-        img_three.setImageResource(R.mipmap.circle_false);
-        img_four.setImageResource(R.mipmap.circle_false);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
-    private class MyImageLoader extends ImageLoader {
-
-        @Override
-        public void displayImage(Context context, Object path, ImageView imageView) {
-            Glide.with(context).load(path).into(imageView);
-        }
-    }
 }

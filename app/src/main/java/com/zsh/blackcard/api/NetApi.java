@@ -29,6 +29,7 @@ import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMagazineDetailModel;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
@@ -42,6 +43,7 @@ import com.zsh.blackcard.model.HomeKTVDetailModel;
 import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
+import com.zsh.blackcard.model.HomeSearchHotModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
@@ -53,6 +55,12 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
+import com.zsh.blackcard.model.MainGloryMagazineModel;
+import com.zsh.blackcard.model.MainGloryMusicDJModel;
+import com.zsh.blackcard.model.MainGloryMusicLibDetailModel;
+import com.zsh.blackcard.model.MainGloryMusicLibModel;
+import com.zsh.blackcard.model.MainGloryMusicSongModel;
+import com.zsh.blackcard.model.MainMusicGloryModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -78,6 +86,7 @@ import com.zsh.blackcard.model.RegisterChangeNumberModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SettingUserInfoModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
+import com.zsh.blackcard.model.TopicListModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
@@ -577,7 +586,7 @@ public class NetApi extends DataManager {
      * @param listPath
      * @return
      */
-    public static Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
+    public static Observable<ResultModel> postSendWeiBos(String md5, String HONOURUSER_ID, String CONTENT, String TOPIC_ID, String TITLE, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String type) {
         //如果有图片上传，则加载body，如果没有上传图片则加载空body
         if (localMedia.size() != 0) {
             for (int i = 0; i < localMedia.size(); i++) {
@@ -591,7 +600,7 @@ public class NetApi extends DataManager {
             MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
             listPath.add(part);
         }
-        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, listPath, type);
+        return retrofitService.postSendWeiBo(md5, HONOURUSER_ID, CONTENT, TOPIC_ID, TITLE, listPath, type);
     }
 
     /**
@@ -660,17 +669,6 @@ public class NetApi extends DataManager {
     }
 
     /**
-     * 商品分类右边列表
-     *
-     * @param md5
-     * @param id
-     * @return
-     */
-    public static Observable<CategoryRightModel> postCategoryRight(String md5, String id) {
-        return retrofitService.postCategoryRight(md5, id);
-    }
-
-    /**
      * 获取欢迎引导页的轮播图片
      *
      * @param md5
@@ -701,6 +699,19 @@ public class NetApi extends DataManager {
      */
     public static Observable<ResultModel> postShoppingCarDelete(String md5, String PRODUCT_ID, String HONOURUSER_ID) {
         return retrofitService.postShoppingCarDelete(md5, PRODUCT_ID, HONOURUSER_ID);
+    }
+
+    /**
+     * 添加商品到购物车
+     *
+     * @param md5
+     * @param PRODUCT_ID
+     * @param HONOURUSER_ID
+     * @param PRODUCTCOUNT
+     * @return
+     */
+    public static Observable<ResultModel> postShoppingCarAdd(String md5, String PRODUCT_ID, String HONOURUSER_ID, String PRODUCTCOUNT) {
+        return retrofitService.postShoppingCarAdd(md5, PRODUCT_ID, HONOURUSER_ID, PRODUCTCOUNT);
     }
 
     /**
@@ -746,7 +757,7 @@ public class NetApi extends DataManager {
     }
 
     /**
-     * 首页荣耀服务列表
+     * 首页荣耀音乐列表
      *
      * @param md5
      * @return
@@ -871,8 +882,8 @@ public class NetApi extends DataManager {
      * @param server_id
      * @return
      */
-    public static Observable<Object> postHomeGloryHorseDetail(String md5, String server_id) {
-        return retrofitService.postHomeGloryHorseDetail(md5, server_id);
+    public static Observable<Object> postHomeGloryHorseDetail(String md5, String server_id, String SHOPTYPE) {
+        return retrofitService.postHomeGloryHorseDetail(md5, server_id, SHOPTYPE);
     }
 
     /**
@@ -1371,5 +1382,189 @@ public class NetApi extends DataManager {
      */
     public static Observable<EatDrinkSearchModel> postEatDrinkSearch(String md5, String CONVERGE_ID) {
         return retrofitService.postEatDrinkSearch(md5, CONVERGE_ID);
+    }
+
+    /**
+     * 获取话题列表
+     *
+     * @param md5
+     * @param title
+     * @return
+     */
+    public static Observable<TopicListModel> getTopicList(String md5, String title) {
+        return retrofitService.getTopicList(md5, title);
+    }
+
+    /**
+     * 添加话题
+     *
+     * @param md5
+     * @param userID
+     * @param title
+     * @return
+     */
+    public static Observable<TopicListModel> addTopic(String md5, String userID, String title) {
+        return retrofitService.addTopic(md5, userID, title);
+    }
+
+    /**
+     * 荣耀杂志详情接口
+     *
+     * @param md5
+     * @param MAGAZINE_ID
+     * @param MAGAZINETYPE
+     * @return
+     */
+    public static Observable<HomeGloryMagazineDetailModel> postHomeGloryMagazineDetail(String md5, String MAGAZINE_ID, String MAGAZINETYPE) {
+        return retrofitService.postHomeGloryMagazineDetail(md5, MAGAZINE_ID, MAGAZINETYPE);
+    }
+
+    /**
+     * 添加商品到选购收藏列表
+     *
+     * @param md5
+     * @param HONOURUSER_ID
+     * @param PRODUCT_ID
+     * @return
+     */
+    public static Observable<ResultModel> postAddCollection(String md5, String HONOURUSER_ID, String PRODUCT_ID) {
+        return retrofitService.postAddCollection(md5, HONOURUSER_ID, PRODUCT_ID);
+    }
+
+    /**
+     * 从选购收藏删除商品
+     *
+     * @param md5
+     * @param COLLECT_ID
+     * @return
+     */
+    public static Observable<ResultModel> postDelCollection(String md5, String COLLECT_ID) {
+        return retrofitService.postDelCollection(md5, COLLECT_ID);
+    }
+
+
+    /**
+     * 商品分类右边列表
+     *
+     * @param md5
+     * @param id
+     * @return
+     */
+    public static Observable<CategoryRightModel> postCategoryRight(String md5, String id, String BRANDICON_ID) {
+        return retrofitService.postCategoryRight(md5, id, BRANDICON_ID);
+    }
+
+    /**
+     * 首页搜索页面热门搜索和推荐
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<HomeSearchHotModel> postHomeSearchHot(String md5, String PARENT_ID) {
+        return retrofitService.postHomeSearchHot(md5, PARENT_ID);
+    }
+
+    /**
+     * 首页荣耀杂志更多界面
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<MainGloryMagazineModel> postMainGloryMagazine(String md5, String MENU_ID) {
+        return retrofitService.postMainGloryMagazine(md5, MENU_ID);
+    }
+
+    /**
+     * 首页新闻头条发布新闻接口
+     *
+     * @param md5
+     * @param title
+     * @param user_id
+     * @param DIS_TYPE
+     * @param listPath
+     * @param localMedia
+     * @return
+     */
+    public static Observable<ResultModel> postHomeNewsSend(String md5, String title, String user_id, String DIS_TYPE, String CAIDAN_ID, List<MultipartBody.Part> listPath, List<LocalMedia> localMedia, String video, String videoPath) {
+        if (video.equals("3")) {
+            if (localMedia.size() != 0) {
+                File file = new File(localMedia.get(0).getPath());
+                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                MultipartBody.Part part = MultipartBody.Part.createFormData("showfile", file.getName(), imageBody);
+                listPath.add(part);
+
+                File file1 = new File(videoPath);
+                RequestBody imageBody1 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
+                MultipartBody.Part part1 = MultipartBody.Part.createFormData("fileList", "suoluetu.jpg", imageBody1);
+                listPath.add(part1);
+            }
+        } else {
+            if (localMedia.size() != 0) {
+                for (int i = 0; i < localMedia.size(); i++) {
+                    File file = new File(localMedia.get(i).getPath());
+                    RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                    MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", file.getName(), imageBody);
+                    listPath.add(part);
+                }
+            } else {
+                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+                MultipartBody.Part part = MultipartBody.Part.createFormData("fileList", "", imageBody);
+                listPath.add(part);
+            }
+        }
+
+        return retrofitService.postHomeNewsSend(md5, title, user_id, DIS_TYPE, CAIDAN_ID, listPath);
+    }
+
+    /**
+     * 荣耀音乐头部广告和歌手推荐
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<MainMusicGloryModel> postMainGloryMusic(String md5) {
+        return retrofitService.postMainGloryMusic(md5);
+    }
+
+    /**
+     * 荣耀音乐电台接口
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<MainGloryMusicDJModel> postMainGloryMusicDJ(String md5) {
+        return retrofitService.postMainGloryMusicDJ(md5);
+    }
+
+    /**
+     * 荣耀音乐曲库推荐接口
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<MainGloryMusicLibModel> postMainGloryMusicLib(String md5) {
+        return retrofitService.postMainGloryMusicLib(md5);
+    }
+
+    /**
+     * 荣耀音乐歌曲推荐接口
+     *
+     * @param md5
+     * @param offset
+     * @return
+     */
+    public static Observable<MainGloryMusicSongModel> postMainGloryMusicSong(String md5, String offset) {
+        return retrofitService.postMainGloryMusicSong(md5, offset);
+    }
+
+    /**
+     * 荣耀音乐曲库二级接口
+     *
+     * @param md5
+     * @param album_id
+     * @return
+     */
+    public static Observable<MainGloryMusicLibDetailModel> postMainGloryMusicLibDetail(String md5, String album_id) {
+        return retrofitService.postMainGloryMusicLibDetail(md5, album_id);
     }
 }

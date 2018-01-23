@@ -2,130 +2,135 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/bj">
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="15.45dp"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
-            android:src="@mipmap/back"
-            android:layout_centerVertical="true"/>
+            android:src="@mipmap/back" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="黑微博"
             android:textColor="#929292"
             android:textSize="17sp"
-            android:text="黑微博"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="@dimen/base10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/blog_image_1"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/blog_image_1" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="vertical"
-            android:layout_marginLeft="10dp">
+            android:layout_height="@dimen/base40dp"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:text="忘记时间的钟"
                 android:textColor="#929292"
-                android:textSize="14sp"
-                android:gravity="center_vertical"
-                />
+                android:textSize="14sp" />
+
             <TextView
-                android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base6dp"
                 android:text="昨天16:36"
-                android:textSize="11sp"
-                android:textColor="#929292"/>
+                android:textColor="#929292"
+                android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>
+
     <TextView
-        android:layout_marginTop="17.5dp"
-        android:layout_marginLeft="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base17dp"
+        android:text="#跑车世界# 一枚宽体战神GTR"
         android:textColor="#929292"
-        android:text="#跑车世界# 一枚宽体战神GTR"/>
+        android:textSize="12sp" />
 
     <GridView
         android:id="@+id/black_item_gv"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="207.5dp"
+        android:layout_height="@dimen/base207dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base10dp"
+        android:horizontalSpacing="@dimen/base8dp"
         android:numColumns="3"
         android:stretchMode="columnWidth"
-        android:horizontalSpacing="7.5dp"
-        android:verticalSpacing="7.5dp"
-        ></GridView>
+        android:verticalSpacing="@dimen/base8dp"></GridView>
+
     <LinearLayout
-        android:layout_marginTop="12.5dp"
         android:layout_width="match_parent"
-        android:layout_height="22dp"
+        android:layout_height="@dimen/base22dp"
+        android:layout_marginTop="@dimen/base12dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_marginLeft="40dp"
-            android:layout_width="22dp"
+            android:layout_width="@dimen/base22dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/blog_icon_1"/>
+            android:layout_marginLeft="@dimen/base40dp"
+            android:src="@mipmap/blog_icon_1" />
+
         <TextView
-            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base3dp"
             android:text="18"
             android:textColor="#929292"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="78dp"
+            android:layout_marginLeft="@dimen/base78dp"
             android:src="@mipmap/blog_icon_2" />
+
         <TextView
-            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base3dp"
             android:text="56"
             android:textColor="#929292"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
+
         <ImageView
-            android:layout_marginLeft="77dp"
-            android:layout_width="22dp"
+            android:layout_width="@dimen/base22dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/blog_icon_3"/>
+            android:layout_marginLeft="@dimen/base77dp"
+            android:src="@mipmap/blog_icon_3" />
+
         <TextView
-            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base3dp"
             android:text="56"
             android:textColor="#929292"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

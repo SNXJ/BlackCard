@@ -22,6 +22,7 @@ import com.zsh.blackcard.custom.GlideCircleTransform;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.ResultModel;
+import com.zsh.blackcard.music.MusicHomeActivity;
 import com.zsh.blackcard.ui.BlackCurrencyActivity;
 import com.zsh.blackcard.ui.CircleCenterActivity;
 import com.zsh.blackcard.ui.CusCenterChatActivity;
@@ -33,10 +34,11 @@ import com.zsh.blackcard.ui.MySettingActivity;
 import com.zsh.blackcard.ui.OrderCenterActivity;
 import com.zsh.blackcard.ui.VipCenterActivity;
 import com.zsh.blackcard.ui.WalletCenterActivity;
+import com.zsh.blackcard.ui.my.MySettedActivity;
 import com.zsh.blackcard.ui.zgactivity.GameCenterActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.MPermissionUtils;
-import com.zsh.blackcard.untils.PhotoUntils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.MPermissionUtils;
+import com.zsh.blackcard.utils.PhotoUtils;
 
 import java.util.List;
 
@@ -64,10 +66,12 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void initDate(Bundle savedInstanceState) {
+        showLoading(getActivity());
+
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.postDisBlackPower(DataManager.getMd5Str("MYCOUBLACKENERGY"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyDisBlackPowerModel>() {
             @Override
             public void responseSuccess(MyDisBlackPowerModel obj) {
-                if(obj.getResult().equals("01")){
+                if (obj.getResult().equals("01")) {
                     my_nick_name_tv.setText(obj.getMy().getNICKNAME());
                     my_dis_count_tv.setText(String.valueOf(obj.getMy().getCOUPON()));
                     my_black_count_tv.setText(String.valueOf(obj.getMy().getBLACKCOIN()));
@@ -78,7 +82,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
     }
@@ -91,13 +95,14 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         return view;
     }
 
-    @OnClick({R.id.my_vip_center_relative, R.id.my_house_center_relative, R.id.my_circle_center_relative, R.id.my_huodong_center_relative, R.id.my_shop_center_relative, R.id.my_customer_center_relative, R.id.my_wallet_center_relative, R.id.my_game_center_relative, R.id.my_order_center_relative, R.id.my_setting_center_relative, R.id.my_friend_linear, R.id.my_black_linear, R.id.my_power_linear})
+    @OnClick({R.id.my_vip_center_relative, R.id.my_house_center_relative, R.id.my_circle_center_relative, R.id.my_huodong_center_relative, R.id.my_shop_center_relative, R.id.my_customer_center_relative, R.id.my_wallet_center_relative, R.id.my_game_center_relative, R.id.my_order_center_relative, R.id.my_setting_center_relative, R.id.my_friend_linear, R.id.my_black_linear, R.id.my_power_linear, R.id.my_music_center_relative, R.id.my_settled_relative})
     public void onClick(View view) {
         switch (view.getId()) {
             //会员中心
             case R.id.my_vip_center_relative:
                 ActivityUtils.startActivity(getActivity(), VipCenterActivity.class);
                 break;
+            //管家中心
             case R.id.my_house_center_relative:
                 ActivityUtils.startActivity(getActivity(), HouseCenterActivity.class);
                 break;
@@ -109,15 +114,19 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_huodong_center_relative:
                 ActivityUtils.startActivity(getActivity(), HuoDongActivity.class);
                 break;
+            //购物中心
             case R.id.my_shop_center_relative:
 //                ActivityUtils.startActivity(getActivity(), );
                 break;
+            //客服中心
             case R.id.my_customer_center_relative:
                 ActivityUtils.startActivity(getActivity(), CusCenterChatActivity.class);
                 break;
+            //钱包中心
             case R.id.my_wallet_center_relative:
                 ActivityUtils.startActivity(getActivity(), WalletCenterActivity.class);
                 break;
+            //游戏中心
             case R.id.my_game_center_relative:
                 ActivityUtils.startActivity(getActivity(), GameCenterActivity.class);
                 break;
@@ -125,15 +134,27 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_order_center_relative:
                 ActivityUtils.startActivity(getActivity(), OrderCenterActivity.class);
                 break;
+            //音乐中心
+            case R.id.my_music_center_relative:
+                ActivityUtils.startActivityForData(getActivity(), MusicHomeActivity.class, "2");
+                break;
+            //我要入驻
+            case R.id.my_settled_relative:
+                ActivityUtils.startActivity(getActivity(),MySettedActivity.class);
+                break;
+            //设置
             case R.id.my_setting_center_relative:
                 ActivityUtils.startActivity(getActivity(), MySettingActivity.class);
                 break;
+            //优惠券
             case R.id.my_friend_linear:
                 ActivityUtils.startActivity(getActivity(), DiscountCouponActivity.class);
                 break;
+            //黑咖币
             case R.id.my_black_linear:
                 ActivityUtils.startActivity(getActivity(), BlackCurrencyActivity.class);
                 break;
+            //能量值
             case R.id.my_power_linear:
                 ActivityUtils.startActivity(getActivity(), MyPowerActivity.class);
                 break;
@@ -171,13 +192,13 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
         switch (requestCode) {
-            case PhotoUntils.GET_IMAGE_FROM_PHONE://相册
+            case PhotoUtils.GET_IMAGE_FROM_PHONE://相册
                 //如果没有选择图片，则不进行裁剪
                 if (!selectList.isEmpty()) {
                     upAvatar(selectList.get(0).getPath());
                 }
                 break;
-            case PhotoUntils.GET_IMAGE_BY_CAMERA://照相机
+            case PhotoUtils.GET_IMAGE_BY_CAMERA://照相机
                 //如果打开相机没有拍照，则不进行裁剪
                 if (!selectList.isEmpty()) {
                     upAvatar(selectList.get(0).getPath());
@@ -186,6 +207,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
+    //上传头像
     private void upAvatar(final String imgPath) {
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.upHeadIMG(DataManager.getMd5Str("UPPORT"), BaseApplication.HONOURUSER_ID, imgPath), new ResultListener<ResultModel>() {
             @Override
@@ -193,7 +215,6 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 Glide.with(MyFragment.this).
                         load(imgPath).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(getActivity())))
                         .into(imAvatar);
-                System.out.println("上传成功");
             }
 
             @Override

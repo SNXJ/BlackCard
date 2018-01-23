@@ -2,122 +2,128 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/bj">
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_marginLeft="15.45dp"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
-            android:src="@mipmap/back"
-            android:layout_centerVertical="true"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="积分兑换"
             android:textColor="#929292"
             android:textSize="17sp"
-            android:text="积分兑换"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="116.5dp">
+        android:layout_height="@dimen/base116dp"
+        android:layout_marginTop="@dimen/base10dp">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/combinedshape"
-            android:layout_gravity="center_horizontal"
             android:layout_centerHorizontal="true"
-            />
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/combinedshape" />
 
         <TextView
-            android:layout_marginTop="38.5dp"
-            android:layout_marginLeft="82.25dp"
-            android:layout_width="125.5dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/base126dp"
+            android:layout_height="@dimen/base40dp"
+            android:layout_marginLeft="@dimen/base82dp"
+            android:layout_marginTop="@dimen/base38dp"
+            android:gravity="center"
             android:text="20元代金券"
             android:textColor="#929292"
-            android:gravity="center"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
+
         <TextView
-            android:layout_marginTop="46.5dp"
-            android:layout_marginRight="38.5dp"
-            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base38dp"
+            android:layout_marginTop="@dimen/base46dp"
             android:text="兑换"
             android:textColor="#929292"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="116.5dp">
+        android:layout_height="@dimen/base116dp"
+        android:layout_marginTop="@dimen/base10dp">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/combinedshape"
-            android:layout_gravity="center_horizontal"
             android:layout_centerHorizontal="true"
-            />
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/combinedshape" />
 
         <TextView
-            android:layout_marginTop="38.5dp"
-            android:layout_marginLeft="82.25dp"
-            android:layout_width="125.5dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/base126dp"
+            android:layout_height="@dimen/base40dp"
+            android:layout_marginLeft="@dimen/base82dp"
+            android:layout_marginTop="@dimen/base38dp"
+            android:gravity="center"
             android:text="50元代金券"
             android:textColor="#929292"
-            android:gravity="center"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
+
         <TextView
-            android:layout_marginTop="46.5dp"
-            android:layout_marginRight="38.5dp"
-            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base38dp"
+            android:layout_marginTop="@dimen/base46dp"
             android:text="兑换"
             android:textColor="#929292"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="116.5dp">
+        android:layout_height="@dimen/base116dp"
+        android:layout_marginTop="@dimen/base10dp">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/combinedshape"
-            android:layout_gravity="center_horizontal"
             android:layout_centerHorizontal="true"
-            />
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/combinedshape" />
 
         <TextView
-            android:layout_marginTop="38.5dp"
-            android:layout_marginLeft="82.25dp"
-            android:layout_width="137dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/base137dp"
+            android:layout_height="@dimen/base40dp"
+            android:layout_marginLeft="@dimen/base82dp"
+            android:layout_marginTop="@dimen/base38dp"
+            android:gravity="center"
             android:text="100元代金券"
             android:textColor="#929292"
-            android:gravity="center"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
+
         <TextView
-            android:layout_marginTop="46.5dp"
-            android:layout_marginRight="38.5dp"
-            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/base38dp"
+            android:layout_marginTop="@dimen/base46dp"
             android:text="兑换"
             android:textColor="#929292"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
     </RelativeLayout>
 </LinearLayout>

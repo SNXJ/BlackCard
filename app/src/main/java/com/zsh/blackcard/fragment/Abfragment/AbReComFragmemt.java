@@ -10,8 +10,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.AbreComFragmentAdapter;
-import com.zsh.blackcard.live.LiveRoomActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.live.LivingRoomActivity;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,9 @@ public class AbReComFragmemt extends BaseFragment {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ActivityUtils.startActivity(getActivity(), LiveRoomActivity.class);
+//                ActivityUtils.startActivity(getActivity(), LiveRoomActivity.class);
+                ActivityUtils.startActivity(getActivity(), LivingRoomActivity.class);
+
             }
         });
     }

@@ -5,7 +5,6 @@
     android:layout_marginTop="@dimen/base10dp"
     android:orientation="vertical">
 
-
     <RelativeLayout
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base110dp">

@@ -13,8 +13,8 @@
         android:layout_marginRight="@dimen/base5dp" />
 
     <TextView
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginRight="@dimen/base5dp"
         android:gravity="center"
         android:id="@+id/home_top_recycler_item_tv"
         android:layout_width="match_parent"

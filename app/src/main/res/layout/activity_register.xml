@@ -199,12 +199,12 @@
             android:visibility="gone">
 
             <EditText
-                android:singleLine="true"
-                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="姓名"
+                android:singleLine="true"
+                android:textColor="@color/recharge_text"
                 android:textColorHint="#FF454545"
                 android:textSize="12sp" />
 
@@ -214,12 +214,12 @@
                 android:background="@color/divider" />
 
             <EditText
-                android:singleLine="true"
-                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="手机号码"
+                android:singleLine="true"
+                android:textColor="@color/recharge_text"
                 android:textColorHint="#FF454545"
                 android:textSize="12sp" />
 
@@ -229,12 +229,12 @@
                 android:background="@color/divider" />
 
             <EditText
-                android:singleLine="true"
-                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="重复手机号码"
+                android:singleLine="true"
+                android:textColor="@color/recharge_text"
                 android:textColorHint="#FF454545"
                 android:textSize="12sp" />
 
@@ -244,12 +244,12 @@
                 android:background="@color/divider" />
 
             <EditText
-                android:singleLine="true"
-                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="省市区"
+                android:singleLine="true"
+                android:textColor="@color/recharge_text"
                 android:textColorHint="#FF454545"
                 android:textSize="12sp" />
 
@@ -259,12 +259,12 @@
                 android:background="@color/divider" />
 
             <EditText
-                android:singleLine="true"
-                android:textColor="@color/recharge_text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/base40dp"
                 android:background="@null"
                 android:hint="详细地址"
+                android:singleLine="true"
+                android:textColor="@color/recharge_text"
                 android:textColorHint="#FF454545"
                 android:textSize="12sp" />
 
@@ -279,14 +279,14 @@
             android:id="@+id/register_number_relative"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base13dp"
             android:background="#FF141414"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp">
+            android:paddingBottom="@dimen/base5dp"
+            android:paddingLeft="@dimen/base10dp"
+            android:paddingRight="@dimen/base10dp"
+            android:paddingTop="@dimen/base5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -317,7 +317,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/base5dp"
                 android:layout_toLeftOf="@+id/register_number_tv"
                 android:text="*"
                 android:textColor="#FFF29E19"
@@ -326,7 +326,6 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/register_number_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -334,7 +333,8 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <RadioGroup
                 android:layout_width="@dimen/base200dp"
@@ -372,7 +372,7 @@
                 android:id="@+id/register_number_tip_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="@dimen/base15dp"
                 android:text="提示：若您选择随机分配，我们将在当前已开放号段内帮您分配卡号，并按照付款先后顺序发放。"
                 android:textColor="@color/recharge_text"
                 android:textSize="11sp"
@@ -382,12 +382,12 @@
                 android:id="@+id/register_number_manual_relative"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="@dimen/base15dp">
 
                 <RelativeLayout
                     android:id="@+id/register_number_search"
-                    android:layout_width="200dp"
-                    android:layout_height="32dp"
+                    android:layout_width="@dimen/base200dp"
+                    android:layout_height="@dimen/base32dp"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/register_number_search_bg">
 
@@ -395,14 +395,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_margin="9dp"
+                        android:layout_margin="@dimen/base9dp"
                         android:background="@null"
                         android:hint="搜索您喜欢的号码，如8888"
                         android:textColorHint="#FF585858"
                         android:textSize="12sp" />
 
                     <ImageView
-                        android:layout_width="30dp"
+                        android:layout_width="@dimen/base30dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:background="@drawable/register_search_img_bg"
@@ -417,11 +417,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/register_number_search"
-                    android:layout_marginTop="13dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:layout_marginTop="@dimen/base13dp"
+                    android:paddingBottom="@dimen/base5dp"
+                    android:paddingLeft="@dimen/base10dp"
+                    android:paddingRight="@dimen/base10dp"
+                    android:paddingTop="@dimen/base5dp">
 
                     <TextView
                         android:id="@+id/register_number_zixuan_tv"
@@ -437,7 +437,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="@dimen/base10dp"
                         android:layout_toRightOf="@+id/register_number_zixuan_tv"
                         android:text="(自选仅需+20元选号费)"
                         android:textColor="#FF929292"
@@ -450,10 +450,10 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/register_number_search_bg"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="5dp"
+                        android:paddingBottom="@dimen/base5dp"
+                        android:paddingLeft="@dimen/base10dp"
+                        android:paddingRight="@dimen/base10dp"
+                        android:paddingTop="@dimen/base5dp"
                         android:text="换一批"
                         android:textColor="#FF929292"
                         android:textSize="11sp" />
@@ -463,9 +463,9 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/register_number_manual_recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="@dimen/base180dp"
                     android:layout_below="@+id/register_manual_relative"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="@dimen/base8dp">
 
                 </android.support.v7.widget.RecyclerView>
 
@@ -474,11 +474,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/register_number_manual_recycler"
-                    android:layout_marginTop="8dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:layout_marginTop="@dimen/base8dp"
+                    android:paddingBottom="@dimen/base5dp"
+                    android:paddingLeft="@dimen/base10dp"
+                    android:paddingRight="@dimen/base10dp"
+                    android:paddingTop="@dimen/base5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -495,10 +495,10 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/register_number_search_bg"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="5dp"
+                        android:paddingBottom="@dimen/base5dp"
+                        android:paddingLeft="@dimen/base10dp"
+                        android:paddingRight="@dimen/base10dp"
+                        android:paddingTop="@dimen/base5dp"
                         android:text="换一批"
                         android:textColor="#FF929292"
                         android:textSize="11sp" />
@@ -509,9 +509,9 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/register_number_vip_recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="@dimen/base180dp"
                     android:layout_below="@+id/register_vip_relative"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="@dimen/base8dp">
 
                 </android.support.v7.widget.RecyclerView>
 
@@ -520,11 +520,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/register_number_vip_recycler"
-                    android:layout_marginTop="8dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:layout_marginTop="@dimen/base8dp"
+                    android:paddingBottom="@dimen/base5dp"
+                    android:paddingLeft="@dimen/base10dp"
+                    android:paddingRight="@dimen/base10dp"
+                    android:paddingTop="@dimen/base5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -541,10 +541,10 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/register_number_search_bg"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="5dp"
+                        android:paddingBottom="@dimen/base5dp"
+                        android:paddingLeft="@dimen/base10dp"
+                        android:paddingRight="@dimen/base10dp"
+                        android:paddingTop="@dimen/base5dp"
                         android:text="换一批"
                         android:textColor="#FF929292"
                         android:textSize="11sp" />
@@ -565,11 +565,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/register_number_diamond_recycler"
-                    android:layout_marginTop="8dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:layout_marginTop="@dimen/base8dp"
+                    android:paddingBottom="@dimen/base5dp"
+                    android:paddingLeft="@dimen/base10dp"
+                    android:paddingRight="@dimen/base10dp"
+                    android:paddingTop="@dimen/base5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -586,10 +586,10 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/register_number_search_bg"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="5dp"
+                        android:paddingBottom="@dimen/base5dp"
+                        android:paddingLeft="@dimen/base10dp"
+                        android:paddingRight="@dimen/base10dp"
+                        android:paddingTop="@dimen/base5dp"
                         android:text="换一批"
                         android:textColor="#FF929292"
                         android:textSize="11sp" />
@@ -599,9 +599,9 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/register_number_glory_recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="@dimen/base180dp"
                     android:layout_below="@+id/register_glory_relative"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="@dimen/base8dp">
 
                 </android.support.v7.widget.RecyclerView>
 
@@ -610,11 +610,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/register_number_glory_recycler"
-                    android:layout_marginTop="8dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    android:layout_marginTop="@dimen/base8dp"
+                    android:paddingBottom="@dimen/base5dp"
+                    android:paddingLeft="@dimen/base10dp"
+                    android:paddingRight="@dimen/base10dp"
+                    android:paddingTop="@dimen/base5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -631,10 +631,10 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/register_number_search_bg"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="5dp"
+                        android:paddingBottom="@dimen/base5dp"
+                        android:paddingLeft="@dimen/base10dp"
+                        android:paddingRight="@dimen/base10dp"
+                        android:paddingTop="@dimen/base5dp"
                         android:text="换一批"
                         android:textColor="#FF929292"
                         android:textSize="11sp" />
@@ -642,74 +642,74 @@
                 </RelativeLayout>
 
                 <!--<RadioGroup-->
-                    <!--android:id="@+id/register_super_rg"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--android:layout_below="@+id/register_super_relative"-->
-                    <!--android:layout_marginLeft="10dp"-->
-                    <!--android:layout_marginRight="10dp"-->
-                    <!--android:layout_marginTop="8dp"-->
-                    <!--android:orientation="horizontal">-->
+                <!--android:id="@+id/register_super_rg"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_below="@+id/register_super_relative"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:orientation="horizontal">-->
 
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/register_super_one_rb"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="@drawable/shape_register_super_left"-->
-                        <!--android:button="@null"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="300元"-->
-                        <!--android:textColor="@drawable/register_select_rb_text_color"-->
-                        <!--android:textSize="11sp" />-->
+                <!--<RadioButton-->
+                <!--android:id="@+id/register_super_one_rb"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/shape_register_super_left"-->
+                <!--android:button="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:text="300元"-->
+                <!--android:textColor="@drawable/register_select_rb_text_color"-->
+                <!--android:textSize="11sp" />-->
 
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/register_super_two_rb"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="@drawable/shape_register_super_center"-->
-                        <!--android:button="@null"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="600元"-->
-                        <!--android:textColor="@drawable/register_select_rb_text_color"-->
-                        <!--android:textSize="11sp" />-->
+                <!--<RadioButton-->
+                <!--android:id="@+id/register_super_two_rb"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/shape_register_super_center"-->
+                <!--android:button="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:text="600元"-->
+                <!--android:textColor="@drawable/register_select_rb_text_color"-->
+                <!--android:textSize="11sp" />-->
 
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/register_super_three_rb"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="@drawable/shape_register_super_center"-->
-                        <!--android:button="@null"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="1000元"-->
-                        <!--android:textColor="@drawable/register_select_rb_text_color"-->
-                        <!--android:textSize="11sp" />-->
+                <!--<RadioButton-->
+                <!--android:id="@+id/register_super_three_rb"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/shape_register_super_center"-->
+                <!--android:button="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:text="1000元"-->
+                <!--android:textColor="@drawable/register_select_rb_text_color"-->
+                <!--android:textSize="11sp" />-->
 
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/register_super_four_rb"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="@drawable/shape_register_super_center"-->
-                        <!--android:button="@null"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="5000元"-->
-                        <!--android:textColor="@drawable/register_select_rb_text_color"-->
-                        <!--android:textSize="11sp" />-->
+                <!--<RadioButton-->
+                <!--android:id="@+id/register_super_four_rb"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/shape_register_super_center"-->
+                <!--android:button="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:text="5000元"-->
+                <!--android:textColor="@drawable/register_select_rb_text_color"-->
+                <!--android:textSize="11sp" />-->
 
-                    <!--<RadioButton-->
-                        <!--android:id="@+id/register_super_five_rb"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="@drawable/shape_register_super_right"-->
-                        <!--android:button="@null"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="10000元"-->
-                        <!--android:textColor="@drawable/register_select_rb_text_color"-->
-                        <!--android:textSize="11sp" />-->
+                <!--<RadioButton-->
+                <!--android:id="@+id/register_super_five_rb"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/shape_register_super_right"-->
+                <!--android:button="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:text="10000元"-->
+                <!--android:textColor="@drawable/register_select_rb_text_color"-->
+                <!--android:textSize="11sp" />-->
 
                 <!--</RadioGroup>-->
 
@@ -730,14 +730,14 @@
             android:id="@+id/register_customer_relative"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base13dp"
             android:background="#FF141414"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp">
+            android:paddingBottom="@dimen/base5dp"
+            android:paddingLeft="@dimen/base10dp"
+            android:paddingRight="@dimen/base10dp"
+            android:paddingTop="@dimen/base5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -768,7 +768,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/base5dp"
                 android:layout_toLeftOf="@+id/register_customer_tv"
                 android:text="*"
                 android:textColor="#FFF29E19"
@@ -777,15 +777,15 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/register_customer_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <RadioGroup
                 android:layout_width="@dimen/base300dp"
@@ -884,11 +884,11 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/base30dp"
                         android:layout_weight="1"
                         android:background="@drawable/shape_register_super_center_false"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:gravity="center"
                         android:hint="CHENG"
                         android:textColor="@color/recharge_text"
@@ -896,11 +896,11 @@
                         android:textSize="15sp" />
 
                     <EditText
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/base30dp"
                         android:layout_weight="1"
                         android:background="@drawable/shape_register_super_center_false"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:gravity="center"
                         android:hint="LONG"
                         android:textColor="@color/recharge_text"
@@ -938,13 +938,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/register_customer_center_linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base13dp"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="@dimen/base268dp"
@@ -996,15 +996,15 @@
 
             <TextView
                 android:id="@+id/register_customer_right_tv"
-                android:visibility="gone"
-                android:layout_marginTop="13dp"
-                android:gravity="center"
                 android:layout_width="275dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:gravity="center"
                 android:text="提示：标准卡发货时间约为付款后3-5个工作日
 63%的用户，选择为自己定制一张专属的尊尚黑卡"
                 android:textColor="@color/recharge_text"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -1012,14 +1012,14 @@
             android:id="@+id/register_pay_relative"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base13dp"
             android:background="#FF141414"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp">
+            android:paddingBottom="@dimen/base5dp"
+            android:paddingLeft="@dimen/base10dp"
+            android:paddingRight="@dimen/base10dp"
+            android:paddingTop="@dimen/base5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1050,7 +1050,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/base5dp"
                 android:layout_toLeftOf="@+id/register_pay_tv"
                 android:text="*"
                 android:textColor="#FFF29E19"
@@ -1059,12 +1059,12 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:visibility="gone"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
             android:id="@+id/register_pay_linear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <RadioGroup
                 android:layout_width="@dimen/base200dp"
@@ -1073,29 +1073,29 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:paddingLeft="@dimen/base20dp"
                     android:id="@+id/register_pay_left_rb"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawableLeft="@mipmap/wechat"
                     android:background="@drawable/register_select_number_rb"
                     android:button="@null"
+                    android:drawableLeft="@mipmap/wechat"
                     android:gravity="center"
+                    android:paddingLeft="@dimen/base20dp"
                     android:text="微信"
                     android:textColor="@drawable/register_select_rb_text_color"
                     android:textSize="15sp" />
 
                 <RadioButton
-                    android:paddingLeft="@dimen/base15dp"
-                    android:drawableLeft="@mipmap/alipay"
                     android:id="@+id/register_pay_right_rb"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/register_select_number_rb"
                     android:button="@null"
+                    android:drawableLeft="@mipmap/alipay"
                     android:gravity="center"
+                    android:paddingLeft="@dimen/base15dp"
                     android:text="支付宝"
                     android:textColor="@drawable/register_select_rb_text_color"
                     android:textSize="15sp" />
@@ -1112,34 +1112,34 @@
                 android:textSize="11sp" />
 
         </LinearLayout>
-        
+
         <LinearLayout
-            android:layout_marginTop="@dimen/base13dp"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base49dp">
-            
+            android:layout_height="@dimen/base49dp"
+            android:layout_marginTop="@dimen/base13dp"
+            android:orientation="horizontal">
+
             <LinearLayout
-                android:padding="@dimen/base4dp"
+                android:layout_width="@dimen/base265dp"
+                android:layout_height="match_parent"
                 android:background="#FF0B0B0B"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:layout_width="@dimen/base265dp"
-                android:layout_height="match_parent">
+                android:padding="@dimen/base4dp">
 
                 <TextView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="至尊会籍卡"
                     android:textColor="@color/recharge_text"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="总计：￥199（终身免年费）"
                     android:textColor="@color/recharge_text"
@@ -1149,9 +1149,9 @@
 
             <Button
                 android:id="@+id/register_submit_btn"
-                android:background="#FF141414"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FF141414"
                 android:gravity="center"
                 android:text="提交信息"
                 android:textColor="@color/recharge_text"

@@ -2,68 +2,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/bj">
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp"
+        android:layout_height="@dimen/base43dp"
         android:background="#0C0C0C">
 
         <ImageView
             android:id="@+id/blackwb_back"
-            android:layout_marginLeft="15.45dp"
-            android:layout_width="11dp"
-            android:layout_height="18.6dp"
-            android:src="@mipmap/back"
-            android:layout_centerVertical="true"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="积分账单"
             android:textColor="#929292"
             android:textSize="17sp"
-            android:text="积分账单"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 
-    
+
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/base35dp"
         android:orientation="horizontal">
-        
+
         <RadioButton
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
             android:text="全部"
             android:textColor="#929292"
-            android:textSize="15sp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:button="@null"/>
+            android:textSize="15sp" />
+
         <RadioButton
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
             android:text="收入"
-            android:gravity="center"
-            android:layout_gravity="center"
             android:textColor="#929292"
-            android:textSize="15sp"
-            android:button="@null"/>
+            android:textSize="15sp" />
+
         <RadioButton
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
             android:text="支出"
             android:textColor="#929292"
-            android:textSize="15sp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:button="@null"/>
+            android:textSize="15sp" />
     </RadioGroup>
+
     <FrameLayout
         android:id="@+id/billsfl"
         android:layout_width="match_parent"

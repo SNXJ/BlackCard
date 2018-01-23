@@ -2,7 +2,6 @@ package com.zsh.blackcard.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +15,7 @@ import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.HjReleaseModel;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -66,6 +65,9 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
     //活动所属类型
     @BindView(R.id.hj_eat_set_sort_tv)
     TextView hj_eat_set_sort_tv;
+    //发布活动标题
+    @BindView(R.id.activity_eat_drink_set_title_tv)
+    TextView activity_eat_drink_set_title_tv;
 
     private Map<String, String> map = new HashMap<>();
     private List<MultipartBody.Part> pary;
@@ -83,6 +85,8 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
 
     private void initData() {
         String data = getIntent().getStringExtra("data");
+        String title = getIntent().getStringExtra("title");
+        activity_eat_drink_set_title_tv.setText(title);
         search = (List<String>) getIntent().getSerializableExtra("listOne");
         searchId = (List<String>) getIntent().getSerializableExtra("listTwo");
         map.put("FKEY", DataManager.getMd5Str("DETAILADD"));
@@ -167,7 +171,11 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
             String title = data.getStringExtra("title");
             String content = data.getStringExtra("content");
             localMedia = (List<LocalMedia>) data.getSerializableExtra("list");
-            hj_eat_set_detail_tv.setText("内容已编辑");
+            if (title.trim().equals("") && content.trim().equals("")) {
+                hj_eat_set_detail_tv.setText("标题或内容未编辑");
+            }else{
+                hj_eat_set_detail_tv.setText("已编辑");
+            }
             map.put("CONVERGEDET", content);
             map.put("CONVERGETITLE", title);
         }
@@ -221,7 +229,6 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
-
                 hj_eat_set_sort_tv.setText(search.get(options1));
                 map.put("CONVERGESORT_ID", searchId.get(options1));
             }

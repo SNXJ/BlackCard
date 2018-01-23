@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.ResultListener;
-import com.zsh.blackcard.untils.LogUtils;
-import com.zsh.blackcard.untils.Md5Untils;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.LogUtils;
+import com.zsh.blackcard.utils.Md5Utils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -30,7 +30,7 @@ import rx.subscriptions.CompositeSubscription;
 public class DataManager {
 
     //    public static String BASE_URL = "http://192.168.1.108:8080/ZSHINTER/";
-//    public static String BASE_URL = "http://47.104.16.215:8080/ZSHINTER/";//阿里云
+//    public static String BASE_URL = "http://inter.rongyaohk.com/";//阿里云
         public static String BASE_URL = "http://192.168.1.125:8081/ZSHINTER/";   //振华
     //    public static String APP_CHANNEL = "SUN_TEST";
     public static String APP_CHANNEL = "DEV_TEST";
@@ -55,14 +55,13 @@ public class DataManager {
         this.context = mContext;
     }
 
-
     public static String getMd5Str(String fn) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
-        return Md5Untils.md5(fn + sdf.format(new Date()) + FH);
+        return Md5Utils.md5(fn + sdf.format(new Date()) + FH);
     }
 
     public static String getMd5PassWord(String passWord) {
-        return Md5Untils.md5(passWord);
+        return Md5Utils.md5(passWord);
     }
 
     /**
@@ -88,6 +87,10 @@ public class DataManager {
                     public void onError(Throwable e) {
                         LogUtils.i("++++++", "++++++++++e++++++++++++" + e.toString());
                         UIUtils.showToast(context.getResources().getString(R.string.generic_server_down));
+                        //当发生异常崩溃的时候，也关闭提示框
+                        if (null != listener) {
+                            listener.onCompleted();
+                        }
                     }
 
                     @Override

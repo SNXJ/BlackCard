@@ -110,7 +110,6 @@ public class MainActivity extends BaseActivity implements HomeFragment.SendMainA
         } else {
             fragmentTransaction.hide(frg_replace).add(R.id.main_container, fragment).commit();
         }
-
         frg_replace = fragment;
     }
 

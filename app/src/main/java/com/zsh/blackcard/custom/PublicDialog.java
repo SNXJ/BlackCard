@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,6 +21,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.aliLive.AliLiveRoomActivity;
 import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ItemClickListener;
@@ -29,14 +29,12 @@ import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.SbNearChangeListener;
 import com.zsh.blackcard.listener.SelectDateListener;
 import com.zsh.blackcard.live.LiveAnchorDetails2;
-import com.zsh.blackcard.live.LiveOpenActivity;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.SbNearChangeModel;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.SbSendWeiBoActivity;
-import com.zsh.blackcard.untils.DisplayUtil;
-import com.zsh.blackcard.untils.MyCalendar;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.MyCalendar;
+import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.datepickter.DPMode;
 import com.zsh.blackcard.view.datepickter.DatePicker;
 import com.zsh.blackcard.view.datepickter.DatePicker2;
@@ -54,6 +52,61 @@ import java.util.List;
  * Description: 公共弹窗
  */
 public class PublicDialog {
+
+    public static void sendNewsDialog(Context mContext, View rootView) {
+        NewTopDialog topDialog = new NewTopDialog();
+//        topDialog.show(mContext.getSupportFragmentManager(), "Show", rootView);
+        View topView = LayoutInflater.from(mContext).inflate(
+                topDialog.getContentLayoutId(), null);
+
+    }
+
+
+    public static void shareDialog(final Activity mContext) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.share_dialog_layout, null);
+        final Dialog dialog = showDialogView(view, mContext);
+        view.findViewById(R.id.WX_circle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.WX).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.QQ).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.QQ_ZONE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.SINA).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.COPY).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+    }
+
+
     /**
      * 订单弹窗
      *
@@ -186,7 +239,8 @@ public class PublicDialog {
                         mContext.startActivity(new Intent(mContext, SbSendWeiBoActivity.class));
                         break;
                     case 3:
-                        mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));
+//                        mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));
+                        mContext.startActivity(new Intent(mContext, AliLiveRoomActivity.class));
                         break;
                     case 4:
 //                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));
@@ -296,7 +350,7 @@ public class PublicDialog {
         //设置默认获取焦点
         popWinShare.setFocusable(true);
         //以某个控件的x和y的偏移量位置开始显示窗口
-        popWinShare.showAsDropDown(im, 0, DisplayUtil.dip2px(context, 6));
+        popWinShare.showAsDropDown(im, 0, 0);
         //如果窗口存在，则更新
         popWinShare.update();
 
@@ -607,26 +661,26 @@ public class PublicDialog {
 //        window.setWindowAnimations(R.style.dailog_anim_enterorout_window_up);
 
         //此方法，解决弹出的虚拟按键，会把布局底部向上顶问题
-        dialog.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-        dialog.getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                        //布局位于状态栏下方
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-                        //全屏
-                        View.SYSTEM_UI_FLAG_FULLSCREEN |
-                        //隐藏导航栏
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-                if (Build.VERSION.SDK_INT >= 19) {
-                    uiOptions |= 0x00001000;
-                } else {
-                    uiOptions |= View.SYSTEM_UI_FLAG_LOW_PROFILE;
-                }
-                dialog.getWindow().getDecorView().setSystemUiVisibility(uiOptions);
-            }
-        });
+//        dialog.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+//        dialog.getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+//            @Override
+//            public void onSystemUiVisibilityChange(int visibility) {
+//                int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+//                        //布局位于状态栏下方
+//                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+//                        //全屏
+//                        View.SYSTEM_UI_FLAG_FULLSCREEN |
+//                        //隐藏导航栏
+//                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+//                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+//                if (Build.VERSION.SDK_INT >= 19) {
+//                    uiOptions |= 0x00001000;
+//                } else {
+//                    uiOptions |= View.SYSTEM_UI_FLAG_LOW_PROFILE;
+//                }
+//                dialog.getWindow().getDecorView().setSystemUiVisibility(uiOptions);
+//            }
+//        });
 
 
         dialog.show();
@@ -667,6 +721,38 @@ public class PublicDialog {
         Display display = windowManager.getDefaultDisplay();
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
         lp.width = (int) (display.getWidth()); // 设置宽度
+        dialog.getWindow().setAttributes(lp);
+    }
+
+    /**
+     * 把自定义商家入驻引导页布局设置到dialog
+     *
+     * @param view
+     * @param mContext
+     * @return
+     */
+    public static Dialog showDialogViews(View view, final Activity mContext) {
+        final Dialog dialog = new Dialog(mContext, R.style.pub_loading_dialog);
+        dialog.setContentView(view);
+        setWinLPs(dialog, mContext);
+        return dialog;
+    }
+
+    /**
+     * 设置dialog 属性
+     *
+     * @param dialog
+     * @param mContext
+     */
+    private static void setWinLPs(Dialog dialog, Activity mContext) {
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+        window.setWindowAnimations(R.style.dailog_anim_enterorout_window_up);
+        dialog.show();
+        WindowManager windowManager = mContext.getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+        lp.width = (display.getWidth()); // 设置宽度
         dialog.getWindow().setAttributes(lp);
     }
 }

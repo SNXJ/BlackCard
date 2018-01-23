@@ -12,7 +12,6 @@
         android:id="@+id/zg_find_video_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="你你那时的"
         android:textColor="@color/recharge_text"
         android:textSize="14sp" />
 
@@ -28,7 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base10dp"
-        android:text="你你那时的"
         android:textColor="@color/recharge_text"
         android:textSize="11sp" />
 

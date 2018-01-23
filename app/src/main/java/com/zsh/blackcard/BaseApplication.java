@@ -13,9 +13,10 @@ import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.live.zego.ZegoApiManager;
-import com.zsh.blackcard.music.untils.AppCache;
-import com.zsh.blackcard.untils.PackageUtils;
-import com.zsh.blackcard.untils.SharedPreferencesUtils;
+import com.zsh.blackcard.music.utils.AppCache;
+import com.zsh.blackcard.utils.PackageUtils;
+import com.zsh.blackcard.utils.ShareUtil;
+import com.zsh.blackcard.utils.SharedPreferencesUtils;
 
 /**
  * @Author snxj .
@@ -60,6 +61,8 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
         return mainThreadHandler;
     }
 
+
+
     @SuppressWarnings("deprecation")
     @Override
     public void onCreate() {
@@ -76,6 +79,9 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
         Beta.autoInit = true;//自动初始化
         strategy.setAppChannel(DataManager.APP_CHANNEL);
         AppCache.init(this);
+
+        ShareUtil.initSharePlatformKey(this);//友盟分享
+
     }
 
 
@@ -149,6 +155,7 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
         super.attachBaseContext(base);
         // you must install multiDex whatever tinker is installed!
         MultiDex.install(base);
+
         // 安装tinker
         Beta.installTinker();
     }

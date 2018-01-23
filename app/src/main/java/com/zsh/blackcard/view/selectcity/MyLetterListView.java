@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.zsh.blackcard.untils.LogUtils;
+import com.zsh.blackcard.utils.LogUtils;
 
 
 public class MyLetterListView extends View {

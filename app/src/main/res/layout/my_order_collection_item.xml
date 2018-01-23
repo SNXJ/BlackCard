@@ -1,53 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/base100dp"
-    android:paddingBottom="@dimen/base18dp"
-    android:paddingLeft="@dimen/base20dp"
-    android:paddingRight="@dimen/base20dp"
-    android:paddingTop="@dimen/base18dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentView="@+id/content_relative"
+    app:rightMenuView="@+id/shopping_car_item_right_delete">
 
-    <ImageView
-        android:id="@+id/collection_recycler_item_img"
-        android:layout_width="@dimen/base60dp"
-        android:layout_height="match_parent" />
-
-    <TextView
-        android:id="@+id/collection_recycler_item_title_tv"
+    <RelativeLayout
+        android:id="@+id/content_relative"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/base26dp"
-        android:layout_toRightOf="@+id/collection_recycler_item_img"
-        android:text="地亚Cartier伦敦SOLO手表 石英男表W6701005"
-        android:textColor="@color/recharge_text"
-        android:textSize="12sp" />
+        android:layout_height="@dimen/base100dp"
+        android:paddingBottom="@dimen/base18dp"
+        android:paddingLeft="@dimen/base20dp"
+        android:paddingRight="@dimen/base20dp"
+        android:paddingTop="@dimen/base18dp">
+
+        <ImageView
+            android:id="@+id/collection_recycler_item_img"
+            android:layout_width="@dimen/base60dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/collection_recycler_item_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base26dp"
+            android:layout_toRightOf="@+id/collection_recycler_item_img"
+            android:text="地亚Cartier伦敦SOLO手表 石英男表W6701005"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/collection_recycler_item_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/base26dp"
+            android:layout_toRightOf="@+id/collection_recycler_item_img"
+            android:gravity="center"
+            android:paddingLeft="@dimen/base5dp"
+            android:paddingRight="@dimen/base5dp"
+            android:text="￥49200"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/collection_find_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/base12dp"
+            android:background="@drawable/my_order_cancle_bg"
+            android:gravity="center"
+            android:paddingLeft="@dimen/base5dp"
+            android:paddingRight="@dimen/base5dp"
+            android:text="找相似"
+            android:textColor="@color/recharge_text"
+            android:textSize="12sp" />
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/collection_recycler_item_price_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="@dimen/base26dp"
-        android:layout_toRightOf="@+id/collection_recycler_item_img"
+        android:id="@+id/shopping_car_item_right_delete"
+        android:layout_width="@dimen/base90dp"
+        android:layout_height="match_parent"
+        android:background="#141414"
         android:gravity="center"
-        android:paddingLeft="@dimen/base5dp"
-        android:paddingRight="@dimen/base5dp"
-        android:text="￥49200"
+        android:text="删除"
         android:textColor="@color/recharge_text"
-        android:textSize="12sp" />
+        android:textSize="15sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="@dimen/base12dp"
-        android:background="@drawable/my_order_cancle_bg"
-        android:gravity="center"
-        android:paddingLeft="@dimen/base5dp"
-        android:paddingRight="@dimen/base5dp"
-        android:text="找相似"
-        android:textColor="@color/recharge_text"
-        android:textSize="12sp" />
-
-</RelativeLayout>
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

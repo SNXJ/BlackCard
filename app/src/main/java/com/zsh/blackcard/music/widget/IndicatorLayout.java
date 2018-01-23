@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.music.untils.ScreenUtils;
+import com.zsh.blackcard.music.utils.ScreenUtils;
 
 
 /**

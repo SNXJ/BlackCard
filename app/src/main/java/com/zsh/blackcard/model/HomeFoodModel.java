@@ -9,12 +9,15 @@ import java.util.List;
  * Description:描述：
  */
 public class HomeFoodModel {
+
     /**
      * result : 01
-     * pd : [{"SHOPPRICE":399,"SHOPDETAILSIMGS":"http://47.104.16.215:8088/sortimgs/sortfoodimgs/333deaff997247c0bc0f162f1ca9f387.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/5a8e1a58d9f14afba554168b93711eae.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/2d886d04ff2c41a4a598bbf30d4b641e.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/d48684d232fd4cac8facfd3390fd1a50.png","SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sortfoodimgs/sortfoodshowimgs/ca48ec53999a4adfaff3a0c8f84cf531.png","SHOPADDRESS":"北京市, 北京市, 朝阳区, 潘家园路, 甲1号","SORTFOOD_ID":"382585520535896064","SHOPPHONE":"0898-86868686","SHOPEVACOUNT":1,"SHOPLONGITUDE":"116.461566","SHOPLATITUDE":"39.882244","SHOPNAMES":"菲罗牛排主题自助西餐厅","SHOPEVALUATE":3.5},{"SHOPPRICE":299,"SHOPDETAILSIMGS":"http://47.104.16.215:8088/sortimgs/sortfoodimgs/4f1c969725c44776958f4d7e7a49c393.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/251ac9806f1c46f397138aac86c02a7d.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/f56e60a3572d42d69a82d1e2cd6a069a.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/5d0757ca6a6c49e1a9c828834bf276ba.png","SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sortfoodimgs/sortfoodshowimgs/9c576b0cdfd94c388b1dc48cc37fd4a7.png","SHOPADDRESS":"北京市, 北京市, 朝阳区, 广渠路, 52号","SORTFOOD_ID":"382585869963362304","SHOPPHONE":"0868-12345678","SHOPEVACOUNT":1,"SHOPLONGITUDE":"116.468708","SHOPLATITUDE":"39.89861","SHOPNAMES":"菲罗牛排主题自助西餐厅双井分店","SHOPEVALUATE":3.5}]
+     * ad : [{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/b698eb47e2fd488e8801b8f775c8cc37.png","AD_POSITION":"0","RELATED_ID":"0","CLICK_COUNT":0,"SORT_ORDER":1,"LINK_URL":"","ADVERTISEMENT_ID":"396312541355048960","NAME":""},{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/b1f3c4d9702046a181adcfef37d80059.png","AD_POSITION":"0","RELATED_ID":"0","CLICK_COUNT":0,"SORT_ORDER":2,"LINK_URL":"","ADVERTISEMENT_ID":"396312908310511616","NAME":""},{"SHOWIMG":"http://47.104.16.215:8088/advertisementimgs/c2641301148e4c2799e89b6489cdbf5d.png","AD_POSITION":"0","RELATED_ID":"0","CLICK_COUNT":0,"SORT_ORDER":3,"LINK_URL":"","ADVERTISEMENT_ID":"396313209738362880","NAME":""}]
+     * pd : [{"SHOPPRICE":399,"SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sortfoodimgs/sortfoodshowimgs/ca48ec53999a4adfaff3a0c8f84cf531.png","SHOPADDRESS":"北京市 北京市 朝阳区 潘家园路 甲1号","SORTFOOD_ID":"382585520535896064","distance":"5.942040455075951","SHOPEVACOUNT":6,"SHOPNAMES":"菲罗牛排主题自助西餐厅","SHOPEVALUATE":3.2,"HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"},{"SHOPPRICE":299,"SHOWIMAGES":"http://47.104.16.215:8088/sortimgs/sortfoodimgs/sortfoodshowimgs/9c576b0cdfd94c388b1dc48cc37fd4a7.png","SHOPADDRESS":"北京市 北京市 朝阳区 广渠路 52号","SORTFOOD_ID":"382585869963362304","distance":"5.050353703962636","SHOPEVACOUNT":2,"SHOPNAMES":"海底捞火锅(双井店)","SHOPEVALUATE":2.8,"HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"}]
      */
 
     private String result;
+    private List<AdBean> ad;
     private List<PdBean> pd;
 
     public String getResult() {
@@ -25,6 +28,14 @@ public class HomeFoodModel {
         this.result = result;
     }
 
+    public List<AdBean> getAd() {
+        return ad;
+    }
+
+    public void setAd(List<AdBean> ad) {
+        this.ad = ad;
+    }
+
     public List<PdBean> getPd() {
         return pd;
     }
@@ -33,68 +44,114 @@ public class HomeFoodModel {
         this.pd = pd;
     }
 
+    public static class AdBean {
+        /**
+         * SHOWIMG : http://47.104.16.215:8088/advertisementimgs/b698eb47e2fd488e8801b8f775c8cc37.png
+         * AD_POSITION : 0
+         * RELATED_ID : 0
+         * CLICK_COUNT : 0
+         * SORT_ORDER : 1
+         * LINK_URL :
+         * ADVERTISEMENT_ID : 396312541355048960
+         * NAME :
+         */
+
+        private String SHOWIMG;
+        private String AD_POSITION;
+        private String RELATED_ID;
+        private int CLICK_COUNT;
+        private int SORT_ORDER;
+        private String LINK_URL;
+        private String ADVERTISEMENT_ID;
+        private String NAME;
+
+        public String getSHOWIMG() {
+            return SHOWIMG;
+        }
+
+        public void setSHOWIMG(String SHOWIMG) {
+            this.SHOWIMG = SHOWIMG;
+        }
+
+        public String getAD_POSITION() {
+            return AD_POSITION;
+        }
+
+        public void setAD_POSITION(String AD_POSITION) {
+            this.AD_POSITION = AD_POSITION;
+        }
+
+        public String getRELATED_ID() {
+            return RELATED_ID;
+        }
+
+        public void setRELATED_ID(String RELATED_ID) {
+            this.RELATED_ID = RELATED_ID;
+        }
+
+        public int getCLICK_COUNT() {
+            return CLICK_COUNT;
+        }
+
+        public void setCLICK_COUNT(int CLICK_COUNT) {
+            this.CLICK_COUNT = CLICK_COUNT;
+        }
+
+        public int getSORT_ORDER() {
+            return SORT_ORDER;
+        }
+
+        public void setSORT_ORDER(int SORT_ORDER) {
+            this.SORT_ORDER = SORT_ORDER;
+        }
+
+        public String getLINK_URL() {
+            return LINK_URL;
+        }
+
+        public void setLINK_URL(String LINK_URL) {
+            this.LINK_URL = LINK_URL;
+        }
+
+        public String getADVERTISEMENT_ID() {
+            return ADVERTISEMENT_ID;
+        }
+
+        public void setADVERTISEMENT_ID(String ADVERTISEMENT_ID) {
+            this.ADVERTISEMENT_ID = ADVERTISEMENT_ID;
+        }
+
+        public String getNAME() {
+            return NAME;
+        }
+
+        public void setNAME(String NAME) {
+            this.NAME = NAME;
+        }
+    }
+
     public static class PdBean {
         /**
          * SHOPPRICE : 399
-         * SHOPDETAILSIMGS : http://47.104.16.215:8088/sortimgs/sortfoodimgs/333deaff997247c0bc0f162f1ca9f387.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/5a8e1a58d9f14afba554168b93711eae.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/2d886d04ff2c41a4a598bbf30d4b641e.png,http://47.104.16.215:8088/sortimgs/sortfoodimgs/d48684d232fd4cac8facfd3390fd1a50.png
          * SHOWIMAGES : http://47.104.16.215:8088/sortimgs/sortfoodimgs/sortfoodshowimgs/ca48ec53999a4adfaff3a0c8f84cf531.png
-         * SHOPADDRESS : 北京市, 北京市, 朝阳区, 潘家园路, 甲1号
+         * SHOPADDRESS : 北京市 北京市 朝阳区 潘家园路 甲1号
          * SORTFOOD_ID : 382585520535896064
-         * SHOPPHONE : 0898-86868686
-         * SHOPEVACOUNT : 1
-         * SHOPLONGITUDE : 116.461566
-         * SHOPLATITUDE : 39.882244
+         * distance : 5.942040455075951
+         * SHOPEVACOUNT : 6
          * SHOPNAMES : 菲罗牛排主题自助西餐厅
-         * SHOPEVALUATE : 3.5
+         * SHOPEVALUATE : 3.2
+         * HONOURUSER_ID : d6a3779de8204dfd9359403f54f7d27c
          */
-        private String BRAND;
-        private String HONOURUSER_ID;
-        private String STYLE;
-        private String distance;
-
-        public String getBRAND() {
-            return BRAND;
-        }
-
-        public void setBRAND(String BRAND) {
-            this.BRAND = BRAND;
-        }
-
-        public String getHONOURUSER_ID() {
-            return HONOURUSER_ID;
-        }
-
-        public void setHONOURUSER_ID(String HONOURUSER_ID) {
-            this.HONOURUSER_ID = HONOURUSER_ID;
-        }
-
-        public String getSTYLE() {
-            return STYLE;
-        }
-
-        public void setSTYLE(String STYLE) {
-            this.STYLE = STYLE;
-        }
-
-        public String getDistance() {
-            return distance;
-        }
-
-        public void setDistance(String distance) {
-            this.distance = distance;
-        }
 
         private int SHOPPRICE;
-        private String SHOPDETAILSIMGS;
         private String SHOWIMAGES;
         private String SHOPADDRESS;
         private String SORTFOOD_ID;
-        private String SHOPPHONE;
+        private String distance;
         private int SHOPEVACOUNT;
-        private String SHOPLONGITUDE;
-        private String SHOPLATITUDE;
         private String SHOPNAMES;
         private double SHOPEVALUATE;
+        private String HONOURUSER_ID;
 
         public int getSHOPPRICE() {
             return SHOPPRICE;
@@ -102,14 +159,6 @@ public class HomeFoodModel {
 
         public void setSHOPPRICE(int SHOPPRICE) {
             this.SHOPPRICE = SHOPPRICE;
-        }
-
-        public String getSHOPDETAILSIMGS() {
-            return SHOPDETAILSIMGS;
-        }
-
-        public void setSHOPDETAILSIMGS(String SHOPDETAILSIMGS) {
-            this.SHOPDETAILSIMGS = SHOPDETAILSIMGS;
         }
 
         public String getSHOWIMAGES() {
@@ -136,12 +185,12 @@ public class HomeFoodModel {
             this.SORTFOOD_ID = SORTFOOD_ID;
         }
 
-        public String getSHOPPHONE() {
-            return SHOPPHONE;
+        public String getDistance() {
+            return distance;
         }
 
-        public void setSHOPPHONE(String SHOPPHONE) {
-            this.SHOPPHONE = SHOPPHONE;
+        public void setDistance(String distance) {
+            this.distance = distance;
         }
 
         public int getSHOPEVACOUNT() {
@@ -150,22 +199,6 @@ public class HomeFoodModel {
 
         public void setSHOPEVACOUNT(int SHOPEVACOUNT) {
             this.SHOPEVACOUNT = SHOPEVACOUNT;
-        }
-
-        public String getSHOPLONGITUDE() {
-            return SHOPLONGITUDE;
-        }
-
-        public void setSHOPLONGITUDE(String SHOPLONGITUDE) {
-            this.SHOPLONGITUDE = SHOPLONGITUDE;
-        }
-
-        public String getSHOPLATITUDE() {
-            return SHOPLATITUDE;
-        }
-
-        public void setSHOPLATITUDE(String SHOPLATITUDE) {
-            this.SHOPLATITUDE = SHOPLATITUDE;
         }
 
         public String getSHOPNAMES() {
@@ -182,6 +215,14 @@ public class HomeFoodModel {
 
         public void setSHOPEVALUATE(double SHOPEVALUATE) {
             this.SHOPEVALUATE = SHOPEVALUATE;
+        }
+
+        public String getHONOURUSER_ID() {
+            return HONOURUSER_ID;
+        }
+
+        public void setHONOURUSER_ID(String HONOURUSER_ID) {
+            this.HONOURUSER_ID = HONOURUSER_ID;
         }
     }
 }

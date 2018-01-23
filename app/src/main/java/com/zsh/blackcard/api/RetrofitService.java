@@ -26,6 +26,7 @@ import com.zsh.blackcard.model.HomeCarRecyclerModel;
 import com.zsh.blackcard.model.HomeCopterDetailModel;
 import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
 import com.zsh.blackcard.model.HomeFoodModel;
+import com.zsh.blackcard.model.HomeGloryMagazineDetailModel;
 import com.zsh.blackcard.model.HomeGloryMagazineModel;
 import com.zsh.blackcard.model.HomeGloryMusicModel;
 import com.zsh.blackcard.model.HomeGloryServerModel;
@@ -39,6 +40,7 @@ import com.zsh.blackcard.model.HomeKTVDetailModel;
 import com.zsh.blackcard.model.HomeKTVModel;
 import com.zsh.blackcard.model.HomePlayModel;
 import com.zsh.blackcard.model.HomePrivilegeModel;
+import com.zsh.blackcard.model.HomeSearchHotModel;
 import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
 import com.zsh.blackcard.model.HomeTitleNewsModel;
 import com.zsh.blackcard.model.HomeTopModel;
@@ -50,9 +52,12 @@ import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
 import com.zsh.blackcard.model.LoginModel;
-
-import com.zsh.blackcard.model.MyCircleModel;
-
+import com.zsh.blackcard.model.MainGloryMagazineModel;
+import com.zsh.blackcard.model.MainGloryMusicDJModel;
+import com.zsh.blackcard.model.MainGloryMusicLibDetailModel;
+import com.zsh.blackcard.model.MainGloryMusicLibModel;
+import com.zsh.blackcard.model.MainGloryMusicSongModel;
+import com.zsh.blackcard.model.MainMusicGloryModel;
 import com.zsh.blackcard.model.MusicDetailListModel;
 import com.zsh.blackcard.model.MusicDjModel;
 import com.zsh.blackcard.model.MusicLrcModel;
@@ -62,7 +67,7 @@ import com.zsh.blackcard.model.MusicRecommendModel;
 import com.zsh.blackcard.model.MusicSingerModel;
 import com.zsh.blackcard.model.MusicSingerSongsModel;
 import com.zsh.blackcard.model.MusicSongDetailsModel;
-
+import com.zsh.blackcard.model.MyCircleModel;
 import com.zsh.blackcard.model.MyDisBlackPowerModel;
 import com.zsh.blackcard.model.MyOrderModel;
 import com.zsh.blackcard.model.MyPowerImageModel;
@@ -79,6 +84,7 @@ import com.zsh.blackcard.model.RegisterModel;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SettingUserInfoModel;
 import com.zsh.blackcard.model.ShoppingCarModel;
+import com.zsh.blackcard.model.TopicListModel;
 import com.zsh.blackcard.model.TrainModel;
 import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
@@ -241,7 +247,6 @@ public interface RetrofitService {
     //Food评论列表
     @FormUrlEncoded
     @POST("appsfoodin/foodevalist?")
-//FOODEVA
     Observable<CommentModel> postFoodCommentList(@Field("FKEY") String md5, @Field("SORTFOOD_ID") String id);
 
     //KTV评论列表
@@ -261,7 +266,6 @@ public interface RetrofitService {
 
     //添加Food评论
     @GET("appsfoodin/sfoodaddeva?")
-//SFOODADDEVA
     Observable<CommentAddModel> addFoodComment(@QueryMap Map<String, String> map);
 
     //添加KTV评论
@@ -346,6 +350,19 @@ public interface RetrofitService {
     Observable<CollectionModel> postCollection(@Field("FKEY") String md5,
                                                @Field("HONOURUSER_ID") String id);
 
+    //添加商品到选购收藏列表
+    @FormUrlEncoded
+    @POST("appshipin/shipcollectadd?")
+    Observable<ResultModel> postAddCollection(@Field("FKEY") String md5,
+                                              @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                              @Field("PRODUCT_ID") String PRODUCT_ID);
+
+    //从选购收藏删除商品
+    @FormUrlEncoded
+    @POST("appshipin/shipcollectdel?")
+    Observable<ResultModel> postDelCollection(@Field("FKEY") String md5,
+                                              @Field("COLLECT_ID") String COLLECT_ID);
+
     /**
      * 上传头像
      */
@@ -368,6 +385,8 @@ public interface RetrofitService {
     Observable<ResultModel> postSendWeiBo(@Query("FKEY") String md5,
                                           @Query("HONOURUSER_ID") String HONOURUSER_ID,
                                           @Query("CONTENT") String CONTENT,
+                                          @Query("TOPIC_ID") String TOPIC_ID,
+                                          @Query("TITLE") String TITLE,
                                           @Part List<MultipartBody.Part> fileList,
                                           @Query("TYPE") String type);
 
@@ -405,12 +424,6 @@ public interface RetrofitService {
     @POST("appshipin/shipbrandlist?")
     Observable<CategoryLeftModel> postCategoryLeft(@Field("FKEY") String md5);
 
-    //商品分类右边列表
-    @FormUrlEncoded
-    @POST("appshipin/shipbrandiconlist?")
-    Observable<CategoryRightModel> postCategoryRight(@Field("FKEY") String md5,
-                                                     @Field("BRAND_ID") String id);
-
     //获取欢迎引导页的滚动图片数据
     @FormUrlEncoded
     @POST("appbootpagein/bootpagelist?")
@@ -429,6 +442,14 @@ public interface RetrofitService {
                                                   @Field("PRODUCT_ID") String PRODUCT_ID,
                                                   @Field("HONOURUSER_ID") String HONOURUSER_ID);
 
+    //添加商品到购物车
+    @FormUrlEncoded
+    @POST("apporderin/shoppingcartadd?")
+    Observable<ResultModel> postShoppingCarAdd(@Field("FKEY") String md5,
+                                               @Field("PRODUCT_ID") String PRODUCT_ID,
+                                               @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                               @Field("PRODUCTCOUNT") String PRODUCTCOUNT);
+
     //尊购界面banner轮播图
     @FormUrlEncoded
     @POST("appshipin/scarouselfigure?")
@@ -446,10 +467,18 @@ public interface RetrofitService {
     @POST("apphomein/partyimg.do?")
     Observable<HomePlayModel> postHomePlay(@Field("FKEY") String md5);
 
-    //首页荣耀服务图片接口
+    //首页荣耀服务图片集合接口
     @FormUrlEncoded
     @POST("appserverin/server.do?")
     Observable<HomeGloryServerModel> postHomeGloryServer(@Field("FKEY") String md5);
+
+
+    //荣耀服务列表详情点击
+    @FormUrlEncoded
+    @POST("appserverin/serverdetaillist.do?")
+    Observable<Object> postHomeGloryHorseDetail(@Field("FKEY") String md5,
+                                                @Field("SERVER_ID") String SERVER_ID,
+                                                @Field("SHOPTYPE") String SHOPTYPE);
 
     //首页荣耀音乐
     @FormUrlEncoded
@@ -515,11 +544,6 @@ public interface RetrofitService {
     @POST("appserverin/planedetail.do?")
     Observable<HomeCopterDetailModel> postHomeCopterDetail(@Field("FKEY") String md5);
 
-    //荣耀服务列表详情点击
-    @FormUrlEncoded
-    @POST("appserverin/serverdetaillist.do?")
-    Observable<Object> postHomeGloryHorseDetail(@Field("FKEY") String md5,
-                                                @Field("SERVER_ID") String SERVER_ID);
 
     //订单中心确认收货按钮接口
     @FormUrlEncoded
@@ -793,6 +817,79 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("appconvergein/getconvergesort.do?")
     Observable<EatDrinkSearchModel> postEatDrinkSearch(@Field("FKEY") String md5,
-                                                       @Field("CONVERGE_ID") String CONVERGE_ID);
-}
 
+                                                       @Field("CONVERGE_ID") String CONVERGE_ID);
+
+    //话题列表模糊查询
+    @FormUrlEncoded
+    @POST("appcirclein/gettopiclist.do?")
+    Observable<TopicListModel> getTopicList(@Field("FKEY") String md5, @Field("TITLE") String title);
+
+    //添加话题单独接口
+    @FormUrlEncoded
+    @POST("appcirclein/addtopic.do?")
+    Observable<TopicListModel> addTopic(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String userId, @Field("TITLE") String title);
+
+    //荣耀杂志详情接口
+    @FormUrlEncoded
+    @POST("apphomein/magazineone?")
+    Observable<HomeGloryMagazineDetailModel> postHomeGloryMagazineDetail(@Field("FKEY") String md5,
+                                                                         @Field("MAGAZINE_ID") String MAGAZINE_ID,
+                                                                         @Field("MAGAZINETYPE") String MAGAZINETYPE);
+
+    //商品分类右边列表
+    @FormUrlEncoded
+    @POST("appshipin/shipbusinesslist.do?")
+    Observable<CategoryRightModel> postCategoryRight(@Field("FKEY") String md5,
+                                                     @Field("BRAND_ID") String id,
+                                                     @Field("BRANDICON_ID") String BRANDICON_ID);
+
+    //首页搜索热门搜索和推荐
+    @FormUrlEncoded
+    @POST("apphomein/searchlist.do?")
+    Observable<HomeSearchHotModel> postHomeSearchHot(@Field("FKEY") String md5,
+                                                     @Field("PARENT_ID") String PARENT_ID);
+
+    //首页荣耀杂志更多界面
+    @FormUrlEncoded
+    @POST("appmagazinein/getlistsubmenu.do?")
+    Observable<MainGloryMagazineModel> postMainGloryMagazine(@Field("FKEY") String md5,
+                                                             @Field("MENU_ID") String MENU_ID);
+
+    //首页新闻头条发布新闻接口(不包含视频)
+    @Multipart
+    @POST("appdiscoverin/addselfmediaad.do?")
+    Observable<ResultModel> postHomeNewsSend(@Query("FKEY") String md5,
+                                             @Query("TITLE") String title,
+                                             @Query("HONOURUSER_ID") String user_id,
+                                             @Query("DIS_TYPE") String DIS_TYPE,
+                                             @Query("CAIDAN_ID") String CAIDAN_ID,
+                                             @Part List<MultipartBody.Part> fileList);
+
+    //荣耀音乐头部广告和歌手推荐
+    @FormUrlEncoded
+    @POST("appmusicin/getsongrecommend?")
+    Observable<MainMusicGloryModel> postMainGloryMusic(@Field("FKEY") String md5);
+
+    //荣耀音乐电台接口
+    @FormUrlEncoded
+    @POST("appmusicin/getradiostationlist?")
+    Observable<MainGloryMusicDJModel> postMainGloryMusicDJ(@Field("FKEY") String md5);
+
+    //荣耀曲库推荐接口
+    @FormUrlEncoded
+    @POST("appmusicin/getmusiclibrary?")
+    Observable<MainGloryMusicLibModel> postMainGloryMusicLib(@Field("FKEY") String md5);
+
+    //荣耀音乐歌单推荐接口
+    @FormUrlEncoded
+    @POST("appmusicin/getsongsrecommend?")
+    Observable<MainGloryMusicSongModel> postMainGloryMusicSong(@Field("FKEY") String md5,
+                                                               @Field("offset") String offset);
+
+    //荣耀音乐曲库详情接口
+    @FormUrlEncoded
+    @POST("appmusicin/getalbuminfo?")
+    Observable<MainGloryMusicLibDetailModel> postMainGloryMusicLibDetail(@Field("FKEY") String md5,
+                                                                         @Field("album_id") String album_id);
+}

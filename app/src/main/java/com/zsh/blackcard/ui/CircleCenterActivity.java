@@ -13,8 +13,8 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.MyCircleModel;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.SpacesItemDecoration;
 
 import butterknife.BindView;
@@ -42,7 +42,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
     private void iniData() {
 
-        UIUtils.newProgressDialog(this).show();
+        showLoading(this);
 
         DataManager.getInstance(this).RequestHttp(NetApi.postCircleCenterRecycle(DataManager.getMd5Str("CIRCLELIST"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<MyCircleModel>() {
             @Override
@@ -65,7 +65,7 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
 
             @Override
             public void onCompleted() {
-                UIUtils.dismissProgressDialog();
+                dialogDismiss();
             }
         });
 

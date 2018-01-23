@@ -29,8 +29,8 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
 import com.zsh.blackcard.model.EatDrinkSearchModel;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.untils.ActivityUtils;
-import com.zsh.blackcard.untils.UIUtils;
+import com.zsh.blackcard.utils.ActivityUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,10 +110,22 @@ public class EatDrinkActivity extends BaseActivity implements BaseQuickAdapter.O
                 break;
             case R.id.hj_eat_set:
                 //跳转至去发布
-                ActivityUtils.startActivityForDataList(this, EatDrinkSetActivity.class, data,listSearch,listSearchId);
+                ActivityUtils.startActivityForDataList(this, EatDrinkSetActivity.class, data, title, listSearch, listSearchId);
                 break;
             case R.id.hj_recycler_detail_title:
-                showPopWindow(viewPop);
+                //第一次弹出popWindow肯定为空，直接显示
+                if (customPopWindow == null) {
+                    showPopWindow(viewPop);
+                } else {
+                    //下次点击pop判断他是否在显示，如果在显示，则点击title关闭pop，否则则显示pop
+                    if (customPopWindow.getPopupWindow().isShowing()) {
+                        hj_recycler_detail_title.setClickable(true);
+                        blackwb_back.setClickable(true);
+                        customPopWindow.dissmiss();
+                    } else {
+                        showPopWindow(viewPop);
+                    }
+                }
                 break;
         }
     }
@@ -133,7 +145,7 @@ public class EatDrinkActivity extends BaseActivity implements BaseQuickAdapter.O
                 .setFocusable(false)
                 .create()
                 .showAsDropDown(eat_drink_relative, 0, 0);
-        hj_recycler_detail_title.setClickable(false);
+        hj_recycler_detail_title.setClickable(true);
         blackwb_back.setClickable(false);
     }
 
@@ -143,6 +155,8 @@ public class EatDrinkActivity extends BaseActivity implements BaseQuickAdapter.O
         title = intent.getStringExtra("title");
         hj_recycler_detail_title.setText(title);
         eat_drink_recycler.setNestedScrollingEnabled(false);
+
+        showLoading(this);
 
         //初始化指定汇聚下所有聚会列表
         DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "388279486010884096", data, "", ""), new ResultListener<EatDrinkRecyclerModel>() {
@@ -181,7 +195,7 @@ public class EatDrinkActivity extends BaseActivity implements BaseQuickAdapter.O
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
 
@@ -224,6 +238,7 @@ public class EatDrinkActivity extends BaseActivity implements BaseQuickAdapter.O
 
     //指定条件查询
     private void initSearch(String converge_id) {
+        showLoading(this);
         DataManager.getInstance(this).RequestHttp(NetApi.postEatDrinkRecycler(DataManager.getMd5Str("PARTYLIST"), "388279486010884096", data, "", converge_id), new ResultListener<EatDrinkRecyclerModel>() {
             @Override
             public void responseSuccess(EatDrinkRecyclerModel obj) {
@@ -262,7 +277,7 @@ public class EatDrinkActivity extends BaseActivity implements BaseQuickAdapter.O
 
             @Override
             public void onCompleted() {
-
+                dialogDismiss();
             }
         });
 

@@ -4,12 +4,15 @@
     android:layout_height="match_parent"
     android:background="@color/main_black"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_black"
         android:orientation="vertical">
+
         <include layout="@layout/home_pub_top_activity" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/base60dp"

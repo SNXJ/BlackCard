@@ -14,14 +14,15 @@ import android.widget.ListView;
 
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.fragment.ZgFragment;
+import com.zsh.blackcard.fragment.zgfragment.ZgAllFragment;
 import com.zsh.blackcard.listener.ZGSlidingListener;
 import com.zsh.blackcard.ui.CollectionActivity;
 import com.zsh.blackcard.ui.ShoppingCarActivity;
 import com.zsh.blackcard.ui.zgactivity.DiscoverActivity;
 import com.zsh.blackcard.ui.zgactivity.GoodsCategoryActivity;
 import com.zsh.blackcard.ui.zgactivity.PersonalActivity;
-import com.zsh.blackcard.untils.ActivityUtils;
+import com.zsh.blackcard.ui.zgactivity.ShareProfitActivity;
+import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,18 +50,19 @@ public class SlidingFragment extends BaseFragment {
         //添加默认主界面
         FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-        ZgFragment zgFragment = new ZgFragment();
-        zgFragment.setZgSlidingListener(zglistener);
-        fragmentTransaction.replace(R.id.drawerLayout_frame, zgFragment);
+        ZgAllFragment zgAllFragment = new ZgAllFragment();
+        zgAllFragment.setZgSlidingListener(zglistener);
+        fragmentTransaction.replace(R.id.drawerLayout_frame, zgAllFragment);
         fragmentTransaction.commit();
 
         //填充侧滑列表数据
-        list = new ArrayList<String>();
+        list = new ArrayList<>();
         list.add("商品分类");
         list.add("发现");
         list.add("购物车");
         list.add("炫购");
         list.add("私人定制");
+        list.add("分享赚钱");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.sliding_left_lv_item, list);
         left_drawer.setAdapter(adapter);
@@ -115,6 +117,9 @@ public class SlidingFragment extends BaseFragment {
                 break;
             case 4://私人定制
                 startActivity(new Intent(getActivity(), PersonalActivity.class));
+                break;
+            case 5://分享赚钱
+                startActivity(new Intent(getActivity(), ShareProfitActivity.class));
                 break;
 
         }

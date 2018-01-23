@@ -48,26 +48,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
+            android:descendantFocusability="blocksDescendants"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <com.youth.banner.Banner
                 android:id="@+id/eat_drink_banner"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/base160dp">
+                android:layout_height="@dimen/base120dp">
 
             </com.youth.banner.Banner>
 
             <android.support.v7.widget.RecyclerView
+                android:layout_below="@+id/eat_drink_banner"
                 android:id="@+id/eat_drink_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
             </android.support.v7.widget.RecyclerView>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
