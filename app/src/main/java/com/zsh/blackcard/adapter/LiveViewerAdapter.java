@@ -16,14 +16,15 @@ import java.util.List;
  * Description: ..
  */
 
-public class LiveViewerAdapter extends BaseQuickAdapter<Integer,BaseViewHolder> {
+public class LiveViewerAdapter extends BaseQuickAdapter<Integer, BaseViewHolder> {
 
-    public LiveViewerAdapter( @Nullable List<Integer> data) {
+    public LiveViewerAdapter(@Nullable List<Integer> data) {
         super(R.layout.live_viewer_item, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, Integer item) {
+        helper.getView(R.id.image_view).setBackgroundResource(item);
 
     }
 }

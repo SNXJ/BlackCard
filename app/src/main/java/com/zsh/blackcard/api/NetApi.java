@@ -54,6 +54,9 @@ import com.zsh.blackcard.model.HotelDetailsMoreListModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
+import com.zsh.blackcard.model.LivePullModel;
+import com.zsh.blackcard.model.LivePushListModel;
+import com.zsh.blackcard.model.LivePushModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MainGloryMagazineModel;
 import com.zsh.blackcard.model.MainGloryMusicDJModel;
@@ -1566,5 +1569,35 @@ public class NetApi extends DataManager {
      */
     public static Observable<MainGloryMusicLibDetailModel> postMainGloryMusicLibDetail(String md5, String album_id) {
         return retrofitService.postMainGloryMusicLibDetail(md5, album_id);
+    }
+
+    /**
+     * 直播推流地址
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LivePushModel> getPushUrl(String md5) {
+        return retrofitService.getPushUrl(md5);
+    }
+
+    /**
+     * 直播拉流地址
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LivePullModel> getPullUrl(String md5) {
+        return retrofitService.getPullUrl(md5);
+    }
+
+    /**
+     * 直播拉流地址
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LivePushListModel> getPushList(String md5) {
+        return retrofitService.getPushList(md5);
     }
 }

@@ -1,5 +1,6 @@
 package com.zsh.blackcard.custom;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -33,6 +34,7 @@ import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.SbNearChangeModel;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
 import com.zsh.blackcard.ui.SbSendWeiBoActivity;
+import com.zsh.blackcard.utils.MPermissionUtils;
 import com.zsh.blackcard.utils.MyCalendar;
 import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.datepickter.DPMode;
@@ -61,6 +63,11 @@ public class PublicDialog {
 
     }
 
+    /**
+     * 分享弹窗
+     *
+     * @param mContext
+     */
 
     public static void shareDialog(final Activity mContext) {
         View view = LayoutInflater.from(mContext).inflate(
@@ -239,8 +246,10 @@ public class PublicDialog {
                         mContext.startActivity(new Intent(mContext, SbSendWeiBoActivity.class));
                         break;
                     case 3:
+                        requestPermis(mContext);
 //                        mContext.startActivity(new Intent(mContext, LiveOpenActivity.class));
-                        mContext.startActivity(new Intent(mContext, AliLiveRoomActivity.class));
+//                        mContext.startActivity(new Intent(mContext, AliLiveOpenActivity.class));
+
                         break;
                     case 4:
 //                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));
@@ -249,6 +258,28 @@ public class PublicDialog {
                 }
             }
         });
+
+    }
+
+    private static void requestPermis(final Activity mContext) {
+
+        String[] PERMISSIONS_STORAGE = {
+                Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO
+        };
+        MPermissionUtils.requestPermissionsResult(mContext, 1, PERMISSIONS_STORAGE
+                , new MPermissionUtils.OnPermissionListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        mContext.startActivity(new Intent(mContext, AliLiveRoomActivity.class));
+
+                    }
+
+                    @Override
+                    public void onPermissionDenied() {
+                        MPermissionUtils.showTipsDialog(mContext);
+                    }
+                });
+
 
     }
 

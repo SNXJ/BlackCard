@@ -10,7 +10,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.AbreComFragmentAdapter;
-import com.zsh.blackcard.live.LivingRoomActivity;
+import com.zsh.blackcard.aliLive.AliLivePlayActivity;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.LivePushListModel;
 import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -28,32 +32,70 @@ import butterknife.ButterKnife;
 public class AbReComFragmemt extends BaseFragment {
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
-    List<String> list = new ArrayList<>();
+    List<LivePushListModel.PdBean.PUSHONLINEBean.OnlineInfoBean.LiveStreamOnlineInfoBean> pushList = new ArrayList<>();
+
+    private AbreComFragmentAdapter adapter;
 
     @Override
     public void initDate(Bundle savedInstanceState) {
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
-        list.add("");
 
-        AbreComFragmentAdapter adapter = new AbreComFragmentAdapter(list);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+//        getPusherList();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+//            getPusherList();
+        }
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPusherList();
+    }
+
+    private void getPusherList() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.getPushList(DataManager.getMd5Str("PUSHLIST")), new ResultListener<LivePushListModel>() {
             @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                ActivityUtils.startActivity(getActivity(), LiveRoomActivity.class);
-                ActivityUtils.startActivity(getActivity(), LivingRoomActivity.class);
+            public void responseSuccess(LivePushListModel obj) {
+
+                setData(obj);
+            }
+
+
+            @Override
+            public void onCompleted() {
 
             }
         });
     }
 
+    private void setData(LivePushListModel obj) {
+
+        if (null != obj && "01".equals(obj.getResult())) {
+
+            pushList = obj.getPd().getPUSHONLINE().getOnlineInfo().getLiveStreamOnlineInfo();
+            adapter = new AbreComFragmentAdapter(pushList);
+            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+            recyclerView.setAdapter(adapter);
+            adapter.setEmptyView(R.layout.live_empty_layout, recyclerView);
+
+            adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    ActivityUtils.startActivityForData(getActivity(), AliLivePlayActivity.class, pushList.get(position).getPublishUrl());
+                }
+            });
+        }
+
+    }
+
     @Override
     public View initView(LayoutInflater inflater) {
-//        view = View.inflate(getActivity(), R.layout.sb_rdfragment, null);
         view = View.inflate(getActivity(), R.layout.ab_recom_fragment, null);
         ButterKnife.bind(getActivity());
         return view;

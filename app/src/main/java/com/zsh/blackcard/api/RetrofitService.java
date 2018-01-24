@@ -51,6 +51,9 @@ import com.zsh.blackcard.model.HotelDetailsMoreListModel;
 import com.zsh.blackcard.model.HoteldetailsItemModel;
 import com.zsh.blackcard.model.KTVDetailsMoreListModel;
 import com.zsh.blackcard.model.LiveInfoListModel;
+import com.zsh.blackcard.model.LivePullModel;
+import com.zsh.blackcard.model.LivePushListModel;
+import com.zsh.blackcard.model.LivePushModel;
 import com.zsh.blackcard.model.LoginModel;
 import com.zsh.blackcard.model.MainGloryMagazineModel;
 import com.zsh.blackcard.model.MainGloryMusicDJModel;
@@ -865,6 +868,24 @@ public interface RetrofitService {
                                              @Query("DIS_TYPE") String DIS_TYPE,
                                              @Query("CAIDAN_ID") String CAIDAN_ID,
                                              @Part List<MultipartBody.Part> fileList);
+
+    //直播推流地址
+    @FormUrlEncoded
+    @POST("livein/getpushaddress?")
+    //
+    Observable<LivePushModel> getPushUrl(@Field("FKEY") String md5);
+
+    //直播拉流地址
+    @FormUrlEncoded
+    @POST("livein/getpulladdress?")
+    //PULLADDRESS
+    Observable<LivePullModel> getPullUrl(@Field("FKEY") String md5);
+
+    //直播列表
+    @FormUrlEncoded
+    @POST("livein/getpushlist?")
+    //PUSHLIST
+    Observable<LivePushListModel> getPushList(@Field("FKEY") String md5);
 
     //荣耀音乐头部广告和歌手推荐
     @FormUrlEncoded

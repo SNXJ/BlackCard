@@ -12,4 +12,5 @@ public class LiveChatModel {
     public String message ;
     public int level ;
     public String img ;
+    public int color ;
 }

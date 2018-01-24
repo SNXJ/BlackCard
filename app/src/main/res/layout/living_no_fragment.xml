@@ -1,6 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:gravity="center_horizontal">
+
+
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base40dp">
+
+            <ImageView
+                android:id="@+id/im_close"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:src="@mipmap/room_icon_1" />
+
+            <ImageView
+                android:id="@+id/im_location"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base42dp"
+                android:src="@mipmap/record_icon_6" />
+
+            <ImageView
+                android:id="@+id/im_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:src="@mipmap/record_icon_1" />
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_edit_title"
+            style="@style/text_"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base200dp"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="给直播写个标题吧！"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColorHint="@color/ff92_text"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base150dp"
+            android:layout_marginLeft="@dimen/base80dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="@dimen/base22dp"
+                android:layout_height="@dimen/base22dp"
+                android:background="@drawable/live_im1_selector"
+                android:button="@null"
+                android:scaleType="centerInside" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base25dp"
+                android:background="@drawable/live_im2_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base25dp"
+                android:background="@drawable/live_im3_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base25dp"
+                android:background="@drawable/live_im4_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base25dp"
+                android:background="@drawable/live_im5_selector"
+                android:button="@null" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_beautiful"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base84dp"
+            android:layout_marginLeft="@dimen/base70dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/record_beautiful" />
+
+            <TextView
+                style="@style/text_"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/base8dp"
+                android:text="美颜"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_open"
+            android:layout_width="@dimen/base160dp"
+            android:layout_height="@dimen/base36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/base84dp"
+            android:layout_marginLeft="@dimen/base125dp"
+            android:background="@drawable/org_btn_selector"
+            android:gravity="center"
+            android:text="开启直播"
+            android:textColor="@color/bg_white"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_xieyi"
+            style="@style/text_"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/base50dp"
+            android:text="开启直播即代表同意《尚播用户协议》"
+            android:textSize="11sp" />
+    </RelativeLayout>
+</FrameLayout>

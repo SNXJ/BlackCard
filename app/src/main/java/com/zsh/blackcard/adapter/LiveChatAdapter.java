@@ -17,7 +17,7 @@ import java.util.List;
  * Description: ..
  */
 
-public class LiveChatAdapter extends BaseQuickAdapter<LiveChatModel,BaseViewHolder> {
+public class LiveChatAdapter extends BaseQuickAdapter<LiveChatModel, BaseViewHolder> {
 
     public LiveChatAdapter(@Nullable List<LiveChatModel> data) {
         super(R.layout.live_char_item, data);
@@ -25,7 +25,10 @@ public class LiveChatAdapter extends BaseQuickAdapter<LiveChatModel,BaseViewHold
 
     @Override
     protected void convert(BaseViewHolder helper, LiveChatModel item) {
-        helper.setText(R.id.tv_chat_text,item.message);
+        helper.setText(R.id.tv_chat_text, item.message);
+//        LogUtils.i("+++++++++++","++++++++++"+item.color);
+//        helper.setTextColor(R.id.tv_chat_text, item.color);
+//        helper.setBackgroundRes(R.id.image_view,item.);
 
     }
 }
