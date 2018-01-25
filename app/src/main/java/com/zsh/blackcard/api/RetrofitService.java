@@ -913,4 +913,12 @@ public interface RetrofitService {
     @POST("appmusicin/getalbuminfo?")
     Observable<MainGloryMusicLibDetailModel> postMainGloryMusicLibDetail(@Field("FKEY") String md5,
                                                                          @Field("album_id") String album_id);
+
+    //首页上传位置接口
+    @FormUrlEncoded
+    @POST("apphomein/updtrapeze?")
+    Observable<ResultModel> postLocation(@Field("FKEY") String md5,
+                                         @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                         @Field("USERLONGITUDE") String USERLONGITUDE,
+                                         @Field("USERLATITUDE 纬度") String USERLATITUDE);
 }

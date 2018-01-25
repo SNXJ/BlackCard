@@ -1600,4 +1600,14 @@ public class NetApi extends DataManager {
     public static Observable<LivePushListModel> getPushList(String md5) {
         return retrofitService.getPushList(md5);
     }
+
+    /**
+     * 上传地址
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<ResultModel> postLocation(String md5, String id, String str1, String str2) {
+        return retrofitService.postLocation(md5, id, str1, str2);
+    }
 }

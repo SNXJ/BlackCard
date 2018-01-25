@@ -136,4 +136,24 @@
     <string name="tips_publish_finish">发布直播结束，errorCode: %1$d, streamId: %2$s</string>
     <string name="tips_publish_stop">推流终止</string>
     <string name="tips_over_max_play_channle_count">超出房间人数容纳上限</string>
+
+
+
+    //背景音乐，耳返
+    <string name="no_music">无音乐</string>
+    <string name="pause">暂停</string>
+    <string name="resume">恢复</string>
+    <string name="stop">停止</string>
+    <string name="start">开始</string>
+    <string name="close_loop">关循环</string>
+    <string name="open_loop">开循环</string>
+    <string name="close_mute">关静音</string>
+    <string name="open_mute">开静音</string>
+    <string name="close_ears_back">关耳返</string>
+    <string name="open_ears_back">开耳返</string>
+    <string name="close_audio_denoise">关降噪</string>
+    <string name="open_audio_denoise">开降噪</string>
+    <string name="accompaniment">伴奏</string>
+    <string name="voice">人声</string>
+    <string name="internet_music">网络音乐</string>
 </resources>

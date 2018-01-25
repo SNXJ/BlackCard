@@ -267,3 +267,7 @@
 -keep class com.alipay.tscenter.** { *; }
 -keep class com.ta.utdid2.** { *;}
 -keep class com.ut.device.** { *;}
+
+#阿里直播
+-keep class com.alibaba.livecloud.** { *;}
+-keep class com.alivc.** { *;}

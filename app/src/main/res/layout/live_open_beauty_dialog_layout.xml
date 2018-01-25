@@ -1,6 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/live_transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/open_close_beauty"
+            style="@style/text_"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="关闭美颜"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="腮红"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/progress_beauty_blush"
+            style="@style/sb_progress_live_open" />
+
+        <TextView
+            android:id="@+id/progress_blush_mun"
+            style="@style/text_"
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="50"
+
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="美白"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/progress_beauty_white"
+            style="@style/sb_progress_live_open" />
+
+        <TextView
+            android:id="@+id/progress_white_mun"
+            style="@style/text_"
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="50"
+
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="磨皮"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/progress_beauty_skin"
+
+            style="@style/sb_progress_live_open" />
+
+        <TextView
+            android:id="@+id/progress_skin_mun"
+            style="@style/text_"
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="50"
+
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="红润"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/progress_beauty_red"
+            style="@style/sb_progress_live_open" />
+
+        <TextView
+            android:id="@+id/progress_red_mun"
+            style="@style/text_"
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="50"
+
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="瘦脸"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/progress_beauty_face"
+            style="@style/sb_progress_live_open" />
+
+        <TextView
+            android:id="@+id/progress_face_mun"
+            style="@style/text_"
+
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="50"
+
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base5dp"
+            android:text="收下巴"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/progress_beauty_jaw"
+            style="@style/sb_progress_live_open" />
+
+        <TextView
+            android:id="@+id/progress_jaw_mun"
+            style="@style/text_"
+
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="50"
+
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:text="大眼"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/progress_beauty_eye"
+            style="@style/sb_progress_live_open" />
+
+        <TextView
+            android:id="@+id/progress_eye_mun"
+            style="@style/text_"
+
+            android:layout_marginRight="@dimen/base20dp"
+            android:text="50"
+
+            android:textSize="14sp" />
+    </LinearLayout>
+
 
 </LinearLayout>

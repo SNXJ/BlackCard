@@ -35,6 +35,7 @@ import com.zsh.blackcard.aliLive.fragment.LivingNoFragment;
 import com.zsh.blackcard.aliLive.fragment.LivingRoomFragment;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.Common;
 import com.zsh.blackcard.custom.LiveDialog;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.ResultListener;
@@ -62,29 +63,6 @@ import static com.alivc.live.pusher.AlivcPreviewOrientationEnum.ORIENTATION_PORT
 
 public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClickListener {
 
-//    private void requestPermis() {
-//
-//        String[] PERMISSIONS_STORAGE = {
-//                Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO
-//        };
-//        MPermissionUtils.requestPermissionsResult(this, 1, PERMISSIONS_STORAGE
-//                , new MPermissionUtils.OnPermissionListener() {
-//                    @Override
-//                    public void onPermissionGranted() {
-//
-////                        getPushUrl();
-////                        mPreviewView.getHolder().addCallback(mCallback);
-//                    }
-//
-//                    @Override
-//                    public void onPermissionDenied() {
-//                        MPermissionUtils.showTipsDialog(AliLiveRoomActivity.this);
-//                    }
-//                });
-//
-//
-//    }
-
     @Override
     public void itemClick(int postion) {
         switch (postion) {
@@ -98,12 +76,18 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClic
                 break;
             case 2://切换
                 mAlivcLivePusher.switchCamera();
+                if (mCameraId == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                    mCameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
+                } else {
+                    mCameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+                }
+
 
                 break;
             case 3://美颜
 //                UIUtils.showToast("美颜");
-
-                LiveDialog.liveBeautyDialog(this);
+                new LiveDialog(this).liveOpenBeautyDialog(mAlivcLivePusher);
+//                LiveDialog.liveBeautyDialog(this);
 
                 break;
             case 4://开启
@@ -181,22 +165,16 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClic
 
     @Override
     protected void initView() {
-        initparam();
+//        initparam();
         setContentView(R.layout.living_room_activity);
         ButterKnife.bind(this);
-//        requestPermis();
-
         getPushUrl();
         mPreviewView.getHolder().addCallback(mCallback);
 
     }
 
-    private void initparam() {
-//传递过来 temp
+    private void initparam() {//TEMP
 
-//        mPushUrl = getIntent().getStringExtra(URL_KEY);
-
-//        mPushUrl = "rtmp://video-center.alivecdn.com/ZSHApp/game1000000479887603?vhost=live.rongyaohk.com&auth_key=1516356048-0-0-ee58b49526981b8d649a13cfa73ac7ef";
         mAsync = getIntent().getBooleanExtra(ASYNC_KEY, false);
         mAudioOnly = getIntent().getBooleanExtra(AUDIO_ONLY_KEY, false);
         mVideoOnly = getIntent().getBooleanExtra(VIDEO_ONLY_KEY, false);
@@ -230,6 +208,8 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClic
         mDetector = new GestureDetector(getApplicationContext(), mGestureDetector);
         mNetWork = NetWorkUtils.getAPNType(this);
 
+        Common.copyAsset(this);
+        Common.copyAll(this);
 
     }
 
@@ -241,8 +221,6 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClic
                     mPushUrl = obj.getPd().getPUSHADDRESS();
                     LogUtils.i("+++++++url++++++++", "+++++++pushUrl+++++++" + mPushUrl);
                 }
-//                mPreviewView.getHolder().addCallback(mCallback);
-
             }
 
             @Override

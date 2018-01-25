@@ -284,6 +284,13 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
     private void setPlaySource() {
         mUrl = getIntent().getStringExtra("data");
+
+        if (null != mUrl) {
+
+            finish();
+
+
+        }
     }
 
 

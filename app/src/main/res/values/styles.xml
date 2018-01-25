@@ -292,4 +292,17 @@
 
     </style>
 
+    <!--美颜seekbar-->
+    <style name="sb_progress_live_open">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxHeight">@dimen/base2dp</item>
+        <item name="android:minHeight">@dimen/base2dp</item>
+        <item name="android:progress">50</item>
+        <item name="android:progressDrawable">@drawable/seek_bar_progress_style</item>
+        <item name="android:thumb">@drawable/circle_seek_point</item>
+
+    </style>
+
 </resources>

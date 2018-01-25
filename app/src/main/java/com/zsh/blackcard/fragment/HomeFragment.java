@@ -135,8 +135,14 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
             int errorCode = bdLocation.getLocType();
             LogUtils.i("+++++++++", errorCode + "+++++location+++++++" + city);
+            DataManager.getInstance(getActivity()).RequestHttp(NetApi.postLocation("TRAPEZE", BaseApplication.getHonouruserId(), String.valueOf(longitude), String.valueOf(latitude)), null);
         }
     }
+
+    private void postLocation() {
+
+    }
+
 
     //当碎片隐藏时 关闭定位，当打开时开启定位
     @Override
@@ -175,7 +181,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
 
         @Override
         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-            switch (((HomeTopModel.PdBean)adapter.getData().get(position)).getSHOPTYPE()) {
+            switch (((HomeTopModel.PdBean) adapter.getData().get(position)).getSHOPTYPE()) {
                 case "酒吧"://
                     topGoDetails(HomeBarDetailActivity.class, adapter, position);
                     break;
@@ -611,7 +617,7 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     private HomeTipView topDialog;
 
     //普通控件的onClick事件
-    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear, R.id.home_glory_magazine_rl,R.id.home_music_rl})
+    @OnClick({R.id.home_top_pop, R.id.rb_city_home, R.id.home_search_linear, R.id.home_glory_magazine_rl, R.id.home_music_rl})
     public void onClick(View view) {
         switch (view.getId()) {
 //            case R.id.home_play_img:
