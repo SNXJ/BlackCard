@@ -12,6 +12,7 @@ import com.zsh.blackcard.model.CircleCenterCommentRecyclerModel;
 import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
+import com.zsh.blackcard.model.DisCountModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
 import com.zsh.blackcard.model.EatDrinkSearchModel;
@@ -93,6 +94,7 @@ import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgFindModel;
 import com.zsh.blackcard.model.ZgFindTitleModel;
+import com.zsh.blackcard.model.ZgHomeListModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDatailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
@@ -447,11 +449,11 @@ public interface RetrofitService {
 
     //添加商品到购物车
     @FormUrlEncoded
-    @POST("apporderin/shoppingcartadd?")
+    @POST("appcartin/addcart?")
     Observable<ResultModel> postShoppingCarAdd(@Field("FKEY") String md5,
                                                @Field("PRODUCT_ID") String PRODUCT_ID,
                                                @Field("HONOURUSER_ID") String HONOURUSER_ID,
-                                               @Field("PRODUCTCOUNT") String PRODUCTCOUNT);
+                                               @Field("QUANTITY") String QUANTITY);
 
     //尊购界面banner轮播图
     @FormUrlEncoded
@@ -913,6 +915,30 @@ public interface RetrofitService {
     @POST("appmusicin/getalbuminfo?")
     Observable<MainGloryMusicLibDetailModel> postMainGloryMusicLibDetail(@Field("FKEY") String md5,
                                                                          @Field("album_id") String album_id);
+
+    //订单中心优惠券接口
+    @FormUrlEncoded
+    @POST("couponin/couponlist.do?")
+    Observable<DisCountModel> postDisCount(@Field("FKEY") String md5,
+                                           @Field("BUSINESS_ID") String BUSINESS_ID);
+
+    //用户领取优惠券(暂未开发)
+    @FormUrlEncoded
+    @POST("couponin/addcoupon.do?")
+    Observable<ResultModel> postAddCoupon(@Field("FKEY") String md5,
+                                          @Field("BUSINESS_ID") String BUSINESS_ID,
+                                          @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //根据店铺id获取可用的优惠券(暂未开发)
+    @FormUrlEncoded
+    @POST("couponin/getcouponsuser?")
+    Observable<DisCountModel> postShopCoupon(@Field("FKEY") String md5,
+                                             @Field("BUSINESS_ID") String BUSINESS_ID);
+
+    //尊购首页列表接口
+    @FormUrlEncoded
+    @POST("appshipin/getfecturelist?")
+    Observable<ZgHomeListModel> postZgList(@Field("FKEY") String md5);
 
     //首页上传位置接口
     @FormUrlEncoded

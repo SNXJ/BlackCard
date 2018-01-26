@@ -28,103 +28,12 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/discount_recycler"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base116dp"
-        android:layout_marginTop="@dimen/base10dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/combinedshape" />
+    </android.support.v7.widget.RecyclerView>
 
-        <TextView
-            android:layout_width="@dimen/base164dp"
-            android:layout_height="@dimen/base40dp"
-            android:layout_marginLeft="@dimen/base63dp"
-            android:layout_marginTop="@dimen/base38dp"
-            android:gravity="center"
-            android:text="满999即可使用"
-            android:textColor="#929292"
-            android:textSize="24sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base29dp"
-            android:layout_marginTop="@dimen/base32dp"
-            android:text="￥99"
-            android:textColor="#929292"
-            android:textSize="40sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base116dp"
-        android:layout_marginTop="@dimen/base10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/combinedshape" />
-
-        <TextView
-            android:layout_width="@dimen/base164dp"
-            android:layout_height="@dimen/base40dp"
-            android:layout_marginLeft="@dimen/base63dp"
-            android:layout_marginTop="@dimen/base38dp"
-            android:gravity="center"
-            android:text="满999即可使用"
-            android:textColor="#929292"
-            android:textSize="24sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base29dp"
-            android:layout_marginTop="@dimen/base33dp"
-            android:text="￥99"
-            android:textColor="#929292"
-            android:textSize="40sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base116dp"
-        android:layout_marginTop="@dimen/base10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/combinedshape" />
-
-        <TextView
-            android:layout_width="@dimen/base164dp"
-            android:layout_height="@dimen/base40dp"
-            android:layout_marginLeft="@dimen/base63dp"
-            android:layout_marginTop="@dimen/base38dp"
-            android:gravity="center"
-            android:text="满999即可使用"
-            android:textColor="#929292"
-            android:textSize="24sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base29dp"
-            android:layout_marginTop="@dimen/base33dp"
-            android:text="￥99"
-            android:textColor="#929292"
-            android:textSize="40sp" />
-    </RelativeLayout>
 
 </LinearLayout>
