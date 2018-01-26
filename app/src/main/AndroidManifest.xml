@@ -49,7 +49,7 @@
 
         </activity>
         <activity
-            android:name=".ui.WelcomeActivity"
+            android:name=".ui.SbActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/FullTheme"
             android:windowSoftInputMode="adjustResize">
@@ -149,7 +149,7 @@
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.AddressEditActivity" />
         <activity android:name=".ui.AddressManageActivity" />
-        <activity android:name=".ui.SbActivity" />
+        <!--<activity android:name=".ui.SbActivity" />-->
         <activity android:name=".ui.SbMyActivity" />
         <activity android:name=".ui.OrderDetailsActivity" />
         <activity android:name=".ui.IntegralActivity" />
@@ -294,11 +294,12 @@
         <activity android:name=".ui.my.MySettedActivity" />
         <activity android:name=".ui.my.MySettedBusinessActivity" />
         <activity android:name=".ui.my.MySettedBusinessSubmitActivity" />
-        <activity android:name=".ui.my.MySettedBusinessPhotoActivity"></activity>
-        <activity android:name=".aliLive.AliLiveRoomActivity" />
         <activity android:name=".ui.my.MySettedBusinessPhotoActivity" />
+        <activity android:name=".aliLive.AliLiveRoomActivity" />
+
         <activity android:name=".ui.home.HomeNewsSendActivity" />
-        <activity android:name=".aliLive.AliLiveOpenActivity" />
+        <activity android:name=".aliLive.AliLivePlayActivity" />
+        <!--<activity android:name=".aliLive.AliLiveOpenActivity" />-->
     </application>
 
 </manifest>

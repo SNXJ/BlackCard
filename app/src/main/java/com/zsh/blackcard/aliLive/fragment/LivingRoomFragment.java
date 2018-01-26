@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alivc.live.pusher.AlivcLivePushBGMListener;
 import com.alivc.live.pusher.AlivcLivePusher;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
@@ -24,6 +26,8 @@ import com.zsh.blackcard.adapter.LiveChatAdapter;
 import com.zsh.blackcard.adapter.LiveViewerAdapter;
 import com.zsh.blackcard.aliLive.AliLiveRoomActivity;
 import com.zsh.blackcard.custom.KeyboardStatusDetector;
+import com.zsh.blackcard.custom.LiveDialog;
+import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.model.LiveChatModel;
 import com.zsh.blackcard.utils.CharUtils;
 import com.zsh.blackcard.view.GiftItemView;
@@ -66,10 +70,9 @@ public class LivingRoomFragment extends BaseFragment {
     ImageView chat;
     @BindView(R.id.im_share)
     ImageView imShare;
-    @BindView(R.id.im_heart)
-    ImageView imHeart;
-    @BindView(R.id.im_gif)
-    ImageView imGif;
+
+    @BindView(R.id.im_more)
+    ImageView imMore;
     @BindView(R.id.rl_buttom)
     RelativeLayout rlButtom;
     @BindView(R.id.send_edit)
@@ -136,6 +139,28 @@ public class LivingRoomFragment extends BaseFragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mPushUrl = getArguments().getString(URL_KEY);
+            mAsync = getArguments().getBoolean(ASYNC_KEY, false);
+            mAudio = getArguments().getBoolean(AUDIO_ONLY_KEY, false);
+            mVideoOnly = getArguments().getBoolean(VIDEO_ONLY_KEY, false);
+            mCameraId = getArguments().getInt(CAMERA_ID);
+            isFlash = getArguments().getBoolean(FLASH_ON, false);
+            mQualityMode = getArguments().getInt(QUALITY_MODE_KEY);
+            flashState = isFlash;
+        }
+        if (mAlivcLivePusher != null) {
+//            mAlivcLivePusher.setLivePushInfoListener(mPushInfoListener);
+//            mAlivcLivePusher.setLivePushErrorListener(mPushErrorListener);
+//            mAlivcLivePusher.setLivePushNetworkListener(mPushNetworkListener);
+            mAlivcLivePusher.setLivePushBGMListener(mPushBGMListener);
+            isPushing = mAlivcLivePusher.isPushing();
+        }
+    }
+
+    @Override
     public void initDate(Bundle savedInstanceState) {
 
 
@@ -145,12 +170,11 @@ public class LivingRoomFragment extends BaseFragment {
         viewList.add(R.mipmap.room_image_4);
         viewList.add(R.mipmap.room_image_5);
         viewList.add(R.mipmap.room_image_1);
-        viewList.add(R.mipmap.room_image_1);
-        viewList.add(R.mipmap.room_image_1);
-        viewList.add(R.mipmap.room_image_1);
+
         viewerAdapter = new LiveViewerAdapter(viewList);
         viewerRecyclerView.setAdapter(viewerAdapter);
 //聊天
+        mRandom = new Random();
 
         for (int i = 0; i < 3; i++) {//模拟数据
             LiveChatModel m = new LiveChatModel();
@@ -158,6 +182,7 @@ public class LivingRoomFragment extends BaseFragment {
 //            m.img = "http://v1.qzone.cc/avatar/201503/06/18/27/54f981200879b698.jpg%21200x200.jpg";
             m.name = CharUtils.getRandomString(8);
             m.level = (int) (Math.random() * 100 + 1);
+//            m.color = randomColor();
             m.message = CharUtils.getRandomString(20);
             chatList.add(m);
         }
@@ -165,7 +190,7 @@ public class LivingRoomFragment extends BaseFragment {
         liveChatAdapter = new LiveChatAdapter(chatList);
         chat_recycler_view.setAdapter(liveChatAdapter);
 
-        mRandom = new Random();
+
         handler.postDelayed(runnable, 1000);
 
         initKeyBoard();
@@ -182,10 +207,11 @@ public class LivingRoomFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.im_live_head, R.id.gift_item_view, R.id.chat, R.id.im_share, R.id.im_heart, R.id.im_gif, R.id.tv_send})
+    @OnClick({R.id.im_live_head, R.id.gift_item_view, R.id.chat, R.id.im_share, R.id.im_more, R.id.tv_send, R.id.im_live_close})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.im_live_head:
+                PublicDialog.liveDialog(getActivity());
                 break;
             case R.id.gift_item_view:
                 break;
@@ -198,11 +224,16 @@ public class LivingRoomFragment extends BaseFragment {
                 inputManager.showSoftInput(sendEdit, 0);
                 break;
             case R.id.im_share:
+                PublicDialog.shareDialog(getActivity());
                 break;
-            case R.id.im_heart:
-                break;
-            case R.id.im_gif:
 
+            case R.id.im_more://更多
+
+                new LiveDialog(getContext()).liveMoreDialog(getFragmentManager(),mAlivcLivePusher,mCameraId);
+
+                break;
+            case R.id.im_live_close:
+                getActivity().finish();
                 break;
         }
     }
@@ -296,5 +327,52 @@ public class LivingRoomFragment extends BaseFragment {
                     }
                 });
     }
+    private AlivcLivePushBGMListener mPushBGMListener = new AlivcLivePushBGMListener() {
+        @Override
+        public void onStarted() {
 
+        }
+
+        @Override
+        public void onStoped() {
+
+        }
+
+        @Override
+        public void onPaused() {
+
+        }
+
+        @Override
+        public void onResumed() {
+
+        }
+
+        @Override
+        public void onProgress(final long progress, final long duration) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+//                    if(mMusicDialog != null) {
+//                        mMusicDialog.updateProgress(progress, duration);
+//                    }
+                }
+            });
+        }
+
+        @Override
+        public void onCompleted() {
+
+        }
+
+        @Override
+        public void onDownloadTimeout() {
+
+        }
+
+        @Override
+        public void onOpenFailed() {
+
+        }
+    };
 }

@@ -6,10 +6,10 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.zsh.blackcard"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 26
-        versionCode 6
-        versionName "1.0.6"
+        versionCode 8
+        versionName "1.0.8"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -19,6 +19,8 @@ android {
     }
     repositories {
         maven { url "https://jitpack.io" }
+
+        flatDir { dirs 'libs' }
     }
     buildTypes {
         release {
@@ -56,6 +58,7 @@ android {
 }
 
 dependencies {
+    implementation fileTree(include: ['*.aar'], dir: 'src/main/libs')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile fileTree(include: ['*.jar'], dir: 'zego_libs')
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -122,8 +125,6 @@ dependencies {
     implementation 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
 
     //Bugly
-
-    //compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
 
@@ -163,8 +164,7 @@ dependencies {
     implementation files('libs/umeng-common-1.4.1.jar')
 
     //wxPay
-
-    //        compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    //compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
     //aipay
     implementation files('libs/alipaySdk-20170922.jar')
@@ -172,4 +172,10 @@ dependencies {
     compile 'tyrant:heartlayout:1.0.1'
     compile 'com.github.SNXJ:TopDialog:v0.1'
     implementation files('libs/live-pusher-3.2.0.jar')
+
+//    compile (name:'AlivcPlayer',ext:'aar')
+//    compile (name:'AliyunVodPlayer',ext:'aar')
+//    compile (name:'AlivcReporter',ext:'aar')
+    compile (name:'AlivcPlayer-3.2.0',ext:'aar')
+    compile (name:'live-pusher-resources-3.2.0',ext:'aar')
 }

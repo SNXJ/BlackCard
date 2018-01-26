@@ -11,10 +11,9 @@ import android.hardware.Camera;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -22,15 +21,28 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.alivc.live.pusher.AlivcBeautyLevelEnum;
+import com.alivc.live.pusher.AlivcFpsEnum;
 import com.alivc.live.pusher.AlivcLivePushConfig;
 import com.alivc.live.pusher.AlivcLivePushStatsInfo;
 import com.alivc.live.pusher.AlivcLivePusher;
 import com.alivc.live.pusher.AlivcPreviewOrientationEnum;
+import com.alivc.live.pusher.AlivcQualityModeEnum;
+import com.alivc.live.pusher.AlivcResolutionEnum;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.PublicFragmentAdapter;
 import com.zsh.blackcard.aliLive.fragment.LivingNoFragment;
 import com.zsh.blackcard.aliLive.fragment.LivingRoomFragment;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.Common;
+import com.zsh.blackcard.custom.LiveDialog;
+import com.zsh.blackcard.listener.ItemClickListener;
+import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.LivePushModel;
+import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.NetWorkUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +61,52 @@ import static com.alivc.live.pusher.AlivcPreviewOrientationEnum.ORIENTATION_PORT
  * Description: ..
  */
 
-public class AliLiveRoomActivity extends BaseAliLiveActivity {
+public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClickListener {
+
+    @Override
+    public void itemClick(int postion) {
+        switch (postion) {
+            case 0://关闭
+                finish();
+
+                break;
+            case 1://定位
+                UIUtils.showToast("定位");
+
+                break;
+            case 2://切换
+                mAlivcLivePusher.switchCamera();
+                if (mCameraId == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                    mCameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
+                } else {
+                    mCameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+                }
+
+
+                break;
+            case 3://美颜
+//                UIUtils.showToast("美颜");
+                new LiveDialog(this).liveOpenBeautyDialog(mAlivcLivePusher);
+//                LiveDialog.liveBeautyDialog(this);
+
+                break;
+            case 4://开启
+
+                mViewPager.setCurrentItem(1);
+                if (!isPause) {
+                    mAlivcLivePusher.startPush(mPushUrl);
+                    isPause = false;
+                } else {
+                    mAlivcLivePusher.stopPush();
+                    isPause = true;
+                }
+
+
+                break;
+
+        }
+    }
+
     public enum SurfaceStatus {
         UNINITED, CREATED, CHANGED, DESTROYED, RECREATED
     }
@@ -108,17 +165,16 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
 
     @Override
     protected void initView() {
-        initparam();
+//        initparam();
         setContentView(R.layout.living_room_activity);
         ButterKnife.bind(this);
-
+        getPushUrl();
+        mPreviewView.getHolder().addCallback(mCallback);
 
     }
 
-    private void initparam() {
+    private void initparam() {//TEMP
 
-
-        mPushUrl = getIntent().getStringExtra(URL_KEY);
         mAsync = getIntent().getBooleanExtra(ASYNC_KEY, false);
         mAudioOnly = getIntent().getBooleanExtra(AUDIO_ONLY_KEY, false);
         mVideoOnly = getIntent().getBooleanExtra(VIDEO_ONLY_KEY, false);
@@ -127,18 +183,15 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
         mFlash = getIntent().getBooleanExtra(FLASH_ON, false);
         setOrientation(mOrientation);
 
-
     }
 
 
     @Override
     protected void initData() {
-        mPreviewView.getHolder().addCallback(mCallback);
-
-
-        mAlivcLivePushConfig = (AlivcLivePushConfig) getIntent().getSerializableExtra(AlivcLivePushConfig.Config);
+        mAlivcLivePushConfig = new AlivcLivePushConfig();
+        setmAlivcLivePushConfig();
         mAlivcLivePusher = new AlivcLivePusher();
-
+//
         try {
             mAlivcLivePusher.init(getApplicationContext(), mAlivcLivePushConfig);
         } catch (IllegalArgumentException e) {
@@ -155,6 +208,84 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
         mDetector = new GestureDetector(getApplicationContext(), mGestureDetector);
         mNetWork = NetWorkUtils.getAPNType(this);
 
+        Common.copyAsset(this);
+        Common.copyAll(this);
+
+    }
+
+    private void getPushUrl() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getPushUrl(DataManager.getMd5Str("PUSHADDRESS")), new ResultListener<LivePushModel>() {
+            @Override
+            public void responseSuccess(LivePushModel obj) {
+                if ("01".equals(obj.getResult())) {
+                    mPushUrl = obj.getPd().getPUSHADDRESS();
+                    LogUtils.i("+++++++url++++++++", "+++++++pushUrl+++++++" + mPushUrl);
+                }
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+    }
+
+    /**
+     * temp
+     */
+    public void setmAlivcLivePushConfig() {
+        mAlivcLivePushConfig.setResolution(AlivcResolutionEnum.RESOLUTION_540P);//分辨率540P，最大支持720P，兼容V1.3.0版1080P
+        /**
+         * AlivcQualityModeEnum.QM_RESOLUTION_FIRST 清晰度优先
+         * AlivcQualityModeEnum.QM_FLUENCY_FIRST 流畅度优先
+         * AlivcQualityModeEnum.QM_CUSTOM 自定义
+         */
+        mAlivcLivePushConfig.setQualityMode(AlivcQualityModeEnum.QM_RESOLUTION_FIRST);
+        mAlivcLivePushConfig.setTargetVideoBitrate(1200); //目标码率1200Kbps
+        mAlivcLivePushConfig.setMinVideoBitrate(400); //最小码率400Kbps
+        mAlivcLivePushConfig.setInitialVideoBitrate(900); //初始码率900Kbps
+        mAlivcLivePushConfig.setBeautyOn(true); //关闭美颜
+        /**
+         * AlivcBeautyLevelEnum.BEAUTY_Normal 标准版
+         * AlivcBeautyLevelEnum.BEAUTY_Professional 专业版
+         */
+        mAlivcLivePushConfig.setBeautyLevel(AlivcBeautyLevelEnum.BEAUTY_Professional);
+
+        // 美白范围0-100
+        mAlivcLivePushConfig.setBeautyWhite(70);
+// 磨皮范围0-100
+        mAlivcLivePushConfig.setBeautyBuffing(40);
+// 红润设置范围0-100
+        mAlivcLivePushConfig.setBeautyRuddy(40);
+
+// 瘦脸设置范围0-100
+        mAlivcLivePushConfig.setBeautyThinFace(40);
+// 大眼设置范围0-100
+        mAlivcLivePushConfig.setBeautyBigEye(30);
+// 收下巴设置范围0-100
+        mAlivcLivePushConfig.setBeautyShortenFace(50);
+// 腮红设置范围0-100
+        mAlivcLivePushConfig.setBeautyCheekPink(15);
+
+        mAlivcLivePushConfig.setPreviewOrientation(AlivcPreviewOrientationEnum.ORIENTATION_PORTRAIT);//竖屏推流
+        mAlivcLivePushConfig.setFps(AlivcFpsEnum.FPS_20); //帧率20
+        /**
+         * 添加水印，起点位置坐标x[0,width) y[0,height)，宽度(0,width]，最多添加3个
+         *
+         * @param path 水印图片
+         * @param x      水印左上角x轴位置 相对位置 0～1
+         * @param y      水印右上角y轴位置 相对位置 0～1
+         * @param width  水印显示宽度 相对位置 0～1
+         */
+//        mAlivcLivePushConfig.addWaterMark(waterPath, 0.2, 0.2, 0.3);
+        /**
+         * AlivcAudioAACProfileEnum.AAC_LC
+         * AlivcAudioAACProfileEnum.HE_AAC
+         * AlivcAudioAACProfileEnum.HE_AAC_v2
+         * AlivcAudioAACProfileEnum.AAC_LD
+         */
+//        mAlivcLivePushConfig.setAudioProfile(AlivcAudioAACProfileEnum.AlivcAudioAACProfileEnum.AAC_LC);
+
 
     }
 
@@ -166,14 +297,16 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
         mLivePushFragment.setAlivcLivePusher(mAlivcLivePusher);
         mLivePushFragment.setStateListener(mStateListener);
         mLivingNoFragment = new LivingNoFragment();
-
+        mLivingNoFragment.setItemClickListener(this);
         mFragmentList.add(mLivingNoFragment);
-        mFragmentList.add(new LivingRoomFragment());
+        mFragmentList.add(mLivePushFragment);
         mFragmentAdapter = new PublicFragmentAdapter(getSupportFragmentManager(), mFragmentList, null);
 
         mViewPager.setAdapter(mFragmentAdapter);
-        mViewPager.setCurrentItem(1);
-        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setCurrentItem(0);
+
+
+        mViewPager.setOffscreenPageLimit(3);
 
     }
 
@@ -230,9 +363,11 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
             if (motionEvent.getX() - motionEvent1.getX() > FLING_MIN_DISTANCE
                     && Math.abs(v) > FLING_MIN_VELOCITY) {
                 // Fling left
+                Log.i("++++++++left+++++++", "++++++++left+++++");
             } else if (motionEvent1.getX() - motionEvent.getX() > FLING_MIN_DISTANCE
                     && Math.abs(v) > FLING_MIN_VELOCITY) {
                 // Fling right
+                Log.i("++++++++right+++++++", "++++++++right+++++");
             }
             return false;
         }
@@ -341,9 +476,7 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
                 e.printStackTrace();
             }
         }
-//        if(mViewPager.getCurrentItem() != 1) {
-//            mHandler.post(mRunnable);
-//        }
+
     }
 
     @Override
@@ -358,9 +491,7 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
                 e.printStackTrace();
             }
         }
-//        if(mHandler != null) {
-//            mHandler.removeCallbacks(mRunnable);
-//        }
+
     }
 
     @Override
@@ -372,11 +503,7 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
                 e.printStackTrace();
             }
         }
-//        if(mHandler != null) {
-//            mHandler.removeCallbacks(mRunnable);
-//            mHandler = null;
-//        }
-//        unregisterReceiver(mChangedReceiver);
+
         mFragmentList = null;
         mPreviewView = null;
         mViewPager = null;
@@ -395,26 +522,6 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
         super.onDestroy();
     }
 
-    public class FragmentAdapter extends FragmentPagerAdapter {
-
-        List<Fragment> fragmentList = new ArrayList<>();
-
-        public FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
-            super(fm);
-            this.fragmentList = fragmentList;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragmentList.size();
-        }
-
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -461,33 +568,6 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity {
         dialog.show();
     }
 
-//    private Runnable mRunnable = new Runnable() {
-//        @Override
-//        public void run() {
-//            LogUtil.d(TAG, "====== mRunnable run ======");
-//
-//            new AsyncTask<AlivcLivePushStatsInfo, Void, AlivcLivePushStatsInfo>() {
-//                @Override
-//                protected AlivcLivePushStatsInfo doInBackground(AlivcLivePushStatsInfo... alivcLivePushStatsInfos) {
-//                    try {
-//                        alivcLivePushStatsInfo = mAlivcLivePusher.getLivePushStatsInfo();
-//                    } catch (IllegalStateException e) {
-//
-//                    }
-//                    return alivcLivePushStatsInfo;
-//                }
-//
-//                @Override
-//                protected void onPostExecute(AlivcLivePushStatsInfo alivcLivePushStatsInfo) {
-//                    super.onPostExecute(alivcLivePushStatsInfo);
-////                    if (mLivingNoFragment != null && mViewPager.getCurrentItem() == 0) {
-////                        mLivingNoFragment.updateValue(alivcLivePushStatsInfo);
-////                    }
-////
-//                }
-//            }.execute();
-//        }
-//    };
 
     public interface PauseState {
         void updatePause(boolean state);

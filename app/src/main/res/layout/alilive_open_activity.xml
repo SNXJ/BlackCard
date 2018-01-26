@@ -7,62 +7,63 @@
     android:background="@color/main_black"
     android:gravity="center_horizontal">
 
-    <TextureView
-        android:id="@+id/textureView"
+    <SurfaceView
+        android:id="@+id/preview_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base40dp">
-
-        <ImageView
-            android:id="@+id/im_close"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/base15dp"
-            android:src="@mipmap/room_icon_1" />
-
-        <ImageView
-            android:id="@+id/im_location"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/base42dp"
-            android:src="@mipmap/record_icon_6" />
-
-        <ImageView
-            android:id="@+id/im_refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/base15dp"
-            android:src="@mipmap/record_icon_18" />
-
-
-    </RelativeLayout>
-
-
-    <EditText
-        android:id="@+id/et_edit_title"
-        style="@style/text_"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/base200dp"
-        android:background="@null"
-        android:gravity="center"
-        android:hint="给直播写个标题吧！"
-        android:maxLength="10"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColorHint="@color/ff92_text"
-        android:textSize="20sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base40dp">
+
+            <ImageView
+                android:id="@+id/im_close"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:src="@mipmap/room_icon_1" />
+
+            <ImageView
+                android:id="@+id/im_location"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base42dp"
+                android:src="@mipmap/record_icon_6" />
+
+            <ImageView
+                android:id="@+id/im_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/base15dp"
+                android:src="@mipmap/record_icon_1" />
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_edit_title"
+            style="@style/text_"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/base200dp"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="给直播写个标题吧！"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColorHint="@color/ff92_text"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -111,6 +112,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_beautiful"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -122,7 +124,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/record_icon_7" />
+                android:src="@mipmap/record_beautiful" />
 
             <TextView
                 style="@style/text_"
