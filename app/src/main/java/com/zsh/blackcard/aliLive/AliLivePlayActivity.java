@@ -26,6 +26,7 @@ import com.zsh.blackcard.custom.KeyboardStatusDetector;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.model.LiveChatModel;
 import com.zsh.blackcard.utils.CharUtils;
+import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.view.GiftItemView;
 
 import java.lang.ref.WeakReference;
@@ -102,45 +103,41 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
     @Override
     protected void initData() {
-        mSurfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
-            public void surfaceCreated(SurfaceHolder holder) {
-                holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
-                holder.setKeepScreenOn(true);
-                Log.d(TAG, "AlivcPlayer onSurfaceCreated." + mPlayer);
-
-                // Important: surfaceView changed from background to front, we need reset surface to mediaplayer.
-                // 对于从后台切换到前台,需要重设surface;部分手机锁屏也会做前后台切换的处理
-                if (mPlayer != null) {
-                    mPlayer.setVideoSurface(mSurfaceView.getHolder().getSurface());
-                }
-
-                Log.d(TAG, "AlivcPlayeron SurfaceCreated over.");
-            }
-
-            public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-                Log.d(TAG, "onSurfaceChanged is valid ? " + holder.getSurface().isValid());
-                if (mPlayer != null)
-                    mPlayer.setSurfaceChanged();
-            }
-
-            public void surfaceDestroyed(SurfaceHolder holder) {
-                Log.d(TAG, "onSurfaceDestroy.");
-            }
-        });
+        mSurfaceView.getHolder().addCallback(callback);
 
         initVodPlayer();
         setPlaySource();
         replay();
         initTempDate();
 
-        //TODO
-
-
     }
+
+    SurfaceHolder.Callback callback = new SurfaceHolder.Callback() {
+        public void surfaceCreated(SurfaceHolder holder) {
+            holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
+            holder.setKeepScreenOn(true);
+
+            // 对于从后台切换到前台,需要重设surface;部分手机锁屏也会做前后台切换的处理
+            if (mPlayer != null) {
+                mPlayer.setVideoSurface(mSurfaceView.getHolder().getSurface());
+            }
+
+            Log.d(TAG, "AlivcPlayeron SurfaceCreated over.");
+        }
+
+        public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+            Log.d(TAG, "onSurfaceChanged is valid ? " + holder.getSurface().isValid());
+            if (mPlayer != null)
+                mPlayer.setSurfaceChanged();
+        }
+
+        public void surfaceDestroyed(SurfaceHolder holder) {
+            Log.d(TAG, "onSurfaceDestroy.");
+        }
+    };
 
     private void initVodPlayer() {
         mPlayer = new AliVcMediaPlayer(this, mSurfaceView);
-
         mPlayer.setPreparedListener(new MyPreparedListener(this));
         mPlayer.setFrameInfoListener(new MyFrameInfoListener(this));
         mPlayer.setErrorListener(new MyErrorListener(this));
@@ -161,10 +158,12 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
         @Override
         public void onError(int i, String s) {
-            AliLivePlayActivity activity = activityWeakReference.get();
-            if (activity != null) {
-                activity.onError(i, s);
-            }
+            LogUtils.i("+++++++onError++++++++", i + "+++++++++++++++" + s);
+
+//            AliLivePlayActivity activity = activityWeakReference.get();
+//            if (activity != null) {
+//                activity.onError(i, s);
+//            }
         }
     }
 
@@ -191,6 +190,8 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     }
 
     void onPrepared() {
+
+        LogUtils.i("+++++++onPrepared+++++++", "onPrepared--- ");
         Toast.makeText(AliLivePlayActivity.this.getApplicationContext(), "准备成功", Toast.LENGTH_SHORT).show();
 
     }
@@ -236,7 +237,9 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     }
 
     void onSeekCompleted() {
-//        logStrs.add(format.format(new Date()) + getString(R.string.log_seek_completed));
+
+        LogUtils.i("+++++++onSeekCompleted+++++++", "onSeekCompleted--- ");
+
     }
 
     private static class MyPlayerCompletedListener implements MediaPlayer.MediaPlayerCompletedListener {
@@ -258,7 +261,9 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     }
 
     private void onCompleted() {
-        Log.d(TAG, "onCompleted--- ");
+        LogUtils.i("+++++++onCompleted+++++++", "onCompleted--- ");
+
+        finish();
 //        isCompleted = true;
     }
 
@@ -279,8 +284,6 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         }
     }
 
-    ;
-
 
     private void setPlaySource() {
         mUrl = getIntent().getStringExtra("data");
@@ -288,8 +291,6 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         if (null != mUrl) {
 
             finish();
-
-
         }
     }
 
@@ -347,7 +348,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
     private void savePlayerState() {
         if (mPlayer.isPlaying()) {
-            //we pause the player for not playing on the background
+
             // 不可见，暂停播放器
             pause();
         }
@@ -386,7 +387,6 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         for (int i = 0; i < 3; i++) {//模拟数据
             LiveChatModel m = new LiveChatModel();
 
-//            m.img = "http://v1.qzone.cc/avatar/201503/06/18/27/54f981200879b698.jpg%21200x200.jpg";
             m.name = CharUtils.getRandomString(8);
             m.level = (int) (Math.random() * 100 + 1);
 //            m.color = randomColor();
@@ -444,7 +444,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         public void run() {
             if (chatList != null) {
                 LiveChatModel m = new LiveChatModel();
-//                m.img = "http://v1.qzone.cc/avatar/201503/06/18/27/54f981200879b698.jpg%21200x200.jpg";
+
                 m.name = CharUtils.getRandomString(8);
                 m.level = (int) (Math.random() * 100 + 1);
                 m.message = CharUtils.getRandomString(20);

@@ -875,7 +875,7 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("livein/getpushaddress?")
     //
-    Observable<LivePushModel> getPushUrl(@Field("FKEY") String md5);
+    Observable<LivePushModel> getPushUrl(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("LIVE_TITLE") String LIVE_TITLE);
 
     //直播拉流地址
     @FormUrlEncoded

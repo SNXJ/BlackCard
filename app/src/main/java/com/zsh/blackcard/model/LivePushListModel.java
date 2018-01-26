@@ -58,6 +58,7 @@ public class LivePushListModel {
              */
 
             private String RequestId;
+
             private OnlineInfoBean OnlineInfo;
 
             public String getRequestId() {
@@ -93,6 +94,25 @@ public class LivePushListModel {
                      * PublishTime : 2018-01-22T07:38:58Z
                      * UserNumber : 0.0
                      */
+                    private String LiveCover;
+
+                    public String getLiveTitle() {
+                        return LiveTitle;
+                    }
+
+                    public void setLiveTitle(String liveTitle) {
+                        LiveTitle = liveTitle;
+                    }
+
+                    private String LiveTitle;
+
+                    public String getLiveCover() {
+                        return LiveCover;
+                    }
+
+                    public void setLiveCover(String liveCover) {
+                        LiveCover = liveCover;
+                    }
 
                     private String PublishUrl;
                     private String PublishTime;

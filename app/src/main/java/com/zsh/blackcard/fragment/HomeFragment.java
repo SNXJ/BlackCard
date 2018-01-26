@@ -139,10 +139,6 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
         }
     }
 
-    private void postLocation() {
-
-    }
-
 
     //当碎片隐藏时 关闭定位，当打开时开启定位
     @Override
