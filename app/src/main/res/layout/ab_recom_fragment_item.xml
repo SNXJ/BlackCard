@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/image_cover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -19,6 +20,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_title"
             style="@style/text_"
             android:layout_marginLeft="@dimen/base14dp"
             android:text="夏天在我手中"
@@ -32,6 +34,7 @@
             android:src="@mipmap/live_love_normal" />
 
         <TextView
+            android:id="@+id/tv_num"
             style="@style/text_"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"

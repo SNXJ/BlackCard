@@ -1623,8 +1623,8 @@ public class NetApi extends DataManager {
      * @param md5
      * @return
      */
-    public static Observable<LivePushModel> getPushUrl(String md5) {
-        return retrofitService.getPushUrl(md5);
+    public static Observable<LivePushModel> getPushUrl(String md5, String id, String title) {
+        return retrofitService.getPushUrl(md5, id, title);
     }
 
     /**

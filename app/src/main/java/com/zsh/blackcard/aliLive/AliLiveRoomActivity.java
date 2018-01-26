@@ -20,6 +20,8 @@ import android.view.ScaleGestureDetector;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.EditText;
 
 import com.alivc.live.pusher.AlivcBeautyLevelEnum;
 import com.alivc.live.pusher.AlivcFpsEnum;
@@ -29,6 +31,7 @@ import com.alivc.live.pusher.AlivcLivePusher;
 import com.alivc.live.pusher.AlivcPreviewOrientationEnum;
 import com.alivc.live.pusher.AlivcQualityModeEnum;
 import com.alivc.live.pusher.AlivcResolutionEnum;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.PublicFragmentAdapter;
 import com.zsh.blackcard.aliLive.fragment.LivingNoFragment;
@@ -82,25 +85,18 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClic
                     mCameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
                 }
 
-
                 break;
             case 3://美颜
-//                UIUtils.showToast("美颜");
+
                 new LiveDialog(this).liveOpenBeautyDialog(mAlivcLivePusher);
-//                LiveDialog.liveBeautyDialog(this);
 
                 break;
             case 4://开启
 
-                mViewPager.setCurrentItem(1);
-                if (!isPause) {
-                    mAlivcLivePusher.startPush(mPushUrl);
-                    isPause = false;
-                } else {
-                    mAlivcLivePusher.stopPush();
-                    isPause = true;
-                }
+                String titile = ((EditText) (mLivingNoFragment.getView().findViewById(R.id.et_edit_title))).getText().toString().trim();
 
+
+                getPushUrl(titile);
 
                 break;
 
@@ -165,23 +161,11 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClic
 
     @Override
     protected void initView() {
-//        initparam();
+
         setContentView(R.layout.living_room_activity);
         ButterKnife.bind(this);
-        getPushUrl();
+//        getPushUrl();
         mPreviewView.getHolder().addCallback(mCallback);
-
-    }
-
-    private void initparam() {//TEMP
-
-        mAsync = getIntent().getBooleanExtra(ASYNC_KEY, false);
-        mAudioOnly = getIntent().getBooleanExtra(AUDIO_ONLY_KEY, false);
-        mVideoOnly = getIntent().getBooleanExtra(VIDEO_ONLY_KEY, false);
-        mOrientation = getIntent().getIntExtra(ORIENTATION_KEY, ORIENTATION_PORTRAIT.ordinal());
-        mCameraId = getIntent().getIntExtra(CAMERA_ID, Camera.CameraInfo.CAMERA_FACING_FRONT);
-        mFlash = getIntent().getBooleanExtra(FLASH_ON, false);
-        setOrientation(mOrientation);
 
     }
 
@@ -213,13 +197,27 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClic
 
     }
 
-    private void getPushUrl() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getPushUrl(DataManager.getMd5Str("PUSHADDRESS")), new ResultListener<LivePushModel>() {
+    private void getPushUrl(String title) {
+        DataManager.getInstance(this).RequestHttp(NetApi.getPushUrl(DataManager.getMd5Str("PUSHADDRESS"), BaseApplication.getHonouruserId(), title), new ResultListener<LivePushModel>() {
             @Override
             public void responseSuccess(LivePushModel obj) {
                 if ("01".equals(obj.getResult())) {
                     mPushUrl = obj.getPd().getPUSHADDRESS();
                     LogUtils.i("+++++++url++++++++", "+++++++pushUrl+++++++" + mPushUrl);
+                    if (null == mPushUrl) {
+                        UIUtils.showToast("推流地址错误");
+                        return;
+                    }
+                    mLivingNoFragment.getView().findViewById(R.id.main_content).setVisibility(View.GONE);
+                    mViewPager.setCurrentItem(1);
+                    if (!isPause) {
+                        mAlivcLivePusher.startPush(mPushUrl);
+                        isPause = false;
+                    } else {
+                        mAlivcLivePusher.stopPush();
+                        isPause = true;
+                    }
+
                 }
             }
 

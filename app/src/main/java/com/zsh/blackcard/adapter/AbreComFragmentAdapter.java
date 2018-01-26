@@ -1,7 +1,9 @@
 package com.zsh.blackcard.adapter;
 
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zsh.blackcard.R;
@@ -22,6 +24,12 @@ public class AbreComFragmentAdapter extends BaseQuickAdapter<LivePushListModel.P
 
     @Override
     protected void convert(BaseViewHolder helper, LivePushListModel.PdBean.PUSHONLINEBean.OnlineInfoBean.LiveStreamOnlineInfoBean item) {
+
+
+        Glide.with(mContext).load(item.getLiveCover()).into((ImageView) helper.getView(R.id.image_cover));
+
+        helper.setText(R.id.tv_title, item.getLiveTitle());
+        helper.setText(R.id.tv_num, String.valueOf(item.getUserNumber()));
 
     }
 

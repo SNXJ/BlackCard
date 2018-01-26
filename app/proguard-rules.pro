@@ -271,3 +271,6 @@
 #阿里直播
 -keep class com.alibaba.livecloud.** { *;}
 -keep class com.alivc.** { *;}
+#阿里播放器
+-keep class com.alivc.player.**{*;}
+-keep class com.aliyun.clientinforeport.**{*;}

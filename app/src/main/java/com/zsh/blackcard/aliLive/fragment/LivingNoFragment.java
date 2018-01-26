@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.listener.ItemClickListener;
+import com.zsh.blackcard.utils.StringUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -93,8 +95,16 @@ public class LivingNoFragment extends BaseFragment {
                 }
                 break;
             case R.id.btn_open:
+                String titile = etEditTitle.getText().toString().trim();
+
+                if (StringUtils.isEmpty(titile)) {
+
+                    UIUtils.showToast("为您的直播填一个标题吧");
+                    return;
+                }
+
                 if (null != itemClickListener) {
-                    rl_content.setVisibility(View.GONE);
+//                    rl_content.setVisibility(View.GONE);
                     itemClickListener.itemClick(4);
 
                 }

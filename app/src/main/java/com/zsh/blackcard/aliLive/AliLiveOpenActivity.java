@@ -34,6 +34,7 @@ import com.alivc.live.pusher.AlivcLivePusher;
 import com.alivc.live.pusher.AlivcPreviewOrientationEnum;
 import com.alivc.live.pusher.AlivcQualityModeEnum;
 import com.alivc.live.pusher.AlivcResolutionEnum;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
@@ -199,7 +200,7 @@ public class AliLiveOpenActivity extends BaseAliLiveActivity {
     }
 
     private void getPushUrl() {
-        DataManager.getInstance(this).RequestHttp(NetApi.getPushUrl(DataManager.getMd5Str("PUSHADDRESS")), new ResultListener<LivePushModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.getPushUrl(DataManager.getMd5Str("PUSHADDRESS"), BaseApplication.getHonouruserId(),""), new ResultListener<LivePushModel>() {
             @Override
             public void responseSuccess(LivePushModel obj) {
 
