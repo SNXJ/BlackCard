@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -70,7 +71,11 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     @BindView(R.id.commodity_detail_recycler)
     RecyclerView commodity_detail_recycler;
     @BindView(R.id.commodity_detail_number_et)
-    EditText commodity_detail_number_et;
+    TextView commodity_detail_number_et;
+    @BindView(R.id.commodity_detail_number_sub_btn)
+    Button commodity_detail_number_sub_btn;
+    @BindView(R.id.commodity_detail_number_add_btn)
+    Button commodity_detail_number_add_btn;
     private CommodityDetailCommentAdapter commodityDetailCommentAdapter;
     private CommodityDetailImgRecyclerAdapter commodityDetailImgRecyclerAdapter;
 
@@ -148,8 +153,8 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                     //遍历所有key和value
                     for (Object objTable : mapDetail.keySet()) {
                         View view = LayoutInflater.from(CommodityDetailBannerActivity.this).inflate(R.layout.activity_commodity_detail_item, null);
-                        TextView left_tv = (TextView) view.findViewById(R.id.activity_commodity_detail_item_left_tv);
-                        TextView right_tv = (TextView) view.findViewById(R.id.activity_commodity_detail_item_right_tv);
+                        TextView left_tv = view.findViewById(R.id.activity_commodity_detail_item_left_tv);
+                        TextView right_tv = view.findViewById(R.id.activity_commodity_detail_item_right_tv);
                         left_tv.setText(objTable.toString());
                         right_tv.setText(mapDetail.get(objTable).toString());
                         commodity_detail_table.addView(view);
@@ -183,15 +188,16 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
         int height = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         commodity_detail_table.measure(height, 0);
         commodity_detail_recycler.measure(height, 0);
+        commodity_detail_banner_scrollview.measure(height,0);
         //获取整个商品区的底部距离顶端的距离
         shop_height = commodity_detail_table.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
-
         //获取商品详情距离顶部的距离
         detail_bottom_height = commodity_detail_recycler.getTop() + commodity_detail_table.getMeasuredHeight() + commodity_detail_recycler.getMeasuredHeight() - rgHeight;
         //详情区的顶部坐标
         detail_height = commodity_detail_recycler.getTop() + commodity_detail_table.getMeasuredHeight() - rgHeight;
         //获取商品评论距离顶部的距离
         comment_height = commodity_detail_comment_recycler.getTop() + commodity_detail_table.getMeasuredHeight() + commodity_detail_recycler.getMeasuredHeight() - rgHeight;
+
     }
 
     public class MyImageLoader extends ImageLoader {
@@ -204,7 +210,7 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     }
 
     //商品，详情，评论点击。此处针对RadioButton点击采用OnClick监听。实现多次点击同一按钮依然可以响应事件。
-    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb, R.id.blackwb_back, R.id.commodity_detail_add_car_btn,R.id.commodity_detail_collection_img})
+    @OnClick({R.id.commodity_detail_banner_left_rb, R.id.commodity_detail_banner_center_rb, R.id.commodity_detail_banner_right_rb, R.id.blackwb_back, R.id.commodity_detail_add_car_btn, R.id.commodity_detail_collection_img, R.id.commodity_detail_number_sub_btn, R.id.commodity_detail_number_add_btn})
     public void radioButtonOnClick(View view) {
         switch (view.getId()) {
             //商品radioButton
@@ -241,6 +247,22 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
                 //添加到选购收藏列表
                 initAddCollection();
                 break;
+            //减少商品数量
+            case R.id.commodity_detail_number_sub_btn:
+                if (commodity_detail_number_et.getText().toString().equals("1")) {
+                    UIUtils.showToast("最少购买1个商品");
+                } else {
+                    commodity_detail_number_et.setText(String.valueOf(Integer.parseInt(commodity_detail_number_et.getText().toString()) - 1));
+                }
+                break;
+            //增加商品数量
+            case R.id.commodity_detail_number_add_btn:
+                if (commodity_detail_number_et.getText().toString().equals("10")) {
+                    UIUtils.showToast("最多购买10个商品");
+                } else {
+                    commodity_detail_number_et.setText(String.valueOf(Integer.parseInt(commodity_detail_number_et.getText().toString()) + 1));
+                }
+                break;
             //退出按钮
             case R.id.blackwb_back:
                 finish();
@@ -271,13 +293,13 @@ public class CommodityDetailBannerActivity extends BaseActivity implements Neste
     //添加购物车
     private void initAddCar() {
         showLoading(this);
-        DataManager.getInstance(this).RequestHttp(NetApi.postShoppingCarAdd(DataManager.getMd5Str("SHIPCARTADD"), product_id, "d6a3779de8204dfd9359403f54f7d27c", commodity_detail_number_et.getText().toString().trim()), new ResultListener<ResultModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postShoppingCarAdd(DataManager.getMd5Str("ADDCART"), product_id, "d6a3779de8204dfd9359403f54f7d27c", commodity_detail_number_et.getText().toString().trim()), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {
                 if (obj.getResult().equals("01")) {
                     UIUtils.showToast("添加商品成功");
                 } else {
-                    UIUtils.showToast("添加商品失败");
+                    UIUtils.showToast("您已添加过该商品");
                 }
             }
 

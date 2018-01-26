@@ -15,6 +15,7 @@ import com.zsh.blackcard.model.CircleCenterCommentRecyclerModel;
 import com.zsh.blackcard.model.CollectionModel;
 import com.zsh.blackcard.model.CommentAddModel;
 import com.zsh.blackcard.model.CommentModel;
+import com.zsh.blackcard.model.DisCountModel;
 import com.zsh.blackcard.model.EatDrinkDetailModel;
 import com.zsh.blackcard.model.EatDrinkRecyclerModel;
 import com.zsh.blackcard.model.EatDrinkSearchModel;
@@ -95,6 +96,7 @@ import com.zsh.blackcard.model.WelcomeModel;
 import com.zsh.blackcard.model.ZgBannerModel;
 import com.zsh.blackcard.model.ZgFindModel;
 import com.zsh.blackcard.model.ZgFindTitleModel;
+import com.zsh.blackcard.model.ZgHomeListModel;
 import com.zsh.blackcard.model.ZgPersonalTailorDatailModel;
 import com.zsh.blackcard.model.ZgPersonalTailorModel;
 import com.zsh.blackcard.model.ZgSearchModel;
@@ -710,11 +712,11 @@ public class NetApi extends DataManager {
      * @param md5
      * @param PRODUCT_ID
      * @param HONOURUSER_ID
-     * @param PRODUCTCOUNT
+     * @param QUANTITY
      * @return
      */
-    public static Observable<ResultModel> postShoppingCarAdd(String md5, String PRODUCT_ID, String HONOURUSER_ID, String PRODUCTCOUNT) {
-        return retrofitService.postShoppingCarAdd(md5, PRODUCT_ID, HONOURUSER_ID, PRODUCTCOUNT);
+    public static Observable<ResultModel> postShoppingCarAdd(String md5, String PRODUCT_ID, String HONOURUSER_ID, String QUANTITY) {
+        return retrofitService.postShoppingCarAdd(md5, PRODUCT_ID, HONOURUSER_ID, QUANTITY);
     }
 
     /**
@@ -1569,6 +1571,50 @@ public class NetApi extends DataManager {
      */
     public static Observable<MainGloryMusicLibDetailModel> postMainGloryMusicLibDetail(String md5, String album_id) {
         return retrofitService.postMainGloryMusicLibDetail(md5, album_id);
+    }
+
+    /**
+     * 订单中心优惠券接口
+     *
+     * @param md5
+     * @param BUSINESS_ID
+     * @return
+     */
+    public static Observable<DisCountModel> postDisCount(String md5, String BUSINESS_ID) {
+        return retrofitService.postDisCount(md5, BUSINESS_ID);
+    }
+
+    /**
+     * 领取优惠券（暂未开发）
+     *
+     * @param md5
+     * @param BUSINESS_ID
+     * @param HONOURUSER_ID
+     * @return
+     */
+    public static Observable<ResultModel> postAddCoupon(String md5, String BUSINESS_ID, String HONOURUSER_ID) {
+        return retrofitService.postAddCoupon(md5, BUSINESS_ID, HONOURUSER_ID);
+    }
+
+    /**
+     * 根据店铺id获取可用的优惠券(暂未开发)
+     *
+     * @param md5
+     * @param BUSINESS_ID
+     * @return
+     */
+    public static Observable<DisCountModel> postShopCoupon(String md5, String BUSINESS_ID) {
+        return retrofitService.postShopCoupon(md5, BUSINESS_ID);
+    }
+
+    /**
+     * 尊购页面列表接口(暂未开发)
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<ZgHomeListModel> postZgList(String md5) {
+        return retrofitService.postZgList(md5);
     }
 
     /**

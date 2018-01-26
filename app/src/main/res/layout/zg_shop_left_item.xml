@@ -4,11 +4,12 @@
     android:layout_height="@dimen/base140dp">
 
     <ImageView
+        android:scaleType="center"
         android:id="@+id/zg_shop_img"
         android:layout_marginLeft="@dimen/base42dp"
         android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="@dimen/base80dp"
+        android:layout_height="@dimen/base80dp" />
     
     <LinearLayout
         android:gravity="center"
