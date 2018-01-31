@@ -15,8 +15,8 @@
         android:id="@+id/max_tv"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/base40dp"
-        android:layout_marginLeft="@dimen/base60dp"
-        android:layout_marginTop="@dimen/base38dp"
+        android:layout_marginLeft="@dimen/base40dp"
+        android:layout_centerVertical="true"
         android:gravity="center"
         android:textColor="#929292"
         android:textSize="24sp" />
@@ -26,10 +26,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/base20dp"
-        android:layout_marginTop="@dimen/base32dp"
+        android:layout_marginRight="@dimen/base30dp"
+        android:layout_centerVertical="true"
         android:text="￥99"
         android:textColor="#929292"
-        android:textSize="40sp" />
+        android:textSize="32sp" />
 
 </RelativeLayout>
