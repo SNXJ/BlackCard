@@ -946,5 +946,7 @@ public interface RetrofitService {
     Observable<ResultModel> postLocation(@Field("FKEY") String md5,
                                          @Field("HONOURUSER_ID") String HONOURUSER_ID,
                                          @Field("USERLONGITUDE") String USERLONGITUDE,
-                                         @Field("USERLATITUDE 纬度") String USERLATITUDE);
+                                         @Field("USERLATITUDE") String USERLATITUDE);
+
+
 }

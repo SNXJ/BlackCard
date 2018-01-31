@@ -139,6 +139,7 @@ public class SbSendWeiBoActivity extends BaseActivity implements BaseQuickAdapte
         if(!StringUtils.isEmpty(TopicData.getTITLE()) && StringUtils.isEmpty(TopicData.getTOPIC_ID())){
             addTopic();
         }
+
         DataManager.getInstance(this).RequestHttp(NetApi.postSendWeiBos(DataManager.getMd5Str("CIRCLEADD"), "d6a3779de8204dfd9359403f54f7d27c",send_weiBo_et.getText().toString(), TopicData.getTOPIC_ID(), TopicData.getTITLE(), pary, localMedia, "1"), new ResultListener<ResultModel>() {
             @Override
             public void responseSuccess(ResultModel obj) {

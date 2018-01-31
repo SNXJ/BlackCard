@@ -16,8 +16,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/base420dp"
-            />
+            android:layout_height="@dimen/base420dp" />
 
         <TextView
             style="@style/text_"
@@ -33,7 +32,6 @@
             android:text="Honour Centurion Card" />
 
 
-
     </RelativeLayout>
 
 
@@ -42,7 +40,6 @@
         android:layout_width="@dimen/base120dp"
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
-
         android:layout_marginBottom="@dimen/base46dp"
 
         android:layout_marginLeft="@dimen/base40dp"
@@ -57,9 +54,7 @@
         android:layout_height="@dimen/base30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-
         android:layout_marginBottom="@dimen/base46dp"
-
         android:layout_marginRight="@dimen/base40dp"
         android:background="@drawable/shape_welcome_btn"
         android:text="会籍登录"
@@ -78,7 +73,6 @@
         android:layout_marginTop="@dimen/base20dp"
 
         android:orientation="horizontal">
-
 
 
     </RadioGroup>

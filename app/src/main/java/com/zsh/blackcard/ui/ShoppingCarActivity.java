@@ -114,7 +114,6 @@ public class ShoppingCarActivity extends BaseActivity implements BaseQuickAdapte
             //侧滑点击
             case R.id.shopping_car_item_right_delete:
                 initDeleteCar(position);
-
                 break;
             //整个行布局的RelativeLayout点击
             case R.id.shopping_car_item_relative:
