@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base290dp"
+    android:background="@color/main_black"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_gift_normal"
+            android:layout_width="@dimen/base50dp"
+
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/base10dp"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="常规"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/rb_gift_prop"
+            android:layout_width="@dimen/base50dp"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:gravity="center"
+            android:text="道具"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+    </RadioGroup>
+
+    <View style="@style/line" />
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/viewPager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1" />-->
+
+
+    <FrameLayout
+        android:id="@+id/gifts_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base50dp"
+        android:background="@color/bg_button">
+
+        <TextView
+            android:id="@+id/vt_gifts_recharge"
+            android:layout_width="@dimen/base50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:button="@null"
+            android:gravity="center"
+            android:text="充值"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+
+        <RadioGroup
+            android:id="@+id/rg_gifts_dot"
+            android:layout_width="@dimen/base60dp"
+            android:layout_height="@dimen/base50dp"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" />
+
+
+        <LinearLayout
+            android:layout_width="@dimen/base100dp"
+            android:layout_height="@dimen/base30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/base15dp"
+            android:background="@drawable/live_gift_more_btn"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rl_gifts_num"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/base30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_gifts_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:maxLength="4"
+                    android:text="1"
+                    android:textColor="@color/sbtext"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base5dp"
+                    android:layout_marginRight="@dimen/base5dp"
+                    android:src="@mipmap/more" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_gifts_send"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/live_gift_more_btn_right"
+                android:button="@null"
+                android:gravity="center"
+                android:layout_margin="@dimen/base1dp"
+
+                android:text="发送"
+                android:textColor="@color/sbtext"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

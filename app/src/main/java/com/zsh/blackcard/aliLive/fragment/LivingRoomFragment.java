@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -83,6 +84,14 @@ public class LivingRoomFragment extends BaseFragment {
     LinearLayout layoutSendMessage;
     @BindView(R.id.rl_root)
     RelativeLayout rootView;
+    @BindView(R.id.im_live_close)
+    ImageView imLiveClose;
+    @BindView(R.id.tv_over_num)
+    TextView tvOverNum;
+    @BindView(R.id.btn_over_back)
+    Button btnOverBack;
+    @BindView(R.id.rl_live_over)
+    RelativeLayout rlLiveOver;
 
 
     private LiveViewerAdapter viewerAdapter;
@@ -207,9 +216,12 @@ public class LivingRoomFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.im_live_head, R.id.gift_item_view, R.id.chat, R.id.im_share, R.id.im_more, R.id.tv_send, R.id.im_live_close})
+    @OnClick({R.id.im_live_head, R.id.gift_item_view, R.id.chat, R.id.im_share, R.id.im_more, R.id.tv_send, R.id.im_live_close, R.id.btn_over_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.btn_over_back:
+                getActivity().finish();
+                break;
             case R.id.im_live_head:
                 PublicDialog.liveDialog(getActivity());
                 break;
@@ -229,13 +241,30 @@ public class LivingRoomFragment extends BaseFragment {
 
             case R.id.im_more://更多
 
-                new LiveDialog(getContext()).liveMoreDialog(getFragmentManager(),mAlivcLivePusher,mCameraId);
+                new LiveDialog(getContext()).liveMoreDialog(getFragmentManager(), mAlivcLivePusher, mCameraId);
 
                 break;
             case R.id.im_live_close:
-                getActivity().finish();
+
+                closeLive();
+
                 break;
         }
+    }
+
+    private void closeLive() {
+        imLiveClose.setVisibility(View.GONE);
+        rlLiveOver.setVisibility(View.VISIBLE);
+
+        if (mAlivcLivePusher != null) {
+            try {
+                mAlivcLivePusher.destroy();
+            } catch (IllegalStateException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
 
@@ -327,6 +356,7 @@ public class LivingRoomFragment extends BaseFragment {
                     }
                 });
     }
+
     private AlivcLivePushBGMListener mPushBGMListener = new AlivcLivePushBGMListener() {
         @Override
         public void onStarted() {
@@ -375,4 +405,6 @@ public class LivingRoomFragment extends BaseFragment {
 
         }
     };
+
+
 }

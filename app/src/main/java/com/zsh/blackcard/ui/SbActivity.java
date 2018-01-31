@@ -1,15 +1,12 @@
 package com.zsh.blackcard.ui;
 
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
@@ -82,40 +79,43 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
         radioBtnSb2.setChecked(true);
     }
 
-
-    private void Httpclient() {
-        //获取链接管理器
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        //获取当前网络信息对象
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-
-        //ActiveNetworkInfo不为空
-        if (netInfo != null) {
-            //网络是否已经链接
-            boolean available = netInfo.isAvailable();
-            //网络是否链接好并可以传递数据
-            boolean connected = netInfo.isConnected();
-            if (available && connected) {
-                int type = netInfo.getType();
-                if (type == ConnectivityManager.TYPE_WIFI) {
-                    Toast.makeText(this, "wifi网路可用", Toast.LENGTH_SHORT).show();
-                } else if (type == ConnectivityManager.TYPE_MOBILE) {
-                    Toast.makeText(this, "手机流量可用网路可用", Toast.LENGTH_SHORT).show();
-                }
-                // Toast.makeText(this, "网路可用", 0).show();
-            } else {
-                Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
-        }
-    }
+//
+//    private void Httpclient() {
+//        //获取链接管理器
+//        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+//        //获取当前网络信息对象
+//        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+//
+//        //ActiveNetworkInfo不为空
+//        if (netInfo != null) {
+//            //网络是否已经链接
+//            boolean available = netInfo.isAvailable();
+//            //网络是否链接好并可以传递数据
+//            boolean connected = netInfo.isConnected();
+//            if (available && connected) {
+//                int type = netInfo.getType();
+//                if (type == ConnectivityManager.TYPE_WIFI) {
+//                    Toast.makeText(this, "wifi网路可用", Toast.LENGTH_SHORT).show();
+//                } else if (type == ConnectivityManager.TYPE_MOBILE) {
+//                    Toast.makeText(this, "手机流量可用网路可用", Toast.LENGTH_SHORT).show();
+//                }
+//                // Toast.makeText(this, "网路可用", 0).show();
+//            } else {
+//                Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
+//            }
+//        } else {
+//            Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 
     @OnClick({R.id.sb_home_back, R.id.im_search, R.id.radio_btn_sb2, R.id.live_btn, R.id.radio_btn_sbmy})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sb_home_back:
+//                LiveGiftsDialog lgd = LiveGiftsDialog.newInstance();
+//                lgd.show(getSupportFragmentManager(),"gifts");
+
                 backIntent();
                 break;
             case R.id.im_search:

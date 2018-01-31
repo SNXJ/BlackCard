@@ -8,7 +8,6 @@
     android:gravity="center_horizontal">
 
 
-
     <RelativeLayout
         android:id="@+id/rl_content"
         android:layout_width="match_parent"
@@ -62,7 +61,7 @@
             android:textColorHint="@color/ff92_text"
             android:textSize="20sp" />
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -81,32 +80,32 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/base25dp"
+                android:layout_marginLeft="@dimen/base20dp"
                 android:background="@drawable/live_im2_selector"
                 android:button="@null" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/base25dp"
+                android:layout_marginLeft="@dimen/base20dp"
                 android:background="@drawable/live_im3_selector"
                 android:button="@null" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/base25dp"
+                android:layout_marginLeft="@dimen/base20dp"
                 android:background="@drawable/live_im4_selector"
                 android:button="@null" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/base25dp"
+                android:layout_marginLeft="@dimen/base20dp"
                 android:background="@drawable/live_im5_selector"
                 android:button="@null" />
 
-        </LinearLayout>
+        </RadioGroup>
 
         <LinearLayout
             android:id="@+id/ll_beautiful"
@@ -139,7 +138,7 @@
             android:layout_height="@dimen/base36dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/base84dp"
-            android:layout_marginLeft="@dimen/base125dp"
+            android:layout_marginLeft="@dimen/base115dp"
             android:background="@drawable/org_btn_selector"
             android:gravity="center"
             android:text="开启直播"

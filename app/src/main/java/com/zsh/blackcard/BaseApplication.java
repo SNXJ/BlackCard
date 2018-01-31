@@ -26,7 +26,9 @@ import com.zsh.blackcard.utils.SharedPreferencesUtils;
 public class BaseApplication extends Application implements Thread.UncaughtExceptionHandler {
     public static final String TAG = BaseApplication.class.getSimpleName();
     Thread.UncaughtExceptionHandler mDefaultHandler;
-    public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp
+    //    public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp  388279486010884100
+    public static String HONOURUSER_ID = "388279486010884100";
+
     private String BUGLY_ID = "815c4ef8fb";
     /* 获取主线程的上下文对象 */
     private static BaseApplication context;
@@ -60,7 +62,6 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
     public static Handler getMainThreadHandler() {
         return mainThreadHandler;
     }
-
 
 
     @SuppressWarnings("deprecation")

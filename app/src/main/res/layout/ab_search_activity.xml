@@ -7,8 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base44dp"
-        android:background="@color/main_black">
+        android:layout_height="@dimen/base44dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +25,7 @@
                 android:drawableLeft="@mipmap/home_nav_search"
                 android:drawablePadding="@dimen/base8dp"
                 android:hint="搜索"
-                android:maxLength="15"
+                android:maxLength="10"
                 android:paddingLeft="@dimen/base15dp"
                 android:singleLine="true"
                 android:textColor="#FF929292"
@@ -37,7 +36,7 @@
 
 
         <TextView
-            android:id="@+id/tv_cancel"
+            android:id="@+id/tv_search"
             style="@style/text_"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -46,34 +45,53 @@
             android:textSize="14sp" />
     </RelativeLayout>
 
-    <TextView
-        style="@style/text_"
-        android:layout_marginLeft="@dimen/base15dp"
-        android:layout_marginTop="@dimen/base20dp"
-        android:text="历时搜索"
-        android:textSize="15sp" />
+    <LinearLayout
+        android:id="@+id/ll_hot_history"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@mipmap/bj"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp"
+            android:text="历时搜索"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/history_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp" />
+
+        <TextView
+            style="@style/text_"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base20dp"
+            android:text="热门搜索"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/hot_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:layout_marginRight="@dimen/base15dp"
+            android:layout_marginTop="@dimen/base10dp" />
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/history_recycle"
+
+        android:id="@+id/search_recycle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/base15dp"
         android:layout_marginRight="@dimen/base15dp"
-        android:layout_marginTop="@dimen/base10dp" />
-
-    <TextView
-        style="@style/text_"
-        android:layout_marginLeft="@dimen/base15dp"
-        android:layout_marginTop="@dimen/base20dp"
-        android:text="热门搜索"
-        android:textSize="15sp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/hot_recycle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/base15dp"
-        android:layout_marginRight="@dimen/base15dp"
-        android:layout_marginTop="@dimen/base10dp" />
+        android:layout_marginTop="@dimen/base10dp"
+        android:visibility="gone" />
 
 </LinearLayout>

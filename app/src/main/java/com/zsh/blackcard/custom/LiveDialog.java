@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.hardware.Camera;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.alivc.live.pusher.AlivcLivePusher;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.aliLive.fragment.LiveGiftNormalFragment;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.SharedPreferencesUtils;
 
@@ -279,6 +282,45 @@ public class LiveDialog {
 
         }
     };
+
+    /**
+     * 礼物弹窗
+     *
+     * @param mContext
+     */
+
+    public void liveGiftsDialog(final Activity mContext) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.live_gifts_dialog_layout, null);
+        final Dialog dialog = showDialogView(view, mContext);
+
+
+    }
+
+    private Fragment frg_normal, frg_prop, frg_replace;
+    private FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+
+    private void initViewPage() {
+//        fragments.add(new LiveGiftNormalFragment());
+//        fragments.add(new LiveGiftNormalFragment());
+//
+//        PublicFragmentAdapter adapter = new PublicFragmentAdapter(getFragmentManager(), fragments, null);
+//        viewPager.setOffscreenPageLimit(2);
+//        viewPager.setAdapter(adapter);
+//        fragmentManager = getFragmentManager();
+
+        frg_normal = new LiveGiftNormalFragment();
+        frg_prop = new LiveGiftNormalFragment();
+
+
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.gifts_container, frg_normal);
+        fragmentTransaction.commit();
+        frg_replace = frg_normal;
+
+
+    }
 
     /**
      * 把自定义布局设置到dialog

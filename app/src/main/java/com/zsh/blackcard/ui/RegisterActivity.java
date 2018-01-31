@@ -32,7 +32,6 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.RegisterCardTypeModel;
 import com.zsh.blackcard.model.RegisterChangeNumberModel;
 import com.zsh.blackcard.utils.ActivityUtils;
-import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -439,7 +438,11 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
                 }
                 break;
             case R.id.register_submit_btn:
+
+                //TODO
+                ActivityUtils.startActivity(RegisterActivity.this, MainActivity.class);
                 //清空之前的所有栈
+
                 ActivityUtils.finishActivity();
                 break;
             case R.id.register_number_one_random_tv:

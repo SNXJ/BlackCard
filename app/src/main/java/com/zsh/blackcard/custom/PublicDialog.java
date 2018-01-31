@@ -492,7 +492,7 @@ public class PublicDialog {
         two_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sbNearChangeModel.setTime("1");
+                sbNearChangeModel.setTime("15");
                 setImageResource(1, listImage);
             }
         });
@@ -508,7 +508,7 @@ public class PublicDialog {
         four_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sbNearChangeModel.setTime("3");
+                sbNearChangeModel.setTime("1");
                 setImageResource(3, listImage);
             }
         });
@@ -516,7 +516,7 @@ public class PublicDialog {
         five_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sbNearChangeModel.setTime("4");
+                sbNearChangeModel.setTime("7");
                 setImageResource(4, listImage);
             }
         });

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_live_over"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/tv_temp"
+        style="@style/text_"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/base160dp"
+        android:gravity="center"
+        android:text="直播结束"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/tv_over_num"
+        style="@style/text_"
+        android:layout_below="@+id/tv_temp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/base6dp"
+        android:gravity="center"
+        android:text="23097人看过"
+        android:textColor="@color/live_red"
+        android:textSize="16sp" />
+
+    <TextView
+        style="@style/text_"
+        android:layout_below="@+id/tv_temp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/base6dp"
+        android:layout_toRightOf="@+id/tv_over_num"
+        android:gravity="center"
+        android:text="人看过"
+        android:textColor="@color/bg_white"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_over_back"
+        android:layout_width="@dimen/base166dp"
+        android:layout_height="@dimen/base36dp"
+        android:layout_below="@+id/tv_over_num"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/base100dp"
+        android:background="@drawable/live_over_selector"
+        android:gravity="center"
+        android:text="返回大厅"
+        android:textColor="#FF204D"
+        android:textSize="17sp" />
+
+</RelativeLayout>
