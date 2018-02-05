@@ -115,9 +115,9 @@
                     android:button="@null"
                     android:gravity="center"
                     android:maxLength="4"
-                    android:text="1"
+                    android:text="1314"
                     android:textColor="@color/sbtext"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base5dp"
-                    android:layout_marginRight="@dimen/base5dp"
+                    android:layout_marginRight="@dimen/base2dp"
                     android:src="@mipmap/gift_icon_1" />
             </RelativeLayout>
 
@@ -133,17 +133,13 @@
                 android:id="@+id/tv_gifts_send"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
                 android:layout_weight="1"
                 android:background="@drawable/live_gift_more_btn_right"
                 android:button="@null"
                 android:gravity="center"
-
                 android:text="发送"
                 android:textColor="@color/sbtext"
                 android:textSize="15sp" />
-
-
         </LinearLayout>
 
     </RelativeLayout>

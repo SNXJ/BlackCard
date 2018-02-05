@@ -1709,4 +1709,37 @@ public class NetApi extends DataManager {
     public static Observable<LiveRoomDialogModel> sendLiveGift(String md5, String ancher_userId, String myId, String moeny) {
         return retrofitService.sendLiveGift(md5, ancher_userId, myId, moeny);
     }
+
+    /**
+     * 尚播
+     * 个人资料
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public static Observable<AbMyModel> getAbMyInfo(String md5, String user_id) {
+        return retrofitService.getAbMyInfo(md5, user_id);
+    }
+
+    /**
+     * 签到数据
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public static Observable<SignInDataModel> getSignData(String md5, String user_id) {
+        return retrofitService.getAbSignData(md5, user_id);
+    }
+    /**
+     * 签到
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public static Observable<ResultModel> sendSingIn(String md5, String user_id) {
+        return retrofitService.sendSingIn(md5, user_id);
+    }
 }

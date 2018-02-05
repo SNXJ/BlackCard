@@ -123,9 +123,9 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     protected void initData() {
         mSurfaceView.getHolder().addCallback(callback);
 
-        initVodPlayer();
-        setPlaySource();
-        replay();
+//        initVodPlayer();
+//        setPlaySource();
+//        replay();
         initTempDate();
 
     }

@@ -58,8 +58,8 @@ public class AbMyFriendActivity extends BaseActivity {
     }
 
     private void initFriendData() {
-        titleTv.setText("我的关注");
-        DataManager.getInstance(this).RequestHttp(NetApi.myFriendList(DataManager.getMd5Str("FLIST"), BaseApplication.getHonouruserId()), new ResultListener<AbMyFriendModel>() {
+        titleTv.setText("我的粉丝");
+        DataManager.getInstance(this).RequestHttp(NetApi.myFriendList(DataManager.getMd5Str("FOCUSLIST"), BaseApplication.getHonouruserId()), new ResultListener<AbMyFriendModel>() {
             @Override
             public void responseSuccess(AbMyFriendModel obj) {
                 dataList = obj.getPd();
@@ -80,7 +80,7 @@ public class AbMyFriendActivity extends BaseActivity {
 
     private void initFollowData() {
         titleTv.setText("关注我的");
-        DataManager.getInstance(this).RequestHttp(NetApi.myFollowList(DataManager.getMd5Str("REFLIST"), BaseApplication.getHonouruserId()), new ResultListener<AbMyFriendModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.myFollowList(DataManager.getMd5Str("FANSLIST"), BaseApplication.getHonouruserId()), new ResultListener<AbMyFriendModel>() {
             @Override
             public void responseSuccess(AbMyFriendModel obj) {
                 dataList = obj.getPd();

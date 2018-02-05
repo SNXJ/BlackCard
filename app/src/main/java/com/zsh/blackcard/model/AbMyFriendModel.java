@@ -33,6 +33,15 @@ public class AbMyFriendModel {
         private String NICKNAME;
         private String PORTRAIT;
         private String HONOURUSER_ID;
+        private String FANSCOUNT;
+
+        public String getFANSCOUNT() {
+            return FANSCOUNT;
+        }
+
+        public void setFANSCOUNT(String FANSCOUNT) {
+            this.FANSCOUNT = FANSCOUNT;
+        }
 
         public String getNICKNAME() {
             return NICKNAME;

@@ -7,14 +7,22 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.zsh.blackcard.BaseActivity;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.GlideCircleTransform;
+import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.live.AbMyContributionActivity;
 import com.zsh.blackcard.live.AbMyFriendActivity;
 import com.zsh.blackcard.live.AbMySettingActivity;
 import com.zsh.blackcard.live.AbMySignActivity;
 import com.zsh.blackcard.live.AbMyTaskActivity;
 import com.zsh.blackcard.live.LiveRankActivity;
+import com.zsh.blackcard.model.AbMyModel;
 import com.zsh.blackcard.utils.ActivityUtils;
 
 import butterknife.BindView;
@@ -71,6 +79,30 @@ public class SbMyActivity extends BaseActivity implements View.OnClickListener {
     protected void initUI() {
         setContentView(R.layout.activity_sb_my);
         ButterKnife.bind(this);
+        iniData();
+
+    }
+
+    private void iniData() {
+
+        DataManager.getInstance(this).RequestHttp(NetApi.getAbMyInfo(DataManager.getMd5Str("MINEDATA"), BaseApplication.getHonouruserId()), new ResultListener<AbMyModel>() {
+            @Override
+            public void responseSuccess(AbMyModel obj) {
+                if ("01".equals(obj.getResult())) {
+                    tvGuanzhuNum.setText(obj.getPd().getFOCUSCOUNT());
+                    tvHkbNum.setText(obj.getPd().getBLACKCOIN());
+                    tvFansNum.setText(obj.getPd().getFANSCOUNT());
+
+                    Glide.with(SbMyActivity.this).load(obj.getPd().getPORTRAIT()).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(SbMyActivity.this))).into(imHead);
+                }
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
     @OnClick({R.id.title_back, R.id.ll_guanzhu, R.id.ll_hkb, R.id.ll_fans, R.id.rl_gxbang, R.id.rl_sign, R.id.rl_rank, R.id.rl_center, R.id.ll_sb_setting})
