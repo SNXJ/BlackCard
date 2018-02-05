@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/id_stickynavlayout_innerscrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bj"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base35dp"
+            android:layout_marginTop="@dimen/base10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:text="昵称"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base38dp"
+                android:text="昵称"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base35dp"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:text="性别"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_sex"
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base38dp"
+                android:text="女"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base35dp"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:text="生日"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_birth"
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base38dp"
+                android:text="1990年1月1日"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base35dp"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:text="签名"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_sign"
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base38dp"
+                android:text="你是我最重要的决定"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base35dp"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base15dp"
+                android:text="等级"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_rank"
+                style="@style/text_"
+                android:layout_marginLeft="@dimen/base38dp"
+                android:text="1级"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

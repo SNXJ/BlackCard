@@ -299,7 +299,7 @@
 
         <activity android:name=".ui.home.HomeNewsSendActivity" />
         <activity android:name=".aliLive.AliLivePlayActivity" />
-        <!--<activity android:name=".aliLive.AliLiveOpenActivity" />-->
+
     </application>
 
 </manifest>

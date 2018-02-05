@@ -1639,4 +1639,74 @@ public class NetApi extends DataManager {
     public static Observable<AbSearchModel> getAbSearchHotList(String md5, String PARENT_ID) {
         return retrofitService.getAbSearchHotList(md5, PARENT_ID);
     }
+
+    /**
+     * 主播详情页面 Top详情
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LiveAncherDetailsModel> getLiveAncherDetails(String md5, String ancher_userId) {
+        return retrofitService.getLiveAncherDetail(md5, ancher_userId);
+    }
+
+    /**
+     * 主播详情页面 Top详情
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LiveAnchorMoreModel> getLiveAncherMore(String md5, String ancher_userId) {
+        return retrofitService.getLiveAncherMore(md5, ancher_userId);
+    }
+
+    /**
+     * 主播详情页面 微博
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LiveAncherDetailWBModel> getLiveAncherWeibo(String md5, String ancher_userId) {
+        return retrofitService.getLiveAncherWeibo(md5, ancher_userId);
+    }
+
+    /**
+     * 直播弹窗
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LiveRoomDialogModel> getAncherDialog(String md5, String ancher_userId, String myId) {
+        return retrofitService.getAncherDialog(md5, ancher_userId, myId);
+    }
+
+    /**
+     * 直播弹窗  关注主播
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LiveRoomDialogModel> fouseAncher(String md5, String ancher_userId, String myId) {
+        return retrofitService.fouseAncher(md5, ancher_userId, myId);
+    }
+
+    /**
+     * 直播弹窗  关注主播
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LiveRoomDialogModel> delAncher(String md5, String ancher_userId, String myId) {
+        return retrofitService.delAncher(md5, ancher_userId, myId);
+    }
+
+    /**
+     * 直播礼物
+     *
+     * @param md5
+     * @return
+     */
+    public static Observable<LiveRoomDialogModel> sendLiveGift(String md5, String ancher_userId, String myId, String moeny) {
+        return retrofitService.sendLiveGift(md5, ancher_userId, myId, moeny);
+    }
 }

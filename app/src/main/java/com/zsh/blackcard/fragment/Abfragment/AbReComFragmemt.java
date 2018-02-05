@@ -1,6 +1,5 @@
 package com.zsh.blackcard.fragment.Abfragment;
 
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -14,10 +13,10 @@ import com.zsh.blackcard.adapter.AbreComFragmentAdapter;
 import com.zsh.blackcard.aliLive.AliLivePlayActivity;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.AbSpacesItemDecoration;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LivePushListModel;
 import com.zsh.blackcard.utils.ActivityUtils;
-import com.zsh.blackcard.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,7 @@ public class AbReComFragmemt extends BaseFragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        LogUtils.i("++++++++++++++", "++++++++isVisibleToUser++++++" + isVisibleToUser);
+
         if (isVisibleToUser) {
             getPusherList();
             isVisible = true;
@@ -60,7 +59,7 @@ public class AbReComFragmemt extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        LogUtils.i("++++++++++++++", "++++++++onResume++++++" + isVisible);
+
         if (!isVisible) {
             getPusherList();
         }
@@ -70,7 +69,7 @@ public class AbReComFragmemt extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        LogUtils.i("++++++++++++++", "++++++++onPause++++++" + isVisible);
+
         isVisible = false;
     }
 
@@ -102,7 +101,7 @@ public class AbReComFragmemt extends BaseFragment {
             recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
             recyclerView.setAdapter(adapter);
             adapter.setEmptyView(R.layout.live_empty_layout, recyclerView);
-            SpacesItemDecoration decoration = new SpacesItemDecoration(8);
+            AbSpacesItemDecoration decoration = new AbSpacesItemDecoration(4);
             recyclerView.addItemDecoration(decoration);
             adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
@@ -125,23 +124,5 @@ public class AbReComFragmemt extends BaseFragment {
         return view;
     }
 
-    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 
-        private int space;
-
-        public SpacesItemDecoration(int space) {
-            this.space = space;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            outRect.left = space;
-            outRect.right = space;
-            outRect.bottom = space;
-            //注释这两行是为了上下间距相同
-//        if(parent.getChildAdapterPosition(view)==0){
-            outRect.top = space;
-//        }
-        }
-    }
 }

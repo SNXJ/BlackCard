@@ -39,7 +39,6 @@ import com.zsh.blackcard.music.utils.PlayModeEnum;
 import com.zsh.blackcard.music.utils.Preferences;
 import com.zsh.blackcard.utils.BitmapUtils;
 import com.zsh.blackcard.utils.FastBlur;
-import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -209,7 +208,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     }
 
     private void switchLoopData(String type) {
-        LogUtils.i("++++++++++++++", "++++++++++++++++" + type);
+
         switch (type) {
             case "0":
                 getSingerMusicList();
@@ -239,7 +238,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 mMusicList.add(music);
             }
         }
-        LogUtils.i("++++++++++++", "++++++++singerSongList+++++++++++" + mMusicList.size());
+
         AppCache.setMusicList(mMusicList);
     }
 
@@ -253,7 +252,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 mMusicList.add(music);
             }
         }
-        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+
         AppCache.setMusicList(mMusicList);
     }
 
@@ -267,7 +266,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 mMusicList.add(music);
             }
         }
-        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+
         AppCache.setMusicList(mMusicList);
     }
 
@@ -281,12 +280,12 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 mMusicList.add(music);
             }
         }
-        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+
         AppCache.setMusicList(mMusicList);
     }
 
     private void getRankDataByType() {
-        LogUtils.i("+++++++rankType+++++++", "++++++排行榜+++++++");
+
         DataManager.getInstance(this).RequestHttp(NetApi.getRankingList(DataManager.getMd5Str("BILLLIST"), "1", rankType + ""), new ResultListener<MusicRankingModel>() {
             @Override
             public void responseSuccess(MusicRankingModel obj) {
@@ -407,7 +406,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     }
 
     private void setReOtherData(int type) {
-        LogUtils.i("+++++++rankType+++++++", "++++曲库++other+++++++" + type);
+
         if (type == 1) {//排行榜
             setTopBg(rankImgUrl, rankStr);
         } else {

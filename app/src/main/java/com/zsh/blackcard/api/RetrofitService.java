@@ -889,4 +889,41 @@ public interface RetrofitService {
                                          @Field("USERLATITUDE") String USERLATITUDE);
 
 
+    //主播详情
+    @FormUrlEncoded
+    @POST("applivein/getuserdata?")
+    Observable<LiveAncherDetailsModel> getLiveAncherDetail(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //主播详情
+    @FormUrlEncoded
+    @POST("applivein/getdowndata?")
+    Observable<LiveAnchorMoreModel> getLiveAncherMore(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+//
+
+    //主播详情  黑微博
+    @FormUrlEncoded
+    @POST("applivein/getweibouser?")
+    Observable<LiveAncherDetailWBModel> getLiveAncherWeibo(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //直播  弹窗信息
+    @FormUrlEncoded
+    @POST("applivein/getpithydata?")
+    Observable<LiveRoomDialogModel> getAncherDialog(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID);
+
+    //直播弹窗  关注
+    @FormUrlEncoded
+    @POST("appfriendin/addfriend?")
+    Observable<LiveRoomDialogModel> fouseAncher(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID);
+
+    //直播弹窗  取消关注
+    @FormUrlEncoded
+    @POST("appfriendin/delfriend?")
+    Observable<LiveRoomDialogModel> delAncher(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID);
+
+    //直播礼物
+
+    @FormUrlEncoded
+    @POST("applivein/gifttouser?")
+    Observable<LiveRoomDialogModel> sendLiveGift(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID, @Field("BLACKPRICE") String money);
+
 }

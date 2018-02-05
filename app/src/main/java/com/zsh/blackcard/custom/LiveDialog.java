@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.hardware.Camera;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,7 +17,7 @@ import android.widget.TextView;
 
 import com.alivc.live.pusher.AlivcLivePusher;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.aliLive.fragment.LiveGiftNormalFragment;
+import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.SharedPreferencesUtils;
 
@@ -38,6 +36,37 @@ public class LiveDialog {
 
     public LiveDialog(Context context) {
         this.mContext = context;
+    }
+
+
+    /**
+     * 首页右上弹窗
+     *
+     * @param context
+     * @param view
+     * @param listener 点击监听
+     */
+    public  void liveSelectMorePop(Context context, View view, ItemClickListener listener) {
+        final PopGiftSelect popWinShare = new PopGiftSelect(context, listener);
+        //监听窗口的焦点事件，点击窗口外面则取消显示
+        popWinShare.getContentView().setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    popWinShare.dismiss();
+                }
+            }
+        });
+        // }
+
+        //设置默认获取焦点
+        popWinShare.setFocusable(true);
+        //以某个控件的x和y的偏移量位置开始显示窗口
+        popWinShare.showAsDropDown(view, 0, 0);
+
+        //如果窗口存在，则更新
+        popWinShare.update();
+
     }
 
     /**
@@ -282,45 +311,6 @@ public class LiveDialog {
 
         }
     };
-
-    /**
-     * 礼物弹窗
-     *
-     * @param mContext
-     */
-
-    public void liveGiftsDialog(final Activity mContext) {
-        View view = LayoutInflater.from(mContext).inflate(
-                R.layout.live_gifts_dialog_layout, null);
-        final Dialog dialog = showDialogView(view, mContext);
-
-
-    }
-
-    private Fragment frg_normal, frg_prop, frg_replace;
-    private FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
-
-    private void initViewPage() {
-//        fragments.add(new LiveGiftNormalFragment());
-//        fragments.add(new LiveGiftNormalFragment());
-//
-//        PublicFragmentAdapter adapter = new PublicFragmentAdapter(getFragmentManager(), fragments, null);
-//        viewPager.setOffscreenPageLimit(2);
-//        viewPager.setAdapter(adapter);
-//        fragmentManager = getFragmentManager();
-
-        frg_normal = new LiveGiftNormalFragment();
-        frg_prop = new LiveGiftNormalFragment();
-
-
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.gifts_container, frg_normal);
-        fragmentTransaction.commit();
-        frg_replace = frg_normal;
-
-
-    }
 
     /**
      * 把自定义布局设置到dialog

@@ -94,6 +94,7 @@ public class LivingRoomFragment extends BaseFragment {
     RelativeLayout rlLiveOver;
 
 
+
     private LiveViewerAdapter viewerAdapter;
     private LiveChatAdapter liveChatAdapter;
 
@@ -223,9 +224,10 @@ public class LivingRoomFragment extends BaseFragment {
                 getActivity().finish();
                 break;
             case R.id.im_live_head:
-                PublicDialog.liveDialog(getActivity());
+//                PublicDialog.liveDialog(getActivity());
                 break;
             case R.id.gift_item_view:
+
                 break;
             case R.id.chat:
                 layoutSendMessage.setVisibility(View.VISIBLE);

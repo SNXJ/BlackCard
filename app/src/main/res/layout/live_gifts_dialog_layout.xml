@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/bottom_gift_layout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/base290dp"
     android:background="@color/main_black"
     android:orientation="vertical">
+
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -25,12 +28,22 @@
             android:textSize="15sp" />
 
         <RadioButton
-            android:id="@+id/rb_gift_prop"
+            android:id="@+id/rb_gift_light"
             android:layout_width="@dimen/base50dp"
             android:layout_height="match_parent"
             android:button="@null"
             android:gravity="center"
-            android:text="道具"
+            android:text="轻奢"
+            android:textColor="@color/sbtext"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/rb_gift_luxury"
+            android:layout_width="@dimen/base50dp"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:gravity="center"
+            android:text="豪华"
             android:textColor="@color/sbtext"
             android:textSize="15sp" />
 
@@ -38,20 +51,15 @@
 
     <View style="@style/line" />
 
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/viewPager"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1" />-->
 
-
-    <FrameLayout
+    <android.support.v4.view.ViewPager
         android:id="@+id/gifts_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-    </FrameLayout>
+    </android.support.v4.view.ViewPager>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -72,7 +80,7 @@
 
         <RadioGroup
             android:id="@+id/rg_gifts_dot"
-            android:layout_width="@dimen/base60dp"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/base50dp"
             android:layout_centerInParent="true"
             android:gravity="center_vertical"
@@ -118,18 +126,18 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base5dp"
                     android:layout_marginRight="@dimen/base5dp"
-                    android:src="@mipmap/more" />
+                    android:src="@mipmap/gift_icon_1" />
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_gifts_send"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+
                 android:layout_weight="1"
                 android:background="@drawable/live_gift_more_btn_right"
                 android:button="@null"
                 android:gravity="center"
-                android:layout_margin="@dimen/base1dp"
 
                 android:text="发送"
                 android:textColor="@color/sbtext"

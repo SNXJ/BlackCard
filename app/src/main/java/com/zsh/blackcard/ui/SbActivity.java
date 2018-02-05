@@ -113,8 +113,7 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sb_home_back:
-//                LiveGiftsDialog lgd = LiveGiftsDialog.newInstance();
-//                lgd.show(getSupportFragmentManager(),"gifts");
+
 
                 backIntent();
                 break;
@@ -147,6 +146,8 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         backIntent();
+
     }
+
 
 }

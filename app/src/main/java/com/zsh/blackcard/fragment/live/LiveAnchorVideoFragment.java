@@ -9,7 +9,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.adapter.LiveAncherWeiBoFragmentAdapter;
+import com.zsh.blackcard.adapter.LiveAncherVideoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
  * Date: 2017-11-10
  * Description:  主播微博：
  */
-public class LiveAnchorDetailWeiBoFragment extends BaseFragment {
+public class LiveAnchorVideoFragment extends BaseFragment {
     public static final String TITLE = "title";
     private String mTitle = "";
 
@@ -42,7 +42,7 @@ public class LiveAnchorDetailWeiBoFragment extends BaseFragment {
         list.add("");
         list.add("");
 
-        LiveAncherWeiBoFragmentAdapter adapter = new LiveAncherWeiBoFragmentAdapter(list);
+        LiveAncherVideoAdapter adapter = new LiveAncherVideoAdapter(list);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -61,8 +61,8 @@ public class LiveAnchorDetailWeiBoFragment extends BaseFragment {
         return view;
     }
 
-    public static LiveAnchorDetailWeiBoFragment newInstance(String title) {
-        LiveAnchorDetailWeiBoFragment fragment = new LiveAnchorDetailWeiBoFragment();
+    public static LiveAnchorVideoFragment newInstance(String title) {
+        LiveAnchorVideoFragment fragment = new LiveAnchorVideoFragment();
         Bundle bundle = new Bundle();
         bundle.putString(TITLE, title);
         fragment.setArguments(bundle);

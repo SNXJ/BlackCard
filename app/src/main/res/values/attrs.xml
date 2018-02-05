@@ -50,4 +50,156 @@
     <declare-styleable name="ViewLive">
         <attr name="isBigView" format="boolean" />
     </declare-styleable>
+
+    <string-array name="gifts_name_normal">
+        <item>心</item>
+
+        <item>星星</item>
+        <item>棒棒糖</item>
+        <item>棒棒糖</item>
+        <item>红包</item>
+        <item>奖金</item>
+        <item>冰激凌</item>
+        <item>奶酪</item>
+        <item>小蛋糕</item>
+        <item>皇冠</item>
+        <item>蓝色妖姬</item>
+        <item>小熊</item>
+        <item>炸弹</item>
+        <item>口红</item>
+        <item>么么哒</item>
+        <item>炮竹</item>
+        <item>巧克力</item>
+        <item>包包</item>
+        <item>蓝钻石</item>
+        <item>皮卡丘</item>
+
+
+    </string-array>
+    <string-array name="gifts_money_normal">
+        <item>1黑咖币</item>
+        <item>1黑咖币</item>
+        <item>1黑咖币</item>
+        <item>1黑咖币</item>
+        <item>6黑咖币</item>
+        <item>10黑咖币</item>
+        <item>18黑咖币</item>
+        <item>28黑咖币</item>
+        <item>68黑咖币</item>
+        <item>188黑咖币</item>
+        <item>1黑咖币</item>
+        <item>1黑咖币</item>
+        <item>1黑咖币</item>
+        <item>1黑咖币</item>
+        <item>1黑咖币</item>
+        <item>18黑咖币</item>
+        <item>68黑咖币</item>
+        <item>188黑咖币</item>
+        <item>288黑咖币</item>
+        <item>288黑咖币</item>
+
+    </string-array>
+
+
+    <integer-array name="gifts_image_normal">
+        <item>@mipmap/gift_image_1</item>
+        <item>@mipmap/gift_image_2</item>
+        <item>@mipmap/gift_image_3</item>
+        <item>@mipmap/gift_image_4</item>
+        <item>@mipmap/gift_image_5</item>
+        <item>@mipmap/gift_image_6</item>
+        <item>@mipmap/gift_image_7</item>
+        <item>@mipmap/gift_image_8</item>
+        <item>@mipmap/gift_image_9</item>
+        <item>@mipmap/gift_image_10</item>
+        <item>@mipmap/gift_image_11</item>
+        <item>@mipmap/gift_image_12</item>
+        <item>@mipmap/gift_image_13</item>
+        <item>@mipmap/gift_image_14</item>
+        <item>@mipmap/gift_image_15</item>
+        <item>@mipmap/gift_image_16</item>
+        <item>@mipmap/gift_image_17</item>
+        <item>@mipmap/gift_image_18</item>
+        <item>@mipmap/gift_image_19</item>
+        <item>@mipmap/gift_image_20</item>
+    </integer-array>
+
+    <string-array name="gifts_name_light">
+        <item>包-1</item>
+        <item>包-2</item>
+        <item>包-3</item>
+        <item>包-4</item>
+        <item>包-5</item>
+        <item>包-6</item>
+        <item>包-7</item>
+        <item>包-8</item>
+        <item>包-9</item>
+        <item>包-10</item>
+    </string-array>
+
+    <string-array name="gifts_money_light">
+        <item>100黑咖币</item>
+        <item>200黑咖币</item>
+        <item>300黑咖币</item>
+        <item>400黑咖币</item>
+        <item>500黑咖币</item>
+        <item>600黑咖币</item>
+        <item>700黑咖币</item>
+        <item>800黑咖币</item>
+        <item>900黑咖币</item>
+        <item>1000黑咖币</item>
+    </string-array>
+    <integer-array name="gifts_image_light">
+        <item>@mipmap/gift_image_31</item>
+        <item>@mipmap/gift_image_32</item>
+        <item>@mipmap/gift_image_33</item>
+        <item>@mipmap/gift_image_34</item>
+        <item>@mipmap/gift_image_35</item>
+        <item>@mipmap/gift_image_36</item>
+        <item>@mipmap/gift_image_37</item>
+        <item>@mipmap/gift_image_38</item>
+        <item>@mipmap/gift_image_39</item>
+        <item>@mipmap/gift_image_40</item>
+
+    </integer-array>
+
+
+    <string-array name="gifts_name_luxury">
+        <item>风向盘</item>
+        <item>车灯</item>
+        <item>座椅</item>
+        <item>档位</item>
+        <item>刹车片</item>
+        <item>轮胎</item>
+        <item>车门</item>
+        <item>发动机</item>
+        <item>电源</item>
+        <item>螺丝</item>
+    </string-array>
+
+    <string-array name="gifts_money_luxury">
+        <item>100黑咖币</item>
+        <item>200黑咖币</item>
+        <item>300黑咖币</item>
+        <item>400黑咖币</item>
+        <item>500黑咖币</item>
+        <item>600黑咖币</item>
+        <item>700黑咖币</item>
+        <item>800黑咖币</item>
+        <item>900黑咖币</item>
+        <item>1000黑咖币</item>
+    </string-array>
+    <integer-array name="gifts_image_luxury">
+        <item>@mipmap/gift_image_21</item>
+        <item>@mipmap/gift_image_22</item>
+        <item>@mipmap/gift_image_23</item>
+        <item>@mipmap/gift_image_24</item>
+        <item>@mipmap/gift_image_25</item>
+        <item>@mipmap/gift_image_26</item>
+        <item>@mipmap/gift_image_27</item>
+        <item>@mipmap/gift_image_28</item>
+        <item>@mipmap/gift_image_29</item>
+        <item>@mipmap/gift_image_30</item>
+
+    </integer-array>
 </resources>

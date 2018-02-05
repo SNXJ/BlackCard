@@ -17,6 +17,7 @@ import com.zsh.blackcard.adapter.AbreComFragmentAdapter;
 import com.zsh.blackcard.aliLive.AliLivePlayActivity;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.AbSpacesItemDecoration;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.listener.SbNearChangeListener;
@@ -158,7 +159,8 @@ public class AbNearbyFragment extends BaseFragment {
             recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
             recyclerView.setAdapter(adapter);
             adapter.setEmptyView(R.layout.live_empty_layout, recyclerView);
-
+            AbSpacesItemDecoration decoration = new AbSpacesItemDecoration(4);
+            recyclerView.addItemDecoration(decoration);
             adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

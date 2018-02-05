@@ -14,9 +14,9 @@ import java.util.List;
  * Date: 2017-12-19
  * Description:描述：
  */
-public class LiveAncherWeiBoFragmentAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
-    public LiveAncherWeiBoFragmentAdapter(@Nullable List<String> data) {
-        super(R.layout.live_ancher_weibo_item, data);
+public class LiveAncherVideoAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+    public LiveAncherVideoAdapter(@Nullable List<String> data) {
+        super(R.layout.live_ancher_video_item, data);
     }
 
     @Override

@@ -15,6 +15,7 @@ import com.zsh.blackcard.adapter.LiveTypeAdapter;
 import com.zsh.blackcard.aliLive.AliLivePlayActivity;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.AbSpacesItemDecoration;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LivePushListModel;
 import com.zsh.blackcard.model.LiveTypeModel;
@@ -158,7 +159,8 @@ public class AbTypeFragment extends BaseFragment {
             recyclerViewContent.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
             recyclerViewContent.setAdapter(contentAdapter);
             contentAdapter.setEmptyView(R.layout.live_empty_layout, recyclerViewContent);
-
+            AbSpacesItemDecoration decoration = new AbSpacesItemDecoration(4);
+            recyclerViewContent.addItemDecoration(decoration);
             contentAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

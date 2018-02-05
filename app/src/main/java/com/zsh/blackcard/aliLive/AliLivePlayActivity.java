@@ -19,12 +19,18 @@ import android.widget.TextView;
 
 import com.alivc.player.AliVcMediaPlayer;
 import com.alivc.player.MediaPlayer;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.LiveChatAdapter;
 import com.zsh.blackcard.adapter.LiveViewerAdapter;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.KeyboardStatusDetector;
+import com.zsh.blackcard.custom.LiveGiftsDialog;
 import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LiveChatModel;
+import com.zsh.blackcard.model.LiveRoomDialogModel;
 import com.zsh.blackcard.utils.CharUtils;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.view.GiftItemView;
@@ -93,6 +99,8 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     Button btnOverBack;
     @BindView(R.id.rl_live_over)
     RelativeLayout rlLiveOver;
+//    @BindView(R.id.bottom_gift_layout)
+//    LinearLayout bottomGiftLayout;
 
     private AliVcMediaPlayer mPlayer;
     private String TAG = "++++++++AliLivePlayActivity+++++++++++";
@@ -422,10 +430,13 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
                 finish();
                 break;
             case R.id.im_live_head:
-                PublicDialog.liveDialog(this);
+                //TODO temp 临时ID
+                getDialogData("388279486010884100");
+
                 break;
             case R.id.gift_item_view:
                 break;
+
             case R.id.chat:
                 layoutSendMessage.setVisibility(View.VISIBLE);
                 rlButtom.setVisibility(View.GONE);
@@ -441,14 +452,33 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
                 break;
             case R.id.im_gif:
-
+                LiveGiftsDialog lgd = LiveGiftsDialog.newInstance("388279486010884100");
+                lgd.show(getSupportFragmentManager(), "gifts");
                 break;
             case R.id.im_live_close:
                 finish();
-
                 break;
 
         }
+    }
+
+    private void getDialogData(final String anchor_id) {
+
+
+        DataManager.getInstance(this).RequestHttp(NetApi.getAncherDialog(DataManager.getMd5Str("PITHYDATA"), anchor_id, BaseApplication.getHonouruserId()), new ResultListener<LiveRoomDialogModel>() {
+            @Override
+            public void responseSuccess(LiveRoomDialogModel obj) {
+                if ("01".equals(obj.getResult())) {
+                    PublicDialog.liveDialog(AliLivePlayActivity.this, obj.getPd(), anchor_id);
+                }
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
 
