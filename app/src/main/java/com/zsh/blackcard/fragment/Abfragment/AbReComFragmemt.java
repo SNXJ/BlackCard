@@ -13,6 +13,7 @@ import com.zsh.blackcard.adapter.AbreComFragmentAdapter;
 import com.zsh.blackcard.aliLive.AliLivePlayActivity;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
+import com.zsh.blackcard.custom.AbSpacesItemDecoration;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LivePushListModel;
 import com.zsh.blackcard.utils.ActivityUtils;
@@ -33,6 +34,7 @@ public class AbReComFragmemt extends BaseFragment {
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     List<LivePushListModel.PdBean.PUSHONLINEBean.OnlineInfoBean.LiveStreamOnlineInfoBean> pushList = new ArrayList<>();
+    private boolean isVisible = false;//再次可见
 
     private AbreComFragmentAdapter adapter;
 
@@ -45,20 +47,34 @@ public class AbReComFragmemt extends BaseFragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-//            getPusherList();
-        }
 
+        if (isVisibleToUser) {
+            getPusherList();
+            isVisible = true;
+
+        }
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-        getPusherList();
+
+        if (!isVisible) {
+            getPusherList();
+        }
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        isVisible = false;
     }
 
     private void getPusherList() {
+//        showLoading(getActivity());
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.getPushList(DataManager.getMd5Str("PUSHLIST")), new ResultListener<LivePushListModel>() {
             @Override
             public void responseSuccess(LivePushListModel obj) {
@@ -75,15 +91,18 @@ public class AbReComFragmemt extends BaseFragment {
     }
 
     private void setData(LivePushListModel obj) {
+//        dialogDismiss();
 
         if (null != obj && "01".equals(obj.getResult())) {
+
 
             pushList = obj.getPd().getPUSHONLINE().getOnlineInfo().getLiveStreamOnlineInfo();
             adapter = new AbreComFragmentAdapter(pushList);
             recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
             recyclerView.setAdapter(adapter);
             adapter.setEmptyView(R.layout.live_empty_layout, recyclerView);
-
+            AbSpacesItemDecoration decoration = new AbSpacesItemDecoration(4);
+            recyclerView.addItemDecoration(decoration);
             adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -96,6 +115,7 @@ public class AbReComFragmemt extends BaseFragment {
         }
 
     }
+
 
     @Override
     public View initView(LayoutInflater inflater) {

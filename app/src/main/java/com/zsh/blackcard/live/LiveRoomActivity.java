@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.custom.PublicDialog;
 
 /**
  * Name: LiveRoomActivity
@@ -19,7 +18,7 @@ public class LiveRoomActivity extends BaseActivity {
         findViewById(R.id.im_live_head).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PublicDialog.liveDialog(LiveRoomActivity.this);
+//                PublicDialog.liveDialog(LiveRoomActivity.this);
             }
         });
     }

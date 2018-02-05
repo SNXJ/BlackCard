@@ -10,21 +10,27 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alivc.player.AliVcMediaPlayer;
 import com.alivc.player.MediaPlayer;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.LiveChatAdapter;
 import com.zsh.blackcard.adapter.LiveViewerAdapter;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.KeyboardStatusDetector;
+import com.zsh.blackcard.custom.LiveGiftsDialog;
 import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LiveChatModel;
+import com.zsh.blackcard.model.LiveRoomDialogModel;
 import com.zsh.blackcard.utils.CharUtils;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.view.GiftItemView;
@@ -83,6 +89,18 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
     @BindView(R.id.surfaceView)
     SurfaceView mSurfaceView;
+    @BindView(R.id.top_left)
+    RelativeLayout topLeft;
+    @BindView(R.id.im_live_close)
+    ImageView imLiveClose;
+    @BindView(R.id.tv_over_num)
+    TextView tvOverNum;
+    @BindView(R.id.btn_over_back)
+    Button btnOverBack;
+    @BindView(R.id.rl_live_over)
+    RelativeLayout rlLiveOver;
+//    @BindView(R.id.bottom_gift_layout)
+//    LinearLayout bottomGiftLayout;
 
     private AliVcMediaPlayer mPlayer;
     private String TAG = "++++++++AliLivePlayActivity+++++++++++";
@@ -122,11 +140,11 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
                 mPlayer.setVideoSurface(mSurfaceView.getHolder().getSurface());
             }
 
-            Log.d(TAG, "AlivcPlayeron SurfaceCreated over.");
+
         }
 
         public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-            Log.d(TAG, "onSurfaceChanged is valid ? " + holder.getSurface().isValid());
+//            Log.d(TAG, "onSurfaceChanged is valid ? " + holder.getSurface().isValid());
             if (mPlayer != null)
                 mPlayer.setSurfaceChanged();
         }
@@ -158,17 +176,15 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
         @Override
         public void onError(int i, String s) {
-            LogUtils.i("+++++++onError++++++++", i + "+++++++++++++++" + s);
-
-//            AliLivePlayActivity activity = activityWeakReference.get();
-//            if (activity != null) {
-//                activity.onError(i, s);
-//            }
+            AliLivePlayActivity activity = activityWeakReference.get();
+            if (activity != null) {
+                activity.onError(i, s);
+            }
         }
     }
 
     private void onError(int i, String msg) {
-        Toast.makeText(AliLivePlayActivity.this.getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+        LogUtils.i("++++onError+++", i + "=i++++++++onError++++++msg=" + msg);
     }
 
     private static class MyPreparedListener implements MediaPlayer.MediaPlayerPreparedListener {
@@ -176,7 +192,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         private WeakReference<AliLivePlayActivity> activityWeakReference;
 
         public MyPreparedListener(AliLivePlayActivity activity) {
-            activityWeakReference = new WeakReference<AliLivePlayActivity>(activity);
+            activityWeakReference = new WeakReference<>(activity);
         }
 
         @Override
@@ -190,10 +206,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     }
 
     void onPrepared() {
-
-        LogUtils.i("+++++++onPrepared+++++++", "onPrepared--- ");
-        Toast.makeText(AliLivePlayActivity.this.getApplicationContext(), "准备成功", Toast.LENGTH_SHORT).show();
-
+        LogUtils.i("++++onPrepared+++", "++++++++onPrepared++++++");
     }
 
     private static class MyStoppedListener implements MediaPlayer.MediaPlayerStoppedListener {
@@ -215,7 +228,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     }
 
     void onStopped() {
-
+        LogUtils.i("++++onStopped+++", "++++++++onStopped++++++");
     }
 
     private static class MySeekCompleteListener implements MediaPlayer.MediaPlayerSeekCompleteListener {
@@ -237,9 +250,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     }
 
     void onSeekCompleted() {
-
-        LogUtils.i("+++++++onSeekCompleted+++++++", "onSeekCompleted--- ");
-
+        LogUtils.i("++++onSeekCompleted+++", "++++++++onSeekCompleted++++++");
     }
 
     private static class MyPlayerCompletedListener implements MediaPlayer.MediaPlayerCompletedListener {
@@ -261,10 +272,11 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     }
 
     private void onCompleted() {
-        LogUtils.i("+++++++onCompleted+++++++", "onCompleted--- ");
+        LogUtils.i("++++onCompleted+++", "++++++++onCompleted++++++");
+        rlLiveOver.setVisibility(View.VISIBLE);
+        destroy();
 
-        finish();
-//        isCompleted = true;
+
     }
 
     private static class MyFrameInfoListener implements com.alivc.player.MediaPlayer.MediaPlayerFrameInfoListener {
@@ -279,18 +291,24 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         public void onFrameInfoListener() {
             AliLivePlayActivity activity = activityWeakReference.get();
             if (activity != null) {
-//                activity.onFrameInfoListener();
+                activity.onFrameInfoListener();
             }
         }
+    }
+
+    ;
+
+    private void onFrameInfoListener() {
+        LogUtils.i("++++onFrameInfoListener+++", "++++++++onFrameInfoListener++++++");
     }
 
 
     private void setPlaySource() {
         mUrl = getIntent().getStringExtra("data");
-
-        if (null != mUrl) {
-
+        LogUtils.i("+++++++mUrl+++++++", "+++++++++++++++mUrl+++++" + mUrl);
+        if (null == mUrl) {
             finish();
+            return;
         }
     }
 
@@ -405,13 +423,20 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     }
 
 
-    @OnClick({R.id.im_live_head, R.id.gift_item_view, R.id.chat, R.id.im_share, R.id.im_heart, R.id.im_gif, R.id.tv_send, R.id.im_live_close})
+    @OnClick({R.id.im_live_head, R.id.gift_item_view, R.id.chat, R.id.im_share, R.id.im_heart, R.id.im_gif, R.id.tv_send, R.id.im_live_close, R.id.btn_over_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.btn_over_back:
+                finish();
+                break;
             case R.id.im_live_head:
+                //TODO temp 临时ID
+                getDialogData("388279486010884100");
+
                 break;
             case R.id.gift_item_view:
                 break;
+
             case R.id.chat:
                 layoutSendMessage.setVisibility(View.VISIBLE);
                 rlButtom.setVisibility(View.GONE);
@@ -424,17 +449,36 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
                 PublicDialog.shareDialog(this);
                 break;
             case R.id.im_heart:
-                PublicDialog.liveDialog(this);
+
                 break;
             case R.id.im_gif:
-
+                LiveGiftsDialog lgd = LiveGiftsDialog.newInstance("388279486010884100");
+                lgd.show(getSupportFragmentManager(), "gifts");
                 break;
             case R.id.im_live_close:
                 finish();
-
                 break;
 
         }
+    }
+
+    private void getDialogData(final String anchor_id) {
+
+
+        DataManager.getInstance(this).RequestHttp(NetApi.getAncherDialog(DataManager.getMd5Str("PITHYDATA"), anchor_id, BaseApplication.getHonouruserId()), new ResultListener<LiveRoomDialogModel>() {
+            @Override
+            public void responseSuccess(LiveRoomDialogModel obj) {
+                if ("01".equals(obj.getResult())) {
+                    PublicDialog.liveDialog(AliLivePlayActivity.this, obj.getPd(), anchor_id);
+                }
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
     }
 
 

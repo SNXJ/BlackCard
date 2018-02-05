@@ -90,7 +90,10 @@ public abstract class BaseFragment extends Fragment {
     public Dialog dialog;
 
     public Dialog showLoading(Context context) {
-        dialog = PublicDialog.loadingDialog((Activity) context);
+        if (null == dialog) {
+            dialog = PublicDialog.loadingDialog((Activity) context);
+        }
+
         return dialog;
     }
 

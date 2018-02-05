@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.alivc.live.pusher.AlivcLivePusher;
 import com.zsh.blackcard.R;
+import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.SharedPreferencesUtils;
 
@@ -35,6 +36,37 @@ public class LiveDialog {
 
     public LiveDialog(Context context) {
         this.mContext = context;
+    }
+
+
+    /**
+     * 首页右上弹窗
+     *
+     * @param context
+     * @param view
+     * @param listener 点击监听
+     */
+    public  void liveSelectMorePop(Context context, View view, ItemClickListener listener) {
+        final PopGiftSelect popWinShare = new PopGiftSelect(context, listener);
+        //监听窗口的焦点事件，点击窗口外面则取消显示
+        popWinShare.getContentView().setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    popWinShare.dismiss();
+                }
+            }
+        });
+        // }
+
+        //设置默认获取焦点
+        popWinShare.setFocusable(true);
+        //以某个控件的x和y的偏移量位置开始显示窗口
+        popWinShare.showAsDropDown(view, 0, 0);
+
+        //如果窗口存在，则更新
+        popWinShare.update();
+
     }
 
     /**

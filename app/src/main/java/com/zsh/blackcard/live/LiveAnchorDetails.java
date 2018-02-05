@@ -8,9 +8,9 @@ import android.widget.RadioButton;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.fragment.live.LiveAnchorDetailDataFragment;
-import com.zsh.blackcard.fragment.live.LiveAnchorDetailVideoFragment;
-import com.zsh.blackcard.fragment.live.LiveAnchorDetailWeiBoFragment;
+import com.zsh.blackcard.fragment.live.LiveAnchorMoreFragment;
+import com.zsh.blackcard.fragment.live.LiveAnchorWeiboFragment;
+import com.zsh.blackcard.fragment.live.LiveAnchorVideoFragment;
 
 /**
  * Name: LiveAnchorDetails
@@ -82,13 +82,13 @@ public class LiveAnchorDetails extends BaseActivity implements View.OnClickListe
                 Fragment fragment = null;
                 switch (position) {
                     case 0:
-                        fragment = new LiveAnchorDetailWeiBoFragment();
+                        fragment = new LiveAnchorVideoFragment();
                         break;
                     case 1:
-                        fragment = new LiveAnchorDetailVideoFragment();
+                        fragment = new LiveAnchorWeiboFragment();
                         break;
                     case 2:
-                        fragment = new LiveAnchorDetailDataFragment();
+                        fragment = new LiveAnchorMoreFragment();
                         break;
                 }
                 return fragment;

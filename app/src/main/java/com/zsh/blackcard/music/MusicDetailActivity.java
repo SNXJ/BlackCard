@@ -39,7 +39,6 @@ import com.zsh.blackcard.music.utils.PlayModeEnum;
 import com.zsh.blackcard.music.utils.Preferences;
 import com.zsh.blackcard.utils.BitmapUtils;
 import com.zsh.blackcard.utils.FastBlur;
-import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -110,7 +109,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         position = pos;
     }
 
-    public static void setDataSong(List<MainGloryMusicSongModel.SongRecommendBean.SongListBean> song_list, int position){
+    public static void setDataSong(List<MainGloryMusicSongModel.SongRecommendBean.SongListBean> song_list, int position) {
         song_lists = song_list;
     }
 
@@ -147,7 +146,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         if (null != DT_NAME) {
             DT_NAME = null;
         }
-        if(null != song_lists){
+        if (null != song_lists) {
             song_lists = null;
         }
         super.onDestroy();
@@ -187,7 +186,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         } else if (null != DT_NAME) {
             //从荣耀音乐界面加载电台详情页面
             initDjData(DT_NAME);
-        }else if(null != song_lists){
+        } else if (null != song_lists) {
             //从荣耀音乐界面加载歌单推荐详情页面
             initSongDetail();
         }
@@ -196,7 +195,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     //加载歌单推荐详情
     private void initSongDetail() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mainGloryMusicSongListAdapter = new MainGloryMusicSongListAdapter(R.layout.music_details_item,song_lists);
+        mainGloryMusicSongListAdapter = new MainGloryMusicSongListAdapter(R.layout.music_details_item, song_lists);
         recyclerView.setAdapter(mainGloryMusicSongListAdapter);
         mainGloryMusicSongListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -209,7 +208,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     }
 
     private void switchLoopData(String type) {
-        LogUtils.i("++++++++++++++", "++++++++++++++++" + type);
+
         switch (type) {
             case "0":
                 getSingerMusicList();
@@ -239,7 +238,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 mMusicList.add(music);
             }
         }
-        LogUtils.i("++++++++++++", "++++++++singerSongList+++++++++++" + mMusicList.size());
+
         AppCache.setMusicList(mMusicList);
     }
 
@@ -253,7 +252,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 mMusicList.add(music);
             }
         }
-        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+
         AppCache.setMusicList(mMusicList);
     }
 
@@ -267,7 +266,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 mMusicList.add(music);
             }
         }
-        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+
         AppCache.setMusicList(mMusicList);
     }
 
@@ -281,12 +280,12 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
                 mMusicList.add(music);
             }
         }
-        LogUtils.i("++++++++++++", "++++++++mMusicList+++++++++++" + mMusicList.size());
+
         AppCache.setMusicList(mMusicList);
     }
 
     private void getRankDataByType() {
-        LogUtils.i("+++++++rankType+++++++", "++++++排行榜+++++++");
+
         DataManager.getInstance(this).RequestHttp(NetApi.getRankingList(DataManager.getMd5Str("BILLLIST"), "1", rankType + ""), new ResultListener<MusicRankingModel>() {
             @Override
             public void responseSuccess(MusicRankingModel obj) {
@@ -407,7 +406,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     }
 
     private void setReOtherData(int type) {
-        LogUtils.i("+++++++rankType+++++++", "++++曲库++other+++++++" + type);
+
         if (type == 1) {//排行榜
             setTopBg(rankImgUrl, rankStr);
         } else {
@@ -540,7 +539,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
 
     @Override
     public void onChange(Music music) {
-        LogUtils.i("", "+++++++onChange+++++++++");
+
         onChangeImpl(music);
         if (mPlayFragment != null && mPlayFragment.isAdded()) {
             mPlayFragment.onChange(music);
@@ -648,10 +647,7 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
         getPlayService().next();
     }
 
-    @OnClick(R.id.im_back)
-    public void onClick() {
-        finish();
-    }
+
 
     private PlayFragment mPlayFragment;
 
@@ -689,9 +685,12 @@ public class MusicDetailActivity extends BaseMusicActivity implements OnPlayerEv
     }
 
 
-    @OnClick({R.id.iv_play_bar_play, R.id.fl_play_bar, R.id.play_random})
+    @OnClick({R.id.iv_play_bar_play, R.id.fl_play_bar, R.id.play_random, R.id.im_back})
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.im_back:
+                finish();
+                break;
             case R.id.fl_play_bar:
                 showPlayingFragment();
                 break;

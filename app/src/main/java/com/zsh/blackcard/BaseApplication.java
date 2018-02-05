@@ -12,7 +12,6 @@ import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.zsh.blackcard.api.DataManager;
-import com.zsh.blackcard.live.zego.ZegoApiManager;
 import com.zsh.blackcard.music.utils.AppCache;
 import com.zsh.blackcard.utils.PackageUtils;
 import com.zsh.blackcard.utils.ShareUtil;
@@ -26,7 +25,9 @@ import com.zsh.blackcard.utils.SharedPreferencesUtils;
 public class BaseApplication extends Application implements Thread.UncaughtExceptionHandler {
     public static final String TAG = BaseApplication.class.getSimpleName();
     Thread.UncaughtExceptionHandler mDefaultHandler;
-    public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp
+        public static String HONOURUSER_ID = "d6a3779de8204dfd9359403f54f7d27c";//temp  388279486010884100
+//    public static String HONOURUSER_ID = "388279486010884100";
+
     private String BUGLY_ID = "815c4ef8fb";
     /* 获取主线程的上下文对象 */
     private static BaseApplication context;
@@ -62,7 +63,6 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
     }
 
 
-
     @SuppressWarnings("deprecation")
     @Override
     public void onCreate() {
@@ -73,7 +73,7 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
         if (versionCode != getVersionCode()) {
             setFristStart(true);
         }
-        ZegoApiManager.getInstance().initSDK();
+//        ZegoApiManager.getInstance().initSDK();
         CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(this);
         Bugly.init(getApplicationContext(), BUGLY_ID, true);//是否开启debug模式，true表示打开debug模式，false表示关闭调试模式
         Beta.autoInit = true;//自动初始化

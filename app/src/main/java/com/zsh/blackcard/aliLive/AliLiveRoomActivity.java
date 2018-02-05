@@ -1,6 +1,5 @@
 package com.zsh.blackcard.aliLive;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,7 +8,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.net.ConnectivityManager;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -440,20 +438,20 @@ public class AliLiveRoomActivity extends BaseAliLiveActivity implements ItemClic
         }
     };
 
-    public static void startActivity(Activity activity, AlivcLivePushConfig alivcLivePushConfig, String url, boolean async, boolean audioOnly, boolean videoOnly, AlivcPreviewOrientationEnum orientation, int cameraId, boolean isFlash) {
-        Intent intent = new Intent(activity, AliLiveRoomActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(AlivcLivePushConfig.Config, alivcLivePushConfig);
-        bundle.putString(URL_KEY, url);
-        bundle.putBoolean(ASYNC_KEY, async);
-        bundle.putBoolean(AUDIO_ONLY_KEY, audioOnly);
-        bundle.putBoolean(VIDEO_ONLY_KEY, videoOnly);
-        bundle.putInt(ORIENTATION_KEY, orientation.ordinal());
-        bundle.putInt(CAMERA_ID, cameraId);
-        bundle.putBoolean(FLASH_ON, isFlash);
-        intent.putExtras(bundle);
-        activity.startActivityForResult(intent, REQ_CODE_PUSH);
-    }
+//    public static void startActivity(Activity activity, AlivcLivePushConfig alivcLivePushConfig, String url, boolean async, boolean audioOnly, boolean videoOnly, AlivcPreviewOrientationEnum orientation, int cameraId, boolean isFlash) {
+//        Intent intent = new Intent(activity, AliLiveRoomActivity.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(AlivcLivePushConfig.Config, alivcLivePushConfig);
+//        bundle.putString(URL_KEY, url);
+//        bundle.putBoolean(ASYNC_KEY, async);
+//        bundle.putBoolean(AUDIO_ONLY_KEY, audioOnly);
+//        bundle.putBoolean(VIDEO_ONLY_KEY, videoOnly);
+//        bundle.putInt(ORIENTATION_KEY, orientation.ordinal());
+//        bundle.putInt(CAMERA_ID, cameraId);
+//        bundle.putBoolean(FLASH_ON, isFlash);
+//        intent.putExtras(bundle);
+//        activity.startActivityForResult(intent, REQ_CODE_PUSH);
+//    }
 
     @Override
     protected void onResume() {

@@ -18,18 +18,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.aliLive.AliLiveRoomActivity;
+import com.zsh.blackcard.api.DataManager;
+import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.FilterListener;
 import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.listener.OrderDiaListenter;
+import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.listener.SbNearChangeListener;
 import com.zsh.blackcard.listener.SelectDateListener;
 import com.zsh.blackcard.live.LiveAnchorDetails2;
+import com.zsh.blackcard.model.LiveRoomDialogModel;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.SbNearChangeModel;
 import com.zsh.blackcard.ui.CommonPassengerActivity;
@@ -358,34 +365,6 @@ public class PublicDialog {
         });
     }
 
-    /**
-     * 首页右上弹窗
-     *
-     * @param context
-     * @param im
-     * @param listener 点击监听
-     */
-    public static void homeTopPop(Context context, ImageView im, ItemClickListener listener) {
-        final PopHome popWinShare = new PopHome(context, listener);
-        //监听窗口的焦点事件，点击窗口外面则取消显示
-        popWinShare.getContentView().setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    popWinShare.dismiss();
-                }
-            }
-        });
-        // }
-
-        //设置默认获取焦点
-        popWinShare.setFocusable(true);
-        //以某个控件的x和y的偏移量位置开始显示窗口
-        popWinShare.showAsDropDown(im, 0, 0);
-        //如果窗口存在，则更新
-        popWinShare.update();
-
-    }
 
     public static void ageDialog(final Activity mContext) {
         View view = LayoutInflater.from(mContext).inflate(
@@ -492,7 +471,7 @@ public class PublicDialog {
         two_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sbNearChangeModel.setTime("1");
+                sbNearChangeModel.setTime("15");
                 setImageResource(1, listImage);
             }
         });
@@ -508,7 +487,7 @@ public class PublicDialog {
         four_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sbNearChangeModel.setTime("3");
+                sbNearChangeModel.setTime("1");
                 setImageResource(3, listImage);
             }
         });
@@ -516,7 +495,7 @@ public class PublicDialog {
         five_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sbNearChangeModel.setTime("4");
+                sbNearChangeModel.setTime("7");
                 setImageResource(4, listImage);
             }
         });
@@ -543,19 +522,56 @@ public class PublicDialog {
      *
      * @param mContext
      */
-    public static void liveDialog(final Context mContext) {
+    public static void liveDialog(final Context mContext, final LiveRoomDialogModel.PdBean data, final String anchor_id) {
         View view = LayoutInflater.from(mContext).inflate(
                 R.layout.live_room_dialog, null);
-        LinearLayout ll = (LinearLayout) view.findViewById(R.id.ll_dialog_go);
+        LinearLayout ll_fans = view.findViewById(R.id.ll_dialog_go);
+        RelativeLayout rl_bg = view.findViewById(R.id.rl_bg);
+
+        TextView tv_follow = view.findViewById(R.id.tv_follow);
+
+        TextView tv_fans = view.findViewById(R.id.tv_fans);
+        TextView tv_dynamic = view.findViewById(R.id.tv_dynamic);//im_follow_status
+        final ImageView im_follow_status = view.findViewById(R.id.im_follow_status);
+        ImageView im_bg = view.findViewById(R.id.im_bg);
+
+
+        Glide.with(mContext).load(data.getPORTRAIT()).apply(RequestOptions.bitmapTransform(new CornersTransform(mContext, 5))).into(im_bg);
+
+
+        tv_follow.setText(data.getFocus());
+        tv_fans.setText(data.getFans());
+        tv_dynamic.setText(data.getDynamic());
+
+        if ("0".equals(data.getIsfriend())) {//
+            im_follow_status.setImageResource(R.mipmap.room_btn_1);
+            isFocuse = false;
+        } else {
+            im_follow_status.setImageResource(R.mipmap.follow);
+            isFocuse = true;
+        }
+
         // 设置style 控制默认dialog带来的边距问题
         final Dialog dialog = new Dialog(mContext, R.style.pub_loading_dialog);
         dialog.setContentView(view);
         dialog.show();
-        ll.setOnClickListener(new View.OnClickListener() {
+        rl_bg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, LiveAnchorDetails2.class);
                 mContext.startActivity(intent);
+            }
+        });
+        ll_fans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isFocuse) {//
+                    fouseAncher(mContext, im_follow_status, anchor_id);
+                } else {//
+                    delAncher(mContext, im_follow_status, anchor_id);
+
+                }
+
             }
         });
         // 设置相关位置，一定要在 show()之后
@@ -568,8 +584,57 @@ public class PublicDialog {
         params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
         params.gravity = Gravity.CENTER;
         window.setAttributes(params);
+
+
     }
 
+    private static boolean isFocuse = false;
+
+    private static void fouseAncher(Context context, final ImageView imageView, String anchor_id) {
+
+
+        DataManager.getInstance(context).RequestHttp(NetApi.fouseAncher(DataManager.getMd5Str("FRIENDADD"), anchor_id, BaseApplication.getHonouruserId()), new ResultListener<LiveRoomDialogModel>() {
+            @Override
+            public void responseSuccess(LiveRoomDialogModel obj) {
+                if ("01".equals(obj.getResult())) {
+                    isFocuse = true;
+                    imageView.setImageResource(R.mipmap.follow);
+                    UIUtils.showToast("关注成功");
+                }
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+
+    }
+
+    private static void delAncher(Context context, final ImageView imageView, String anchor_id) {
+
+
+        DataManager.getInstance(context).RequestHttp(NetApi.delAncher(DataManager.getMd5Str("FRIENDDEL"), anchor_id, BaseApplication.getHonouruserId()), new ResultListener<LiveRoomDialogModel>() {
+            @Override
+            public void responseSuccess(LiveRoomDialogModel obj) {
+                if ("01".equals(obj.getResult())) {
+                    isFocuse = false;
+                    imageView.setImageResource(R.mipmap.room_btn_1);
+                    UIUtils.showToast("取消关注");
+                }
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        });
+
+
+    }
 
     /**
      * 日期滚轮选择 并赋值TextView

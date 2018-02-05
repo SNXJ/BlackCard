@@ -31,6 +31,7 @@
     <color name="music_bar">#A61CE7</color>
     <color name="ff1A1A">#ff1A1A1A</color>
     <color name="live_transparent">#50000000</color>
+    <color name="live_red">#FF204D</color>
     <!--date-->
     <color name="fffd_text">#FFFD5739</color>
     <color name="font_white_one">#FFFFFF</color>

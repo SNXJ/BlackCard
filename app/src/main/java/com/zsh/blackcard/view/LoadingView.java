@@ -1,4 +1,4 @@
-package com.zsh.blackcard.custom;
+package com.zsh.blackcard.view;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;

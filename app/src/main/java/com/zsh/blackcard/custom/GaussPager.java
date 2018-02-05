@@ -96,7 +96,7 @@ public class GaussPager extends LinearLayout {
                     "id_stickynavlayout_viewpager show used by ViewPager !");
         }
         mViewPager = (ViewPager) view;
-        // bgLayer = (ImageView) findViewById(R.id.bglayer);
+//        bgLayer = (ImageView) findViewById(R.id.top_bg);
         bgLayer = (RelativeLayout) findViewById(R.id.id_stickynavlayout_topview);
         bg = ((BitmapDrawable) bgLayer.getBackground()).getBitmap();
         //事先进行异步模糊
@@ -188,12 +188,12 @@ public class GaussPager extends LinearLayout {
 
                         // 如果topView没有隐藏
                         // 或sc的listView在顶部 && topView隐藏 && 下拉，则拦截
-                        LogUtils.i("","++++++++dy++++++++"+dy);
+                        LogUtils.i("", "++++++++dy++++++++" + dy);
                         if (!isTopHidden || //
                                 (c != null //
                                         && c.getTop() == 0//
                                         && isTopHidden && dy > 0)) {
-                            LogUtils.i("","++++++++里dy++++++++"+dy);
+                            LogUtils.i("", "++++++++里dy++++++++" + dy);
 
                             initVelocityTrackerIfNotExists();
                             mVelocityTracker.addMovement(ev);

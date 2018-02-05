@@ -1,104 +1,6 @@
 package com.zsh.blackcard.api;
 
-import com.zsh.blackcard.model.AbMyFriendModel;
-import com.zsh.blackcard.model.AddressManageModel;
-import com.zsh.blackcard.model.AdvertisementModel;
-import com.zsh.blackcard.model.BarDetailModel;
-import com.zsh.blackcard.model.BarDetailsMoreListModel;
-import com.zsh.blackcard.model.BardetailsItemModel;
-import com.zsh.blackcard.model.CategoryLeftModel;
-import com.zsh.blackcard.model.CategoryRightModel;
-import com.zsh.blackcard.model.CircleCenterCommentRecyclerModel;
-import com.zsh.blackcard.model.CollectionModel;
-import com.zsh.blackcard.model.CommentAddModel;
-import com.zsh.blackcard.model.CommentModel;
-import com.zsh.blackcard.model.DisCountModel;
-import com.zsh.blackcard.model.EatDrinkDetailModel;
-import com.zsh.blackcard.model.EatDrinkRecyclerModel;
-import com.zsh.blackcard.model.EatDrinkSearchModel;
-import com.zsh.blackcard.model.FoodDetailModel;
-import com.zsh.blackcard.model.FoodDetailsMoreListModel;
-import com.zsh.blackcard.model.FoodHotelBarKTVDialogModel;
-import com.zsh.blackcard.model.HjRecyclerModel;
-import com.zsh.blackcard.model.HjReleaseModel;
-import com.zsh.blackcard.model.HomeBarModel;
-import com.zsh.blackcard.model.HomeCarDetailModel;
-import com.zsh.blackcard.model.HomeCarRecyclerModel;
-import com.zsh.blackcard.model.HomeCopterDetailModel;
-import com.zsh.blackcard.model.HomeFoodDetailPackageModel;
-import com.zsh.blackcard.model.HomeFoodModel;
-import com.zsh.blackcard.model.HomeGloryMagazineDetailModel;
-import com.zsh.blackcard.model.HomeGloryMagazineModel;
-import com.zsh.blackcard.model.HomeGloryMusicModel;
-import com.zsh.blackcard.model.HomeGloryServerModel;
-import com.zsh.blackcard.model.HomeGolfDetailModel;
-import com.zsh.blackcard.model.HomeGolfRecyclerModel;
-import com.zsh.blackcard.model.HomeHorseDetailModel;
-import com.zsh.blackcard.model.HomeHorseRecyclerModel;
-import com.zsh.blackcard.model.HomeHotelModel;
-import com.zsh.blackcard.model.HomeKTVDetailItemModel;
-import com.zsh.blackcard.model.HomeKTVDetailModel;
-import com.zsh.blackcard.model.HomeKTVModel;
-import com.zsh.blackcard.model.HomePlayModel;
-import com.zsh.blackcard.model.HomePrivilegeModel;
-import com.zsh.blackcard.model.HomeSearchHotModel;
-import com.zsh.blackcard.model.HomeTitleNewsDetailModel;
-import com.zsh.blackcard.model.HomeTitleNewsModel;
-import com.zsh.blackcard.model.HomeTopModel;
-import com.zsh.blackcard.model.HomeYachtDetailModel;
-import com.zsh.blackcard.model.HomeYachtRecyclerModel;
-import com.zsh.blackcard.model.HotelDetailModel;
-import com.zsh.blackcard.model.HotelDetailsMoreListModel;
-import com.zsh.blackcard.model.HoteldetailsItemModel;
-import com.zsh.blackcard.model.KTVDetailsMoreListModel;
-import com.zsh.blackcard.model.LiveInfoListModel;
-import com.zsh.blackcard.model.LivePullModel;
-import com.zsh.blackcard.model.LivePushListModel;
-import com.zsh.blackcard.model.LivePushModel;
-import com.zsh.blackcard.model.LoginModel;
-import com.zsh.blackcard.model.MainGloryMagazineModel;
-import com.zsh.blackcard.model.MainGloryMusicDJModel;
-import com.zsh.blackcard.model.MainGloryMusicLibDetailModel;
-import com.zsh.blackcard.model.MainGloryMusicLibModel;
-import com.zsh.blackcard.model.MainGloryMusicSongModel;
-import com.zsh.blackcard.model.MainMusicGloryModel;
-import com.zsh.blackcard.model.MusicDetailListModel;
-import com.zsh.blackcard.model.MusicDjModel;
-import com.zsh.blackcard.model.MusicLrcModel;
-import com.zsh.blackcard.model.MusicRankAllModel;
-import com.zsh.blackcard.model.MusicRankingModel;
-import com.zsh.blackcard.model.MusicRecommendModel;
-import com.zsh.blackcard.model.MusicSingerModel;
-import com.zsh.blackcard.model.MusicSingerSongsModel;
-import com.zsh.blackcard.model.MusicSongDetailsModel;
-import com.zsh.blackcard.model.MyCircleModel;
-import com.zsh.blackcard.model.MyDisBlackPowerModel;
-import com.zsh.blackcard.model.MyOrderModel;
-import com.zsh.blackcard.model.MyPowerImageModel;
-import com.zsh.blackcard.model.MyPowerModel;
-import com.zsh.blackcard.model.MyVipCenterModel;
-import com.zsh.blackcard.model.OrderCenterBarRecyclerModel;
-import com.zsh.blackcard.model.OrderCenterFoodRecyclerModel;
-import com.zsh.blackcard.model.OrderCenterHotelRecyclerModel;
-import com.zsh.blackcard.model.OrderCenterKTVRecyclerModel;
-import com.zsh.blackcard.model.OrderResultModel;
-import com.zsh.blackcard.model.RegisterCardTypeModel;
-import com.zsh.blackcard.model.RegisterChangeNumberModel;
-import com.zsh.blackcard.model.RegisterModel;
-import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.model.SettingUserInfoModel;
-import com.zsh.blackcard.model.ShoppingCarModel;
-import com.zsh.blackcard.model.TopicListModel;
-import com.zsh.blackcard.model.TrainModel;
-import com.zsh.blackcard.model.WelcomeModel;
-import com.zsh.blackcard.model.ZgBannerModel;
-import com.zsh.blackcard.model.ZgFindModel;
-import com.zsh.blackcard.model.ZgFindTitleModel;
-import com.zsh.blackcard.model.ZgHomeListModel;
-import com.zsh.blackcard.model.ZgPersonalTailorDatailModel;
-import com.zsh.blackcard.model.ZgPersonalTailorModel;
-import com.zsh.blackcard.model.ZgSearchModel;
-import com.zsh.blackcard.model.ZgShopAreaModel;
+import com.zsh.blackcard.model.*;
 
 import java.util.List;
 import java.util.Map;
@@ -873,21 +775,59 @@ public interface RetrofitService {
 
     //直播推流地址
     @FormUrlEncoded
-    @POST("livein/getpushaddress?")
+    @POST("applivein/getpushaddress?")
     //
     Observable<LivePushModel> getPushUrl(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("LIVE_TITLE") String LIVE_TITLE);
 
     //直播拉流地址
     @FormUrlEncoded
-    @POST("livein/getpulladdress?")
-    //PULLADDRESS
+    @POST("applivein/getpulladdress?")
     Observable<LivePullModel> getPullUrl(@Field("FKEY") String md5);
+
+    //关闭直播
+    @FormUrlEncoded
+    @POST("applivein/updlive?")
+    Observable<ResultModel> closeLive(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
 
     //直播列表
     @FormUrlEncoded
-    @POST("livein/getpushlist?")
-    //PUSHLIST
+    @POST("applivein/getpushlist?")
     Observable<LivePushListModel> getPushList(@Field("FKEY") String md5);
+
+    //直播附近人列表
+    @FormUrlEncoded
+    @POST("applivein/getnearbypushlist?")
+    Observable<LivePushListModel> getPushNearByList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //分类直播列表
+    @FormUrlEncoded
+    @POST("applivein/getpushlist?")
+    Observable<LivePushListModel> getPushListByType(@Field("FKEY") String md5, @Field("LIVETYPE_ID") String LIVETYPE_ID);
+
+    //尚播搜索
+    @FormUrlEncoded
+    @POST("applivein/getuserlist?")
+    Observable<AbSearchModel> getAbSearchList(@Field("FKEY") String md5, @Field("NICKNAME") String NICKNAME);
+
+    //尚播搜索 热门
+    @FormUrlEncoded
+    @POST("apphomein/searchlist?")
+    Observable<AbSearchModel> getAbSearchHotList(@Field("FKEY") String md5, @Field("PARENT_ID") String PARENT_ID);
+
+    //直播分类一级
+    @FormUrlEncoded
+    @POST("applivein/getlivetypelist?")
+    Observable<LiveTypeModel> getLiveTypeFirst(@Field("FKEY") String md5);
+
+    ///直播分类二级
+    @FormUrlEncoded
+    @POST("applivein/getlivetypelist?")
+    Observable<LiveTypeModel> getLiveTypeSecond(@Field("FKEY") String md5, @Field("PARENT_ID") String PARENT_ID);
+
+    ///直播附近筛选
+    @FormUrlEncoded
+    @POST("applivein/getscreenlist?")
+    Observable<LivePushListModel> getNearByFilter(@Field("FKEY") String md5, @Field("SEX") String SEX, @Field("LIVE_START") String LIVE_START);
 
     //荣耀音乐头部广告和歌手推荐
     @FormUrlEncoded
@@ -948,5 +888,42 @@ public interface RetrofitService {
                                          @Field("USERLONGITUDE") String USERLONGITUDE,
                                          @Field("USERLATITUDE") String USERLATITUDE);
 
+
+    //主播详情
+    @FormUrlEncoded
+    @POST("applivein/getuserdata?")
+    Observable<LiveAncherDetailsModel> getLiveAncherDetail(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //主播详情
+    @FormUrlEncoded
+    @POST("applivein/getdowndata?")
+    Observable<LiveAnchorMoreModel> getLiveAncherMore(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+//
+
+    //主播详情  黑微博
+    @FormUrlEncoded
+    @POST("applivein/getweibouser?")
+    Observable<LiveAncherDetailWBModel> getLiveAncherWeibo(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //直播  弹窗信息
+    @FormUrlEncoded
+    @POST("applivein/getpithydata?")
+    Observable<LiveRoomDialogModel> getAncherDialog(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID);
+
+    //直播弹窗  关注
+    @FormUrlEncoded
+    @POST("appfriendin/addfriend?")
+    Observable<LiveRoomDialogModel> fouseAncher(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID);
+
+    //直播弹窗  取消关注
+    @FormUrlEncoded
+    @POST("appfriendin/delfriend?")
+    Observable<LiveRoomDialogModel> delAncher(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID);
+
+    //直播礼物
+
+    @FormUrlEncoded
+    @POST("applivein/gifttouser?")
+    Observable<LiveRoomDialogModel> sendLiveGift(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID, @Field("BLACKPRICE") String money);
 
 }

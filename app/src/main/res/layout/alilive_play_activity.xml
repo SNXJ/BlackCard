@@ -195,9 +195,14 @@
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
-
-
     </RelativeLayout>
 
+    <include layout="@layout/live_room_over" />
 
+    <include
+        layout="@layout/live_gifts_dialog_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base290dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
 </RelativeLayout>

@@ -9,10 +9,16 @@
     <RelativeLayout
         android:id="@id/id_stickynavlayout_topview"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base190dp"
+        android:layout_height="@dimen/base200dp"
         android:background="@mipmap/personal_bg">
 
         <ImageView
+            android:id="@+id/top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/im_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base15dp"
@@ -20,6 +26,7 @@
             android:src="@mipmap/back" />
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -30,37 +37,57 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/tv_describe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/base70dp"
             android:layout_marginLeft="@dimen/base15dp"
+            android:ellipsize="end"
+            android:maxEms="15"
+            android:maxLength="15"
+            android:singleLine="true"
             android:text="你还没填写个人说明"
             android:textColor="@color/bg_white"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_follow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/base50dp"
             android:layout_marginLeft="@dimen/base15dp"
-            android:text="粉丝 6.3万 | 粉丝 6.3万"
+            android:text="关注 42  |  粉丝 6.3万"
             android:textColor="@color/bg_white"
             android:textSize="12sp" />
 
         <LinearLayout
-            android:layout_width="@dimen/base55dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/ll_living"
+            android:layout_width="@dimen/base65dp"
+            android:layout_height="@dimen/base17dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="@dimen/base70dp"
-            android:background="@color/bg_white">
+            android:background="@drawable/live_beat_solid"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.zsh.blackcard.view.LiveBeatView
+                android:id="@+id/view_living"
+                android:layout_width="@dimen/base20dp"
+                android:layout_height="@dimen/base17dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/base5dp"
+                android:padding="@dimen/base2dp"
+
+                />
 
             <TextView
+                android:id="@+id/tv_living"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/base15dp"
+                android:gravity="center"
                 android:text="直播中"
                 android:textColor="@color/ff00_text"
                 android:textSize="11sp" />

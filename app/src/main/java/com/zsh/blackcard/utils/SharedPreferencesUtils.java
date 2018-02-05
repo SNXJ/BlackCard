@@ -5,7 +5,13 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.zsh.blackcard.BaseApplication;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -213,5 +219,61 @@ public class SharedPreferencesUtils {
     public static SharedPreferences getInstance(Context context, String config) {
         return context.getSharedPreferences(config,
                 Context.MODE_PRIVATE);
+    }
+
+
+    /**
+     * 保存List
+     *
+     * @param tag
+     * @param datalist
+     */
+    public static <T> void saveDataList(Context context, String tag, List<T> datalist) {
+        if (null == datalist || datalist.size() <= 0)
+            return;
+        if (sharedPreferences == null) {
+            sharedPreferences = context.getSharedPreferences(CONFIG,
+                    Context.MODE_PRIVATE);
+        }
+        Gson gson = new Gson();
+        //转换成json数据，再保存
+        String strJson = gson.toJson(datalist);
+
+        sharedPreferences.edit().putString(tag, strJson).commit();
+
+
+    }
+
+    /**
+     * 获取List
+     *
+     * @param tag
+     * @return
+     */
+    public static <T> List<T> getDataList(Context context, String tag, Class clazz) {
+        List<T> datalist = new ArrayList<T>();
+        if (sharedPreferences == null) {
+            sharedPreferences = context.getSharedPreferences(CONFIG,
+                    Context.MODE_PRIVATE);
+        }
+        String strJson = sharedPreferences.getString(tag, null);
+
+        if (null == strJson) {
+            return datalist;
+        }
+        return jsonToArrayList(strJson, clazz);
+
+    }
+
+    public static <T> ArrayList<T> jsonToArrayList(String json, Class<T> clazz) {
+        Type type = new TypeToken<ArrayList<JsonObject>>() {
+        }.getType();
+        ArrayList<JsonObject> jsonObjects = new Gson().fromJson(json, type);
+
+        ArrayList<T> arrayList = new ArrayList<>();
+        for (JsonObject jsonObject : jsonObjects) {
+            arrayList.add(new Gson().fromJson(jsonObject, clazz));
+        }
+        return arrayList;
     }
 }

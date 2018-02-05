@@ -91,13 +91,13 @@
 
 
     <tyrantgit.widget.HeartLayout
-        android:visibility="gone"
         android:id="@+id/heart_layout"
         android:layout_width="150dp"
         android:layout_height="@dimen/base350dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="60dp" />
+        android:layout_marginBottom="60dp"
+        android:visibility="gone" />
 
 
     <RelativeLayout
@@ -123,7 +123,6 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/base55dp"
             android:src="@mipmap/room_icon_3" />
-
 
 
         <ImageView
@@ -178,5 +177,9 @@
             android:text="发送"
             android:textColor="@color/colorPrimary" />
     </LinearLayout>
+
+    <include layout="@layout/live_room_over" />
+
+
 
 </RelativeLayout>
