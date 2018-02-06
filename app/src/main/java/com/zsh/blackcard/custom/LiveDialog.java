@@ -11,15 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.alivc.live.pusher.AlivcLivePusher;
 import com.zsh.blackcard.R;
-import com.zsh.blackcard.listener.ItemClickListener;
 import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.SharedPreferencesUtils;
+import com.zsh.blackcard.utils.StringUtils;
+import com.zsh.blackcard.utils.UIUtils;
 
 import static com.alivc.live.pusher.AlivcLivePushCameraTypeEnum.CAMERA_TYPE_BACK;
 import static com.alivc.live.pusher.AlivcLivePushCameraTypeEnum.CAMERA_TYPE_FRONT;
@@ -38,36 +41,62 @@ public class LiveDialog {
         this.mContext = context;
     }
 
-
     /**
-     * 首页右上弹窗
-     *
-     * @param context
-     * @param view
-     * @param listener 点击监听
+     * 直播  更多输入选项
      */
-    public  void liveSelectMorePop(Context context, View view, ItemClickListener listener) {
-        final PopGiftSelect popWinShare = new PopGiftSelect(context, listener);
-        //监听窗口的焦点事件，点击窗口外面则取消显示
-        popWinShare.getContentView().setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+    public Dialog liveGiftDialog(final TextView textView) {
+        View view = LayoutInflater.from(mContext).inflate(
+                R.layout.live_gift_edit_layout, null);
+        final Dialog dialog = showDialogView(view, (Activity) mContext);
+        final EditText edit_num = view.findViewById(R.id.edit_num);
+        final TextView tv_confirm = view.findViewById(R.id.tv_confirm);
+
+
+
+        dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        //弹出对话框后直接弹出键盘
+        edit_num.setFocusableInTouchMode(true);
+        edit_num.requestFocus();
+      final  android.os.Handler handler = new android.os.Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    popWinShare.dismiss();
+            public void run() {
+                InputMethodManager inputManager = (InputMethodManager) edit_num.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.showSoftInput(edit_num, 0);
+            }
+        }, 100);
+
+        tv_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String str = edit_num.getText().toString().trim();
+                if (!StringUtils.isEmpty(str)) {
+                    dialog.dismiss();
+                    textView.setText(str);
+
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            InputMethodManager inputManager = (InputMethodManager) edit_num.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                            inputManager.toggleSoftInput(InputMethodManager.HIDE_NOT_ALWAYS, 0);
+                        }
+                    }, 100);
+
+                } else {
+                    UIUtils.showToast("请输入数字");
+
                 }
+
+
             }
         });
-        // }
 
-        //设置默认获取焦点
-        popWinShare.setFocusable(true);
-        //以某个控件的x和y的偏移量位置开始显示窗口
-        popWinShare.showAsDropDown(view, 0, 0);
-
-        //如果窗口存在，则更新
-        popWinShare.update();
-
+        return dialog;
     }
+
 
     /**
      * 直播  美颜页面
@@ -338,6 +367,11 @@ public class LiveDialog {
         window.setWindowAnimations(R.style.dailog_anim_enterorout_window_up);
         dialog.show();
         WindowManager windowManager = mContext.getWindowManager();
+
+        dialog.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,
+                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
         Display display = windowManager.getDefaultDisplay();
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
         lp.width = (int) (display.getWidth()); // 设置宽度

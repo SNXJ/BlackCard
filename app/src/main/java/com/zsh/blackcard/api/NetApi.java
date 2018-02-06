@@ -1732,8 +1732,9 @@ public class NetApi extends DataManager {
     public static Observable<SignInDataModel> getSignData(String md5, String user_id) {
         return retrofitService.getAbSignData(md5, user_id);
     }
+
     /**
-     * 签到
+     * 尚播 签到
      *
      * @param md5
      * @param user_id
@@ -1741,5 +1742,16 @@ public class NetApi extends DataManager {
      */
     public static Observable<ResultModel> sendSingIn(String md5, String user_id) {
         return retrofitService.sendSingIn(md5, user_id);
+    }
+
+    /**
+     * 尚播 贡献榜
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public static Observable<AbContriModel> getAbRankingList(String md5, String user_id, String type) {
+        return retrofitService.getAbRankingList(md5, user_id, type);
     }
 }

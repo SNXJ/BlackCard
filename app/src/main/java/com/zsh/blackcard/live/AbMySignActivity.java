@@ -17,6 +17,7 @@ import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SignInDataModel;
 import com.zsh.blackcard.utils.MyCalendar;
+import com.zsh.blackcard.utils.StringUtils;
 import com.zsh.blackcard.utils.UIUtils;
 import com.zsh.blackcard.view.datepickter.DPCManager;
 import com.zsh.blackcard.view.datepickter.DPDecor;
@@ -69,7 +70,7 @@ public class AbMySignActivity extends BaseActivity {
         ButterKnife.bind(this);
         rippleBackground.startRippleAnimation();
         getSignData();
-        initData("");
+        initData("");// temp 提前绘制
 
     }
 
@@ -80,9 +81,9 @@ public class AbMySignActivity extends BaseActivity {
 
                 if ("01".equals(obj.getResult())) {
                     tvSignNum.setText("已签" + obj.getPd().getCHECK_INDAYS() + "天");
-//                    if (!StringUtils.isEmpty(obj.getPd().getCHECK_DATES())) {
-                    initSignData((obj.getPd().getCHECK_DATES()));
-//                    }
+                    if (!StringUtils.isEmpty(obj.getPd().getCHECK_DATES())) {
+                        initSignData((obj.getPd().getCHECK_DATES()));
+                    }
                 }
 
             }
@@ -118,7 +119,6 @@ public class AbMySignActivity extends BaseActivity {
     }
 
     private void initData(String datas) {
-
         dpcManager.clearnDATE_CACHE(); //清除cache
         //自定义背景绘制示例
         tmp.add("2018-02-00"); //错误格式
@@ -136,7 +136,6 @@ public class AbMySignActivity extends BaseActivity {
             if (str.startsWith("0")) {
                 str = str.substring(1, 2);
             }
-
             tmp.add(MyCalendar.getNowYear() + "-" + MyCalendar.getNowMonth() + "-" + str);
         }
 
@@ -170,7 +169,6 @@ public class AbMySignActivity extends BaseActivity {
 
         myDatepicker.setMiddleTitle(MyCalendar.getNowYear() + "年" + MyCalendar.getNowMonth() + "月"); //上方text
 
-//        myDatepicker.set
         //设置预先选中日期的背景颜色
         myDatepicker.setDPDecor(new DPDecor() {
             @Override
@@ -190,7 +188,6 @@ public class AbMySignActivity extends BaseActivity {
                 break;
             case R.id.tv_sign:
                 sendSignIn();
-//                signIn();
                 break;
             case R.id.content:
                 break;

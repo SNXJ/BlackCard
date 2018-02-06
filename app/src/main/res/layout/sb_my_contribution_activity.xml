@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:background="@color/main_black"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
 
     <RelativeLayout style="@style/title_rl">
 
@@ -16,59 +17,21 @@
             style="@style/title_tv"
             android:text="贡献榜" />
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base35dp">
 
-        <RadioButton
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="@dimen/base32dp"
-            android:background="@drawable/button_underlin"
-            android:button="@null"
-            android:checked="true"
-            android:gravity="center"
-            android:text="日榜"
-            android:textColor="@color/sbtext"
-            android:textSize="15sp" />
-        <RadioButton
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="@dimen/base124dp"
-            android:background="@drawable/button_underlin"
-            android:button="@null"
-            android:gravity="center"
-            android:text="周榜"
-            android:textColor="@color/sbtext"
-            android:textSize="15sp" />
-        <RadioButton
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base124dp"
-            android:background="@drawable/button_underlin"
-            android:button="@null"
-            android:gravity="center"
-            android:text="月榜"
-            android:textColor="@color/sbtext"
-            android:textSize="15sp" />
-        <RadioButton
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/base32dp"
-            android:background="@drawable/button_underlin"
-            android:button="@null"
-            android:gravity="center"
-            android:text="总榜"
-            android:textColor="@color/sbtext"
-            android:textSize="15sp" />
-    </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <android.support.design.widget.TabLayout
+        android:id="@+id/top_tab"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></android.support.v4.view.ViewPager>
+        android:layout_height="@dimen/base35dp"
+        app:tabIndicatorColor="@android:color/transparent"
+        app:tabSelectedTextColor="@color/bg_white"
+        app:tabTextAppearance="@style/tab_music_main"
+        app:tabTextColor="@color/ff92_text" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

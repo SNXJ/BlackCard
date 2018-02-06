@@ -18,10 +18,10 @@ import com.zsh.blackcard.custom.GlideCircleTransform;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.live.AbMyContributionActivity;
 import com.zsh.blackcard.live.AbMyFriendActivity;
+import com.zsh.blackcard.live.AbMyRankActivity;
 import com.zsh.blackcard.live.AbMySettingActivity;
 import com.zsh.blackcard.live.AbMySignActivity;
 import com.zsh.blackcard.live.AbMyTaskActivity;
-import com.zsh.blackcard.live.LiveRankActivity;
 import com.zsh.blackcard.model.AbMyModel;
 import com.zsh.blackcard.utils.ActivityUtils;
 
@@ -127,7 +127,7 @@ public class SbMyActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(SbMyActivity.this, AbMySignActivity.class));
                 break;
             case R.id.rl_rank:
-                startActivity(new Intent(SbMyActivity.this, LiveRankActivity.class));
+                startActivity(new Intent(SbMyActivity.this, AbMyRankActivity.class));
                 break;
             case R.id.rl_center:
                 startActivity(new Intent(SbMyActivity.this, AbMyTaskActivity.class));

@@ -77,26 +77,26 @@
 
     </string-array>
     <string-array name="gifts_money_normal">
-        <item>1黑咖币</item>
-        <item>1黑咖币</item>
-        <item>1黑咖币</item>
-        <item>1黑咖币</item>
-        <item>6黑咖币</item>
-        <item>10黑咖币</item>
-        <item>18黑咖币</item>
-        <item>28黑咖币</item>
-        <item>68黑咖币</item>
-        <item>188黑咖币</item>
-        <item>1黑咖币</item>
-        <item>1黑咖币</item>
-        <item>1黑咖币</item>
-        <item>1黑咖币</item>
-        <item>1黑咖币</item>
-        <item>18黑咖币</item>
-        <item>68黑咖币</item>
-        <item>188黑咖币</item>
-        <item>288黑咖币</item>
-        <item>288黑咖币</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>6</item>
+        <item>10</item>
+        <item>18</item>
+        <item>28</item>
+        <item>68</item>
+        <item>188</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>18</item>
+        <item>68</item>
+        <item>188</item>
+        <item>288</item>
+        <item>288</item>
 
     </string-array>
 
@@ -138,16 +138,16 @@
     </string-array>
 
     <string-array name="gifts_money_light">
-        <item>100黑咖币</item>
-        <item>200黑咖币</item>
-        <item>300黑咖币</item>
-        <item>400黑咖币</item>
-        <item>500黑咖币</item>
-        <item>600黑咖币</item>
-        <item>700黑咖币</item>
-        <item>800黑咖币</item>
-        <item>900黑咖币</item>
-        <item>1000黑咖币</item>
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
     </string-array>
     <integer-array name="gifts_image_light">
         <item>@mipmap/gift_image_31</item>
@@ -178,16 +178,16 @@
     </string-array>
 
     <string-array name="gifts_money_luxury">
-        <item>100黑咖币</item>
-        <item>200黑咖币</item>
-        <item>300黑咖币</item>
-        <item>400黑咖币</item>
-        <item>500黑咖币</item>
-        <item>600黑咖币</item>
-        <item>700黑咖币</item>
-        <item>800黑咖币</item>
-        <item>900黑咖币</item>
-        <item>1000黑咖币</item>
+        <item>100</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>700</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
     </string-array>
     <integer-array name="gifts_image_luxury">
         <item>@mipmap/gift_image_21</item>

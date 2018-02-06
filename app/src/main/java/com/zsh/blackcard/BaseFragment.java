@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.utils.MPermissionUtils;
-import com.zsh.blackcard.utils.StatusBarColorUtil;
 
 import butterknife.ButterKnife;
 
@@ -40,7 +39,7 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         context = getActivity();
-        StatusBarColorUtil.setStatusBarColor(getActivity());
+//        StatusBarColorUtil.setStatusBarColor(getActivity());
         baseApplication = BaseApplication.getApplication();
         //  user = SharedPreferencesUtils.getUser(baseApplication);
 

@@ -58,7 +58,7 @@ public class MusicSingerFragment extends BaseFragment {
     private String[] sexType = new String[]{null, "0", "1", "2"};
     private String sexPoint = null;
     private String areaPoint = null;
-//    private String[] typeTab = new String[]{"全部", "流行", "嘻哈", "摇滚", "电子", "民谣", "民歌", "其他"};
+
 
     @Override
     public void initDate(Bundle savedInstanceState) {

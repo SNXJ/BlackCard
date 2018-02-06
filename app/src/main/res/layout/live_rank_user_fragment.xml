@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base15dp"
+        android:layout_marginTop="@dimen/base25dp"
+        android:text="如何快速升级"
+        android:textColor="@color/ff92_text"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/base175dp"
+            android:layout_height="@dimen/base175dp"
+            android:layout_marginTop="@dimen/base30dp"
+            android:src="@mipmap/grade_image_3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base20dp"
+            android:text="看直播，分享直播，刷礼物，就可以获得经验值"
+            android:textColor="@color/ff92_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base10dp"
+            android:text="获取上线：看直播1小时／天，分享3次／天，送礼无上限"
+            android:textColor="@color/ff92_text"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

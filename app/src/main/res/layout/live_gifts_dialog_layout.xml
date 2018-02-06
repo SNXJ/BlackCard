@@ -115,7 +115,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:maxLength="4"
-                    android:text="1314"
+                    android:text="1"
                     android:textColor="@color/sbtext"
                     android:textSize="14sp" />
 

@@ -25,7 +25,7 @@ public class LiveRankUserFragment extends BaseFragment {
 
     @Override
     public View initView(LayoutInflater inflater) {
-        View view = View.inflate(getActivity(), R.layout.live_rank_anchor_fragment, null);
+        View view = View.inflate(getActivity(), R.layout.live_rank_user_fragment, null);
 
         return view;
     }

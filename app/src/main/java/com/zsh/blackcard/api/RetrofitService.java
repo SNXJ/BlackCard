@@ -941,4 +941,9 @@ public interface RetrofitService {
     @POST("applivein/usercheckin?")
     Observable<ResultModel> sendSingIn(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
 
+    //尚播  贡献榜
+    @FormUrlEncoded
+    @POST("applivein/getrankinglist?")
+    Observable<AbContriModel> getAbRankingList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("TYPE") String TYPE);
+
 }
