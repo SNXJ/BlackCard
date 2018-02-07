@@ -12,6 +12,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/***
+ * 找回登录密码
+ */
 public class RememberPassWordActivity extends BaseActivity {
 
     @BindView(R.id.activity_remember_user_et)

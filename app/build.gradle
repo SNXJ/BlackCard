@@ -176,6 +176,6 @@ dependencies {
 //    compile (name:'AlivcPlayer',ext:'aar')
 //    compile (name:'AliyunVodPlayer',ext:'aar')
 //    compile (name:'AlivcReporter',ext:'aar')
-    compile (name:'AlivcPlayer-3.2.0',ext:'aar')
-    compile (name:'live-pusher-resources-3.2.0',ext:'aar')
+    compile(name: 'AlivcPlayer-3.2.0', ext: 'aar')
+    compile(name: 'live-pusher-resources-3.2.0', ext: 'aar')
 }

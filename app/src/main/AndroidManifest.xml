@@ -45,9 +45,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan">
-
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.SbActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -59,7 +57,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data
@@ -297,12 +294,16 @@
         <activity android:name=".ui.my.MySettedBusinessSubmitActivity" />
         <activity android:name=".ui.my.MySettedBusinessPhotoActivity" />
         <activity android:name=".aliLive.AliLiveRoomActivity" />
-
         <activity android:name=".ui.home.HomeNewsSendActivity" />
         <!--<activity android:name=".aliLive.AliLivePlayActivity"
         android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
         />-->
 
+        <activity android:name=".aliLive.AliLivePlayActivity" />
+        <activity android:name=".ui.my.MySettedShopPhotoActivity" />
+        <activity android:name=".ui.my.MySettedYingYePhotoActivity" />
+        <activity android:name=".ui.my.MySettedZiMeiTiActivity" />
+        <activity android:name=".ui.my.MySettedZiMeiTiSubmitActivity"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,8 @@ import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.model.*;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.http.Multipart;
 import rx.Observable;
 
 /**
@@ -1581,6 +1584,19 @@ public class NetApi extends DataManager {
     }
 
     /**
+     * 新的添加商品进购物车（暂未开发）
+     *
+     * @param md5
+     * @param STANDARD_ID
+     * @param HONOURUSER_ID
+     * @param UANTITY
+     * @return
+     */
+    public static Observable<ResultModel> postAddCart(String md5, String STANDARD_ID, String HONOURUSER_ID, String UANTITY) {
+        return retrofitService.postAddCart(md5, STANDARD_ID, HONOURUSER_ID, UANTITY);
+    }
+
+    /**
      * 上传地址
      *
      * @param md5
@@ -1708,6 +1724,48 @@ public class NetApi extends DataManager {
      */
     public static Observable<LiveRoomDialogModel> sendLiveGift(String md5, String ancher_userId, String myId, String moeny) {
         return retrofitService.sendLiveGift(md5, ancher_userId, myId, moeny);
+    }
+
+    /**
+     * 商家入驻接口
+     *
+     * @param map
+     * @param listPath
+     * @return
+     */
+    public static Observable<ResultModel> postShopInto(Map<String, String> map, List<MultipartBody.Part> listPath, ArrayList<String> idList, ArrayList<String> shopPath, String strPath) {
+        for (int i = 0; i < idList.size(); i++) {
+            File file = new File(idList.get(i));
+            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            MultipartBody.Part part = MultipartBody.Part.createFormData("APPLYFOR_IDCARDIMAGE", file.getName(), imageBody);
+            listPath.add(part);
+        }
+
+        for (int i = 0; i < shopPath.size(); i++) {
+            File file = new File(shopPath.get(i));
+            RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            MultipartBody.Part part = MultipartBody.Part.createFormData("APPLYFOR_IMAGES", file.getName(), imageBody);
+            listPath.add(part);
+        }
+
+        File file = new File(strPath);
+        RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("APPLYFOR_CHARTERIMAGE", file.getName(), imageBody);
+        listPath.add(part);
+
+        return retrofitService.postShopInto(map, listPath);
+    }
+
+    /**
+     * 根据地址返回经纬度
+     *
+     * @param key
+     * @param address
+     * @param city
+     * @return
+     */
+    public static Observable<ShopIntoLngLatModel> postLanLat(String key, String address, String city) {
+        return retrofitService.postLanLat(key, address, city);
     }
 
     /**

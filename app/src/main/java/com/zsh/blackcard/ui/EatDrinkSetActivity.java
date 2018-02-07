@@ -167,7 +167,7 @@ public class EatDrinkSetActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 0 && resultCode == 0) {
+        if (resultCode == 0 && requestCode == 0) {
             String title = data.getStringExtra("title");
             String content = data.getStringExtra("content");
             localMedia = (List<LocalMedia>) data.getSerializableExtra("list");

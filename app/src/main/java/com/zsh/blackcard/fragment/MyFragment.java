@@ -34,6 +34,7 @@ import com.zsh.blackcard.ui.MySettingActivity;
 import com.zsh.blackcard.ui.OrderCenterActivity;
 import com.zsh.blackcard.ui.VipCenterActivity;
 import com.zsh.blackcard.ui.WalletCenterActivity;
+import com.zsh.blackcard.ui.home.MainMusicActivity;
 import com.zsh.blackcard.ui.my.MySettedActivity;
 import com.zsh.blackcard.ui.zgactivity.GameCenterActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
@@ -136,7 +137,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             //音乐中心
             case R.id.my_music_center_relative:
-                ActivityUtils.startActivityForData(getActivity(), MusicHomeActivity.class, "2");
+                ActivityUtils.startActivityForData(getActivity(), MainMusicActivity.class, "2");
                 break;
             //我要入驻
             case R.id.my_settled_relative:

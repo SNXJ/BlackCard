@@ -226,4 +226,29 @@ public class ActivityUtils {
         Intent intent = new Intent(Settings.ACTION_SETTINGS);
         activity.startActivity(intent);
     }
+
+    /**
+     * 商家入驻专用跳转
+     *
+     * @param activity
+     * @param cls
+     * @param name
+     * @param province
+     * @param city
+     * @param county
+     * @param address_detail
+     * @param phone
+     * @param typeId
+     */
+    public static void startActivityShopInto(Activity activity, Class<?> cls, String name, String province, String city, String county, String address_detail, String phone, String typeId) {
+        Intent intent = new Intent(activity, cls);
+        intent.putExtra("name", name);
+        intent.putExtra("province", province);
+        intent.putExtra("city", city);
+        intent.putExtra("county", county);
+        intent.putExtra("address_detail", address_detail);
+        intent.putExtra("phone", phone);
+        intent.putExtra("typeId", typeId);
+        activity.startActivity(intent);
+    }
 }

@@ -3,6 +3,7 @@ package com.zsh.blackcard.ui.my;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.TextViewCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -44,21 +46,52 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
     EditText detailEt;
     @BindView(R.id.phone_et)
     EditText phoneEt;
+    @BindView(R.id.activity_eat_drink_set_title_tv)
+    TextView activity_eat_drink_set_title_tv;
+    @BindView(R.id.name_tv)
+    TextView name_tv;
+    @BindView(R.id.address_tv)
+    TextView address_tv;
+    @BindView(R.id.phone_tv)
+    TextView phone_tv;
 
     private ArrayList<JsonBean> options1Items = new ArrayList<>();
     private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
     private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
     private List<View> viewList = new ArrayList<>();
     private WelBussAdapter welBussAdapter;
+    private String type_id = null;
+    private String province = null;
+    private String city = null;
+    private String county = null;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_my_setted_business);
         ButterKnife.bind(this);
-        //检测是否需要弹出引导页(目前为每次都弹出)
-        initWelCome();
+
+        ActivityUtils.addActivity(this);
+
+        String data = getIntent().getStringExtra("data");
+        type_id = getIntent().getStringExtra("title");
+        if (data.equals("1")) {
+            initText("门店");
+            //检测是否需要弹出引导页(目前为每次都弹出)
+            initWelCome("门店");
+        } else {
+            initText("企业");
+            //检测是否需要弹出引导页(目前为每次都弹出)
+            initWelCome("企业");
+        }
         //初始化页面数据
         initData();
+    }
+
+    private void initText(String text) {
+        activity_eat_drink_set_title_tv.setText(text + "入驻");
+        name_tv.setText(text + "名称");
+        address_tv.setText(text + "地址");
+        phone_tv.setText(text + "电话");
     }
 
     private TextView tv_one;
@@ -72,7 +105,7 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
     private Dialog dialog;
 
     //检测是否需要弹出引导页
-    private void initWelCome() {
+    private void initWelCome(String text) {
         View view = LayoutInflater.from(this).inflate(R.layout.welcome_buss_viewpager, null);
         //实例化三个圆点
         tv_one = view.findViewById(R.id.tv_one);
@@ -84,6 +117,14 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
         View viewOne = LayoutInflater.from(this).inflate(R.layout.wel_buss_one, null);
         View viewTwo = LayoutInflater.from(this).inflate(R.layout.wel_buss_two, null);
         View viewThree = LayoutInflater.from(this).inflate(R.layout.wel_buss_three, null);
+        TextView tv_titles = viewOne.findViewById(R.id.tv_titles);
+        TextView tv_ones = viewOne.findViewById(R.id.tv_ones);
+        TextView tv_twos = viewOne.findViewById(R.id.tv_twos);
+        TextView tv_threes = viewOne.findViewById(R.id.tv_threes);
+        tv_titles.setText(text + "入驻");
+        tv_ones.setText("1、填写" + text + "名称");
+        tv_twos.setText("2、填写" + text + "详细地址");
+        tv_threes.setText("3、填写" + text + "电话");
         viewList.add(viewOne);
         viewList.add(viewTwo);
         viewList.add(viewThree);
@@ -249,6 +290,9 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
                 addressEt.setText(options1Items.get(options1).getPickerViewText() + options2Items.get(options1).get(option2) + options3Items.get(options1).get(option2).get(options3));
+                province = options1Items.get(options1).getPickerViewText();
+                city = options2Items.get(options1).get(option2);
+                county = options3Items.get(options1).get(option2).get(options3);
             }
         })
                 .setSubmitColor(Color.GRAY)
@@ -261,12 +305,12 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
         pvOptions.show();
     }
 
+    //提交
     private void submit() {
         if (!TextUtils.isEmpty(nameEt.getText().toString().trim()) && !TextUtils.isEmpty(addressEt.getText().toString().trim()) && !TextUtils.isEmpty(detailEt.getText().toString().trim()) && !TextUtils.isEmpty(phoneEt.getText().toString().trim())) {
-            ActivityUtils.startActivity(this, MySettedBusinessSubmitActivity.class);
+            ActivityUtils.startActivityShopInto(this, MySettedBusinessSubmitActivity.class, nameEt.getText().toString().trim(), province, city, county, detailEt.getText().toString().trim(), phoneEt.getText().toString().trim(), type_id);
         } else {
             UIUtils.showToast("请完善全部信息");
         }
     }
-
 }

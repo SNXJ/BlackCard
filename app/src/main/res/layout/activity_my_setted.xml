@@ -62,7 +62,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/one_img"
-                    android:text="美食商家入驻"
+                    android:text="美食商家"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -96,7 +96,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/two_img"
-                    android:text="酒店商家入驻"
+                    android:text="酒店商家"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -130,7 +130,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/three_img"
-                    android:text="马术商家入驻"
+                    android:text="马术商家"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -164,7 +164,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/four_img"
-                    android:text="游艇商家入驻"
+                    android:text="游艇商家"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -198,7 +198,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/five_img"
-                    android:text="豪车商家入驻"
+                    android:text="豪车商家"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -231,7 +231,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/six_img"
-                    android:text="高尔夫商家入驻"
+                    android:text="高尔夫商家"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -265,7 +265,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/seven_img"
-                    android:text="飞机商家入驻"
+                    android:text="飞机商家"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -300,7 +300,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/eight_img"
-                    android:text="高端品鉴商家入驻"
+                    android:text="高端品鉴商家"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -333,7 +333,41 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/nine_img"
-                    android:text="娱乐商家入驻"
+                    android:text="娱乐商家"
+                    android:textColor="@color/recharge_text"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/zg_shop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/base60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/base20dp"
+                android:paddingRight="@dimen/base15dp">
+
+                <ImageView
+                    android:id="@+id/zg_img"
+                    android:layout_width="@dimen/base40dp"
+                    android:layout_height="@dimen/base40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/zg_shop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/base15dp"
+                    android:layout_toRightOf="@+id/zg_img"
+                    android:text="尊购商品"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -367,7 +401,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/ten_img"
-                    android:text="金融机构入驻"
+                    android:text="金融机构"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -401,7 +435,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/elven_img"
-                    android:text="自媒体入驻"
+                    android:text="自媒体"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 
@@ -435,7 +469,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/base15dp"
                     android:layout_toRightOf="@+id/twelve_img"
-                    android:text="音乐入驻"
+                    android:text="音乐"
                     android:textColor="@color/recharge_text"
                     android:textSize="15sp" />
 

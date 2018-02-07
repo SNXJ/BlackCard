@@ -30,8 +30,8 @@ public class HomePublicDetailActivity extends BaseActivity {
     ImageView home_public_detail_three_img;
     @BindView(R.id.home_public_detail_introduce_tv)
     TextView home_public_detail_introduce_tv;
-    @BindView(R.id.home_public_detail_title_tv)
-    TextView home_public_detail_title_tv;
+    @BindView(R.id.recharge_text_two)
+    TextView recharge_text_two;
     @BindView(R.id.home_public_detail_title_content_tv)
     TextView home_public_detail_title_content_tv;
     @BindView(R.id.home_public_detail_care_tv)
@@ -82,7 +82,7 @@ public class HomePublicDetailActivity extends BaseActivity {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getPLANEDETIMGS().get(1)).into(home_public_detail_two_img);
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getPLANEDETIMGS().get(2)).into(home_public_detail_three_img);
                 home_public_detail_introduce_tv.setText(obj.getPd().get(0).getPLANEDETINTRO());
-                home_public_detail_title_tv.setText(obj.getPd().get(0).getPUPINTROTITLE());
+                recharge_text_two.setText(obj.getPd().get(0).getPUPINTROTITLE());
                 home_public_detail_title_content_tv.setText(obj.getPd().get(0).getPUPINTROCONTENT());
                 home_public_detail_care_tv.setText(obj.getPd().get(0).getPDOWNINTROTITLE());
                 home_public_detail_care_content_tv.setText(obj.getPd().get(0).getPDOWNINTROCONTENT());
@@ -103,7 +103,7 @@ public class HomePublicDetailActivity extends BaseActivity {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getYACHTDETIMGS().get(1)).into(home_public_detail_two_img);
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getYACHTDETIMGS().get(2)).into(home_public_detail_three_img);
                 home_public_detail_introduce_tv.setText(obj.getPd().get(0).getYACHTDETINTRO());
-                home_public_detail_title_tv.setText(obj.getPd().get(0).getPUPINTROTITLE());
+                recharge_text_two.setText(obj.getPd().get(0).getPUPINTROTITLE());
                 home_public_detail_title_content_tv.setText(obj.getPd().get(0).getPUPINTROCONTENT());
                 home_public_detail_care_tv.setText(obj.getPd().get(0).getPDOWNINTROTITLE());
                 home_public_detail_care_content_tv.setText(obj.getPd().get(0).getPDOWNINTROCONTENT());
@@ -124,7 +124,7 @@ public class HomePublicDetailActivity extends BaseActivity {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getLUXCARDETIMGS().get(1)).into(home_public_detail_two_img);
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getLUXCARDETIMGS().get(2)).into(home_public_detail_three_img);
                 home_public_detail_introduce_tv.setText(obj.getPd().get(0).getLUXCARDETINTRO());
-                home_public_detail_title_tv.setText(obj.getPd().get(0).getPUPINTROTITLE());
+                recharge_text_two.setText(obj.getPd().get(0).getPUPINTROTITLE());
                 home_public_detail_title_content_tv.setText(obj.getPd().get(0).getPUPINTROCONTENT());
                 home_public_detail_care_tv.setText(obj.getPd().get(0).getPDOWNINTROTITLE());
                 home_public_detail_care_content_tv.setText(obj.getPd().get(0).getPDOWNINTROCONTENT());
@@ -145,7 +145,7 @@ public class HomePublicDetailActivity extends BaseActivity {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getHORSEDETIMGS().get(1)).into(home_public_detail_two_img);
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getHORSEDETIMGS().get(2)).into(home_public_detail_three_img);
                 home_public_detail_introduce_tv.setText(obj.getPd().get(0).getHORSEDETINTRO());
-                home_public_detail_title_tv.setText(obj.getPd().get(0).getPUPINTROTITLE());
+                recharge_text_two.setText(obj.getPd().get(0).getPUPINTROTITLE());
                 home_public_detail_title_content_tv.setText(obj.getPd().get(0).getPUPINTROCONTENT());
                 home_public_detail_care_tv.setText(obj.getPd().get(0).getPDOWNINTROTITLE());
                 home_public_detail_care_content_tv.setText(obj.getPd().get(0).getPDOWNINTROCONTENT());
@@ -166,7 +166,7 @@ public class HomePublicDetailActivity extends BaseActivity {
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getGOLFDETIMGS().get(1)).into(home_public_detail_two_img);
                 Glide.with(HomePublicDetailActivity.this).load(obj.getPd().get(0).getGOLFDETIMGS().get(2)).into(home_public_detail_three_img);
                 home_public_detail_introduce_tv.setText(obj.getPd().get(0).getGOLFDETINTRO());
-                home_public_detail_title_tv.setText(obj.getPd().get(0).getPUPINTROTITLE());
+                recharge_text_two.setText(obj.getPd().get(0).getPUPINTROTITLE());
                 home_public_detail_title_content_tv.setText(obj.getPd().get(0).getPUPINTROCONTENT());
                 home_public_detail_care_tv.setText(obj.getPd().get(0).getPDOWNINTROTITLE());
                 home_public_detail_care_content_tv.setText(obj.getPd().get(0).getPDOWNINTROCONTENT());

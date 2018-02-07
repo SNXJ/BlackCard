@@ -34,8 +34,8 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
     ImageView home_public_detail_three_img;
     @BindView(R.id.home_public_detail_introduce_tv)
     TextView home_public_detail_introduce_tv;
-    @BindView(R.id.home_public_detail_title_tv)
-    TextView home_public_detail_title_tv;
+    @BindView(R.id.recharge_text_two)
+    TextView recharge_text_two;
     @BindView(R.id.home_public_detail_title_content_tv)
     TextView home_public_detail_title_content_tv;
     @BindView(R.id.home_public_detail_care_tv)
@@ -75,7 +75,7 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeHorseDetailModel.getPd().get(0).getHORSEDETIMGS().get(1)).into(home_public_detail_two_img);
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeHorseDetailModel.getPd().get(0).getHORSEDETIMGS().get(2)).into(home_public_detail_three_img);
                         home_public_detail_introduce_tv.setText(homeHorseDetailModel.getPd().get(0).getHORSEDETINTRO());
-                        home_public_detail_title_tv.setText(homeHorseDetailModel.getPd().get(0).getPUPINTROTITLE());
+                        recharge_text_two.setText(homeHorseDetailModel.getPd().get(0).getPUPINTROTITLE());
                         home_public_detail_title_content_tv.setText(homeHorseDetailModel.getPd().get(0).getPUPINTROCONTENT());
                         home_public_detail_care_tv.setText(homeHorseDetailModel.getPd().get(0).getPDOWNINTROTITLE());
                         home_public_detail_care_content_tv.setText(homeHorseDetailModel.getPd().get(0).getPDOWNINTROCONTENT());
@@ -87,7 +87,7 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeCopterDetailModel.getPd().get(0).getPLANEDETIMGS().get(1)).into(home_public_detail_two_img);
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeCopterDetailModel.getPd().get(0).getPLANEDETIMGS().get(2)).into(home_public_detail_three_img);
                         home_public_detail_introduce_tv.setText(homeCopterDetailModel.getPd().get(0).getPLANEDETINTRO());
-                        home_public_detail_title_tv.setText(homeCopterDetailModel.getPd().get(0).getPUPINTROTITLE());
+                        recharge_text_two.setText(homeCopterDetailModel.getPd().get(0).getPUPINTROTITLE());
                         home_public_detail_title_content_tv.setText(homeCopterDetailModel.getPd().get(0).getPUPINTROCONTENT());
                         home_public_detail_care_tv.setText(homeCopterDetailModel.getPd().get(0).getPDOWNINTROTITLE());
                         home_public_detail_care_content_tv.setText(homeCopterDetailModel.getPd().get(0).getPDOWNINTROCONTENT());
@@ -99,7 +99,7 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeCarDetailModel.getPd().get(0).getLUXCARDETIMGS().get(1)).into(home_public_detail_two_img);
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeCarDetailModel.getPd().get(0).getLUXCARDETIMGS().get(2)).into(home_public_detail_three_img);
                         home_public_detail_introduce_tv.setText(homeCarDetailModel.getPd().get(0).getLUXCARDETINTRO());
-                        home_public_detail_title_tv.setText(homeCarDetailModel.getPd().get(0).getPUPINTROTITLE());
+                        recharge_text_two.setText(homeCarDetailModel.getPd().get(0).getPUPINTROTITLE());
                         home_public_detail_title_content_tv.setText(homeCarDetailModel.getPd().get(0).getPUPINTROCONTENT());
                         home_public_detail_care_tv.setText(homeCarDetailModel.getPd().get(0).getPDOWNINTROTITLE());
                         home_public_detail_care_content_tv.setText(homeCarDetailModel.getPd().get(0).getPDOWNINTROCONTENT());
@@ -111,7 +111,7 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeYachtDetailModel.getPd().get(0).getYACHTDETIMGS().get(1)).into(home_public_detail_two_img);
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeYachtDetailModel.getPd().get(0).getYACHTDETIMGS().get(2)).into(home_public_detail_three_img);
                         home_public_detail_introduce_tv.setText(homeYachtDetailModel.getPd().get(0).getYACHTDETINTRO());
-                        home_public_detail_title_tv.setText(homeYachtDetailModel.getPd().get(0).getPUPINTROTITLE());
+                        recharge_text_two.setText(homeYachtDetailModel.getPd().get(0).getPUPINTROTITLE());
                         home_public_detail_title_content_tv.setText(homeYachtDetailModel.getPd().get(0).getPUPINTROCONTENT());
                         home_public_detail_care_tv.setText(homeYachtDetailModel.getPd().get(0).getPDOWNINTROTITLE());
                         home_public_detail_care_content_tv.setText(homeYachtDetailModel.getPd().get(0).getPDOWNINTROCONTENT());
@@ -123,7 +123,7 @@ public class HomeGloryServerDetailActivity extends BaseActivity {
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeGolfDetailModel.getPd().get(0).getGOLFDETIMGS().get(1)).into(home_public_detail_two_img);
                         Glide.with(HomeGloryServerDetailActivity.this).load(homeGolfDetailModel.getPd().get(0).getGOLFDETIMGS().get(2)).into(home_public_detail_three_img);
                         home_public_detail_introduce_tv.setText(homeGolfDetailModel.getPd().get(0).getGOLFDETINTRO());
-                        home_public_detail_title_tv.setText(homeGolfDetailModel.getPd().get(0).getPUPINTROTITLE());
+                        recharge_text_two.setText(homeGolfDetailModel.getPd().get(0).getPUPINTROTITLE());
                         home_public_detail_title_content_tv.setText(homeGolfDetailModel.getPd().get(0).getPUPINTROCONTENT());
                         home_public_detail_care_tv.setText(homeGolfDetailModel.getPd().get(0).getPDOWNINTROTITLE());
                         home_public_detail_care_content_tv.setText(homeGolfDetailModel.getPd().get(0).getPDOWNINTROCONTENT());

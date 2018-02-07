@@ -43,7 +43,7 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
     public RegisterCardAdapter(RegisterActivity registerActivity) {
         this.context = registerActivity;
         //初始化默认所有item未被选择
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 4; i++) {
             if (i == 0) {
                 isCheck.add(true);
             } else {
@@ -62,21 +62,15 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         switch (position) {
             case 0:
-                holder.register_card_tv.setText("至尊会籍卡");
+                holder.register_card_tv.setText("荣耀黑卡");
                 break;
             case 1:
-                holder.register_card_tv.setText("荣耀会籍卡");
-                break;
-            case 2:
                 holder.register_card_tv.setText("名人联名卡");
                 break;
-            case 3:
-                holder.register_card_tv.setText("经典会籍卡");
-                break;
-            case 4:
+            case 2:
                 holder.register_card_tv.setText("12星座卡");
                 break;
-            case 5:
+            case 3:
                 holder.register_card_tv.setText("周易五行卡");
                 break;
         }
@@ -100,7 +94,7 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
                 }
 
                 //此处先回调，在更新
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 4; i++) {
                     isCheck.set(i, false);
                 }
 
@@ -115,7 +109,7 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
 
     @Override
     public int getItemCount() {
-        return 6;
+        return 4;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

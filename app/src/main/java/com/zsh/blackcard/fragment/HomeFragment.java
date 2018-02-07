@@ -131,6 +131,9 @@ public class HomeFragment extends BaseFragment implements BaseQuickAdapter.OnIte
             if (city.contains("市")) {
                 rb_city_home.setText(city.substring(0, city.indexOf("市")));
             }
+
+            BaseApplication.setCITY(city);
+
             String coorType = bdLocation.getCoorType();
             //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
             int errorCode = bdLocation.getLocType();

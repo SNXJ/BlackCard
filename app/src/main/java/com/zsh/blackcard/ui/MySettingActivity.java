@@ -14,10 +14,10 @@ import butterknife.OnClick;
 
 /**
  * Created by kkkkk on 2017/11/11.
+ * 我的设置页面
  */
 
 public class MySettingActivity extends BaseActivity {
-
 
     @Override
     protected void initUI() {
