@@ -346,7 +346,7 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
 
 
             int price = Integer.valueOf(selectGift.getMoney());
-//            sendGift(num * price);
+            sendGift(num * price);
         }
     };
 
@@ -357,6 +357,7 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
             @Override
             public void responseSuccess(LiveRoomDialogModel obj) {
                 if ("01".equals(obj.getResult())) {
+                    UIUtils.showToast("成功");
 
                 } else if ("07".equals(obj.getResult())) {
                     UIUtils.showToast("余额不足");

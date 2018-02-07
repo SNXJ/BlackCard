@@ -189,7 +189,6 @@
         <activity android:name=".live.RewardMoneyActivity" />
         <activity android:name=".live.AbMyRankActivity" />
         <activity android:name=".live.LiveRoomActivity" />
-        <activity android:name=".live.LiveAnchorDetails" />
         <activity android:name=".ui.zgactivity.GameCenterActivity" />
         <activity android:name=".ui.MySettingActivity" />
         <activity android:name=".ui.HuoDongActivity" />
@@ -202,10 +201,10 @@
         <activity android:name=".ui.ExChangeActivity" />
         <activity android:name=".ui.EatDrinkDetailActivity" />
         <activity android:name=".ui.zgactivity.GoodsCategoryActivity" />
-        <activity
-            android:name=".ui.home.HomeNewsActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait" />
+        <!--<activity-->
+        <!--android:name=".ui.home.HomeNewsActivity"-->
+        <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
+        <!--android:screenOrientation="portrait" />-->
         <activity android:name=".ui.zgactivity.PersonalActivity" />
         <activity android:name=".live.AbMyFriendActivity" />
         <activity android:name=".live.AbMyContributionActivity" />
@@ -228,7 +227,7 @@
         <activity android:name=".ui.MyOrderActivity" />
         <activity android:name=".ui.CollectionActivity" />
         <activity
-            android:name=".live.LiveAnchorDetails2"
+            android:name=".live.LiveAnchorDetails"
             android:theme="@style/FullTheme" />
         <activity android:name=".live.VideoDetailsActivity" />
         <activity android:name=".live.VideoIngActivity" />
@@ -295,9 +294,10 @@
         <activity android:name=".ui.my.MySettedBusinessPhotoActivity" />
         <activity android:name=".aliLive.AliLiveRoomActivity" />
         <activity android:name=".ui.home.HomeNewsSendActivity" />
-        <!--<activity android:name=".aliLive.AliLivePlayActivity"
-        android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
-        />-->
+        <activity android:name=".ui.NewChannelActivity" />
+        <activity
+            android:name=".aliLive.AliLivePlayActivity"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
 
         <activity android:name=".aliLive.AliLivePlayActivity" />
         <activity android:name=".ui.my.MySettedShopPhotoActivity" />

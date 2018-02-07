@@ -39,4 +39,8 @@
     <color name="gray_normal">#666667</color>
 
     <color name="blue">#0383EE</color>
+
+    <color name="tip">#9c9c9c</color>
+    <color name="bg_focus">#DDDDDD</color>
+    <color name="red_500">#ef4836</color>
 </resources>

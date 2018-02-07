@@ -35,7 +35,7 @@ import com.zsh.blackcard.listener.OrderDiaListenter;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.listener.SbNearChangeListener;
 import com.zsh.blackcard.listener.SelectDateListener;
-import com.zsh.blackcard.live.LiveAnchorDetails2;
+import com.zsh.blackcard.live.LiveAnchorDetails;
 import com.zsh.blackcard.model.LiveRoomDialogModel;
 import com.zsh.blackcard.model.OrderDialogModel;
 import com.zsh.blackcard.model.SbNearChangeModel;
@@ -260,7 +260,7 @@ public class PublicDialog {
                         break;
                     case 4:
 //                        mContext.startActivity(new Intent(mContext, VideoDetailsActivity.class));
-                        mContext.startActivity(new Intent(mContext, LiveAnchorDetails2.class));
+                        mContext.startActivity(new Intent(mContext, LiveAnchorDetails.class));
                         break;
                 }
             }
@@ -558,7 +558,7 @@ public class PublicDialog {
         rl_bg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, LiveAnchorDetails2.class);
+                Intent intent = new Intent(mContext, LiveAnchorDetails.class);
                 mContext.startActivity(intent);
             }
         });

@@ -40,6 +40,18 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
         iniData();
     }
 
+     /** AGREECOUNT : 1
+            * COMMENTCOUNT : 2
+            * SHOWIMAGES : ["http://image.rongyaohk.com/circleimgs/10a18d323f8b4f3a8b45c015caa1e081.png"]
+            * NICKNAME : White55开
+         * STATUS : 1
+            * PUBLISHTIME : 2018-02-01 14:25
+            * PORTRAIT : http://image.rongyaohk.com/userportrait/3d0a82c5b88d4249aaee0d2a770b25e1.jpg
+            * CIRCLE_ID : 408628858519027712
+            * CONTENT : A站融资失败，作为当局者，我该怎么办？
+            * HONOURUSER_ID : d6a3779de8204dfd9359403f54f7d27c
+         */
+
     private void iniData() {
 
         showLoading(this);
@@ -48,13 +60,13 @@ public class CircleCenterActivity extends BaseActivity implements BaseQuickAdapt
             @Override
             public void responseSuccess(MyCircleModel obj) {
                 if (obj.getResult().equals("01")) {
-                    for (int i = 0; i < obj.getPd().size(); i++) {
-                        if (obj.getPd().get(i).getSHOWIMAGES().equals("")) {
-                            obj.getPd().get(i).setItemType(2);
-                        } else {
-                            obj.getPd().get(i).setItemType(1);
-                        }
-                    }
+//                    for (int i = 0; i < obj.getPd().size(); i++) {
+//                        if (obj.getPd().get(i).getSHOWIMAGES().equals("")) {
+//                            obj.getPd().get(i).setItemType(2);
+//                        } else {
+//                            obj.getPd().get(i).setItemType(1);
+//                        }
+//                    }
                     circleCenterRecyclerAdapter = new CircleCenterRecyclerAdapter(obj.getPd());
                     circle_center_recycler.setLayoutManager(new LinearLayoutManager(CircleCenterActivity.this));
                     circle_center_recycler.addItemDecoration(new SpacesItemDecoration(CircleCenterActivity.this, SpacesItemDecoration.VERTICAL_LIST));
