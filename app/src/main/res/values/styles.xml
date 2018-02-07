@@ -3,16 +3,16 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/main_black</item>
+        <item name="colorPrimaryDark">@color/main_black</item>
+        <item name="colorAccent">@color/main_black</item>
         <!-- 给列表添加分割线 -->
         <item name="android:listDivider">@drawable/divider</item>
 
     </style>
 
     <style name="FullTheme" parent="AppTheme">
-        <!-- Customize your theme here. -->
+
         <item name="android:windowNoTitle">true</item>
 
         <item name="android:windowFullscreen">true</item>
@@ -111,7 +111,7 @@
     <style name="dialog_line">
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">@dimen/base1dp</item>
+        <item name="android:layout_height">0.5dp</item>
         <item name="android:background">@color/dialog_line</item>
     </style>
 

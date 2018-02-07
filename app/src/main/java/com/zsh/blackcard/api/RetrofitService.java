@@ -535,7 +535,7 @@ public interface RetrofitService {
 
     //粉丝列表
     @FormUrlEncoded
-    @POST("appfriendin/refriendlist?")
+    @POST("applivein/getfanslist?")
     Observable<AbMyFriendModel> myFollowList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
 
     //删除好友
@@ -543,9 +543,9 @@ public interface RetrofitService {
     @POST("appfriendin/delfriend?")
     Observable<ResultModel> delFriend(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id, @Field("REHONOURUSER_ID") String delId);
 
-    //好友列表
+    // 关注列表
     @FormUrlEncoded
-    @POST("appfriendin/friendlist?")
+    @POST("applivein/getfocuslist?")
     Observable<AbMyFriendModel> myFriendsList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String id);
 
     //添加好友
@@ -925,5 +925,25 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("applivein/gifttouser?")
     Observable<LiveRoomDialogModel> sendLiveGift(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID, @Field("BLACKPRICE") String money);
+
+    //尚播  我的
+    @FormUrlEncoded
+    @POST("applivein/getminedata?")
+    Observable<AbMyModel> getAbMyInfo(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //尚播  签到数据
+    @FormUrlEncoded
+    @POST("applivein/getcheckin?")
+    Observable<SignInDataModel> getAbSignData(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //尚播  签到
+    @FormUrlEncoded
+    @POST("applivein/usercheckin?")
+    Observable<ResultModel> sendSingIn(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+    //尚播  贡献榜
+    @FormUrlEncoded
+    @POST("applivein/getrankinglist?")
+    Observable<AbContriModel> getAbRankingList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("TYPE") String TYPE);
 
 }

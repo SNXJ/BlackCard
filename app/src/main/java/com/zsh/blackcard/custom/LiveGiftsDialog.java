@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -27,12 +26,13 @@ import com.zsh.blackcard.adapter.LiveGiftAdapter;
 import com.zsh.blackcard.adapter.MyPageAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
-import com.zsh.blackcard.listener.DateListener;
 import com.zsh.blackcard.listener.ItemClickListener;
+import com.zsh.blackcard.listener.MoreDateListener;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.GiftTempModel;
 import com.zsh.blackcard.model.LiveRoomDialogModel;
 import com.zsh.blackcard.utils.DisplayUtil;
+import com.zsh.blackcard.utils.LogUtils;
 import com.zsh.blackcard.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -49,6 +49,7 @@ import java.util.List;
 public class LiveGiftsDialog extends DialogFragment implements View.OnClickListener {
 
     public static String anchor_id;
+    private GiftTempModel selectGift;
 
     public static LiveGiftsDialog newInstance(String id) {
         anchor_id = id;
@@ -147,7 +148,6 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
         initdot();
         viewPager.setAdapter(new MyPageAdapter(recycleViews));
 
-//        viewPager.setPage
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -172,14 +172,18 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
 
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.live_gifts_dialog_recycle, null);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
-        LiveGiftAdapter liveGiftAdapter = new LiveGiftAdapter(giftsList);
+        final LiveGiftAdapter liveGiftAdapter = new LiveGiftAdapter(giftsList);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(liveGiftAdapter);
+        selectGift = giftsList.get(0);
+        liveGiftAdapter.setSelect(0);
         liveGiftAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                GiftTempModel data = (GiftTempModel) adapter.getData().get(position);
-                UIUtils.showToast(data.getName() + "");
+                selectGift = (GiftTempModel) adapter.getData().get(position);
+                LogUtils.i("++++++++++++++++", "+++++++recycle++++++++" + position);
+                liveGiftAdapter.setSelect(position);
+
             }
         });
 
@@ -268,9 +272,7 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
     private RelativeLayout rlGiftsNum;
 
     private TextView tvGiftsSend;
-    private LinearLayout layout_send_edit, gift_layout;
-//    private EditText send_edit;
-//    private TextView tv_send;
+
 
     @Override
     public void onClick(View view) {
@@ -290,7 +292,7 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
                 UIUtils.showToast("充值");
                 break;
             case R.id.rl_gifts_num:
-//                new LiveDialog(getActivity()).liveSelectMorePop(getActivity(), tvGiftsNum, null)
+
                 PopGiftSelect pop = new PopGiftSelect(getActivity(), listener);
                 pop.showUp2(rlGiftsNum);
                 break;
@@ -303,9 +305,9 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
         }
     }
 
-    private DateListener dataListenter;
+    private MoreDateListener dataListenter;
 
-    private void setNumEditListenter(DateListener mDataListenter) {
+    public void setNumEditListenter(MoreDateListener mDataListenter) {
 
         dataListenter = mDataListenter;
 
@@ -313,11 +315,12 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
 
     ItemClickListener listener = new ItemClickListener() {
         @Override
-        public void itemClick(int postion) {
-            tvGiftsNum.setText(postion + "");
+        public void itemClick(int num) {
 
-            sendGift("200");
-            switch (postion) {
+            tvGiftsNum.setText(num + "");
+
+
+            switch (num) {
                 case 1314:
                     break;
                 case 520:
@@ -334,20 +337,23 @@ public class LiveGiftsDialog extends DialogFragment implements View.OnClickListe
                     break;
                 case 00:
                     if (null != dataListenter) {
-                        dataListenter.dateListener("00");
+                        dataListenter.dateListener(tvGiftsNum);
                     }
 
                     break;
 
-
             }
+
+
+            int price = Integer.valueOf(selectGift.getMoney());
+//            sendGift(num * price);
         }
     };
 
 
-    private void sendGift(String money) {
+    private void sendGift(int money) {
 
-        DataManager.getInstance(getActivity()).RequestHttp(NetApi.sendLiveGift(DataManager.getMd5Str("GIFT"), BaseApplication.getHonouruserId(), anchor_id, money), new ResultListener<LiveRoomDialogModel>() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.sendLiveGift(DataManager.getMd5Str("GIFT"), BaseApplication.getHonouruserId(), anchor_id, money + ""), new ResultListener<LiveRoomDialogModel>() {
             @Override
             public void responseSuccess(LiveRoomDialogModel obj) {
                 if ("01".equals(obj.getResult())) {

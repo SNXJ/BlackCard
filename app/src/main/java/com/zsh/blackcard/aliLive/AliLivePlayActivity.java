@@ -1,5 +1,6 @@
 package com.zsh.blackcard.aliLive;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -26,8 +27,10 @@ import com.zsh.blackcard.adapter.LiveViewerAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.KeyboardStatusDetector;
+import com.zsh.blackcard.custom.LiveDialog;
 import com.zsh.blackcard.custom.LiveGiftsDialog;
 import com.zsh.blackcard.custom.PublicDialog;
+import com.zsh.blackcard.listener.MoreDateListener;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LiveChatModel;
 import com.zsh.blackcard.model.LiveRoomDialogModel;
@@ -109,6 +112,8 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     private LiveViewerAdapter viewerAdapter;
     private LiveChatAdapter liveChatAdapter;
 
+    private String anchor_id = "388279486010884100";//TODO temp 临时ID
+
 
     private Random mRandom;
 
@@ -123,9 +128,9 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
     protected void initData() {
         mSurfaceView.getHolder().addCallback(callback);
 
-        initVodPlayer();
-        setPlaySource();
-        replay();
+//        initVodPlayer();
+//        setPlaySource();
+//        replay();
         initTempDate();
 
     }
@@ -144,7 +149,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         }
 
         public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-//            Log.d(TAG, "onSurfaceChanged is valid ? " + holder.getSurface().isValid());
+
             if (mPlayer != null)
                 mPlayer.setSurfaceChanged();
         }
@@ -176,6 +181,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
         @Override
         public void onError(int i, String s) {
+
             AliLivePlayActivity activity = activityWeakReference.get();
             if (activity != null) {
                 activity.onError(i, s);
@@ -214,7 +220,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         private WeakReference<AliLivePlayActivity> activityWeakReference;
 
         public MyStoppedListener(AliLivePlayActivity activity) {
-            activityWeakReference = new WeakReference<AliLivePlayActivity>(activity);
+            activityWeakReference = new WeakReference<>(activity);
         }
 
 
@@ -237,7 +243,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         private WeakReference<AliLivePlayActivity> activityWeakReference;
 
         public MySeekCompleteListener(AliLivePlayActivity activity) {
-            activityWeakReference = new WeakReference<AliLivePlayActivity>(activity);
+            activityWeakReference = new WeakReference<>(activity);
         }
 
         @Override
@@ -258,7 +264,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         private WeakReference<AliLivePlayActivity> activityWeakReference;
 
         public MyPlayerCompletedListener(AliLivePlayActivity activity) {
-            activityWeakReference = new WeakReference<AliLivePlayActivity>(activity);
+            activityWeakReference = new WeakReference<>(activity);
         }
 
         @Override
@@ -284,7 +290,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         private WeakReference<AliLivePlayActivity> activityWeakReference;
 
         public MyFrameInfoListener(AliLivePlayActivity activity) {
-            activityWeakReference = new WeakReference<AliLivePlayActivity>(activity);
+            activityWeakReference = new WeakReference<>(activity);
         }
 
         @Override
@@ -394,9 +400,7 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
         viewList.add(R.mipmap.room_image_4);
         viewList.add(R.mipmap.room_image_5);
         viewList.add(R.mipmap.room_image_1);
-//        viewList.add(R.mipmap.room_image_1);
-//        viewList.add(R.mipmap.room_image_1);
-//        viewList.add(R.mipmap.room_image_1);
+
         viewerAdapter = new LiveViewerAdapter(viewList);
         viewerRecyclerView.setAdapter(viewerAdapter);
 //聊天
@@ -430,8 +434,8 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
                 finish();
                 break;
             case R.id.im_live_head:
-                //TODO temp 临时ID
-                getDialogData("388279486010884100");
+
+                getDialogData(anchor_id);
 
                 break;
             case R.id.gift_item_view:
@@ -452,7 +456,16 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
                 break;
             case R.id.im_gif:
-                LiveGiftsDialog lgd = LiveGiftsDialog.newInstance("388279486010884100");
+                LiveGiftsDialog lgd = LiveGiftsDialog.newInstance(anchor_id);
+                lgd.setNumEditListenter(new MoreDateListener() {
+
+                    @Override
+                    public void dateListener(TextView view) {
+
+                        giftEditDialog = new LiveDialog(AliLivePlayActivity.this).liveGiftDialog(view);
+
+                    }
+                });
                 lgd.show(getSupportFragmentManager(), "gifts");
                 break;
             case R.id.im_live_close:
@@ -461,6 +474,8 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
 
         }
     }
+
+    private Dialog giftEditDialog;
 
     private void getDialogData(final String anchor_id) {
 
@@ -544,9 +559,15 @@ public class AliLivePlayActivity extends BaseAliLiveActivity {
                         if (keyboardVisible) {
                             layoutSendMessage.setVisibility(View.VISIBLE);
                             rlButtom.setVisibility(View.GONE);
+
+//                            LogUtils.i("+++++++++++", "++++++++show++++++");
                         } else {
                             layoutSendMessage.setVisibility(View.GONE);
                             rlButtom.setVisibility(View.VISIBLE);
+                            if (null != giftEditDialog) {
+                                giftEditDialog.dismiss();
+                            }
+//
                         }
                     }
                 });

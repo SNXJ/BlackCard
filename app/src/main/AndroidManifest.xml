@@ -49,10 +49,11 @@
 
         </activity>
         <activity
-            android:name=".ui.WelcomeActivity"
+            android:name=".ui.SbActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/FullTheme"
             android:windowSoftInputMode="adjustResize">
+            <!--android:windowSoftInputMode="adjustResize"-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -149,7 +150,7 @@
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.AddressEditActivity" />
         <activity android:name=".ui.AddressManageActivity" />
-        <activity android:name=".ui.SbActivity" />
+        <!--<activity android:name=".ui.SbActivity" />-->
         <activity android:name=".ui.SbMyActivity" />
         <activity android:name=".ui.OrderDetailsActivity" />
         <activity android:name=".ui.IntegralActivity" />
@@ -189,7 +190,7 @@
         <activity android:name=".ui.zgactivity.BlackSurplusActivity" />
         <activity android:name=".live.LiveRechargeActivity" />
         <activity android:name=".live.RewardMoneyActivity" />
-        <activity android:name=".live.LiveRankActivity" />
+        <activity android:name=".live.AbMyRankActivity" />
         <activity android:name=".live.LiveRoomActivity" />
         <activity android:name=".live.LiveAnchorDetails" />
         <activity android:name=".ui.zgactivity.GameCenterActivity" />
@@ -298,7 +299,9 @@
         <activity android:name=".aliLive.AliLiveRoomActivity" />
 
         <activity android:name=".ui.home.HomeNewsSendActivity" />
-        <activity android:name=".aliLive.AliLivePlayActivity" />
+        <!--<activity android:name=".aliLive.AliLivePlayActivity"
+        android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
+        />-->
 
     </application>
 

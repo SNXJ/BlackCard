@@ -26,7 +26,7 @@ public class MyTheme extends DPTheme {
 
     @Override
     public int colorBGCircle() {
-        return context.getResources().getColor(R.color.ff92_text);
+        return context.getResources().getColor(R.color.bg_org);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class MyTheme extends DPTheme {
 
     @Override
     public int colorToday() {
-        return context.getResources().getColor(R.color.ff92_text);
+        return context.getResources().getColor(R.color.fffd_text);
     }
 
     @Override

@@ -28,7 +28,7 @@ public class AbMyFriendListAdapter extends BaseQuickAdapter<AbMyFriendModel.PdBe
     @Override
     protected void convert(final BaseViewHolder helper, AbMyFriendModel.PdBean item) {
         helper.setText(R.id.tv_name, item.getNICKNAME());
-        // helper.setText(R.id.tv_fans_num, item.getEVALUATEDATE());
+        helper.setText(R.id.tv_fans_num, "粉丝数：" + item.getFANSCOUNT());
         Glide.with(mContext).load(item.getPORTRAIT()).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(mContext))).into((ImageView) helper.getView(R.id.im_head));
         helper.addOnClickListener(R.id.tv_item_delete);
     }
