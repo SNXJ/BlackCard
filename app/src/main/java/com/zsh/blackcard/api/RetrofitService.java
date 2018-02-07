@@ -888,6 +888,13 @@ public interface RetrofitService {
                                          @Field("USERLONGITUDE") String USERLONGITUDE,
                                          @Field("USERLATITUDE") String USERLATITUDE);
 
+    //新的添加商品到购物车（暂未使用）
+    @FormUrlEncoded
+    @POST("appcartin/addcart?")
+    Observable<ResultModel> postAddCart(@Field("FKEY") String md5,
+                                        @Field("STANDARD_ID") String STANDARD_ID,
+                                        @Field("HONOURUSER_ID") String HONOURUSER_ID,
+                                        @Field("UANTITY:") String UANTITY);
 
     //主播详情
     @FormUrlEncoded
@@ -921,7 +928,6 @@ public interface RetrofitService {
     Observable<LiveRoomDialogModel> delAncher(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID);
 
     //直播礼物
-
     @FormUrlEncoded
     @POST("applivein/gifttouser?")
     Observable<LiveRoomDialogModel> sendLiveGift(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("REHONOURUSER_ID") String REHONOURUSER_ID, @Field("BLACKPRICE") String money);
@@ -946,4 +952,15 @@ public interface RetrofitService {
     @POST("applivein/getrankinglist?")
     Observable<AbContriModel> getAbRankingList(@Field("FKEY") String md5, @Field("HONOURUSER_ID") String HONOURUSER_ID, @Field("TYPE") String TYPE);
 
+    //商家入驻接口
+    @Multipart
+    @POST("business/appbusinessin?")
+    Observable<ResultModel> postShopInto(@QueryMap Map<String, String> map,
+                                         @Part List<MultipartBody.Part> listPath);
+
+    @FormUrlEncoded
+    @POST("api.map.baidu.com/geocoder?")
+    Observable<ShopIntoLngLatModel> postLanLat(@Field("key") String key,
+                                               @Field("address") String address,
+                                               @Field("city") String city);
 }

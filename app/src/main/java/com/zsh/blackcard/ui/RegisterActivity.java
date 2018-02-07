@@ -171,7 +171,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
 
         //以下代码实现办卡选择。例如：选择星座卡，五行卡，至尊卡等。
         registerCardAdapter = new RegisterCardAdapter(this);
-        register_recycler_card.setLayoutManager(new GridLayoutManager(this, 3));
+        register_recycler_card.setLayoutManager(new GridLayoutManager(this, 2));
         register_recycler_card.setAdapter(registerCardAdapter);
         registerCardAdapter.setRegisterCardOnItemClick(this);
 
@@ -516,26 +516,17 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
     public void cardOnItemClick(int position) {
         switch (position) {
             case 0:
-                cardType = "390181853778149376";
-                registr_recycler_card_last.setVisibility(View.GONE);
-                initSelectStatusRegisterCardAdapter(position, registerCardAdapter);
-                break;
-            case 1:
                 cardType = "390200265979646133";
                 registr_recycler_card_last.setVisibility(View.GONE);
                 initSelectStatusRegisterCardAdapter(position, registerCardAdapter);
                 break;
-            case 2:
+            case 1:
                 cardType = "390201795059646464";
                 registr_recycler_card_last.setVisibility(View.GONE);
                 initSelectStatusRegisterCardAdapter(position, registerCardAdapter);
                 break;
-            case 3:
-                cardType = "390201950420860928";
-                registr_recycler_card_last.setVisibility(View.GONE);
-                initSelectStatusRegisterCardAdapter(position, registerCardAdapter);
-                break;
-            case 4:
+
+            case 2:
                 cardType = "";
                 //12星座卡
                 if (registerCardConstellationAdapter == null) {
@@ -546,7 +537,7 @@ public class RegisterActivity extends BaseActivity implements ViewPager.OnPageCh
                 registr_recycler_card_last.setAdapter(registerCardConstellationAdapter);
                 registr_recycler_card_last.setVisibility(View.VISIBLE);
                 break;
-            case 5:
+            case 3:
                 //周易五行卡
                 if (registerCardWuXingAdapter == null) {
                     registerCardWuXingAdapter = new RegisterCardWuXingAdapter(this);

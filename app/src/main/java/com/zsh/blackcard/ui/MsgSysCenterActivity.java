@@ -7,6 +7,9 @@ import android.widget.RelativeLayout;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * Name: MsgCenterActivity
  * Author: SNXJ
@@ -14,18 +17,22 @@ import com.zsh.blackcard.R;
  * Description:消息中心
  */
 public class MsgSysCenterActivity extends BaseActivity {
-    RelativeLayout rl_sys_msg;
 
     @Override
     protected void initUI() {
         setContentView(R.layout.msg_sys_center_activity);
+        ButterKnife.bind(this);
+    }
 
-        findViewById(R.id.rl_sys_msg).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @OnClick({R.id.rl_sys_msg, R.id.title_back})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.title_back:
+                finish();
+                break;
+            case R.id.rl_sys_msg:
                 startActivity(new Intent(MsgSysCenterActivity.this, MsgSysDetailsActivity.class));
-            }
-        });
-
+                break;
+        }
     }
 }

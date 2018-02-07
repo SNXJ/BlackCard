@@ -1,10 +1,15 @@
 package com.zsh.blackcard.utils;
 
 
+import android.text.TextUtils;
+
 /**
  * 字符串匹配工具类
  */
 public class MatchUtil {
+    //手机号码校验
+    private static String PHONENUM = "[1][34578]\\d{9}";
+
     // 电话号码的正则表达式
     static String NumberRE1 = "(^(0\\d{2,3})?(\\d{7,8})(,\\d{3,})?)$";
     // 手机号码正则表达式
@@ -22,6 +27,21 @@ public class MatchUtil {
 
     private static final String PASSWORDREG = "^[\\x20-\\x7E]{6,50}$";
     private static final String ALLNUMBER = "^\\d{6,50}";
+
+    /**
+     * 校验手机号码是否是合法手机号
+     *
+     * @param phoneNum
+     * @return
+     */
+    public static boolean isMobile(String phoneNum) {
+        if (TextUtils.isEmpty(phoneNum)) {
+            return false;
+        } else {
+            //matches():字符串是否在给定的正则表达式匹配
+            return phoneNum.matches(PHONENUM);
+        }
+    }
 
     /**
      * 验证字符串是否是手机号码
@@ -107,7 +127,7 @@ public class MatchUtil {
      * @return
      */
     public static boolean isNumber(String str) {
-        for (int i = str.length(); --i >= 0;) {
+        for (int i = str.length(); --i >= 0; ) {
             int chr = str.charAt(i);
             if (chr < 48 || chr > 57) {
                 return false;

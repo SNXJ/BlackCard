@@ -6,7 +6,7 @@
     android:layout_height="@dimen/base318dp">
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/tv_titles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/base85dp"
@@ -19,38 +19,35 @@
 
     <TextView
         android:textSize="12sp"
-        android:id="@+id/tv_one"
+        android:id="@+id/tv_ones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/base25dp"
         android:layout_marginTop="@dimen/base30dp"
-        android:text="1、填写门店名称"
         android:textColor="@color/recharge_text"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/tv_titles" />
 
     <TextView
         android:textSize="12sp"
-        android:id="@+id/tv_two"
+        android:id="@+id/tv_twos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/base25dp"
         android:layout_marginTop="@dimen/base22dp"
-        android:text="2、填写门店详细地址"
         android:textColor="@color/recharge_text"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_one" />
+        app:layout_constraintTop_toBottomOf="@id/tv_ones" />
 
     <TextView
         android:textSize="12sp"
-        android:id="@+id/tv_three"
+        android:id="@+id/tv_threes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/base25dp"
         android:layout_marginTop="@dimen/base22dp"
-        android:text="3、填写门店电话"
         android:textColor="@color/recharge_text"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_two" />
+        app:layout_constraintTop_toBottomOf="@id/tv_twos" />
 
 </android.support.constraint.ConstraintLayout>

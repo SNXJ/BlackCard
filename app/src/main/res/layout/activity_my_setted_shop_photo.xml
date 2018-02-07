@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context="com.zsh.blackcard.ui.my.MySettedBusinessPhotoActivity">
+
+    <RelativeLayout
+        android:id="@+id/hj_eat_set_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base43dp"
+        android:background="#0C0C0C"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/blackwb_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base15dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/activity_eat_drink_set_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="店铺照片"
+            android:textColor="@color/recharge_text"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:paddingBottom="@dimen/base25dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/id_one"
+                android:layout_width="@dimen/base250dp"
+                android:layout_height="@dimen/base155dp"
+                android:layout_marginTop="@dimen/base25dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/id_image_1" />
+
+            <ImageView
+                android:id="@+id/id_two"
+                android:layout_width="@dimen/base250dp"
+                android:layout_height="@dimen/base155dp"
+                android:layout_marginTop="@dimen/base20dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/id_image_2" />
+
+            <ImageView
+                android:id="@+id/id_three"
+                android:layout_width="@dimen/base250dp"
+                android:layout_height="@dimen/base155dp"
+                android:layout_marginTop="@dimen/base20dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/id_image_3" />
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

@@ -3,6 +3,8 @@ package com.zsh.blackcard.ui;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Name: TicketAddActivity
  * Author: SNXJ
@@ -13,5 +15,6 @@ public class TicketAddActivity extends BaseActivity {
     @Override
     protected void initUI() {
         setContentView(R.layout.ticket_add_activity);
+        ButterKnife.bind(this);
     }
 }

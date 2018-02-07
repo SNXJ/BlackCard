@@ -1,9 +1,12 @@
 package com.zsh.blackcard.ui;
 
-import android.widget.RelativeLayout;
+import android.view.View;
 
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Name: MsgCenterActivity
@@ -13,10 +16,18 @@ import com.zsh.blackcard.R;
  */
 public class MsgSysDetailsActivity extends BaseActivity {
 
-    RelativeLayout rl_sys_msg;
-
     @Override
     protected void initUI() {
         setContentView(R.layout.msg_sys_details_activity);
+        ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.title_back})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.title_back:
+                finish();
+                break;
+        }
     }
 }

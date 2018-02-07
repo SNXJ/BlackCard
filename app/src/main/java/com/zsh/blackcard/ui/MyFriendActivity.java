@@ -14,6 +14,7 @@ import butterknife.OnClick;
 
 /**
  * Created by kkkkk on 2017/11/10.
+ * 我的界面，好友页面
  */
 
 public class MyFriendActivity extends BaseActivity {

@@ -30,31 +30,21 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="身份证"
+            android:text="营业执照"
             android:textColor="@color/recharge_text"
             android:textSize="17sp" />
     </RelativeLayout>
 
     <ImageView
         android:scaleType="fitXY"
-        android:id="@+id/id_positive"
+        android:id="@+id/img_one"
         android:layout_marginTop="@dimen/base25dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="@dimen/base250dp"
         android:layout_height="@dimen/base155dp"
-        android:src="@mipmap/id_positive"
+        android:src="@mipmap/id_image_4"
         app:layout_constraintTop_toBottomOf="@+id/hj_eat_set_title" />
 
-    <ImageView
-        android:scaleType="fitXY"
-        android:id="@+id/id_opposite"
-        android:layout_marginTop="@dimen/base20dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="@dimen/base250dp"
-        android:layout_height="@dimen/base155dp"
-        android:src="@mipmap/id_opposite"
-        app:layout_constraintTop_toBottomOf="@+id/id_positive" />
 
 </android.support.constraint.ConstraintLayout>

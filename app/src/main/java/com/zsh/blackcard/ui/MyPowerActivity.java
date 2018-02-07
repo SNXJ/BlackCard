@@ -35,6 +35,7 @@ import butterknife.OnClick;
 
 /**
  * Created by kkkkk on 2017/11/13.
+ * 我的页面，能量值页面
  */
 
 public class MyPowerActivity extends BaseActivity {

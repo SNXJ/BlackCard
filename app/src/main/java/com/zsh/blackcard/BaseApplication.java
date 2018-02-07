@@ -84,6 +84,15 @@ public class BaseApplication extends Application implements Thread.UncaughtExcep
 
     }
 
+    public static String CITY = null;
+
+    public static String getCITY() {
+        return CITY;
+    }
+
+    public static void setCITY(String CITY) {
+        BaseApplication.CITY = CITY;
+    }
 
     public static String getHonouruserId() {
         return HONOURUSER_ID;
