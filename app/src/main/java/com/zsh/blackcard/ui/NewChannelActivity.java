@@ -110,9 +110,9 @@ public class NewChannelActivity extends BaseActivity {
 
     }
 
-    private void setData(int postion) {
+    private void setData(int position) {
         Intent intent = new Intent();
-        intent.putExtra("position", postion);
+        intent.putExtra("position", position);
         intent.putExtra("listData", (Serializable) items);
         setResult(2, intent);
     }

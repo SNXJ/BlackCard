@@ -24,19 +24,17 @@ import com.zsh.blackcard.adapter.SendWeiBoAdapter;
 import com.zsh.blackcard.api.DataManager;
 import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
+import com.zsh.blackcard.model.ChannelModel;
 import com.zsh.blackcard.model.ResultModel;
-import com.zsh.blackcard.ui.EatDrinkSetDetailActivity;
 import com.zsh.blackcard.utils.UIUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.MultipartBody;
@@ -50,9 +48,9 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
     @BindView(R.id.type_tv)
     TextView type_tv;
     //文字标题集合
-    private List<String> titleList = new ArrayList<>();
+    private List<ChannelModel> titleList = new ArrayList<>();
     //菜单id集合
-    private List<String> titList = new ArrayList<>();
+//    private List<String> titList = new ArrayList<>();
     //标记选择发布的类型
     private String type = null;
     //根据上个页面的参数，决定发送什么请求
@@ -69,9 +67,8 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
         setContentView(R.layout.activity_home_news_send);
         ButterKnife.bind(this);
         //文字标题
-        titleList.addAll((List<String>) getIntent().getSerializableExtra("listOne"));
-        //菜单id
-        titList.addAll((List<String>) getIntent().getSerializableExtra("listTwo"));
+        titleList = ((List<ChannelModel>) getIntent().getSerializableExtra("listOne"));
+
         selectType = getIntent().getStringExtra("data");
         if (selectType.equals("1")) {
             recycler.setVisibility(View.GONE);
@@ -170,11 +167,17 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
 
     //选择发布类型
     private void sendType() {
+        List<String> items = new ArrayList<>();
+        for (int i = 0; i < titleList.size(); i++) {
+            items.add(titleList.get(i).getName());
+        }
+
+
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
-                type_tv.setText(titleList.get(options1));
-                type = titList.get(options1);
+                type_tv.setText(titleList.get(options1).getName());
+                type = titleList.get(options1).getId();
             }
         })
                 .setSubmitColor(Color.GRAY)
@@ -182,7 +185,7 @@ public class HomeNewsSendActivity extends BaseActivity implements BaseQuickAdapt
                 .setTitleBgColor(Color.WHITE)
                 .setDividerColor(Color.WHITE)
                 .build();
-        pvOptions.setNPicker(titleList, null, null);
+        pvOptions.setNPicker(items, null, null);
         pvOptions.show();
     }
 

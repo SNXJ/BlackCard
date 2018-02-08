@@ -47,7 +47,7 @@
             android:name=".ui.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.SbActivity"
+            android:name=".ui.home.HomeNewsActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/FullTheme"
             android:windowSoftInputMode="adjustResize">
@@ -147,7 +147,7 @@
         <activity android:name=".ui.ShoppingCarActivity" />
         <activity android:name=".ui.AddressEditActivity" />
         <activity android:name=".ui.AddressManageActivity" />
-        <!--<activity android:name=".ui.SbActivity" />-->
+        <activity android:name=".ui.SbActivity" />
         <activity android:name=".ui.SbMyActivity" />
         <activity android:name=".ui.OrderDetailsActivity" />
         <activity android:name=".ui.IntegralActivity" />
@@ -202,9 +202,9 @@
         <activity android:name=".ui.EatDrinkDetailActivity" />
         <activity android:name=".ui.zgactivity.GoodsCategoryActivity" />
         <!--<activity-->
-        <!--android:name=".ui.home.HomeNewsActivity"-->
-        <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
-        <!--android:screenOrientation="portrait" />-->
+            <!--android:name=".ui.home.HomeNewsActivity"-->
+            <!--android:configChanges="orientation|screenSize|keyboardHidden"-->
+            <!--android:screenOrientation="portrait" />-->
         <activity android:name=".ui.zgactivity.PersonalActivity" />
         <activity android:name=".live.AbMyFriendActivity" />
         <activity android:name=".live.AbMyContributionActivity" />
@@ -299,7 +299,6 @@
             android:name=".aliLive.AliLivePlayActivity"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
 
-        <activity android:name=".aliLive.AliLivePlayActivity" />
         <activity android:name=".ui.my.MySettedShopPhotoActivity" />
         <activity android:name=".ui.my.MySettedYingYePhotoActivity" />
         <activity android:name=".ui.my.MySettedZiMeiTiActivity" />

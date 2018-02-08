@@ -40,6 +40,7 @@
             android:id="@+id/my_order_other_tabLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base35dp"
+            android:layout_marginRight="@dimen/base15dp"
             android:background="#101010"
             app:tabIndicatorHeight="0dp"
             app:tabMode="scrollable"

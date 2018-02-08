@@ -34,30 +34,6 @@ public class NewsChannelModel implements Serializable {
         this.pd = pd;
     }
 
-//    public static class PdBean {
-//        /**
-//         * CAIDAN_ID : 387563351791632384
-//         * NAME : 精选
-//         */
-//
-//        private String CAIDAN_ID;
-//        private String NAME;
-//
-//        public String getCAIDAN_ID() {
-//            return CAIDAN_ID;
-//        }
-//
-//        public void setCAIDAN_ID(String CAIDAN_ID) {
-//            this.CAIDAN_ID = CAIDAN_ID;
-//        }
-//
-//        public String getNAME() {
-//            return NAME;
-//        }
-//
-//        public void setNAME(String NAME) {
-//            this.NAME = NAME;
-//        }
-//    }
+
 }
 

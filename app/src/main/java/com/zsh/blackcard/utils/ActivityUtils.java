@@ -141,14 +141,13 @@ public class ActivityUtils {
      * @param cls
      * @param data
      * @param titleId
-     * @param title
      */
     public static void startActivityForDataLists(Activity activity, Class<?> cls,
-                                                 String data, List<String> titleId, List<String> title) {
+                                                 String data, List<ChannelModel> titleId) {
         Intent intent = new Intent(activity, cls);
         intent.putExtra("data", data);
         intent.putExtra("listOne", (Serializable) titleId);
-        intent.putExtra("listTwo", (Serializable) title);
+
         activity.startActivity(intent);
     }
 
