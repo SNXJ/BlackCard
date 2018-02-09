@@ -525,7 +525,7 @@ public interface RetrofitService {
     //尊购发现页面菜单选项
     @FormUrlEncoded
     @POST("appdiscoverin/caidan.do?")
-    Observable<ZgFindTitleModel> postZgFindTiele(@Field("FKEY") String md5);
+    Observable<NewsChannelModel> postZgFindTiele(@Field("FKEY") String md5);
 
     //尊购发现页面条目对应的列表
     @FormUrlEncoded

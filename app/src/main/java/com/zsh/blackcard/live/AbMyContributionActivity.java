@@ -99,7 +99,7 @@ public class AbMyContributionActivity extends BaseActivity {
     private void initRecycle() {
         dialogDismiss();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        AbMyContrAdapter adapter = new AbMyContrAdapter(R.layout.ab_my_contri_item, list);
+         adapter = new AbMyContrAdapter(R.layout.ab_my_contri_item, list);
         adapter.setEmptyView(R.layout.zg_search_empty, recyclerView);
         recyclerView.setAdapter(adapter);
     }

@@ -10,8 +10,9 @@
         android:layout_marginTop="@dimen/base10dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/im_portrait"
+            android:layout_width="@dimen/base40dp"
+            android:layout_height="@dimen/base40dp"
             android:layout_marginLeft="@dimen/base15dp"
             android:src="@mipmap/blog_image_1" />
 
@@ -43,9 +44,9 @@
 
     <TextView
         android:id="@+id/circle_center_item_title"
-        android:layout_below="@+id/head_linear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/head_linear"
         android:layout_marginLeft="@dimen/base15dp"
         android:layout_marginTop="@dimen/base18dp"
         android:text="#跑车世界# 一枚宽体战神GTR"
@@ -53,54 +54,54 @@
         android:textSize="12sp" />
 
     <LinearLayout
-        android:layout_marginTop="@dimen/base15dp"
+        android:id="@+id/circle_center_item_image_linear"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base85dp"
+        android:layout_below="@+id/circle_center_item_title"
         android:layout_marginLeft="@dimen/base4dp"
         android:layout_marginRight="@dimen/base4dp"
-        android:id="@+id/circle_center_item_image_linear"
-        android:layout_below="@+id/circle_center_item_title"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/base85dp">
+        android:layout_marginTop="@dimen/base15dp">
 
         <ImageView
-            android:scaleType="fitXY"
             android:id="@+id/circle_center_item_one_img"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/base2dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="fitXY" />
 
         <ImageView
-            android:scaleType="fitXY"
             android:id="@+id/circle_center_item_two_img"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/base2dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="fitXY" />
 
         <ImageView
-            android:scaleType="fitXY"
             android:id="@+id/circle_center_item_three_img"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/base2dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="fitXY" />
 
         <ImageView
-            android:scaleType="fitXY"
             android:id="@+id/circle_center_item_four_img"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/base2dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="fitXY" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="@dimen/base10dp"
-        android:layout_marginBottom="@dimen/base10dp"
-        android:layout_below="@+id/circle_center_item_image_linear"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base22dp"
+        android:layout_below="@+id/circle_center_item_image_linear"
+        android:layout_marginBottom="@dimen/base10dp"
+        android:layout_marginTop="@dimen/base10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

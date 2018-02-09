@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 
+import com.zsh.blackcard.model.ChannelModel;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +104,21 @@ public class ActivityUtils {
      *
      * @param activity
      * @param cls
+     */
+    public static void startActivityForDataList(Activity activity, Class<?> cls,
+                                                List<ChannelModel> data) {
+        Intent intent = new Intent(activity, cls);
+
+        intent.putExtra("listData", (Serializable) data);
+
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 传递集合
+     *
+     * @param activity
+     * @param cls
      * @param data
      * @param title
      * @param search
@@ -124,14 +141,13 @@ public class ActivityUtils {
      * @param cls
      * @param data
      * @param titleId
-     * @param title
      */
     public static void startActivityForDataLists(Activity activity, Class<?> cls,
-                                                 String data, List<String> titleId, List<String> title) {
+                                                 String data, List<ChannelModel> titleId) {
         Intent intent = new Intent(activity, cls);
         intent.putExtra("data", data);
         intent.putExtra("listOne", (Serializable) titleId);
-        intent.putExtra("listTwo", (Serializable) title);
+
         activity.startActivity(intent);
     }
 

@@ -1,7 +1,5 @@
 package com.zsh.blackcard.model;
 
-import com.chad.library.adapter.base.entity.MultiItemEntity;
-
 import java.util.List;
 
 /**
@@ -11,9 +9,10 @@ import java.util.List;
 
 public class MyCircleModel {
 
+
     /**
      * result : 01
-     * pd : [{"dotAgreeCount":1,"SHOWIMAGES":"http://47.104.16.215:8088/highsortimgs/luxcarshopimgs/baae579c7f8646fa9758266d4ce4cb1a.png","PUBLISHTIME":"2017-12-06 02:23:12","CIRCLE_ID":"387972249954549760","CONTENT":"我的发布1","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","commentCount":4},{"dotAgreeCount":0,"SHOWIMAGES":"http://47.104.16.215:8088/highsortimgs/luxcarshopimgs/baae579c7f8646fa9758266d4ce4cb1a.png","PUBLISHTIME":"2017-12-06 02:24:14","CIRCLE_ID":"387972509233840128","CONTENT":"我的豪车店","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","commentCount":0},{"dotAgreeCount":0,"SHOWIMAGES":"http://47.104.16.215:8088/circleimgs/37fb4e3ed2cc4dc1a5038b3f69d663cb.jpg","PUBLISHTIME":"2017-12-08 01:43:14","CIRCLE_ID":"388686969472811008","CONTENT":"振华大宝贝儿","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","commentCount":0},{"dotAgreeCount":0,"SHOWIMAGES":"http://47.104.16.215:8088/circleimgs/e6d3f834816b4693950f897324d372fa.jpg,http://47.104.16.215:8088/circleimgs/1f2f29cba9d047f3a9758a92539de7af.jpg,http://47.104.16.215:8088/circleimgs/ba232f352a4b482fb9897e712baa9f72.jpg","PUBLISHTIME":"2017-12-08 10:31:34","CIRCLE_ID":"388638734242807808","CONTENT":"振华大宝贝儿","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","commentCount":0},{"dotAgreeCount":0,"SHOWIMAGES":"http://47.104.16.215:8088/circleimgs/6975e3b2d67f4b41a80cc7ef55319b9f.jpg,http://47.104.16.215:8088/circleimgs/0e004eae1f96452b8a7aa2108311cac6.jpg","PUBLISHTIME":"2017-12-08 10:41:10","CIRCLE_ID":"388641148853288960","CONTENT":"振华大宝贝儿","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","commentCount":0},{"dotAgreeCount":0,"PUBLISHTIME":"2017-12-08 12:05:02","CIRCLE_ID":"388662254872035328","CONTENT":"振华大宝贝儿","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","commentCount":0},{"dotAgreeCount":0,"SHOWIMAGES":"http://47.104.16.215:8088/circleimgs/35eb17e91175494a855ef0ffe3ac1cfa.jpg,http://47.104.16.215:8088/circleimgs/897d9c1c4b9f4f37b8907e0e69abb5da.jpg,http://47.104.16.215:8088/circleimgs/64abbc028f96431397f3fb53cfc73886.jpg","PUBLISHTIME":"2017-12-08 12:06:44","CIRCLE_ID":"388662681109790720","CONTENT":"振华大宝贝儿","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","commentCount":0},{"dotAgreeCount":0,"SHOWIMAGES":"http://47.104.16.215:8088/circleimgs/6d7ca035b7234264b1b3949d80748eb4.jpg,http://47.104.16.215:8088/circleimgs/624b2d7b134345c6aa83b3f3488e0125.jpg,http://47.104.16.215:8088/circleimgs/34f86f8524264cdd9d99cb2af36f84be.jpg","PUBLISHTIME":"2017-12-08 12:07:03","CIRCLE_ID":"388662762147938304","CONTENT":"振华大宝贝儿","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c","commentCount":0}]
+     * pd : [{"AGREECOUNT":1,"COMMENTCOUNT":2,"SHOWIMAGES":["http://image.rongyaohk.com/circleimgs/10a18d323f8b4f3a8b45c015caa1e081.png"],"NICKNAME":"White55开","STATUS":"1","PUBLISHTIME":"2018-02-01 14:25","PORTRAIT":"http://image.rongyaohk.com/userportrait/3d0a82c5b88d4249aaee0d2a770b25e1.jpg","CIRCLE_ID":"408628858519027712","CONTENT":"A站融资失败，作为当局者，我该怎么办？","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"},{"AGREECOUNT":0,"COMMENTCOUNT":0,"SHOWIMAGES":["http://image.rongyaohk.com/highsortimgs/luxcarshopimgs/baae579c7f8646fa9758266d4ce4cb1a.png"],"NICKNAME":"White55开","STATUS":"0","PUBLISHTIME":"2018-01-29 02:24","PORTRAIT":"http://image.rongyaohk.com/userportrait/3d0a82c5b88d4249aaee0d2a770b25e1.jpg","CIRCLE_ID":"387972509233840128","CONTENT":"我的豪车店","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"},{"AGREECOUNT":0,"COMMENTCOUNT":0,"SHOWIMAGES":["http://image.rongyaohk.com/circleimgs/58ddc6c9dd7a496b97744c09fc35f80a.MOV"],"NICKNAME":"White55开","STATUS":"0","PUBLISHTIME":"2018-01-15 10:32","PORTRAIT":"http://image.rongyaohk.com/userportrait/3d0a82c5b88d4249aaee0d2a770b25e1.jpg","CIRCLE_ID":"402409601128988672","CONTENT":"聪明","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"},{"AGREECOUNT":0,"COMMENTCOUNT":0,"SHOWIMAGES":["http://image.rongyaohk.com/circleimgs/c45c6fd7633a4ce88d7cf2db09504c56.MOV"],"NICKNAME":"White55开","STATUS":"0","PUBLISHTIME":"2018-01-15 10:29","PORTRAIT":"http://image.rongyaohk.com/userportrait/3d0a82c5b88d4249aaee0d2a770b25e1.jpg","CIRCLE_ID":"402408959446614016","CONTENT":"con","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"},{"AGREECOUNT":0,"COMMENTCOUNT":0,"SHOWIMAGES":["http://image.rongyaohk.com/circleimgs/5c0fd23b7c5540c1b8265d2181c4c0ab.jpg"],"NICKNAME":"White55开","STATUS":"0","PUBLISHTIME":"2017-12-12 14:34","PORTRAIT":"http://image.rongyaohk.com/userportrait/3d0a82c5b88d4249aaee0d2a770b25e1.jpg","CIRCLE_ID":"390149359645229056","CONTENT":"要过年啦！","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"},{"AGREECOUNT":0,"COMMENTCOUNT":0,"SHOWIMAGES":["http://image.rongyaohk.com/circleimgs/91fa415aaaf246239856391e5d792523.JPG","http://image.rongyaohk.com/circleimgs/185351af6d1247c5ae6552d54a162caf.JPG"],"NICKNAME":"White55开","STATUS":"0","PUBLISHTIME":"2017-12-08 19:53","PORTRAIT":"http://image.rongyaohk.com/userportrait/3d0a82c5b88d4249aaee0d2a770b25e1.jpg","CIRCLE_ID":"388780070325452800","CONTENT":"The ","HONOURUSER_ID":"d6a3779de8204dfd9359403f54f7d27c"}]
      */
 
     private String result;
@@ -35,39 +34,61 @@ public class MyCircleModel {
         this.pd = pd;
     }
 
-    public static class PdBean implements MultiItemEntity {
+    public static class PdBean {
         /**
-         * dotAgreeCount : 1
-         * SHOWIMAGES : http://47.104.16.215:8088/highsortimgs/luxcarshopimgs/baae579c7f8646fa9758266d4ce4cb1a.png
-         * PUBLISHTIME : 2017-12-06 02:23:12
-         * CIRCLE_ID : 387972249954549760
-         * CONTENT : 我的发布1
+         * AGREECOUNT : 1
+         * COMMENTCOUNT : 2
+         * SHOWIMAGES : ["http://image.rongyaohk.com/circleimgs/10a18d323f8b4f3a8b45c015caa1e081.png"]
+         * NICKNAME : White55开
+         * STATUS : 1
+         * PUBLISHTIME : 2018-02-01 14:25
+         * PORTRAIT : http://image.rongyaohk.com/userportrait/3d0a82c5b88d4249aaee0d2a770b25e1.jpg
+         * CIRCLE_ID : 408628858519027712
+         * CONTENT : A站融资失败，作为当局者，我该怎么办？
          * HONOURUSER_ID : d6a3779de8204dfd9359403f54f7d27c
-         * commentCount : 4
          */
 
-        private int dotAgreeCount;
-        private String SHOWIMAGES;
+        private String AGREECOUNT;
+        private String COMMENTCOUNT;
+        private String NICKNAME;
+        private String STATUS;
         private String PUBLISHTIME;
+        private String PORTRAIT;
         private String CIRCLE_ID;
         private String CONTENT;
         private String HONOURUSER_ID;
-        private int commentCount;
+        private List<String> SHOWIMAGES;
 
-        public int getDotAgreeCount() {
-            return dotAgreeCount;
+        public String getAGREECOUNT() {
+            return AGREECOUNT;
         }
 
-        public void setDotAgreeCount(int dotAgreeCount) {
-            this.dotAgreeCount = dotAgreeCount;
+        public void setAGREECOUNT(String AGREECOUNT) {
+            this.AGREECOUNT = AGREECOUNT;
         }
 
-        public String getSHOWIMAGES() {
-            return SHOWIMAGES;
+        public String getCOMMENTCOUNT() {
+            return COMMENTCOUNT;
         }
 
-        public void setSHOWIMAGES(String SHOWIMAGES) {
-            this.SHOWIMAGES = SHOWIMAGES;
+        public void setCOMMENTCOUNT(String COMMENTCOUNT) {
+            this.COMMENTCOUNT = COMMENTCOUNT;
+        }
+
+        public String getNICKNAME() {
+            return NICKNAME;
+        }
+
+        public void setNICKNAME(String NICKNAME) {
+            this.NICKNAME = NICKNAME;
+        }
+
+        public String getSTATUS() {
+            return STATUS;
+        }
+
+        public void setSTATUS(String STATUS) {
+            this.STATUS = STATUS;
         }
 
         public String getPUBLISHTIME() {
@@ -76,6 +97,14 @@ public class MyCircleModel {
 
         public void setPUBLISHTIME(String PUBLISHTIME) {
             this.PUBLISHTIME = PUBLISHTIME;
+        }
+
+        public String getPORTRAIT() {
+            return PORTRAIT;
+        }
+
+        public void setPORTRAIT(String PORTRAIT) {
+            this.PORTRAIT = PORTRAIT;
         }
 
         public String getCIRCLE_ID() {
@@ -102,26 +131,12 @@ public class MyCircleModel {
             this.HONOURUSER_ID = HONOURUSER_ID;
         }
 
-        public int getCommentCount() {
-            return commentCount;
+        public List<String> getSHOWIMAGES() {
+            return SHOWIMAGES;
         }
 
-        public void setCommentCount(int commentCount) {
-            this.commentCount = commentCount;
-        }
-
-        public static final int YES = 1;
-        public static final int NO = 2;
-
-        private int itemType;
-
-        public void setItemType(int itemType) {
-            this.itemType = itemType;
-        }
-
-        @Override
-        public int getItemType() {
-            return itemType;
+        public void setSHOWIMAGES(List<String> SHOWIMAGES) {
+            this.SHOWIMAGES = SHOWIMAGES;
         }
     }
 }

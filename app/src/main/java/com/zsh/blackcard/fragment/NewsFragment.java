@@ -14,9 +14,6 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.ZgFindModel;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.jzvd.JZMediaManager;
@@ -27,7 +24,7 @@ import cn.jzvd.JZVideoPlayer;
  * Created by kkkkk on 2017/12/6.
  */
 
-public class ZgFindFragment extends BaseFragment {
+public class NewsFragment extends BaseFragment {
 
     private String CAIDAN_ID = null;
 
@@ -36,9 +33,19 @@ public class ZgFindFragment extends BaseFragment {
 
     private ZgFindAdapter zgFindAdapter;
 
+    public static NewsFragment newInstance(String id) {
+        NewsFragment fragment = new NewsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void initDate(Bundle savedInstanceState) {
-        CAIDAN_ID = getArguments().getString("id");
+        if (getArguments() != null) {
+            CAIDAN_ID = getArguments().getString("id");
+        }
         DataManager.getInstance(getActivity()).RequestHttp(NetApi.postZgFind(DataManager.getMd5Str("DISCOVERLIST"), CAIDAN_ID), new ResultListener<ZgFindModel>() {
             @Override
             public void responseSuccess(ZgFindModel obj) {
@@ -58,6 +65,7 @@ public class ZgFindFragment extends BaseFragment {
                         zgFindAdapter = new ZgFindAdapter(obj.getPd());
                         zg_find_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
                         zg_find_recycler.setAdapter(zgFindAdapter);
+                        zgFindAdapter.setEmptyView(R.layout.zg_search_empty, zg_find_recycler);
                         zg_find_recycler.addOnChildAttachStateChangeListener(new VideoLoad());
                     }
                 } catch (Exception e) {

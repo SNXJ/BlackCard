@@ -972,7 +972,7 @@ public class NetApi extends DataManager {
      * @param md5
      * @return
      */
-    public static Observable<ZgFindTitleModel> postZgFindTiele(String md5) {
+    public static Observable<NewsChannelModel> postZgFindTiele(String md5) {
         return retrofitService.postZgFindTiele(md5);
     }
 

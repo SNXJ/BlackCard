@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/base40dp">
+
+    <TextView
+        android:id="@+id/tv"
+        style="@style/text_"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/base15dp"
+
+        android:text="@string/my_cahnnel"
+        android:textSize="15sp" />
+
+
+
+    <TextView
+        android:id="@+id/tv_btn_edit"
+        android:layout_width="56dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+
+        android:gravity="center"
+        android:text="@string/edit"
+        android:textColor="@color/ff92_text"
+        android:textSize="12sp" />
+
+
+</RelativeLayout>
