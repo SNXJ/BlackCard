@@ -21,7 +21,7 @@ public class DisCountAdapter extends BaseQuickAdapter<DisCountModel.PdBean, Base
 
     @Override
     protected void convert(BaseViewHolder helper, DisCountModel.PdBean item) {
-        helper.setText(R.id.max_tv, "满" + item.getCOUPON_MININUM() + "元即可使用");
-        helper.setText(R.id.money_tv, "¥" + item.getCOUPON_VALUE());
+//        helper.setText(R.id.max_tv, "满" + item.getCOUPON_MININUM() + "元即可使用");
+//        helper.setText(R.id.money_tv, "¥" + item.getCOUPON_VALUE());
     }
 }

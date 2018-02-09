@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/register_card_tv"
-        android:layout_width="@dimen/base100dp"
+        android:layout_width="@dimen/base165dp"
         android:layout_height="@dimen/base30dp"
         android:gravity="center"
         android:textColor="#FF929292"
