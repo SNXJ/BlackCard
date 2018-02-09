@@ -77,11 +77,11 @@ public class RegisterCardAdapter extends RecyclerView.Adapter<RegisterCardAdapte
 
         //根据状态给item设置背景色
         if (isCheck.get(position)) {
-            holder.register_card_tv.setBackgroundResource(R.drawable.group_9);
+            holder.register_card_tv.setBackgroundResource(R.mipmap.border_11);
             holder.register_card_tv.setTextColor(Color.parseColor("#FFF29E19"));
         } else {
             holder.register_card_tv.setTextColor(Color.parseColor("#FF929292"));
-            holder.register_card_tv.setBackgroundResource(R.drawable.group_10);
+            holder.register_card_tv.setBackgroundResource(R.mipmap.border_12);
         }
 
         holder.view.setOnClickListener(new View.OnClickListener() {

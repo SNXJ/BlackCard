@@ -74,7 +74,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             public void responseSuccess(MyDisBlackPowerModel obj) {
                 if (obj.getResult().equals("01")) {
                     my_nick_name_tv.setText(obj.getMy().getNICKNAME());
-                    my_dis_count_tv.setText(String.valueOf(obj.getMy().getCOUPON()));
+//                    my_dis_count_tv.setText(String.valueOf(obj.getMy().getCOUPON()));
+                    my_dis_count_tv.setText("5");
                     my_black_count_tv.setText(String.valueOf(obj.getMy().getBLACKCOIN()));
                     my_power_count_tv.setText(String.valueOf(obj.getMy().getENERGY()));
                     Glide.with(getActivity()).load(obj.getMy().getPORTRAIT()).apply(RequestOptions.bitmapTransform(new GlideCircleTransform(getActivity()))).into(imAvatar);

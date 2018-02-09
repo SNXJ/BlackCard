@@ -2,34 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="@dimen/base5dp"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/base120dp">
+    android:layout_height="@dimen/base180dp">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:layout_width="@dimen/base325dp"
+        android:layout_height="@dimen/base180dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:src="@mipmap/combinedshape" />
+        android:src="@mipmap/coupon_5" />
 
-    <TextView
-        android:id="@+id/max_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/base40dp"
-        android:layout_marginLeft="@dimen/base40dp"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:textColor="#929292"
-        android:textSize="24sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/max_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="@dimen/base40dp"-->
+        <!--android:layout_marginLeft="@dimen/base40dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:gravity="center"-->
+        <!--android:textColor="#929292"-->
+        <!--android:textSize="24sp" />-->
 
-    <TextView
-        android:id="@+id/money_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/base30dp"
-        android:layout_centerVertical="true"
-        android:text="￥99"
-        android:textColor="#929292"
-        android:textSize="32sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/money_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="@dimen/base30dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:text="￥99"-->
+        <!--android:textColor="#929292"-->
+        <!--android:textSize="32sp" />-->
 
 </RelativeLayout>

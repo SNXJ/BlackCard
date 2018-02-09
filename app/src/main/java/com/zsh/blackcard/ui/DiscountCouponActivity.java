@@ -11,6 +11,9 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.DisCountModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -25,30 +28,42 @@ public class DiscountCouponActivity extends BaseActivity {
 
     private DisCountAdapter disCountAdapter;
 
+    List<DisCountModel.PdBean> list = new ArrayList<>();
+
     @Override
     protected void initUI() {
         setContentView(R.layout.activity_discount_coupon);
         ButterKnife.bind(this);
         initData();
+
+        for (int i = 0; i < 5; i++) {
+            DisCountModel.PdBean pd = new DisCountModel.PdBean();
+
+            list.add(pd);
+        }
     }
 
     private void initData() {
-        showLoading(this);
+//        showLoading(this);
 
-        DataManager.getInstance(this).RequestHttp(NetApi.postDisCount(DataManager.getMd5Str("COUPONLIST"), "system"), new ResultListener<DisCountModel>() {
-            @Override
-            public void responseSuccess(DisCountModel obj) {
-                if(obj.getResult().equals("01")){
-                    disCountAdapter = new DisCountAdapter(R.layout.discount_item,obj.getPd());
-                    discount_recycler.setLayoutManager(new LinearLayoutManager(DiscountCouponActivity.this));
-                    discount_recycler.setAdapter(disCountAdapter);
-                }
-            }
+//        DataManager.getInstance(this).RequestHttp(NetApi.postDisCount(DataManager.getMd5Str("COUPONLIST"), "system"), new ResultListener<DisCountModel>() {
+//            @Override
+//        public void responseSuccess (DisCountModel obj){
+//                if(obj.getResult().equals("01")){
+//                    disCountAdapter = new DisCountAdapter(R.layout.discount_item,obj.getPd());
+//                    discount_recycler.setLayoutManager(new LinearLayoutManager(DiscountCouponActivity.this));
+//                    discount_recycler.setAdapter(disCountAdapter);
+//                }
+//            }
+//
+//            @Override
+//            public void onCompleted() {
+//                dialogDismiss();
+//            }
+//        });
 
-            @Override
-            public void onCompleted() {
-                dialogDismiss();
-            }
-        });
+            disCountAdapter = new DisCountAdapter(R.layout.discount_item, list);
+            discount_recycler.setLayoutManager(new LinearLayoutManager(DiscountCouponActivity.this));
+            discount_recycler.setAdapter(disCountAdapter);
+        }
     }
-}
