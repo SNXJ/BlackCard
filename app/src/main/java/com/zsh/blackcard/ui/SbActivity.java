@@ -79,35 +79,6 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
         radioBtnSb2.setChecked(true);
     }
 
-//
-//    private void Httpclient() {
-//        //获取链接管理器
-//        ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-//        //获取当前网络信息对象
-//        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-//
-//        //ActiveNetworkInfo不为空
-//        if (netInfo != null) {
-//            //网络是否已经链接
-//            boolean available = netInfo.isAvailable();
-//            //网络是否链接好并可以传递数据
-//            boolean connected = netInfo.isConnected();
-//            if (available && connected) {
-//                int type = netInfo.getType();
-//                if (type == ConnectivityManager.TYPE_WIFI) {
-//                    Toast.makeText(this, "wifi网路可用", Toast.LENGTH_SHORT).show();
-//                } else if (type == ConnectivityManager.TYPE_MOBILE) {
-//                    Toast.makeText(this, "手机流量可用网路可用", Toast.LENGTH_SHORT).show();
-//                }
-//                // Toast.makeText(this, "网路可用", 0).show();
-//            } else {
-//                Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
-//            }
-//        } else {
-//            Toast.makeText(this, "网路不可用", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
 
     @OnClick({R.id.sb_home_back, R.id.im_search, R.id.radio_btn_sb2, R.id.live_btn, R.id.radio_btn_sbmy})
     public void onClick(View view) {
@@ -126,8 +97,9 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
                 PublicDialog.openLiveDialog(SbActivity.this, radioBtnSb2);
                 break;
             case R.id.radio_btn_sbmy:
-                Intent sbmyintent = new Intent(SbActivity.this, SbMyActivity.class);
-                startActivity(sbmyintent);
+//                Intent sbmyintent = new Intent(SbActivity.this, SbMyActivity.class);
+//                startActivity(sbmyintent);
+                ActivityUtils.startActivity(SbActivity.this, SbMyActivity.class);
                 break;
         }
     }

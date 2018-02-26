@@ -22,6 +22,7 @@ import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.listener.SbNearChangeListener;
 import com.zsh.blackcard.model.LivePushListModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.model.SbNearChangeModel;
 import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.utils.LogUtils;
@@ -118,7 +119,7 @@ public class AbNearbyFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        LogUtils.i("++++++++++++++", "++++++++onResume++++++" + isVisible);
+
         if (!isVisible) {
 //            getNearByData();
         }
@@ -128,7 +129,7 @@ public class AbNearbyFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        LogUtils.i("++++++++++++++", "++++++++onPause++++++" + isVisible);
+
         isVisible = false;
     }
 
@@ -165,7 +166,7 @@ public class AbNearbyFragment extends BaseFragment {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                     if (null != pushList && pushList.size() > 0) {
-
+                        postliveNum();
                         ActivityUtils.startActivityForData(getActivity(), AliLivePlayActivity.class, pushList.get(position).getPublishUrl());
                     }
                 }
@@ -174,4 +175,7 @@ public class AbNearbyFragment extends BaseFragment {
 
     }
 
+    private void postliveNum() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postLiveMum(DataManager.getMd5Str("NUMBER"), BaseApplication.getHonouruserId()), null);
+    }
 }

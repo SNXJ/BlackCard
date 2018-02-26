@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.AbreComFragmentAdapter;
@@ -16,6 +17,7 @@ import com.zsh.blackcard.api.NetApi;
 import com.zsh.blackcard.custom.AbSpacesItemDecoration;
 import com.zsh.blackcard.listener.ResultListener;
 import com.zsh.blackcard.model.LivePushListModel;
+import com.zsh.blackcard.model.ResultModel;
 import com.zsh.blackcard.utils.ActivityUtils;
 
 import java.util.ArrayList;
@@ -107,7 +109,7 @@ public class AbReComFragmemt extends BaseFragment {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                     if (null != pushList && pushList.size() > 0) {
-
+                        postliveNum();
                         ActivityUtils.startActivityForData(getActivity(), AliLivePlayActivity.class, pushList.get(position).getPublishUrl());
                     }
                 }
@@ -116,6 +118,9 @@ public class AbReComFragmemt extends BaseFragment {
 
     }
 
+    private void postliveNum() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postLiveMum(DataManager.getMd5Str("NUMBER"), BaseApplication.getHonouruserId()), null);
+    }
 
     @Override
     public View initView(LayoutInflater inflater) {

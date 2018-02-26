@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.zsh.blackcard.BaseApplication;
 import com.zsh.blackcard.BaseFragment;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.AbreComFragmentAdapter;
@@ -165,13 +166,17 @@ public class AbTypeFragment extends BaseFragment {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                     if (null != pushList && pushList.size() > 0) {
-
+                        postliveNum();
                         ActivityUtils.startActivityForData(getActivity(), AliLivePlayActivity.class, pushList.get(position).getPublishUrl());
                     }
                 }
             });
         }
 
+    }
+
+    private void postliveNum() {
+        DataManager.getInstance(getActivity()).RequestHttp(NetApi.postLiveMum(DataManager.getMd5Str("NUMBER"), BaseApplication.getHonouruserId()), null);
     }
 
     //    sb_typefragment  this is temp layout
@@ -199,7 +204,7 @@ public class AbTypeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        LogUtils.i("++++++++++++++", "++++++++onResume++++++" + isVisible);
+
         if (!isVisible) {
 //            getFirstData();
         }
@@ -209,7 +214,7 @@ public class AbTypeFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        LogUtils.i("++++++++++++++", "++++++++onPause++++++" + isVisible);
+
         isVisible = false;
     }
 }

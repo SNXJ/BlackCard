@@ -34,7 +34,7 @@ android {
             minifyEnabled false
             zipAlignEnabled false
             shrinkResources false
-            signingConfig signingConfigs.debug
+//            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
@@ -48,12 +48,12 @@ android {
         exclude 'META-INF/rxjava.properties'
     }
     signingConfigs {
-        debug {
-            storeFile file('../debug.keystore')
-            storePassword "android"
-            keyAlias "android"
-            keyPassword "android"
-        }
+//        debug {
+//            storeFile file('../debug.keystore')
+//            storePassword "android"
+//            keyAlias "android"
+//            keyPassword "android"
+//        }
     }
 }
 

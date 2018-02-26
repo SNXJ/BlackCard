@@ -963,4 +963,15 @@ public interface RetrofitService {
     Observable<ShopIntoLngLatModel> postLanLat(@Field("key") String key,
                                                @Field("address") String address,
                                                @Field("city") String city);
+
+    //尚播 任务中心
+    @FormUrlEncoded
+    @POST("applivein/gettaskstatus?")
+    Observable<AbTaskModel> getAbTaskStatus(@Field("FKEY") String key, @Field("HONOURUSER_ID") String HONOURUSER_ID);
+
+
+    //直播调用( )
+    @FormUrlEncoded
+    @POST("applivein/numberoftimes?")
+    Observable<ResultModel> postLiveNum(@Field("FKEY") String key, @Field("HONOURUSER_ID") String HONOURUSER_ID);
 }

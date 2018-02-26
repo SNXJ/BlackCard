@@ -1812,4 +1812,26 @@ public class NetApi extends DataManager {
     public static Observable<AbContriModel> getAbRankingList(String md5, String user_id, String type) {
         return retrofitService.getAbRankingList(md5, user_id, type);
     }
+
+    /**
+     * 尚播   任务中心
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public static Observable<AbTaskModel> getAbTaskStatus(String md5, String user_id) {
+        return retrofitService.getAbTaskStatus(md5, user_id);
+    }
+
+    /**
+     * 服务器记录浏览记录用
+     *
+     * @param md5
+     * @param user_id
+     * @return
+     */
+    public static Observable<ResultModel> postLiveMum(String md5, String user_id) {
+        return retrofitService.postLiveNum(md5, user_id);
+    }
 }

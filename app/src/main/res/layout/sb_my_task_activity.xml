@@ -49,6 +49,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/tv_task_port"
             android:layout_width="@dimen/base45dp"
             android:layout_height="@dimen/base15dp"
             android:layout_alignParentRight="true"
@@ -94,6 +95,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/tv_task_browse"
             android:layout_width="@dimen/base45dp"
             android:layout_height="@dimen/base15dp"
             android:layout_alignParentRight="true"
@@ -139,6 +141,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/tv_task_attention"
             android:layout_width="@dimen/base45dp"
             android:layout_height="@dimen/base15dp"
             android:layout_alignParentRight="true"
@@ -184,6 +187,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/tv_task_gift"
             android:layout_width="@dimen/base45dp"
             android:layout_height="@dimen/base15dp"
             android:layout_alignParentRight="true"
@@ -229,6 +233,7 @@
             android:textSize="11sp" />
 
         <TextView
+            android:id="@+id/tv_task_all"
             android:layout_width="@dimen/base45dp"
             android:layout_height="@dimen/base15dp"
             android:layout_alignParentRight="true"
