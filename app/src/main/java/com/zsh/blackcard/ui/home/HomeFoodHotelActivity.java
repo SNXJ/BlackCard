@@ -97,7 +97,7 @@ public class HomeFoodHotelActivity extends BaseActivity implements View.OnClickL
     }
 
     private void initKTVData() {
-        DataManager.getInstance(this).RequestHttp(NetApi.postHomeKTVRecycler(DataManager.getMd5Str("SORTKTV"), "d6a3779de8204dfd9359403f54f7d27c"), new ResultListener<HomeKTVModel>() {
+        DataManager.getInstance(this).RequestHttp(NetApi.postHomeKTVRecycler(DataManager.getMd5Str("SORTKTV"), BaseApplication.getHonouruserId()), new ResultListener<HomeKTVModel>() {
             @Override
             public void responseSuccess(HomeKTVModel obj) {
                 initKTVBanner(obj);

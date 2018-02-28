@@ -121,5 +121,4 @@ public class SbActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-
 }

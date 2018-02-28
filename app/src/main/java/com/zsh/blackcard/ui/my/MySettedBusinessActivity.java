@@ -2,14 +2,15 @@ package com.zsh.blackcard.ui.my;
 
 import android.app.Dialog;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.TextViewCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
@@ -17,8 +18,10 @@ import com.google.gson.Gson;
 import com.zsh.blackcard.BaseActivity;
 import com.zsh.blackcard.R;
 import com.zsh.blackcard.adapter.WelBussAdapter;
+import com.zsh.blackcard.custom.HomeTypeConstant;
 import com.zsh.blackcard.custom.PublicDialog;
 import com.zsh.blackcard.model.JsonBean;
+import com.zsh.blackcard.ui.home.HomeFoodHotelActivity;
 import com.zsh.blackcard.utils.ActivityUtils;
 import com.zsh.blackcard.utils.GetJsonUtils;
 import com.zsh.blackcard.utils.UIUtils;
@@ -29,7 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -54,6 +56,10 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
     TextView address_tv;
     @BindView(R.id.phone_tv)
     TextView phone_tv;
+    @BindView(R.id.type_et)
+    TextView typeEt;
+    @BindView(R.id.relative_type)
+    RelativeLayout relativeType;
 
     private ArrayList<JsonBean> options1Items = new ArrayList<>();
     private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
@@ -64,6 +70,7 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
     private String province = null;
     private String city = null;
     private String county = null;
+    private String data;
 
     @Override
     protected void initUI() {
@@ -72,13 +79,18 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
 
         ActivityUtils.addActivity(this);
 
-        String data = getIntent().getStringExtra("data");
+        data = getIntent().getStringExtra("data");
         type_id = getIntent().getStringExtra("title");
         if (data.equals("1")) {
             initText("门店");
             //检测是否需要弹出引导页(目前为每次都弹出)
             initWelCome("门店");
         } else {
+            if (data.equals("3")) {
+                relativeType.setVisibility(View.VISIBLE);
+            } else {
+                relativeType.setVisibility(View.GONE);
+            }
             initText("企业");
             //检测是否需要弹出引导页(目前为每次都弹出)
             initWelCome("企业");
@@ -268,7 +280,7 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
         return detail;
     }
 
-    @OnClick({R.id.blackwb_back, R.id.relative_two, R.id.submit_btn})
+    @OnClick({R.id.blackwb_back, R.id.relative_two, R.id.submit_btn, R.id.relative_type})
     public void onClickView(View view) {
         switch (view.getId()) {
             case R.id.blackwb_back:
@@ -281,7 +293,34 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
             case R.id.submit_btn:
                 submit();
                 break;
+            case R.id.relative_type:
+                selectType();
+                break;
         }
+    }
+
+    private void selectType() {
+        final List<String> list = new ArrayList<>();
+        list.add("KTV");
+        list.add("酒吧");
+        list.add("夜店");
+        OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
+                typeEt.setText(list.get(options1));
+                type_id = list.get(options1);
+
+            }
+        })
+                .setSubmitColor(Color.GRAY)
+                .setCancelColor(Color.GRAY)
+                .setTitleBgColor(Color.WHITE)
+                .setDividerColor(Color.WHITE)
+                .setContentTextSize(16)
+                .setLineSpacingMultiplier(2f)
+                .build();
+        pvOptions.setNPicker(list, null, null);
+        pvOptions.show();
     }
 
     //地址选择器
@@ -313,4 +352,6 @@ public class MySettedBusinessActivity extends BaseActivity implements ViewPager.
             UIUtils.showToast("请完善全部信息");
         }
     }
+
+
 }
